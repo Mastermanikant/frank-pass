@@ -33,8 +33,34 @@ Finalize the production environment, fix UI inconsistencies, and optimize for Se
 - **Problem**: Vercel sync wasn't always immediate.
   - **Solution**: Integrated Vercel CLI for forced production pushes and verified the GitHub auto-deploy link.
 
+### 📅 April 07, 2026 — Milestone: "First Impression & Digital Notifications" (V2.2.2 Update)
+
+### 🎯 Objective
+Upgrade the first-visitor experience, resolve readability issues in the welcome modal, and enable a local notification preference system.
+
+### 🛠️ What We Did Today:
+1.  **Welcome Popup Redesign**:
+    -   Converted the generic welcome card into a **High-Contrast Modal** (`#0f172a` background) for perfect readability.
+    -   Integrated **V2.2.2 Production** branding directly into the first screen.
+2.  **Notification Ecosystem**:
+    -   Added **3 Local Toggles** (Scam Alerts, App Updates, Free Ebooks) into the welcome popup.
+    -   Enabled users to save these preferences immediately upon arrival.
+    -   Linked the welcome choices to the global `notif-panel` for a unified user experience.
+3.  **Smart Deep Linking**:
+    -   Developed a **Smart Redirect** logic for social media.
+    -   Clicking "Follow" now attempts to open the **Native Apps** (Instagram, X, YouTube) on mobile, falling back to the web browser only if the app is missing.
+    -   Updated all brand usernames to `@iamfrankpass`.
+4.  **Version Update**:
+    -   Updated the `ANNOUNCEMENT` configuration in `script.js` to ensure recurring visitors see the new production-ready notice.
+
+### ⚠️ Challenges & Solutions:
+-   **Problem**: Mobile users had to manually stay in the browser to follow social media, losing deep-link convenience.
+    -   **Solution**: Implemented a JS-based `deepLinkSocial` helper that uses custom URI schemes (`twitter://`, `instagram://`) for a frictionless follow experience.
+-   **Problem**: Text on the welcome card was hard to read due to an animated border and low contrast.
+    -   **Solution**: Switched to a solid, slightly transparent slate-dark background that meets high accessibility standards.
+
 ### ✅ Current Status:
-**FrankPass V2.2.2 is LIVE at [www.frankpass.com](https://www.frankpass.com)**. It is now stable, SEO-optimized, and ready for the next phase (Browser Extension development).
+**FrankPass V2.2.2 is now "Socially Connected" and "Notification Ready"**. The first-time visitor experience is now professional, trustworthy, and premium.
 
 ---
 *Maintained by Antigravity (Advanced Agentic Coding)*

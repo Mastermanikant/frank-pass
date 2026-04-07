@@ -9,11 +9,11 @@
 // (Use this to give a popup message to users)
 // ==========================================
 const ANNOUNCEMENT = {
-    id: "launch_v1", // Change this ID to show the popup AGAIN for everyone
-    show: true,      // Set to false to disable
-    title: "🚀 FrankPass is Live!",
-    message: "Welcome to FrankPass. Your passwords never leave your device. Download our Ebook in the Guide section for the ultimate security workflow! (v1.0.0)",
-    cta: "Got it!"
+    id: "launch_v222", // Updated for production V2.2.2
+    show: true,      
+    title: "🚀 FrankPass V2.2.2 is Live!",
+    message: "Welcome to FrankPass. Experience the ultimate deterministic security with our major update. Check out the new Guide and Masterclass! (v2.2.2)",
+    cta: "Let's Go!"
 };
 
 // ==========================================
@@ -1156,5 +1156,69 @@ function closeWelcomePopup() {
     if (welcomePopup) {
         welcomePopup.classList.add('hidden');
         localStorage.setItem('frankpass_welcomed', 'true');
+        // If they just closed without saving, we still mark as welcomed to not annoy them next time
     }
 }
+
+function saveWelcomeNotifPrefs() {
+    const scam = document.getElementById('welcome-pref-scam')?.checked || false;
+    const updates = document.getElementById('welcome-pref-updates')?.checked || false;
+    const offers = document.getElementById('welcome-pref-offers')?.checked || false;
+    
+    const prefs = { scam, updates, offers };
+    localStorage.setItem('frankpass_notif_prefs', JSON.stringify(prefs));
+    
+    // If any enabled, request browser permission
+    if (scam || updates || offers) {
+        requestBrowserNotif();
+    }
+    
+    // Sync UI if the notification panel is open
+    loadNotifPrefs();
+}
+
+/**
+ * Smart Deep Linking for Social Media
+ * Attempts to open native app, falls back to web URL.
+ */
+function deepLinkSocial(platform) {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    let appUrl = "";
+    let webUrl = "";
+
+    switch(platform) {
+        case 'x':
+            appUrl = "twitter://user?screen_name=iamfrankpass";
+            webUrl = "https://x.com/iamfrankpass";
+            break;
+        case 'instagram':
+            appUrl = "instagram://user?username=iamfrankpass";
+            webUrl = "https://instagram.com/iamfrankpass";
+            break;
+        case 'youtube':
+            appUrl = "youtube://www.youtube.com/@iamfrankpass";
+            webUrl = "https://youtube.com/@iamfrankpass";
+            break;
+        case 'whatsapp':
+            // WhatsApp Channel URLs automatically trigger the app
+            window.open("https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z", "_blank");
+            return;
+        case 'founder':
+            appUrl = "instagram://user?username=mastermanikant";
+            webUrl = "https://instagram.com/mastermanikant";
+            break;
+    }
+
+    if (isMobile && appUrl) {
+        const start = Date.now();
+        window.location.href = appUrl;
+        setTimeout(() => {
+            if (Date.now() - start < 1500) {
+                window.open(webUrl, "_blank");
+            }
+        }, 1000);
+    } else {
+        window.open(webUrl, "_blank");
+    }
+}
+
