@@ -1,6 +1,6 @@
 {
   "id": "/frankpass/",
-  "name": "FrankPass Generator",
+  "name": "FrankPass App",
   "short_name": "FrankPass",
   "description": "Deterministic, stateless, unbreakable password generator.",
   "start_url": "./index.html",
