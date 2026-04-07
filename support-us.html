@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Us | FrankPass</title>
+    <meta name="description" content="Support FrankPass &#8212; the free, stateless password generator. Donate via Buy Me A Coffee, purchase cybersecurity ebooks, or join the browser extension waitlist.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <style>
+        .support-hero { text-align: center; margin-bottom: 2rem; }
+        .support-hero h2 { font-size: 2rem; margin-bottom: 0.5rem; }
+        .support-hero p { color: var(--text-secondary); font-size: 1.05rem; max-width: 500px; margin: 0 auto; }
+
+        .support-section { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+        .support-section h3 { color: var(--accent-primary); margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .support-section .subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .payment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+        .payment-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .payment-card:hover { background: rgba(99,102,241,0.1); border-color: var(--accent-primary); transform: translateY(-3px); }
+        .payment-card .card-icon { font-size: 2.5rem; margin-bottom: 0.3rem; }
+        .payment-card h4 { margin: 0; font-size: 1.1rem; }
+        .payment-card p { font-size: 0.85rem; color: var(--text-secondary); margin: 0; }
+        .payment-card .badge { display: inline-block; background: rgba(16, 185, 129, 0.15); color: #10b981; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 20px; margin-top: 0.3rem; }
+        .payment-card .badge-coming { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+
+        .waitlist-box {
+            background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(162,155,254,0.05));
+            border: 1px solid rgba(99,102,241,0.25);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .waitlist-box h4 { color: var(--accent-focus); font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .waitlist-box p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1rem; }
+        .waitlist-box .offer-tag { display: inline-block; background: linear-gradient(135deg, #f59e0b, #ef4444); color: white; font-weight: 700; font-size: 1rem; padding: 0.4rem 1rem; border-radius: 8px; margin-bottom: 1rem; }
+    </style>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        integrity="sha384-xyQ/Vpt1cq1pdPYlRaT/QkcSj2vrYyWI3WOhxGBzqnP1vgvsS2yrhWXe3/wIoCr5"
+        crossorigin="anonymous"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+        integrity="sha384-KAUcUASKfGZ0sxENVFRiH12jtpvd9SsVpgzvYdvv8ZMLqB99G3gX3DAts418wzIC"
+        crossorigin="anonymous"></script>
+</head>
+<body class="legal-page">
+    <canvas id="particle-canvas"></canvas>
+    <div class="background-elements">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <h1><span class="FrankPass-text">Frank</span>Pass</h1>
+                </a>
+            </div>
+            <p>Every contribution makes the internet more secure.</p>
+        </header>
+
+        <main class="glass-panel content-page">
+            <!-- Hero -->
+            <div class="support-hero">
+                <h2>Support <span class="FrankPass-text">FrankPass</span></h2>
+                <p>FrankPass is 100% free and always will be. Your support helps us keep the lights on, build new features, and protect more people around the world.</p>
+            </div>
+
+            <!-- REGIONAL SEPARATION TABS (Visual only for now) -->
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; justify-content: center;">
+                <div style="background: rgba(255,255,255,0.05); padding: 0.5rem 1rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #10b981;">&#127470;&#127475; India Support</div>
+                <div style="background: rgba(255,255,255,0.05); padding: 0.5rem 1rem; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem; color: #6366f1;">&#127757; Global Support</div>
+            </div>
+
+            <!-- INDIA SECTION -->
+            <div class="support-section" style="border-top: none; padding-top: 0; background: rgba(16, 185, 129, 0.03); border: 1px solid rgba(16, 185, 129, 0.1); border-radius: 20px; padding: 2rem; margin-bottom: 3rem;">
+                <h3 style="color: #10b981;">&#127470;&#127475; India &#8212; Support via UPI</h3>
+                <p class="subtitle">Fast, frictionless, and zero fees. Optimized for Indian creators and users.</p>
+
+                <div class="payment-grid" style="grid-template-columns: 1fr;">
+                    <!-- India Support (Sellio IQ) -->
+                    <a href="https://sellioiq.com/mastermanikant" target="_blank" rel="noopener" class="payment-card" style="max-width: 500px; margin: 0 auto; border-color: rgba(16, 185, 129, 0.3);">
+                        <div class="card-icon">&#129706;</div>
+                        <h4>Sellio IQ (Donations / Tips)</h4>
+                        <p>Instant support via Google Pay, PhonePe, Paytm, and Net Banking. Safe and direct.</p>
+                        <span class="badge" style="background: #10b981;">UPI &#8226; GPAY &#8226; PHONEPE</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- GLOBAL SECTION -->
+            <div class="support-section" style="background: rgba(99, 102, 241, 0.03); border: 1px solid rgba(99, 102, 241, 0.1); border-radius: 20px; padding: 2rem; margin-bottom: 3rem;">
+                <h3 style="color: #6366f1;">&#127757; Global &#8212; Rest of the World</h3>
+                <p class="subtitle">Secure international payments in your local currency. Multiple friction-less options.</p>
+
+                <div class="payment-grid">
+                    <!-- Buy Me A Coffee (Global) -->
+                    <a href="https://buymeacoffee.com/mastermanikant" target="_blank" rel="noopener" class="payment-card">
+                        <div class="card-icon">&#9749;</div>
+                        <h4>Buy Me A Coffee</h4>
+                        <p>One-time or monthly gifts. Supports Credit/Debit Cards, Apple Pay, and Google Pay.</p>
+                        <span class="badge">Global Cards &#8226; Wallets</span>
+                    </a>
+
+                    <!-- Gumroad (Global / PPP) -->
+                    <a href="https://gumroad.com/mastermanikant" target="_blank" rel="noopener" class="payment-card">
+                        <div class="card-icon">&#128717;&#65039;</div>
+                        <h4>Gumroad Shop</h4>
+                        <p>Best for Ebooks and Extensions. Automatically handles local taxes (VAT/GST).</p>
+                        <span class="badge">Global Store &#8226; MoR</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Resell & Earn (Affiliate) -->
+            <div class="support-section" id="resell">
+                <h3>&#129309; Resell & Earn &#8212; 50% Commission</h3>
+                <p class="subtitle">Join our affiliate program and earn by promoting security. Perfect for influencers and resellers.</p>
+                
+                <div class="payment-grid" style="grid-template-columns: 1fr;">
+                    <div class="waitlist-box" style="background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2);">
+                        <span class="offer-tag" style="background: linear-gradient(135deg, #10b981, #059669);">&#128293; EARN 50% COMMISSION</span>
+                        <h4 style="color: #10b981;">Become a FrankPass Partner</h4>
+                        <p>Share your unique link for India (Sellio) or Global (Gumroad). You get <strong>half the profit</strong> instantly on every sale. Grow together with the project!</p>
+                        
+                        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+                            <a href="https://sellioiq.com/affiliate/signup" target="_blank" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.7rem 1.5rem; background: #10b981;">
+                                <ion-icon name="people-outline" style="margin-right: 0.4rem;"></ion-icon> Partner (India/Sellio)
+                            </a>
+                            <a href="https://gumroad.com/affiliates" target="_blank" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.7rem 1.5rem; background: #6366f1;">
+                                <ion-icon name="globe-outline" style="margin-right: 0.4rem;"></ion-icon> Partner (Global/Gumroad)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Buy Ebook -->
+            <div class="support-section">
+                <h3>&#128214; Purchase Our Ebook</h3>
+                <p class="subtitle">Become a master of digital security. Your purchase directly supports FrankPass development.</p>
+
+                <div class="payment-grid">
+                    <a href="javascript:void(0)" class="payment-card" style="cursor: not-allowed; opacity: 0.7;">
+                        <div class="card-icon">&#127379;</div>
+                        <h4>The Unhackable Identity</h4>
+                        <p>4-chapter practical guide. Coming Soon.</p>
+                        <span class="badge badge-coming">Free &#8226; Soon</span>
+                    </a>
+                    <a href="javascript:void(0)" class="payment-card" style="cursor: not-allowed; opacity: 0.7;">
+                        <div class="card-icon">&#128293;</div>
+                        <h4>The Ultimate Masterclass</h4>
+                        <p>10-chapter deep dive. Coming Soon with PPP pricing links.</p>
+                        <span class="badge badge-coming">Paid &#8226; Soon</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- SECTION 4: Browser Extensions -->
+            <div class="support-section" id="extensions">
+                <h3>&#129513; Browser Extensions</h3>
+                <p class="subtitle">Auto-fill your FrankPass passwords directly inside any website. No more copy-paste.</p>
+
+                <div class="waitlist-box">
+                    <span class="offer-tag">&#127881; 50% OFF &#8212; First Year Subscription</span>
+                    <h4>Coming Soon!</h4>
+                    <p>Premium browser extensions for Chrome, Firefox, and Edge are in development. Includes <strong>50% reseller commission</strong> and PPP pricing.</p>
+                    <a href="/contact.html" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.8rem 2rem; background: linear-gradient(135deg, #f59e0b, #ef4444); box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);">
+                        <ion-icon name="notifications-outline" style="margin-right: 0.4rem;"></ion-icon> Get Updates
+                    </a>
+                </div>
+            </div>
+
+            <!-- Back -->
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="/" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.8rem 2rem;">
+                    <ion-icon name="arrow-back-outline"></ion-icon> Back to Generator
+                </a>
+            </div>
+        </main>
+
+        <!-- ================= FOOTER SECTION ================= -->
+        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
+            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
+                <span id="footer-toggle-label">Show Site Footer</span>
+                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
+            </button>
+            
+            <div id="footer-body" style="display:none; width: 100%; margin-top:2rem;">
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
+                    <a href="/">Home</a>
+                    <a href="/about.html">About Us</a>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="/legal.html">Legal</a>
+                    <a href="/meet-the-founder-MasterManikant.html">Meet the Founder</a>
+                </div>
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
+&#128274; Stateless?</a>
+                    <a href="/guide.html">Guides &amp; Ebooks</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="/support-us.html">Support Us &#128153;</a>
+                </div>
+
+                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
+                    <!-- Founder Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/mastermanikant/github" title="GitHub" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-github"></ion-icon></a>
+                            <a href="/mastermanikant/x" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/mastermanikant/linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="/mastermanikant/instagram" title="Instagram" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+
+                    <!-- Product Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/x" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/youtube" title="YouTube" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
+                            <a href="/instagram" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="/whatsapp" title="WhatsApp Channel" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>Serverless Cryptography. Zero Database. Pure Math.</p>
+                    <p>&copy; <span id="copyright-year"></span> FrankPass &#8212; Designed &amp; Developed by <a href="/meet-the-founder-MasterManikant.html" style="color: var(--accent-primary);">Master Manikant Yadav</a></p>
+                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>

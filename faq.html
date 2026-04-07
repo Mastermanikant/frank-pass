@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | FrankPass &#8212; Stateless Password Generator</title>
+    <meta name="description" content="Answers to all your FrankPass questions &#8212; security architecture, offline use, secret key recovery, password uniqueness, and more.">
+    <meta property="og:title" content="FrankPass FAQ | Your Security Questions Answered">
+    <meta property="og:description" content="Stateless passwords, offline use, key recovery &#8212; all answered.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frankpass.com/faq.html">
+    <meta property="og:image" content="https://frankpass.com/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://frankpass.com/faq.html">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        integrity="sha384-xyQ/Vpt1cq1pdPYlRaT/QkcSj2vrYyWI3WOhxGBzqnP1vgvsS2yrhWXe3/wIoCr5"
+        crossorigin="anonymous"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+        integrity="sha384-KAUcUASKfGZ0sxENVFRiH12jtpvd9SsVpgzvYdvv8ZMLqB99G3gX3DAts418wzIC"
+        crossorigin="anonymous"></script>
+
+    <!-- FAQ Schema Markup for Google Featured Snippets -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the security architecture of FrankPass?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "FrankPass uses 100% client-side cryptography. PBKDF2 and HMAC-SHA512 with 1,000,000 iterations run locally in your browser. There are no databases, vaults, or cloud syncing &#8212; nothing for hackers to breach."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What happens if I forget my Secret Key?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Because FrankPass is zero-knowledge and stateless, there is no recovery feature. Your Secret Key is the mathematical foundation of your passwords. If you forget it, you will need to reset passwords on each website individually."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Will I get the same password if I switch devices?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. FrankPass is deterministic. The same Platform Name + Secret Key + Variant Counter always generates the exact same password on any device &#8212; smartphone, tablet, PC, or Mac &#8212; entirely offline."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does FrankPass work completely offline?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Once the page is loaded, you can disconnect your internet. The cryptography runs natively inside your browser. You can also install it as a PWA for full offline access."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if I type facebook.com instead of just facebook? Will my password change?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. FrankPass has a built-in smart domain normalizer. Whether you type facebook, facebook.com, www.facebook.com, or m.facebook.com &#8212; it automatically cleans the input to just the base name."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why should I leave the Username field blank?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Leaving it blank reduces human error. If you change your email on a website and had it in the Username field, you'd get a different password. However, if you have multiple accounts on the same platform, you must use the Username field to differentiate them."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does the Variant counter work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Variant is a password rotation tool. If a website forces you to change your password, simply change the Variant from 1 to 2. This generates a brand new password for the same platform without changing your Secret Key."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if a website rejects the generated password?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Some older websites restrict password length or symbols. If rejected, lower the length slider or switch to the Alphanumeric profile, then generate again. Remember to use those same settings for that website every time."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Why do passwords from FrankPass look different from other generators?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "FrankPass removes visually ambiguous characters &#8212; l, I, O, 0, 1, C, c, S, s, V, v, W, w &#8212; so you never misread a password when typing it manually. Every character is guaranteed to be visually distinct."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="legal-page">
+    <canvas id="particle-canvas"></canvas>
+    <div class="background-elements">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <h1><span class="FrankPass-text">Frank</span>Pass</h1>
+                </a>
+            </div>
+            <p>Your passwords. Your rules. No exceptions.</p>
+        </header>
+
+        <main class="glass-panel content-page">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <ion-icon name="help-circle-outline" style="font-size: 3rem; color: var(--accent-primary);"></ion-icon>
+                <h1 style="color: var(--accent-primary); margin: 0.5rem 0 0.3rem;">Frequently Asked Questions</h1>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Everything you need to know about how FrankPass keeps you secure.</p>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+
+                <!-- Q1 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#128272; What is the security architecture of FrankPass?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        FrankPass uses <strong>100% client-side cryptography</strong>. Advanced hashing algorithms (PBKDF2 and HMAC-SHA512 with <strong>1,000,000 iterations</strong>) run locally in your browser to generate a deterministic output. Because there are no databases, vaults, or cloud syncing involved, there is nothing for hackers to breach. It is completely serverless.
+                    </div>
+                </details>
+
+                <!-- Q2 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#128273; What happens if I forget my Secret Key?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        Because FrankPass is <strong>zero-knowledge and stateless</strong>, there is no "Forgot Password" or recovery feature. Your Secret Key is the mathematical foundation of your passwords. We recommend using a memorable passphrase or a deeply personal logic pattern. If you forget it, you will need to reset your passwords on every individual website.
+                    </div>
+                </details>
+
+                <!-- Q3 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#128241; Will I get the same password if I switch devices?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        <strong>Absolutely.</strong> FrankPass is deterministic. As long as you input the exact same Platform Name, Secret Key, and Variant Counter, the math will output the exact same password on any smartphone, tablet, PC, or Mac &#8212; entirely offline.
+                    </div>
+                </details>
+
+                <!-- Q4 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#127760; What if I type "facebook.com" instead of just "facebook"?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        <strong>No problem!</strong> FrankPass has a built-in smart domain normalizer. Whether you type <code>facebook</code>, <code>facebook.com</code>, <code>www.facebook.com</code>, or <code>m.facebook.com</code> &#8212; it automatically cleans up to the base name. You will always get the exact same password.
+                    </div>
+                </details>
+
+                <!-- Q5 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#128225; Does FrankPass work completely offline?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        <strong>Yes!</strong> Once the page is loaded, you can completely disconnect your internet. The cryptography runs natively inside your browser. For ultimate offline access, install FrankPass as a PWA (Progressive Web App) using the Install App option.
+                    </div>
+                </details>
+
+                <!-- Q6 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#128100; Why should I leave the "Username" field blank?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        Leaving it blank <strong>reduces human error</strong>. If you change your email on a website, your password field would produce a different result, locking you out. Leave it blank to keep the password tied to the platform and your secret key. <em>Exception:</em> If you have <strong>multiple accounts</strong> on the same platform (e.g., two Instagram profiles), use the Username field to generate distinct passwords for each.
+                    </div>
+                </details>
+
+                <!-- Q7 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#128260; How does the Variant counter feature work?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        Think of the Variant as a <strong>password rotation tool</strong>. If a website forces you to change your password, or if you suspect your account was compromised, simply change the Variant from <strong>1</strong> to <strong>2</strong>. This generates a completely new, secure password for that platform &#8212; without changing your Secret Key.
+                    </div>
+                </details>
+
+                <!-- Q8 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#9888;&#65039; What if a website rejects the generated password?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        Some older websites restrict password length or symbols. If your password is rejected, <strong>lower the length slider</strong> or switch the Profile to <strong>Alphanumeric</strong> and generate again. Always use those same settings for that specific website in the future.
+                    </div>
+                </details>
+
+                <!-- Q9 -->
+                <details class="faq-item" style="background: rgba(255,255,255,0.03); border-radius: 12px; border: 1px solid rgba(255,255,255,0.07); overflow: hidden;">
+                    <summary style="padding: 1rem; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 600; display: flex; justify-content: space-between; align-items: center; list-style: none; gap: 1rem;">
+                        <span>&#128292; Why do FrankPass passwords look different from other generators?</span>
+                        <ion-icon name="chevron-down-outline" style="color: #94a3b8; transition: transform 0.3s; flex-shrink: 0;"></ion-icon>
+                    </summary>
+                    <div style="padding: 0 1rem 1rem; color: var(--text-secondary); line-height: 1.7; font-size: 0.92rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 0.8rem;">
+                        For your sanity! FrankPass strategically <strong>removes visually ambiguous characters</strong> from its engine so you never misread a password when typing it manually. Removed characters include:
+                        <ul style="margin-top: 0.6rem; padding-left: 1.2rem; color: var(--text-secondary);">
+                            <li>Letters that look like numbers: <code>l</code>, <code>I</code>, <code>O</code></li>
+                            <li>Numbers that look like letters: <code>0</code>, <code>1</code></li>
+                            <li>Similar-looking letter pairs: <code>C/c</code>, <code>S/s</code>, <code>V/v</code>, <code>W/w</code></li>
+                        </ul>
+                    </div>
+                </details>
+
+            </div>
+
+            <!-- Back Button -->
+            <div style="margin-top: 2.5rem; text-align: center;">
+                <a href="/" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.8rem 2rem;">
+                    <ion-icon name="arrow-back-outline"></ion-icon>&nbsp; Back to Generator
+                </a>
+            </div>
+        </main>
+
+        <!-- ================= FOOTER SECTION ================= -->
+        <!-- ================= FOOTER SECTION ================= -->
+        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
+            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
+                <span id="footer-toggle-label">Show Site Footer</span>
+                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
+            </button>
+            
+            <div id="footer-body" style="display:none; width: 100%; margin-top:2rem;">
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
+                    <a href="/">Home</a>
+                    <a href="/about.html">About Us</a>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="/legal.html">Legal</a>
+                    <a href="/meet-the-founder-MasterManikant.html">Meet the Founder</a>
+                </div>
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
+                    <a href="/why-stateless.html">Why Stateless?</a>
+                    <a href="/guide.html">Guides &amp; Ebooks</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="/support-us.html">Support Us &#128153;</a>
+                </div>
+
+                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/mastermanikant/github" title="GitHub" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-github"></ion-icon></a>
+                            <a href="/mastermanikant/x" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/mastermanikant/linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="/mastermanikant/instagram" title="Instagram" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/x" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/youtube" title="YouTube" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
+                            <a href="/instagram" title="Instagram" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="/whatsapp" title="WhatsApp Channel" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>Serverless Cryptography. Zero Database. Pure Math.</p>
+                    <p style="font-size: 0.78rem; opacity: 0.6; margin-top: 0.3rem;">FrankPass is the intellectual property of Master Manikant Yadav. Personal use is permitted. Redistribution or republishing under a different name is prohibited. <a href="/legal.html" style="color: var(--accent-primary);">Legal &rarr;</a></p>
+                    <p>&copy; <span id="copyright-year"></span> FrankPass &mdash; Designed &amp; Developed by <a href="/meet-the-founder-MasterManikant.html" style="color: var(--accent-primary);">Master Manikant Yadav</a></p>
+                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="particles.js"></script>
+    <script>
+        // Exclusive accordion: only one open at a time
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.faq-item');
+            items.forEach(item => {
+                item.addEventListener('toggle', () => {
+                    if (item.open) {
+                        items.forEach(other => {
+                            if (other !== item && other.open) other.removeAttribute('open');
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

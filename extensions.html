@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrankPass Premium Extension | 1-Click Password Autofill for Chrome</title>
+    <meta name="description" content="Install the FrankPass Chrome Extension for 1-click autofill. Auto-detects your website, generates your password instantly. No database, pure math.">
+    <meta property="og:title" content="FrankPass Premium Extension | 1-Click Autofill">
+    <meta property="og:description" content="Auto-detects your website, 1-click autofill. No database, no vault, no breach.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frankpass.com/extensions.html">
+    <meta property="og:image" content="https://frankpass.com/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://frankpass.com/hero.png">
+    <link rel="canonical" href="https://frankpass.com/extensions.html">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <meta name="theme-color" content="#eab308">
+    
+    <!-- Ionicons for icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" crossorigin="anonymous"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <canvas id="particle-canvas"></canvas>
+    <div class="background-elements">
+        <div class="circle circle-1" style="background: radial-gradient(circle, rgba(234, 179, 8, 0.4) 0%, rgba(234, 179, 8, 0) 70%);"></div>
+        <div class="circle circle-2" style="background: radial-gradient(circle, rgba(202, 138, 4, 0.4) 0%, rgba(202, 138, 4, 0) 70%);"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- ================= APP HEADER ================= -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem;">
+            <a href="index.html" class="icon-btn" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
+                <ion-icon name="arrow-back-outline"></ion-icon> Back to Free Web
+            </a>
+            <div class="logo-icons" style="transform: scale(0.8);">
+                <span class="floating-badge shield-badge"><ion-icon name="shield-checkmark"></ion-icon></span>
+            </div>
+        </div>
+
+        <header>
+            <h1><span style="color: #eab308;">Premium</span> Extension</h1>
+            <p>1-Click Autofill. Zero Friction. Total Privacy.</p>
+        </header>
+
+        <main class="glass-panel" style="border: 1px solid rgba(234, 179, 8, 0.2);">
+            
+            <div style="text-align: center; padding: 1rem 0 2rem;">
+                <ion-icon name="extension-puzzle-outline" style="font-size: 4rem; color: #eab308; margin-bottom: 1rem;"></ion-icon>
+                <h2 style="color: var(--text-primary); font-size: 1.5rem; margin-bottom: 0.5rem;">Why type manually?</h2>
+                <p style="color: var(--text-secondary); max-width: 90%; margin: 0 auto; line-height: 1.5;">
+                    The free website is a great fallback, but the FrankPass Extension is the ultimate workflow upgrade. <b>It automatically detects the website you are on</b> and generates your password directly inside the browser dropdown.
+                </p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem;">
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.2rem; border-radius: 12px; display: flex; gap: 1rem; align-items: flex-start;">
+                    <ion-icon name="flash-outline" style="color: #eab308; font-size: 1.5rem; flex-shrink: 0;"></ion-icon>
+                    <div>
+                        <strong style="color: var(--text-primary); display: block; margin-bottom: 0.2rem;">Instant URL Detection</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem;">No more typing "Facebook" or "Amazon". The extension knows exactly where you are and prevents phishing by strictly matching domains.</span>
+                    </div>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); padding: 1.2rem; border-radius: 12px; display: flex; gap: 1rem; align-items: flex-start;">
+                    <ion-icon name="finger-print-outline" style="color: #3b82f6; font-size: 1.5rem; flex-shrink: 0;"></ion-icon>
+                    <div>
+                        <strong style="color: var(--text-primary); display: block; margin-bottom: 0.2rem;">1-Click Autofill</strong>
+                        <span style="color: var(--text-secondary); font-size: 0.85rem;">Just click the FrankPass icon safely living in your browser toolbar, enter your master phrase, and it auto-fills the active website.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: rgba(234, 179, 8, 0.1); border-radius: 14px; padding: 1.5rem; text-align: center; border: 1px dashed rgba(234, 179, 8, 0.3);">
+                <p style="color: var(--text-primary); font-weight: 600; margin-bottom: 0.5rem;">&#128640; Launch Status: Under Final Review</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.2rem;">Our secure payment partner is currently reviewing the platform. The Premium Extension will be live as soon as the review is complete!</p>
+                <button class="btn-primary" onclick="window.open('https://buymeacoffee.com/mastermanikant', '_blank')" style="background: linear-gradient(135deg, #ca8a04, #eab308); color: #000; font-weight: 800; width: 100%;">
+                    &#128276; Notify Me on Launch & Support Us
+                </button>
+            </div>
+
+        </main>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.5rem;">Not ready to upgrade?</p>
+            <a href="index.html" style="color: var(--text-muted); font-size: 0.85rem; text-decoration: underline;">Continue using the free website.</a>
+        </div>
+    </div>
+
+    <!-- Background particles engine -->
+    <script src="script.js"></script>
+    <script src="particles.js"></script>
+</body>
+
+</html>

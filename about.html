@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FrankPass | Zero-Knowledge Stateless Password Generator</title>
+    <meta name="description" content="Learn about FrankPass &#8212; the world's first stateless, zero-knowledge password generator. No database, no cloud, just pure math.">
+    <meta property="og:title" content="About FrankPass | Zero-Knowledge Security">
+    <meta property="og:description" content="No database, no cloud. FrankPass generates unbreakable passwords with pure math.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frankpass.com/about.html">
+    <meta property="og:image" content="https://frankpass.com/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://frankpass.com/hero.png">
+    <link rel="canonical" href="https://frankpass.com/about.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <meta name="theme-color" content="#6366f1">
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        integrity="sha384-xyQ/Vpt1cq1pdPYlRaT/QkcSj2vrYyWI3WOhxGBzqnP1vgvsS2yrhWXe3/wIoCr5"
+        crossorigin="anonymous"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+        integrity="sha384-KAUcUASKfGZ0sxENVFRiH12jtpvd9SsVpgzvYdvv8ZMLqB99G3gX3DAts418wzIC"
+        crossorigin="anonymous"></script>
+</head>
+<body class="legal-page">
+    <canvas id="particle-canvas"></canvas>
+    <div class="background-elements">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <h1><span class="FrankPass-text">Frank</span>Pass</h1>
+                </a>
+            </div>
+            <p>Your passwords. Your rules. No exceptions.</p>
+        </header>
+
+        <main class="glass-panel content-page">
+
+            <!-- Section 1: What is FrankPass? -->
+            <section>
+                <h2>What is FrankPass?</h2>
+                <p>FrankPass is a <strong>free, open, and stateless password generator</strong>. Unlike traditional password managers that store your passwords in a cloud database, FrankPass does not save anything, anywhere, ever.</p>
+                <p>Instead, it uses advanced mathematics (cryptographic hashing) to <strong>calculate</strong> your password every time you need it. Think of it like a calculator: if you type <code>5 &#215; 5</code>, you always get <code>25</code>. The calculator doesn't "remember" 25 &#8212; the math just produces it. FrankPass works the exact same way with your passwords.</p>
+                <p>This means there is no database to hack, no vault to breach, and no account to lock you out of. <strong>You are the only person who controls your security.</strong></p>
+            </section>
+
+            <!-- Section 2: Our Mission -->
+            <section style="margin-top: 2rem;">
+                <h2>Our Mission</h2>
+                <p>The internet has a <strong>"mental load" problem</strong>. Every website wants a unique, complex password. The average person has over 100 online accounts. Remembering all those passwords is impossible, so most people either:</p>
+                <ul style="color: var(--text-secondary); margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Reuse the same simple password everywhere (dangerous), or</li>
+                    <li>Trust a cloud-based vault to store them (risky if it gets hacked).</li>
+                </ul>
+            </section>
+
+            <!-- Section 2.5: The Origin Story (December 2025) -->
+            <section class="glass-panel" style="margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--accent-primary); background: rgba(99, 102, 241, 0.05);">
+                <h2 style="color: var(--accent-primary);"><ion-icon name="flashlight-outline" style="vertical-align: middle; margin-right: 0.5rem;"></ion-icon>The Night Everything Changed</h2>
+                <p>In **December 2025**, our founder, <strong>Master Manikant Yadav</strong>, faced a digital crisis. While managing over 20 Gmail accounts for various YouTube projects, he needed to access a critical, years-old email. But there was a problem: <strong>he had completely forgotten the password.</strong></p>
+                <p>Despite every "forgot password" attempt and recovery flow, he was locked out of his own digital life. That frustration sparked a realization: <em>The world's security is based on a lie. Humans are bad at remembering random strings, but we are excellent at remembering patterns.</em></p>
+                <p>FrankPass was born that night &#8212; not as another "vault," but as a way to provide <strong>Mathematical Certainty</strong>. You don't need to save anything. You just need to remember one pattern.</p>
+            </section>
+
+            <!-- Section 3: Zero-Knowledge Philosophy -->
+            <section style="margin-top: 2rem;">
+                <h2>The Zero-Knowledge Promise</h2>
+                <p>We don't want your data. In fact, we have built FrankPass so that it is <strong>impossible</strong> for us to have it:</p>
+                <ul style="color: var(--text-secondary); margin: 1rem 0; padding-left: 1.5rem;">
+                    <li><strong>No databases</strong> &#8212; We have zero servers storing any user information.</li>
+                    <li><strong>No user accounts</strong> &#8212; You never sign up or log in.</li>
+                    <li><strong>No cloud syncing</strong> &#8212; Everything happens locally in your browser.</li>
+                    <li><strong>No tracking or analytics</strong> &#8212; We don't know who you are or what you do.</li>
+                </ul>
+                <p>Your passwords are generated on your device and <strong>destroyed the moment you close the tab</strong>. You are the only person in the world who has the key to your digital life.</p>
+            </section>
+
+            <!-- Section 4: Sustainability & Future -->
+            <section style="margin-top: 2rem;">
+                <h2>How We Keep This Free</h2>
+                <p>Here is our promise: <strong>The FrankPass website and web app will always remain 100% free, forever.</strong> Security should be a human right, not a subscription service.</p>
+                <p>To keep the project alive and growing, we plan to offer:</p>
+                <ul style="color: var(--text-secondary); margin: 1rem 0; padding-left: 1.5rem;">
+                    <li>Premium browser extensions with advanced features (paid plans)</li>
+                    <li>Educational ebooks on cybersecurity</li>
+                    <li>Voluntary donations from the community</li>
+                </ul>
+                <p>If you believe in our mission, you can <a href="/support-us.html" style="color: var(--accent-primary);">support us here</a>. Every contribution helps us continue building tools that protect people.</p>
+            </section>
+
+            <!-- Section 5: FrankPass Social Links -->
+            <section style="margin-top: 3rem; border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center;">
+                <h3>Follow <span style="color: var(--accent-primary);">FrankPass</span></h3>
+                <div class="social-links" style="justify-content: center; margin-top: 1.5rem; gap: 1.5rem;">
+                    <a href="/x" title="X (Twitter)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px" style="vertical-align: middle;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                    </a>
+                    <a href="/facebook" title="Facebook"><ion-icon name="logo-facebook" style="font-size: 24px; color: #1877f2;"></ion-icon></a>
+                    <a href="/instagram" title="Instagram"><ion-icon name="logo-instagram" style="font-size: 24px; color: #e1306c;"></ion-icon></a>
+                    <a href="/linkedin" title="LinkedIn"><ion-icon name="logo-linkedin" style="font-size: 24px; color: #0a66c2;"></ion-icon></a>
+                </div>
+            </section>
+
+            <!-- Founder Link -->
+            <div style="margin-top: 2rem; text-align: center;">
+                <a href="/meet-the-founder-MasterManikant.html" style="color: var(--accent-focus); text-decoration: none; font-weight: 600; font-size: 1.1rem;">
+                    Know more about the Founder &rarr;
+                </a>
+            </div>
+
+            <!-- Back Button -->
+            <div style="margin-top: 2rem; text-align: center;">
+                <a href="/" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.8rem 2rem;">
+                    <ion-icon name="arrow-back-outline"></ion-icon> Back to Generator
+                </a>
+            </div>
+        </main>
+
+        <!-- ================= FOOTER SECTION ================= -->
+        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
+            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
+                <span id="footer-toggle-label">Show Site Footer</span>
+                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
+            </button>
+            
+            <div id="footer-body" style="display:none; width: 100%; margin-top:2rem;">
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
+                    <a href="/">Home</a>
+                    <a href="/about.html">About Us</a>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="/legal.html">Legal</a>
+                    <a href="/meet-the-founder-MasterManikant.html">Meet the Founder</a>
+                </div>
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
+<a href="/why-stateless.html">&#128274; Why Stateless?</a>
+                    <a href="/guide.html">Guides &amp; Ebooks</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="/support-us.html">Support Us &#128153;</a>
+                </div>
+
+                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
+                    <!-- Founder Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/mastermanikant/github" title="GitHub" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-github"></ion-icon></a>
+                            <a href="/mastermanikant/x" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/mastermanikant/linkedin" title="LinkedIn" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="/mastermanikant/instagram" title="Instagram" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+
+                    <!-- Product Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/x" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/youtube" title="YouTube" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
+                            <a href="/instagram" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="/whatsapp" title="WhatsApp Channel" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>Serverless Cryptography. Zero Database. Pure Math.</p>
+                    <p>&copy; <span id="copyright-year"></span> FrankPass &#8212; Designed &amp; Developed by <a href="/meet-the-founder-MasterManikant.html" style="color: var(--accent-primary);">Master Manikant Yadav</a></p>
+                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>

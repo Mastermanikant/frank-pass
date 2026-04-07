@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebook Guide & Premium Masterclass | FrankPass</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Step-by-step guides for FrankPass and our premium cybersecurity masterclass 'The Unhackable You'. Learn how to defend against modern digital threats.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121e;
+            --accent-primary: #00f2ff;
+            --accent-secondary: #7000ff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ebook-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .ebook-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ebook-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ebook-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+        }
+
+        .ebook-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--accent-primary);
+        }
+
+        .badge-premium {
+            background: rgba(112, 0, 255, 0.1);
+            color: #b17aff;
+            border-color: #b17aff;
+        }
+
+        .ebook-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ebook-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .ebook-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .chapters {
+            background: var(--glass);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), #00d2df);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .curriculum {
+            margin-top: 5rem;
+            background: var(--bg-secondary);
+            border-radius: 30px;
+            padding: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .curriculum h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .chapter-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-list {
+                grid-template-columns: 1fr;
+            }
+            .curriculum {
+                padding: 2rem;
+            }
+        }
+
+        .chapter-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .chapter-num {
+            background: var(--glass);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent-primary);
+            flex-shrink: 0;
+        }
+
+        .chapter-info h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .chapter-info p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .langs {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .lang-tag {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .footer-action {
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>The Security Academy</h1>
+            <p>From stateless math to human psychology. Choose your path to becoming unhackable in the 2026 digital landscape.</p>
+        </header>
+
+        <div class="ebook-grid">
+            <!-- Free Guide -->
+            <div class="ebook-card">
+                <span class="ebook-badge">FREE</span>
+                <div class="ebook-icon">&#9889;</div>
+                <h3>Password se Pehle</h3>
+                <p>The companion guide for FrankPass. A fast-paced tutorial on setting up your stateless security system in under 15 minutes.</p>
+                <div class="chapters">&#128214; 5 Fast Lessons &#8226; Quick-Start</div>
+                <div class="langs">
+                    <span class="lang-tag"><img src="https://flagcdn.com/w20/gb.png" alt="UK" style="width: 16px; border-radius: 2px;"> English</span>
+                    <span class="lang-tag"><img src="https://flagcdn.com/w20/in.png" alt="IN" style="width: 16px; border-radius: 2px;"> Hindi</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="javascript:void(0)" class="btn btn-secondary" style="width: 100%; box-sizing: border-box; cursor: not-allowed; opacity: 0.6;">Coming Soon</a>
+                </div>
+            </div>
+
+            <!-- Paid Masterclass -->
+            <div class="ebook-card">
+                <span class="ebook-badge badge-premium">PREMIUM 2.0</span>
+                <div class="ebook-icon">&#128293;</div>
+                <h3>The Unhackable You</h3>
+                <p>A 14-chapter Universal Masterclass + Your Country's specific Security Shield. The ultimate professional authority on modern defense.</p>
+                <div class="chapters">&#128214; 14 Universal Chapters + Regional Hub</div>
+                <div class="langs">
+                    <span class="lang-tag"><img src="https://flagcdn.com/w20/gb.png" alt="UK" style="width: 16px; border-radius: 2px;"> English</span>
+                    <span class="lang-tag"><img src="https://flagcdn.com/w20/in.png" alt="IN" style="width: 16px; border-radius: 2px;"> Hindi</span>
+                    <span class="lang-tag"><img src="https://flagcdn.com/w20/es.png" alt="ES" style="width: 16px; border-radius: 2px;"> Spanish</span>
+                </div>
+                <div style="margin-top: 1rem;">
+                    <a href="javascript:void(0)" class="btn btn-primary" style="width: 100%; box-sizing: border-box; cursor: not-allowed; opacity: 0.8;">Coming Soon &#8212; $9.99</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="curriculum">
+            <h2>The Curriculum (Universal Core)</h2>
+            <div class="chapter-list">
+                <div class="chapter-item">
+                    <div class="chapter-num">00</div>
+                    <div class="chapter-info">
+                        <h4>Welcome & Reader's Guide</h4>
+                        <p>How to use this book for Beginners, Pros, and Families.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">01</div>
+                    <div class="chapter-info">
+                        <h4>The Anatomy of a Hack</h4>
+                        <p>Real-world data breaches and the "Fullz" economy.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">02</div>
+                    <div class="chapter-info">
+                        <h4>Passwords: The Great Lie</h4>
+                        <p>Why complexity fails. Quantum Computing & Brute Force stats.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">03</div>
+                    <div class="chapter-info">
+                        <h4>Stateless Security Theory</h4>
+                        <p>The mathematics of generating passwords instead of storing them.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">04</div>
+                    <div class="chapter-info">
+                        <h4>Phishing & Session Hijacking</h4>
+                        <p>Beyond fake emails. Stealing cookies and bypassing 2FA.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">05</div>
+                    <div class="chapter-info">
+                        <h4>Social Engineering & Psychology</h4>
+                        <p>Human triggers (Fear, Urgency) and the 2020 Twitter Hack.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">06</div>
+                    <div class="chapter-info">
+                        <h4>Your Phone is a Weapon</h4>
+                        <p>Alpha-numeric codes, Permission audits, and Pegasus Zero-Click.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">07</div>
+                    <div class="chapter-info">
+                        <h4>The Dark Web & Data Detox</h4>
+                        <p>How to proactively remove yourself from broker databases.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">08</div>
+                    <div class="chapter-info">
+                        <h4>Network & Router Security</h4>
+                        <p>Hardening your home network and the dangers of Public Wi-Fi.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">09</div>
+                    <div class="chapter-info">
+                        <h4>Privacy Tools & Security Stack</h4>
+                        <p>VPNs, Browsers, Aliases, and 2FA Authenticator setup.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">10</div>
+                    <div class="chapter-info">
+                        <h4>The Death of OTP</h4>
+                        <p>Why the world is moving to Passkeys and Biometrics.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">11</div>
+                    <div class="chapter-info">
+                        <h4>Securing Your Money</h4>
+                        <p>Banking alerts, Credit Card vs Debit, and Global Fraud protocols.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">12</div>
+                    <div class="chapter-info">
+                        <h4>The Unhackable Mindset</h4>
+                        <p>Zero Trust as a habit. Security without paranoia.</p>
+                    </div>
+                </div>
+                <div class="chapter-item">
+                    <div class="chapter-num">13</div>
+                    <div class="chapter-info">
+                        <h4>Emergency & Family Safety</h4>
+                        <p>Family Safe-Words and the 10-minute Breach Protocol.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); text-align: center;">
+                <p style="color: var(--accent-primary); font-weight: 600;">Includes Bonus Chapter 14: Your Local Shield (India, USA, or UK/EU specific)</p>
+            </div>
+        </section>
+
+        <div class="footer-action" style="margin-bottom: 5rem;">
+            <a href="index.html" class="btn btn-secondary" style="display: inline-flex; width: auto; padding: 1rem 2.5rem; align-items: center; gap: 0.5rem;">
+                <ion-icon name="arrow-back-outline"></ion-icon> Back to Generator
+            </a>
+        </div>
+
+        <!-- ================= FOOTER SECTION ================= -->
+        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
+            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
+                <span id="footer-toggle-label">Show Site Footer</span>
+                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
+            </button>
+            
+            <div id="footer-body" style="display:none; width: 100%; margin-top:2rem;">
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
+                    <a href="/">Home</a>
+                    <a href="/about.html">About Us</a>
+                    <a href="/contact.html">Contact Us</a>
+                    <a href="/legal.html">Legal</a>
+                    <a href="/meet-the-founder-MasterManikant.html">Meet the Founder</a>
+                </div>
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
+                    <a href="/why-stateless.html">Why Stateless?</a>
+                    <a href="/guide.html">Guides &amp; Ebooks</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="/support.html">Support Us &#128153;</a>
+                </div>
+
+                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
+                    <!-- Founder Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/mastermanikant/github" title="GitHub" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-github"></ion-icon></a>
+                            <a href="/mastermanikant/x" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/mastermanikant/linkedin" title="LinkedIn" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="/mastermanikant/instagram" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+
+                    <!-- Product Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="/x" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="/youtube" title="YouTube" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
+                            <a href="/instagram" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="/whatsapp" title="WhatsApp Channel" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>Serverless Cryptography. Zero Database. Pure Math.</p>
+                    <p>&copy; <span id="copyright-year"></span> FrankPass &mdash; Designed &amp; Developed by <a href="/meet-the-founder-MasterManikant.html" style="color: var(--accent-primary);">Master Manikant Yadav</a></p>
+                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="particles.js"></script>
+</body>
+</html>
