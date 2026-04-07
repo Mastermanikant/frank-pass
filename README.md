@@ -116,7 +116,7 @@ frank-pass/
 
 FrankPass is the intellectual property of **Master Manikant Yadav**.  
 Personal offline use is permitted. Redistribution, cloning, or republishing under a different name is strictly prohibited.  
-See [`legal.html`](https://frankpass.com/legal) for full terms.
+See [`legal.html`](https://www.frankpass.com/legal.html) for full terms.
 
 ---
 
