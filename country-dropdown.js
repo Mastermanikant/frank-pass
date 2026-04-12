@@ -130,7 +130,7 @@
 
         // Update URL
         try {
-            window.history.pushState({ code: country.code }, '', '/' + country.code);
+            window.history.replaceState({ code: country.code }, '', '/' + country.code);
         } catch (e) { /* local file:// - ignore */ }
 
         closeDropdown();

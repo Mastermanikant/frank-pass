@@ -4,7 +4,7 @@
  */
 
 // Import the core crypto engine
-self.importScripts('/frankpass-core.js');
+self.importScripts('frankpass-core.js');
 
 self.onmessage = async function(e) {
     const { platform, username, secret, variant, profile, length } = e.data;

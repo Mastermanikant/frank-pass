@@ -1,5 +1,5 @@
-// FrankPass Service Worker v2.3.0
-const CACHE_NAME = 'frankpass-v2.3.0';
+// FrankPass Service Worker v2.3.1
+const CACHE_NAME = 'frankpass-v2.3.1';
 const CACHED_URLS = [
     '/',
     '/about-us',
