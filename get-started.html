@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started — FrankPass Pro Extension</title>
+    <meta name="description" content="Learn how to install, activate, and use the FrankPass Pro extension. 1-click security, no database, total privacy.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg: #0d0f18;
+            --purple: #6c5ce7;
+            --accent-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            background: var(--bg);
+            color: #fff;
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px 100px;
+        }
+
+        /* ── Header ─────────────────────────────────────────────────────────── */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; }
+        .logo span { color: var(--purple); }
+        .header-btn {
+            background: var(--accent-gradient);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+            transition: transform 0.2s;
+        }
+        .header-btn:hover { transform: translateY(-2px); }
+
+        /* ── Hero ───────────────────────────────────────────────────────────── */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 6vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        .hero h1 span { color: var(--purple); }
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ── Steps ──────────────────────────────────────────────────────────── */
+        .steps-grid {
+            display: grid;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .step-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            gap: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .step-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--purple);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .step-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(108,92,231,0.4);
+            transform: translateX(10px);
+        }
+        .step-card:hover::before { opacity: 1; }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background: rgba(108, 92, 231, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            border: 1px solid rgba(108, 92, 231, 0.2);
+        }
+
+        .step-content h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .step-content p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+        .step-content a {
+            color: var(--purple);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1px dashed var(--purple);
+        }
+
+        /* ── Pro Banner ─────────────────────────────────────────────────────── */
+        .pro-banner {
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0,0,0,0));
+            border: 1px solid var(--purple);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .pro-banner h2 { font-size: 1.8rem; margin-bottom: 12px; }
+        .pro-banner p { color: var(--text-muted); margin-bottom: 25px; }
+
+        .btn-large {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.2s;
+        }
+        .btn-large:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+
+        /* ── Footer ─────────────────────────────────────────────────────────── */
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .step-card { flex-direction: column; text-align: center; align-items: center; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="main-container">
+        <header>
+            <div class="logo">Frank<span>Pass</span></div>
+            <a href="/pro" class="header-btn">💎 Get Pro Key</a>
+        </header>
+
+        <section class="hero">
+            <h1>Ready to <span>Go Pro?</span></h1>
+            <p>Master your digital security in minutes. Follow these simple steps to activate your extension.</p>
+        </section>
+
+        <div class="steps-grid">
+            <!-- Step 1 -->
+            <div class="step-card">
+                <div class="icon-box">🔑</div>
+                <div class="step-content">
+                    <h3>Activate Your Key</h3>
+                    <p>Open the FrankPass extension and click on <strong>Activate</strong>. You'll need a license key to unlock the full power. Don't have one? Visit our <a href="/pro">Pro Page</a> to get a <strong>10-Day Free Trial</strong> instantly.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+                <div class="icon-box">📌</div>
+                <div class="step-content">
+                    <h3>Pin for Speed</h3>
+                    <p>Click the "Puzzle" icon in your browser toolbar and pin FrankPass. You can also use <strong>Ctrl+Shift+L</strong> to trigger the extension anytime without using your mouse.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+                <div class="icon-box">⚡</div>
+                <div class="step-content">
+                    <h3>1-Click Autofill</h3>
+                    <p>Navigate to any login page. FrankPass auto-detects the site. Type your Master Word, hit <strong>Generate</strong>, and watch your password fill instantly. Pure magic, zero database.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="pro-banner">
+            <h2>Unlock Unlimited Profiles</h2>
+            <p>The standard extension is free, but Pro gives you Multi-Profile support, Advanced Encryption Tiers, and much more.</p>
+            <a href="/pro" class="btn-large">Go to Pro Dashboard →</a>
+            <div style="margin-top: 20px;">
+                <a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">← Back to Main Home</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; <span id="copyright-year">2026</span> FrankPass. All rights reserved.</p>
+            <div style="margin-top:10px; display:flex; justify-content:center; gap:15px; font-size: 0.9rem;">
+                <a href="/legal" style="color:var(--text-muted); text-decoration:none;">Legal</a>
+                <a href="/faq" style="color:var(--text-muted); text-decoration:none;">FAQ</a>
+                <a href="/contact-us" style="color:var(--text-muted); text-decoration:none;">Contact</a>
+            </div>
+            <div class="footer-bottom" style="margin-top:20px;"></div>
+        </footer>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>

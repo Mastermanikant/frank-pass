@@ -1,0 +1,121 @@
+{
+    "cleanUrls": true,
+    "headers":  [
+                    {
+                        "source":  "/(.*)\\.html",
+                        "headers":  [
+                                        {
+                                            "key":  "Content-Type",
+                                            "value":  "text/html; charset=utf-8"
+                                        },
+                                        {
+                                            "key":  "Content-Security-Policy",
+                                            "value":  "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://flagcdn.com; connect-src 'self' https://unpkg.com;"
+                                        }
+                                    ]
+                    },
+                    {
+                        "source":  "/(.*)\\.js",
+                        "headers":  [
+                                        {
+                                            "key":  "Content-Type",
+                                            "value":  "application/javascript; charset=utf-8"
+                                        }
+                                    ]
+                    }
+                ],
+    "rewrites":  [{"source": "/privacy","destination": "/legal.html"},{"source": "/terms","destination": "/legal.html"},{"source": "/disclaimer","destination": "/legal.html"},{"source": "/:country([a-zA-Z]{2})","destination": "/index.html"},{"source": "/:country([a-zA-Z]{2})/","destination": "/index.html"}],
+    "redirects":  [
+                      {
+                          "source": "/contact",
+                          "destination": "/contact-us",
+                          "permanent": true
+                      },
+                      {
+                          "source": "/support",
+                          "destination": "/support-us",
+                          "permanent": true
+                      },
+                      {
+                          "source": "/index",
+                          "destination": "/",
+                          "permanent": true
+                      },
+                      {
+                          "source": "/index.html",
+                          "destination": "/",
+                          "permanent": true
+                      },
+                      {
+                          "source": "/(.*)\\.html",
+                          "destination": "/$1",
+                          "permanent": true
+                      },
+                      {
+                          "source":  "/mastermanikant/x",
+                          "destination":  "https://x.com/MasterManikant",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/mastermanikant/linkedin",
+                          "destination":  "https://linkedin.com/in/mastermanikant",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/mastermanikant/youtube",
+                          "destination":  "https://youtube.com/@MasterManikant",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/mastermanikant/instagram",
+                          "destination":  "https://instagram.com/mastermanikant",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/mastermanikant/facebook",
+                          "destination":  "https://facebook.com/mastermanikant",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/x",
+                          "destination":  "https://x.com/iamfrankpass",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/youtube",
+                          "destination":  "https://youtube.com/@iamfrankpass",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/instagram",
+                          "destination":  "https://instagram.com/iamfrankpass",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/whatsapp",
+                          "destination":  "https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/facebook",
+                          "destination":  "https://facebook.com/iamfrankpass",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/founder-mastermanikant.html",
+                          "destination":  "/meet-the-founder-MasterManikant",
+                          "permanent":  true
+                      },
+                      {
+                          "source":  "/profile-picture-of-master-manikant",
+                          "destination":  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbeMsLb7-1opZtRl9NwEao44eomwjGZSocV3Ljhe24PVTmP3k97fqGbyIREDJWjq9PEsJvpG6djUNDltOp2DcTwFaVU2nwFDlD-uZZUpgLnOZTpdALH2y-xaJtrseMbuYPnKzGfGNLKs_O3cGmG_LDEApjU_cyBA1Xn1mTQtCcRwdZ0afg9gj_mqf7WZmU/w388-h388/Profie-Pic-of-Master-Manikant.png",
+                          "permanent":  true
+                      },
+                      {
+                          "destination":  "https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h",
+                          "permanent":  true,
+                          "source":  "/whatsapp/mastermanikant"
+                      }
+                  ]
+}
+

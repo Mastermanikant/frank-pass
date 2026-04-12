@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FrankPass Pro Extension | 1-Click Secure Password Autofill</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Step-by-step guide on how to install and use the FrankPass Pro Chrome extension for deterministic, 1-click password generation.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121e;
+            --accent-primary: #00f2ff;
+            --accent-secondary: #7000ff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .ebook-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .ebook-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .ebook-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .ebook-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-primary);
+        }
+
+        .ebook-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--accent-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--accent-primary);
+        }
+
+        .badge-premium {
+            background: rgba(112, 0, 255, 0.1);
+            color: #b17aff;
+            border-color: #b17aff;
+        }
+
+        .ebook-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ebook-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .ebook-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .chapters {
+            background: var(--glass);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--accent-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-primary), #00d2df);
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .curriculum {
+            margin-top: 5rem;
+            background: var(--bg-secondary);
+            border-radius: 30px;
+            padding: 4rem;
+            border: 1px solid var(--border);
+        }
+
+        .curriculum h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .chapter-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-list {
+                grid-template-columns: 1fr;
+            }
+            .curriculum {
+                padding: 2rem;
+            }
+        }
+
+        .chapter-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .chapter-num {
+            background: var(--glass);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--accent-primary);
+            flex-shrink: 0;
+        }
+
+        .chapter-info h4 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .chapter-info p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .langs {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .lang-tag {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .footer-action {
+            text-align: center;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <h1>FrankPass Pro Extension</h1>
+            <p>The ultimate 1-click password autofill experience. No typing, no databases, pure math.</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="glass-panel" style="padding:2.5rem; margin-bottom:2rem; line-height:1.8; border-radius: 20px;">
+            <h2 style="color:var(--text-primary); border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-bottom:1.5rem; font-family:'Space Grotesk', sans-serif;">🚀 What is FrankPass Pro?</h2>
+            <p style="color:var(--text-secondary); font-size:1.05rem;">FrankPass Pro is our exclusive browser extension that brings deterministic, stateless password generation right into your browser. Instead of switching tabs or copying/pasting from the website, the extension detects the platform you are on, generates your unique password, and autofills the input field instantly in <strong>1-Click</strong>.</p>
+
+            <h2 style="color:var(--text-primary); border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-top:3rem; margin-bottom:1.5rem; font-family:'Space Grotesk', sans-serif;">💻 How to Install (Developer Mode)</h2>
+            <p style="color:var(--text-secondary); font-size:1.05rem;">Currently, the extension is in review for the Chrome Web Store. For early access, install it via Chrome Developer Mode:</p>
+            <ol style="padding-left:1.5rem; color:var(--text-secondary); font-size:1.05rem;">
+                <li style="margin-bottom:0.8rem;">Download the <strong>FrankPass_Pro_v2.3.0.zip</strong> file.</li>
+                <li style="margin-bottom:0.8rem;">Extract the contents into a folder (e.g., on your Desktop).</li>
+                <li style="margin-bottom:0.8rem;">Open Chrome and navigate to <code>chrome://extensions/</code>.</li>
+                <li style="margin-bottom:0.8rem;">Enable <strong>Developer mode</strong> in the top-right corner.</li>
+                <li style="margin-bottom:0.8rem;">Click <strong>Load unpacked</strong> and select your extracted folder.</li>
+                <li style="margin-bottom:0.8rem;">The extension is now installed! <strong>Pin it</strong> to your toolbar for 1-click access.</li>
+            </ol>
+
+            <h2 style="color:var(--text-primary); border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-top:3rem; margin-bottom:1.5rem; font-family:'Space Grotesk', sans-serif;">🔑 Using Your License Key</h2>
+            <p style="color:var(--text-secondary); font-size:1.05rem;">To unlock the pro features, you need a valid License Key:</p>
+            <ol style="padding-left:1.5rem; color:var(--text-secondary); font-size:1.05rem;">
+                <li style="margin-bottom:0.8rem;">Click the FrankPass icon in your browser toolbar to open the Setup Wizard.</li>
+                <li style="margin-bottom:0.8rem;">Enter the License Key you received (For testing purposes, you can use: <code style="color:var(--accent-primary)">TEST-TRIAL</code>).</li>
+                <li style="margin-bottom:0.8rem;">Create a 4-digit PIN lock. This prevents anyone from generating your passwords if they sit at your computer.</li>
+                <li style="margin-bottom:0.8rem;">Choose a beautiful color theme for your local profile.</li>
+            </ol>
+
+            <h2 style="color:var(--text-primary); border-bottom:1px solid var(--border); padding-bottom:0.5rem; margin-top:3rem; margin-bottom:1.5rem; font-family:'Space Grotesk', sans-serif;">⚙️ Generating Passwords (1-Click Autofill)</h2>
+            <ol style="padding-left:1.5rem; color:var(--text-secondary); font-size:1.05rem;">
+                <li style="margin-bottom:0.8rem;">Visit any login page (e.g., <em>netflix.com</em> or <em>facebook.com</em>).</li>
+                <li style="margin-bottom:0.8rem;">Click the FrankPass extension icon. It will automatically detect <code>Netflix</code>.</li>
+                <li style="margin-bottom:0.8rem;">Select the country/region, enter your Username and Secret Key.</li>
+                <li style="margin-bottom:0.8rem;">Click <strong>Generate Password</strong>.</li>
+                <li style="margin-bottom:0.8rem;">The extension will instantly inject the 64-character password straight into the login form. <strong>No clipboard tracing, no typing, no DB logs.</strong></li>
+            </ol>
+
+            <div style="margin-top: 3rem; padding: 2rem; border-radius: 12px; background: rgba(0, 242, 255, 0.05); border: 1px solid rgba(0, 242, 255, 0.2);">
+                <h3 style="color:var(--accent-primary); margin-top:0;">&#9888;&#65039; Important Security Notes</h3>
+                <ul style="padding-left:1.5rem; color:var(--text-secondary); font-size:1rem; margin-bottom:0;">
+                    <li style="margin-bottom:0.5rem;">The Web Platform (<code>frankpass.com</code>) and the Extension share <strong>identical cryptographic cores</strong>. They will always generate the exact same password for the same inputs.</li>
+                    <li>Never forget your Secret Key. If you modify it even slightly, your generated passwords will permanently change.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-action" style="margin-bottom: 5rem;">
+            <a href="/index" class="btn btn-secondary" style="display: inline-flex; width: auto; padding: 1rem 2.5rem; align-items: center; gap: 0.5rem;">
+                <ion-icon name="arrow-back-outline"></ion-icon> Back to Generator
+            </a>
+        </div>
+
+        <!-- ================= FOOTER SECTION ================= -->
+        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
+            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
+                <span id="footer-toggle-label">Show Site Footer</span>
+                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
+            </button>
+            
+            <div id="footer-body" style="display:none; width: 100%; margin-top:2rem;">
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
+                    <a href="/">Home</a>
+                    <a href="/about-us">About Us</a>
+                    <a href="/contact-us">Contact Us</a>
+                    <a href="/legal">Legal</a>
+                    <a href="/meet-the-founder-MasterManikant">Meet the Founder</a>
+                </div>
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
+                    <a href="/why-stateless">Why Stateless?</a>
+                    <a href="/guide">Guides &amp; Ebooks</a>
+                    <a href="/faq">FAQ</a>
+                    <a href="/support-us">Support Us &#128153;</a>
+                </div>
+
+                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
+                    <!-- Founder Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="https://x.com/MasterManikant" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h" title="WhatsApp Channel" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                            <a href="https://linkedin.com/in/mastermanikant" title="LinkedIn" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="https://instagram.com/mastermanikant" target="_blank" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+
+                    <!-- Product Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="https://x.com/iamfrankpass" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="https://youtube.com/@iamfrankpass" target="_blank" title="YouTube" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
+                            <a href="https://instagram.com/iamfrankpass" target="_blank" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" title="WhatsApp Channel" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>Serverless Cryptography. Zero Database. Pure Math.</p>
+                    <p>&copy; <span id="copyright-year"></span> FrankPass &mdash; Designed &amp; Developed by <a href="/meet-the-founder-MasterManikant" style="color: var(--accent-primary);">Master Manikant Yadav</a></p>
+                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="particles.js"></script>
+</body>
+</html>
+
+
+
+

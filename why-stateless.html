@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Stateless Passwords? | FrankPass Security Architecture</title>
+    <meta name="description" content="Discover why stateless, deterministic password generation is more secure than cloud-based vaults. No database means nothing to hack.">
+    <meta property="og:title" content="Why Stateless Passwords? | FrankPass">
+    <meta property="og:description" content="No database = nothing to hack. Learn the math behind FrankPass security.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frankpass.com/why-stateless">
+    <meta property="og:image" content="https://frankpass.com/hero.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://frankpass.com/why-stateless">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="icons/favicon.png">
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+        integrity="sha384-xyQ/Vpt1cq1pdPYlRaT/QkcSj2vrYyWI3WOhxGBzqnP1vgvsS2yrhWXe3/wIoCr5"
+        crossorigin="anonymous"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+        integrity="sha384-KAUcUASKfGZ0sxENVFRiH12jtpvd9SsVpgzvYdvv8ZMLqB99G3gX3DAts418wzIC"
+        crossorigin="anonymous"></script>
+</head>
+<body class="legal-page">
+    <canvas id="particle-canvas"></canvas>
+    <div class="background-elements">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- ================= HEADER SECTION ================= -->
+        <header>
+            <div class="logo-container">
+                <a href="/" style="text-decoration: none; color: inherit;">
+                    <h1><span class="FrankPass-text">Frank</span>Pass</h1>
+                </a>
+            </div>
+            <p>The science of mental peace.</p>
+        </header>
+
+        <!-- ================= MAIN CONTENT SECTION ================= -->
+        <main class="glass-panel content-page">
+            <section>
+                <h2>The Problem with Storage</h2>
+                <p>Most people use password managers that store their secrets in a "vault." Whether IT'S a cloud service or a local file, that vault is a target. If the service is breached, your entire digital identity is at risk.</p>
+                <p><strong>FrankPass is different. We don't store. We generate.</strong></p>
+            </section>
+
+            <section style="margin-top: 2rem;">
+                <h2>&#128274; What is a Stateless Password?</h2>
+                <p>A stateless (or deterministic) password generator uses an algorithm to convert a set of inputs (like a website name and a secret key) into a unique password. No data is ever saved to a disk or a server.</p>
+                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 12px; margin: 1.5rem 0; border-left: 4px solid var(--accent-primary);">
+                    <p style="font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 0;"><strong>Input + Math = Password</strong></p>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Same input always produces the same output. No database required.</p>
+                </div>
+            </section>
+
+            <section style="margin-top: 2rem;">
+                <h2>Why It's Better</h2>
+                <ul>
+                    <li><strong>Unbreakable:</strong> We use PBKDF2 with 1,000,000 iterations and HMAC-SHA512. This level of hashing makes it computationally impossible for even supercomputers to guess your password in any reasonable time.</li>
+                    <li><strong>Zero Hackability:</strong> Since there is no database to hack, there is no single point of failure. Even if a website where you use a FrankPass password is breached, your <em>Master Key</em> remains safe in your head.</li>
+                    <li><strong>Access Anywhere:</strong> You don't need a specific app synced to your phone. You just need the FrankPass math (which is this website) and your memory. While we will launch convenient browser extensions in the future, the core web experience will remain free forever.</li>
+                </ul>
+            </section>
+
+            <section style="margin-top: 2rem;">
+                <h2>Why It's Better Than Memory</h2>
+                <p>Instead of manually creating complex, hard-to-remember passwords like <code>Ram#458sjdfh</code> and risking forgetting them, FrankPass generates mathematically unbreakable passwords for you automatically. Because we never capture or store user data, there is absolutely no database for hackers to breach. Your passwords stay truly yours.</p>
+            </section>
+
+            <div style="margin-top: 3rem; text-align: center;">
+                <a href="/" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.8rem 2rem;">
+                    Get Started with FrankPass
+                </a>
+            </div>
+        </main>
+
+        <!-- ================= FOOTER SECTION ================= -->
+        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
+            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
+                <span id="footer-toggle-label">Show Site Footer</span>
+                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
+            </button>
+            
+            <div id="footer-body" style="display:none; width: 100%; margin-top:2rem;">
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
+                    <a href="/">Home</a>
+                    <a href="/about-us">About Us</a>
+                    <a href="/contact-us">Contact Us</a>
+                    <a href="/legal">Legal</a>
+                    <a href="/meet-the-founder-MasterManikant">Meet the Founder</a>
+                </div>
+                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
+<a href="/why-stateless">&#128274; Why Stateless?</a>
+                    <a href="/guide">Guides &amp; Ebooks</a>
+                    <a href="/faq">FAQ</a>
+                    <a href="/support-us">Support Us &#128153;</a>
+                </div>
+
+                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
+                    <!-- Founder Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="https://x.com/MasterManikant" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h" title="WhatsApp Channel" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                            <a href="https://linkedin.com/in/mastermanikant" title="LinkedIn" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
+                            <a href="https://instagram.com/mastermanikant" target="_blank" title="Instagram" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </div>
+                    </div>
+
+                    <!-- Product Socials -->
+                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
+                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
+                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
+                            <a href="https://x.com/iamfrankpass" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
+                            </a>
+                            <a href="https://youtube.com/@iamfrankpass" target="_blank" title="YouTube" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
+                            <a href="https://instagram.com/iamfrankpass" target="_blank" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
+                            <a href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" title="WhatsApp Channel" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>Serverless Cryptography. Zero Database. Pure Math.</p>
+                    <p>&copy; <span id="copyright-year"></span> FrankPass &#8212; Designed &amp; Developed by <a href="/meet-the-founder-MasterManikant" style="color: var(--accent-primary);">Master Manikant Yadav</a></p>
+                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="footer.js"></script>
+</body>
+</html>
+
+
+
+
