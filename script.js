@@ -1,4 +1,4 @@
-﻿// ==========================================
+// ==========================================
 // 1. CONFIGURATION & CONSTANTS
 // ==========================================
 // NOTE: APP_ID, VERSION, and character sets are defined in frankpass-core.js.
@@ -92,7 +92,11 @@ let inactivityRefreshTimer = null; // For the 30s page reload
 // Initialize Crypto Worker
 let cryptoWorker = null;
 if (window.Worker) {
-    cryptoWorker = new Worker('crypto-worker.js');
+    cryptoWorker = new Worker('/crypto-worker.js');
+    cryptoWorker.onerror = function(e) {
+        console.error("Worker error, falling back to main thread:", e);
+        cryptoWorker = null; // Fallback to main thread logic
+    };
 }
 
 // ==========================================
@@ -717,7 +721,7 @@ let deferredInstallPrompt = null;
 // Register Service Worker for offline support
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js')
+        navigator.serviceWorker.register('/service-worker.js')
             .then(reg => console.log('FrankPass SW registered:', reg.scope))
             .catch(err => console.warn('SW registration failed:', err));
     });
@@ -945,7 +949,7 @@ function collapseFAQ() {
     document.getElementById('faq-header').scrollIntoView({ behavior: 'smooth' });
 }
 
-// Duplicate closeGuide() removed Ã¢â‚¬â€ already defined at line 492
+// Duplicate closeGuide() removed — already defined at line 492
 
 // Exclusive accordion: only one <details> open at a time
 document.addEventListener('DOMContentLoaded', () => {
@@ -1087,22 +1091,22 @@ function showAnnouncement() {
         <div id="announcement-modal" style="position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); display:flex; align-items:center; justify-content:center; z-index:10000; backdrop-filter:blur(8px); padding:1rem;">
             <div style="background:var(--bg-secondary); border:1px solid rgba(255,255,255,0.08); border-radius:1.5rem; max-width:400px; width:100%; padding:2.5rem; text-align:center; box-shadow:0 25px 50px -12px rgba(0,0,0,0.5); position:relative;">
                 <button onclick="closeAnnouncement()" style="position:absolute; top:1rem; right:1rem; background:none; border:none; color:var(--text-secondary); cursor:pointer; font-size:1.5rem; line-height:1; transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">&times;</button>
-                <div style="font-size:3.5rem; margin-bottom:1rem;">Ã°Å¸Å’Â</div>
+                <div style="font-size:3.5rem; margin-bottom:1rem;">🌐</div>
                 <h2 style="color:var(--text-primary); margin-bottom:0.5rem; font-size:1.4rem; font-family:'Space Grotesk', sans-serif;">How to use FrankPass</h2>
                 <p style="color:var(--text-secondary); margin-bottom:2rem; line-height:1.6; font-size:0.95rem;">Please select your preferred language below to read the complete A-to-Z guide. These settings are completely offline.</p>
                 
                 <div style="display:flex; flex-direction:column; gap:0.6rem; margin-bottom: 2rem;">
                     <a href="/guide" style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem 1rem; color:var(--text-primary); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-                        <span>How to use FrankPass</span> <span style="opacity:0.7;">English Ã°Å¸â€¡Â¬Ã°Å¸â€¡Â§</span>
+                        <span>How to use FrankPass</span> <span style="opacity:0.7;">English 🇬🇧</span>
                     </a>
-                    <a href="/guide" style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem 1rem; color:var(--text-primary); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-                        <span>FrankPass Ã Â¤â€¢Ã Â¤Â¾ Ã Â¤â€°Ã Â¤ÂªÃ Â¤Â¯Ã Â¥â€¹Ã Â¤â€” Ã Â¤â€¢Ã Â¥Ë†Ã Â¤Â¸Ã Â¥â€¡ Ã Â¤â€¢Ã Â¤Â°Ã Â¥â€¡Ã Â¤â€š</span> <span style="opacity:0.7;">Hindi Ã°Å¸â€¡Â®Ã°Å¸â€¡Â³</span>
+                    <a href="/guide?lang=hi" style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem 1rem; color:var(--text-primary); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                        <span>FrankPass का उपयोग कैसे करें</span> <span style="opacity:0.7;">Hindi 🇮🇳</span>
                     </a>
-                    <a href="/guide" style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem 1rem; color:var(--text-primary); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-                        <span>CÃƒÂ³mo usar FrankPass</span> <span style="opacity:0.7;">EspaÃƒÂ±ol Ã°Å¸â€¡ÂªÃ°Å¸â€¡Â¸</span>
+                    <a href="/guide?lang=es" style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem 1rem; color:var(--text-primary); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                        <span>Cómo usar FrankPass</span> <span style="opacity:0.7;">Español 🇪🇸</span>
                     </a>
-                    <a href="/guide" style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem 1rem; color:var(--text-primary); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
-                        <span>Comment utiliser FrankPass</span> <span style="opacity:0.7;">FranÃƒÂ§ais Ã°Å¸â€¡Â«Ã°Å¸â€¡Â·</span>
+                    <a href="/guide?lang=fr" style="display:flex; align-items:center; justify-content:space-between; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.8rem 1rem; color:var(--text-primary); text-decoration:none; font-size:0.9rem; font-weight:500; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='rgba(255,255,255,0.05)'">
+                        <span>Comment utiliser FrankPass</span> <span style="opacity:0.7;">Français 🇫🇷</span>
                     </a>
                 </div>
             </div>

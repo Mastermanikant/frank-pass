@@ -159,8 +159,9 @@
         // ── Auto-detect initial country ────────────────────────────────
         let initCode = DEFAULT_CODE;
 
-        // 1. URL path (/in → 'in')
-        const path = window.location.pathname.replace(/\//g, '').toLowerCase();
+        // 1. URL path (/in → 'in', /hn → 'in')
+        let path = window.location.pathname.replace(/\//g, '').toLowerCase();
+        if (path === 'hn') path = 'in'; // Alias for Hindi
         if (path.length === 2 && allCountries.find(c => c.code === path)) {
             initCode = path;
         }

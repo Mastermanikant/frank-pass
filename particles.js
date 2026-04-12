@@ -10,6 +10,7 @@
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
+    if (!ctx) return; // FIX: Prevent error if context is not supported
     let particles = [];
     let mouse = { x: null, y: null, radius: 120 };
     let animId;

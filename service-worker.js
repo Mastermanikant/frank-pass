@@ -1,27 +1,27 @@
 // FrankPass Service Worker v2.3.0
 const CACHE_NAME = 'frankpass-v2.3.0';
 const CACHED_URLS = [
-    './',
-    './about-us',
-    './contact-us',
-    './faq',
-    './guide',
-    './legal',
-    './meet-the-founder-MasterManikant',
-    './support-us',
-    './why-stateless',
-    './style.css',
-    './script.js',
-    './frankpass-utils.js',
-    './footer.js',
-    './frankpass-core.js',
-    './crypto-worker.js',
-    './platforms.js',
-    './particles.js',
-    './translations.js',
-    './country-data.js',
-    './country-dropdown.js',
-    './manifest.json'
+    '/',
+    '/about-us',
+    '/contact-us',
+    '/faq',
+    '/guide',
+    '/legal',
+    '/meet-the-founder-MasterManikant',
+    '/support-us',
+    '/why-stateless',
+    '/style.css',
+    '/script.js',
+    '/frankpass-utils.js',
+    '/footer.js',
+    '/frankpass-core.js',
+    '/crypto-worker.js',
+    '/platforms.js',
+    '/particles.js',
+    '/translations.js',
+    '/country-data.js',
+    '/country-dropdown.js',
+    '/manifest.json'
 ];
 
 // Install: Cache all core assets
@@ -50,23 +50,31 @@ self.addEventListener('activate', (event) => {
 
 // Fetch: Serve from cache first, then network (offline-first strategy)
 self.addEventListener('fetch', (event) => {
+    // For navigation requests that fail, return the root '/' (index.html)
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request).catch(() => {
+                return caches.match('/');
+            })
+        );
+        return;
+    }
+
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
             if (cachedResponse) {
                 return cachedResponse;
             }
             return fetch(event.request).then((networkResponse) => {
-                // Cache new successful responses dynamically
-                if (networkResponse && networkResponse.status === 200 && networkResponse.type === 'basic') {
-                    const responseToCache = networkResponse.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, responseToCache);
-                    });
+                // Cache successful responses for core assets if needed
+                if (networkResponse && networkResponse.status === 200) {
+                    // (Optional) add dynamic caching here if desired
                 }
                 return networkResponse;
             }).catch(() => {
-                // If both cache and network fail, return the cached index
-                return caches.match('./');
+                // Return cached index for failed file fetches if it makes sense, 
+                // but usually handled by navigate check above for pages.
+                return caches.match('/');
             });
         })
     );

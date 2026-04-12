@@ -26,14 +26,14 @@ body {
     color: var(--text-primary);
     font-family: var(--font-main);
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* BUG FIX: was 'center' — caused vertical crush on tall/mobile pages */
+    display: block; /* Fixed from flex to improve scrolling on long pages */
     overflow-x: hidden;
     position: relative;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
 }
 
 /* Dynamic Animated Background */
@@ -178,6 +178,7 @@ body {
     padding-top: 3rem;
     padding-bottom: 3rem;
     z-index: 1;
+    margin: 0 auto; /* Center in block layout */
 }
 
 /* Logo & Floating Badges */
