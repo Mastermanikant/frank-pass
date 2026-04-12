@@ -1,18 +1,18 @@
-# 🛡️ FrankPass — Stateless Password Generator
+# 🛡️ FrankPass — The #1 Stateless Password Generator
 
-**Live at:** [frankpass.com](https://frankpass.com)  |  **By:** [Master Manikant Yadav](https://frankpass.com/meet-the-founder-MasterManikant.html)
+**Live at:** [frankpass.com](https://frankpass.com) &nbsp;|&nbsp; **By:** [Master Manikant Yadav](https://frankpass.com/meet-the-founder-MasterManikant.html)
 
 ![100% Offline (PWA)](https://img.shields.io/badge/Status-100%25_Offline_Ready-success?style=flat-square) 
 ![Zero Database](https://img.shields.io/badge/Architecture-Zero_Database-blue?style=flat-square)
 ![Client-Side Cryptography](https://img.shields.io/badge/Security-Client--Side_Cryptography-red?style=flat-square)
 ![Stateless](https://img.shields.io/badge/Privacy-100%25_Stateless-brightgreen?style=flat-square)
-![Version](https://img.shields.io/badge/Version-V2.2.1-purple?style=flat-square)
+![Version](https://img.shields.io/badge/Version-V2.3.1-purple?style=flat-square)
 ![License](https://img.shields.io/badge/License-Proprietary-orange?style=flat-square)
 
-> *One phrase. Every password. Zero storage.*
+> *Forget your passwords. Trust the math. 100% Client-Side. 0% Database.*
 
 <p align="center">
-  <img src="./hero.png" alt="FrankPass UI Screenshot" width="80%">
+  <img src="https://raw.githubusercontent.com/iamfrankpass/FrankPass/main/hero.png" alt="FrankPass UI Screenshot" width="80%">
 </p>
 
 ---
@@ -29,12 +29,14 @@ Disconnect your Wi-Fi, turn on Airplane mode, and generate your passwords. *It w
 
 ## What is FrankPass?
 
-FrankPass is a **deterministic, stateless password generator** built on pure browser-side cryptography. It generates strong, unique passwords for every platform — without storing anything, anywhere.
+FrankPass is a **deterministic, stateless password generation ecosystem** built on pure browser-side cryptography. It generates strong, unique passwords for every platform — without storing anything, anywhere. Unlike traditional password managers, there is no "vault" to hack.
 
-- ✅ No database. No account. No cloud.
-- ✅ Same input → Same password. Every device. Every time.
-- ✅ Works 100% offline (PWA)
-- ✅ 28,500+ global platforms in Auto-Suggest
+- ✅ **Zero Database**: No account, no cloud, no tracking.
+- ✅ **Stateless UI**: Same inputs &rarr; Same password. Every device. 
+- ✅ **Adaptive Pricing**: Localized payment options (INR/USD) for Pro users.
+- ✅ **Stateless Contact**: Privacy-first messaging via direct app links.
+- ✅ **PWA Native**: Install on iOS/Android. Works 100% offline.
+- ✅ **28,500+ Platforms**: Industry-leading auto-suggest database.
 
 ---
 
@@ -57,11 +59,12 @@ Your password is **calculated, never stored.** Close the tab = data gone.
 |---|---|
 | 🔐 Stateless Architecture | Zero databases, zero vaults, zero tracking |
 | 🌍 28,500+ Platforms | Global auto-suggest database (India, US, UK, and 190+ countries) |
+| ⚡ Adaptive Pricing | Automatic currency switching (₹ / $) for global conversion |
+| 💬 Stateless Contact | Send messages via WhatsApp/Email without server logs |
 | 📱 PWA Support | Install as an app. Works offline. |
 | 🔄 Variant Counter | Rotate passwords without changing your master key |
 | 🛡️ Auto-clear Timers | Password clears in 15s. Secret key in 60s. Tab close = instant wipe. |
 | 🌐 Multi-language | English, Hindi, Spanish, French guides |
-| ♿ Accessible | ARIA labels, keyboard navigation, unique IDs |
 | 🔒 Device Lock | WebAuthn OS PIN/Biometric for Secret Key |
 | ⚡ Web Workers | Crypto offloaded to background thread — zero UI freeze |
 
@@ -90,12 +93,9 @@ frank-pass/
 ├── service-worker.js       # PWA offline support
 ├── manifest.json           # PWA manifest
 ├── vercel.json             # Routing & redirect rules
-├── about.html              # About FrankPass
-├── contact.html            # Contact page
-├── guide.html              # Security guide & ebooks
-├── legal.html              # Legal, IP & license
-├── support-us.html            # Support / donations
-├── founder-mastermanikant.html  # Founder story
+├── pro.html                # Pro license & Pricing (Adaptive)
+├── contact-us.html         # Stateless Contact page
+├── extension.html          # Browser extension guide
 ├── why-stateless.html      # Why stateless architecture
 └── icons/                  # PWA icons (192px, 512px)
 ```
@@ -125,10 +125,10 @@ See [`legal.html`](https://frankpass.com/legal) for full terms.
 | Platform | Link |
 |---|---|
 | 🌐 Website | [frankpass.com](https://frankpass.com) |
-| 🐦 X (Twitter) | [@iamfrankpass](https://frankpass.com/x) |
-| 📸 Instagram | [@iamfrankpass](https://frankpass.com/instagram) |
-| 💬 WhatsApp | [Channel](https://frankpass.com/whatsapp) |
-| 👤 Founder | [@mastermanikant](https://frankpass.com/mastermanikant/x) |
+| 🐦 X (Twitter) | [@iamfrankpass](https://x.com/iamfrankpass) |
+| 📸 Instagram | [@iamfrankpass](https://instagram.com/iamfrankpass) |
+| 💬 WhatsApp | [Channel](https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z) |
+| 👤 Founder | [@mastermanikant](https://x.com/mastermanikant) |
 
 ---
 

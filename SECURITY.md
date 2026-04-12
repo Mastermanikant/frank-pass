@@ -1,5 +1,13 @@
 # Security Policy - FrankPass
 
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 2.3.x   | :white_check_mark: |
+| 2.2.x   | :white_check_mark: |
+| < 2.2.0 | :x:                |
+
 ## 🔒 100% Stateless & Client-Side Architecture
 
 FrankPass is fundamentally different from traditional password managers:
@@ -17,7 +25,7 @@ Despite our zero-database architecture, if you discover any security vulnerabili
 
 Instead, please report them directly to us:
 - **Email:** `contact@frankpass.com`
-- **Direct Message:** [@iamfrankpass on X (Twitter)](https://frankpass.com/x)
+- **Direct Message:** [@iamfrankpass on X (Twitter)](https://x.com/iamfrankpass)
 
 We will respond locally within 24-48 hours.
 

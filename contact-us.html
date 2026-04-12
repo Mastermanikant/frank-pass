@@ -50,16 +50,92 @@
         <main class="glass-panel content-page">
             <section style="text-align: center;">
                 <h2>Get in Touch</h2>
-                <p>Have a question about the math? Found a bug? Want to add A plateform Just want to say hello? We'd love to hear from you.</p>
+                <p>Have a question? Found a bug? We'd love to hear from you. <br> <strong>Privacy First:</strong> Your message never touches our servers.</p>
                 
-                <div style="margin: 3rem 0;">
-                    <a href="mailto:contact@frankpass.com" class="btn-primary" style="display: inline-flex; width: auto; padding: 1.2rem 3rem; font-size: 1.2rem;">
-                        <ion-icon name="mail-outline"></ion-icon> contact@frankpass.com
-                    </a>
+                <div id="contact-form-container" style="margin-top: 2.5rem; text-align: left; max-width: 500px; margin-left: auto; margin-right: auto;">
+                    <div class="input-group" style="margin-bottom: 1.5rem;">
+                        <label style="display:block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">Your Name</label>
+                        <input type="text" id="contact-name" placeholder="Enter your name" style="width: 100%; padding: 0.8rem 1.2rem; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-primary); outline: none;">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 1.5rem;">
+                        <label style="display:block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">Your Email / Handler</label>
+                        <input type="text" id="contact-email" placeholder="email or @username" style="width: 100%; padding: 0.8rem 1.2rem; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-primary); outline: none;">
+                    </div>
+                    <div class="input-group" style="margin-bottom: 1.5rem;">
+                        <label style="display:block; margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">Message</label>
+                        <textarea id="contact-message" placeholder="What's on your mind?" rows="4" style="width: 100%; padding: 0.8rem 1.2rem; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color); border-radius: 12px; color: var(--text-primary); outline: none; resize: vertical;"></textarea>
+                    </div>
+                    
+                    <button onclick="reviewMessage()" class="btn-primary" style="width: 100%; padding: 1.2rem; font-size: 1.1rem; border-radius: 12px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        <ion-icon name="send-outline"></ion-icon> Send Message
+                    </button>
+                    
+                    <p style="text-align: center; color: var(--text-secondary); font-size: 0.8rem; margin-top: 1rem; opacity: 0.7;">
+                        <ion-icon name="lock-closed-outline" style="vertical-align: middle;"></ion-icon> Messages are sent via your local apps.
+                    </p>
                 </div>
-
-                <p style="color: var(--text-secondary); font-size: 0.9rem;"> We try to respond within 24 to 48 hours but it might take upto 7 days due to busy Sechdule or more message.</p>
             </section>
+
+            <!-- ================= CONTACT REVIEW MODAL ================= -->
+            <div id="contact-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; backdrop-filter: blur(10px); align-items: center; justify-content: center;">
+                <div style="background: var(--bg-primary); border: 1px solid var(--accent-primary); width: 90%; max-width: 500px; padding: 2.5rem; border-radius: 24px; box-shadow: 0 0 50px rgba(108,92,231,0.25);">
+                    <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--accent-primary);">Review & Send</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 2rem; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); padding: 0.8rem; border-radius: 12px;">
+                        <ion-icon name="shield-checkmark" style="color: #10b981; vertical-align: middle;"></ion-icon> <strong>FrankPass Promise:</strong> We do not store your data. This message will be sent through your own account.
+                    </p>
+                    
+                    <div style="background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color); margin-bottom: 2rem; max-height: 200px; overflow-y: auto;">
+                        <p id="review-text" style="font-size: 0.95rem; line-height: 1.6; white-space: pre-wrap; color: var(--text-primary);"></p>
+                    </div>
+                    
+                    <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1rem; text-align: center;">Choose a mode to send:</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <button onclick="sendMessage('wa')" style="background: #25D366; color: #fff; border: none; padding: 0.8rem; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: 600;">
+                            <ion-icon name="logo-whatsapp"></ion-icon> WhatsApp
+                        </button>
+                        <button onclick="sendMessage('email')" style="background: #6c5ce7; color: #fff; border: none; padding: 0.8rem; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: 600;">
+                            <ion-icon name="mail-outline"></ion-icon> Email
+                        </button>
+                        <button onclick="sendMessage('ig')" style="background: #e1306c; color: #fff; border: none; padding: 0.8rem; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; font-weight: 600; grid-column: span 2;">
+                            <ion-icon name="logo-instagram"></ion-icon> Open Instagram DM
+                        </button>
+                    </div>
+                    
+                    <button onclick="closeContactModal()" style="width: 100%; background: transparent; border: none; color: var(--text-muted); margin-top: 1.5rem; cursor: pointer; font-size: 0.9rem;">Back to Edit</button>
+                </div>
+            </div>
+
+            <script>
+                function reviewMessage() {
+                    const name = document.getElementById('contact-name').value.trim();
+                    const email = document.getElementById('contact-email').value.trim();
+                    const msg = document.getElementById('contact-message').value.trim();
+                    
+                    if (!msg) { alert('Please enter a message.'); return; }
+                    
+                    const fullText = `Name: ${name || 'N/A'}\nContact: ${email || 'N/A'}\n\nMessage:\n${msg}`;
+                    document.getElementById('review-text').innerText = fullText;
+                    document.getElementById('contact-modal').style.display = 'flex';
+                }
+                
+                function closeContactModal() {
+                    document.getElementById('contact-modal').style.display = 'none';
+                }
+                
+                function sendMessage(mode) {
+                    const text = document.getElementById('review-text').innerText;
+                    const encoded = encodeURIComponent(text);
+                    
+                    if (mode === 'wa') {
+                        window.open(`https://wa.me/917321034335?text=${encoded}`, '_blank');
+                    } else if (mode === 'email') {
+                        window.location.href = `mailto:contact@frankpass.com?subject=FrankPass Feedback&body=${encoded}`;
+                    } else if (mode === 'ig') {
+                        window.open('https://instagram.com/mastermanikant', '_blank');
+                    }
+                    closeContactModal();
+                }
+            </script>
 
             <!-- ================= SOCIAL & FOUNDER SECTION ================= -->
             <section style="margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 2rem; text-align: center;">

@@ -85,15 +85,27 @@
                 </div>
                 <h1><span class="FrankPass-text">Frank</span>Pass <button onclick="location.reload(true)" class="version-tag" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:0.2rem 0.6rem; color:#fff; cursor:pointer; font-family:inherit; transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" title="Force refresh to get latest security updates">Update &#128259;</button></h1>
             </div>
-            <p><span class="FrankPass-text">Frankly</span> Secure Password.<br>Deterministic, stateless, unbreakable.
-            </p>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-top: 1rem; line-height: 1.2;">Never remember passwords again.</h2>
+            <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 1rem;">Pure math, zero-database security. Generate unbreakable passwords instantly.</p>
         </header>
 
         <!-- ================= MAIN GENERATOR FORM ================= -->
         <main class="glass-panel">
             <!-- Form Header with Settings Gear -->
+            <div class="trust-indicators" style="display:flex; justify-content:center; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap;">
+                <div class="trust-badge" style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.03); padding:0.5rem 1rem; border-radius:50px; border:1px solid var(--border-color); font-size:0.8rem; color:var(--text-secondary);">
+                    <ion-icon name="airplane-outline" style="color:var(--accent-primary);"></ion-icon> Works 100% Offline
+                </div>
+                <div class="trust-badge" style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.03); padding:0.5rem 1rem; border-radius:50px; border:1px solid var(--border-color); font-size:0.8rem; color:var(--text-secondary);">
+                    <ion-icon name="shield-checkmark-outline" style="color:var(--accent-success);"></ion-icon> No Data Stored
+                </div>
+                <div class="trust-badge" style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.03); padding:0.5rem 1rem; border-radius:50px; border:1px solid var(--border-color); font-size:0.8rem; color:var(--text-secondary);">
+                    <ion-icon name="code-working-outline" style="color:var(--accent-focus);"></ion-icon> Verified Cryptography
+                </div>
+            </div>
+
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-                <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);">&#128274; Stateless &middot; Zero-Database &middot; Your Rules</p>
+                <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);">&#128274; Create Unbreakable Passwords</p>
                 <div style="display:flex; align-items:center; gap:0.5rem;">
                     <!-- Notification Bell Settings -->
                     <button id="notif-bell-btn" onclick="toggleNotifPanel()" title="Notification Settings" aria-label="Open Notifications" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.4rem 0.6rem; cursor:pointer; color:var(--text-secondary); display:flex; align-items:center; justify-content:center; gap:0.3rem; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
@@ -239,7 +251,7 @@
                     </div>
                     <div class="input-wrapper">
                         <ion-icon name="globe-outline"></ion-icon>
-                        <input type="text" id="platform" list="platform-list" placeholder="Type your platform name or domain"
+                        <input type="text" id="platform" list="platform-list" placeholder="e.g. Amazon, Gmail, Facebook"
                             required autocomplete="off">
                         <!-- 
                         WARNING FOR ALL DEVELOPERS & AI AGENTS: 
@@ -289,7 +301,7 @@
                     </div>
                     <div class="input-wrapper">
                         <ion-icon name="person-outline"></ion-icon>
-                        <input type="text" id="username" placeholder="Write Your username or Email id  ( e.g. mastermanikant or mastmani.in@gmail.com   )   " autocomplete="off">
+                        <input type="text" id="username" placeholder="Optional: username or email" autocomplete="off">
                     </div>
                 </div>
 
@@ -307,7 +319,7 @@
                     </div>
                     <div class="input-wrapper">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" id="secret" placeholder=" Write your Secret key { e.g. I am Hacker ( anything you can easily remember )  }" required
+                        <input type="password" id="secret" placeholder="Your secret phrase (e.g. I love coding 2026)" required
                             autocomplete="off">
                     </div>
                 </div>
@@ -419,6 +431,65 @@
                     </div>
                 </div>
             </div>
+            <!-- ================= HOW IT WORKS SECTION ================= -->
+            <section class="trust-section" style="margin-top: 3rem; text-align: center;">
+                <h3 style="font-size: 1.4rem; margin-bottom: 2rem;">How it works (Mathematically)</h3>
+                <div style="display: flex; justify-content: space-around; gap: 1rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 150px; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 16px;">
+                        <ion-icon name="text-outline" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 1rem;"></ion-icon>
+                        <p style="font-size: 0.9rem; font-weight: 600;">1. Input</p>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Enter platform and your secret phrase.</p>
+                    </div>
+                    <div style="flex: 1; min-width: 150px; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 16px;">
+                        <ion-icon name="infinite-outline" style="font-size: 2rem; color: var(--accent-success); margin-bottom: 1rem;"></ion-icon>
+                        <p style="font-size: 0.9rem; font-weight: 600;">2. Process</p>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary);">1M PBKDF2 math iterations (Local Only).</p>
+                    </div>
+                    <div style="flex: 1; min-width: 150px; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 16px;">
+                        <ion-icon name="key-outline" style="font-size: 2rem; color: var(--accent-focus); margin-bottom: 1rem;"></ion-icon>
+                        <p style="font-size: 0.9rem; font-weight: 600;">3. Output</p>
+                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Instant, unbreakable unique password.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= COMPARISON TABLE ================= -->
+            <section class="comparison-section" style="margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.02); border-radius: 24px; border: 1px solid var(--border-color);">
+                <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">FrankPass vs Password Managers</h3>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <th style="padding: 1rem;">Feature</th>
+                                <th style="padding: 1rem; color: var(--accent-primary);">FrankPass</th>
+                                <th style="padding: 1rem;">Typical Managers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem;">Data Storage</td>
+                                <td style="padding: 1rem; font-weight: 600;">Zero (Stateless)</td>
+                                <td style="padding: 1rem;">Central Vault (Server)</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem;">Risk of Breach</td>
+                                <td style="padding: 1rem; font-weight: 600;">Mathematically Impossible</td>
+                                <td style="padding: 1rem;">High Target for Hackers</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem;">Master Key Sync</td>
+                                <td style="padding: 1rem; font-weight: 600;">None (Mental Only)</td>
+                                <td style="padding: 1rem;">Synced across clouds</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 1rem;">Offline Use</td>
+                                <td style="padding: 1rem; font-weight: 600;">100% Native</td>
+                                <td style="padding: 1rem;">Requires Sync/Login</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
         </main>
 
         <!-- ================= ACTION BANNERS ================= -->
@@ -793,7 +864,7 @@
                     <!-- Copyright row -->
                     <p style="font-size:0.8rem; color:var(--text-secondary);">
                         &copy; <span id="copyright-year"></span> FrankPass &mdash;
-                        Version <span class="version-badge">2.2.1 (Production)</span>
+                        Version <span class="version-badge">2.3.1 (Production)</span>
                     </p>
                     <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
                         Designed &amp; Developed by

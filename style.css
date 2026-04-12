@@ -7,7 +7,7 @@
     --text-muted: #6b7280;
 
     --accent-primary: #6c5ce7;
-    --accent-glow: rgba(108, 92, 231, 0.5);
+    --accent-glow: rgba(108, 92, 231, 0.2);
     --accent-success: #00b894;
     --accent-focus: #a29bfe;
 
@@ -114,17 +114,17 @@ body {
 }
 
 .btn-primary:hover {
-    box-shadow: 0 0 25px rgba(108, 92, 231, 0.5);
-    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(108, 92, 231, 0.3);
+    transform: translateY(-1.5px);
 }
 
 
 .circle {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.6;
-    animation: float 20s infinite ease-in-out;
+    filter: blur(100px);
+    opacity: 0.25;
+    animation: float 25s infinite ease-in-out;
 }
 
 .circle-1 {

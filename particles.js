@@ -16,14 +16,14 @@
     let animId;
 
     const CONFIG = {
-        count: 80,
+        count: 40,
         color: '108, 92, 231',       // --accent-primary RGB
         lineColor: '108, 92, 231',
-        maxSpeed: 0.4,
-        size: { min: 1, max: 3 },
-        linkDistance: 150,
+        maxSpeed: 0.3,
+        size: { min: 1, max: 2 },
+        linkDistance: 120,
         mouseRepel: true,
-        pulseSpeed: 0.02
+        pulseSpeed: 0.015
     };
 
     function resize() {
