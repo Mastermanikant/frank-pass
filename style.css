@@ -198,7 +198,7 @@ pre code { background: none; border: none; padding: 0; }
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  gap: 1.5rem;
+  gap: clamp(0.5rem, 2vw, 1.5rem);
 }
 
 /* Logo */
@@ -219,7 +219,20 @@ pre code { background: none; border: none; padding: 0; }
 .logo-text span { color: var(--accent); }
 
 /* Country dropdown slot */
-.header-country { margin-left: 0.5rem; }
+.header-country { 
+  margin-left: 0.25rem;
+  flex-shrink: 1;
+  min-width: 0;
+}
+#country-trigger {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@media (max-width: 480px) {
+  #country-trigger span { display: none; }
+  #country-trigger { padding: 0.4rem 0.5rem; }
+}
 
 /* Desktop nav */
 .header-nav {
@@ -454,6 +467,19 @@ pre code { background: none; border: none; padding: 0; }
   padding: 0.25rem;
 }
 .input-action-btn:hover { color: var(--text-primary); }
+
+.input-indicator {
+  position: absolute;
+  right: 2.8rem;
+  color: var(--success);
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+.input-indicator.visible { opacity: 1; transform: scale(1); }
 
 /* Range slider */
 input[type="range"] {
@@ -1115,13 +1141,15 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .review-author { font-size: 0.82rem; font-weight: 600; color: var(--text-accent); }
 
 /* ── 26. RESPONSIVE VISIBILITY ───────────────────────────── */
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .header-nav  { display: flex; }
   .hamburger   { display: none; }
   body { padding-bottom: 0; }
 }
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .mobile-bottom-nav { display: flex; }
+  .hamburger { display: flex; }
+  .header-nav { display: none; }
   body:not(.no-mobile-nav) { padding-bottom: var(--mobile-nav-h); }
   #toast-container { bottom: calc(var(--mobile-nav-h) + 1rem); }
 }
@@ -1148,15 +1176,15 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 
 /* ── 28. SKIP LINK ───────────────────────────────────────── */
 .skip-link {
-  position: absolute;
-  top: -40px;
+  position: fixed;
+  top: -100px;
   left: 1rem;
   background: var(--accent);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 0 0 var(--radius-sm) var(--radius-sm);
   font-weight: 600;
-  z-index: 9999;
-  transition: top 0.2s ease;
+  z-index: 10001;
+  transition: top 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
-.skip-link:focus { top: 0; color: #fff; }
+.skip-link:focus { top: 0; color: #fff; outline: 3px solid rgba(139,92,246,0.5); }

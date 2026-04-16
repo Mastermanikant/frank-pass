@@ -158,7 +158,11 @@
         <div class="form-group">
           <label class="form-label" for="platform-input">Site / Platform</label>
           <div class="input-wrapper">
-            <input id="platform-input" class="form-input" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="off" spellcheck="false" aria-describedby="platform-hint">
+            <input id="platform-input" class="form-input" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="on" list="platform-list" spellcheck="false" aria-describedby="platform-hint">
+            <datalist id="platform-list"></datalist>
+            <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
           </div>
           <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.2rem;" aria-live="polite"></span>
         </div>
@@ -482,8 +486,41 @@ const hamburger   = document.getElementById('hamburger');
 const mobileMenu  = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
   const isOpen = mobileMenu.classList.toggle('open');
-  hamburger.classList.toggle('open', isOpen);
-  hamburger.setAttribute('aria-expanded', String(isOpen));
+    platformIndicator.classList.toggle('visible', !!inDB);
+  });
+
+  /* ── Autocomplete population ── */
+  function updateDatalist() {
+    const list = document.getElementById('platform-list');
+    if (!list || !window.regionalPlatforms) return;
+    
+    list.innerHTML = '';
+    const currentRegion = (document.getElementById('region')?.value || 'Global').split(' ')[0].toLowerCase();
+    
+    /* Combine current region + Global for suggestions */
+    const keys = ['af', 'Global']; // Default to af (all/alpha) or global
+    if (window.regionalPlatforms[currentRegion]) keys.push(currentRegion);
+
+    const fragment = document.createDocumentFragment();
+    const seen = new Set();
+    
+    keys.forEach(k => {
+      (window.regionalPlatforms[k] || []).forEach(p => {
+        if (!seen.has(p)) {
+          const opt = document.createElement('option');
+          opt.value = p;
+          fragment.appendChild(opt);
+          seen.add(p);
+        }
+      });
+    });
+    list.appendChild(fragment);
+  }
+  
+  /* Initial load after a small delay to ensure platforms.js is parsed */
+  setTimeout(updateDatalist, 500);
+  window.addEventListener('countryChange', updateDatalist);
+hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 document.addEventListener('click', (e) => {
   if (!header.contains(e.target) && !mobileMenu.contains(e.target)) {
@@ -549,13 +586,51 @@ toggleBtn.addEventListener('click', () => {
     : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
 });
 
-/* ── Platform hint ── */
-document.getElementById('platform-input').addEventListener('input', (e) => {
-  const raw  = e.target.value.trim();
-  const hint = (typeof FrankPassUtils !== 'undefined' && raw)
-    ? FrankPassUtils.getSeedHint(raw) : '';
-  document.getElementById('platform-hint').textContent = hint;
+/* ── Platform hint & Autocomplete ── */
+const platformInput = document.getElementById('platform-input');
+const platformHint  = document.getElementById('platform-hint');
+const platformValid = document.getElementById('platform-valid-icon');
+
+platformInput.addEventListener('input', (e) => {
+  const raw = e.target.value.trim();
+  if (typeof FrankPassUtils === 'undefined') return;
+  
+  const hint = raw ? FrankPassUtils.getSeedHint(raw) : '';
+  platformHint.textContent = hint;
+
+  /* Show indicator if recognized in DB */
+  const normalized = FrankPassUtils.getNormalizedPlatform(raw);
+  const inDB = FrankPassUtils.getPrettyNameFromDB(normalized, window.regionalPlatforms);
+  platformValid.classList.toggle('visible', !!inDB);
 });
+
+function updateDatalist() {
+  const list = document.getElementById('platform-list');
+  if (!list || !window.regionalPlatforms) return;
+  
+  list.innerHTML = '';
+  const regionVal = document.getElementById('region')?.value || 'India (IN)';
+  const currentRegion = regionVal.split(' ')[0].toLowerCase();
+  
+  const keys = ['af', 'Global'];
+  if (window.regionalPlatforms[currentRegion]) keys.push(currentRegion);
+
+  const fragment = document.createDocumentFragment();
+  const seen = new Set();
+  keys.forEach(k => {
+    (window.regionalPlatforms[k] || []).forEach(p => {
+      if (!seen.has(p)) {
+        const opt = document.createElement('option');
+        opt.value = p;
+        fragment.appendChild(opt);
+        seen.add(p);
+      }
+    });
+  });
+  list.appendChild(fragment);
+}
+setTimeout(updateDatalist, 500);
+window.addEventListener('countryChange', updateDatalist); 
 
 /* ── Advanced options toggle ── */
 const advToggle = document.getElementById('advanced-toggle');

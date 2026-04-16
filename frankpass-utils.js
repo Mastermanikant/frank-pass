@@ -38,7 +38,12 @@ const FrankPassUtils = (function () {
         // 1. Strip protocol and URI noise
         platform = platform.replace(/^(https?:\/\/)?/, '').split('/')[0].split('?')[0].split('#')[0];
         
-        // 2. Strip subdomain noise
+        // 2. Handle email signatures (treat everything after @ as the platform domain)
+        if (platform.includes('@')) {
+            platform = platform.split('@')[1];
+        }
+
+        // 3. Strip subdomain noise
         platform = platform.replace(/^(www\.|m\.|app\.|login\.|secure\.|auth\.|account\.)/, '');
         
         // 3. Handle Visual Aliases (full domains)
