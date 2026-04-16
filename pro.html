@@ -1,487 +1,410 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrankPass Pro | Unlock Premium Security</title>
-    <meta name="description" content="Generate your 10-day free trial key instantly and unlock FrankPass Pro. Limitless profiles and ultimate privacy.">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="/icons/favicon.png">
-    <!-- Ionicons for icons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-        integrity="sha384-xyQ/Vpt1cq1pdPYlRaT/QkcSj2vrYyWI3WOhxGBzqnP1vgvsS2yrhWXe3/wIoCr5"
-        crossorigin="anonymous"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-        integrity="sha384-KAUcUASKfGZ0sxENVFRiH12jtpvd9SsVpgzvYdvv8ZMLqB99G3gX3DAts418wzIC"
-        crossorigin="anonymous"></script>
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg:       #0d0f18;
-            --card:     #13151f;
-            --border:   rgba(255,255,255,0.08);
-            --purple:   #6c5ce7;
-            --green:    #10b981;
-            --gold:     #f1c40f;
-            --blue:     #0984e3;
-            --text:     #e2e8f0;
-            --muted:    #718096;
-            --radius:   14px;
-        }
-        body {
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Outfit', sans-serif;
-            min-height: 100vh;
-            padding: 0 0 80px;
-            overflow-x: hidden;
-        }
-        /* Ã¢â€â‚¬Ã¢â€â‚¬ Header Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
-        header {
-            background: rgba(13,15,24,0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 16px 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        header .logo-frank { font-weight: 800; font-size: 1.25rem; }
-        header .logo-frank span { color: var(--purple); }
-        header a {
-            margin-left: auto;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        header a:hover { color: var(--text); }
-        /* Ã¢â€â‚¬Ã¢â€â‚¬ Hero Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
-        .hero {
-            text-align: center;
-            padding: 60px 24px 40px;
-        }
-        .hero .shield {
-            font-size: 3.5rem;
-            display: block;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(108,92,231,0.3));
-        }
-        .hero h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 800;
-            line-height: 1.1;
-            letter-spacing: -1px;
-        }
-        .hero h2 span { color: var(--purple); }
-        .hero p {
-            color: var(--muted);
-            margin-top: 16px;
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .pricing-table-header {
-            margin-top: 30px;
-            display: inline-flex;
-            gap: 20px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            padding: 10px 25px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-        .pricing-table-header span { color: var(--gold); }
-        /* Ã¢â€â‚¬Ã¢â€â‚¬ Plans Grid Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
-        .plans-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        .plans {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .plan-card {
-            background: var(--card);
-            border: 2px solid var(--border);
-            border-radius: var(--radius);
-            padding: 24px 20px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .plan-card:hover {
-            border-color: rgba(108,92,231,0.5);
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.02);
-        }
-        .plan-card.selected {
-            border-color: var(--purple);
-            background: rgba(108,92,231,0.08);
-            box-shadow: 0 0 30px rgba(108,92,231,0.2);
-        }
-        .plan-card .badge {
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 3px 10px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .plan-card h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 8px; }
-        .plan-card .profiles { color: var(--muted); font-size: 0.9rem; }
-        .plan-card .profiles strong { color: var(--text); font-size: 1.1rem; }
-        .plan-card .check {
-            position: absolute;
-            top: -10px; right: -10px;
-            width: 28px; height: 28px;
-            background: var(--purple);
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(108,92,231,0.4);
-            border: 2px solid var(--bg);
-        }
-        .plan-card.selected .check { display: flex; }
-        /* Badge colours */
-        .badge-silver   { background: #333; color: #ccc; }
-        .badge-gold     { background: linear-gradient(135deg,#f1c40f,#e67e22); color:#000; }
-        .badge-diamond  { background: linear-gradient(135deg,#a29bfe,#6c5ce7); color:#fff; }
-        .badge-platinum { background: linear-gradient(135deg,#74b9ff,#0984e3); color:#fff; }
-        .badge-amrol    { background: linear-gradient(135deg,#10b981,#059669); color:#fff; }
-        /* Ã¢â€â‚¬Ã¢â€â‚¬ Dynamic CTA Container Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
-        .dynamic-cta {
-            max-width: 600px;
-            margin: 20px auto 40px;
-            background: rgba(108,92,231,0.05);
-            border: 1px dashed rgba(108,92,231,0.3);
-            border-radius: var(--radius);
-            padding: 30px;
-            text-align: center;
-            transition: all 0.4s ease;
-        }
-        .cta-header {
-            margin-bottom: 20px;
-        }
-        .cta-header h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
-        .cta-header p { font-size: 0.9rem; color: var(--muted); }
-        .btn-trial {
-            display: block;
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto 16px;
-            padding: 18px;
-            background: linear-gradient(135deg, var(--purple), #8b5cf6);
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 800;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 20px rgba(108,92,231,0.3);
-        }
-        .btn-trial:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(108,92,231,0.5);
-        }
-        .btn-trial:disabled { opacity: 0.5; cursor: wait; }
-        .btn-buy {
-            display: inline-block;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            transition: all 0.2s;
-        }
-        .btn-buy:hover { border-color: var(--purple); color: #fff; }
-        /* Ã¢â€â‚¬Ã¢â€â‚¬ Key Result Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
-        #key-result {
-            display: none;
-            background: rgba(16,185,129,0.08);
-            border: 1px solid rgba(16,185,129,0.3);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-top: 24px;
-            animation: slideUp 0.4s ease-out;
-        }
-        @keyframes slideUp { 
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        #key-result .success-tag {
-            background: var(--green);
-            color: #000;
-            font-size: 0.65rem;
-            font-weight: 800;
-            padding: 2px 10px;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-        #key-result h4 { font-size: 1.2rem; margin-bottom: 4px; }
-        #key-result .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 20px; }
-        .key-box {
-            background: #000;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        .key-box code {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--green);
-            letter-spacing: 1px; word-break: break-all;
-        }
-        .copy-btn {
-            background: var(--green);
-            border: none;
-            color: #000;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-weight: 800;
-            font-size: 0.75rem;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-        .instructions {
-            text-align: left;
-            background: rgba(255,255,255,0.03);
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-        .instructions strong { color: #fff; }
-        /* Ã¢â€â‚¬Ã¢â€â‚¬ FAQ Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
-        .faq { max-width: 800px; margin: 60px auto 0; padding: 0 20px; }
-        .faq h3 { font-size: 1.5rem; margin-bottom: 24px; text-align: center; }
-        details {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 12px;
-            padding: 18px;
-            cursor: pointer;
-        }
-        summary { font-weight: 700; font-size: 1rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
-        summary::after { content: '+'; color: var(--purple); font-size: 1.2rem; }
-        details[open] summary::after { content: 'Ã¢Ë†â€™'; }
-        details p { color: var(--muted); font-size: 0.95rem; margin-top: 12px; line-height: 1.6; }
-        #error-msg {
-            display: none;
-            color: #ff7675;
-            background: rgba(255,118,117,0.1);
-            padding: 12px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-weight: 600;
-        }
-        @media (max-width: 600px) {
-            .plans { grid-template-columns: 1fr 1fr; }
-            .hero { padding: 40px 20px 30px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrankPass PRO | Subscription Plans &amp; Browser Extension</title>
+  <meta name="description" content="Upgrade to FrankPass Pro. Choose Silver, Gold, or Platinum for the browser extension with auto-fill, multi-profile, and priority support. PPP pricing available.">
+  <link rel="canonical" href="https://www.frankpass.com/pro.html">
+  <meta property="og:title" content="FrankPass PRO | Subscription Plans">
+  <meta property="og:description" content="Unlock the FrankPass browser extension with auto-fill, offline mode, and the same zero-knowledge algorithm. Launch sale: 80% off.">
+  <meta property="og:url" content="https://www.frankpass.com/pro.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.frankpass.com/icons/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@iamfrankpass">
+  <link rel="icon" href="/icons/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<header>
-    <div class="logo-frank">Frank<span>Pass</span></div>
-    <a href="/">&larr; Main Website</a>
-</header>
-<section class="hero">
-    <span class="shield"><ion-icon name="shield-half-outline"></ion-icon></span>
-    <h2>Unlock <span>FrankPass Pro</span></h2>
-    <p>Choose your power level. Generate your <strong>10-Day Free Trial</strong> key instantly or get lifetime access for a small one-time fee.</p>
-    
-    <div class="pricing-table-header" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; font-weight: 700;">
-        <div>Trial: <span class="price-val" data-type="trial">₹49</span></div>
-        <div style="width: 1px; background: var(--border); height: 15px; align-self: center;"></div>
-        <div>Lifetime: <span class="price-val" data-type="lifetime">₹99</span></div>
-    </div>
-    <div style="margin-top: 15px; font-size: 0.75rem; color: #10b981; font-weight: 600;">
-        <ion-icon name="timer-outline" style="vertical-align: middle;"></ion-icon> Early Adopter Discount Ending Soon!
-    </div>
-</section>
-<div class="plans-wrapper">
-    <div class="plans" id="plans-grid">
-        <div class="plan-card selected" data-tier="silver" data-label="Silver" onclick="selectPlan(this)">
-            <div class="check"><ion-icon name="checkmark-outline"></ion-icon></div>
-            <div class="badge badge-silver">Standard</div>
-            <h3>Silver</h3>
-            <p class="profiles">Up to <strong>1</strong> Profile</p>
-        </div>
-        <div class="plan-card" data-tier="gold" data-label="Gold" onclick="selectPlan(this)">
-            <div class="check"><ion-icon name="checkmark-outline"></ion-icon></div>
-            <div class="badge badge-gold">Premium</div>
-            <h3>Gold</h3>
-            <p class="profiles">Up to <strong>5</strong> Profiles</p>
-        </div>
-        <div class="plan-card" data-tier="diamond" data-label="Diamond" onclick="selectPlan(this)">
-            <div class="check"><ion-icon name="checkmark-outline"></ion-icon></div>
-            <div class="badge badge-diamond">Elite</div>
-            <h3>Diamond</h3>
-            <p class="profiles">Up to <strong>15</strong> Profiles</p>
-        </div>
-        <div class="plan-card" data-tier="platinum" data-label="Platinum" onclick="selectPlan(this)">
-            <div class="check"><ion-icon name="checkmark-outline"></ion-icon></div>
-            <div class="badge badge-platinum">Enterprise</div>
-            <h3>Platinum</h3>
-            <p class="profiles">Up to <strong>30</strong> Profiles</p>
-        </div>
-        <div class="plan-card" data-tier="amrol" data-label="Amrol" onclick="selectPlan(this)">
-            <div class="check">âœ“</div>
-            <div class="badge badge-amrol">Legendary</div>
-            <h3>Amrol</h3>
-            <p class="profiles">Up to <strong>60</strong> Profiles</p>
-        </div>
-    </div>
-    <!-- Dynamic CTA Area -->
-    <div class="dynamic-cta" id="cta-area">
-        <div class="cta-header">
-            <h3>Start your <span id="cta-tier-name" style="color:var(--purple)">Silver</span> Trial</h3>
-            <p>100% Free for 10 days. No credit card required.</p>
-        </div>
-        <button class="btn-trial" id="generate-btn" onclick="generateTrial()">
-            <ion-icon name="ticket-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> Get My <span id="btn-tier-label">Silver</span> Trial Key
-        </button>
-        <a href="mailto:support@frankpass.com?subject=Purchase%20FrankPass%20Pro" class="btn-buy" id="buy-btn">
-            <ion-icon name="cart-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> Buy Lifetime License (<span id="buy-price">₹99</span>)
-        </a>
-        <div id="error-msg"></div>
-        <!-- Result Card -->
-        <div id="key-result">
-            <span class="success-tag">KEY ACTIVATED</span>
-            <h4>Your trial code is ready!</h4>
-            <div class="meta">Valid for 10 days on 1 device</div>
-            <div class="key-box">
-                <code id="key-output">XXXX-XXXX-XXXX</code>
-                <button class="copy-btn" id="copy-btn" onclick="copyKey()"><ion-icon name="copy-outline" style="vertical-align: middle; margin-right: 2px;"></ion-icon> COPY KEY</button>
-            </div>
-            <div class="instructions">
-                <ion-icon name="rocket-outline" style="vertical-align: middle; margin-right: 5px;"></ion-icon> <strong>Next Steps:</strong> Open the extension &rarr; Click <strong>Activate</strong> &rarr; Paste key &rarr; <strong>Unlock</strong>
-            </div>
-        </div>
-    </div>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     SALE BANNER — shown only when SALE_MODE is true
+     ============================================================ -->
+<div id="sale-banner" class="sale-banner" role="region" aria-label="Launch sale promotion" style="display:none">
+  Launch Sale: <strong id="sale-percent-label">80% OFF</strong> — Ends in: <strong class="countdown" id="sale-countdown" aria-live="off">calculating…</strong>
+  <button class="dismiss-btn" id="dismiss-banner" aria-label="Dismiss sale banner">&times;</button>
 </div>
-<section class="faq">
-    <h3>FAQ</h3>
-    <details>
-        <summary>Why do I need a key?</summary>
-        <p>The Pro extension includes advanced features like multi-profile management, biometric-grade security, and 1-click autofill. The key unlocks these premium security layers.</p>
-    </details>
-    <details>
-        <summary>Is the trial really free?</summary>
-        <p>Yes. We don't ask for credit cards or email. Just click the button, get your key, and start securing your digital life.</p>
-    </details>
+
+<!-- ============================================================
+     STICKY HEADER
+     ============================================================ -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+        <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+        <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+    <div class="header-country custom-country-dropdown">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="https://flagcdn.com/w40/in.png" alt="India" width="20" height="15" loading="lazy" style="display:none">
+        <span id="country-display-name">India (IN)</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox">
+        <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <input type="hidden" id="region" value="India (IN)">
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="/get-started.html">Get Started</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/docs.html">Docs</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/faq.html">FAQ</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/about-us.html">About</a>
+      <a href="/pro.html" class="btn-pro" aria-current="page">Get Pro &rarr;</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/get-started.html">Get Started</a>
+  <a href="/docs.html">Docs</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/about-us.html">About</a>
+  <a href="/pro.html" class="btn-primary" aria-current="page">Get Pro &rarr;</a>
+</nav>
+
+<main id="main-content">
+
+<!-- ============================================================
+     PRICING HERO
+     ============================================================ -->
+<section class="section" style="text-align:center" aria-labelledby="pricing-heading">
+  <div class="container" style="max-width:760px">
+    <div class="section-label" aria-hidden="true">Browser Extension + Features</div>
+    <h1 id="pricing-heading">FrankPass <span style="color:var(--accent)">PRO.</span></h1>
+    <p class="section-desc">Same zero-knowledge algorithm. Now with 1-click auto-fill, multi-profile management, and always-on offline mode — right in your browser toolbar.</p>
+    <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.5rem">Pricing automatically adjusts based on your country.</p>
+  </div>
 </section>
+
+<!-- ============================================================
+     PRICING CARDS
+     Silver | Gold (Popular) | Platinum
+     data-price-* attributes updated by PPP script
+     ============================================================ -->
+<section class="section-sm" aria-labelledby="plans-heading">
+  <div class="container">
+    <h2 id="plans-heading" class="sr-only">Subscription Plans</h2>
+    <p class="swipe-hint" aria-hidden="true">← Swipe to compare plans →</p>
+    <div class="scroll-container" role="list" aria-label="Subscription plan options">
+
+      <!-- Silver -->
+      <article class="scroll-item pricing-card card-glass" role="listitem" aria-label="Silver plan">
+        <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Silver</div>
+        <div id="sale-orig-silver" style="display:none" class="price-original">
+          <span class="price-currency">₹</span><span data-orig-silver></span>/mo
+        </div>
+        <div class="price-display">
+          <span class="price-amount" data-price-silver>₹49</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">1 Profile</strong></p>
+        <ul class="plan-features" aria-label="Silver plan features">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Browser extension access
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            1-click password auto-fill
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Automatic platform detection
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Full offline mode
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Community support
+          </li>
+        </ul>
+        <a id="btn-silver" href="#" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Silver plan">Get Started</a>
+      </article>
+
+      <!-- Gold — Most Popular -->
+      <article class="scroll-item pricing-card card-glass popular" role="listitem" aria-label="Gold plan — most popular">
+        <div class="popular-badge">Most Popular</div>
+        <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-top:0.5rem">Gold</div>
+        <div id="sale-orig-gold" style="display:none" class="price-original">
+          <span class="price-currency">₹</span><span data-orig-gold></span>/mo
+        </div>
+        <div class="price-display">
+          <span class="price-amount" data-price-gold>₹99</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">5 Profiles</strong></p>
+        <ul class="plan-features" aria-label="Gold plan features">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Everything in Silver
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Multi-profile management (5 profiles)
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            0-sync — zero-knowledge settings backup
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Phishing domain alert system
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Priority support via WhatsApp
+          </li>
+        </ul>
+        <a id="btn-gold" href="#" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Gold plan — most popular">Get Started</a>
+      </article>
+
+      <!-- Platinum -->
+      <article class="scroll-item pricing-card card-glass" role="listitem" aria-label="Platinum plan">
+        <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Platinum</div>
+        <div id="sale-orig-platinum" style="display:none" class="price-original">
+          <span class="price-currency">₹</span><span data-orig-platinum></span>/mo
+        </div>
+        <div class="price-display">
+          <span class="price-amount" data-price-platinum>₹499</span>
+          <span class="price-period">/mo</span>
+        </div>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">30 Profiles</strong></p>
+        <ul class="plan-features" aria-label="Platinum plan features">
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Everything in Gold
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            30-profile multi-account management
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Team license — share with family / colleagues
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Early access to all new features
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Dedicated support channel
+          </li>
+        </ul>
+        <a id="btn-platinum" href="#" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Platinum plan">Get Started</a>
+      </article>
+
+    </div>
+
+    <!-- Disclaimer -->
+    <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:1.5rem">
+      All plans are one-time lifetime access licences, not recurring subscriptions. Pricing shown is for the browser extension. The FrankPass web generator at frankpass.com is and always will be free. No refunds after key activation.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     AFFILIATE NOTE
+     ============================================================ -->
+<section class="section-sm" aria-label="Affiliate program information">
+  <div class="container" style="max-width:680px">
+    <div class="card-glass" style="padding:1.5rem;text-align:center">
+      <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Become a FrankPass Affiliate</h2>
+      <p style="font-size:0.88rem">Share FrankPass with your audience and earn a commission on every sale. Contact us on <a href="https://x.com/iamfrankpass" target="_blank" rel="noopener noreferrer">X @iamfrankpass</a> to apply. You must represent FrankPass honestly — no inflated claims permitted.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EXTENSION FEATURES
+     4 glass cards: Auto-fill, Platform Detection, Offline, 0-Sync
+     ============================================================ -->
+<section class="section" style="background:var(--bg-secondary)" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="text-center mb-4">
+      <div class="section-label" aria-hidden="true">Why upgrade to Pro?</div>
+      <h2 id="features-heading">The Extension Difference</h2>
+      <p class="section-desc">The free website is a great fallback. The Pro extension is the upgrade for your daily workflow.</p>
+    </div>
+    <div class="grid-2">
+      <!-- Auto-fill -->
+      <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
+        <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><path d="M15 13l2 2-2 2"/></svg>
+        </div>
+        <div>
+          <h3 style="margin-bottom:0.4rem">Instant Auto-fill</h3>
+          <p>The extension detects the active website and auto-fills your password in one click. No more typing — no more copy-pasting. Just click the FrankPass icon in your toolbar.</p>
+        </div>
+      </article>
+      <!-- Platform Detection -->
+      <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
+        <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <div>
+          <h3 style="margin-bottom:0.4rem">Platform Detection</h3>
+          <p>The extension reads the current domain and normalizes it automatically using the same FrankPassUtils algorithm as the website — so your passwords are always perfectly consistent.</p>
+          <!-- Browser badges — text only, no images required -->
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem">
+            <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Chrome</span>
+            <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Firefox</span>
+            <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Edge</span>
+            <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Brave</span>
+          </div>
+        </div>
+      </article>
+      <!-- Offline -->
+      <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
+        <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+        </div>
+        <div>
+          <h3 style="margin-bottom:0.4rem">Always Offline</h3>
+          <p>The extension works even when you have no internet connection. The cryptography runs entirely inside the browser — no network request is ever made during password generation.</p>
+        </div>
+      </article>
+      <!-- 0-Sync -->
+      <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
+        <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+        </div>
+        <div>
+          <h3 style="margin-bottom:0.4rem">0-Sync</h3>
+          <p>Your profile settings (platform names, variant numbers, length preferences) can be exported as an encrypted file and imported on any other device — without sending anything to our servers.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="/get-started.html" class="mob-nav-item" aria-label="Get Started">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+    <span>Start</span>
+  </a>
+  <a href="/pro.html" class="mob-nav-item active" aria-label="Get Pro" aria-current="page">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span>Pro</span>
+  </a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>FAQ</span>
+  </a>
+  <a href="/about-us.html" class="mob-nav-item" aria-label="About">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>About</span>
+  </a>
+</nav>
+
+<script src="/frankpass-config.js"></script>
+<script src="/country-data.js"></script>
+<script src="/country-dropdown.js"></script>
+<script src="/frankpass-utils.js"></script>
+<script src="/footer.js"></script>
+
 <script>
-    let selectedTier = 'silver';
-    let selectedLabel = 'Silver';
+/* ── Header scroll ── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
 
-    // Adaptive Pricing Logic
-    function applyAdaptivePricing() {
-        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const isIndia = tz.includes('India') || tz.includes('Calcutta') || tz.includes('Kolkata');
-        
-        const prices = {
-            india: { trial: '₹49', lifetime: '₹99' },
-            global: { trial: '$0.99', lifetime: '$1.99' }
-        };
-        
-        const selected = isIndia ? prices.india : prices.global;
-        
-        document.querySelectorAll('.price-val').forEach(el => {
-            el.textContent = selected[el.dataset.type];
-        });
-        document.getElementById('buy-price').textContent = selected.lifetime;
-    }
-    
-    // Run on load
-    applyAdaptivePricing();
+/* ── Hamburger ── */
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+});
 
-    function selectPlan(card) {
-        document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        selectedTier = card.dataset.tier;
-        selectedLabel = card.dataset.label;
-        // Update UI Text
-        document.getElementById('cta-tier-name').textContent = selectedLabel;
-        document.getElementById('btn-tier-label').textContent = selectedLabel;
-        // Reset Result
-        document.getElementById('key-result').style.display = 'none';
-        document.getElementById('error-msg').style.display = 'none';
-        // Dynamic Glow
-        const badgeClass = 'badge-' + selectedTier;
-        const color = getComputedStyle(card.querySelector('.badge')).backgroundColor;
-        document.getElementById('cta-area').style.borderColor = color;
+/* ── Sale Banner & Countdown ── */
+function updatePricingDisplay(regionValue) {
+  const cfg      = FRANKPASS_CONFIG;
+  const isIndia  = regionValue && regionValue.includes('(IN)');
+  const prices   = isIndia ? cfg.PRICES.INDIA  : cfg.PRICES.GLOBAL;
+  const currency = isIndia ? '₹' : '$';
+  const links    = cfg.SALE_MODE
+    ? (isIndia ? cfg.PAYMENT_LINKS.SALE.INDIA  : cfg.PAYMENT_LINKS.SALE.GLOBAL)
+    : (isIndia ? cfg.PAYMENT_LINKS.STANDARD.INDIA : cfg.PAYMENT_LINKS.STANDARD.GLOBAL);
+
+  document.querySelectorAll('[data-price-silver]').forEach(el   => el.textContent = currency + prices.silver);
+  document.querySelectorAll('[data-price-gold]').forEach(el     => el.textContent = currency + prices.gold);
+  document.querySelectorAll('[data-price-platinum]').forEach(el => el.textContent = currency + prices.platinum);
+
+  if (document.getElementById('btn-silver'))   document.getElementById('btn-silver').href   = links.silver;
+  if (document.getElementById('btn-gold'))     document.getElementById('btn-gold').href     = links.gold;
+  if (document.getElementById('btn-platinum')) document.getElementById('btn-platinum').href = links.platinum;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const cfg = FRANKPASS_CONFIG;
+
+  /* Sale banner */
+  if (cfg.SALE_MODE) {
+    const banner = document.getElementById('sale-banner');
+    banner.style.display = 'block';
+    document.getElementById('sale-percent-label').textContent = cfg.DISCOUNT_PERCENT + '% OFF';
+
+    /* Adjust body top padding for banner */
+    document.body.style.paddingTop = 'calc(var(--header-h) + 40px)';
+
+    /* Countdown */
+    const endDate = new Date(cfg.LAUNCH_SALE_END_DATE).getTime();
+    function tick() {
+      const diff = endDate - Date.now();
+      if (diff <= 0) { document.getElementById('sale-countdown').textContent = 'Ended'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+      document.getElementById('sale-countdown').textContent =
+        (d > 0 ? d + 'd ' : '') + String(h).padStart(2,'0') + 'h ' +
+        String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
     }
-    async function generateTrial() {
-        const btn = document.getElementById('generate-btn');
-        const errEl = document.getElementById('error-msg');
-        const resEl = document.getElementById('key-result');
-        btn.disabled = true;
-        btn.innerHTML = 'Ã¢ÂÂ³ Processing...';
-        errEl.style.display = 'none';
-        try {
-            const res = await fetch('/api/generate-trial', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ tier: selectedTier })
-            });
-            const data = await res.json();
-            if (data.success) {
-                document.getElementById('key-output').textContent = data.key;
-                resEl.style.display = 'block';
-                resEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-                errEl.textContent = data.message || 'Error generating key.';
-                errEl.style.display = 'block';
-            }
-        } catch (e) {
-            errEl.textContent = 'Network error. Try again later.';
-            errEl.style.display = 'block';
-        } finally {
-            btn.disabled = false;
-            btn.innerHTML = `Ã°Å¸Å½Â Get My ${selectedLabel} Trial Key`;
-        }
-    }
-    function copyKey() {
-        const key = document.getElementById('key-output').textContent;
-        navigator.clipboard.writeText(key).then(() => {
-            const btn = document.getElementById('copy-btn');
-            btn.textContent = '<ion-icon name="checkmark-circle-outline"></ion-icon> COPIED';
-            setTimeout(() => btn.textContent = '<ion-icon name="copy-outline"></ion-icon> COPY KEY', 2000);
-        });
-    }
+    tick();
+    setInterval(tick, 1000);
+
+    document.getElementById('dismiss-banner').addEventListener('click', () => {
+      banner.style.display = 'none';
+      document.body.style.paddingTop = 'var(--header-h)';
+    });
+  }
+
+  /* Initial pricing load */
+  const regionEl = document.getElementById('region');
+  updatePricingDisplay(regionEl ? regionEl.value : '');
+
+  regionEl.addEventListener('change', () => updatePricingDisplay(regionEl.value));
+  setTimeout(() => updatePricingDisplay(regionEl ? regionEl.value : ''), 600);
+});
 </script>
 </body>
 </html>

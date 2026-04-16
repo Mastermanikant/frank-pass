@@ -1,290 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal & Safety Hub | FrankPass Privacy Policy & Terms</title>
-    <meta name="description" content="FrankPass Legal and Safety Hub. Access our Privacy Policy, Terms of Service, Disclaimer, and Security Architecture.">
-    <meta property="og:title" content="FrankPass Legal & Safety Hub">
-    <meta property="og:description" content="Zero-data privacy policy, terms of service, and security architecture &#8212; all transparent.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://frankpass.com/legal">
-    <meta property="og:image" content="https://frankpass.com/hero.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://frankpass.com/legal">
-    <link rel="apple-touch-icon" href="/icons/icon-192.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="/icons/favicon.png">
-    <style>
-        .legal-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-            color: var(--text-primary);
-        }
-
-        .legal-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-2px);
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.15);
-        }
-
-        .legal-card h2 {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--accent-primary);
-        }
-
-        .legal-card h2 ion-icon {
-            margin-right: 0.8rem;
-            font-size: 1.8rem;
-        }
-
-        .legal-card p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-left: 2.6rem;
-            margin-bottom: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal | FrankPass Privacy Policy &amp; Terms of Use</title>
+  <meta name="description" content="FrankPass Legal Hub — Privacy Policy (Zero-Data Promise), Terms of Service, Liability Disclaimer, Refund Policy, Affiliate Terms, and Security Architecture.">
+  <link rel="canonical" href="https://www.frankpass.com/legal.html">
+  <meta property="og:title" content="Legal | FrankPass Privacy Policy &amp; Terms of Use">
+  <meta property="og:description" content="Zero-data privacy policy, terms of service, liability disclaimer, and security architecture — all transparent.">
+  <meta property="og:url" content="https://www.frankpass.com/legal.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.frankpass.com/icons/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@iamfrankpass">
+  <link rel="icon" href="/icons/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/style.css">
 </head>
-<body class="legal-page">
-    <canvas id="particle-canvas"></canvas>
-    <div class="background-elements">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="circle circle-3"></div>
+<!-- NO mobile bottom nav on legal page -->
+<body class="no-mobile-nav">
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+        <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+        <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="/get-started.html">Get Started</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/docs.html">Docs</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/faq.html">FAQ</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/about-us.html">About</a>
+      <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/get-started.html">Get Started</a>
+  <a href="/docs.html">Docs</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/about-us.html">About</a>
+  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a>
+</nav>
+
+<main id="main-content">
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="section" style="padding-bottom:2rem;text-align:center" aria-labelledby="legal-heading">
+  <div class="container" style="max-width:640px">
+    <div class="section-label" aria-hidden="true">Transparency by design</div>
+    <h1 id="legal-heading">Legal &amp; Safety Hub</h1>
+    <p class="section-desc mt-2">FrankPass was built on radical transparency. These policies are written in plain language — no legal jargon designed to confuse.</p>
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.75rem">Last updated: April 2026 &middot; FrankPass / FrankBase Digital &middot; Built by Master Manikant Yadav</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     LEGAL SECTIONS ACCORDION
+     6 items: preserved text from original legal.html
+     ============================================================ -->
+<section class="section-sm" aria-label="Legal documents accordion">
+  <div class="container" style="max-width:820px">
+    <div style="display:flex;flex-direction:column;gap:0.85rem">
+
+      <!-- ── 1. Privacy Policy ── -->
+      <details class="faq-item" id="privacy" open>
+        <summary>
+          <span style="display:flex;align-items:center;gap:0.65rem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            1. Privacy Policy — Zero-Data Promise
+          </span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <h3 style="color:var(--accent);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">You cannot leak what you do not have.</h3>
+          <p>FrankPass is a truly stateless application. Our privacy policy is simple because our data collection is zero.</p>
+          <ul style="margin-top:0.75rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.5rem">
+            <li><strong>No Databases:</strong> We do not maintain a user database. We do not store your name, email address, IP address, Secret Key, or any generated passwords — because we never receive them.</li>
+            <li><strong>On-Device Cryptography:</strong> All password generation happens locally inside your browser using the Web Cryptography API. The mathematical operation executes in your device's RAM and is cleared within 15 seconds of generation, or when you close the tab.</li>
+            <li><strong>No Trackers:</strong> We do not use third-party analytics trackers, retargeting pixels, or advertising networks on the core generator.</li>
+            <li><strong>Local Storage Only:</strong> If you choose to save settings (e.g., platform preferences), that data is saved locally on your device via browser storage — not on our servers. You control it, and you can clear it at any time through your browser settings.</li>
+            <li><strong>Payment Data:</strong> Pro plan payments are processed by our third-party payment processor (Dodo Payments). FrankPass never sees or stores your card details. Refer to Dodo's privacy policy for their data handling practices.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ── 2. Terms of Service ── -->
+      <details class="faq-item" id="terms">
+        <summary>
+          <span style="display:flex;align-items:center;gap:0.65rem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            2. Terms of Service
+          </span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <h3 style="color:var(--accent);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">The Rules of the Math</h3>
+          <p>By using FrankPass, you agree to the following terms:</p>
+          <ul style="margin-top:0.75rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.5rem">
+            <li><strong>The Tool is Free to Use:</strong> The FrankPass core web generator is provided entirely free of charge, with no account required. This will not change.</li>
+            <li><strong>Secret Key Responsibility:</strong> FrankPass cannot reset your Secret Key because we do not know what it is — ever. If you forget your Secret Key, you will generate different passwords and lose access to previously set accounts. You are solely responsible for choosing, remembering, and protecting your Secret Key.</li>
+            <li><strong>Fair Use:</strong> The generator is provided for personal and professional security use. You may not attempt to reverse-engineer the FrankPass algorithm, scrape or automate requests to the site, or use FrankPass for any malicious, fraudulent, or unlawful purpose.</li>
+            <li><strong>Intellectual Property:</strong> FrankPass is the intellectual property of Master Manikant Yadav. Personal use is permitted. Redistribution, republishing, or commercial resale under a different name is strictly prohibited without written permission.</li>
+            <li><strong>Modifications:</strong> We reserve the right to update these terms at any time. Continued use of FrankPass after any changes constitutes acceptance of the updated terms.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ── 3. Limited Liability & Disclaimer ── -->
+      <details class="faq-item" id="disclaimer">
+        <summary>
+          <span style="display:flex;align-items:center;gap:0.65rem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            3. Legal Disclaimer &amp; Limitation of Liability
+          </span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <h3 style="color:var(--accent);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">Security is a Shared Responsibility</h3>
+          <ul style="padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem">
+            <li><strong>No Guarantee of Absolute Security:</strong> While FrankPass generates mathematically strong passwords using industry-standard cryptographic primitives (PBKDF2 with HMAC-SHA512, 1,000,000 iterations), no security system is 100% impenetrable. Human error — such as disclosing your Secret Key in a phishing attack, using a weak Secret Key, or operating on a compromised device — is outside our control and responsibility.</li>
+            <li><strong>Limitation of Liability:</strong> Under no circumstances shall FrankPass, its founder Master Manikant Yadav, or FrankBase Digital be held liable for any data breaches, financial losses, account lockouts, or unauthorized access to your personal accounts arising from use of this tool. You use FrankPass as a mathematical utility, at your own discretion and risk.</li>
+            <li><strong>Educational Content:</strong> The ebooks, masterclasses, and written guides provided by FrankPass are for educational purposes only, to help you build stronger digital security habits. They do not constitute formal legal advice, IT enterprise consulting, or professional security certification.</li>
+            <li><strong>"As-Is" Service:</strong> FrankPass is provided "as is" without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- ── 4. Refund Policy ── -->
+      <details class="faq-item" id="refunds">
+        <summary>
+          <span style="display:flex;align-items:center;gap:0.65rem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            4. Payments &amp; Refund Policy
+          </span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <h3 style="color:var(--accent);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">All Sales Final on Digital Products</h3>
+          <p>Because FrankPass Pro licence keys and digital products (ebooks, guides, masterclasses) are delivered immediately and contain proprietary content that becomes accessible upon delivery, <strong>all sales are final</strong>. We do not offer refunds once a licence key has been issued or a digital product has been accessed or downloaded.</p>
+          <p style="margin-top:0.75rem"><strong>Technical Issues:</strong> If you experience a technical problem receiving your licence key or digital product, contact us immediately via <a href="https://x.com/iamfrankpass" target="_blank" rel="noopener noreferrer">X @iamfrankpass</a> or <a href="https://reddit.com/r/FrankPass" target="_blank" rel="noopener noreferrer">r/FrankPass</a>. Our support team will manually deliver your purchase.</p>
+          <p style="margin-top:0.75rem"><strong>Payment Processing:</strong> Payments are processed by Dodo Payments. FrankPass does not store, process, or have access to your payment card details at any time.</p>
+          <p style="margin-top:0.75rem"><strong>Chargebacks:</strong> Initiating a fraudulent chargeback for a product you have accessed constitutes fraud. We will dispute all fraudulent chargebacks with full documentation.</p>
+        </div>
+      </details>
+
+      <!-- ── 5. Affiliate & Extension Licence ── -->
+      <details class="faq-item" id="affiliate">
+        <summary>
+          <span style="display:flex;align-items:center;gap:0.65rem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            5. Affiliate Terms &amp; Extension Licence
+          </span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <h3 style="color:var(--accent);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">Partnering with FrankPass</h3>
+          <p><strong>Affiliate Programme:</strong> If you join our Affiliate Programme, you agree to represent FrankPass honestly and accurately. You may not make false claims (e.g., "FrankPass stops all viruses" or "FrankPass is certified by [unverified body]"), run deceptive advertisements, or engage in spam marketing. Affiliate payouts are processed according to the timeline specified in your partner dashboard. We reserve the right to terminate affiliate partnerships for violations of these terms or for conduct inconsistent with FrankPass's values.</p>
+          <p style="margin-top:0.75rem"><strong>Extension Licence:</strong> A FrankPass Pro licence key is issued for personal use. Each licence key activates the extension on up to the number of devices specified by your plan tier. You may not share, resell, or distribute your licence key. Platinum plan holders may use their licence across the specified number of profiles for family or team use as outlined in the plan description. Misuse of a licence key results in immediate revocation without refund.</p>
+        </div>
+      </details>
+
+      <!-- ── 6. Security Scope ── -->
+      <details class="faq-item" id="security" style="border-color:rgba(16,185,129,0.25)">
+        <summary>
+          <span style="display:flex;align-items:center;gap:0.65rem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            6. Security Architecture &amp; Scope
+          </span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <h3 style="color:var(--success);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">What FrankPass Protects — and What It Doesn't</h3>
+          <p><strong>What FrankPass secures:</strong> The password generation and storage layer. By storing nothing, we eliminate the most common attack vector — server-side breaches. FrankPass uses PBKDF2 with HMAC-SHA512 at 1,000,000 iterations, running exclusively via the browser-native Web Cryptography API. These are NIST-approved, industry-standard cryptographic primitives. No custom or proprietary cryptography is used.</p>
+          <p style="margin-top:0.75rem"><strong>What FrankPass cannot protect against:</strong> Keyloggers or malware on your local device; phishing attacks where you voluntarily enter your Secret Key on a fake website; shoulder surfing; a weak or guessable Secret Key; browser extensions with malicious permissions; or any attack that occurs after you copy and paste your generated password.</p>
+          <p style="margin-top:0.75rem"><strong>Responsible Disclosure:</strong> If you discover a security vulnerability in FrankPass, please report it responsibly via direct message to <a href="https://x.com/iamfrankpass" target="_blank" rel="noopener noreferrer">@iamfrankpass on X</a> before making any public disclosure. We take security reports seriously and will respond promptly.</p>
+          <p style="margin-top:0.75rem">Want to understand the cryptographic details in full? <a href="/docs.html#security-model">Read the Security Model chapter in our documentation &rarr;</a></p>
+        </div>
+      </details>
+
     </div>
 
-    <div class="container">
-        <!-- ================= HEADER SECTION ================= -->
-        <header>
-            <div class="logo-container">
-                <a href="/" style="text-decoration: none; color: inherit;">
-                    <h1><span class="FrankPass-text">Frank</span>Pass</h1>
-                </a>
-            </div>
-            <p>Transparency and security are our core values.</p>
-        </header>
-
-        <!-- ================= MAIN CONTENT SECTION ================= -->
-        <main class="glass-panel content-page">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;"><span class="FrankPass-text">Legal & Safety</span> Hub</h2>
-                <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
-                    Review our technical architecture, policies, and terms of use below.
-                </p>
-            </div>
-
-            <style>
-                .faq-item {
-                    background: rgba(255, 255, 255, 0.03);
-                    border: 1px solid rgba(255, 255, 255, 0.05);
-                    border-radius: 16px;
-                    margin-bottom: 1rem;
-                    overflow: hidden;
-                    transition: all 0.3s ease;
-                }
-                .faq-item[open] {
-                    background: rgba(99, 102, 241, 0.1);
-                    border-color: var(--accent-primary);
-                }
-                .faq-item summary {
-                    padding: 1.5rem;
-                    font-size: 1.15rem;
-                    font-weight: 600;
-                    color: var(--text-primary);
-                    cursor: pointer;
-                    list-style: none;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-                .faq-item summary::-webkit-details-marker {
-                    display: none;
-                }
-                .faq-item summary::after {
-                    content: '+';
-                    font-size: 1.5rem;
-                    color: var(--accent-primary);
-                    transition: transform 0.3s;
-                }
-                .faq-item[open] summary::after {
-                    content: '&#8722;';
-                    transform: rotate(180deg);
-                }
-                .faq-content {
-                    padding: 0 1.5rem 1.5rem;
-                    color: var(--text-secondary);
-                    line-height: 1.6;
-                    text-align: left;
-                }
-                .faq-content h3 {
-                    color: var(--accent-focus);
-                    margin-top: 0;
-                    margin-bottom: 0.8rem;
-                    font-size: 1rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                }
-                .faq-content ul {
-                    margin-top: 0.5rem;
-                    margin-left: 1.5rem;
-                }
-                .faq-content li {
-                    margin-bottom: 0.5rem;
-                }
-            </style>
-
-            <details class="faq-item" id="privacy">
-                <summary><span style="display:flex;align-items:center;"><ion-icon name="lock-closed-outline" style="margin-right:10px;"></ion-icon> 1. Privacy Policy (Zero-Data Promise)</span></summary>
-                <div class="faq-content">
-                    <h3>You cannot leak what you do not have.</h3>
-                    <p>FrankPass is a truly stateless application.</p>
-                    <ul>
-                        <li><strong>No Databases:</strong> We do not have a user database. We do not store your name, email, IP address, Master Key, or generated passwords.</li>
-                        <li><strong>On-Device Cryptography:</strong> All password generation happens locally inside your browser using JavaScript. The mathematical operation executes in your device's RAM and disappears the moment you close the tab or within 15 seconds.</li>
-                        <li><strong>No Trackers:</strong> We do not use third-party analytics trackers or retargeting pixels on the core generator.</li>
-                        <li><strong>Local Storage Only:</strong> If you enable Notification Preferences or save basic settings, that data is saved locally on your hardware via HTML5 LocalStorage, not on our cloud.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="faq-item" id="terms">
-                <summary><span style="display:flex;align-items:center;"><ion-icon name="document-text-outline" style="margin-right:10px;"></ion-icon> 2. Terms of Service</span></summary>
-                <div class="faq-content">
-                    <h3>The Rules of the Math</h3>
-                    <p>By using FrankPass, you agree to these simple terms:</p>
-                    <ul>
-                        <li><strong>The Tool is Free to Use:</strong> The FrankPass core generator is provided entirely free of charge.</li>
-                        <li><strong>Master Key Responsibility:</strong> FrankPass cannot reset your Master Key because we do not know what it is. If you forget your Master Key, you will generate different output passwords. You are solely responsible for memorizing your Master Key.</li>
-                        <li><strong>Fair Use:</strong> The generator is provided for personal and professional security use. You may not attempt to reverse-engineer the proprietary FrankPass algorithm, scrape the site, or use it for malicious purposes.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="faq-item" id="disclaimer">
-                <summary><span style="display:flex;align-items:center;"><ion-icon name="alert-circle-outline" style="margin-right:10px;"></ion-icon> 3. Legal Disclaimer & Liability</span></summary>
-                <div class="faq-content">
-                    <h3>Security is a Shared Responsibility</h3>
-                    <ul>
-                        <li><strong>No Guarantee of Absolute Security:</strong> While FrankPass generates mathematically secure passwords exceeding industry standards (PBKDF2/SHA-256), no system is 100% impenetrable. Human error (like giving away your Master Key in a phishing attack) is outside our control.</li>
-                        <li><strong>Limitation of Liability:</strong> Under no circumstances shall FrankPass, its founder Master Manikant Yadav, or FrankBase Digital be held liable for any data breaches, financial losses, or unauthorized access to your personal accounts. You use this mathematical tool at your own discretion.</li>
-                        <li><strong>Educational Purpose:</strong> The ebooks, masterclasses, and guides provided are for educational purposes to help you build a stronger digital defense. They do not constitute formal legal or IT enterprise consulting.</li>
-                    </ul>
-                </div>
-            </details>
-
-            <details class="faq-item" id="refunds">
-                <summary><span style="display:flex;align-items:center;"><ion-icon name="card-outline" style="margin-right:10px;"></ion-icon> 4. Refund Policy (Information Products)</span></summary>
-                <div class="faq-content">
-                    <h3>Ebooks & Digital Masterclasses</h3>
-                    <p>Because our paid content (ebooks, guides, masterclasses) is delivered instantly and contains immediately actionable proprietary knowledge, <strong>all sales are final</strong>. We do not offer refunds once the digital product has been downloaded or accessed. If you experience a technical issue receiving your file, our support team will manually deliver it to you.</p>
-                </div>
-            </details>
-
-            <details class="faq-item" id="affiliate">
-                <summary><span style="display:flex;align-items:center;"><ion-icon name="people-outline" style="margin-right:10px;"></ion-icon> 5. Affiliate & Reseller Terms</span></summary>
-                <div class="faq-content">
-                    <h3>Partnering with FrankPass</h3>
-                    <p>If you join our Affiliate Program, you agree to represent FrankPass honestly. You may not make false claims ("FrankPass stops all viruses") or run deceptive ads. Affiliate payouts are processed according to the timeline specified in your partner dashboard, and we reserve the right to terminate affiliates engaging in spam or unethical marketing.</p>
-                </div>
-            </details>
-
-            <details class="faq-item" id="security" style="border-color: rgba(16, 185, 129, 0.3);">
-                <summary><span style="display:flex;align-items:center;color: #10b981;"><ion-icon name="lock-closed-outline" style="margin-right:10px;"></ion-icon> 6. Security Architecture (FAQ)</span></summary>
-                <div class="faq-content">
-                    <h3>Deep Dive</h3>
-                    <p>Want to understand exactly how the deterministic cryptography works, the PBKDF2 hashing process, and why it's mathematically unhackable? <a href="/index.html#faq" style="color: var(--accent-primary);">Read our full technical FAQ here.</a></p>
-                </div>
-            </details>
-            
-            <div style="margin-top: 4rem; text-align: center;">
-                <a href="/" class="btn-primary" style="display: inline-flex; width: auto; padding: 0.8rem 2rem;">
-                    <ion-icon name="arrow-back-outline"></ion-icon> Back to Generator
-                </a>
-            </div>
-        </main>
-        
-        <!-- ================= FOOTER SECTION ================= -->
-        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
-            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
-                <span id="footer-toggle-label">Show Site Footer</span>
-                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
-            </button>
-            
-            <div id="footer-body" style="display:none; width: 100%; margin-top:2rem;">
-                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
-                    <a href="/">Home</a>
-                    <a href="/about-us">About Us</a>
-                    <a href="/contact-us">Contact Us</a>
-                    <a href="/legal">Legal</a>
-                    <a href="/meet-the-founder-MasterManikant">Meet the Founder</a>
-                </div>
-                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
-                    <a href="/why-stateless">Why Stateless?</a>
-                    <a href="/guide">Guides &amp; Ebooks</a>
-                    <a href="/faq">FAQ</a>
-                    <a href="/support-us">Support Us &#128153;</a>
-                </div>
-
-                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
-                    <!-- Founder Socials -->
-                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
-                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
-                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
-                            <a href="https://x.com/MasterManikant" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                            </a>
-                            <a href="https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h" title="WhatsApp Channel" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                            <a href="https://linkedin.com/in/mastermanikant" title="LinkedIn" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
-                            <a href="https://instagram.com/mastermanikant" target="_blank" title="Instagram" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
-                        </div>
-                    </div>
-
-                    <!-- Product Socials -->
-                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
-                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
-                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
-                            <a href="https://x.com/iamfrankpass" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                            </a>
-                            <a href="https://youtube.com/@iamfrankpass" target="_blank" title="YouTube" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
-                            <a href="https://instagram.com/iamfrankpass" target="_blank" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
-                            <a href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" title="WhatsApp Channel" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <p>Serverless Cryptography. Zero Database. Pure Math.</p>
-                    <p>&copy; <span id="copyright-year"></span> FrankPass &mdash; Designed &amp; Developed by <a href="/meet-the-founder-MasterManikant" style="color: var(--accent-primary);">Master Manikant Yadav</a></p>
-                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
-                </div>
-            </div>
-        </footer>
+    <!-- Back CTA -->
+    <div style="margin-top:3rem;text-align:center">
+      <a href="/" class="btn-primary" aria-label="Return to the FrankPass generator">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Back to Generator
+      </a>
+      <span style="margin:0 1rem;color:var(--border)">|</span>
+      <a href="/about-us.html#contact" class="btn-ghost" aria-label="Contact FrankPass">Contact Us</a>
     </div>
 
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="/particles.js"></script>
-    <script src="/footer.js"></script>
+    <!-- Legal footer note -->
+    <div style="margin-top:2.5rem;padding:1.25rem;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:12px;font-size:0.78rem;color:var(--text-muted);line-height:1.6;text-align:center">
+      FrankPass and all associated content, UI design, and intellectual property are the property of Master Manikant Yadav / FrankBase Digital. Personal use is permitted. Unauthorized reproduction, redistribution, or commercial use of any part of this site or its tools without express written permission is strictly prohibited and will be pursued legally.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer — no mobile bottom nav on this page -->
+<div id="site-footer"></div>
+
+<script src="/frankpass-config.js"></script>
+<script src="/footer.js"></script>
+<script>
+/* ── Header scroll ── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+/* ── Hamburger ── */
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+});
+
+/* ── One-open-at-a-time accordion ── */
+const items = document.querySelectorAll('.faq-item');
+items.forEach(item => {
+  item.addEventListener('toggle', () => {
+    if (item.open) {
+      items.forEach(other => {
+        if (other !== item && other.open) other.open = false;
+      });
+    }
+  });
+});
+</script>
 </body>
 </html>
-
-
-
-

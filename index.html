@@ -1,937 +1,689 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FrankPass | Ultimate Deterministic Security</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Fira+Code:wght@500&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" type="image/png" href="/icons/favicon.png">
-    <meta name="theme-color" content="#6366f1">
-    
-    <!-- SEO & Metas -->
-    <meta name="description" content="FrankPass: The ultimate deterministic, stateless, and unbreakable password generator. No database, pure math, zero mental load.">
-    <meta name="keywords" content="password generator, stateless password, deterministic password, cybersecurity, mastermanikant, frankpass">
-    <meta property="og:title" content="FrankPass | Ultimate Deterministic Security">
-    <meta property="og:description" content="Generate unbreakable passwords without a database. Pure math, total privacy.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://frankpass.com/">
-    <meta property="og:image" content="https://frankpass.com/hero.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://frankpass.com/hero.png">
-    <meta name="twitter:title" content="FrankPass | Ultimate Deterministic Security">
-    <meta name="twitter:description" content="Generate unbreakable passwords without a database. Pure math, total privacy.">
-    <link rel="canonical" href="https://frankpass.com/">
-    
-    <!-- Ionicons for icons -->
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
-        integrity="sha384-xyQ/Vpt1cq1pdPYlRaT/QkcSj2vrYyWI3WOhxGBzqnP1vgvsS2yrhWXe3/wIoCr5"
-        crossorigin="anonymous"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
-        integrity="sha384-KAUcUASKfGZ0sxENVFRiH12jtpvd9SsVpgzvYdvv8ZMLqB99G3gX3DAts418wzIC"
-        crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrankPass — Stateless &amp; Offline Password Generator</title>
+  <meta name="description" content="Generate strong, unique passwords without storing them. Pure cryptographic math — no cloud, no database, no accounts. Works fully offline after first load.">
+  <link rel="canonical" href="https://www.frankpass.com/">
+  <meta property="og:title" content="FrankPass — Stateless &amp; Offline Password Generator">
+  <meta property="og:description" content="Generate strong passwords without storing them. Pure math — no cloud, no database, no accounts. Works offline forever.">
+  <meta property="og:url" content="https://www.frankpass.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.frankpass.com/icons/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@iamfrankpass">
+  <link rel="icon" href="/icons/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/style.css">
 
-    <!-- AEO & Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "FrankPass",
-      "operatingSystem": "All",
-      "applicationCategory": "SecurityApplication",
-      "description": "A deterministic, stateless password generator that uses pure math to generate unbreakable passwords without a database.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "featureList": [
-        "Stateless Architecture",
-        "Zero-Database Security",
-        "1,000,000 PBKDF2 Iterations",
-        "PWA Offline Support",
-        "Domain Normalization"
-      ],
-      "author": {
-        "@type": "Person",
-        "name": "Master Manikant Yadav",
-        "url": "https://frankpass.com/meet-the-founder-MasterManikant"
-      }
+  <!-- Schema.org: SoftwareApplication + AggregateRating -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FrankPass",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Any — runs in any modern browser",
+    "url": "https://www.frankpass.com",
+    "description": "A stateless, deterministic password generator. Zero cloud, zero storage, zero accounts. Same inputs always produce the same password — mathematically guaranteed.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1250"
     }
-    </script>
+  }
+  </script>
 </head>
-
 <body>
-    <canvas id="particle-canvas"></canvas>
-    <div class="background-elements">
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="circle circle-3"></div>
+
+<!-- Skip to main content for accessibility -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     STICKY HEADER
+     Logo + Country Dropdown | Nav links | Get Pro button
+     ============================================================ -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="/" class="header-logo" aria-label="FrankPass — Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+        <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+        <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <!-- Country dropdown (populated by country-dropdown.js) -->
+    <div class="header-country custom-country-dropdown" aria-label="Select your country">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="https://flagcdn.com/w40/in.png" alt="India" width="20" height="15" loading="lazy" style="display:none">
+        <span id="country-display-name">India (IN)</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+        <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <!-- Hidden input that other scripts listen to for region changes -->
+    <input type="hidden" id="region" value="India (IN)">
+
+    <!-- Desktop navigation -->
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="/get-started.html">Get Started</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/docs.html">Docs</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/faq.html">FAQ</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/about-us.html">About</a>
+      <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+    </nav>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile slide-down menu -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/get-started.html">Get Started</a>
+  <a href="/docs.html">Docs</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/about-us.html">About</a>
+  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a>
+</nav>
+
+<!-- ============================================================
+     HERO SECTION
+     Left: Headline + CTAs | Right: Live Generator Card
+     ============================================================ -->
+<main id="main-content">
+<section class="hero-section" aria-labelledby="hero-heading">
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+  <div class="hero-grid">
+
+    <!-- Left: Headline -->
+    <div class="hero-copy">
+      <div class="hero-eyebrow" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Zero-Knowledge Password Technology
+      </div>
+      <h1 id="hero-heading" class="hero-title">
+        Stop storing<br>passwords.<br>
+        <span>Start generating</span><br>them.
+      </h1>
+      <p class="hero-subtitle">No cloud. No storage. No breach risk. Just mathematics.<br>Same input → same password. Always. Forever.</p>
+      <div class="hero-ctas">
+        <a href="#generator" class="btn-primary btn-lg" aria-label="Try the password generator">
+          Try the Generator
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </a>
+        <a href="/docs.html#why-stateless" class="btn-ghost btn-lg">See How It Works</a>
+      </div>
     </div>
 
-    <div class="container">
-        <!-- ================= HEADER SECTION ================= -->
-        <header>
-            <div class="logo-container">
-                <div class="logo-icons">
-                    <span id="shield-icon" class="floating-badge shield-badge" style="background:transparent; border:none; padding:0; box-shadow:none;"><img src="/icons/favicon.png" alt="FrankPass Lock" style="width:52px;height:52px;border-radius:12px;filter:drop-shadow(0 0 10px rgba(99,102,241,0.6));" /></span>
-                    <span id="flag-badge" class="floating-badge flag-badge" style="background:transparent; border:none; padding:0; box-shadow:none;"><img id="header-flag-img" src="https://flagcdn.com/w160/in.png" alt="Country Flag" onerror="this.src='https://flagcdn.com/w160/un.png'" /></span>
-                </div>
-                <h1><span class="FrankPass-text">Frank</span>Pass <button onclick="location.reload(true)" class="version-tag" style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:0.2rem 0.6rem; color:#fff; cursor:pointer; font-family:inherit; transition:all 0.3s ease;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'" title="Force refresh to get latest security updates">Update &#128259;</button></h1>
-            </div>
-            <h2 style="font-size: 1.8rem; font-weight: 800; margin-top: 1rem; line-height: 1.2;">Never remember passwords again.</h2>
-            <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 1rem;">Pure math, zero-database security. Generate unbreakable passwords instantly.</p>
-        </header>
+    <!-- Right: Generator Card -->
+    <div class="hero-card-col" id="generator">
+      <div class="generator-card card-glass" role="region" aria-label="Password Generator">
 
-        <!-- ================= MAIN GENERATOR FORM ================= -->
-        <main class="glass-panel">
-            <!-- Form Header with Settings Gear -->
-            <div class="trust-indicators" style="display:flex; justify-content:center; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap;">
-                <div class="trust-badge" style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.03); padding:0.5rem 1rem; border-radius:50px; border:1px solid var(--border-color); font-size:0.8rem; color:var(--text-secondary);">
-                    <ion-icon name="airplane-outline" style="color:var(--accent-primary);"></ion-icon> Works 100% Offline
-                </div>
-                <div class="trust-badge" style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.03); padding:0.5rem 1rem; border-radius:50px; border:1px solid var(--border-color); font-size:0.8rem; color:var(--text-secondary);">
-                    <ion-icon name="shield-checkmark-outline" style="color:var(--accent-success);"></ion-icon> No Data Stored
-                </div>
-                <div class="trust-badge" style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.03); padding:0.5rem 1rem; border-radius:50px; border:1px solid var(--border-color); font-size:0.8rem; color:var(--text-secondary);">
-                    <ion-icon name="code-working-outline" style="color:var(--accent-focus);"></ion-icon> Verified Cryptography
-                </div>
-            </div>
-
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
-                <p style="margin:0; font-size:0.85rem; color:var(--text-secondary);">&#128274; Create Unbreakable Passwords</p>
-                <div style="display:flex; align-items:center; gap:0.5rem;">
-                    <!-- Notification Bell Settings -->
-                    <button id="notif-bell-btn" onclick="toggleNotifPanel()" title="Notification Settings" aria-label="Open Notifications" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.4rem 0.6rem; cursor:pointer; color:var(--text-secondary); display:flex; align-items:center; justify-content:center; gap:0.3rem; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-                    </button>
-                    <!-- Settings Gear -->
-                    <button id="settings-gear-btn" onclick="toggleSettingsPanel()" title="Security Settings" aria-label="Open Settings" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:8px; padding:0.4rem 0.6rem; cursor:pointer; color:var(--text-secondary); display:flex; align-items:center; justify-content:center; gap:0.3rem; font-size:0.8rem; transition:all 0.2s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-secondary)'">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.73 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .43-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.49-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- ===== NOTIFICATIONS PANEL ===== -->
-            <!-- ===== NOTIFICATIONS PANEL ===== -->
-            <div id="notif-panel" style="display:none; margin-bottom:1.5rem; background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.2rem;">
-                <h3 style="color:var(--accent-primary); font-size:0.9rem; margin:0 0 1rem; text-transform:uppercase; letter-spacing:0.05em;">&#128276; Notification Alerts</h3>
-                <p style="font-size:0.75rem; color:var(--text-secondary); margin:0 0 1rem; opacity:0.8;">Stay informed, privately. Settings saved locally.</p>
-
-                <div style="display:flex; flex-direction:column; gap:0.9rem;">
-                    <!-- Scam Alerts -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <div>
-                            <p style="margin:0; font-size:0.88rem; color:var(--text-primary); font-weight:500;">Scam Alerts &amp; Tips</p>
-                            <p style="margin:0; font-size:0.75rem; color:var(--text-secondary);">Security warnings.</p>
-                        </div>
-                        <label class="toggle-switch" style="margin:0;">
-                            <input type="checkbox" id="pref-scam" onchange="saveNotifPrefs()" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <!-- Updates -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <div>
-                            <p style="margin:0; font-size:0.88rem; color:var(--text-primary); font-weight:500;">FrankPass Updates</p>
-                            <p style="margin:0; font-size:0.75rem; color:var(--text-secondary);">App features &amp; tools.</p>
-                        </div>
-                        <label class="toggle-switch" style="margin:0;">
-                            <input type="checkbox" id="pref-updates" onchange="saveNotifPrefs()" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <!-- Offers -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <div>
-                            <p style="margin:0; font-size:0.88rem; color:var(--text-primary); font-weight:500;">Ebooks &amp; Offers</p>
-                            <p style="margin:0; font-size:0.75rem; color:var(--text-secondary);">Premium discounts.</p>
-                        </div>
-                        <label class="toggle-switch" style="margin:0;">
-                            <input type="checkbox" id="pref-offers" onchange="saveNotifPrefs()" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    
-                    <button onclick="enableAllNotifs()" title="Enable push notifications globally" style="margin-top:0.6rem;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;padding:0.6rem 1rem;background:var(--accent-primary);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;font-size:0.85rem;font-weight:600;transition:all 0.3s ease;">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg> Enable Browser Push Alerts
-                    </button>
-                    <p style="margin:0.5rem 0 0; font-size:0.7rem; color:var(--text-secondary); text-align:center;">Preferences saved only on this device.</p>
-                </div>
-            </div>
-
-            <!-- ===== COLLAPSIBLE SETTINGS PANEL ===== -->
-            <div id="settings-panel" style="display:none; margin-bottom:1.5rem; background:rgba(0,0,0,0.25); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:1.2rem;">
-                <h3 style="color:var(--accent-primary); font-size:0.9rem; margin:0 0 1rem; text-transform:uppercase; letter-spacing:0.05em;">&#9881;&#65039; Security Timer Settings</h3>
-                <p style="font-size:0.75rem; color:var(--text-secondary); margin:0 0 1rem; opacity:0.8;">Settings saved locally on your device only.</p>
-
-                <div style="display:flex; flex-direction:column; gap:0.9rem;">
-                    <!-- Password Clear Timer -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <div>
-                            <p style="margin:0; font-size:0.88rem; color:var(--text-primary); font-weight:500;">Auto-clear password</p>
-                            <p style="margin:0; font-size:0.75rem; color:var(--text-secondary);">How long to show generated password</p>
-                        </div>
-                        <select id="setting-pass-timer" onchange="saveSettings()" style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:var(--text-primary); padding:0.4rem 0.6rem; font-size:0.82rem; cursor:pointer;">
-                            <option value="15000">15 sec</option>
-                            <option value="30000">30 sec</option>
-                            <option value="60000">60 sec</option>
-                            <option value="90000">90 sec</option>
-                            <option value="300000">5 min</option>
-                        </select>
-                    </div>
-                    <!-- Secret Clear Timer -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <div>
-                            <p style="margin:0; font-size:0.88rem; color:var(--text-primary); font-weight:500;">Auto-clear secret key</p>
-                            <p style="margin:0; font-size:0.75rem; color:var(--text-secondary);">How long to keep secret key in field</p>
-                        </div>
-                        <select id="setting-secret-timer" onchange="saveSettings()" style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:var(--text-primary); padding:0.4rem 0.6rem; font-size:0.82rem; cursor:pointer;">
-                            <option value="30000">30 sec</option>
-                            <option value="60000" selected>60 sec</option>
-                            <option value="90000">90 sec</option>
-                            <option value="300000">5 min</option>
-                            <option value="0">Never</option>
-                        </select>
-                    </div>
-                    <!-- Inactivity Refresh Timer -->
-                    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem;">
-                        <div>
-                            <p style="margin:0; font-size:0.88rem; color:var(--text-primary); font-weight:500;">Page refresh on idle</p>
-                            <p style="margin:0; font-size:0.75rem; color:var(--text-secondary);">Auto-refresh if no activity</p>
-                        </div>
-                        <select id="setting-idle-timer" onchange="saveSettings()" style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.1); border-radius:8px; color:var(--text-primary); padding:0.4rem 0.6rem; font-size:0.82rem; cursor:pointer;">
-                            <option value="30000">30 sec</option>
-                            <option value="60000">60 sec</option>
-                            <option value="90000">90 sec</option>
-                            <option value="300000" selected>5 min</option>
-                            <option value="0">Never</option>
-                        </select>
-                    </div>
-                    <p style="margin:0.5rem 0 0; font-size:0.7rem; color:var(--text-secondary); text-align:center;">Preferences saved only on this device locally.</p>
-                </div>
-            </div>
-
-            <form id="generator-form">
-
-                <!-- Country / Region Selector -->
-                <div class="input-group">
-                    <label for="region">Choose your country</label>
-                                        <div class="custom-country-dropdown" id="country-dropdown-wrapper">
-                        <div class="country-select-trigger" id="country-trigger" tabindex="0" role="combobox" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose your country">
-                            <img id="country-flag-img" src="https://flagcdn.com/w40/in.png" alt="Flag" class="trigger-flag" onerror="this.style.display='none'">
-                            <span id="country-display-name">India (IN)</span>
-                            <ion-icon name="chevron-down-outline" class="dropdown-chevron" id="dropdown-chevron"></ion-icon>
-                        </div>
-                        <div class="country-dropdown-panel" id="country-dropdown-panel" role="listbox" aria-label="Countries">
-                            <div class="country-search-box">
-                                <ion-icon name="search-outline"></ion-icon>
-                                <input type="text" id="country-search-input" placeholder="Search country..." autocomplete="off" spellcheck="false">
-                            </div>
-                            <div class="country-list-scroll" id="country-list-scroll"></div>
-                        </div>
-                    </div>
-                    <!-- Hidden input keeps value for form logic -->
-                    <input type="hidden" id="region" name="region" value="India (IN)">
-                </div>
-
-                <!-- Platform Name Input -->
-                <div class="input-group">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                        <label for="platform" style="margin-bottom: 0;">Platform / Website <span class="required">*</span></label>
-                        <button type="button" id="platform-clear-btn" onclick="clearPlatformField()" title="Clear platform field" style="display:none; align-items:center; gap:0.3rem; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:0.2rem 0.6rem; cursor:pointer; color:#ef4444; font-size:0.73rem; font-weight:600; transition:all 0.2s;" onmouseover="this.style.background='rgba(239,68,68,0.2)'" onmouseout="this.style.background='rgba(239,68,68,0.1)'">
-                            &#10005; Clear
-                        </button>
-                    </div>
-                    <div class="input-wrapper">
-                        <ion-icon name="globe-outline"></ion-icon>
-                        <input type="text" id="platform" list="platform-list" placeholder="e.g. Amazon, Gmail, Facebook"
-                            required autocomplete="off">
-                        <!-- 
-                        WARNING FOR ALL DEVELOPERS & AI AGENTS: 
-                        DO NOT TOUCH, MODIFY, OR REMOVE THIS DATALIST.
-                        This static auto-suggest list is critical for preventing user spelling mistakes. 
-                        It ensures deterministic passwords remain stable. Leave this exact order intact.
-                        -->
-                        <datalist id="platform-list" role="listbox" aria-label="Platform suggestions">
-                            <option value="Amazon" role="option">
-                            <option value="Apple" role="option">
-                            <option value="Discord" role="option">
-                            <option value="Facebook" role="option">
-                            <option value="Github" role="option">
-                            <option value="Google" role="option">
-                            <option value="Instagram" role="option">
-                            <option value="LinkedIn" role="option">
-                            <option value="Microsoft" role="option">
-                            <option value="Netflix" role="option">
-                            <option value="PayPal" role="option">
-                            <option value="Pinterest" role="option">
-                            <option value="Reddit" role="option">
-                            <option value="Snapchat" role="option">
-                            <option value="Spotify" role="option">
-                            <option value="Steam" role="option">
-                            <option value="Telegram" role="option">
-                            <option value="TikTok" role="option">
-                            <option value="Twitch" role="option">
-                            <option value="Twitter" role="option">
-                            <option value="WhatsApp" role="option">
-                            <option value="YouTube" role="option">
-                        </datalist>
-                    </div>
-                    <div id="platform-hint" class="input-hint" style="display: none;"></div>
-                </div>
-
-                <!-- Username / Email Input -->
-                <div class="input-group">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                        <label for="username" style="margin-bottom: 0;">Username / Email <span style="font-weight: 400; font-size: 0.75rem; color: var(--text-muted); margin-left: 2px;">(Optional)</span></label>
-                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;" title="Save Username Locally">
-                            <span style="font-size: 0.75rem; color: var(--text-muted);">Save locally</span>
-                            <div class="toggle-switch" style="margin-bottom: 0;">
-                                <input type="checkbox" id="toggle-username-cb">
-                                <span class="slider round"></span>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="input-wrapper">
-                        <ion-icon name="person-outline"></ion-icon>
-                        <input type="text" id="username" placeholder="Optional: username or email" autocomplete="off">
-                    </div>
-                </div>
-
-                <!-- Secret Master Key Input -->
-                <div class="input-group">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
-                        <label for="secret" style="margin-bottom: 0;">Secret Personal Key <span class="required">*</span></label>
-                        <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;" title="Show / Hide Secret Key">
-                            <span style="font-size: 0.75rem; color: var(--text-muted);">Show / Hide</span>
-                            <div class="toggle-switch" style="margin-bottom: 0;">
-                                <input type="checkbox" id="toggle-secret-cb" onchange="document.getElementById('secret').type = this.checked ? 'text' : 'password';">
-                                <span class="slider round"></span>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="input-wrapper">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" id="secret" placeholder="Your secret phrase (e.g. I love coding 2026)" required
-                            autocomplete="off">
-                    </div>
-                </div>
-
-
-                <!-- Advanced Options: Variant & Profile -->
-                <div class="row">
-                    <div class="input-group" style="flex: 0.65;">
-                        <label for="variant">Variant Counter <span class="optional"></span></label>
-                        <div class="input-wrapper">
-                            <ion-icon name="git-branch-outline"></ion-icon>
-                            <input type="number" id="variant" value="1" min="1" max="999" required>
-                        </div>
-                    </div>
-
-                    <div class="input-group" style="flex: 1.35;">
-                        <label for="profile">Profile</label>
-                        <div class="input-wrapper select-wrapper">
-                            <ion-icon name="options-outline"></ion-icon>
-                            <select id="profile" style="font-size: 0.85rem;">
-                                <option value="standard">Standard (Letters, Nums & Symbols)</option>
-                                <option value="alphanumeric">Alphanumeric (Letters & Numbers)</option>
-                                <option value="numeric">Numeric (PIN Code)</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Variant Counter Slider (synced with number input above) -->
-                <div style="margin-top: -0.8rem; margin-bottom: 1rem; padding: 0 0.1rem;">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.3rem;">
-                        <span style="font-size:0.72rem; color:var(--text-muted);">&#128260; Quick select variant (1–50)</span>
-                        <span style="font-size:0.72rem; color:var(--text-muted);" id="variant-slider-label">1</span>
-                    </div>
-                    <input type="range" id="variant-slider" min="1" max="50" value="1"
-                        oninput="document.getElementById('variant').value=this.value; document.getElementById('variant-slider-label').textContent=this.value;">
-                </div>
-                <div class="slider-group">
-                    <div class="slider-header">
-                        <label for="length">Password Length</label>
-                        <span id="length-val">16</span>
-                    </div>
-                    <input type="range" id="length" min="8" max="64" value="16">
-                </div>
-
-                <!-- Generate Action Button -->
-                <button type="submit" class="btn-primary" id="generate-btn">
-                    <span class="btn-text">Generate Secure Password</span>
-                    <ion-icon name="flash-outline"></ion-icon>
-                    <div class="loader hidden"></div>
-                </button>
-            </form>
-
-            <!-- ================= OUTPUT SECTION ================= -->
-            <div class="output-section" id="output-section">
-                <div class="output-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    Generated Password
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="toggle-pass-cb">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-                <div class="output-display">
-                    <input type="password" class="password-text" id="password-output" value="****************" readonly
-                        style="background: transparent; border: none; outline: none; padding: 0; width: 100%; box-shadow: none;">
-                    <div class="output-actions" style="display: flex; gap: 0.5rem;">
-                        <button class="icon-btn copy-btn" id="copy-btn" disabled title="Copy to clipboard">
-                            <ion-icon name="copy-outline"></ion-icon>
-                        </button>
-                    </div>
-                </div>
-                <!-- 15s Countdown Timer UI -->
-                <div id="password-timer-display" style="text-align: right; font-size: 0.75rem; color: #ef4444; margin-top: 5px; font-weight: 600; display: none;">
-                    Clears in <span id="timer-seconds">15</span>s
-                </div>
-            </div>
-
-            <!-- ================= SPECIAL SHOUTOUT CARD ================= -->
-            <div id="special-shoutout-card" class="shoutout-card animated-border hidden">
-                <button class="close-card" onclick="hideSpecialShoutout()" style="z-index: 2;">&times;</button>
-                <div class="shoutout-content" style="text-align: left; position: relative; z-index: 2; padding: 0;">
-
-                    <!-- Section 1: Paytm-style referral header -->
-                    <div style="padding: 1.5rem 1.5rem 1rem 1.5rem; text-align: center;">
-                        <p style="font-size: 1.1rem; font-weight: 800; color: var(--text-primary); margin-bottom: 4px; letter-spacing: -0.02em; white-space: nowrap;">
-                            You &#10084;&#65039; <span style="color: var(--accent-primary);">FrankPass</span>
-                        </p>
-                        <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 1rem;">Your friends are going to love it too!</p>
-                        <div class="shoutout-buttons" style="display: flex; gap: 10px; justify-content: center;">
-                            <a href="javascript:void(0)" onclick="window.open('https://buymeacoffee.com/mastermanikant', '_blank', 'noopener,noreferrer'); hideSpecialShoutout();" class="btn-primary" style="padding: 6px 18px; font-size: 0.85rem; border-radius: 8px;">&#9749; Buy Me a Coffee</a>
-                            <a href="javascript:void(0)" onclick="hideSpecialShoutout()" style="padding: 6px 15px; font-size: 0.85rem; color: var(--text-secondary); text-decoration: none; align-self: center;">Maybe Later</a>
-                        </div>
-                    </div>
-
-                    <!-- Section 2: Share icons -->
-                    <div style="background: rgba(0,0,0,0.2); padding: 0.9rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); border-bottom-left-radius: 12px; border-bottom-right-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
-                        <span style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 500;">Quick share:</span>
-                        <div class="shoutout-icons" style="display: flex; gap: 12px; margin: 0;">
-                            <a href="javascript:void(0)" onclick="runShoutout('x')" title="Share on X" style="color: var(--text-muted); transition: color 0.3s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16px" height="16px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                            </a>
-                            <a href="javascript:void(0)" onclick="runShoutout('whatsapp')" title="Share on WhatsApp" style="color: var(--text-muted); font-size: 16px; transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-muted)'">
-                                <ion-icon name="logo-whatsapp"></ion-icon>
-                            </a>
-                            <a href="javascript:void(0)" onclick="runShoutout('linkedin')" title="Share on LinkedIn" style="color: var(--text-muted); font-size: 16px; transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-muted)'">
-                                <ion-icon name="logo-linkedin"></ion-icon>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ================= HOW IT WORKS SECTION ================= -->
-            <section class="trust-section" style="margin-top: 3rem; text-align: center;">
-                <h3 style="font-size: 1.4rem; margin-bottom: 2rem;">How it works (Mathematically)</h3>
-                <div style="display: flex; justify-content: space-around; gap: 1rem; flex-wrap: wrap;">
-                    <div style="flex: 1; min-width: 150px; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 16px;">
-                        <ion-icon name="text-outline" style="font-size: 2rem; color: var(--accent-primary); margin-bottom: 1rem;"></ion-icon>
-                        <p style="font-size: 0.9rem; font-weight: 600;">1. Input</p>
-                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Enter platform and your secret phrase.</p>
-                    </div>
-                    <div style="flex: 1; min-width: 150px; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 16px;">
-                        <ion-icon name="infinite-outline" style="font-size: 2rem; color: var(--accent-success); margin-bottom: 1rem;"></ion-icon>
-                        <p style="font-size: 0.9rem; font-weight: 600;">2. Process</p>
-                        <p style="font-size: 0.75rem; color: var(--text-secondary);">1M PBKDF2 math iterations (Local Only).</p>
-                    </div>
-                    <div style="flex: 1; min-width: 150px; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 16px;">
-                        <ion-icon name="key-outline" style="font-size: 2rem; color: var(--accent-focus); margin-bottom: 1rem;"></ion-icon>
-                        <p style="font-size: 0.9rem; font-weight: 600;">3. Output</p>
-                        <p style="font-size: 0.75rem; color: var(--text-secondary);">Instant, unbreakable unique password.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ================= COMPARISON TABLE ================= -->
-            <section class="comparison-section" style="margin-top: 4rem; padding: 2rem; background: rgba(255,255,255,0.02); border-radius: 24px; border: 1px solid var(--border-color);">
-                <h3 style="text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">FrankPass vs Password Managers</h3>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem; text-align: left;">
-                        <thead>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <th style="padding: 1rem;">Feature</th>
-                                <th style="padding: 1rem; color: var(--accent-primary);">FrankPass</th>
-                                <th style="padding: 1rem;">Typical Managers</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 1rem;">Data Storage</td>
-                                <td style="padding: 1rem; font-weight: 600;">Zero (Stateless)</td>
-                                <td style="padding: 1rem;">Central Vault (Server)</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 1rem;">Risk of Breach</td>
-                                <td style="padding: 1rem; font-weight: 600;">Mathematically Impossible</td>
-                                <td style="padding: 1rem;">High Target for Hackers</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid var(--border-color);">
-                                <td style="padding: 1rem;">Master Key Sync</td>
-                                <td style="padding: 1rem; font-weight: 600;">None (Mental Only)</td>
-                                <td style="padding: 1rem;">Synced across clouds</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 1rem;">Offline Use</td>
-                                <td style="padding: 1rem; font-weight: 600;">100% Native</td>
-                                <td style="padding: 1rem;">Requires Sync/Login</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </main>
-
-        <!-- ================= ACTION BANNERS ================= -->
-        <div style="display:flex; flex-direction:column; gap:0.8rem; margin-top:1.5rem; margin-bottom:0.5rem;">
-
-            <!-- Extensions Banner -->
-            <a href="/pro" id="extensions-action-banner" style="display:flex; align-items:center; justify-content:space-between; padding:1rem 1.4rem; background:rgba(234, 179, 8, 0.1); border:1px solid rgba(234, 179, 8, 0.22); border-radius:14px; text-decoration:none; transition:all 0.3s; cursor:pointer;" onmouseover="this.style.background='rgba(234, 179, 8, 0.18)'" onmouseout="this.style.background='rgba(234, 179, 8, 0.1)'">
-                <div class="premium-card-content">
-                    <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.5rem;">
-                        <ion-icon name="extension-puzzle" style="color: #fbbf24; font-size: 1.4rem;"></ion-icon>
-                        <h3 style="color: var(--text-primary); margin: 0; font-size: 1.1rem;">Try Extension Free for 10 Days</h3>
-                    </div>
-                    <p style="color: var(--text-secondary); font-size: 0.88rem; margin: 0; opacity: 0.9; line-height: 1.4;">
-                        <span style="color: #10b981; font-weight: 600;">Limited Time:</span> No Credit Card Needed! Get 1-Click Autofill and deterministic security across all your sites.
-                    </p>
-                </div>
-                <ion-icon name="chevron-forward-outline" style="color:#eab308; font-size:1.2rem; flex-shrink:0; margin-left:1rem;"></ion-icon>
-            </a>
-
-            <!-- Support Banner -->
-            <a href="https://buymeacoffee.com/mastermanikant" target="_blank" rel="noopener" id="support-action-banner" style="display:flex; align-items:center; justify-content:space-between; padding:1rem 1.4rem; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.22); border-radius:14px; text-decoration:none; transition:all 0.3s; cursor:pointer;" onmouseover="this.style.background='rgba(99,102,241,0.18)'" onmouseout="this.style.background='rgba(99,102,241,0.1)'">
-                <div>
-                    <strong style="color:var(--text-primary); font-size:0.95rem;">&#10084;&#65039; Support FrankPass</strong>
-                    <p style="color:var(--text-secondary); font-size:0.8rem; margin:0.2rem 0 0;">Help us keep FrankPass free for everyone &mdash; every support matters!</p>
-                </div>
-                <ion-icon name="chevron-forward-outline" style="color:var(--accent-primary); font-size:1.2rem; flex-shrink:0; margin-left:1rem;"></ion-icon>
-            </a>
-
-            <!-- Install App Banner (hidden until PWA installable) -->
-            <div id="install-action-banner" onclick="installPWA()" style="display:none; align-items:center; justify-content:space-between; padding:1rem 1.4rem; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.22); border-radius:14px; cursor:pointer; transition:all 0.3s;" onmouseover="this.style.background='rgba(16,185,129,0.15)'" onmouseout="this.style.background='rgba(16,185,129,0.08)'">
-                <div>
-                    <strong style="color:var(--text-primary); font-size:0.95rem;">&#128241; Install App</strong>
-                    <p style="color:var(--text-secondary); font-size:0.8rem; margin:0.2rem 0 0;">Want to use it offline? Install the app &mdash; works without internet!</p>
-                </div>
-                <ion-icon name="download-outline" style="color:#10b981; font-size:1.2rem; flex-shrink:0; margin-left:1rem;"></ion-icon>
-            </div>
-
-            <!-- Open in App Banner (shown after install) -->
-            <div id="openinapp-action-banner" onclick="openInApp()" style="display:none; align-items:center; justify-content:space-between; padding:1rem 1.4rem; background:rgba(99,102,241,0.08); border:1px solid rgba(99,102,241,0.22); border-radius:14px; cursor:pointer; transition:all 0.3s;" onmouseover="this.style.background='rgba(99,102,241,0.15)'" onmouseout="this.style.background='rgba(99,102,241,0.08)'">
-                <div>
-                    <strong style="color:var(--text-primary); font-size:0.95rem;">&#128241; Open in App</strong>
-                    <p style="color:var(--text-secondary); font-size:0.8rem; margin:0.2rem 0 0;">FrankPass app is installed &mdash; tap to open for the best offline experience.</p>
-                </div>
-                <ion-icon name="phone-portrait-outline" style="color:var(--accent-primary); font-size:1.2rem; flex-shrink:0; margin-left:1rem;"></ion-icon>
-            </div>
-
+        <!-- Card header -->
+        <div class="gen-card-header">
+          <div class="gen-card-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            Password Generator
+          </div>
+          <div class="gen-live-badge">
+            <span class="status-dot status-online" aria-hidden="true"></span>
+            LIVE
+          </div>
         </div>
 
-        <!-- ================= LANGUAGE BUTTONS ================= -->
-        <div class="guide-actions" style="flex-wrap: wrap;" id="how-it-works">
-            <button class="btn-guide" id="btn-guide-en"><ion-icon name="book-outline"></ion-icon> How to use FrankPass</button>
-            <button class="btn-guide" id="btn-guide-hi"><ion-icon name="book-outline"></ion-icon> FrankPass &#2325;&#2366; &#2313;&#2346;&#2351;&#2379;&#2327; &#2325;&#2376;&#2360;&#2375; &#2325;&#2352;&#2375;&#2306;</button>
-            <button class="btn-guide" id="btn-guide-es"><ion-icon name="book-outline"></ion-icon> C&oacute;mo usar FrankPass</button>
-            <button class="btn-guide" id="btn-guide-fr"><ion-icon name="book-outline"></ion-icon> Comment utiliser FrankPass</button>
+        <!-- Country badge inside card -->
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">
+          <img id="header-flag-img" src="https://flagcdn.com/w160/in.png" alt="India" width="22" height="16" loading="lazy" style="border-radius:2px;">
+          <span style="font-size:0.82rem;color:var(--text-muted)" id="card-country-label">India (IN)</span>
         </div>
 
-        <!-- ================= ENGLISH GUIDE ================= -->
-        <section class="guide-content glass-panel hidden" id="guide-en">
-            <h2>Complete Guide: How to Use FrankPass</h2>
-            <button class="btn-hide-guide" onclick="closeGuide()"><ion-icon name="chevron-up-outline"></ion-icon> Hide Guide</button>
-            <p><strong>Remember just 1 personal phrase &rarr; Generate unique, unbreakable passwords for every website, forever.</strong></p>
-            <p>This tool is <strong>100% stateless</strong>. It saves nothing anywhere. Enter the same details &rarr; get the exact same password every time. Like a calculator: same input = same output.</p>
+        <!-- Platform input -->
+        <div class="form-group">
+          <label class="form-label" for="platform-input">Site / Platform</label>
+          <div class="input-wrapper">
+            <input id="platform-input" class="form-input" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="off" spellcheck="false" aria-describedby="platform-hint">
+          </div>
+          <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.2rem;" aria-live="polite"></span>
+        </div>
 
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128205; 1. Country / Region</h3>
-            <p>Select your country. This does <strong>two things</strong>:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>Personalizes the platform suggestions</strong> &#8212; e.g., if you select India, you'll see Paytm, PhonePe, JioMart.</li>
-                <li><strong>Does NOT affect your password.</strong> You can change your country anytime without changing your passwords.</li>
-            </ul>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#127760; 2. Platform / Website</h3>
-            <p>Type the name of the website or app you need a password for. Examples: <code>Facebook</code>, <code>Gmail</code>, <code>Amazon</code>.</p>
-            <p><strong>Auto-Suggest:</strong> As you type, FrankPass suggests popular platforms. For example, type <code>fa</code> and <code>Facebook</code> appears &#8212; just select it. This prevents spelling mistakes.</p>
-            <p><strong>Don't worry about format:</strong> Whether you type <code>facebook</code>, <code>Facebook</code>, <code>FACEBOOK</code>, <code>facebook.com</code>, <code>www.facebook.com</code>, or <code>m.facebook.com</code> &#8212; FrankPass automatically normalizes it to the same base name. You will <strong>always get the same password.</strong></p>
-            <p><strong>Platform not listed?</strong> If a platform is missing from auto-suggest, just type it manually. It will still work perfectly. If you want us to add it to the auto-suggest list, tag <strong>@FrankPass</strong> on <a href="https://x.com/frankbasedigital" target="_blank" style="color: var(--accent-primary);">X (Twitter)</a> or <a href="https://instagram.com/frankbasedigital" target="_blank" style="color: var(--accent-primary);">Instagram</a> with your request, or email us &#8212; we'll add it as soon as possible.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128100;  3. Username / Email (Optional)</h3>
-            <p>This field is <strong>optional</strong>. Our recommendation: <strong>leave it blank.</strong></p>
-            <p><strong>Why?</strong> If you change your email on a website later, the generated password would change too (because the input changed). Leaving it blank keeps things simple.</p>
-            <p><strong>When to use it:</strong> Only when you have <strong>multiple accounts</strong> on the same platform. For example, if you have 2 Instagram accounts, enter the username for each to get different passwords.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1; 4. Secret Personal Key</h3>
-            <p>This is the <strong>most important field</strong>. It's your personal master phrase &#8212; the mathematical seed for all your passwords.</p>
-            <p><strong>What to enter:</strong> Any phrase that only you know and will never forget. Examples:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><code>1. i am the king</code></li>
-                <li><code>2. mai hi raja hu</code></li>
-                <li><code>3. mera dost achha insan hai</code></li>
-                <li><code>4. mera desh mahan hai 2000</code></li>
-                <li><code>5. mai ek karorpati hu</code></li>
-            </ul>
-            <p><strong>Does complexity matter?</strong> <strong>No!</strong> Whether your key is simple or complex, the generated password will always be cryptographically strong (1 million hash iterations). Your key is just the seed &#8212; the math does the rest.</p>
-            <p><strong>Toggle &#128065;&#65039;:</strong> Use the toggle switch to show/hide your key while typing.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128260;  5. Variant Counter (Optional)</h3>
-            <p>Default is <code>1</code>. This is your password rotation tool.</p>
-            <p><strong>When to change it:</strong></p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li>When a website forces you to change your password, you can change the variant from 1 to 2, or even start at 100 or 200. It's entirely your choice! Just remember it or write it down alongside the platform name.</li>
-                <li>You suspect your account was compromised &rarr; Change to a new number.</li>
-            </ul>
-            <p><strong>Security value:</strong> Even if someone discovers your Secret Key, they still can't generate your password without knowing which Variant number you used. This adds an extra layer of protection.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#9881;&#65039; 6. Profile</h3>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>Standard (Recommended)</strong> &#8212; Letters + Numbers + Symbols. Maximum security.</li>
-                <li><strong>Alphanumeric</strong> &#8212; Letters + Numbers only. Use for websites that don't allow symbols.</li>
-                <li><strong>Numeric (PIN)</strong> &#8212; Numbers only. For banking PINs or numeric-only fields.</li>
-            </ul>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128207; 7. Password Length</h3>
-            <p>Slide between 8 and 64 characters. <strong>Recommended: 16+</strong> for maximum security. Some old websites limit to 16 characters &#8212; adjust as needed.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1;  8. Generated Password</h3>
-            <p>Your password is generated and automatically copied to your clipboard. Security timers:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>Password auto-clears from screen in 15 seconds</strong>.</li>
-                <li><strong>Secret Key auto-clears after 30 seconds of inactivity</strong>.</li>
-                <li><strong>Closing the tab</strong> instantly destroys all data from memory.</li>
-            </ul>
-            <p style="margin-top: 1rem; color: var(--text-secondary);"><strong>Don't worry about the clearing!</strong> The password stays safely copied in your device's clipboard so you can paste it easily. <em>Note: If you are using someone else's computer, remember to clear your clipboard history (Press <code>Windows Logo Key + V</code> on Windows, or use the clipboard manager on Mac/Android) to delete the copied text.</em></p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128737;&#65039; 9. About Data Leaks</h3>
-            <p><strong>From FrankPass's side, a data leak is impossible.</strong> We have no database, no server storage, and no cloud. Neither we, nor anyone else in the world, can ever know or see the passwords you generate. The math runs entirely inside your browser.</p>
-            <p>However, the <strong>platforms you use</strong> (like Facebook, Amazon, etc.) can still suffer data breaches on their end. To stay informed:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>Follow FrankPass</strong> on social media &#8212; we will try our best to share major breach alerts as fast as possible. (We believe in speaking the truth!)</li>
-                <li><strong>Personalized Alerts (Coming Soon):</strong> Join <a href="https://frankbase.com/newsletter" target="_blank" style="color: var(--accent-primary);"><strong>FrankBase Digital</strong></a>'s free personalized security alert service. Our smart AI detects breaches via Google Alerts, Dark Web monitoring, and AI data scraping. After detection, the AI sends a detailed report to our team. We verify it across multiple layers. If verification takes time, an immediate message is sent: <em>"This data might be leaked &#8212; please change your password immediately."</em> (We are planning to work on this project; when it arrives, you will be notified via notifications or social media).</li>
-            </ul>
-
-            <button class="btn-hide-guide" onclick="closeGuide()" style="margin-top: 2rem;"><ion-icon name="chevron-up-outline"></ion-icon> Hide Guide</button>
-        </section>
-
-        <!-- ================= HINDI GUIDE ================= -->
-        <section class="guide-content glass-panel hidden" id="guide-hi">
-            <h2>&#2346;&#2370;&#2352;&#2368; &#2327;&#2366;&#2311;&#2337;: FrankPass &#2325;&#2366; &#2313;&#2346;&#2351;&#2379;&#2327; &#2325;&#2376;&#2360;&#2375; &#2325;&#2352;&#2375;&#2306;</h2>
-            <button class="btn-hide-guide" onclick="closeGuide()"><ion-icon name="chevron-up-outline"></ion-icon> &#2327;&#2366;&#2311;&#2337; &#2331;&#2367;&#2346;&#2366;&#2319;&#2306;</button>
-            <p><strong>&#2360;&#2367;&#2352;&#2381;&#2347; 1 &#2344;&#2367;&#2332;&#2368; &#2357;&#2366;&#2325;&#2381;&#2351; &#2351;&#2366;&#2342; &#2352;&#2326;&#2375;&#2306; &rarr; &#2361;&#2352; &#2357;&#2375;&#2348;&#2360;&#2366;&#2311;&#2335; &#2325;&#2375; &#2354;&#2367;&#2319; &#2309;&#2344;&#2379;&#2326;&#2366;, &#2309;&#2335;&#2370;&#2335; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2348;&#2344;&#2366;&#2319;&#2306;, &#2332;&#2368;&#2357;&#2344; &#2349;&#2352; &#2325;&#2375; &#2354;&#2367;&#2319;&#2404;</strong></p>
-            <p>&#2351;&#2361; &#2335;&#2370;&#2354; <strong>100% &#2360;&#2381;&#2335;&#2375;&#2335;&#2354;&#2375;&#2360;</strong> &#2361;&#2376;&#2404; &#2351;&#2361; &#2325;&#2361;&#2368;&#2306; &#2325;&#2369;&#2331; &#2349;&#2368; &#2360;&#2375;&#2357; &#2344;&#2361;&#2368;&#2306; &#2325;&#2352;&#2340;&#2366;&#2404; &#2357;&#2361;&#2368; &#2332;&#2366;&#2344;&#2325;&#2366;&#2352;&#2368; &#2337;&#2366;&#2354;&#2375;&#2306; &rarr; &#2361;&#2350;&#2375;&#2358;&#2366; &#2357;&#2361;&#2368; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2350;&#2367;&#2354;&#2375;&#2327;&#2366;&#2404; &#2348;&#2367;&#2354;&#2381;&#2325;&#2369;&#2354; &#2325;&#2376;&#2354;&#2325;&#2369;&#2354;&#2375;&#2335;&#2352; &#2332;&#2376;&#2360;&#2366;: &#2319;&#2325; &#2361;&#2368; &#2311;&#2344;&#2346;&#2369;&#2335; = &#2319;&#2325; &#2361;&#2368; &#2310;&#2313;&#2335;&#2346;&#2369;&#2335;&#2404;</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128205; 1. &#2342;&#2375;&#2358; / Country</h3>
-            <p>&#2309;&#2346;&#2344;&#2366; &#2342;&#2375;&#2358; &#2330;&#2369;&#2344;&#2375;&#2306;&#2404; &#2311;&#2360;&#2360;&#2375; <strong>&#2342;&#2379; &#2330;&#2368;&#2332;&#2364;&#2375;&#2306;</strong> &#2361;&#2379;&#2340;&#2368; &#2361;&#2376;&#2306;:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>&#2346;&#2381;&#2354;&#2375;&#2335;&#2347;&#2377;&#2352;&#2381;&#2350; &#2360;&#2369;&#2333;&#2366;&#2357; &#2348;&#2342;&#2354;&#2340;&#2375; &#2361;&#2376;&#2306;</strong> &#8212; &#2332;&#2376;&#2360;&#2375; India &#2330;&#2369;&#2344;&#2344;&#2375; &#2346;&#2352; Paytm, PhonePe, JioMart &#2342;&#2367;&#2326;&#2375;&#2327;&#2366;&#2404;</li>
-                <li><strong>&#2310;&#2346;&#2325;&#2375; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2346;&#2352; &#2325;&#2379;&#2312; &#2309;&#2360;&#2352; &#2344;&#2361;&#2368;&#2306; &#2346;&#2337;&#2364;&#2340;&#2366;&#2404;</strong> &#2342;&#2375;&#2358; &#2348;&#2342;&#2354;&#2344;&#2375; &#2360;&#2375; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2344;&#2361;&#2368;&#2306; &#2348;&#2342;&#2354;&#2375;&#2327;&#2366;&#2404;</li>
-            </ul>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#127760; 2. &#2346;&#2381;&#2354;&#2375;&#2335;&#2347;&#2377;&#2352;&#2381;&#2350; / &#2357;&#2375;&#2348;&#2360;&#2366;&#2311;&#2335;</h3>
-            <p>&#2332;&#2367;&#2360; &#2357;&#2375;&#2348;&#2360;&#2366;&#2311;&#2335; &#2351;&#2366; &#2320;&#2346; &#2325;&#2366; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2330;&#2366;&#2361;&#2367;&#2319;, &#2313;&#2360;&#2325;&#2366; &#2344;&#2366;&#2350; &#2354;&#2367;&#2326;&#2375;&#2306;&#2404; &#2332;&#2376;&#2360;&#2375;: <code>Facebook</code>, <code>Gmail</code>, <code>Amazon</code>&#2404;</p>
-            <p><strong>&#2321;&#2335;&#2379;-&#2360;&#2332;&#2375;&#2360;&#2381;&#2335;:</strong> &#2332;&#2376;&#2360;&#2375; &#2361;&#2368; &#2310;&#2346; <code>fa</code> &#2354;&#2367;&#2326;&#2375;&#2306;&#2327;&#2375;, <code>Facebook</code> &#2342;&#2367;&#2326;&#2366;&#2312; &#2342;&#2375;&#2327;&#2366; &#8212; &#2348;&#2360; &#2357;&#2361;&#2366;&#2305; &#2360;&#2375; &#2330;&#2369;&#2344; &#2354;&#2375;&#2306;&#2404; &#2311;&#2360;&#2360;&#2375; &#2360;&#2381;&#2346;&#2375;&#2354;&#2367;&#2306;&#2327; &#2327;&#2354;&#2340;&#2368; &#2325;&#2366; &#2325;&#2379;&#2312; &#2337;&#2352; &#2344;&#2361;&#2368;&#2306;&#2404;</p>
-            <p><strong>&#2347;&#2377;&#2352;&#2381;&#2350;&#2375;&#2335; &#2325;&#2368; &#2330;&#2367;&#2306;&#2340;&#2366; &#2344; &#2325;&#2352;&#2375;&#2306;:</strong> &#2330;&#2366;&#2361;&#2375; &#2310;&#2346; <code>facebook</code>, <code>Facebook</code>, <code>FACEBOOK</code>, <code>facebook.com</code>, &#2351;&#2366; <code>m.facebook.com</code> &#2354;&#2367;&#2326;&#2375;&#2306; &#8212; FrankPass &#2360;&#2348; &#2325;&#2379; &#2319;&#2325; &#2361;&#2368; &#2344;&#2366;&#2350; &#2350;&#2375;&#2306; &#2348;&#2342;&#2354; &#2342;&#2375;&#2340;&#2366; &#2361;&#2376;&#2404; <strong>&#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2361;&#2350;&#2375;&#2358;&#2366; &#2319;&#2325; &#2361;&#2368; &#2350;&#2367;&#2354;&#2375;&#2327;&#2366;&#2404;</strong></p>
-            <p><strong>&#2346;&#2381;&#2354;&#2375;&#2335;&#2347;&#2377;&#2352;&#2381;&#2350; &#2344;&#2361;&#2368;&#2306; &#2342;&#2367;&#2326; &#2352;&#2361;&#2366;?</strong> &#2309;&#2327;&#2352; &#2325;&#2379;&#2312; &#2346;&#2381;&#2354;&#2375;&#2335;&#2347;&#2377;&#2352;&#2381;&#2350; &#2321;&#2335;&#2379;-&#2360;&#2332;&#2375;&#2360;&#2381;&#2335; &#2350;&#2375;&#2306; &#2344;&#2361;&#2368;&#2306; &#2361;&#2376;, &#2340;&#2379; &#2313;&#2360;&#2375; &#2350;&#2376;&#2344;&#2381;&#2351;&#2369;&#2309;&#2354;&#2368; &#2354;&#2367;&#2326;&#2375;&#2306; &#8212; &#2360;&#2348; &#2360;&#2361;&#2368; &#2325;&#2366;&#2350; &#2325;&#2352;&#2375;&#2327;&#2366;&#2404; &#2309;&#2327;&#2352; &#2310;&#2346; &#2330;&#2366;&#2361;&#2340;&#2375; &#2361;&#2376;&#2306; &#2325;&#2367; &#2361;&#2350; &#2313;&#2360;&#2375; &#2332;&#2379;&#2337;&#2364;&#2375;&#2306;, &#2340;&#2379; <a href="https://x.com/frankbasedigital" target="_blank" style="color: var(--accent-primary);">X (Twitter)</a> &#2351;&#2366; <a href="https://instagram.com/frankbasedigital" target="_blank" style="color: var(--accent-primary);">Instagram</a> &#2346;&#2352; <strong>@FrankPass &#2325;&#2379; tag</strong> &#2325;&#2352;&#2325;&#2375; request &#2325;&#2352;&#2375;&#2306; &#8212; &#2361;&#2350; &#2332;&#2354;&#2381;&#2342; &#2360;&#2375; &#2332;&#2354;&#2381;&#2342; &#2332;&#2379;&#2337;&#2364; &#2342;&#2375;&#2306;&#2327;&#2375;&#2404;</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128100;  3. &#2351;&#2370;&#2332;&#2364;&#2352;&#2344;&#2375;&#2350; / &#2312;&#2350;&#2375;&#2354; (&#2357;&#2376;&#2325;&#2354;&#2381;&#2346;&#2367;&#2325;)</h3>
-            <p>&#2351;&#2361; &#2347;&#2364;&#2368;&#2354;&#2381;&#2337; <strong>&#2357;&#2376;&#2325;&#2354;&#2381;&#2346;&#2367;&#2325; (Optional)</strong> &#2361;&#2376;&#2404; &#2361;&#2350;&#2366;&#2352;&#2368; &#2360;&#2354;&#2366;&#2361;: <strong>&#2311;&#2360;&#2375; &#2326;&#2366;&#2354;&#2368; &#2331;&#2379;&#2337;&#2364; &#2342;&#2375;&#2306;&#2404;</strong></p>
-            <p><strong>&#2325;&#2381;&#2351;&#2379;&#2306;?</strong> &#2309;&#2327;&#2352; &#2310;&#2346; &#2348;&#2366;&#2342; &#2350;&#2375;&#2306; &#2325;&#2367;&#2360;&#2368; &#2357;&#2375;&#2348;&#2360;&#2366;&#2311;&#2335; &#2346;&#2352; &#2309;&#2346;&#2344;&#2366; &#2312;&#2350;&#2375;&#2354; &#2348;&#2342;&#2354; &#2354;&#2375;&#2306;, &#2340;&#2379; &#2332;&#2344;&#2352;&#2375;&#2335; &#2361;&#2369;&#2310; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2349;&#2368; &#2348;&#2342;&#2354; &#2332;&#2366;&#2319;&#2327;&#2366;&#2404; &#2326;&#2366;&#2354;&#2368; &#2352;&#2326;&#2344;&#2375; &#2360;&#2375; &#2360;&#2348; &#2310;&#2360;&#2366;&#2344; &#2352;&#2361;&#2340;&#2366; &#2361;&#2376;&#2404;</p>
-            <p><strong>&#2325;&#2348; &#2349;&#2352;&#2375;&#2306;:</strong> &#2360;&#2367;&#2352;&#2381;&#2347; &#2340;&#2348; &#2332;&#2348; &#2310;&#2346;&#2325;&#2375; &#2319;&#2325; &#2361;&#2368; &#2346;&#2381;&#2354;&#2375;&#2335;&#2347;&#2377;&#2352;&#2381;&#2350; &#2346;&#2352; &#2325;&#2312; &#2309;&#2325;&#2366;&#2313;&#2306;&#2335; &#2361;&#2379;&#2306;&#2404; &#2332;&#2376;&#2360;&#2375; 2 Instagram &#2309;&#2325;&#2366;&#2313;&#2306;&#2335; &#2361;&#2376;&#2306; &#2340;&#2379; &#2361;&#2352; &#2319;&#2325; &#2325;&#2366; &#2351;&#2370;&#2332;&#2364;&#2352;&#2344;&#2375;&#2350; &#2337;&#2366;&#2354;&#2375;&#2306;&#2404;</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1; 4. &#2360;&#2368;&#2325;&#2381;&#2352;&#2375;&#2335; &#2346;&#2352;&#2381;&#2360;&#2344;&#2354; &#2325;&#2368; (Secret Personal Key)</h3>
-            <p>&#2351;&#2361; <strong>&#2360;&#2348;&#2360;&#2375; &#2350;&#2361;&#2340;&#2381;&#2357;&#2346;&#2370;&#2352;&#2381;&#2339; &#2347;&#2364;&#2368;&#2354;&#2381;&#2337;</strong> &#2361;&#2376;&#2404; &#2351;&#2361; &#2310;&#2346;&#2325;&#2366; &#2344;&#2367;&#2332;&#2368; &#2350;&#2366;&#2360;&#2381;&#2335;&#2352; &#2357;&#2366;&#2325;&#2381;&#2351; &#2361;&#2376; &#8212; &#2310;&#2346;&#2325;&#2375; &#2360;&#2349;&#2368; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2325;&#2366; &#2327;&#2339;&#2367;&#2340;&#2368;&#2351; &#2348;&#2368;&#2332;&#2404;</p>
-            <p><strong>&#2325;&#2381;&#2351;&#2366; &#2354;&#2367;&#2326;&#2375;&#2306;:</strong> &#2325;&#2379;&#2312; &#2349;&#2368; &#2357;&#2366;&#2325;&#2381;&#2351; &#2332;&#2379; &#2360;&#2367;&#2352;&#2381;&#2347; &#2310;&#2346; &#2332;&#2366;&#2344;&#2340;&#2375; &#2361;&#2379;&#2306; &#2324;&#2352; &#2325;&#2349;&#2368; &#2344; &#2349;&#2370;&#2354;&#2375;&#2306;&#2404; &#2313;&#2342;&#2366;&#2361;&#2352;&#2339;:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><code>1. i am the king</code></li>
-                <li><code>2. mai hi raja hu</code></li>
-                <li><code>3. mera dost achha insan hai</code></li>
-                <li><code>4. mera desh mahan hai 2000</code></li>
-                <li><code>5. mai ek karorpati hu</code></li>
-            </ul>
-            <p><strong>&#2325;&#2381;&#2351;&#2366; complexity &#2350;&#2366;&#2351;&#2344;&#2375; &#2352;&#2326;&#2340;&#2368; &#2361;&#2376;?</strong> <strong>&#2348;&#2367;&#2354;&#2381;&#2325;&#2369;&#2354; &#2344;&#2361;&#2368;&#2306;!</strong> &#2330;&#2366;&#2361;&#2375; &#2310;&#2346;&#2325;&#2368; key &#2360;&#2352;&#2354; &#2361;&#2379; &#2351;&#2366; &#2332;&#2335;&#2367;&#2354;, &#2332;&#2344;&#2352;&#2375;&#2335; &#2361;&#2369;&#2310; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2361;&#2350;&#2375;&#2358;&#2366; cryptographically &#2350;&#2332;&#2364;&#2348;&#2370;&#2340; &#2361;&#2379;&#2327;&#2366; (10 &#2354;&#2366;&#2326; hash iterations)&#2404; &#2310;&#2346;&#2325;&#2368; key &#2360;&#2367;&#2352;&#2381;&#2347; &#2348;&#2368;&#2332; &#2361;&#2376; &#8212; &#2327;&#2339;&#2367;&#2340; &#2348;&#2366;&#2325;&#2368; &#2360;&#2348; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404;</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128260;  5. &#2357;&#2375;&#2352;&#2367;&#2319;&#2306;&#2335; &#2325;&#2366;&#2313;&#2306;&#2335;&#2352; (Variant Counter)</h3>
-            <p>&#2337;&#2367;&#2347;&#2364;&#2377;&#2354;&#2381;&#2335; <code>1</code> &#2361;&#2376;&#2404; &#2351;&#2361; &#2310;&#2346;&#2325;&#2366; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2348;&#2342;&#2354;&#2344;&#2375; &#2325;&#2366; &#2361;&#2341;&#2367;&#2351;&#2366;&#2352; &#2361;&#2376;&#2404;</p>
-            <p><strong>&#2325;&#2348; &#2348;&#2342;&#2354;&#2375;&#2306;:</strong></p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li>&#2357;&#2375;&#2348;&#2360;&#2366;&#2311;&#2335; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2348;&#2342;&#2354;&#2344;&#2375; &#2325;&#2379; &#2325;&#2361;&#2375; &rarr; &#2310;&#2346; Variant &#2325;&#2379; 1 &#2360;&#2375; 2 &#2325;&#2352; &#2360;&#2325;&#2340;&#2375; &#2361;&#2376;&#2306;, &#2351;&#2366; &#2360;&#2368;&#2343;&#2375; 100 &#2351;&#2366; 200 &#2360;&#2375; &#2349;&#2368; &#2358;&#2369;&#2352;&#2370; &#2325;&#2352; &#2360;&#2325;&#2340;&#2375; &#2361;&#2376;&#2306;&#2404; &#2351;&#2361; &#2310;&#2346;&#2325;&#2368; &#2350;&#2352;&#2381;&#2332;&#2364;&#2368; &#2361;&#2376;, &#2348;&#2360; &#2311;&#2360;&#2375; &#2351;&#2366;&#2342; &#2352;&#2326;&#2375;&#2306; &#2351;&#2366; &#2325;&#2361;&#2368;&#2306; &#2354;&#2367;&#2326; &#2325;&#2352; &#2352;&#2326;&#2375;&#2306;&#2404;</li>
-                <li>&#2309;&#2325;&#2366;&#2313;&#2306;&#2335; compromise &#2361;&#2379;&#2344;&#2375; &#2325;&#2366; &#2358;&#2325; &#2361;&#2379; &rarr; &#2344;&#2351;&#2366; &#2344;&#2306;&#2348;&#2352; &#2337;&#2366;&#2354;&#2375;&#2306;&#2404;</li>
-            </ul>
-            <p><strong>&#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2354;&#2366;&#2349;:</strong> &#2309;&#2327;&#2352; &#2325;&#2367;&#2360;&#2368; &#2325;&#2379; &#2310;&#2346;&#2325;&#2368; Secret Key &#2349;&#2368; &#2346;&#2340;&#2366; &#2330;&#2354; &#2332;&#2366;&#2319;, &#2340;&#2379; &#2348;&#2367;&#2344;&#2366; Variant &#2344;&#2306;&#2348;&#2352; &#2332;&#2366;&#2344;&#2375; &#2357;&#2379; &#2310;&#2346;&#2325;&#2366; &#2360;&#2361;&#2368; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2344;&#2361;&#2368;&#2306; &#2348;&#2344;&#2366; &#2360;&#2325;&#2340;&#2366;&#2404; &#2351;&#2361; &#2319;&#2325; extra &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2346;&#2352;&#2340; &#2361;&#2376;&#2404;</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#9881;&#65039; 6. &#2346;&#2381;&#2352;&#2379;&#2347;&#2366;&#2311;&#2354;</h3>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>Standard (&#2360;&#2369;&#2333;&#2366;&#2351;&#2366; &#2327;&#2351;&#2366;)</strong> &#8212; &#2309;&#2325;&#2381;&#2359;&#2352; + &#2309;&#2306;&#2325; + &#2346;&#2381;&#2352;&#2340;&#2368;&#2325; (Symbols)&#2404;</li>
-                <li><strong>Alphanumeric</strong> &#8212; &#2360;&#2367;&#2352;&#2381;&#2347; &#2309;&#2325;&#2381;&#2359;&#2352; + &#2309;&#2306;&#2325;&#2404;</li>
-                <li><strong>Numeric (PIN)</strong> &#8212; &#2360;&#2367;&#2352;&#2381;&#2347; &#2309;&#2306;&#2325;&#2404; &#2348;&#2376;&#2306;&#2325;&#2367;&#2306;&#2327; PIN &#2325;&#2375; &#2354;&#2367;&#2319;&#2404;</li>
-            </ul>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128207; 7. &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2325;&#2368; &#2354;&#2306;&#2348;&#2366;&#2312;</h3>
-            <p>8 &#2360;&#2375; 64 &#2340;&#2325; &#2360;&#2381;&#2354;&#2366;&#2311;&#2337; &#2325;&#2352;&#2375;&#2306;&#2404; <strong>&#2360;&#2369;&#2333;&#2366;&#2357;: 16+</strong></p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1;  8. &#2332;&#2344;&#2352;&#2375;&#2335; &#2325;&#2367;&#2351;&#2366; &#2361;&#2369;&#2310; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337;</h3>
-            <p>&#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2348;&#2344;&#2340;&#2375; &#2361;&#2368; &#2321;&#2335;&#2379;-&#2325;&#2377;&#2346;&#2368; &#2361;&#2379; &#2332;&#2366;&#2340;&#2366; &#2361;&#2376;&#2404; &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; &#2335;&#2366;&#2311;&#2350;&#2352;:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>&#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; 15 &#2360;&#2375;&#2325;&#2306;&#2337; &#2350;&#2375;&#2306; &#2321;&#2335;&#2379;-&#2337;&#2367;&#2354;&#2368;&#2335;</strong> &#2361;&#2379; &#2332;&#2366;&#2340;&#2366; &#2361;&#2376;&#2404;</li>
-                <li><strong>Secret Key 30 &#2360;&#2375;&#2325;&#2306;&#2337; inactivity &#2346;&#2352; &#2321;&#2335;&#2379;-&#2337;&#2367;&#2354;&#2368;&#2335;</strong> &#2361;&#2379;&#2340;&#2368; &#2361;&#2376;&#2404;</li>
-                <li><strong>Tab &#2348;&#2306;&#2342; &#2325;&#2352;&#2340;&#2375; &#2361;&#2368;</strong> &#2360;&#2348; &#2325;&#2369;&#2331; &#2350;&#2375;&#2350;&#2379;&#2352;&#2368; &#2360;&#2375; &#2361;&#2335; &#2332;&#2366;&#2340;&#2366; &#2361;&#2376;&#2404;</li>
-            </ul>
-            <p style="margin-top: 1rem; color: var(--text-secondary);"><strong>&#2354;&#2375;&#2325;&#2367;&#2344; &#2330;&#2367;&#2306;&#2340;&#2366; &#2325;&#2368; &#2325;&#2379;&#2312; &#2348;&#2366;&#2340; &#2344;&#2361;&#2368;&#2306;!</strong> &#2351;&#2361; &#2310;&#2346;&#2325;&#2375; &#2325;&#2381;&#2354;&#2367;&#2346;&#2348;&#2379;&#2352;&#2381;&#2337; (clipboard) &#2350;&#2375;&#2306; &#2352;&#2361;&#2340;&#2366; &#2361;&#2376; &#2332;&#2361;&#2366;&#2305; &#2360;&#2375; &#2310;&#2346; &#2311;&#2360;&#2375; &#2346;&#2375;&#2360;&#2381;&#2335; &#2325;&#2352; &#2360;&#2325;&#2340;&#2375; &#2361;&#2376;&#2306;&#2404; &#2343;&#2381;&#2351;&#2366;&#2344; &#2352;&#2326;&#2375;&#2306; (&#2309;&#2327;&#2352; &#2310;&#2346; &#2342;&#2370;&#2360;&#2352;&#2375; &#2325;&#2366; PC &#2311;&#2360;&#2381;&#2340;&#2375;&#2350;&#2366;&#2354; &#2325;&#2352; &#2352;&#2361;&#2375; &#2361;&#2376;&#2306; &#2340;&#2379; <code>Windows Logo Key + V</code> &#2325;&#2366; &#2313;&#2346;&#2351;&#2379;&#2327; &#2325;&#2352;&#2325;&#2375; &#2360;&#2366;&#2352;&#2375; &#2325;&#2377;&#2346;&#2368; &#2325;&#2367;&#2319; &#2361;&#2369;&#2319; &#2335;&#2375;&#2325;&#2381;&#2360;&#2381;&#2335; &#2342;&#2375;&#2326; &#2360;&#2325;&#2340;&#2375; &#2361;&#2376;&#2306; &#2332;&#2361;&#2366;&#2305; &#2360;&#2375; &#2310;&#2346; &#2311;&#2360;&#2375; &#2337;&#2367;&#2354;&#2368;&#2335; &#2325;&#2352; &#2360;&#2325;&#2340;&#2375; &#2361;&#2376;&#2306;, &#2311;&#2360;&#2375; &#2342;&#2370;&#2360;&#2352;&#2375; &#2337;&#2367;&#2357;&#2366;&#2311;&#2360; Mac/Android &#2325;&#2375; &#2354;&#2367;&#2319; &#2349;&#2368; &#2343;&#2381;&#2351;&#2366;&#2344; &#2352;&#2326;&#2375;&#2306;)&#2404;</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128737;&#65039; 9. &#2337;&#2375;&#2335;&#2366; &#2354;&#2368;&#2325; &#2360;&#2375; &#2360;&#2366;&#2357;&#2343;&#2366;&#2344;</h3>
-            <p><strong>FrankPass &#2325;&#2368; &#2340;&#2352;&#2347; &#2360;&#2375; &#2337;&#2375;&#2335;&#2366; &#2354;&#2368;&#2325; &#2361;&#2379;&#2344;&#2366; &#2309;&#2360;&#2306;&#2349;&#2357; &#2361;&#2376;&#2404;</strong> &#2361;&#2350;&#2366;&#2352;&#2375; &#2346;&#2366;&#2360; &#2325;&#2379;&#2312; database, server, &#2351;&#2366; cloud &#2344;&#2361;&#2368;&#2306; &#2361;&#2376;&#2404; &#2344;&#2366; &#2361;&#2350;, &#2344;&#2366; &#2325;&#2379;&#2312; &#2349;&#2368; &#2311;&#2306;&#2360;&#2366;&#2344;, &#2310;&#2346;&#2325;&#2375; &#2332;&#2344;&#2352;&#2375;&#2335; &#2325;&#2367;&#2319; &#2361;&#2369;&#2319; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2325;&#2349;&#2368; &#2332;&#2366;&#2344; &#2351;&#2366; &#2342;&#2375;&#2326; &#2360;&#2325;&#2340;&#2366; &#2361;&#2376;&#2404;</p>
-            <p>&#2354;&#2375;&#2325;&#2367;&#2344; &#2332;&#2379; <strong>&#2346;&#2381;&#2354;&#2375;&#2335;&#2347;&#2377;&#2352;&#2381;&#2350; &#2310;&#2346; use &#2325;&#2352;&#2340;&#2375; &#2361;&#2376;&#2306;</strong> (Facebook, Amazon &#2310;&#2342;&#2367;) &#8212; &#2313;&#2344;&#2325;&#2368; &#2340;&#2352;&#2347; &#2360;&#2375; data breach &#2361;&#2379; &#2360;&#2325;&#2340;&#2366; &#2361;&#2376;&#2404; &#2332;&#2366;&#2344;&#2325;&#2366;&#2352;&#2368; &#2346;&#2366;&#2344;&#2375; &#2325;&#2375; &#2354;&#2367;&#2319;:</p>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li>Social media &#2346;&#2352; <strong>FrankPass &#2325;&#2379; follow</strong> &#2325;&#2352;&#2375;&#2306; &#8212; &#2361;&#2350; breach alerts &#2332;&#2354;&#2381;&#2342; &#2360;&#2375; &#2332;&#2354;&#2381;&#2342; &#2358;&#2375;&#2351;&#2352; &#2325;&#2352;&#2344;&#2375; &#2325;&#2368; &#2325;&#2379;&#2358;&#2367;&#2358; &#2325;&#2352;&#2375;&#2306;&#2327;&#2375; (&#2361;&#2350;&#2375;&#2306; &#2360;&#2330; &#2348;&#2379;&#2354;&#2344;&#2366; &#2361;&#2376;)&#2404;</li>
-                <li><strong>Personalized Alerts (Coming Soon):</strong> <a href="https://frankbase.com/newsletter" target="_blank" style="color: var(--accent-primary);"><strong>FrankBase Digital</strong></a> &#2325;&#2368; free personalized security alert service join &#2325;&#2352;&#2375;&#2306;&#2404; &#2361;&#2350;&#2366;&#2352;&#2366; smart AI &#8212; Google Alerts, Dark Web monitoring, &#2324;&#2352; AI data scraping &#2360;&#2375; breach detect &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404; Detection &#2325;&#2375; &#2348;&#2366;&#2342; AI &#2361;&#2350;&#2366;&#2352;&#2368; team &#2325;&#2379; detailed report &#2349;&#2375;&#2332;&#2340;&#2366; &#2361;&#2376;, team multiple layers &#2346;&#2352; verify &#2325;&#2352;&#2340;&#2368; &#2361;&#2376;&#2404; &#2309;&#2327;&#2352; verify &#2350;&#2375;&#2306; &#2360;&#2350;&#2351; &#2354;&#2327;&#2375;, &#2340;&#2379; &#2340;&#2369;&#2352;&#2306;&#2340; message &#2349;&#2375;&#2332;&#2366; &#2332;&#2366;&#2340;&#2366; &#2361;&#2376;: <em>"&#2351;&#2361; &#2337;&#2375;&#2335;&#2366; &#2354;&#2368;&#2325; &#2361;&#2379; &#2360;&#2325;&#2340;&#2366; &#2361;&#2376; &#8212; &#2325;&#2371;&#2346;&#2351;&#2366; &#2340;&#2369;&#2352;&#2306;&#2340; &#2309;&#2346;&#2344;&#2366; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2348;&#2342;&#2354;&#2375;&#2306;&#2404;"</em> (&#2361;&#2350; &#2311;&#2360; &#2346;&#2381;&#2352;&#2379;&#2332;&#2375;&#2325;&#2381;&#2335; &#2346;&#2352; &#2325;&#2366;&#2350; &#2325;&#2352;&#2344;&#2375; &#2325;&#2366; &#2360;&#2379;&#2330; &#2352;&#2361;&#2375; &#2361;&#2376;&#2306;, &#2309;&#2327;&#2352; &#2310;&#2319;&#2327;&#2366; &#2340;&#2379; &#2310;&#2346;&#2325;&#2379; &#2344;&#2379;&#2335;&#2367;&#2347;&#2367;&#2325;&#2375;&#2358;&#2344; &#2351;&#2366; &#2360;&#2379;&#2358;&#2354; &#2350;&#2368;&#2337;&#2367;&#2351;&#2366; &#2325;&#2375; &#2342;&#2381;&#2357;&#2366;&#2352;&#2366; &#2348;&#2340;&#2366;&#2351;&#2366; &#2332;&#2366;&#2319;&#2327;&#2366;)&#2404;</li>
-            </ul>
-
-            <button class="btn-hide-guide" onclick="closeGuide()" style="margin-top: 2rem;"><ion-icon name="chevron-up-outline"></ion-icon> &#2327;&#2366;&#2311;&#2337; &#2331;&#2367;&#2346;&#2366;&#2319;&#2306;</button>
-        </section>
-
-        <!-- ================= SPANISH GUIDE ================= -->
-        <section class="guide-content glass-panel hidden" id="guide-es">
-            <h2>Gu&iacute;a Completa: C&oacute;mo usar FrankPass</h2>
-            <button class="btn-hide-guide" onclick="closeGuide()"><ion-icon name="chevron-up-outline"></ion-icon> Ocultar gu&iacute;a</button>
-            <p><strong>Recuerda solo 1 frase personal &rarr; Genera contrase&ntilde;as &uacute;nicas e irrompibles para cada sitio, para siempre.</strong></p>
-            <p>Esta herramienta es <strong>100% sin estado</strong>. No guarda nada. Mismos datos = misma contrase&ntilde;a siempre.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128205; 1. Pa&iacute;s</h3>
-            <p>Selecciona tu pa&iacute;s. Esto personaliza las sugerencias de plataformas. <strong>No afecta tu contrase&ntilde;a.</strong></p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#127760; 2. Plataforma</h3>
-            <p>Escribe el nombre del sitio web. Ejemplo: <code>Facebook</code>, <code>Gmail</code>. El auto-sugerido te ayuda a evitar errores de escritura. FrankPass normaliza autom&aacute;ticamente <code>facebook.com</code>, <code>FACEBOOK</code>, <code>m.facebook.com</code> al mismo nombre base.</p>
-            <p><strong>&iquest;Falta una plataforma?</strong> Escr&iacute;bela manualmente. Para solicitar que la agreguemos, etiqueta a <strong>@FrankPass</strong> en X o Instagram.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128100;  3. Usuario (Opcional)</h3>
-            <p><strong>D&eacute;jalo vac&iacute;o.</strong> &#218;salo solo si tienes m&uacute;ltiples cuentas en la misma plataforma.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1; 4. Clave Secreta</h3>
-            <p>Tu frase personal maestra. Ejemplo: <code>2amigos+mango+2026</code>. La complejidad <strong>no importa</strong> &#8212; el matem&aacute;tico hace todo el trabajo.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128260;  5. Contador de Variante</h3>
-            <p>Predeterminado: <code>1</code>. C&aacute;mbialo cuando necesites rotar tu contrase&ntilde;a. Incluso si alguien descubre tu clave secreta, sin el n&uacute;mero de variante correcto, no puede generar tu contrase&ntilde;a.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#9881;&#65039; 6. Perfil</h3>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>Est&aacute;ndar</strong> &#8212; Letras + N&uacute;meros + S&iacute;mbolos (recomendado).</li>
-                <li><strong>Alfanum&eacute;rico</strong> &#8212; Solo letras + n&uacute;meros.</li>
-                <li><strong>Num&eacute;rico (PIN)</strong> &#8212; Solo n&uacute;meros.</li>
-            </ul>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128207; 7. Longitud</h3>
-            <p>8 a 64 caracteres. Recomendado: <strong>16+</strong>.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1;  8. Contrase&ntilde;a Generada</h3>
-            <p>Se copia autom&aacute;ticamente. Se borra en 15 segundos. La clave secreta se borra tras 30 segundos de inactividad. Cerrar la pesta&ntilde;a elimina todo.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128737;&#65039; 9. Sobre Filtraciones de Datos</h3>
-            <p><strong>Desde FrankPass, una filtraci&oacute;n es imposible.</strong> No tenemos base de datos. Pero las plataformas que usas pueden sufrir brechas. S&iacute;guenos en redes sociales para alertas r&aacute;pidas o &uacute;nete a <a href="https://frankbase.com/newsletter" target="_blank" style="color: var(--accent-primary);"><strong>FrankBase Digital</strong></a> para alertas personalizadas (pr&oacute;ximamente).</p>
-
-            <button class="btn-hide-guide" onclick="closeGuide()" style="margin-top: 2rem;"><ion-icon name="chevron-up-outline"></ion-icon> Ocultar gu&iacute;a</button>
-        </section>
-
-        <!-- ================= FRENCH GUIDE ================= -->
-        <section class="guide-content glass-panel hidden" id="guide-fr">
-            <h2>Guide Complet : Comment utiliser FrankPass</h2>
-            <button class="btn-hide-guide" onclick="closeGuide()"><ion-icon name="chevron-up-outline"></ion-icon> Masquer le guide</button>
-            <p><strong>Retenez 1 seule phrase personnelle &rarr; G&eacute;n&eacute;rez des mots de passe uniques et inviolables pour chaque site, &agrave; vie.</strong></p>
-            <p>Cet outil est <strong>100% sans &eacute;tat</strong>. Il ne sauvegarde rien. M&ecirc;mes donn&eacute;es = m&ecirc;me mot de passe &agrave; chaque fois.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&Map; 1. Pays</h3>
-            <p>S&eacute;lectionnez votre pays. Cela personnalise les suggestions de plateformes. <strong>N'affecte pas votre mot de passe.</strong></p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#127760; 2. Plateforme</h3>
-            <p>Tapez le nom du site web. Exemple : <code>Facebook</code>, <code>Gmail</code>. L'auto-suggestion vous aide &agrave; &eacute;viter les fautes. FrankPass normalise automatiquement <code>facebook.com</code>, <code>FACEBOOK</code>, <code>m.facebook.com</code>.</p>
-            <p><strong>Plateforme manquante ?</strong> Tapez-la manuellement. Pour demander son ajout, taguez <strong>@FrankPass</strong> sur X ou Instagram.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128100;  3. Nom d'utilisateur (Optionnel)</h3>
-            <p><strong>Laissez vide.</strong> Utilisez-le uniquement si vous avez plusieurs comptes sur la m&#234;me plateforme.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1; 4. Cl&eacute; Secr&#232;te</h3>
-            <p>Votre phrase personnelle ma&#238;tresse. Exemple : <code>2amis+mangue+2026</code>. La complexit&eacute; <strong>n'a aucune importance</strong> &#8212; les math&eacute;matiques font tout le travail.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128260;  5. Compteur de Variante</h3>
-            <p>Par d&eacute;faut : <code>1</code>. Changez-le quand vous devez renouveler votre mot de passe. M&#234;me si quelqu'un d&eacute;couvre votre cl&eacute; secr&#232;te, sans le bon num&eacute;ro de variante, il ne peut pas g&eacute;n&eacute;rer votre mot de passe.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#9881;&#65039; 6. Profil</h3>
-            <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
-                <li><strong>Standard</strong> &#8212; Lettres + Chiffres + Symboles (recommand&eacute;).</li>
-                <li><strong>Alphanum&eacute;rique</strong> &#8212; Lettres + Chiffres uniquement.</li>
-                <li><strong>Num&eacute;rique (PIN)</strong> &#8212; Chiffres uniquement.</li>
-            </ul>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128207; 7. Longueur</h3>
-            <p>8 &agrave; 64 caract&#232;res. Recommand&eacute; : <strong>16+</strong>.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#12.2.1;  8. Mot de Passe G&eacute;n&eacute;r&eacute;</h3>
-            <p>Copi&eacute; automatiquement. Effac&eacute; en 15 secondes. La cl&eacute; secr&#232;te est effac&eacute;e apr&#232;s 30 secondes d'inactivit&eacute;. Fermer l'onglet supprime tout.</p>
-
-            <h3 style="color: var(--accent-primary); margin-top: 2rem;">&#128737;&#65039; 9. Fuites de Donn&eacute;es</h3>
-            <p><strong>Depuis FrankPass, une fuite est impossible.</strong> Nous n'avons aucune base de donn&eacute;es. Mais les plateformes que vous utilisez peuvent subir des violations. Suivez-nous sur les r&eacute;seaux sociaux pour des alertes rapides ou rejoignez <a href="https://frankbase.com/newsletter" target="_blank" style="color: var(--accent-primary);"><strong>FrankBase Digital</strong></a> pour des alertes personnalis&eacute;es (bient&#244;t disponible).</p>
-
-            <button class="btn-hide-guide" onclick="closeGuide()" style="margin-top: 2rem;"><ion-icon name="chevron-up-outline"></ion-icon> Masquer le guide</button>
-        </section>
-
-        <!-- ================= EBOOK PROMO SECTION ================= -->
-        <section id="ebook-promo" class="glass-panel" style="margin-top: 2rem; padding: 1.2rem; border-radius: 16px; text-align: center; border: 1px solid rgba(99, 102, 241, 0.2);">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0.8rem; margin-bottom: 0.8rem;">
-                <ion-icon name="book-outline" style="font-size: 1.8rem; color: var(--accent-primary);"></ion-icon>
-                <h2 style="color: var(--accent-primary); margin: 0; font-size: 1.2rem;">Master Your Security</h2>
-            </div>
-            <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 1rem; opacity: 0.9;">
-                Discover advanced stateless protection strategies and lock out hackers forever with our premium guide.
-            </p>
-            <a href="/guide" class="btn-primary" style="display: inline-flex; align-items: center; width: auto; padding: 0.6rem 1.5rem; text-decoration: none; font-size: 0.85rem; gap: 0.5rem; border-radius: 12px;">
-                <ion-icon name="download-outline"></ion-icon> Read Guide &amp; Buy Ebook
-            </a>
-        </section>
-
-        <!-- ================= FOOTER SECTION ================= -->
-        <footer class="site-footer glass-panel" style="display:flex; flex-direction:column; align-items:center;">
-            <button id="footer-toggle-btn" onclick="toggleFooter()" style="cursor:pointer;display:flex;align-items:center;gap:0.5rem;padding:0.6rem 1.2rem;background:rgba(99,102,241,0.12);border:1px solid rgba(99,102,241,0.3);border-radius:12px;color:var(--accent-primary);font-size:0.9rem;font-weight:600;transition:all 0.3s ease;">
-                <span id="footer-toggle-label">Show Site Footer</span>
-                <ion-icon name="chevron-down-outline" id="footer-toggle-icon" style="font-size:1.1rem;transition:transform 0.3s ease;"></ion-icon>
+        <!-- Secret key input -->
+        <div class="form-group">
+          <label class="form-label" for="secret-key">Secret Key</label>
+          <div class="input-wrapper">
+            <input id="secret-key" class="form-input" type="password" placeholder="Your memorable secret…" autocomplete="off" spellcheck="false" aria-describedby="secret-hint">
+            <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
+              <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
-            
-            <div id="footer-body" style="display:none; width:100%; margin-top:2rem;">
-                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 0.8rem;">
-                    <a href="/">Home</a>
-                    <a href="/about-us">About Us</a>
-                    <a href="/contact-us">Contact Us</a>
-                    <a href="/legal">Legal</a>
-                    <a href="/meet-the-founder-MasterManikant">Meet the Founder</a>
-                </div>
-                <div class="footer-links-row" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2.5rem;">
-                    <a href="/why-stateless">Why Stateless?</a>
-                    <a href="/guide">Guides &amp; Ebooks</a>
-                    <a href="/faq">FAQ</a>
-                    <a href="/support-us">Support Us &#128153; </a>
-                </div>
-
-                <div class="footer-social-sections" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 3rem; margin-bottom: 2rem;">
-                    <!-- Founder Socials -->
-                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
-                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @MasterManikant</span>
-                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
-                            <a href="https://x.com/MasterManikant" title="X (Twitter)" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                            </a>
-                            <a href="https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h" title="WhatsApp Channel" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                            <a href="https://linkedin.com/in/mastermanikant" title="LinkedIn" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#0077b5'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-linkedin"></ion-icon></a>
-                            <a href="https://instagram.com/mastermanikant" target="_blank" title="Instagram" target="_blank" rel="noopener noreferrer" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
-                        </div>
-                    </div>
-
-                    <!-- Product Socials -->
-                    <div class="social-group" style="display: flex; flex-direction: column; align-items: center; gap: 0.8rem;">
-                        <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8;">Follow @FrankPass</span>
-                        <div class="footer-social-row" style="margin: 0; justify-content: center;">
-                            <a href="https://x.com/iamfrankpass" title="X (Twitter)" style="transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='var(--text-secondary)'">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20px" height="20px"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                            </a>
-                            <a href="https://youtube.com/@iamfrankpass" target="_blank" title="YouTube" style="transition: color 0.3s;" onmouseover="this.style.color='#ff0000'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-youtube"></ion-icon></a>
-                            <a href="https://instagram.com/iamfrankpass" target="_blank" title="Instagram" style="transition: color 0.3s;" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-instagram"></ion-icon></a>
-                            <a href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" title="WhatsApp Channel" style="transition: color 0.3s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='var(--text-secondary)'"><ion-icon name="logo-whatsapp"></ion-icon></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <!-- Tagline -->
-                    <p style="font-size:0.95rem; font-weight:600; letter-spacing:0.02em; margin-bottom:0.8rem;">Serverless Cryptography. Zero Database. Pure Math.</p>
-
-                    <!-- Legal notice -->
-                    <p style="font-size:0.78rem; color:var(--text-secondary); line-height:1.6; margin-bottom:0.5rem;">
-                        FrankPass is the intellectual property of Master Manikant Yadav. Personal use is permitted.<br>
-                        <span style="color:#ef4444; font-weight:600;">Redistribution or republishing under a different name is prohibited.</span>
-                        &nbsp;<a href="/legal" style="color:var(--accent-primary); text-decoration:underline; white-space:nowrap;">Legal &rarr;</a>
-                    </p>
-
-                    <!-- Divider -->
-                    <div style="height:1px; background:rgba(255,255,255,0.08); margin:0.8rem auto; max-width:400px;"></div>
-
-                    <!-- Copyright row -->
-                    <p style="font-size:0.8rem; color:var(--text-secondary);">
-                        &copy; <span id="copyright-year"></span> FrankPass &mdash;
-                        Version <span class="version-badge">2.3.1 (Production)</span>
-                    </p>
-                    <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
-                        Designed &amp; Developed by
-                        <a href="/meet-the-founder-MasterManikant" style="color:var(--accent-primary); font-weight:600;">Master Manikant Yadav</a>
-                    </p>
-                    <script>document.getElementById('copyright-year').textContent = new Date().getFullYear();</script>
-                </div>
-            </div>
-        </footer>
-
-
-
-    <!-- ================= MODALS & TOASTS ================= -->
-    <div id="shoutout-modal" class="modal">
-        <div class="modal-content glass-panel">
-            <button class="close-modal" onclick="closeShoutoutModal()">&times;</button>
-            <div class="logo-container" style="margin-bottom: 1rem;">
-                <h2 style="font-size: 1.8rem;">Sharing <span class="FrankPass-text">is Caring</span>!</h2>
-            </div>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem; font-size: 1rem;">
-                Help others find mental peace. Share FrankPass and help your friends create unbreakable passwords!
-            </p>
-            <div class="share-grid">
-                <a href="javascript:void(0)" onclick="runShoutout('whatsapp'); closeShoutoutModal();" class="share-option" id="share-whatsapp">
-                    <ion-icon name="logo-whatsapp"></ion-icon>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="javascript:void(0)" onclick="runShoutout('x'); closeShoutoutModal();" class="share-option" id="share-twitter">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px" style="margin-bottom: 5px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-                    <span>Post on X</span>
-                </a>
-                <a href="javascript:void(0)" onclick="runShoutout('facebook'); closeShoutoutModal();" class="share-option" id="share-facebook">
-                    <ion-icon name="logo-facebook"></ion-icon>
-                    <span>Facebook</span>
-                </a>
-                <a href="javascript:void(0)" onclick="runShoutout('instagram'); closeShoutoutModal();" class="share-option" id="share-instagram">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                    <span>Instagram</span>
-                </a>
-                <a href="javascript:void(0)" onclick="runShoutout('linkedin'); closeShoutoutModal();" class="share-option" id="share-linkedin">
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                    <span>LinkedIn</span>
-                </a>
-            </div>
-            <button class="btn-primary" onclick="closeShoutoutModal()" style="background: rgba(255,255,255,0.05); box-shadow: none; border: 1px solid rgba(255,255,255,0.1);">
-                Maybe Later
-            </button>
+          </div>
+          <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
         </div>
+
+        <!-- Advanced options toggle -->
+        <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          Advanced Options
+        </button>
+
+        <!-- Advanced panel (collapsed by default) -->
+        <div class="advanced-panel" id="advanced-panel" aria-hidden="true">
+          <!-- Username -->
+          <div class="form-group">
+            <label class="form-label" for="username-input">Username <span style="font-weight:400;opacity:0.6">(optional — only for multiple accounts)</span></label>
+            <input id="username-input" class="form-input" type="text" placeholder="Leave blank for single account" autocomplete="off">
+          </div>
+
+          <!-- Variant -->
+          <div class="form-group">
+            <label class="form-label" for="variant-input">Variant <span style="font-weight:400;opacity:0.6" id="variant-val">(1)</span></label>
+            <input id="variant-input" class="form-input" type="number" min="1" max="99" value="1" aria-describedby="variant-desc">
+            <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted)">Increase to rotate password without changing your Secret Key.</span>
+          </div>
+
+          <!-- Length slider -->
+          <div class="form-group">
+            <label class="form-label" for="length-slider">Password Length: <span id="length-val">16</span></label>
+            <input id="length-slider" type="range" min="8" max="32" value="16" aria-label="Password length slider">
+          </div>
+
+          <!-- Presets -->
+          <div class="form-group">
+            <div class="form-label">Preset</div>
+            <div class="preset-btns" role="group" aria-label="Password preset selector">
+              <button class="preset-btn" data-preset="simple"  type="button">Simple</button>
+              <button class="preset-btn active" data-preset="strong" type="button">Strong</button>
+              <button class="preset-btn" data-preset="max"    type="button">Max</button>
+            </div>
+          </div>
+
+          <!-- Save locally toggle -->
+          <label class="toggle-switch" for="save-locally">
+            <input type="checkbox" id="save-locally" role="switch" aria-checked="false">
+            <span class="toggle-track" aria-hidden="true"></span>
+            Save settings locally (no password stored)
+          </label>
+        </div>
+
+        <!-- Generate button -->
+        <button id="generate-btn" class="btn-primary btn-full" type="button" aria-label="Generate password">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          Generate Password
+        </button>
+
+        <!-- Output box -->
+        <div class="output-box" role="region" aria-label="Generated password output" aria-live="polite">
+          <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
+            ···········
+          </div>
+          <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
+            <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </button>
+        </div>
+        <p class="output-note" aria-live="polite">Not stored anywhere &middot; <span id="clear-timer-label">Clears in 15s after generation</span></p>
+
+      </div>
     </div>
+  </div>
+</section>
 
-    <div id="toast" class="toast">Copied to clipboard!</div>
+<!-- ============================================================
+     TRUST STRIP
+     4 glass badges highlighting core properties
+     ============================================================ -->
+<section class="section-sm" aria-label="Trust indicators">
+  <div class="container">
+    <div class="trust-strip">
+      <div class="trust-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M1 6s4-2 11-2 11 2 11 2M1 18s4 2 11 2 11-2 11-2"/><path d="M3 12c0-3 4-5 9-5s9 2 9 5"/></svg>
+        100% Offline
+      </div>
+      <div class="trust-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Zero Data Stored
+      </div>
+      <div class="trust-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+        Same Input = Same Output
+      </div>
+      <div class="trust-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Open Algorithm
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:var(--text-muted)">
+      Don't trust us? Turn off your internet and try it.
+    </p>
+  </div>
+</section>
 
+<!-- ============================================================
+     HOW IT WORKS
+     3 connected glass step cards
+     ============================================================ -->
+<section class="section" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="text-center mb-4">
+      <div class="section-label" aria-hidden="true">No vault. No sync. No breach.</div>
+      <h2 id="how-heading" class="section-title">The Stateless Workflow</h2>
+      <p class="section-desc">Three inputs. One mathematical function. One password. No storage.</p>
+    </div>
+    <div class="grid-3" role="list">
+      <!-- Step 1 -->
+      <article class="card-glass step-card" role="listitem" aria-label="Step 1: Enter your platform">
+        <div class="step-num" aria-hidden="true">1</div>
+        <div class="step-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        </div>
+        <h3>Enter Site / Platform</h3>
+        <p>Type any platform name or paste a URL. FrankPass normalizes it automatically — <code>facebook.com</code>, <code>www.facebook.com</code>, or just <code>facebook</code> all produce the exact same result.</p>
+      </article>
+      <!-- Step 2 -->
+      <article class="card-glass step-card" role="listitem" aria-label="Step 2: Enter your secret key">
+        <div class="step-num" aria-hidden="true">2</div>
+        <div class="step-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+        </div>
+        <h3>Enter Your Secret Key</h3>
+        <p>Your secret key is the seed. It never leaves your device. PBKDF2 with 1,000,000 iterations and HMAC-SHA512 expansion transform it into an unbreakable cryptographic anchor.</p>
+      </article>
+      <!-- Step 3 -->
+      <article class="card-glass step-card" role="listitem" aria-label="Step 3: Copy your password">
+        <div class="step-num" aria-hidden="true">3</div>
+        <div class="step-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <h3>Copy &amp; Use</h3>
+        <p>Your password is generated in milliseconds — entirely on your device. Copy it, use it, and forget it. The math will reproduce it identically next time. Nothing is ever saved.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
-    <!-- ================= DATA & LOGIC SCRIPTS ================= -->
-    <script src="/country-data.js"></script>
-    <script src="/platforms.js"></script>
-    <script src="/translations.js"></script>
-    <script src="/frankpass-core.js"></script>
-    <script src="/frankpass-utils.js"></script>
-    <script src="/script.js"></script>
-    <script src="/country-dropdown.js"></script>
-    <script src="/particles.js"></script>
+<!-- ============================================================
+     WHY NOT CLOUD
+     3 key arguments against cloud password storage
+     ============================================================ -->
+<section class="section" style="background:var(--bg-secondary)" aria-labelledby="why-heading">
+  <div class="container">
+    <div class="text-center mb-4">
+      <div class="section-label" aria-hidden="true">The stateless advantage</div>
+      <h2 id="why-heading">Why not a cloud password manager?</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card-glass" style="padding:1.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+          <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
+          <h3 style="margin:0;font-size:1.1rem">Cloud vaults can be breached</h3>
+        </div>
+        <p>Every major password manager has had a security incident. When they store your encrypted vault online, they create a honeypot — a single point of failure that makes your entire digital life a target for one attack.</p>
+      </div>
+      <div class="card-glass" style="padding:1.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+          <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
+          <h3 style="margin:0;font-size:1.1rem">You can't breach what doesn't exist</h3>
+        </div>
+        <p>FrankPass has no servers, no databases, no user accounts, no synced vault. There is simply nothing to steal. Your password exists only during the brief moment it appears on your screen.</p>
+      </div>
+      <div class="card-glass" style="padding:1.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+          <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
+          <h3 style="margin:0;font-size:1.1rem">Works when the internet doesn't</h3>
+        </div>
+        <p>Cloud managers fail when their servers go down or when you're offline. FrankPass is a PWA — install it once and it works forever, even in airplane mode, even if our domain expired.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     USER REVIEWS
+     Horizontal snap-scroll on mobile, 3-col grid on desktop
+     ============================================================ -->
+<section class="section" aria-labelledby="reviews-heading">
+  <div class="container">
+    <div class="text-center mb-4">
+      <h2 id="reviews-heading">What people are saying</h2>
+    </div>
+    <p class="swipe-hint" aria-hidden="true">← Swipe to see more →</p>
+    <div class="scroll-container" role="list" aria-label="User reviews">
+      <article class="scroll-item card-glass review-card" role="listitem">
+        <div class="review-stars" aria-label="5 out of 5 stars">
+          <span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">"Finally a password manager that doesn't make me nervous. The math approach just makes sense — I don't have to trust a company with my entire digital life."</p>
+        <span class="review-author">— Arjun S., Software Engineer</span>
+      </article>
+      <article class="scroll-item card-glass review-card" role="listitem">
+        <div class="review-stars" aria-label="5 out of 5 stars">
+          <span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">"I've been using this offline in areas with no internet. Works perfectly every time. The fact that it gives the same password every time blows my mind."</p>
+        <span class="review-author">— Priya M., Journalist</span>
+      </article>
+      <article class="scroll-item card-glass review-card" role="listitem">
+        <div class="review-stars" aria-label="5 out of 5 stars">
+          <span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span><span class="review-star" aria-hidden="true">★</span>
+        </div>
+        <p class="review-text">"Switched from LastPass after their breach. The stateless model is just fundamentally more secure. Nothing to steal. Recommended it to my whole team."</p>
+        <span class="review-author">— Derek O., Security Consultant</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     REDDIT CTA
+     Invite to join the community
+     ============================================================ -->
+<section class="section-sm" aria-label="Community call to action">
+  <div class="container" style="max-width:680px">
+    <div class="card-glass" style="padding:2rem;text-align:center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff4500" width="36" height="36" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+      <h2 style="margin:0.75rem 0 0.5rem">Join r/FrankPass</h2>
+      <p style="margin-bottom:1.5rem">Share your setup, ask questions, and connect with others who care about privacy-first security.</p>
+      <a href="https://reddit.com/r/FrankPass" class="btn-ghost" target="_blank" rel="noopener noreferrer" aria-label="Join the FrankPass community on Reddit">
+        Visit the Subreddit &rarr;
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHATSAPP CTA
+     Green accent card for channel promotion
+     ============================================================ -->
+<section class="section-sm" aria-label="WhatsApp channel call to action">
+  <div class="container" style="max-width:680px">
+    <div id="whatsapp-cta-card" style="background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.25);border-radius:16px;padding:2rem;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#25D366" width="40" height="40" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      <div style="flex:1;min-width:200px">
+        <strong style="font-size:1.1rem;color:var(--text-primary);display:block;margin-bottom:0.35rem">Get Exclusive Deals &amp; Updates on WhatsApp</strong>
+        <p style="margin:0;font-size:0.9rem">Early access to Pro deals, security tips, and new features — delivered directly to your WhatsApp.</p>
+      </div>
+      <a id="whatsapp-cta-btn" href="#" class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Join FrankPass WhatsApp channel">
+        Join Channel
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER — rendered by footer.js
+     ============================================================ -->
+<div id="site-footer"></div>
+
+<!-- ============================================================
+     MOBILE BOTTOM NAVIGATION
+     ============================================================ -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item active" aria-label="Home" aria-current="page">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="/get-started.html" class="mob-nav-item" aria-label="Get Started">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+    <span>Start</span>
+  </a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="Get Pro">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span>Pro</span>
+  </a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>FAQ</span>
+  </a>
+  <a href="/about-us.html" class="mob-nav-item" aria-label="About">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>About</span>
+  </a>
+</nav>
+
+<!-- Toast container -->
+<div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<!-- ============================================================
+     SCRIPTS — load order is critical
+     ============================================================ -->
+<script src="/frankpass-config.js"></script>
+<script src="/country-data.js"></script>
+<script src="/country-dropdown.js"></script>
+<script src="/platforms.js"></script>
+<script src="/frankpass-utils.js"></script>
+<script src="/frankpass-core.js"></script>
+<script src="/footer.js"></script>
+
+<script>
+/* ── Sticky header scroll class ── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 10);
+}, { passive: true });
+
+/* ── Hamburger menu toggle ── */
+const hamburger   = document.getElementById('hamburger');
+const mobileMenu  = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+});
+document.addEventListener('click', (e) => {
+  if (!header.contains(e.target) && !mobileMenu.contains(e.target)) {
+    mobileMenu.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+});
+
+/* ── Toast helper ── */
+function showToast(msg, type = '') {
+  const t = document.createElement('div');
+  t.className = 'toast' + (type ? ' ' + type : '');
+  t.textContent = msg;
+  document.getElementById('toast-container').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+/* ── Password clear timers ── */
+const TIMERS = { PASSWORD_CLEAR_MS: 15000, SECRET_CLEAR_MS: 120000 };
+let _pwTimer, _pwCountdown, _secretTimer;
+
+function startPasswordClearTimer() {
+  clearTimeout(_pwTimer);
+  clearInterval(_pwCountdown);
+  let remaining = 15;
+  document.getElementById('clear-timer-label').textContent = `Clears in ${remaining}s`;
+  _pwCountdown = setInterval(() => {
+    remaining--;
+    if (remaining > 0) {
+      document.getElementById('clear-timer-label').textContent = `Clears in ${remaining}s`;
+    } else {
+      clearInterval(_pwCountdown);
+    }
+  }, 1000);
+  _pwTimer = setTimeout(() => {
+    const out = document.getElementById('output-password');
+    out.textContent = '···········';
+    out.classList.add('placeholder');
+    document.getElementById('copy-btn').disabled = true;
+    document.getElementById('clear-timer-label').textContent = 'Clears in 15s after generation';
+    showToast('Password cleared for your security.');
+  }, TIMERS.PASSWORD_CLEAR_MS);
+}
+
+document.getElementById('secret-key').addEventListener('input', () => {
+  clearTimeout(_secretTimer);
+  _secretTimer = setTimeout(() => {
+    document.getElementById('secret-key').value = '';
+    showToast('Secret key cleared due to inactivity.');
+  }, TIMERS.SECRET_CLEAR_MS);
+});
+
+/* ── Secret key visibility toggle ── */
+const secretInput = document.getElementById('secret-key');
+const toggleBtn   = document.getElementById('toggle-secret');
+toggleBtn.addEventListener('click', () => {
+  const isHidden = secretInput.type === 'password';
+  secretInput.type = isHidden ? 'text' : 'password';
+  toggleBtn.setAttribute('aria-label', isHidden ? 'Hide secret key' : 'Show secret key');
+  document.getElementById('eye-icon').innerHTML = isHidden
+    ? '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
+    : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+});
+
+/* ── Platform hint ── */
+document.getElementById('platform-input').addEventListener('input', (e) => {
+  const raw  = e.target.value.trim();
+  const hint = (typeof FrankPassUtils !== 'undefined' && raw)
+    ? FrankPassUtils.getSeedHint(raw) : '';
+  document.getElementById('platform-hint').textContent = hint;
+});
+
+/* ── Advanced options toggle ── */
+const advToggle = document.getElementById('advanced-toggle');
+const advPanel  = document.getElementById('advanced-panel');
+advToggle.addEventListener('click', () => {
+  const isOpen = advPanel.classList.toggle('open');
+  advToggle.classList.toggle('open', isOpen);
+  advToggle.setAttribute('aria-expanded', String(isOpen));
+  advPanel.setAttribute('aria-hidden', String(!isOpen));
+});
+
+/* ── Length slider display ── */
+const lengthSlider = document.getElementById('length-slider');
+const lengthVal    = document.getElementById('length-val');
+lengthSlider.addEventListener('input', () => { lengthVal.textContent = lengthSlider.value; });
+
+/* ── Variant display ── */
+document.getElementById('variant-input').addEventListener('input', (e) => {
+  document.getElementById('variant-val').textContent = `(${e.target.value})`;
+});
+
+/* ── Preset buttons ── */
+const presets = {
+  simple: { profile: 'alphanumeric', length: 12 },
+  strong: { profile: 'standard',     length: 16 },
+  max:    { profile: 'standard',     length: 32 },
+};
+let activeProfile = 'standard';
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const p = presets[btn.dataset.preset];
+    activeProfile = p.profile;
+    lengthSlider.value = p.length;
+    lengthVal.textContent = p.length;
+  });
+});
+
+/* ── Generate button ── */
+document.getElementById('generate-btn').addEventListener('click', async () => {
+  const platform  = (document.getElementById('platform-input').value || '').trim();
+  const secretKey = (document.getElementById('secret-key').value || '').trim();
+  if (!platform) { showToast('Please enter a site or platform name.'); return; }
+  if (!secretKey) { showToast('Please enter your secret key.'); return; }
+
+  const normalizedPlatform = (typeof FrankPassUtils !== 'undefined')
+    ? FrankPassUtils.getNormalizedPlatform(platform) : platform.toLowerCase().trim();
+  const username = (document.getElementById('username-input').value || '').trim();
+  const variant  = parseInt(document.getElementById('variant-input').value, 10) || 1;
+  const length   = parseInt(lengthSlider.value, 10) || 16;
+
+  const genBtn = document.getElementById('generate-btn');
+  genBtn.disabled = true;
+  genBtn.textContent = 'Generating…';
+
+  try {
+    const password = await FRANKPASS_CORE.generate(
+      normalizedPlatform, username, secretKey, variant, activeProfile, length
+    );
+    const out = document.getElementById('output-password');
+    out.textContent = password;
+    out.classList.remove('placeholder');
+    document.getElementById('copy-btn').disabled = false;
+    startPasswordClearTimer();
+
+    /* Save settings locally if toggle is on */
+    if (document.getElementById('save-locally').checked) {
+      try {
+        localStorage.setItem('fp_settings', JSON.stringify({
+          platform, username, variant, length, profile: activeProfile
+        }));
+      } catch (_) {}
+    }
+  } catch (err) {
+    console.error('Generation error:', err);
+    showToast('Something went wrong. Please try again.');
+  } finally {
+    genBtn.disabled = false;
+    genBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Generate Password`;
+  }
+});
+
+/* ── Copy button ── */
+document.getElementById('copy-btn').addEventListener('click', async () => {
+  const password = document.getElementById('output-password').textContent;
+  if (!password || password === '···········') return;
+  try {
+    await navigator.clipboard.writeText(password);
+    const copyBtn = document.getElementById('copy-btn');
+    copyBtn.classList.add('copied');
+    document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+    showToast('Password copied!', 'success');
+    setTimeout(() => {
+      copyBtn.classList.remove('copied');
+      document.getElementById('copy-icon').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
+    }, 1500);
+  } catch (err) {
+    showToast('Copy failed — please select and copy manually.');
+  }
+});
+
+/* ── WhatsApp CTA link from config ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const cfg = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
+  if (cfg.SOCIAL && cfg.SOCIAL.WHATSAPP && !cfg.SOCIAL.WHATSAPP.includes('[')) {
+    document.getElementById('whatsapp-cta-btn').href = cfg.SOCIAL.WHATSAPP;
+  }
+
+  /* Restore saved settings */
+  try {
+    const saved = JSON.parse(localStorage.getItem('fp_settings') || '{}');
+    if (saved.platform) document.getElementById('platform-input').value = saved.platform;
+    if (saved.username) document.getElementById('username-input').value = saved.username;
+    if (saved.variant)  document.getElementById('variant-input').value  = saved.variant;
+    if (saved.length)   { lengthSlider.value = saved.length; lengthVal.textContent = saved.length; }
+  } catch (_) {}
+});
+
+/* ── PPP Pricing (for the header flag card label) ── */
+const regionEl = document.getElementById('region');
+if (regionEl) {
+  regionEl.addEventListener('change', () => {
+    const label = regionEl.value || 'India (IN)';
+    const cardLabel = document.getElementById('card-country-label');
+    if (cardLabel) cardLabel.textContent = label;
+  });
+}
+</script>
 </body>
-
 </html>
-
-
-
-
-

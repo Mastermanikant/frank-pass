@@ -1,250 +1,365 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Get Started â€” FrankPass Pro Extension</title>
-    <meta name="description" content="Learn how to install, activate, and use the FrankPass Pro extension. 1-click security, no database, total privacy.">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
-    <style>
-        :root {
-            --bg: #0d0f18;
-            --purple: #6c5ce7;
-            --accent-gradient: linear-gradient(135deg, #6c5ce7, #a29bfe);
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --text-muted: #94a3b8;
-        }
-
-        body {
-            background: var(--bg);
-            color: #fff;
-            font-family: 'Outfit', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .main-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px 100px;
-        }
-
-        /* â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 60px;
-        }
-        .logo { font-weight: 800; font-size: 1.5rem; }
-        .logo span { color: var(--purple); }
-        .header-btn {
-            background: var(--accent-gradient);
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 700;
-            font-size: 0.9rem;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-            transition: transform 0.2s;
-        }
-        .header-btn:hover { transform: translateY(-2px); }
-
-        /* â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        .hero {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        .hero h1 {
-            font-size: clamp(2.2rem, 6vw, 3.5rem);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-        .hero h1 span { color: var(--purple); }
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* â”€â”€ Steps â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        .steps-grid {
-            display: grid;
-            gap: 24px;
-            margin-bottom: 60px;
-        }
-
-        .step-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
-            display: flex;
-            gap: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .step-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 4px; height: 100%;
-            background: var(--purple);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .step-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(108,92,231,0.4);
-            transform: translateX(10px);
-        }
-        .step-card:hover::before { opacity: 1; }
-
-        .icon-box {
-            width: 60px;
-            height: 60px;
-            background: rgba(108, 92, 231, 0.1);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-            border: 1px solid rgba(108, 92, 231, 0.2);
-        }
-
-        .step-content h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .step-content p {
-            color: var(--text-muted);
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-        .step-content a {
-            color: var(--purple);
-            text-decoration: none;
-            font-weight: 700;
-            border-bottom: 1px dashed var(--purple);
-        }
-
-        /* â”€â”€ Pro Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        .pro-banner {
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.15), rgba(0,0,0,0));
-            border: 1px solid var(--purple);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            margin-top: 40px;
-        }
-        .pro-banner h2 { font-size: 1.8rem; margin-bottom: 12px; }
-        .pro-banner p { color: var(--text-muted); margin-bottom: 25px; }
-
-        .btn-large {
-            display: inline-block;
-            background: #fff;
-            color: #000;
-            padding: 16px 32px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1rem;
-            transition: all 0.2s;
-        }
-        .btn-large:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
-        }
-
-        /* â”€â”€ Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-        footer {
-            text-align: center;
-            margin-top: 80px;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }
-
-        @media (max-width: 600px) {
-            .step-card { flex-direction: column; text-align: center; align-items: center; }
-            .hero h1 { font-size: 2.5rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started with FrankPass | Choose Your Path</title>
+  <meta name="description" content="Get started with FrankPass in under 5 minutes. Choose your platform — web, browser extension, SDK, or WordPress plugin — and follow the step-by-step guide.">
+  <link rel="canonical" href="https://www.frankpass.com/get-started.html">
+  <meta property="og:title" content="Get Started with FrankPass | Choose Your Path">
+  <meta property="og:description" content="Step-by-step onboarding for FrankPass — the stateless password generator. Web, Extension, SDK, and WordPress paths available.">
+  <meta property="og:url" content="https://www.frankpass.com/get-started.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.frankpass.com/icons/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@iamfrankpass">
+  <link rel="icon" href="/icons/favicon.ico">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <canvas id="particle-canvas"></canvas>
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+        <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+        <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+    <div class="header-country custom-country-dropdown">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="https://flagcdn.com/w40/in.png" alt="India" width="20" height="15" loading="lazy" style="display:none">
+        <span id="country-display-name">India (IN)</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox">
+        <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <input type="hidden" id="region" value="India (IN)">
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="/get-started.html" class="active" aria-current="page">Get Started</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/docs.html">Docs</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/faq.html">FAQ</a>
+      <span class="separator" aria-hidden="true">|</span>
+      <a href="/about-us.html">About</a>
+      <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/get-started.html" aria-current="page">Get Started</a>
+  <a href="/docs.html">Docs</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/about-us.html">About</a>
+  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a>
+</nav>
 
-    <div class="main-container">
-        <header>
-            <div class="logo">Frank<span>Pass</span></div>
-            <a href="/pro" class="header-btn">ðŸ’Ž Get Pro Key</a>
-        </header>
+<main id="main-content">
 
-        <section class="hero">
-            <h1>Ready to <span>Go Pro?</span></h1>
-            <p>Master your digital security in minutes. Follow these simple steps to activate your extension.</p>
-        </section>
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="section" style="text-align:center;padding-bottom:2rem" aria-labelledby="gs-heading">
+  <div class="container" style="max-width:640px">
+    <div class="section-label" aria-hidden="true">Setup in under 5 minutes</div>
+    <h1 id="gs-heading">Where Do You Want to Start?</h1>
+    <p class="section-desc mt-2">Choose your preferred way to use FrankPass. The website works everywhere, the extension makes it effortless.</p>
+  </div>
+</section>
 
-        <div class="steps-grid">
-            <!-- Step 1 -->
-            <div class="step-card">
-                <div class="icon-box">ðŸ”‘</div>
-                <div class="step-content">
-                    <h3>Activate Your Key</h3>
-                    <p>Open the FrankPass extension and click on <strong>Activate</strong>. You'll need a license key to unlock the full power. Don't have one? Visit our <a href="/pro">Pro Page</a> to get a <strong>10-Day Free Trial</strong> instantly.</p>
-                </div>
-            </div>
+<!-- ============================================================
+     STICKY TAB BAR
+     Website | Extension | SDK | WordPress
+     ============================================================ -->
+<div class="sticky-tabs" id="sticky-tabs" role="tablist" aria-label="Get started path selector" style="position:sticky;top:var(--header-h);z-index:50;background:var(--bg-primary);padding:1rem 0;border-bottom:1px solid var(--border)">
+  <div class="container" style="max-width:760px">
+    <div class="tab-bar">
+      <button class="tab-btn active" role="tab" data-tab="website" aria-selected="true" aria-controls="tab-website" id="tab-btn-website">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Website
+      </button>
+      <button class="tab-btn" role="tab" data-tab="extension" aria-selected="false" aria-controls="tab-extension" id="tab-btn-extension">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+        Extension
+      </button>
+      <button class="tab-btn dimmed" role="tab" data-tab="sdk" aria-selected="false" aria-controls="tab-sdk" id="tab-btn-sdk" aria-disabled="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        SDK
+        <span class="coming-soon-badge">Soon</span>
+      </button>
+      <button class="tab-btn dimmed" role="tab" data-tab="wordpress" aria-selected="false" aria-controls="tab-wordpress" id="tab-btn-wordpress" aria-disabled="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M2.5 12.5c0-1.5.5-3 1.5-4.5"/><path d="M17 6.5L15 14l-2.5-7-2.5 7-2-7.5"/><path d="M20 8l-1 9.5L15 19.5"/></svg>
+        WordPress
+        <span class="coming-soon-badge">Soon</span>
+      </button>
+    </div>
+  </div>
+</div>
 
-            <!-- Step 2 -->
-            <div class="step-card">
-                <div class="icon-box">ðŸ“Œ</div>
-                <div class="step-content">
-                    <h3>Pin for Speed</h3>
-                    <p>Click the "Puzzle" icon in your browser toolbar and pin FrankPass. You can also use <strong>Ctrl+Shift+L</strong> to trigger the extension anytime without using your mouse.</p>
-                </div>
-            </div>
+<!-- ============================================================
+     TAB CONTENT PANELS
+     ============================================================ -->
+<section class="section" aria-label="Getting started content">
+<div class="container" style="max-width:900px">
 
-            <!-- Step 3 -->
-            <div class="step-card">
-                <div class="icon-box">âš¡</div>
-                <div class="step-content">
-                    <h3>1-Click Autofill</h3>
-                    <p>Navigate to any login page. FrankPass auto-detects the site. Type your Master Word, hit <strong>Generate</strong>, and watch your password fill instantly. Pure magic, zero database.</p>
-                </div>
-            </div>
+  <!-- WEBSITE TAB -->
+  <div id="tab-website" class="tab-panel active" role="tabpanel" aria-labelledby="tab-btn-website">
+    <div class="grid-2" style="gap:1.5rem;margin-bottom:2rem">
+
+      <article class="card-glass step-card" aria-label="Step 1">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600">Step 1</span>
+          <div style="width:36px;height:36px;background:var(--glass-bg);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+          </div>
         </div>
+        <h2 style="font-size:1.35rem;margin-top:0.75rem">Open frankpass.com</h2>
+        <p>Navigate to <a href="/" aria-label="Open FrankPass generator">frankpass.com</a> on any browser — Chrome, Firefox, Safari, or any modern mobile browser. No app store required.</p>
+      </article>
 
-        <!-- Call to Action -->
-        <div class="pro-banner">
-            <h2>Unlock Unlimited Profiles</h2>
-            <p>The standard extension is free, but Pro gives you Multi-Profile support, Advanced Encryption Tiers, and much more.</p>
-            <a href="/pro" class="btn-large">Go to Pro Dashboard â†’</a>
-            <div style="margin-top: 20px;">
-                <a href="/" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">â† Back to Main Home</a>
-            </div>
+      <article class="card-glass step-card" aria-label="Step 2">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600">Step 2</span>
+          <div style="width:36px;height:36px;background:var(--glass-bg);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="18" height="18" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
         </div>
+        <h2 style="font-size:1.35rem;margin-top:0.75rem">Enter Platform &amp; Secret Key</h2>
+        <p>Type the site name (e.g. "instagram" or "gmail.com") and choose a memorable secret key — a phrase, lyric, or pattern only you know. This never leaves your device.</p>
+      </article>
 
-        <footer>
-            <p>&copy; <span id="copyright-year">2026</span> FrankPass. All rights reserved.</p>
-            <div style="margin-top:10px; display:flex; justify-content:center; gap:15px; font-size: 0.9rem;">
-                <a href="/legal" style="color:var(--text-muted); text-decoration:none;">Legal</a>
-                <a href="/faq" style="color:var(--text-muted); text-decoration:none;">FAQ</a>
-                <a href="/contact-us" style="color:var(--text-muted); text-decoration:none;">Contact</a>
-            </div>
-            <div class="footer-bottom" style="margin-top:20px;"></div>
-        </footer>
+      <article class="card-glass step-card" aria-label="Step 3">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600">Step 3</span>
+          <div style="width:36px;height:36px;background:var(--glass-bg);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+        </div>
+        <h2 style="font-size:1.35rem;margin-top:0.75rem">Click Generate</h2>
+        <p>Hit the Generate button. Your password appears instantly — computed entirely in your browser using PBKDF2 + HMAC-SHA512. No server call is ever made.</p>
+      </article>
+
+      <article class="card-glass step-card" aria-label="Step 4">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600">Step 4</span>
+          <div style="width:36px;height:36px;background:var(--glass-bg);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="18" height="18" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </div>
+        </div>
+        <h2 style="font-size:1.35rem;margin-top:0.75rem">Copy &amp; Use Your Password</h2>
+        <p>Click copy and paste it into the login field. The password clears automatically after 15 seconds. Never paste it anywhere you don't trust completely.</p>
+      </article>
+
+      <article class="card-glass step-card" style="grid-column:1/-1" aria-label="Step 5">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600">Step 5 — Optional but recommended</span>
+          <div style="width:36px;height:36px;background:var(--glass-bg);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" /><path d="M16 12H8M12 8v8"/></svg>
+          </div>
+        </div>
+        <h2 style="font-size:1.35rem;margin-top:0.75rem">Install as a PWA</h2>
+        <p>In your browser's address bar, tap the install icon (or go to your browser menu → "Add to Home Screen"). FrankPass becomes a full offline app. Works forever, even without internet — even if this domain ever expired.</p>
+      </article>
+
     </div>
 
-    <script src="/particles.js"></script>
-    <script src="/footer.js"></script>
+    <div style="text-align:center">
+      <a href="/" class="btn-primary btn-lg" aria-label="Open the FrankPass generator">Open the Generator &rarr;</a>
+    </div>
+  </div>
+
+  <!-- EXTENSION TAB -->
+  <div id="tab-extension" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-extension">
+    <div class="card-glass" style="padding:1.5rem;margin-bottom:1rem;background:rgba(139,92,246,0.05);border-color:rgba(139,92,246,0.3)">
+      <strong style="color:var(--accent)">Extension requires FrankPass Pro.</strong> The web generator is always free. The extension adds 1-click auto-fill and multi-profile management.
+      <a href="/pro.html" style="margin-left:0.5rem;color:var(--accent-light)">Get Pro &rarr;</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <article class="card-glass" style="padding:1.25rem;display:flex;gap:1rem;align-items:flex-start">
+        <div class="step-num" style="min-width:40px;min-height:40px" aria-hidden="true">1</div>
+        <div>
+          <h3>Get FrankPass Pro</h3>
+          <p>Purchase a plan on <a href="/pro.html">the Pro page</a>. You'll receive a unique licence key via email immediately after checkout.</p>
+        </div>
+      </article>
+      <article class="card-glass" style="padding:1.25rem;display:flex;gap:1rem;align-items:flex-start">
+        <div class="step-num" style="min-width:40px;min-height:40px" aria-hidden="true">2</div>
+        <div>
+          <h3>Install the Extension</h3>
+          <p>Visit the Chrome Web Store (or Firefox Add-ons) and search for "FrankPass". Click Install. The extension is available on Chrome, Firefox, Edge, and Brave.</p>
+        </div>
+      </article>
+      <article class="card-glass" style="padding:1.25rem;display:flex;gap:1rem;align-items:flex-start">
+        <div class="step-num" style="min-width:40px;min-height:40px" aria-hidden="true">3</div>
+        <div>
+          <h3>Activate with Your Key</h3>
+          <p>Click the FrankPass icon in your browser toolbar → tap Activate → paste your licence key → click Unlock. Your Pro features are now enabled.</p>
+        </div>
+      </article>
+      <article class="card-glass" style="padding:1.25rem;display:flex;gap:1rem;align-items:flex-start">
+        <div class="step-num" style="min-width:40px;min-height:40px" aria-hidden="true">4</div>
+        <div>
+          <h3>Enter Your Secret Key Once</h3>
+          <p>Type your secret key into the extension. The extension remembers your settings (not your passwords) so you only type your key when you choose to — never stored anywhere.</p>
+        </div>
+      </article>
+      <article class="card-glass" style="padding:1.25rem;display:flex;gap:1rem;align-items:flex-start">
+        <div class="step-num" style="min-width:40px;min-height:40px" aria-hidden="true">5</div>
+        <div>
+          <h3>Auto-fill on Any Website</h3>
+          <p>Navigate to any login page. Click the FrankPass extension icon → your password is generated and auto-filled instantly. The domain is detected automatically — no typing required.</p>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:2rem">
+      <a href="/pro.html" class="btn-primary btn-lg" aria-label="Get FrankPass Pro for extension access">Get Pro &rarr;</a>
+    </div>
+  </div>
+
+  <!-- SDK TAB — Coming Soon -->
+  <div id="tab-sdk" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-sdk">
+    <div style="text-align:center;padding:4rem 2rem">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" width="56" height="56" aria-hidden="true" style="margin:0 auto 1rem"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      <h2>SDK — Coming Soon</h2>
+      <p style="max-width:420px;margin:0.75rem auto">The FrankPass JavaScript SDK will let you integrate the same PBKDF2 + HMAC-SHA512 engine into your own apps. Follow <a href="https://x.com/iamfrankpass" target="_blank" rel="noopener noreferrer">@iamfrankpass</a> for the announcement.</p>
+    </div>
+  </div>
+
+  <!-- WORDPRESS TAB — Coming Soon -->
+  <div id="tab-wordpress" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-wordpress">
+    <div style="text-align:center;padding:4rem 2rem">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" width="56" height="56" aria-hidden="true" style="margin:0 auto 1rem"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M17 6.5L15 14l-2.5-7-2.5 7-2-7.5"/></svg>
+      <h2>WordPress Plugin — Coming Soon</h2>
+      <p style="max-width:420px;margin:0.75rem auto">A WordPress plugin to embed FrankPass directly into your site or app. Join the <a href="https://reddit.com/r/FrankPass" target="_blank" rel="noopener noreferrer">r/FrankPass</a> community to get notified at launch.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ============================================================
+     LANGUAGE SWITCHER
+     4 country flag buttons using flagcdn.com images
+     ============================================================ -->
+<section class="section-sm" style="text-align:center;border-top:1px solid var(--border)" aria-label="Language selector">
+  <div class="container" style="max-width:480px">
+    <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem">Language switcher</p>
+    <div style="display:flex;gap:1.25rem;justify-content:center;align-items:center;flex-wrap:wrap">
+      <button class="lang-btn" data-lang="en" aria-label="Switch to English (UK)" style="display:flex;align-items:center;gap:0.5rem;background:none;border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;cursor:pointer;color:var(--text-muted);font-size:0.88rem;transition:border-color 0.2s,color 0.2s">
+        <img src="https://flagcdn.com/w40/gb.png" alt="UK flag" width="24" height="18" loading="lazy" style="border-radius:2px"> UK
+      </button>
+      <button class="lang-btn" data-lang="hi" aria-label="Switch to Hindi (India)" style="display:flex;align-items:center;gap:0.5rem;background:none;border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;cursor:pointer;color:var(--text-muted);font-size:0.88rem;transition:border-color 0.2s,color 0.2s">
+        <img src="https://flagcdn.com/w40/in.png" alt="India flag" width="24" height="18" loading="lazy" style="border-radius:2px"> India
+      </button>
+      <button class="lang-btn" data-lang="es" aria-label="Switch to Spanish (Spain)" style="display:flex;align-items:center;gap:0.5rem;background:none;border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;cursor:pointer;color:var(--text-muted);font-size:0.88rem;transition:border-color 0.2s,color 0.2s">
+        <img src="https://flagcdn.com/w40/es.png" alt="Spain flag" width="24" height="18" loading="lazy" style="border-radius:2px"> Spain
+      </button>
+      <button class="lang-btn" data-lang="fr" aria-label="Switch to French (France)" style="display:flex;align-items:center;gap:0.5rem;background:none;border:1px solid var(--border);border-radius:8px;padding:0.5rem 1rem;cursor:pointer;color:var(--text-muted);font-size:0.88rem;transition:border-color 0.2s,color 0.2s">
+        <img src="https://flagcdn.com/w40/fr.png" alt="France flag" width="24" height="18" loading="lazy" style="border-radius:2px"> France
+      </button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="/get-started.html" class="mob-nav-item active" aria-label="Get Started" aria-current="page">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+    <span>Start</span>
+  </a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="Get Pro">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span>Pro</span>
+  </a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>FAQ</span>
+  </a>
+  <a href="/about-us.html" class="mob-nav-item" aria-label="About">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>About</span>
+  </a>
+</nav>
+
+<script src="/frankpass-config.js"></script>
+<script src="/country-data.js"></script>
+<script src="/country-dropdown.js"></script>
+<script src="/translations.js"></script>
+<script src="/footer.js"></script>
+<script>
+/* ── Header scroll ── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+/* ── Hamburger ── */
+const hamburger  = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+});
+
+/* ── Tab switching ── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (btn.classList.contains('dimmed')) return; /* disabled */
+    const target = btn.dataset.tab;
+
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+    const panel = document.getElementById('tab-' + target);
+    if (panel) panel.classList.add('active');
+  });
+});
+
+/* ── Language switcher ── */
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang;
+    /* Apply translations if available */
+    if (typeof window.regionalTranslations !== 'undefined' && window.regionalTranslations[lang]) {
+      const t = window.regionalTranslations[lang];
+      Object.keys(t).forEach(key => {
+        const el = document.getElementById(key);
+        if (el) el.textContent = t[key];
+      });
+    }
+    /* Visual active state */
+    document.querySelectorAll('.lang-btn').forEach(b => b.style.borderColor = 'var(--border)');
+    btn.style.borderColor = 'var(--accent)';
+    btn.style.color = 'var(--text-primary)';
+  });
+});
+</script>
 </body>
 </html>
-
