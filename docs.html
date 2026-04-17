@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FrankPass Docs | How Stateless Password Generation Works</title>
-  <meta name="description" content="Complete documentation for FrankPass — the stateless, deterministic password generator. Learn the cryptographic architecture, security model, and advanced options.">
+  <meta name="description" content="Complete documentation for FrankPass â€” the stateless, deterministic password generator. Learn the cryptographic architecture, security model, and advanced options.">
   <link rel="canonical" href="https://www.frankpass.com/docs.html">
   <meta property="og:title" content="FrankPass Docs | How Stateless Password Generation Works">
   <meta property="og:description" content="Deep-dive into FrankPass architecture: PBKDF2, HMAC-SHA512, stateless security theory, and why zero-storage is fundamentally more secure.">
@@ -41,7 +41,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div id="country-dropdown-panel" role="listbox">
-        <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+        <input id="country-search-input" type="search" placeholder="Search countryâ€¦" autocomplete="off" aria-label="Search for a country">
         <div id="country-list-scroll"></div>
       </div>
     </div>
@@ -78,7 +78,7 @@
   <div class="container">
     <div class="section-label" aria-hidden="true">Technical Documentation</div>
     <h1 id="docs-heading">Security Docs</h1>
-    <p style="color:var(--text-muted);font-size:1.05rem;max-width:560px;margin-top:0.5rem">The complete guide to how FrankPass generates passwords — the cryptographic architecture, the security reasoning, and how to use every feature.</p>
+    <p style="color:var(--text-muted);font-size:1.05rem;max-width:560px;margin-top:0.5rem">The complete guide to how FrankPass generates passwords â€” the cryptographic architecture, the security reasoning, and how to use every feature.</p>
 
     <!-- Mobile accordion TOC -->
     <details class="doc-accordion mt-3" style="display:none" id="mobile-toc">
@@ -93,14 +93,14 @@
         <a href="#security-model" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">Security Model</a>
         <a href="#advanced-options" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">Advanced Options</a>
         <a href="#platform-tips" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">Platform Tips</a>
-        <a href="#sdk" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">SDK (Coming Soon)</a>
+        
       </nav>
     </details>
   </div>
 </section>
 
 <!-- ============================================================
-     DOCS LAYOUT — Sticky sidebar + content
+     DOCS LAYOUT â€” Sticky sidebar + content
      ============================================================ -->
 <section class="section-sm" aria-label="Documentation content">
 <div class="container">
@@ -116,86 +116,86 @@
       <a href="#security-model" class="docs-toc-link">Security Model</a>
       <a href="#advanced-options" class="docs-toc-link">Advanced Options</a>
       <a href="#platform-tips"  class="docs-toc-link">Platform Tips</a>
-      <a href="#sdk"            class="docs-toc-link">SDK (Coming Soon)</a>
+      
     </nav>
   </aside>
 
   <!-- Main content -->
   <div class="docs-content">
 
-    <!-- ── Chapter 1: Why Stateless? ── -->
+    <!-- â”€â”€ Chapter 1: Why Stateless? â”€â”€ -->
     <article id="why-stateless" style="margin-bottom:4rem" aria-labelledby="ch1-heading">
       <h2 id="ch1-heading">Chapter 1: Why Stateless?</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem">The strongest argument for a fundamentally different approach to password management.</p>
 
       <h3>The Vault Paradox</h3>
-      <p>Every traditional password manager — regardless of how strong their encryption is — shares the same fundamental architectural flaw: they store your passwords. Not in plaintext, but stored. Which means a target exists.</p>
-      <p>When you encrypt a vault and put it on a server, you've created a mathematical problem that becomes increasingly worth solving as your vault's value grows. Adversaries can download an encrypted vault, then attempt to crack it offline, at unlimited speed, for as long as computing power allows — including future quantum computing advances.</p>
+      <p>Every traditional password manager â€” regardless of how strong their encryption is â€” shares the same fundamental architectural flaw: they store your passwords. Not in plaintext, but stored. Which means a target exists.</p>
+      <p>When you encrypt a vault and put it on a server, you've created a mathematical problem that becomes increasingly worth solving as your vault's value grows. Adversaries can download an encrypted vault, then attempt to crack it offline, at unlimited speed, for as long as computing power allows â€” including future quantum computing advances.</p>
 
       <h3>What Stateless Means</h3>
-      <p>FrankPass inverts this architecture. Instead of <em>retrieving</em> a stored password, it <em>derives</em> one from inputs you provide. The password is not stored anywhere — not on our servers, not in your browser's storage, not in a local file. It exists only in your browser's memory for the moment between generation and use.</p>
+      <p>FrankPass inverts this architecture. Instead of <em>retrieving</em> a stored password, it <em>derives</em> one from inputs you provide. The password is not stored anywhere â€” not on our servers, not in your browser's storage, not in a local file. It exists only in your browser's memory for the moment between generation and use.</p>
       <p>This means there is no vault to breach. No target to attack. No honeypot to steal.</p>
 
       <h3>The Mathematical Guarantee</h3>
-      <p>Deterministic cryptography is the foundation: given identical inputs, a cryptographic function always produces an identical output. This property — called <strong>determinism</strong> — is what makes FrankPass possible. Your password is a pure mathematical consequence of three things you know: the platform name, your secret key, and the variant number.</p>
-      <p>Change any one of these and you get a completely different password. Keep them the same and you always get the same password — on any device, in any country, offline, forever.</p>
+      <p>Deterministic cryptography is the foundation: given identical inputs, a cryptographic function always produces an identical output. This property â€” called <strong>determinism</strong> â€” is what makes FrankPass possible. Your password is a pure mathematical consequence of three things you know: the platform name, your secret key, and the variant number.</p>
+      <p>Change any one of these and you get a completely different password. Keep them the same and you always get the same password â€” on any device, in any country, offline, forever.</p>
 
       <h3>The Threat Model Comparison</h3>
       <p>With a cloud vault, you must trust the company's server security, their encryption implementation, their employee access controls, and their backup procedures. A failure in any of these exposes all of your passwords simultaneously.</p>
-      <p>With FrankPass, your only secret is your secret key — a string that lives only in your memory. An attacker who breaches our servers (which store nothing) gains nothing. An attacker who intercepts network traffic during generation gains nothing — there is no network traffic during generation. The attack surface is reduced to a single variable: your secret key.</p>
+      <p>With FrankPass, your only secret is your secret key â€” a string that lives only in your memory. An attacker who breaches our servers (which store nothing) gains nothing. An attacker who intercepts network traffic during generation gains nothing â€” there is no network traffic during generation. The attack surface is reduced to a single variable: your secret key.</p>
 
       <div style="background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin:1.5rem 0">
         <code style="display:block;font-size:0.85rem;line-height:1.7;background:none;border:none;padding:0;color:var(--text-accent)">
-          // The verification loop — same inputs, always same output<br>
+          // The verification loop â€” same inputs, always same output<br>
           PBKDF2(secretKey, contextVector, 1,000,000 iterations, SHA-512)<br>
-          → HMAC-SHA512 expansion<br>
-          → Character mapping with ambiguity removal<br>
-          → Your password
+          â†’ HMAC-SHA512 expansion<br>
+          â†’ Character mapping with ambiguity removal<br>
+          â†’ Your password
         </code>
       </div>
 
       <h3>Enhanced Security Through Simplicity</h3>
-      <p>Stateless systems reduce the attack surface dramatically. There is no database to breach, no encrypted vault to crack, no backup file to steal. The only way to obtain someone's FrankPass-generated password is to know their secret key — and that is never transmitted, never stored, and never leaves their mind.</p>
+      <p>Stateless systems reduce the attack surface dramatically. There is no database to breach, no encrypted vault to crack, no backup file to steal. The only way to obtain someone's FrankPass-generated password is to know their secret key â€” and that is never transmitted, never stored, and never leaves their mind.</p>
     </article>
 
-    <!-- ── Chapter 2: How It Works ── -->
+    <!-- â”€â”€ Chapter 2: How It Works â”€â”€ -->
     <article id="how-it-works" style="margin-bottom:4rem" aria-labelledby="ch2-heading">
       <h2 id="ch2-heading">Chapter 2: How It Works</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem">A step-by-step walkthrough of the cryptographic process inside FrankPass.</p>
 
-      <h3>Step 1 — Local Pepper Generation</h3>
-      <p>Before the main derivation, FrankPass generates a local pepper using HMAC-SHA512 followed by 1,000 rounds of SHA-256. This pre-processing step creates a unique intermediate value that anchors the derivation to your specific combination of platform and username — preventing cross-site correlation attacks.</p>
+      <h3>Step 1 â€” Local Pepper Generation</h3>
+      <p>Before the main derivation, FrankPass generates a local pepper using HMAC-SHA512 followed by 1,000 rounds of SHA-256. This pre-processing step creates a unique intermediate value that anchors the derivation to your specific combination of platform and username â€” preventing cross-site correlation attacks.</p>
 
-      <h3>Step 2 — Context Vector Construction</h3>
+      <h3>Step 2 â€” Context Vector Construction</h3>
       <p>A structured context string is built from all inputs: the application ID, version, platform name, username, pepper, variant, profile, and desired length. Each field is prefixed with its length to prevent length-extension attacks. This entire string is normalized using Unicode NFC normalization to ensure cross-platform consistency.</p>
 
-      <h3>Step 3 — PBKDF2 Key Derivation</h3>
-      <p>The core of the engine. PBKDF2 (Password-Based Key Derivation Function 2) is applied with SHA-512 as the hash function, using the context vector as the salt and running for <strong>1,000,000 iterations</strong>. This computational cost is by design — it makes brute-force attacks prohibitively expensive. Deriving one password candidate takes roughly one second on modern hardware; an attacker testing millions of candidates would need millions of seconds.</p>
+      <h3>Step 3 â€” PBKDF2 Key Derivation</h3>
+      <p>The core of the engine. PBKDF2 (Password-Based Key Derivation Function 2) is applied with SHA-512 as the hash function, using the context vector as the salt and running for <strong>1,000,000 iterations</strong>. This computational cost is by design â€” it makes brute-force attacks prohibitively expensive. Deriving one password candidate takes roughly one second on modern hardware; an attacker testing millions of candidates would need millions of seconds.</p>
 
-      <h3>Step 4 — HMAC-SHA512 Expansion</h3>
-      <p>The 512-bit output from PBKDF2 is expanded using two rounds of HMAC-SHA512. This produces 128 bytes of high-entropy output — more than enough raw material to construct passwords of any requested length while maintaining maximum entropy.</p>
+      <h3>Step 4 â€” HMAC-SHA512 Expansion</h3>
+      <p>The 512-bit output from PBKDF2 is expanded using two rounds of HMAC-SHA512. This produces 128 bytes of high-entropy output â€” more than enough raw material to construct passwords of any requested length while maintaining maximum entropy.</p>
 
-      <h3>Step 5 — Character Mapping</h3>
-      <p>The byte stream is mapped to characters using bias-free rejection sampling — a technique that ensures each character in the output is uniformly distributed. Visually ambiguous characters (l, I, O, 0, 1, C, c, S, s, V, v, W, w) are excluded. The algorithm then verifies that the password satisfies the character class requirements of the selected profile and makes surgical replacements if needed.</p>
+      <h3>Step 5 â€” Character Mapping</h3>
+      <p>The byte stream is mapped to characters using bias-free rejection sampling â€” a technique that ensures each character in the output is uniformly distributed. Visually ambiguous characters (l, I, O, 0, 1, C, c, S, s, V, v, W, w) are excluded. The algorithm then verifies that the password satisfies the character class requirements of the selected profile and makes surgical replacements if needed.</p>
     </article>
 
-    <!-- ── Chapter 3: Keys vs Passwords ── -->
+    <!-- â”€â”€ Chapter 3: Keys vs Passwords â”€â”€ -->
     <article id="keys-vs-passwords" style="margin-bottom:4rem" aria-labelledby="ch3-heading">
       <h2 id="ch3-heading">Chapter 3: Keys vs Passwords</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem">Understanding the distinction between your Secret Key and the passwords FrankPass generates.</p>
 
       <h3>Your Secret Key</h3>
-      <p>Your secret key is the master seed. It is the one piece of information you must protect and never forget. It should be something deeply personal — a phrase, a pattern based on events only you know, or a combination of memorable elements. The best secret keys are long, memorable to you, and impossible for others to guess.</p>
+      <p>Your secret key is the master seed. It is the one piece of information you must protect and never forget. It should be something deeply personal â€” a phrase, a pattern based on events only you know, or a combination of memorable elements. The best secret keys are long, memorable to you, and impossible for others to guess.</p>
       <p>Your secret key is <strong>never transmitted</strong>, <strong>never stored</strong>, and <strong>never logged</strong>. It exists only in your browser's memory while you are using the generator, and is automatically cleared after 2 minutes of inactivity.</p>
 
       <h3>Generated Passwords</h3>
-      <p>The passwords FrankPass generates are the output — not inputs. They are strong, unique per platform, and reproducible. You don't need to remember them; you need to be able to re-derive them. As long as you remember your secret key and the settings you used, you can always reproduce any password.</p>
+      <p>The passwords FrankPass generates are the output â€” not inputs. They are strong, unique per platform, and reproducible. You don't need to remember them; you need to be able to re-derive them. As long as you remember your secret key and the settings you used, you can always reproduce any password.</p>
 
       <h3>The Critical Rule</h3>
-      <p>Never use a generated password as your secret key. And never use your secret key as a password anywhere. The secret key is your master seed — if an attacker ever learns it, they can derive all your passwords for all platforms. Protect it accordingly.</p>
+      <p>Never use a generated password as your secret key. And never use your secret key as a password anywhere. The secret key is your master seed â€” if an attacker ever learns it, they can derive all your passwords for all platforms. Protect it accordingly.</p>
     </article>
 
-    <!-- ── Chapter 4: Security Model ── -->
+    <!-- â”€â”€ Chapter 4: Security Model â”€â”€ -->
     <article id="security-model" style="margin-bottom:4rem" aria-labelledby="ch4-heading">
       <h2 id="ch4-heading">Chapter 4: Security Model</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem">What FrankPass protects against, and what remains your responsibility.</p>
@@ -204,31 +204,31 @@
       <p>FrankPass's architecture protects you from server-side breaches (nothing to steal), network interception (no network traffic during generation), and database leaks (no database exists). Because every platform gets a unique password derived from the same key, a breach at one website reveals nothing about your passwords at any other website.</p>
 
       <h3>Responsibility Boundary</h3>
-      <p>FrankPass does not protect against keyloggers on your device, shoulder surfing, or a compromised browser. It also cannot protect you if your secret key is guessable or if you share it with others. Security is a system — FrankPass secures the password storage and generation layer. Device security, phishing awareness, and secret key hygiene remain your responsibility.</p>
+      <p>FrankPass does not protect against keyloggers on your device, shoulder surfing, or a compromised browser. It also cannot protect you if your secret key is guessable or if you share it with others. Security is a system â€” FrankPass secures the password storage and generation layer. Device security, phishing awareness, and secret key hygiene remain your responsibility.</p>
 
       <h3>Open Algorithm</h3>
-      <p>The cryptographic engine in frankpass-core.js uses only the Web Cryptography API — browser-native cryptography that is audited, standardized, and used by financial institutions worldwide. PBKDF2 and HMAC-SHA512 are NIST-approved primitives. There is no proprietary cryptography, no custom hash functions, no security through obscurity.</p>
+      <p>The cryptographic engine in frankpass-core.js uses only the Web Cryptography API â€” browser-native cryptography that is audited, standardized, and used by financial institutions worldwide. PBKDF2 and HMAC-SHA512 are NIST-approved primitives. There is no proprietary cryptography, no custom hash functions, no security through obscurity.</p>
     </article>
 
-    <!-- ── Chapter 5: Advanced Options ── -->
+    <!-- â”€â”€ Chapter 5: Advanced Options â”€â”€ -->
     <article id="advanced-options" style="margin-bottom:4rem" aria-labelledby="ch5-heading">
       <h2 id="ch5-heading">Chapter 5: Advanced Options</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem">A complete reference for every option in the generator's advanced panel.</p>
 
       <h3>Username Field</h3>
-      <p>Leave this blank unless you have multiple accounts on the same platform. Changing your email or username on a website and having it in this field will produce a different password — potentially locking you out. The only valid use case is differentiating between, for example, two Instagram accounts you manage.</p>
+      <p>Leave this blank unless you have multiple accounts on the same platform. Changing your email or username on a website and having it in this field will produce a different password â€” potentially locking you out. The only valid use case is differentiating between, for example, two Instagram accounts you manage.</p>
 
       <h3>Variant Counter</h3>
       <p>The variant counter is your password rotation tool. If a website forces you to change your password, or if you believe a password may have been compromised, increment the variant number from 1 to 2 (or any number up to 99). This produces a completely new password for that platform without changing your secret key or any other settings. Keep a note of which variant number you're using for each platform.</p>
 
       <h3>Password Length</h3>
-      <p>The length slider controls how many characters the generated password contains, from a minimum of 8 to a maximum of 32. Longer passwords are always more secure. Use 32 characters (the Max preset) for your most important accounts. Use shorter lengths only when a website has a character limit — and note that limit for future use.</p>
+      <p>The length slider controls how many characters the generated password contains, from a minimum of 8 to a maximum of 32. Longer passwords are always more secure. Use 32 characters (the Max preset) for your most important accounts. Use shorter lengths only when a website has a character limit â€” and note that limit for future use.</p>
 
       <h3>Profile Presets</h3>
-      <p>Three presets are available. <strong>Simple</strong> uses alphanumeric characters only (letters and numbers, no symbols) and sets length to 12 — for websites that don't accept symbols. <strong>Strong</strong> is the default: all character classes including symbols, length 16, providing excellent security for most purposes. <strong>Max</strong> uses all character classes at length 32 — the maximum possible entropy for any given secret key and platform combination.</p>
+      <p>Three presets are available. <strong>Simple</strong> uses alphanumeric characters only (letters and numbers, no symbols) and sets length to 12 â€” for websites that don't accept symbols. <strong>Strong</strong> is the default: all character classes including symbols, length 16, providing excellent security for most purposes. <strong>Max</strong> uses all character classes at length 32 â€” the maximum possible entropy for any given secret key and platform combination.</p>
     </article>
 
-    <!-- ── Chapter 6: Platform Tips ── -->
+    <!-- â”€â”€ Chapter 6: Platform Tips â”€â”€ -->
     <article id="platform-tips" style="margin-bottom:4rem" aria-labelledby="ch6-heading">
       <h2 id="ch6-heading">Chapter 6: Platform Tips</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem">How to handle common scenarios when using FrankPass with real-world websites.</p>
@@ -237,16 +237,16 @@
       <p>FrankPass automatically normalizes whatever you type into the platform field. Whether you enter <code>facebook</code>, <code>facebook.com</code>, <code>www.facebook.com</code>, or <code>m.facebook.com</code>, the generator strips everything down to the base domain name. This means you always get the same password regardless of which URL variant you type.</p>
 
       <h3>Websites That Reject the Generated Password</h3>
-      <p>Some older platforms have restrictive password policies — they may not accept symbols, or may have maximum length limits shorter than your setting. If a website rejects your password: first, try the Simple preset (alphanumeric only). If that doesn't work, reduce the length. Always note which settings you used for that website, because you'll need to use those exact settings every time you log in.</p>
+      <p>Some older platforms have restrictive password policies â€” they may not accept symbols, or may have maximum length limits shorter than your setting. If a website rejects your password: first, try the Simple preset (alphanumeric only). If that doesn't work, reduce the length. Always note which settings you used for that website, because you'll need to use those exact settings every time you log in.</p>
 
       <h3>High-Security Accounts</h3>
       <p>For banking, email, and other critical accounts, use the Max preset (length 32, standard profile). Enable the Variant field and set it to a number you'll remember. Never use the same variant for high-security accounts as you do for routine ones.</p>
 
       <h3>Multiple Accounts on One Platform</h3>
-      <p>If you manage multiple accounts on the same platform (e.g., two email addresses on Gmail, or two Instagram profiles), use the Username field to distinguish them. Enter something stable — ideally a fixed identifier like the account number or handle — not a changeable email address.</p>
+      <p>If you manage multiple accounts on the same platform (e.g., two email addresses on Gmail, or two Instagram profiles), use the Username field to distinguish them. Enter something stable â€” ideally a fixed identifier like the account number or handle â€” not a changeable email address.</p>
     </article>
 
-    <!-- ── Chapter 7: SDK (Coming Soon) ── -->
+    <!-- â”€â”€ Chapter 7: SDK (Coming Soon) â”€â”€ -->
     <article id="sdk" style="margin-bottom:4rem;opacity:0.6" aria-labelledby="ch7-heading">
       <h2 id="ch7-heading">Chapter 7: SDK <span class="coming-soon-badge" style="vertical-align:middle">Coming Soon</span></h2>
       <p style="color:var(--text-muted)">The FrankPass JavaScript SDK will expose the same PBKDF2 + HMAC-SHA512 engine as a standalone npm package and browser module, so developers can integrate stateless password generation into their own applications. Documentation will appear here at launch.</p>
@@ -298,7 +298,7 @@ hamburger.addEventListener('click', () => {
   hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
-/* ── Show mobile TOC on small screens ── */
+/* â”€â”€ Show mobile TOC on small screens â”€â”€ */
 const mobileToc = document.getElementById('mobile-toc');
 function checkMobile() {
   if (mobileToc) mobileToc.style.display = window.innerWidth < 900 ? 'block' : 'none';
@@ -306,7 +306,7 @@ function checkMobile() {
 checkMobile();
 window.addEventListener('resize', checkMobile, { passive: true });
 
-/* ── Highlight active TOC link on scroll ── */
+/* â”€â”€ Highlight active TOC link on scroll â”€â”€ */
 const sections = document.querySelectorAll('article[id]');
 const tocLinks = document.querySelectorAll('.docs-toc-link');
 const io = new IntersectionObserver(entries => {
@@ -322,3 +322,4 @@ sections.forEach(s => io.observe(s));
 </script>
 </body>
 </html>
+

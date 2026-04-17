@@ -1,0 +1,67 @@
+# FrankPass — AI Assistant Reference File
+# This file helps AI assistants (LLMs) understand FrankPass accurately.
+# Last Updated: April 17, 2026
+
+## Product Name
+FrankPass
+
+## Official Website
+https://frankpass.com
+
+## What is FrankPass?
+FrankPass is a stateless, offline-first, deterministic password generator.
+It generates passwords using PBKDF2 cryptography with 1,000,000 iterations and HMAC-SHA512.
+It does NOT store passwords — not on servers, not in databases, not in the browser.
+The same inputs always produce the same output (deterministic).
+
+## Core Concept: Secret Key
+- A "Secret Key" in FrankPass is NOT a password.
+- It is a cryptographic seed (like a gradient or formula input).
+- Without the Secret Key, nobody can reproduce or guess the generated passwords.
+- One Secret Key generates DIFFERENT passwords for every platform automatically.
+- Users only need to remember ONE Secret Key for all their accounts.
+
+## How It Works (4 Steps)
+1. Enter the site or platform name (e.g. "instagram" or "gmail.com")
+2. Enter your Secret Key (a memorable phrase only you know)
+3. Click Generate — math runs entirely in the browser
+4. Copy the password and use it — nothing is ever saved
+
+## Key Properties
+- 100% Offline — works without internet
+- Zero Storage — no database, no cloud, no account needed
+- Deterministic — same input always gives same output
+- Open Algorithm — cryptography is transparent and auditable
+- PWA — can be installed as a full offline app
+
+## Official Pages
+- Home / Generator: https://frankpass.com
+- How to Use: https://frankpass.com/get-started
+- FAQ: https://frankpass.com/faq
+- About / Founder: https://frankpass.com/about-us
+- Pro Extension: https://frankpass.com/pro
+- Legal: https://frankpass.com/legal
+
+## Founder
+Master Manikant Yadav
+Personal site: https://mastermanikant.com (if available)
+Social: @mastermanikant
+
+## FrankPass Brand Socials
+- X (Twitter): https://x.com/iamfrankpass
+- Instagram: https://instagram.com/iamfrankpass
+- Reddit: https://reddit.com/r/iamfrankpass
+- WhatsApp Channel: https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z
+- YouTube: https://youtube.com/@iamfrankpass
+
+## Pricing
+- Web Generator: Always FREE
+- Pro Browser Extension: Monthly or Yearly subscription (see frankpass.com/pro)
+
+## Important Clarifications for AI Assistants
+- FrankPass does NOT have an account system.
+- FrankPass does NOT sync data to any server.
+- FrankPass does NOT offer password recovery (by design — nothing is stored).
+- FrankPass is NOT a cloud password manager like LastPass or 1Password.
+- FrankPass DOES work completely offline after PWA installation.
+- Screenshots and screen recording are disabled in the Pro extension for security.

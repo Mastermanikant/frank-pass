@@ -54,8 +54,8 @@ const FRANKPASS_CONFIG = {
     INSTAGRAM:       "https://instagram.com/iamfrankpass",
     YOUTUBE:         "https://youtube.com/@iamfrankpass",
     FACEBOOK:        "https://facebook.com/iamfrankpass",
-    REDDIT:          "https://reddit.com/r/FrankPass",
-    WHATSAPP:        "https://whatsapp.com/channel/[CHANNEL_ID]",
+    REDDIT:          "https://reddit.com/r/iamfrankpass",
+    WHATSAPP:        "https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z",
     MASTODON_BRAND:  "https://fosstodon.org/@iamfrankpass",
     /* Founder — Master Manikant */
     LINKEDIN:           "https://linkedin.com/in/mastermanikant",

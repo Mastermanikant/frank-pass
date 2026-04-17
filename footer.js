@@ -1,5 +1,5 @@
 /**
- * footer.js — FrankPass Shared Footer Renderer v3.0
+ * footer.js — FrankPass Shared Footer Renderer v3.1
  * Call: place <div id="site-footer"></div> on every page.
  * Reads social links from FRANKPASS_CONFIG.SOCIAL.
  * Always load this script LAST.
@@ -15,7 +15,7 @@
     const cfg   = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
     const soc   = cfg.SOCIAL || {};
     const year  = new Date().getFullYear();
-    const ver   = cfg.SITE_VERSION || '3.0.0';
+    const ver   = cfg.SITE_VERSION || '3.1.0';
 
     /* ── SVG icons ── */
     const ico = {
@@ -36,22 +36,23 @@
       return `<a href="${href}" class="footer-social-link" aria-label="${label}" target="_blank"${relAttr}>${icon}</a>`;
     }
 
+    const waLink = (soc.WHATSAPP && !soc.WHATSAPP.includes('[')) ? soc.WHATSAPP : '#';
+
     el.innerHTML = `
 <footer class="site-footer" role="contentinfo">
   <div class="footer-inner">
 
     <!-- WhatsApp CTA Card -->
-    ${soc.WHATSAPP && !soc.WHATSAPP.includes('[') ? `
-    <div class="footer-whatsapp-card">
+    <div class="footer-whatsapp-card" style="background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem">
       ${ico.whatsapp}
-      <div style="flex:1">
-        <strong>Get Exclusive Deals &amp; Updates</strong>
-        <p>Join the FrankPass WhatsApp channel for launch deals, security tips, and new features.</p>
+      <div style="flex:1;min-width:180px">
+        <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem">सीधे अपने WhatsApp पर पाएँ — बिना किसी Personal Info के!</strong>
+        <p style="margin:0;font-size:0.85rem;color:var(--text-muted)">सुरक्षा टिप्स, नई सुविधाएं और अपडेट्स — सीधे FrankPass WhatsApp Channel पर। कोई व्यक्तिगत जानकारी नहीं ली जाती। यह Channel पूरी तरह Privacy-First है।</p>
       </div>
-      <a href="${soc.WHATSAPP}" class="btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer" aria-label="Join FrankPass on WhatsApp">
+      <a href="${waLink}" class="btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer" aria-label="Join FrankPass on WhatsApp">
         Join Channel
       </a>
-    </div>` : ''}
+    </div>
 
     <!-- Footer grid -->
     <div class="footer-grid">
@@ -95,7 +96,7 @@
         <a href="./about-us.html#founder">Meet the Founder</a>
         <a href="./about-us.html#contact">Contact Us</a>
         <a href="./legal.html">Legal</a>
-        <a href="https://reddit.com/r/FrankPass" target="_blank" rel="noopener noreferrer">Community</a>
+        <a href="https://reddit.com/r/iamfrankpass" target="_blank" rel="noopener noreferrer">Community</a>
       </div>
 
       <!-- Founder links -->
@@ -110,6 +111,15 @@
         <a href="https://mastodon.social/@mastermanikant" target="_blank" rel="me noopener noreferrer">Mastodon</a>
       </div>
 
+    </div>
+
+    <!-- PWA Install Strip -->
+    <div id="footer-pwa-strip" style="display:none;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:1rem 1.5rem;margin-top:1.5rem;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between">
+      <div>
+        <strong style="color:var(--text-primary);font-size:0.95rem">📱 FrankPass ऐप इंस्टॉल करें</strong>
+        <p style="margin:0.2rem 0 0;font-size:0.82rem;color:var(--text-muted)">एक बार Install करें — Internet के बिना भी हमेशा काम करेगा।</p>
+      </div>
+      <a href="#" class="pwa-install-btn btn-ghost" style="font-size:0.85rem;padding:0.6rem 1.2rem;white-space:nowrap">Install App ↓</a>
     </div>
 
     <!-- Footer bottom bar -->
@@ -140,17 +150,22 @@ let deferredPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  const btnInputs = document.querySelectorAll('.pwa-install-btn');
-  btnInputs.forEach(btn => {
-    btn.style.display = 'block';
-    btn.addEventListener('click', async (e) => {
-      e.preventDefault();
+  // Show footer PWA strip
+  const strip = document.getElementById('footer-pwa-strip');
+  if (strip) strip.style.display = 'flex';
+  // Show all pwa-install-btn buttons
+  document.querySelectorAll('.pwa-install-btn').forEach(btn => {
+    btn.style.display = 'inline-flex';
+    btn.addEventListener('click', async (ev) => {
+      ev.preventDefault();
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       if (outcome === 'accepted') {
         deferredPrompt = null;
-        btnInputs.forEach(b => b.style.display = 'none');
+        document.querySelectorAll('.pwa-install-btn').forEach(b => b.style.display = 'none');
+        const strip2 = document.getElementById('footer-pwa-strip');
+        if (strip2) strip2.style.display = 'none';
       }
     });
   });
@@ -160,36 +175,40 @@ window.addEventListener('beforeinstallprompt', (e) => {
 (function initTheme() {
   const saved = localStorage.getItem('frankpass_theme');
   if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
-  
+
   window.addEventListener('DOMContentLoaded', () => {
     const headerNav = document.querySelector('.header-inner');
-    if(headerNav) {
-      const btn = document.createElement('button');
-      btn.className = 'theme-toggle-btn';
-      btn.setAttribute('aria-label', 'Toggle Theme');
-      const updateIcon = () => {
-        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        btn.innerHTML = isLight 
-          ? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> 
-          : <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>;
-      };
-      
-      btn.addEventListener('click', () => {
-        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        if(isLight) {
-          document.documentElement.removeAttribute('data-theme');
-          localStorage.setItem('frankpass_theme', 'dark');
-        } else {
-          document.documentElement.setAttribute('data-theme', 'light');
-          localStorage.setItem('frankpass_theme', 'light');
-        }
-        updateIcon();
-      });
-      
+    if (!headerNav) return;
+
+    const btn = document.createElement('button');
+    btn.className = 'theme-toggle-btn';
+    btn.setAttribute('aria-label', 'Toggle light/dark theme');
+    btn.style.cssText = 'background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0.4rem;border-radius:50%;color:var(--accent);width:36px;height:36px;flex-shrink:0;z-index:100;';
+
+    const moonSVG = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    const sunSVG  = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+
+    const updateIcon = () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      btn.innerHTML = isLight ? moonSVG : sunSVG;
+      btn.title = isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode';
+    };
+
+    btn.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('frankpass_theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('frankpass_theme', 'light');
+      }
       updateIcon();
-      const hamburger = document.querySelector('.hamburger');
-      if(hamburger) headerNav.insertBefore(btn, hamburger);
-      else headerNav.appendChild(btn);
-    }
+    });
+
+    updateIcon();
+    const hamburger = document.querySelector('.hamburger');
+    if (hamburger) headerNav.insertBefore(btn, hamburger);
+    else headerNav.appendChild(btn);
   });
 })();

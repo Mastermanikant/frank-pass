@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FrankPass FAQ | Frequently Asked Questions</title>
-  <meta name="description" content="Answers to every FrankPass question — security architecture, offline use, secret key recovery, domain normalization, variant counter, and more. 12 questions answered.">
+  <meta name="description" content="Answers to every FrankPass question â€” security architecture, offline use, secret key recovery, domain normalization, variant counter, and more. 12 questions answered.">
   <link rel="canonical" href="https://www.frankpass.com/faq.html">
   <meta property="og:title" content="FrankPass FAQ | Frequently Asked Questions">
-  <meta property="og:description" content="Everything you need to know about how FrankPass keeps you secure — stateless passwords, offline use, key recovery, and more.">
+  <meta property="og:description" content="Everything you need to know about how FrankPass keeps you secure â€” stateless passwords, offline use, key recovery, and more.">
   <meta property="og:url" content="https://www.frankpass.com/faq.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://www.frankpass.com/icons/icon-512.png">
@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
   <link rel="stylesheet" href="/style.css">
 
-  <!-- FAQ Schema — Google Featured Snippets -->
+  <!-- FAQ Schema â€” Google Featured Snippets -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,17 +29,17 @@
       {
         "@type": "Question",
         "name": "What is FrankPass?",
-        "acceptedAnswer": { "@type": "Answer", "text": "FrankPass is a stateless, deterministic password generator. It uses PBKDF2 and HMAC-SHA512 with 1,000,000 iterations to derive a unique, strong password from your inputs — entirely in your browser, with zero cloud storage, zero accounts, and zero databases." }
+        "acceptedAnswer": { "@type": "Answer", "text": "FrankPass is a stateless, deterministic password generator. It uses PBKDF2 and HMAC-SHA512 with 1,000,000 iterations to derive a unique, strong password from your inputs â€” entirely in your browser, with zero cloud storage, zero accounts, and zero databases." }
       },
       {
         "@type": "Question",
         "name": "How is FrankPass different from LastPass or 1Password?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Traditional managers store an encrypted vault on their servers — creating a target for attackers. FrankPass stores nothing. Your passwords are re-derived mathematically each time from inputs you provide. There is no vault to breach." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Traditional managers store an encrypted vault on their servers â€” creating a target for attackers. FrankPass stores nothing. Your passwords are re-derived mathematically each time from inputs you provide. There is no vault to breach." }
       },
       {
         "@type": "Question",
         "name": "What happens if the FrankPass site goes down?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Nothing changes. If you've installed FrankPass as a PWA (Progressive Web App), it works fully offline forever — even if the domain expired. The algorithm is open and documented, so it can always be re-implemented." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Nothing changes. If you've installed FrankPass as a PWA (Progressive Web App), it works fully offline forever â€” even if the domain expired. The algorithm is open and documented, so it can always be re-implemented." }
       },
       {
         "@type": "Question",
@@ -54,17 +54,17 @@
       {
         "@type": "Question",
         "name": "What if I forget my Secret Key?",
-        "acceptedAnswer": { "@type": "Answer", "text": "There is no recovery feature — by design. FrankPass is zero-knowledge. Your Secret Key is the mathematical foundation of every password. If forgotten, you will need to reset passwords on each affected website individually." }
+        "acceptedAnswer": { "@type": "Answer", "text": "There is no recovery feature â€” by design. FrankPass is zero-knowledge. Your Secret Key is the mathematical foundation of every password. If forgotten, you will need to reset passwords on each affected website individually." }
       },
       {
         "@type": "Question",
         "name": "Is FrankPass open source?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The cryptographic algorithm (frankpass-core.js) uses only Web Cryptography API primitives — PBKDF2 and HMAC-SHA512 — which are open standards. The code is available to inspect. No proprietary or custom cryptography is used." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The cryptographic algorithm (frankpass-core.js) uses only Web Cryptography API primitives â€” PBKDF2 and HMAC-SHA512 â€” which are open standards. The code is available to inspect. No proprietary or custom cryptography is used." }
       },
       {
         "@type": "Question",
         "name": "Which browsers does FrankPass support?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Any browser that supports the Web Cryptography API — which includes all modern browsers: Chrome, Firefox, Safari, Edge, Brave, and Samsung Internet. No plugins or extensions are required for the free web generator." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Any browser that supports the Web Cryptography API â€” which includes all modern browsers: Chrome, Firefox, Safari, Edge, Brave, and Samsung Internet. No plugins or extensions are required for the free web generator." }
       },
       {
         "@type": "Question",
@@ -84,12 +84,12 @@
       {
         "@type": "Question",
         "name": "Is there a free trial for FrankPass Pro?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The web generator at frankpass.com is completely free — forever, with no account required. FrankPass Pro adds the browser extension with auto-fill and multi-profile features. There is no time-limited trial for Pro, but the free web tool is fully functional." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The web generator at frankpass.com is completely free â€” forever, with no account required. FrankPass Pro adds the browser extension with auto-fill and multi-profile features. There is no time-limited trial for Pro, but the free web tool is fully functional." }
       }
     ]
   }
   </script>
-</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is FrankPass?","acceptedAnswer":{"@type":"Answer","text":"FrankPass is a stateless, offline-first password generator. It uses PBKDF2 cryptography to generate passwords mathematically. Nothing is ever stored — not on our servers, not on your device."}},{"@type":"Question","name":"What is a Secret Key in FrankPass?","acceptedAnswer":{"@type":"Answer","text":"A Secret Key is NOT a password. It is a cryptographic seed (gradient) that drives the math. Without your Secret Key, nobody can ever reproduce your passwords. You only need to remember one Secret Key — FrankPass generates different passwords for every platform automatically."}},{"@type":"Question","name":"Is FrankPass free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The FrankPass web generator at frankpass.com is completely free and always will be. A Pro browser extension is available for power users."}},{"@type":"Question","name":"Does FrankPass work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. FrankPass is a PWA (Progressive Web App). Once installed, it works entirely offline — even with no internet connection, even if our domain expired."}},{"@type":"Question","name":"If I forget my Secret Key, can I recover my passwords?","acceptedAnswer":{"@type":"Answer","text":"No. Since nothing is stored anywhere, there is no recovery mechanism. This is by design — it means there is also nothing to steal. Keep your Secret Key memorable but known only to you."}},{"@type":"Question","name":"Can I use the same Secret Key for all platforms?","acceptedAnswer":{"@type":"Answer","text":"Yes, that is exactly how FrankPass works. Use one Secret Key for everything — FrankPass generates a unique, different password for each platform automatically."}}]}</script></head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -111,7 +111,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div id="country-dropdown-panel" role="listbox">
-        <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+        <input id="country-search-input" type="search" placeholder="Search countryâ€¦" autocomplete="off" aria-label="Search for a country">
         <div id="country-list-scroll"></div>
       </div>
     </div>
@@ -148,7 +148,7 @@
   <div class="container" style="max-width:640px">
     <div class="section-label" aria-hidden="true">12 questions answered</div>
     <h1 id="faq-heading">Frequently Asked Questions</h1>
-    <p class="section-desc mt-2">Everything you need to know about how FrankPass keeps your passwords secure — without storing any of them.</p>
+    <p class="section-desc mt-2">Everything you need to know about how FrankPass keeps your passwords secure â€” without storing any of them.</p>
   </div>
 </section>
 
@@ -160,95 +160,95 @@
   <div class="container" style="max-width:780px">
     <div style="display:flex;flex-direction:column;gap:0.75rem" id="faq-list">
 
-      <!-- Q1 — What is FrankPass? -->
+      <!-- Q1 â€” What is FrankPass? -->
       <details class="faq-item" id="faq-1">
         <summary>
           <span>What is FrankPass?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          FrankPass is a <strong>stateless, deterministic password generator</strong>. Instead of storing your passwords in a vault, it derives them mathematically each time from three inputs you provide: a platform name, your secret key, and a variant number. It uses PBKDF2 and HMAC-SHA512 with 1,000,000 iterations — running entirely in your browser via the Web Cryptography API. Zero cloud, zero storage, zero accounts. The same inputs always produce the same password, on any device, forever.
+          FrankPass is a <strong>stateless, deterministic password generator</strong>. Instead of storing your passwords in a vault, it derives them mathematically each time from three inputs you provide: a platform name, your secret key, and a variant number. It uses PBKDF2 and HMAC-SHA512 with 1,000,000 iterations â€” running entirely in your browser via the Web Cryptography API. Zero cloud, zero storage, zero accounts. The same inputs always produce the same password, on any device, forever.
         </div>
       </details>
 
-      <!-- Q2 — vs LastPass/1Password -->
+      <!-- Q2 â€” vs LastPass/1Password -->
       <details class="faq-item" id="faq-2">
         <summary>
           <span>How is FrankPass different from LastPass or 1Password?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          Traditional password managers encrypt your passwords and store them — either on their servers or in a local file. This creates a target. When LastPass was breached, attackers downloaded millions of encrypted vaults and began cracking them offline. <strong>FrankPass stores nothing</strong>. There is no vault to steal, no file to crack, no database to breach. Your passwords are re-derived mathematically on demand from inputs that never leave your mind or your device. The security model is architecturally different, not just incrementally better.
+          Traditional password managers encrypt your passwords and store them â€” either on their servers or in a local file. This creates a target. When LastPass was breached, attackers downloaded millions of encrypted vaults and began cracking them offline. <strong>FrankPass stores nothing</strong>. There is no vault to steal, no file to crack, no database to breach. Your passwords are re-derived mathematically on demand from inputs that never leave your mind or your device. The security model is architecturally different, not just incrementally better.
         </div>
       </details>
 
-      <!-- Q3 — Site goes down -->
+      <!-- Q3 â€” Site goes down -->
       <details class="faq-item" id="faq-3">
         <summary>
           <span>What happens if the FrankPass site goes down?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          Nothing changes for you. If you've installed FrankPass as a PWA (tap the install icon in your browser), it works fully offline and permanently — even if this domain expired tomorrow. The algorithm is open, documented, and based entirely on web standards (PBKDF2 + HMAC-SHA512), so it can always be re-implemented by anyone. Your passwords are mathematical outputs, not stored data — they can't disappear because they were never stored.
+          Nothing changes for you. If you've installed FrankPass as a PWA (tap the install icon in your browser), it works fully offline and permanently â€” even if this domain expired tomorrow. The algorithm is open, documented, and based entirely on web standards (PBKDF2 + HMAC-SHA512), so it can always be re-implemented by anyone. Your passwords are mathematical outputs, not stored data â€” they can't disappear because they were never stored.
         </div>
       </details>
 
-      <!-- Q4 — Secret Key stored? -->
+      <!-- Q4 â€” Secret Key stored? -->
       <details class="faq-item" id="faq-4">
         <summary>
           <span>Is my Secret Key stored anywhere?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          <strong>Never.</strong> Your Secret Key is processed only in your browser's volatile memory and is never transmitted to any server, never written to disk, never logged anywhere. To reinforce this, FrankPass automatically clears the Secret Key input field after 2 minutes of inactivity. No network request is ever made during password generation — you can verify this by opening your browser's network tab before generating a password.
+          <strong>Never.</strong> Your Secret Key is processed only in your browser's volatile memory and is never transmitted to any server, never written to disk, never logged anywhere. To reinforce this, FrankPass automatically clears the Secret Key input field after 2 minutes of inactivity. No network request is ever made during password generation â€” you can verify this by opening your browser's network tab before generating a password.
         </div>
       </details>
 
-      <!-- Q5 — Offline? -->
+      <!-- Q5 â€” Offline? -->
       <details class="faq-item" id="faq-5">
         <summary>
           <span>Does FrankPass work completely offline?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          <strong>Yes.</strong> Once the page has loaded once, you can disconnect your internet and the generator continues to work perfectly. The entire cryptographic computation happens inside your browser using the Web Cryptography API — no server is contacted during generation. For permanent offline access, install FrankPass as a PWA: look for the install icon in your browser's address bar, or go to your browser menu and choose "Add to Home Screen". After installation, FrankPass works like a native app — no internet required, ever.
+          <strong>Yes.</strong> Once the page has loaded once, you can disconnect your internet and the generator continues to work perfectly. The entire cryptographic computation happens inside your browser using the Web Cryptography API â€” no server is contacted during generation. For permanent offline access, install FrankPass as a PWA: look for the install icon in your browser's address bar, or go to your browser menu and choose "Add to Home Screen". After installation, FrankPass works like a native app â€” no internet required, ever.
         </div>
       </details>
 
-      <!-- Q6 — Forget Secret Key? -->
+      <!-- Q6 â€” Forget Secret Key? -->
       <details class="faq-item" id="faq-6">
         <summary>
           <span>What happens if I forget my Secret Key?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          Because FrankPass is <strong>zero-knowledge and stateless</strong>, there is no "Forgot Password" feature and no recovery mechanism — by design. Your Secret Key is the mathematical foundation of every password you've ever generated with it. If you forget it, you will need to reset your passwords on every affected website individually. This is why we strongly recommend choosing a Secret Key that is deeply memorable to you — a personal phrase, a pattern based on a meaningful memory, or a lyric only you know. Write it down and store the physical copy somewhere extremely secure (like a safe), separate from your devices.
+          Because FrankPass is <strong>zero-knowledge and stateless</strong>, there is no "Forgot Password" feature and no recovery mechanism â€” by design. Your Secret Key is the mathematical foundation of every password you've ever generated with it. If you forget it, you will need to reset your passwords on every affected website individually. This is why we strongly recommend choosing a Secret Key that is deeply memorable to you â€” a personal phrase, a pattern based on a meaningful memory, or a lyric only you know. Write it down and store the physical copy somewhere extremely secure (like a safe), separate from your devices.
         </div>
       </details>
 
-      <!-- Q7 — Open source? -->
+      <!-- Q7 â€” Open source? -->
       <details class="faq-item" id="faq-7">
         <summary>
           <span>Is FrankPass open source?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          The cryptographic engine uses <strong>only open web standards</strong> — PBKDF2 and HMAC-SHA512 via the browser-native Web Cryptography API. There is no proprietary or custom cryptography. The algorithm is fully transparent and auditable: the entire derivation logic is in <code>frankpass-core.js</code>, which you can inspect in your browser's developer tools. No black boxes. No security through obscurity. The algorithm is documented in full in the <a href="/docs.html">documentation</a>.
+          The cryptographic engine uses <strong>only open web standards</strong> â€” PBKDF2 and HMAC-SHA512 via the browser-native Web Cryptography API. There is no proprietary or custom cryptography. The algorithm is fully transparent and auditable: the entire derivation logic is in <code>frankpass-core.js</code>, which you can inspect in your browser's developer tools. No black boxes. No security through obscurity. The algorithm is documented in full in the <a href="/docs.html">documentation</a>.
         </div>
       </details>
 
-      <!-- Q8 — Browser support? -->
+      <!-- Q8 â€” Browser support? -->
       <details class="faq-item" id="faq-8">
         <summary>
           <span>Which browsers and devices does FrankPass support?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          FrankPass works on any browser that supports the Web Cryptography API — which means all modern browsers: <strong>Chrome, Firefox, Safari, Edge, Brave, Samsung Internet, and Opera</strong>, on desktop and mobile. No plugins or extensions are needed for the free web generator. The browser extension (Pro feature) currently supports Chrome, Firefox, Edge, and Brave.
+          FrankPass works on any browser that supports the Web Cryptography API â€” which means all modern browsers: <strong>Chrome, Firefox, Safari, Edge, Brave, Samsung Internet, and Opera</strong>, on desktop and mobile. No plugins or extensions are needed for the free web generator. The browser extension (Pro feature) currently supports Chrome, Firefox, Edge, and Brave.
         </div>
       </details>
 
-      <!-- Q9 — Country pricing? -->
+      <!-- Q9 â€” Country pricing? -->
       <details class="faq-item" id="faq-9">
         <summary>
           <span>Why are prices different for different countries?</span>
@@ -259,42 +259,42 @@
         </div>
       </details>
 
-      <!-- Q10 — Variant field? -->
+      <!-- Q10 â€” Variant field? -->
       <details class="faq-item" id="faq-10">
         <summary>
           <span>What does the Variant counter do, and when should I use it?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          Think of the Variant as a <strong>password rotation counter</strong>. Two situations call for it: first, if a website forces you to change your password periodically — simply increment the Variant from 1 to 2 (or 3, 4, etc.) to generate a brand-new, secure password for that platform without changing your Secret Key. Second, if you believe your account was compromised — incrementing the Variant immediately invalidates the old password and produces a fresh one. Always remember which Variant number you're using for each platform, since you'll need to match it every time you log in.
+          Think of the Variant as a <strong>password rotation counter</strong>. Two situations call for it: first, if a website forces you to change your password periodically â€” simply increment the Variant from 1 to 2 (or 3, 4, etc.) to generate a brand-new, secure password for that platform without changing your Secret Key. Second, if you believe your account was compromised â€” incrementing the Variant immediately invalidates the old password and produces a fresh one. Always remember which Variant number you're using for each platform, since you'll need to match it every time you log in.
         </div>
       </details>
 
-      <!-- Q11 — Password length? -->
+      <!-- Q11 â€” Password length? -->
       <details class="faq-item" id="faq-11">
         <summary>
           <span>Can I control password length, and what if a website rejects my password?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          <strong>Yes.</strong> Use the length slider in Advanced Options to set any length between 8 and 32 characters. The Max preset automatically sets it to 32. If a website rejects your password — some older sites have maximum length limits or prohibit symbols — try these steps in order: first, lower the length slider; second, switch the Profile to "Simple" (alphanumeric, no symbols); third, generate again. <strong>Critically:</strong> note exactly which settings you used, because you must use those same settings every time you log in to that website.
+          <strong>Yes.</strong> Use the length slider in Advanced Options to set any length between 8 and 32 characters. The Max preset automatically sets it to 32. If a website rejects your password â€” some older sites have maximum length limits or prohibit symbols â€” try these steps in order: first, lower the length slider; second, switch the Profile to "Simple" (alphanumeric, no symbols); third, generate again. <strong>Critically:</strong> note exactly which settings you used, because you must use those same settings every time you log in to that website.
         </div>
       </details>
 
-      <!-- Q12 — Free trial? -->
+      <!-- Q12 â€” Free trial? -->
       <details class="faq-item" id="faq-12">
         <summary>
           <span>Is there a free trial for FrankPass Pro?</span>
           <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </summary>
         <div class="faq-body">
-          The web generator at <a href="/">frankpass.com</a> is <strong>completely free — forever</strong>. No account, no trial expiry, no credit card. FrankPass Pro adds the browser extension, which brings 1-click auto-fill, multi-profile management, and automatic platform detection — but the core generator you need for daily use costs nothing. There is no time-limited trial for Pro, but you can fully evaluate FrankPass using the free web tool before purchasing.
+          The web generator at <a href="/">frankpass.com</a> is <strong>completely free â€” forever</strong>. No account, no trial expiry, no credit card. FrankPass Pro adds the browser extension, which brings 1-click auto-fill, multi-profile management, and automatic platform detection â€” but the core generator you need for daily use costs nothing. There is no time-limited trial for Pro, but you can fully evaluate FrankPass using the free web tool before purchasing.
         </div>
       </details>
 
     </div>
 
-    <!-- ── Bottom CTA ── -->
+    <!-- â”€â”€ Bottom CTA â”€â”€ -->
     <div style="margin-top:3rem;text-align:center;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <a href="/docs.html" class="btn-primary" aria-label="Read the FrankPass technical documentation">
         Read the Docs &rarr;
@@ -324,11 +324,11 @@
 <script src="/country-dropdown.js"></script>
 <script src="/footer.js"></script>
 <script>
-/* ── Header scroll ── */
+/* â”€â”€ Header scroll â”€â”€ */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
 
-/* ── Hamburger ── */
+/* â”€â”€ Hamburger â”€â”€ */
 const hamburger  = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
@@ -337,7 +337,7 @@ hamburger.addEventListener('click', () => {
   hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
-/* ── One-open-at-a-time accordion ── */
+/* â”€â”€ One-open-at-a-time accordion â”€â”€ */
 const faqItems = document.querySelectorAll('.faq-item');
 faqItems.forEach(item => {
   item.addEventListener('toggle', () => {
@@ -351,3 +351,4 @@ faqItems.forEach(item => {
 </script>
 </body>
 </html>
+

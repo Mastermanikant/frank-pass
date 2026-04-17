@@ -1207,3 +1207,17 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 
 .theme-toggle-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0.5rem; border-radius: 50%; transition: var(--transition); } .theme-toggle-btn:hover { color: var(--accent); background: var(--glass-bg); }
+
+/* Theme toggle always visible fix */
+.theme-toggle-btn {
+  color: var(--accent) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: 36px;
+  height: 36px;
+  z-index: 100;
+}
+.theme-toggle-btn svg {
+  display: block;
+  pointer-events: none;
+}
