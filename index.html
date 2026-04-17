@@ -10,10 +10,10 @@
   <meta property="og:description" content="Generate strong passwords without storing them. Pure math — no cloud, no database, no accounts. Works offline forever.">
   <meta property="og:url" content="https://www.frankpass.com/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.frankpass.com/icons/og-image.png">
+  <meta property="og:image" content="https://www.frankpass.com/icons/icon-512.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@iamfrankpass">
-  <link rel="icon" href="/icons/favicon.ico">
+  <link rel="icon" href="/icons/favicon.png">
   <link rel="manifest" href="/manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,7 +100,7 @@
   <a href="/docs.html">Docs</a>
   <a href="/faq.html">FAQ</a>
   <a href="/about-us.html">About</a>
-  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a>
+  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a><a href="#" id="pwa-install-btn-mobile" class="pwa-install-btn" style="display:none; color:var(--accent); font-weight:600; text-align:center;">Install App &darr;</a>
 </nav>
 
 <!-- ============================================================
@@ -200,6 +200,16 @@
             <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted)">Increase to rotate password without changing your Secret Key.</span>
           </div>
 
+          <!-- Password Type -->
+          <div class="form-group">
+            <label class="form-label" for="type-select">Password Type</label>
+            <select id="type-select" class="form-input" style="width:100%;appearance:none;cursor:pointer">
+              <option value="numeric">Only Number</option>
+              <option value="alphanumeric">Number & Letters</option>
+              <option value="standard" selected>Number, Letters and Symbol</option>
+            </select>
+          </div>
+
           <!-- Length slider -->
           <div class="form-group">
             <label class="form-label" for="length-slider">Password Length: <span id="length-val">16</span></label>
@@ -241,6 +251,59 @@
         </div>
         <p class="output-note" aria-live="polite">Not stored anywhere &middot; <span id="clear-timer-label">Clears in 15s after generation</span></p>
 
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SHARE CARD
+     Encourage users to spread mental-load-free security
+     ============================================================ -->
+<section class="section-sm" aria-label="Share FrankPass">
+  <div class="container" style="max-width:680px">
+    <div class="card-glass" style="padding:2rem">
+      <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+        <div style="width:44px;height:44px;background:rgba(139,92,246,0.12);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <strong style="font-size:1.05rem;color:var(--text-primary);display:block;margin-bottom:0.35rem">Help someone live stress-free 💜</strong>
+          <p style="margin:0;font-size:0.9rem;color:var(--text-muted);line-height:1.6">Share FrankPass with your family &amp; friends. Help them live mentally load-free and become security-aware — without paying anything.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem">
+        <!-- WhatsApp -->
+        <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('whatsapp',event)" aria-label="Share on WhatsApp"
+           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;text-decoration:none;transition:var(--transition)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <!-- Facebook -->
+        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('facebook',event)" aria-label="Share on Facebook"
+           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(24,119,242,0.1);border:1px solid rgba(24,119,242,0.3);color:#1877F2;text-decoration:none;transition:var(--transition)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          Facebook
+        </a>
+        <!-- X / Twitter -->
+        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('x',event)" aria-label="Share on X"
+           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);text-decoration:none;transition:var(--transition)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X (Twitter)
+        </a>
+        <!-- Reddit -->
+        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('reddit',event)" aria-label="Share on Reddit"
+           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(255,69,0,0.1);border:1px solid rgba(255,69,0,0.3);color:#ff4500;text-decoration:none;transition:var(--transition)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+          Reddit
+        </a>
+        <!-- Copy Link -->
+        <button onclick="shareLink('copy',event)" aria-label="Copy link"
+           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;transition:var(--transition)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Link
+        </button>
       </div>
     </div>
   </div>
@@ -315,6 +378,54 @@
         <h3>Copy &amp; Use</h3>
         <p>Your password is generated in milliseconds — entirely on your device. Copy it, use it, and forget it. The math will reproduce it identically next time. Nothing is ever saved.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ASK AI (MULTILINGUAL ASSISTANT)
+     ============================================================ -->
+<section id="ask-ai-section" class="section" style="background:var(--bg-primary); padding: 4rem 0;" aria-labelledby="ask-ai-heading">
+  <div class="container" style="max-width:680px">
+    <div class="text-center mb-4">
+      <div class="section-label" aria-hidden="true">Multilingual Guide</div>
+      <h2 id="ask-ai-heading">Learn FrankPass in your language</h2>
+      <p class="section-desc mt-2">No complicated translation tables. Just tell AI your language and script, and get a complete, structured tutorial instantly.</p>
+    </div>
+    
+    <div class="card-glass" style="padding:2.25rem">
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label for="ai-lang" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Your Language</label>
+        <input type="text" id="ai-lang" placeholder="e.g. Hindi, Spanish, Tamil" value="Hindi" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;transition:var(--transition)">
+      </div>
+      
+      <div class="form-group" style="margin-bottom:2rem">
+        <label for="ai-script" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Preferred Script</label>
+        <select id="ai-script" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;appearance:none;cursor:pointer">
+          <option value="Devanagari">Devanagari (देवनागरी)</option>
+          <option value="Latin">Latin (A, B, C...)</option>
+          <option value="Arabic">Arabic (العربية)</option>
+          <option value="Cyrillic">Cyrillic (Кириллица)</option>
+          <option value="Native">Native to Language</option>
+        </select>
+      </div>
+
+      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Click an AI below. We will copy a smart prompt to your clipboard and open the app. <strong style="color:var(--text-primary)">Just paste it!</strong></p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+        <button onclick="openAI('chatgpt')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+          ChatGPT
+        </button>
+        <button onclick="openAI('claude')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+          Claude
+        </button>
+        <button onclick="openAI('gemini')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+          Gemini
+        </button>
+        <button onclick="openAI('perplexity')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+          Perplexity
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -653,6 +764,9 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
   const username = (document.getElementById('username-input').value || '').trim();
   const variant  = parseInt(document.getElementById('variant-input').value, 10) || 1;
   const length   = parseInt(lengthSlider.value, 10) || 16;
+  
+  const typeSelect = document.getElementById('type-select');
+  const finalProfile = typeSelect ? typeSelect.value : activeProfile;
 
   const genBtn = document.getElementById('generate-btn');
   genBtn.disabled = true;
@@ -660,7 +774,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
 
   try {
     const password = await FRANKPASS_CORE.generate(
-      normalizedPlatform, username, secretKey, variant, activeProfile, length
+      normalizedPlatform, username, secretKey, variant, finalProfile, length
     );
     const out = document.getElementById('output-password');
     out.textContent = password;
@@ -691,6 +805,7 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
   if (!password || password === '···········') return;
   try {
     await navigator.clipboard.writeText(password);
+    scheduleClipboardClear();
     const copyBtn = document.getElementById('copy-btn');
     copyBtn.classList.add('copied');
     document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
@@ -703,6 +818,15 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
     showToast('Copy failed — please select and copy manually.');
   }
 });
+
+/* ── SECURITY BUG FIX: Auto-clear clipboard 30s after copy ── */
+let _clipboardClearTimer;
+function scheduleClipboardClear() {
+  clearTimeout(_clipboardClearTimer);
+  _clipboardClearTimer = setTimeout(() => {
+    navigator.clipboard.writeText('').catch(() => {});
+  }, 30000);
+}
 
 /* ── WhatsApp CTA link from config ── */
 document.addEventListener('DOMContentLoaded', () => {
@@ -739,6 +863,58 @@ if (regionEl) {
     const cardLabel = document.getElementById('card-country-label');
     if (cardLabel) cardLabel.textContent = label;
   });
+}
+</script>
+<script>
+function openAI(bot) {
+  const lang = document.getElementById('ai-lang').value || 'Hindi';
+  const script = document.getElementById('ai-script').value || 'Native';
+  const prompt = 'I want to learn how to use https://frankpass.com. It is a stateless, offline-first password generator that uses PBKDF2 cryptography. It does NOT store passwords anywhere. Explain its 4 step process to me in ' + lang + ' language using the ' + script + ' script. Make the explanation structured, simple, and use bullet points or tables.';
+  navigator.clipboard.writeText(prompt).then(() => {
+    showToast('Prompt copied! Paste it in ' + bot + '...', 'success');
+    setTimeout(() => {
+      let url = '';
+      if(bot==='chatgpt') url = 'https://chatgpt.com/?q=' + encodeURIComponent(prompt);
+      else if(bot==='claude') url = 'https://claude.ai/new';
+      else if(bot==='gemini') url = 'https://gemini.google.com/app';
+      else if(bot==='perplexity') url = 'https://www.perplexity.ai/?q=' + encodeURIComponent(prompt);
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }, 800);
+  }).catch(err => {
+    showToast('Failed to copy. Please allow clipboard access.', 'error');
+  });
+}
+
+/* ── Share Card Logic ── */
+function shareLink(platform, e) {
+  e.preventDefault();
+  const siteUrl = 'https://frankpass.com';
+  const msg = 'I found this awesome FREE tool ✨ — FrankPass: a stateless password manager that generates your passwords from math. No accounts, no cloud, no storage. Works offline too! ' + siteUrl;
+  const encodedMsg = encodeURIComponent(msg);
+  const encodedUrl = encodeURIComponent(siteUrl);
+  let url = '';
+  switch(platform) {
+    case 'whatsapp':
+      url = 'https://wa.me/?text=' + encodedMsg;
+      break;
+    case 'facebook':
+      url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl + '&quote=' + encodedMsg;
+      break;
+    case 'x':
+      url = 'https://twitter.com/intent/tweet?text=' + encodedMsg;
+      break;
+    case 'reddit':
+      url = 'https://www.reddit.com/submit?url=' + encodedUrl + '&title=' + encodeURIComponent('FrankPass — stateless password manager. No cloud. No storage. Pure math.');
+      break;
+    case 'copy':
+      navigator.clipboard.writeText(siteUrl + ' — ' + msg).then(() => {
+        showToast('Link copied to clipboard!', 'success');
+      }).catch(() => {
+        showToast('Copy failed — please copy manually.');
+      });
+      return;
+  }
+  if (url) window.open(url, '_blank', 'noopener,noreferrer');
 }
 </script>
 </body>
