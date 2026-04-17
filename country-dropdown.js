@@ -190,6 +190,7 @@
         if (initCountry) {
             currentCode = initCountry.code;
             triggerFlag.src = getFlagUrl(initCountry.code);
+            triggerFlag.style.display = '';
             displayName.textContent = initCountry.label;
             hiddenInput.value = initCountry.label;
 

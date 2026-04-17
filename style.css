@@ -1022,15 +1022,15 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   bottom: 0;
   left: 0;
   right: 0;
-  height: var(--mobile-nav-h);
+  height: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px));
   background: rgba(10,10,18,0.95);
   border-top: 1px solid var(--border);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  z-index: 900;
+  z-index: 2000;
   align-items: center;
   justify-content: space-around;
-  padding: 0 0.5rem;
+  padding: 0 0.5rem env(safe-area-inset-bottom, 0px) 0.5rem;
 }
 .mob-nav-item {
   display: flex;

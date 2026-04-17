@@ -484,51 +484,22 @@ window.addEventListener('scroll', () => {
 /* ── Hamburger menu toggle ── */
 const hamburger   = document.getElementById('hamburger');
 const mobileMenu  = document.getElementById('mobile-menu');
-hamburger.addEventListener('click', () => {
-  const isOpen = mobileMenu.classList.toggle('open');
-    platformIndicator.classList.toggle('visible', !!inDB);
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
   });
 
-  /* ── Autocomplete population ── */
-  function updateDatalist() {
-    const list = document.getElementById('platform-list');
-    if (!list || !window.regionalPlatforms) return;
-    
-    list.innerHTML = '';
-    const currentRegion = (document.getElementById('region')?.value || 'Global').split(' ')[0].toLowerCase();
-    
-    /* Combine current region + Global for suggestions */
-    const keys = ['af', 'Global']; // Default to af (all/alpha) or global
-    if (window.regionalPlatforms[currentRegion]) keys.push(currentRegion);
-
-    const fragment = document.createDocumentFragment();
-    const seen = new Set();
-    
-    keys.forEach(k => {
-      (window.regionalPlatforms[k] || []).forEach(p => {
-        if (!seen.has(p)) {
-          const opt = document.createElement('option');
-          opt.value = p;
-          fragment.appendChild(opt);
-          seen.add(p);
-        }
-      });
-    });
-    list.appendChild(fragment);
-  }
-  
-  /* Initial load after a small delay to ensure platforms.js is parsed */
-  setTimeout(updateDatalist, 500);
-  window.addEventListener('countryChange', updateDatalist);
-hamburger.setAttribute('aria-expanded', String(isOpen));
-});
-document.addEventListener('click', (e) => {
-  if (!header.contains(e.target) && !mobileMenu.contains(e.target)) {
-    mobileMenu.classList.remove('open');
-    hamburger.classList.remove('open');
-    hamburger.setAttribute('aria-expanded', 'false');
-  }
-});
+  document.addEventListener('click', (e) => {
+    const header = document.getElementById('site-header');
+    if (header && !header.contains(e.target) && !mobileMenu.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
 
 /* ── Toast helper ── */
 function showToast(msg, type = '') {
@@ -740,10 +711,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('whatsapp-cta-btn').href = cfg.SOCIAL.WHATSAPP;
   }
 
-  /* Restore saved settings */
+  /* Restore saved settings and URL Prefill */
   try {
+    const params = new URLSearchParams(window.location.search);
+    const urlPlatform = params.get('p') || params.get('platform') || params.get('site') || '';
+    const platformInput = document.getElementById('platform-input');
+    
     const saved = JSON.parse(localStorage.getItem('fp_settings') || '{}');
-    if (saved.platform) document.getElementById('platform-input').value = saved.platform;
+    let platformToSet = urlPlatform || saved.platform;
+    
+    if (platformToSet && platformInput) {
+      platformInput.value = platformToSet;
+      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    
     if (saved.username) document.getElementById('username-input').value = saved.username;
     if (saved.variant)  document.getElementById('variant-input').value  = saved.variant;
     if (saved.length)   { lengthSlider.value = saved.length; lengthVal.textContent = saved.length; }

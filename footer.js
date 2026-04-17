@@ -81,29 +81,32 @@
       <!-- Product links -->
       <div class="footer-col">
         <div class="footer-col-title">Product</div>
-        <a href="/">Password Generator</a>
-        <a href="/get-started.html">Get Started</a>
-        <a href="/pro.html">FrankPass Pro</a>
-        <a href="/docs.html">Documentation</a>
-        <a href="/faq.html">FAQ</a>
+        <a href="./index.html">Password Generator</a>
+        <a href="./get-started.html">Get Started</a>
+        <a href="./pro.html">FrankPass Pro</a>
+        <a href="./docs.html">Documentation</a>
+        <a href="./faq.html">FAQ</a>
       </div>
 
       <!-- Company links -->
       <div class="footer-col">
         <div class="footer-col-title">Company</div>
-        <a href="/about-us.html">About Us</a>
-        <a href="/about-us.html#founder">Meet the Founder</a>
-        <a href="/about-us.html#contact">Contact</a>
-        <a href="/legal.html">Legal</a>
+        <a href="./about-us.html">About Us</a>
+        <a href="./about-us.html#founder">Meet the Founder</a>
+        <a href="./about-us.html#contact">Contact Us</a>
+        <a href="./legal.html">Legal</a>
         <a href="https://reddit.com/r/FrankPass" target="_blank" rel="noopener noreferrer">Community</a>
       </div>
 
       <!-- Founder links -->
       <div class="footer-col">
         <div class="footer-col-title">Master Manikant</div>
-        <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
-        <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://whatsapp.com/channel/0029Va4HkL58qIzrdn6bT83r" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://facebook.com/mastermanikant" target="_blank" rel="noopener noreferrer">Facebook</a>
         <a href="https://instagram.com/mastermanikant" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer">YouTube</a>
         <a href="https://mastodon.social/@mastermanikant" target="_blank" rel="me noopener noreferrer">Mastodon</a>
       </div>
 
@@ -111,11 +114,11 @@
 
     <!-- Footer bottom bar -->
     <div class="footer-bottom">
-      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="/about-us.html#founder">Master Manikant Yadav</a> &middot; v${ver}</span>
+      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="./about-us.html#founder">Master Manikant Yadav</a> &middot; v${ver}</span>
       <div class="footer-legal-links">
-        <a href="/legal.html">Privacy Policy</a>
-        <a href="/legal.html#terms">Terms of Service</a>
-        <a href="/legal.html#disclaimer">Disclaimer</a>
+        <a href="./legal.html#privacy">Privacy Policy</a>
+        <a href="./legal.html#terms">Terms of Service</a>
+        <a href="./legal.html#disclaimer">Disclaimer</a>
       </div>
     </div>
 
