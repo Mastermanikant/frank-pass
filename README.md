@@ -1,6 +1,6 @@
 # 🛡️ FrankPass — The #1 Stateless Password Generator
 
-**Live at:** [frankpass.com](https://frankpass.com) &nbsp;|&nbsp; **By:** [Master Manikant Yadav](https://frankpass.com/meet-the-founder-MasterManikant.html)
+**Live at:** [frankpass.com](https://frankpass.com)  |  **By:** [Master Manikant Yadav](https://frankpass.com/meet-the-founder-MasterManikant.html)
 
 ![100% Offline (PWA)](https://img.shields.io/badge/Status-100%25_Offline_Ready-success?style=flat-square) 
 ![Zero Database](https://img.shields.io/badge/Architecture-Zero_Database-blue?style=flat-square)
