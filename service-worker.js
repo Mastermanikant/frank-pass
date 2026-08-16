@@ -6,6 +6,8 @@ const CACHED_URLS = [
     '/contact-us',
     '/faq',
     '/guide',
+    '/install',
+    '/install.html',
     '/legal',
     '/meet-the-founder-MasterManikant',
     '/support-us',

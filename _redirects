@@ -1,9 +1,14 @@
 # Cloudflare Pages Direct Deployment & Cloudflare Router Config
 
+# Install & App Hub Aliases (Cloudflare Pages auto-serves install.html at /install)
+/app /install 301
+/download /install 301
+/pwa /install 301
+
 # Clean URLs & Rewrites
-/privacy /legal.html 200
-/terms /legal.html 200
-/disclaimer /legal.html 200
+/privacy /legal 301
+/terms /legal 301
+/disclaimer /legal 301
 /hn / 200
 
 # Canonical Page Redirects

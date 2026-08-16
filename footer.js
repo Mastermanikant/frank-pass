@@ -83,6 +83,7 @@
       <div class="footer-col">
         <div class="footer-col-title">Product</div>
         <a href="./index.html">Password Generator</a>
+        <a href="/install">Install App &#128241;</a>
         <a href="./get-started.html">Get Started</a>
         <a href="./pro.html">FrankPass Pro</a>
         <a href="./docs.html">Documentation</a>

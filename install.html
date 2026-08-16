@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Install FrankPass App - 100% Offline PWA &amp; Standalone Desktop/Mobile App</title>
+  <meta name="description" content="Install FrankPass on Android, iPhone (iOS), Windows, Mac, or Linux. 100% offline stateless password generator. Zero data stored, 0 MB memory footprint.">
+  <link rel="canonical" href="https://www.frankpass.com/install">
+  <meta property="og:title" content="Install FrankPass App - Offline PWA &amp; Standalone App">
+  <meta property="og:description" content="Install FrankPass on any device. Works 100% offline in Airplane Mode. Zero database, pure math.">
+  <meta property="og:url" content="https://www.frankpass.com/install">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.frankpass.com/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@iamfrankpass">
+  <link rel="icon" href="/icons/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/style.css?v=3.2.0">
+  <style>
+    .install-hero {
+      padding: 3.5rem 0 2rem;
+      text-align: center;
+    }
+    .install-status-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2.25rem 1.5rem;
+      max-width: 620px;
+      margin: 2rem auto;
+      box-shadow: var(--card-shadow);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .platform-tabs {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 2rem 0 1.5rem;
+    }
+    .platform-tab-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+    .platform-tab-btn.active, .platform-tab-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+    .guide-lang-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .guide-lang-btn {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.5rem 1.5rem;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .guide-lang-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+    .step-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .toast-msg {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .toast-msg.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="FrankPass Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+          <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+          <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="logo-text"><span>Frank</span>Pass</span>
+      </a>
+
+      <nav class="header-nav" aria-label="Main Navigation">
+        <a href="/">Generator</a>
+        <a href="/install" class="active" style="color:var(--accent);font-weight:700">Install App &#128241;</a>
+        <a href="/get-started">Get Started</a>
+        <a href="/docs">Docs</a>
+        <a href="/faq">FAQ</a>
+        <a href="/about-us">About</a>
+        <span class="separator" aria-hidden="true">&bull;</span>
+        <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener noreferrer" class="nav-github" aria-label="GitHub Repository">&#11088; Star</a>
+      </nav>
+
+      <a href="/pro" class="btn-pro" style="margin-left:auto">Get Pro &rarr;</a>
+    </div>
+  </header>
+
+  <main style="padding-top:var(--header-h)">
+    <div class="container">
+
+      <!-- HERO SECTION -->
+      <section class="install-hero">
+        <div class="section-label">&#128241; Progressive Web App &amp; Standalone Client</div>
+        <h1 class="gradient-title" style="font-size:clamp(2rem, 5vw, 3.2rem);margin:0.5rem 0 1rem">
+          Install FrankPass on Any Device
+        </h1>
+        <p class="section-desc" style="max-width:640px;margin:0 auto">
+          Works 100% offline in Airplane Mode. Once installed, FrankPass continues to generate deterministic passwords forever - even if internet is disconnected or servers go offline.
+        </p>
+
+        <!-- DYNAMIC SMART INSTALL / LAUNCH CARD -->
+        <div class="install-status-card">
+          <!-- Dynamic Status Badge -->
+          <div id="pwa-status-badge" style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);color:var(--success);padding:0.35rem 0.9rem;border-radius:999px;font-size:0.85rem;font-weight:700;margin-bottom:1.25rem">
+            &#10003; 100% Offline Ready &middot; Zero Storage Required
+          </div>
+
+          <h2 id="pwa-card-heading" style="font-size:1.4rem;margin-bottom:0.6rem">
+            Get the Standalone App
+          </h2>
+          <p id="pwa-card-sub" style="font-size:0.92rem;color:var(--text-muted);margin-bottom:1.5rem">
+            Instant home-screen access. Fast launch without browser URL bars or tabs.
+          </p>
+
+          <!-- Primary Dynamic Action Button -->
+          <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
+            <button id="main-install-btn" class="btn-primary" style="font-size:1.05rem;padding:0.9rem 2rem;display:inline-flex;align-items:center;gap:0.6rem;cursor:pointer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span id="main-install-btn-text">Install FrankPass App</span>
+            </button>
+            <a href="/" class="btn-ghost" style="font-size:1.05rem;padding:0.9rem 1.75rem;display:inline-flex;align-items:center;gap:0.5rem">
+              Launch Web Generator &rarr;
+            </a>
+          </div>
+
+          <!-- Feature badges -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:1rem;margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+            <div>
+              <strong style="display:block;font-size:1.1rem;color:var(--text-primary)">0 MB</strong>
+              <span style="font-size:0.78rem;color:var(--text-muted)">Memory Footprint</span>
+            </div>
+            <div>
+              <strong style="display:block;font-size:1.1rem;color:var(--text-primary)">100%</strong>
+              <span style="font-size:0.78rem;color:var(--text-muted)">Offline Capability</span>
+            </div>
+            <div>
+              <strong style="display:block;font-size:1.1rem;color:var(--text-primary)">Zero</strong>
+              <span style="font-size:0.78rem;color:var(--text-muted)">Data Stored</span>
+            </div>
+            <div>
+              <strong style="display:block;font-size:1.1rem;color:var(--text-primary)">Forever</strong>
+              <span style="font-size:0.78rem;color:var(--text-muted)">Outage Proof</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PLATFORM-SPECIFIC STEP-BY-STEP GUIDES -->
+      <section class="section" style="padding:2rem 0 4rem">
+        <div class="text-center mb-4">
+          <div class="section-label">Device Guide</div>
+          <h2>Step-by-Step Installation Instructions</h2>
+          <p class="section-desc mt-2">Select your operating system or browser below:</p>
+
+          <!-- Platform Selector Tabs -->
+          <div class="platform-tabs" role="tablist">
+            <button class="platform-tab-btn active" data-tab="tab-android">🤖 Android</button>
+            <button class="platform-tab-btn" data-tab="tab-ios">🍏 iPhone / iPad (iOS)</button>
+            <button class="platform-tab-btn" data-tab="tab-windows">🪟 Windows PC</button>
+            <button class="platform-tab-btn" data-tab="tab-mac">🍎 macOS</button>
+            <button class="platform-tab-btn" data-tab="tab-extension">🧩 Browser Extension</button>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 1: ANDROID -->
+        <div id="tab-android" class="tab-pane active" style="max-width:680px;margin:0 auto">
+          <div class="card-glass" style="padding:2rem">
+            <h3 style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem">
+              <span>🤖</span> Installing on Android (Chrome / Edge / Samsung Internet)
+            </h3>
+            <div style="display:flex;flex-direction:column;gap:1.25rem">
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">1</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Click the "Install App" button above</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">If prompted by Chrome or Edge, simply tap <strong>"Install"</strong> or <strong>"Add to Home screen"</strong>.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">2</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Manual Option: Browser Menu (&vellip;)</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">If the button does not trigger, tap the three vertical dots (top right in Chrome) and select <strong>"Install app"</strong> or <strong>"Add to Home Screen"</strong>.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">3</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Launch from Home Screen</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">FrankPass is now an independent app icon on your home screen. Turn off Wi-Fi &amp; Mobile Data to test offline password generation!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 2: IOS (IPHONE / IPAD) -->
+        <div id="tab-ios" class="tab-pane" style="max-width:680px;margin:0 auto;display:none">
+          <div class="card-glass" style="padding:2rem">
+            <h3 style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem">
+              <span>🍏</span> Installing on iPhone &amp; iPad (Safari)
+            </h3>
+            <div style="display:flex;flex-direction:column;gap:1.25rem">
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">1</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Open Safari Browser</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">Visit <code>https://frankpass.com</code> in Apple Safari on your iPhone or iPad.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">2</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Tap the Share Icon (Square with Up Arrow)</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">At the bottom of your Safari screen, tap the standard Apple <strong>Share</strong> button.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">3</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Select "Add to Home Screen"</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">Scroll down the share sheet, tap <strong>"Add to Home Screen"</strong>, then tap <strong>"Add"</strong> in the top right.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 3: WINDOWS PC -->
+        <div id="tab-windows" class="tab-pane" style="max-width:680px;margin:0 auto;display:none">
+          <div class="card-glass" style="padding:2rem">
+            <h3 style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem">
+              <span>🪟</span> Installing on Windows 11 / 10 (Chrome &amp; Edge)
+            </h3>
+            <div style="display:flex;flex-direction:column;gap:1.25rem">
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">1</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Click "Install App" in Address Bar</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">Look for the small install computer icon on the right side of your Chrome or Edge URL address bar.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">2</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Pin to Taskbar &amp; Start Menu</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">Right-click the FrankPass icon on your Windows taskbar and click <strong>"Pin to taskbar"</strong> for 1-click instant access.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 4: MACOS -->
+        <div id="tab-mac" class="tab-pane" style="max-width:680px;margin:0 auto;display:none">
+          <div class="card-glass" style="padding:2rem">
+            <h3 style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem">
+              <span>🍎</span> Installing on macOS (Safari / Chrome)
+            </h3>
+            <div style="display:flex;flex-direction:column;gap:1.25rem">
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">1</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Safari (macOS Sonoma &amp; Later): File &rarr; Add to Dock</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">In Safari menu bar, click <strong>File &rarr; Add to Dock</strong> to create a standalone Mac app.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:1rem;align-items:flex-start">
+                <span class="step-badge">2</span>
+                <div>
+                  <strong style="color:var(--text-primary)">Chrome on Mac: Install FrankPass</strong>
+                  <p style="margin:0.25rem 0 0;font-size:0.9rem;color:var(--text-muted)">Click the Install icon in Chrome address bar or click the button at top of this page.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT 5: BROWSER EXTENSION -->
+        <div id="tab-extension" class="tab-pane" style="max-width:680px;margin:0 auto;display:none">
+          <div class="card-glass" style="padding:2rem">
+            <h3 style="margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem">
+              <span>🧩</span> Browser Extensions (Desktop Auto-Fill)
+            </h3>
+            <p style="font-size:0.92rem;color:var(--text-muted);margin-bottom:1.5rem">
+              FrankPass Browser Extension auto-detects site domains and fills passwords instantly without cloud communication.
+            </p>
+            <div style="display:flex;flex-direction:column;gap:0.75rem">
+              <a href="https://chromewebstore.google.com/" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1.25rem">
+                <span><strong>Google Chrome</strong> &middot; Chrome Web Store</span>
+                <span>Get Extension &rarr;</span>
+              </a>
+              <a href="https://addons.mozilla.org/" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1.25rem">
+                <span><strong>Mozilla Firefox</strong> &middot; Firefox Add-ons</span>
+                <span>Get Extension &rarr;</span>
+              </a>
+              <a href="https://microsoftedge.microsoft.com/addons" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:flex;align-items:center;justify-content:space-between;padding:0.9rem 1.25rem">
+                <span><strong>Microsoft Edge</strong> &middot; Edge Add-ons</span>
+                <span>Get Extension &rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BILINGUAL COMPLETE USER GUIDE (ENGLISH & HINDI) -->
+      <section class="section" style="background:var(--bg-secondary);padding:4rem 0;border-radius:var(--radius-xl);margin-bottom:4rem">
+        <div class="container" style="max-width:800px">
+          
+          <div class="text-center mb-4">
+            <div class="section-label">&#128214; Master Guide &amp; Knowledge Base</div>
+            <h2>FrankPass Complete User Guide</h2>
+            <p class="section-desc mt-2">Everything you need to know about stateless password technology.</p>
+
+            <!-- Language Switcher & Copy for AI Button -->
+            <div style="display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:1.5rem">
+              <div class="guide-lang-tabs" role="tablist" style="margin:0">
+                <button id="guide-tab-en" class="guide-lang-btn active">Read in English &#127482;&#127480;</button>
+                <button id="guide-tab-hi" class="guide-lang-btn">&#2361;&#2367;&#2306;&#2342;&#2368; &#2350;&#2375;&#2306; &#2346;&#2338;&#2375;&#2306; &#127470;&#127475;</button>
+              </div>
+              <button id="copy-guide-btn" class="btn-ghost" style="font-size:0.85rem;padding:0.5rem 1rem;display:inline-flex;align-items:center;gap:0.4rem;border-color:var(--accent)">
+                <span>&#128203;</span> Copy Guide for AI
+              </button>
+            </div>
+          </div>
+
+          <!-- ENGLISH USER GUIDE -->
+          <div id="guide-content-en" class="card-glass" style="padding:2.5rem;line-height:1.7">
+            <h3 style="color:var(--accent);margin-bottom:1rem">1. What is FrankPass &amp; Why Stateless?</h3>
+            <p style="color:var(--text-muted);margin-bottom:1.5rem">
+              FrankPass is a <strong>Stateless Cryptographic Password Generator</strong>. Unlike traditional password managers (Bitwarden, 1Password, LastPass), FrankPass has <strong>zero database, zero cloud storage, and zero user accounts</strong>. Passwords are never stored anywhere - they are mathematically derived on-demand in your device memory.
+            </p>
+
+            <h3 style="color:var(--accent);margin-bottom:1rem">2. What is a Secret Key?</h3>
+            <p style="color:var(--text-muted);margin-bottom:1.5rem">
+              Your <strong>Secret Key</strong> is your personal cryptographic master seed. You only need to remember <strong>one memorable phrase</strong> (e.g. <code>Galaxy$Rocket#2026</code>). The FrankPass cryptographic algorithm combines your Secret Key with the website name (e.g. <code>google.com</code>) to generate unique, 100-character entropy passwords for every account.
+            </p>
+
+            <h3 style="color:var(--accent);margin-bottom:1rem">3. 4-Step Generation &amp; Rotation Workflow</h3>
+            <ul style="color:var(--text-muted);margin-bottom:1.5rem;padding-left:1.25rem">
+              <li><strong>Step 1:</strong> Enter the site/platform name (e.g. <code>facebook.com</code>).</li>
+              <li><strong>Step 2:</strong> Enter your personal Secret Key.</li>
+              <li><strong>Step 3:</strong> Click <strong>"Generate Password"</strong>.</li>
+              <li><strong>Step 4 (Rotation):</strong> If a site requires you to change passwords periodically, simply increase the <strong>Variant Counter</strong> (e.g. v2) or switch to <strong>Month &amp; Year rotation</strong> (e.g. 08/2026).</li>
+            </ul>
+
+            <h3 style="color:var(--accent);margin-bottom:1rem">4. 100% Offline &amp; Outage Resilience</h3>
+            <p style="color:var(--text-muted);margin-bottom:0">
+              Because FrankPass runs purely on client-side math (PBKDF2 SHA-512 with 1,000,000 rounds), it operates fully inside your device without internet. Even if our servers disappear forever, your installed FrankPass app will generate your identical passwords anytime, anywhere.
+            </p>
+          </div>
+
+          <!-- HINDI USER GUIDE -->
+          <div id="guide-content-hi" class="card-glass" style="padding:2.5rem;line-height:1.8;display:none">
+            <h3 style="color:var(--accent);margin-bottom:1rem">1. FrankPass &#2325;&#2381;&#2351;&#2366; &#2361;&#2376; &#2324;&#2352; Stateless &#2325;&#2381;&#2351;&#2379;&#2306; &#2361;&#2376;?</h3>
+            <p style="color:var(--text-muted);margin-bottom:1.5rem">
+              FrankPass &#2319;&#2325; <strong>&#2360;&#2381;&#2335;&#2375;&#2335;&#2354;&#2375;&#2360; &#2325;&#2381;&#2352;&#2367;&#2346;&#2381;&#2335;&#2379;&#2327;&#2381;&#2352;&#2366;&#2347;&#2367;&#2325; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2332;&#2375;&#2344;&#2352;&#2375;&#2335;&#2352;</strong> &#2361;&#2376;&#2308; &#2346;&#2369;&#2352;&#2366;&#2344;&#2375; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2350;&#2376;&#2344;&#2375;&#2332;&#2352;&#2381;&#2360; &#2325;&#2375; &#2357;&#2367;&#2346;&#2352;&#2368;&#2340;, FrankPass &#2350;&#2375;&#2306; <strong>&#2325;&#2379;&#2312; &#2337;&#2375;&#2335;&#2366;&#2348;&#2375;&#2360;, &#2325;&#2381;&#2354;&#2366;&#2314;&#2337; &#2360;&#2381;&#2335;&#2379;&#2352;&#2375;&#2332; &#2351;&#2366; &#2351;&#2361;&#2366;&#2306; &#2340;&#2325; &#2325;&#2367; &#2351;&#2372;&#2332;&#2352; &#2309;&#2325;&#2366;&#2314;&#2306;&#2335; &#2349;&#2368; &#2344;&#2361;&#2368;&#2306; &#2361;&#2379;&#2340;&#2366;</strong>&#2308; &#2310;&#2346;&#2325;&#2375; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337;&#2381;&#2360; &#2325;&#2349;&#2368; &#2360;&#2375;&#2357; &#2344;&#2361;&#2368;&#2306; &#2361;&#2379;&#2340;&#2375;, &#2348;&#2354;&#2381;&#2325;&#2367; &#2310;&#2346;&#2325;&#2375; &#2353;&#2367;&#2357;&#2366;&#2311;&#2360; &#2350;&#2375;&#2306; &#2327;&#2339;&#2367;&#2340;&#2368;&#2351; &#2352;&#2370;&#2346; &#2360;&#2375; &#2332;&#2344;&#2352;&#2375;&#2335; &#2361;&#2379;&#2340;&#2375; &#2361;&#2378;&#2308;
+            </p>
+
+            <h3 style="color:var(--accent);margin-bottom:1rem">2. Secret Key (&#2360;&#2368;&#2325;&#2381;&#2352;&#2375;&#2335; &#2325;&#2368;) &#2325;&#2381;&#2351;&#2366; &#2361;&#2376;?</h3>
+            <p style="color:var(--text-muted);margin-bottom:1.5rem">
+              &#2360;&#2368;&#2325;&#2381;&#2352;&#2375;&#2335; &#2325;&#2368; &#2310;&#2346;&#2325;&#2366; <strong>&#2350;&#2366;&#2360;&#2381;&#2335;&#2352; &#2325;&#2381;&#2352;&#2367;&#2346;&#2381;&#2335;&#2379;&#2327;&#2381;&#2352;&#2366;&#2347;&#2367;&#2325; &#2348;&#2368;&#2332; (Seed)</strong> &#2361;&#2376;&#2308; &#2310;&#2346;&#2325;&#2379; &#2360;&#2367;&#2352;&#2381;&#2347; <strong>&#2319;&#2325; &#2310;&#2360;&#2366;&#2344; &#2354;&#2366;&#2311;&#2344; &#2351;&#2366;&#2342; &#2352;&#2326;&#2344;&#2368; &#2361;&#2376;</strong> (&#2332;&#2376;&#2360;&#2375; <code>MySecretPass#2026</code>)&#2308; FrankPass &#2311;&#2360; &#2319;&#2325; &#2325;&#2368; &#2325;&#2379; &#2361;&#2352; &#2357;&#2375;&#2348;&#2366;&#2311;&#2335; &#2325;&#2375; &#2344;&#2366;&#2350; &#2325;&#2375; &#2360;&#2366;&#2345; &#2350;&#2367;&#2354;&#2366;&#2325;&#2352; &#2361;&#2352; &#2309;&#2325;&#2366;&#2314;&#2306;&#2335; &#2325;&#2375; &#2354;&#2367;&#2319; &#2309;&#2354;&#2327;-&#2309;&#2354;&#2327; 100% &#2350;&#2332;&#2348;&#2370;&#2340; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2340;&#2376;&#2351;&#2366;&#2352; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2308;
+            </p>
+
+            <h3 style="color:var(--accent);margin-bottom:1rem">3. 4-&#2360;&#2381;&#2335;&#2375;&#2346; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2332;&#2344;&#2352;&#2375;&#2358;&#2344; &#2327;&#2366;&#2311;&#2337;</h3>
+            <ul style="color:var(--text-muted);margin-bottom:1.5rem;padding-left:1.25rem">
+              <li><strong>&#2360;&#2381;&#2335;&#2375;&#2346; 1:</strong> &#2357;&#2375;&#2348;&#2366;&#2311;&#2335; &#2325;&#2366; &#2344;&#2366;&#2350; &#2337;&#2366;&#2354;&#2375;&#2306; (&#2332;&#2376;&#2360;&#2375; <code>google.com</code>).</li>
+              <li><strong>&#2360;&#2381;&#2335;&#2375;&#2346; 2:</strong> &#2309;&#2346;&#2344;&#2368; &#2360;&#2368;&#2325;&#2381;&#2352;&#2375;&#2335; &#2325;&#2368; &#2337;&#2366;&#2354;&#2375;&#2306;&#2308;</li>
+              <li><strong>&#2360;&#2381;&#2335;&#2375;&#2346; 3:</strong> <strong>"Generate Password"</strong> &#2346;&#2352; &#2325;&#2381;&#2354;&#2367;&#2325; &#2325;&#2352;&#2375;&#2306;&#2308;</li>
+              <li><strong>&#2360;&#2381;&#2335;&#2375;&#2346; 4 (&#2352;&#2379;&#2335;&#2375;&#2358;&#2344;):</strong> &#2309;&#2327;&#2352; &#2346;&#2366;&#2360;&#2357;&#2352;&#2381;&#2337; &#2348;&#2344;&#2366; &#2348;&#2342;&#2354;&#2344;&#2366; &#2361;&#2379;, &#2340;&#2379; &#2360;&#2368;&#2325;&#2381;&#2352;&#2375;&#2335; &#2325;&#2368; &#2348;&#2342;&#2354;&#2344;&#2375; &#2325;&#2368; &#2332;&#2352;&#2370;&#2352;&#2340; &#2344;&#2361;&#2368;&#2306; &#2361;&#2376; - &#2360;&#2367;&#2352;&#2381;&#2347; <strong>Variant Counter</strong> (v2) &#2351;&#2366; <strong>Month &amp; Year</strong> &#2348;&#2342;&#2354; &#2342;&#2375;&#2306;&#2308;</li>
+            </ul>
+
+            <h3 style="color:var(--accent);margin-bottom:1rem">4. 100% &#2321;&#2347;&#2354;&#2366;&#2311;&#2344; &#2360;&#2369;&#2352;&#2325;&#2381;&#2359;&#2366; (Offline Security)</h3>
+            <p style="color:var(--text-muted);margin-bottom:0">
+              FrankPass &#2346;&#2370;&#2352;&#2368; &#2340;&#2352;&#2361; &#2310;&#2346;&#2325;&#2375; &#2350;&#2379;&#2348;&#2366;&#2311;&#2354; &#2351;&#2366; &#2325;&#2306;&#2346;&#2381;&#2351;&#2370;&#2335;&#2352; &#2325;&#2375; &#2309;&#2306;&#2342;&#2352; &#2330;&#2354;&#2340;&#2366; &#2361;&#2376;&#2308; &#2310;&#2346; Airplane Mode &#2350;&#2375;&#2306; &#2349;&#2368; &#2311;&#2360;&#2375; &#2330;&#2354;&#2366; &#2360;&#2325;&#2340;&#2375; &#2361;&#2378;&#2306;&#2308; &#2309;&#2327;&#2352; &#2325;&#2349;&#2368; FrankPass &#2325;&#2368; &#2357;&#2375;&#2348;&#2366;&#2311;&#2335; &#2348;&#2306;&#2342; &#2349;&#2368; &#2361;&#2379; &#2332;&#2366;&#2319;, &#2340;&#2379; &#2349;&#2368; &#2310;&#2346;&#2325;&#2375; &#2347;&#2379;&#2344; &#2350;&#2375;&#2306; &#2311;&#2306;&#2360;&#2381;&#2335;&#2379;&#2354; &#2319;&#2346; &#2361;&#2350;&#2375;&#2358;&#2366; &#2325;&#2366;&#2350; &#2325;&#2352;&#2340;&#2368; &#2352;&#2361;&#2375;&#2327;&#2368;&#2308;
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- MULTILINGUAL AI TUTORIAL GENERATOR (AS IN IMAGE 1) -->
+      <section id="ask-ai-section" class="section" style="background:var(--bg-primary);padding:2rem 0 5rem" aria-labelledby="ask-ai-heading">
+        <div class="container" style="max-width:680px">
+          <div class="text-center mb-4">
+            <div class="section-label" aria-hidden="true">&#129302; AI Prompt Assistant</div>
+            <h2 id="ask-ai-heading">Learn FrankPass in your language</h2>
+            <p class="section-desc mt-2">No complicated translation tables. Just tell AI your language and script, and get a complete, structured tutorial instantly.</p>
+          </div>
+
+          <div class="card-glass" style="padding:2.25rem">
+            <div class="form-group" style="margin-bottom:1.5rem">
+              <label for="ai-lang" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Your Language</label>
+              <input type="text" id="ai-lang" placeholder="e.g. Hindi, Spanish, Tamil, German" value="Hindi" class="form-input">
+            </div>
+
+            <div class="form-group" style="margin-bottom:2rem">
+              <label for="ai-script" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Preferred Script</label>
+              <select id="ai-script" class="form-input" style="cursor:pointer">
+                <option value="Devanagari (&#2342;&#2375;&#2357;&#2344;&#2366;&#2327;&#2352;&#2368;)">Devanagari (&#2342;&#2375;&#2357;&#2344;&#2366;&#2327;&#2352;&#2368;)</option>
+                <option value="Latin (A, B, C...)">Latin (A, B, C...)</option>
+                <option value="Arabic (&#1575;&#1604;&#1593;&#1585;&#1576;&#1588;&#1577;)">Arabic (&#1575;&#1604;&#1593;&#1585;&#1576;&#1588;&#1577;)</option>
+                <option value="Cyrillic (&#1050;&#1080;&#1088;&#1080;&#1083;&#1083;&#1080;&#1094;&#1072;)">Cyrillic (&#1050;&#1080;&#1088;&#1080;&#1083;&#1083;&#1080;&#1094;&#1072;)</option>
+                <option value="Native to Language">Native to Language</option>
+              </select>
+            </div>
+
+            <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">
+              Click an AI below. We will copy a smart prompt to your clipboard and open the app. <strong style="color:var(--text-primary)">Just paste it!</strong>
+            </p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+              <button onclick="openAI('chatgpt')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+                ChatGPT &rarr;
+              </button>
+              <button onclick="openAI('claude')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+                Claude &rarr;
+              </button>
+              <button onclick="openAI('gemini')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+                Gemini &rarr;
+              </button>
+              <button onclick="openAI('perplexity')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+                Perplexity &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-msg" class="toast-msg">&#10003; Copied to clipboard!</div>
+
+  <!-- SCRIPTS -->
+  <script src="/frankpass-config.js?v=3.2.0"></script>
+  <script src="/footer.js?v=3.2.0"></script>
+  <script>
+    /* ── PWA Detection & Dynamic Smart Launcher ── */
+    let deferredInstallPrompt = null;
+    const mainInstallBtn = document.getElementById('main-install-btn');
+    const mainInstallBtnText = document.getElementById('main-install-btn-text');
+    const pwaStatusBadge = document.getElementById('pwa-status-badge');
+    const pwaHeading = document.getElementById('pwa-card-heading');
+    const pwaSub = document.getElementById('pwa-card-sub');
+
+    // Check if launched as Standalone PWA
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+    if (isStandalone) {
+      if (pwaStatusBadge) pwaStatusBadge.innerHTML = '&#10003; FrankPass App is Active (Standalone Mode)';
+      if (pwaHeading) pwaHeading.textContent = 'App Already Installed';
+      if (pwaSub) pwaSub.textContent = 'You are currently using the standalone offline FrankPass application.';
+      if (mainInstallBtnText) mainInstallBtnText.textContent = 'Launch Generator';
+      mainInstallBtn.onclick = () => window.location.href = '/';
+    } else {
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        if (mainInstallBtnText) mainInstallBtnText.textContent = 'Install FrankPass App (1-Click)';
+      });
+
+      mainInstallBtn.onclick = async () => {
+        if (deferredInstallPrompt) {
+          deferredInstallPrompt.prompt();
+          const { outcome } = await deferredInstallPrompt.userChoice;
+          if (outcome === 'accepted') {
+            deferredInstallPrompt = null;
+            showToast('&#10003; App Installed successfully!');
+          }
+        } else {
+          // If browser doesn't support direct prompt, guide to manual install tab
+          const tabBtn = document.querySelector('.platform-tab-btn.active') || document.querySelector('.platform-tab-btn');
+          if (tabBtn) tabBtn.scrollIntoView({ behavior: 'smooth' });
+          showToast('Follow device instructions below &#128071;');
+        }
+      };
+    }
+
+    /* ── Platform Tabs Switcher ── */
+    const platformBtns = document.querySelectorAll('.platform-tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    platformBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        platformBtns.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.style.display = 'none');
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-tab');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) targetPane.style.display = 'block';
+      });
+    });
+
+    /* ── Bilingual User Guide Switcher ── */
+    const guideTabEn = document.getElementById('guide-tab-en');
+    const guideTabHi = document.getElementById('guide-tab-hi');
+    const guideContentEn = document.getElementById('guide-content-en');
+    const guideContentHi = document.getElementById('guide-content-hi');
+
+    guideTabEn.addEventListener('click', () => {
+      guideTabEn.classList.add('active');
+      guideTabHi.classList.remove('active');
+      guideContentEn.style.display = 'block';
+      guideContentHi.style.display = 'none';
+    });
+
+    guideTabHi.addEventListener('click', () => {
+      guideTabHi.classList.add('active');
+      guideTabEn.classList.remove('active');
+      guideContentHi.style.display = 'block';
+      guideContentEn.style.display = 'none';
+    });
+
+    /* ── Copy Guide for AI ── */
+    document.getElementById('copy-guide-btn').addEventListener('click', () => {
+      const guideText = `# FrankPass Master User Guide & Cryptographic Model
+Website: https://frankpass.com
+
+1. What is FrankPass:
+FrankPass is a 100% Stateless Cryptographic Password Generator. Zero database, zero cloud storage, and zero accounts. Passwords are mathematically derived on-demand using PBKDF2 (1,000,000 iterations) + HMAC-SHA512.
+
+2. Secret Key:
+A single master cryptographic seed (e.g. "Galaxy$Rocket#2026") that deterministically generates unique, high-entropy passwords for every individual platform.
+
+3. 4-Step Workflow:
+- Step 1: Input site domain (e.g. "google.com")
+- Step 2: Input Secret Key
+- Step 3: Click "Generate Password"
+- Step 4: Rotate passwords easily using Variant Counter (1-999) or Month & Year rotation without changing Secret Key.
+
+4. 100% Offline Resilience:
+Runs entirely in client RAM. Operates offline in Airplane Mode. Works forever even if servers go down.`;
+
+      navigator.clipboard.writeText(guideText).then(() => {
+        showToast('&#128203; Full Guide copied for AI!');
+      });
+    });
+
+    /* ── Open AI Generator ── */
+    function openAI(provider) {
+      const lang = document.getElementById('ai-lang').value.trim() || 'Hindi';
+      const script = document.getElementById('ai-script').value;
+      const prompt = `Please teach me how FrankPass (https://frankpass.com) works in ${lang} using ${script} script. Explain:
+1. What is a Stateless Password Generator and why it has zero database?
+2. What is a Secret Key and how 1 key works for all accounts?
+3. How to generate and rotate passwords in 4 steps?
+4. Why it works 100% offline in Airplane Mode.`;
+
+      navigator.clipboard.writeText(prompt).then(() => {
+        showToast('&#128203; Prompt copied! Opening ' + provider + '...');
+        setTimeout(() => {
+          let url = '';
+          if (provider === 'chatgpt') url = 'https://chatgpt.com/?q=' + encodeURIComponent(prompt);
+          else if (provider === 'claude') url = 'https://claude.ai/';
+          else if (provider === 'gemini') url = 'https://gemini.google.com/app';
+          else if (provider === 'perplexity') url = 'https://www.perplexity.ai/search?q=' + encodeURIComponent(prompt);
+          window.open(url, '_blank');
+        }, 600);
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-msg');
+      toast.innerHTML = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+  </script>
+</body>
+</html>
