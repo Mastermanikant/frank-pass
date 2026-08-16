@@ -761,7 +761,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .pricing-card {
   padding: 2rem 1.5rem;
   border-radius: var(--radius-lg);
-  background: rgba(15,15,26,0.85);
+  background: var(--card-glass-bg);
   border: 1px solid var(--border);
   display: flex;
   flex-direction: column;
