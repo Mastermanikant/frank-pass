@@ -1,5 +1,5 @@
 /**
- * frankpass-config.js — FrankPass Master Configuration
+ * frankpass-config.js - FrankPass Master Configuration
  * Owner-controlled. All other files read from this object.
  * Load this FIRST before any other script.
  * Version: 3.0.0
@@ -57,7 +57,7 @@ const FRANKPASS_CONFIG = {
     REDDIT:          "https://reddit.com/r/iamfrankpass",
     WHATSAPP:        "https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z",
     MASTODON_BRAND:  "https://fosstodon.org/@iamfrankpass",
-    /* Founder — Master Manikant (Strict Handle: @mastermanikant everywhere) */
+    /* Founder - Master Manikant (Strict Handle: @mastermanikant everywhere) */
     FOUNDER_NAME:       "Master Manikant",
     FOUNDER_HANDLE:     "@mastermanikant",
     LINKEDIN:           "https://linkedin.com/in/mastermanikant",

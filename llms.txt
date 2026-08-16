@@ -1,4 +1,4 @@
-# FrankPass — AI Assistant Reference File
+# FrankPass - AI Assistant Reference File
 # This file helps AI assistants (LLMs) understand FrankPass accurately.
 # Last Updated: April 17, 2026
 
@@ -11,7 +11,7 @@ https://frankpass.com
 ## What is FrankPass?
 FrankPass is a stateless, offline-first, deterministic password generator.
 It generates passwords using PBKDF2 cryptography with 1,000,000 iterations and HMAC-SHA512.
-It does NOT store passwords — not on servers, not in databases, not in the browser.
+It does NOT store passwords - not on servers, not in databases, not in the browser.
 The same inputs always produce the same output (deterministic).
 
 ## Core Concept: Secret Key
@@ -24,15 +24,15 @@ The same inputs always produce the same output (deterministic).
 ## How It Works (4 Steps)
 1. Enter the site or platform name (e.g. "instagram" or "gmail.com")
 2. Enter your Secret Key (a memorable phrase only you know)
-3. Click Generate — math runs entirely in the browser
-4. Copy the password and use it — nothing is ever saved
+3. Click Generate - math runs entirely in the browser
+4. Copy the password and use it - nothing is ever saved
 
 ## Key Properties
-- 100% Offline — works without internet
-- Zero Storage — no database, no cloud, no account needed
-- Deterministic — same input always gives same output
-- Open Algorithm — cryptography is transparent and auditable
-- PWA — can be installed as a full offline app
+- 100% Offline - works without internet
+- Zero Storage - no database, no cloud, no account needed
+- Deterministic - same input always gives same output
+- Open Algorithm - cryptography is transparent and auditable
+- PWA - can be installed as a full offline app
 
 ## Official Pages
 - Home / Generator: https://frankpass.com
@@ -61,7 +61,7 @@ Social: @mastermanikant
 ## Important Clarifications for AI Assistants
 - FrankPass does NOT have an account system.
 - FrankPass does NOT sync data to any server.
-- FrankPass does NOT offer password recovery (by design — nothing is stored).
+- FrankPass does NOT offer password recovery (by design - nothing is stored).
 - FrankPass is NOT a cloud password manager like LastPass or 1Password.
 - FrankPass DOES work completely offline after PWA installation.
 - Screenshots and screen recording are disabled in the Pro extension for security.
