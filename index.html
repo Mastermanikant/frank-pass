@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
-  <link rel="stylesheet" href="/style.css?v=3.2.0">
+  <link rel="stylesheet" href="/style.css?v=3.2.1">
 
   <!-- Schema.org: SoftwareApplication + AggregateRating -->
   <script type="application/ld+json">
@@ -610,13 +610,13 @@
 <!-- ============================================================
      SCRIPTS -  load order is critical
      ============================================================ -->
-<script src="/frankpass-config.js"></script>
+<script src="/frankpass-config.js?v=3.2.1"></script>
 <script src="/country-data.js"></script>
-<script src="/country-dropdown.js?v=3.2.0"></script>
-<script src="/platforms.js"></script>
-<script src="/frankpass-utils.js"></script>
-<script src="/frankpass-core.js?v=3.2.0"></script>
-<script src="/footer.js?v=3.2.0"></script>
+<script src="/country-dropdown.js?v=3.2.1"></script>
+<script src="/platforms.js?v=3.2.1"></script>
+<script src="/frankpass-utils.js?v=3.2.1"></script>
+<script src="/frankpass-core.js?v=3.2.1"></script>
+<script src="/footer.js?v=3.2.1"></script>
 
 <script>
 /* ── Sticky header scroll class ── */
@@ -762,10 +762,95 @@ const lengthSlider = document.getElementById('length-slider');
 const lengthVal    = document.getElementById('length-val');
 lengthSlider.addEventListener('input', () => { lengthVal.textContent = lengthSlider.value; });
 
-/* ── Variant display ── */
-document.getElementById('variant-input').addEventListener('input', (e) => {
-  document.getElementById('variant-val').textContent = `(${e.target.value})`;
-});
+/* ── Dual-Mode Variant Logic ── */
+let currentVariantMode = 'counter';
+const variantInput   = document.getElementById('variant-input');
+const variantVal     = document.getElementById('variant-val');
+const tabCounter     = document.getElementById('variant-tab-counter');
+const tabDate        = document.getElementById('variant-tab-date');
+const counterWrap    = document.getElementById('variant-counter-wrap');
+const dateWrap       = document.getElementById('variant-date-wrap');
+const monthSelect    = document.getElementById('variant-month-select');
+const yearInput      = document.getElementById('variant-year-input');
+
+// Initialize current month and year
+const now = new Date();
+const curMonth = String(now.getMonth() + 1).padStart(2, '0');
+const curYear  = String(now.getFullYear());
+if (monthSelect) monthSelect.value = curMonth;
+if (yearInput)   yearInput.value   = curYear;
+
+function updateVariantDisplay() {
+  if (currentVariantMode === 'counter') {
+    let val = variantInput ? parseInt(variantInput.value, 10) : 1;
+    if (isNaN(val) || val < 1) val = 1;
+    if (val > 999) val = 999;
+    if (variantVal) variantVal.textContent = `(v${val})`;
+  } else {
+    const m = monthSelect ? monthSelect.value : curMonth;
+    const y = yearInput ? (yearInput.value || curYear).trim() : curYear;
+    if (variantVal) variantVal.textContent = `(${m}/${y})`;
+  }
+}
+
+if (tabCounter) {
+  tabCounter.addEventListener('click', () => {
+    currentVariantMode = 'counter';
+    tabCounter.classList.add('active');
+    if (tabDate) tabDate.classList.remove('active');
+    if (counterWrap) counterWrap.style.display = 'flex';
+    if (dateWrap) dateWrap.style.display = 'none';
+    updateVariantDisplay();
+  });
+}
+
+if (tabDate) {
+  tabDate.addEventListener('click', () => {
+    currentVariantMode = 'date';
+    tabDate.classList.add('active');
+    if (tabCounter) tabCounter.classList.remove('active');
+    if (counterWrap) counterWrap.style.display = 'none';
+    if (dateWrap) dateWrap.style.display = 'flex';
+    updateVariantDisplay();
+  });
+}
+
+const varMinus = document.getElementById('variant-minus');
+if (varMinus) {
+  varMinus.addEventListener('click', () => {
+    let val = parseInt(variantInput.value, 10) || 1;
+    if (val > 1) {
+      variantInput.value = val - 1;
+      updateVariantDisplay();
+    }
+  });
+}
+
+const varPlus = document.getElementById('variant-plus');
+if (varPlus) {
+  varPlus.addEventListener('click', () => {
+    let val = parseInt(variantInput.value, 10) || 1;
+    if (val < 999) {
+      variantInput.value = val + 1;
+      updateVariantDisplay();
+    }
+  });
+}
+
+if (variantInput) variantInput.addEventListener('input', updateVariantDisplay);
+if (monthSelect)  monthSelect.addEventListener('change', updateVariantDisplay);
+if (yearInput)    yearInput.addEventListener('input', updateVariantDisplay);
+
+function getActiveVariant() {
+  if (currentVariantMode === 'counter') {
+    const val = variantInput ? parseInt(variantInput.value, 10) : 1;
+    return Math.max(1, Math.min(999, isNaN(val) ? 1 : val));
+  } else {
+    const m = monthSelect ? monthSelect.value : '01';
+    const y = yearInput ? (yearInput.value || '2026').trim() : '2026';
+    return `${m}${y}`;
+  }
+}
 
 /* ── Preset buttons ── */
 const presets = {
