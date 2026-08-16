@@ -1,0 +1,28 @@
+# Cloudflare Pages Direct Deployment & Cloudflare Router Config
+
+# Clean URLs & Rewrites
+/privacy /legal.html 200
+/terms /legal.html 200
+/disclaimer /legal.html 200
+/hn / 200
+
+# Canonical Page Redirects
+/contact /contact-us 301
+/support /support-us 301
+/founder-mastermanikant.html /meet-the-founder-MasterManikant 301
+
+# Founder Social Redirects (Strict: @mastermanikant)
+/mastermanikant/x https://x.com/MasterManikant 301
+/mastermanikant/linkedin https://linkedin.com/in/mastermanikant 301
+/mastermanikant/youtube https://youtube.com/@MasterManikant 301
+/mastermanikant/instagram https://instagram.com/mastermanikant 301
+/mastermanikant/facebook https://facebook.com/mastermanikant 301
+/whatsapp/mastermanikant https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h 301
+
+# FrankPass Brand Social Redirects
+/x https://x.com/iamfrankpass 301
+/youtube https://youtube.com/@iamfrankpass 301
+/instagram https://instagram.com/iamfrankpass 301
+/whatsapp https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z 301
+/facebook https://facebook.com/iamfrankpass 301
+/reddit https://reddit.com/r/iamfrankpass 301

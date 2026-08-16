@@ -57,8 +57,15 @@ const FRANKPASS_CONFIG = {
     REDDIT:          "https://reddit.com/r/iamfrankpass",
     WHATSAPP:        "https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z",
     MASTODON_BRAND:  "https://fosstodon.org/@iamfrankpass",
-    /* Founder — Master Manikant */
+    /* Founder — Master Manikant (Strict Handle: @mastermanikant everywhere) */
+    FOUNDER_NAME:       "Master Manikant",
+    FOUNDER_HANDLE:     "@mastermanikant",
     LINKEDIN:           "https://linkedin.com/in/mastermanikant",
+    X_FOUNDER:          "https://x.com/mastermanikant",
+    INSTAGRAM_FOUNDER:  "https://instagram.com/mastermanikant",
+    YOUTUBE_FOUNDER:    "https://youtube.com/@mastermanikant",
+    THREADS_FOUNDER:    "https://threads.net/@mastermanikant",
+    FACEBOOK_FOUNDER:   "https://facebook.com/mastermanikant",
     MASTODON_PERSONAL:  "https://mastodon.social/@mastermanikant"
   },
 
