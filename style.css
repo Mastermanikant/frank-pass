@@ -1,5 +1,5 @@
 /* ============================================================
-   style.css  -  FrankPass Design System v3.0
+   style.css -  FrankPass Design System v3.0
    Complete rewrite. Mobile-first. GPU-accelerated animations.
    ============================================================ */
 
@@ -64,7 +64,7 @@ main {
   animation: fadeIn 0.35s ease 0.05s forwards;
 }
 
-/* Legal page  -  no mobile bottom nav padding */
+/* Legal page -  no mobile bottom nav padding */
 body.no-mobile-nav { padding-bottom: 0; }
 
 /* ── 4. TYPOGRAPHY ───────────────────────────────────────── */

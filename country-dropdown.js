@@ -1,7 +1,7 @@
 /**
  * FrankPass Custom Country Dropdown
  * Replaces native <datalist> with a searchable dropdown with real flag images.
- * Uses FlagCDN (https://flagcdn.com)  -  no emoji dependency.
+ * Uses FlagCDN (https://flagcdn.com) -  no emoji dependency.
  */
 (function () {
     'use strict';
