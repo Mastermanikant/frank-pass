@@ -1,25 +1,21 @@
-// FrankPass Service Worker v2.3.1
-const CACHE_NAME = 'frankpass-v3.2.0';
+// FrankPass Service Worker v3.2.2 (100% Offline-First)
+const CACHE_NAME = 'frankpass-v3.2.2';
 const CACHED_URLS = [
     '/',
-    '/about-us',
-    '/contact-us',
-    '/faq',
-    '/guide',
-    '/install',
+    '/index.html',
     '/install.html',
-    '/legal',
-    '/meet-the-founder-MasterManikant',
-    '/support-us',
-    '/why-stateless',
+    '/pro.html',
+    '/docs.html',
+    '/faq.html',
+    '/about-us.html',
+    '/legal.html',
+    '/get-started.html',
     '/style.css',
-    '/script.js',
     '/frankpass-utils.js',
     '/footer.js',
     '/frankpass-core.js',
     '/crypto-worker.js',
     '/platforms.js',
-    '/particles.js',
     '/translations.js',
     '/country-data.js',
     '/country-dropdown.js',
@@ -52,11 +48,10 @@ self.addEventListener('activate', (event) => {
 
 // Fetch: Serve from cache first, then network (offline-first strategy)
 self.addEventListener('fetch', (event) => {
-    // For navigation requests that fail, return the root '/' (index.html)
     if (event.request.mode === 'navigate') {
         event.respondWith(
             fetch(event.request).catch(() => {
-                return caches.match('/');
+                return caches.match('/') || caches.match('/index.html');
             })
         );
         return;
@@ -67,19 +62,9 @@ self.addEventListener('fetch', (event) => {
             if (cachedResponse) {
                 return cachedResponse;
             }
-            return fetch(event.request).then((networkResponse) => {
-                // Cache successful responses for core assets if needed
-                if (networkResponse && networkResponse.status === 200) {
-                    // (Optional) add dynamic caching here if desired
-                }
-                return networkResponse;
-            }).catch(() => {
-                // Return cached index for failed file fetches if it makes sense, 
-                // but usually handled by navigate check above for pages.
+            return fetch(event.request).catch(() => {
                 return caches.match('/');
             });
         })
     );
 });
-
-
