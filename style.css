@@ -459,8 +459,10 @@ pre code { background: none; border: none; padding: 0; }
 }
 .form-input::placeholder { color: var(--text-muted); opacity: 0.6; }
 .form-input:focus {
+  outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(139,92,246,0.15);
+  background: var(--bg-tertiary);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
 }
 .input-wrapper {
   position: relative;
@@ -1130,7 +1132,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-card-col { order: -1; display: flex; justify-content: center; }
+  .hero-card-col { order: -1; display: flex; justify-content: center; width: 100%; min-width: 0; }
 }
 
 .hero-eyebrow {
@@ -1327,4 +1329,41 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   margin-bottom: 0.25rem;
   line-height: 1.4;
   font-weight: 500;
+}
+
+
+/* ── SUPPORT CARD 2X2 RESPONSIVE GRID ───────────────────────── */
+.support-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+@media (max-width: 600px) {
+  .support-card-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .generator-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: var(--radius-lg) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .hero-grid {
+    padding: 0 0.85rem !important;
+    gap: 1.75rem !important;
+  }
+  .hero-title {
+    font-size: 2rem !important;
+    line-height: 1.15 !important;
+  }
+  .output-box {
+    padding: 0.65rem 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+  .account-mode-tabs .acc-tab, .variant-mode-tabs .variant-tab {
+    padding: 4px 6px !important;
+    font-size: 0.7rem !important;
+  }
 }

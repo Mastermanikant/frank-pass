@@ -79,30 +79,38 @@
         </div>
       </div>
 
-      <!-- Product links -->
+            <!-- Product links -->
       <div class="footer-col">
-        <div class="footer-col-title">Product</div>
+        <div class="footer-col-title">FrankPass</div>
         <a href="./index.html">Password Generator</a>
-        <a href="/install">Install App &#128241;</a>
+        <a href="./install.html">Install App 📱</a>
         <a href="./get-started.html">Get Started</a>
-        <a href="./pro.html">FrankPass Pro</a>
+        <a href="./pro.html">FrankPass Pro 👑</a>
         <a href="./docs.html">Documentation</a>
         <a href="./faq.html">FAQ</a>
+        <a href="./legal.html">Privacy &amp; Terms</a>
       </div>
 
-      <!-- Company links -->
+      <!-- FrankBase Ecosystem links -->
       <div class="footer-col">
-        <div class="footer-col-title">Company</div>
-        <a href="./about-us.html">About Us</a>
-        <a href="./about-us.html#founder">Meet the Founder</a>
-        <a href="./about-us.html#contact">Contact Us</a>
-        <a href="./legal.html">Legal</a>
-        <a href="https://reddit.com/r/iamfrankpass" target="_blank" rel="noopener noreferrer">Community</a>
+        <div class="footer-col-title">FrankBase Ecosystem</div>
+        <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer">FrankBase.com ↗</a>
+        <a href="https://digital.frankbase.com" target="_blank" rel="noopener noreferrer">Digital Products Store ↗</a>
+        <a href="https://frankbase.com/products" target="_blank" rel="noopener noreferrer">All Tools &amp; Products ↗</a>
+        <a href="https://frankbase.com/ebooks" target="_blank" rel="noopener noreferrer">Cyber Security eBooks ↗</a>
+        <a href="https://buymeacoffee.com/mastermanikant" target="_blank" rel="noopener noreferrer">Support &amp; Donate ☕</a>
       </div>
 
       <!-- Founder links -->
       <div class="footer-col">
         <div class="footer-col-title">Master Manikant</div>
+        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">MasterManikant.com ↗</a>
+        <a href="./about-us.html#founder">Founder Story</a>
+        <a href="https://whatsapp.com/channel/0029Va4HkL58qIzrdn6bT83r" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
+        <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
+        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer">YouTube</a>
+      </div>
         <a href="https://whatsapp.com/channel/0029Va4HkL58qIzrdn6bT83r" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="https://facebook.com/mastermanikant" target="_blank" rel="noopener noreferrer">Facebook</a>
         <a href="https://instagram.com/mastermanikant" target="_blank" rel="noopener noreferrer">Instagram</a>
