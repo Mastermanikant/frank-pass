@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.2.2 (100% Offline-First)
-const CACHE_NAME = 'frankpass-v3.2.2';
+// FrankPass Service Worker v3.2.3 (100% Offline-First)
+const CACHE_NAME = 'frankpass-v3.2.3';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -11,12 +11,11 @@ const CACHED_URLS = [
     '/legal.html',
     '/get-started.html',
     '/style.css',
+    '/frankpass-config.js',
     '/frankpass-utils.js',
     '/footer.js',
     '/frankpass-core.js',
-    '/crypto-worker.js',
     '/platforms.js',
-    '/translations.js',
     '/country-data.js',
     '/country-dropdown.js',
     '/manifest.json'
