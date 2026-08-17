@@ -259,6 +259,25 @@
             </div>
           </div>
 
+                    <!-- Clipboard Auto-Clear Guard -->
+          <div class="form-group" style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border)">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
+              <label class="form-label" style="margin:0" for="clipboard-timeout-select">Clipboard Auto-Clear Guard</label>
+              <span style="font-size:0.75rem;font-weight:700;color:var(--accent)" id="clipboard-timeout-val">2 Min (Default)</span>
+            </div>
+            <select id="clipboard-timeout-select" class="form-input" style="cursor:pointer">
+              <option value="30">30 Seconds</option>
+              <option value="60">1 Minute</option>
+              <option value="120" selected>2 Minutes (Recommended - Default)</option>
+              <option value="180">3 Minutes</option>
+              <option value="300">5 Minutes</option>
+              <option value="0">Off (Do not auto-clear clipboard)</option>
+            </select>
+            <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">
+              Automatically erases copied passwords from system clipboard history (Win+V / Mobile Clipboard) after the selected duration.
+            </span>
+          </div>
+
           <!-- Save locally toggle -->
           <label class="toggle-switch" for="save-locally">
             <input type="checkbox" id="save-locally" role="switch" aria-checked="false">
@@ -879,6 +898,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
     const out = document.getElementById('output-password');
     out.textContent = password;
     out.classList.remove('placeholder');
+    applyMaskState();
     document.getElementById('copy-btn').disabled = false;
     updatePasswordStatus();
 
@@ -900,8 +920,9 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
 });
 
 
-/* ── Privacy Mask Toggle Logic ── */
-let isPasswordMasked = false;
+/* ── Privacy Mask Tri-State Logic (Default Blur + Hover Peek + Click Lock) ── */
+let isPasswordLockedVisible = false;
+let isHoverPeeking = false;
 const maskBtn = document.getElementById('mask-toggle-btn');
 const outPassword = document.getElementById('output-password');
 const maskEyeIcon = document.getElementById('mask-eye-icon');
@@ -909,15 +930,102 @@ const maskEyeIcon = document.getElementById('mask-eye-icon');
 const eyeOpenSVG = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
 const eyeClosedSVG = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
 
+function applyMaskState() {
+  if (!outPassword) return;
+  const isPlaceholder = outPassword.classList.contains('placeholder');
+  if (isPlaceholder) {
+    outPassword.classList.remove('masked');
+    return;
+  }
+
+  if (isPasswordLockedVisible || isHoverPeeking) {
+    outPassword.classList.remove('masked');
+  } else {
+    outPassword.classList.add('masked');
+  }
+
+  if (maskBtn) {
+    maskBtn.classList.toggle('locked-visible', isPasswordLockedVisible);
+    maskBtn.title = isPasswordLockedVisible ? 'Password locked visible (Click to blur)' : 'Password blurred by default (Hover to peek, click to lock visible)';
+    maskBtn.setAttribute('aria-label', isPasswordLockedVisible ? 'Lock password masked' : 'Lock password visible');
+  }
+  if (maskEyeIcon) {
+    maskEyeIcon.innerHTML = (isPasswordLockedVisible || isHoverPeeking) ? eyeOpenSVG : eyeClosedSVG;
+  }
+}
+
 if (maskBtn && outPassword) {
+  // Click toggles permanent visible lock
   maskBtn.addEventListener('click', () => {
-    isPasswordMasked = !isPasswordMasked;
-    outPassword.classList.toggle('masked', isPasswordMasked);
-    if (maskEyeIcon) maskEyeIcon.innerHTML = isPasswordMasked ? eyeClosedSVG : eyeOpenSVG;
-    maskBtn.setAttribute('aria-label', isPasswordMasked ? 'Reveal password' : 'Mask password');
-    maskBtn.title = isPasswordMasked ? 'Reveal Password' : 'Mask Password (Anti-Screen Recording)';
-    showToast(isPasswordMasked ? 'Password masked (Anti-Screen Leak)' : 'Password revealed');
+    isPasswordLockedVisible = !isPasswordLockedVisible;
+    applyMaskState();
+    showToast(isPasswordLockedVisible ? 'Password locked visible' : 'Password blurred by default (Privacy Shield)');
   });
+
+  // Hover to peek on Eye Button
+  maskBtn.addEventListener('mouseenter', () => {
+    if (!isPasswordLockedVisible) {
+      isHoverPeeking = true;
+      applyMaskState();
+    }
+  });
+  maskBtn.addEventListener('mouseleave', () => {
+    if (isHoverPeeking) {
+      isHoverPeeking = false;
+      applyMaskState();
+    }
+  });
+
+  // Hover to peek on Password Element itself
+  outPassword.addEventListener('mouseenter', () => {
+    if (!isPasswordLockedVisible && !outPassword.classList.contains('placeholder')) {
+      isHoverPeeking = true;
+      applyMaskState();
+    }
+  });
+  outPassword.addEventListener('mouseleave', () => {
+    if (isHoverPeeking) {
+      isHoverPeeking = false;
+      applyMaskState();
+    }
+  });
+}
+
+/* ── Configurable Clipboard Auto-Clear Guard ── */
+let _clipboardClearTimer = null;
+const clipSelect = document.getElementById('clipboard-timeout-select');
+const clipValLabel = document.getElementById('clipboard-timeout-val');
+
+// Load saved preference or default to 120s (2 min)
+const savedTimeout = localStorage.getItem('fp_clipboard_timeout');
+if (savedTimeout !== null && clipSelect) {
+  clipSelect.value = savedTimeout;
+  if (clipValLabel) {
+    clipValLabel.textContent = clipSelect.options[clipSelect.selectedIndex].text.split(' ')[0] + ' (' + (savedTimeout === '0' ? 'Off' : savedTimeout + 's') + ')';
+  }
+}
+
+if (clipSelect) {
+  clipSelect.addEventListener('change', () => {
+    const val = clipSelect.value;
+    localStorage.setItem('fp_clipboard_timeout', val);
+    if (clipValLabel) {
+      clipValLabel.textContent = clipSelect.options[clipSelect.selectedIndex].text.split(' (')[0];
+    }
+    showToast('Clipboard guard updated: ' + clipSelect.options[clipSelect.selectedIndex].text.split(' (')[0]);
+  });
+}
+
+function scheduleClipboardClear() {
+  clearTimeout(_clipboardClearTimer);
+  const seconds = clipSelect ? parseInt(clipSelect.value, 10) : 120;
+  if (isNaN(seconds) || seconds <= 0) return; // Off
+
+  _clipboardClearTimer = setTimeout(() => {
+    navigator.clipboard.writeText('').then(() => {
+      showToast('Clipboard cleared for security.');
+    }).catch(() => {});
+  }, seconds * 1000);
 }
 
 /* ── Copy button ── */
@@ -930,7 +1038,9 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
     const copyBtn = document.getElementById('copy-btn');
     copyBtn.classList.add('copied');
     document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
-    showToast('Password copied!', 'success');
+    const sec = clipSelect ? parseInt(clipSelect.value, 10) : 120;
+    const msg = sec > 0 ? `Password copied! (Clipboard auto-clears in ${sec >= 60 ? (sec/60) + ' min' : sec + 's'})` : 'Password copied!';
+    showToast(msg, 'success');
     setTimeout(() => {
       copyBtn.classList.remove('copied');
       document.getElementById('copy-icon').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
@@ -940,14 +1050,7 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
   }
 });
 
-/* ── SECURITY BUG FIX: Auto-clear clipboard 30s after copy ── */
-let _clipboardClearTimer;
-function scheduleClipboardClear() {
-  clearTimeout(_clipboardClearTimer);
-  _clipboardClearTimer = setTimeout(() => {
-    navigator.clipboard.writeText('').catch(() => {});
-  }, 30000);
-}
+
 
 /* ── WhatsApp CTA link from config ── */
 document.addEventListener('DOMContentLoaded', () => {
