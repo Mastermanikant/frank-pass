@@ -26,7 +26,7 @@ const TIER_MAP = {
     'frankpass-platinum-yearly': { tier: 'platinum',  months: 18, max_profiles: 15 },
 };
 
-export const config = { runtime: 'nodejs' }; // Need crypto — use Node runtime
+export const config = { runtime: 'nodejs' }; // Need crypto - use Node runtime
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
@@ -48,7 +48,7 @@ export default async function handler(req, res) {
 
         // Reject if timestamp > 5 minutes old (replay attack prevention)
         if (Math.abs(Date.now() - parseInt(timestamp)) > 300000) {
-            console.warn('[webhook] Timestamp too old — possible replay attack');
+            console.warn('[webhook] Timestamp too old - possible replay attack');
             return res.status(400).json({ error: 'Request too old' });
         }
 
@@ -101,7 +101,7 @@ export default async function handler(req, res) {
     } else if (eventType === 'subscription.renewed') {
         await handleRenewal(event, res);
     } else {
-        // Unknown event — log and return 200 (Dodo will retry on non-200)
+        // Unknown event - log and return 200 (Dodo will retry on non-200)
         console.log(`[webhook] Unhandled event type: ${eventType}`);
         return res.status(200).json({ ok: true, ignored: true });
     }
@@ -131,13 +131,13 @@ async function handleNewSubscription(event, res) {
         max_profiles: tierData.max_profiles,
         valid_until:  validUntil.toISOString(),
         devices:      [],
-        email:        email, // For support only — not exposed to extension
+        email:        email, // For support only - not exposed to extension
         created_at:   new Date().toISOString(),
         product_id:   productId
     };
 
     if (MOCK_MODE) {
-        console.log('[webhook] MOCK MODE — License would be:', key, licenseData);
+        console.log('[webhook] MOCK MODE - License would be:', key, licenseData);
         return res.status(200).json({ ok: true, mock: true, key });
     }
 
@@ -158,7 +158,7 @@ async function handleNewSubscription(event, res) {
 async function handleCancellation(event, res) {
     const email = event.data?.customer?.email || event.customer_email || '';
     if (!email || MOCK_MODE) {
-        console.log('[webhook] Cancellation — MOCK or no email');
+        console.log('[webhook] Cancellation - MOCK or no email');
         return res.status(200).json({ ok: true });
     }
 
@@ -167,7 +167,7 @@ async function handleCancellation(event, res) {
     if (key) {
         const license = await kv.get(`license:${key}`);
         if (license) {
-            // Set expiry to now (don't delete — keep for support history)
+            // Set expiry to now (don't delete - keep for support history)
             license.valid_until = new Date().toISOString();
             license.cancelled   = true;
             await kv.set(`license:${key}`, license);

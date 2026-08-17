@@ -127,7 +127,7 @@ export default async function handler(req) {
             await kv.set(`license:${key}`, license, { ex: ttlSeconds });
         } catch (err) {
             console.error('KV store error:', err);
-            // Continue anyway — better a working key than a failed response
+            // Continue anyway - better a working key than a failed response
         }
     }
 

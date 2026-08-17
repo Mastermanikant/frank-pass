@@ -1,4 +1,4 @@
-# 🛡️ FrankPass — The #1 Stateless Password Generator
+# 🛡️ FrankPass - The #1 Stateless Password Generator
 
 **Live at:** [frankpass.com](https://frankpass.com)  |  **By:** [Master Manikant Yadav](https://frankpass.com/meet-the-founder-MasterManikant.html)
 
@@ -29,7 +29,7 @@ Disconnect your Wi-Fi, turn on Airplane mode, and generate your passwords. *It w
 
 ## What is FrankPass?
 
-FrankPass is a **deterministic, stateless password generation ecosystem** built on pure browser-side cryptography. It generates strong, unique passwords for every platform — without storing anything, anywhere. Unlike traditional password managers, there is no "vault" to hack.
+FrankPass is a **deterministic, stateless password generation ecosystem** built on pure browser-side cryptography. It generates strong, unique passwords for every platform - without storing anything, anywhere. Unlike traditional password managers, there is no "vault" to hack.
 
 - ✅ **Zero Database**: No account, no cloud, no tracking.
 - ✅ **Stateless UI**: Same inputs &rarr; Same password. Every device. 
@@ -44,10 +44,10 @@ FrankPass is a **deterministic, stateless password generation ecosystem** built 
 
 FrankPass uses a 4-stage cryptographic pipeline, entirely inside your browser:
 
-1. **HMAC-SHA512** — Generates a local pepper from your inputs
-2. **1,000 SHA-256 rounds** — Stretches the pepper
-3. **PBKDF2 (1,000,000 iterations, SHA-512)** — Derives a master key
-4. **HMAC expansion** — Produces the final password bytes
+1. **HMAC-SHA512** - Generates a local pepper from your inputs
+2. **1,000 SHA-256 rounds** - Stretches the pepper
+3. **PBKDF2 (1,000,000 iterations, SHA-512)** - Derives a master key
+4. **HMAC expansion** - Produces the final password bytes
 
 Your password is **calculated, never stored.** Close the tab = data gone.
 
@@ -66,7 +66,7 @@ Your password is **calculated, never stored.** Close the tab = data gone.
 | 🛡️ Auto-clear Timers | Password clears in 15s. Secret key in 60s. Tab close = instant wipe. |
 | 🌐 Multi-language | English, Hindi, Spanish, French guides |
 | 🔒 Device Lock | WebAuthn OS PIN/Biometric for Secret Key |
-| ⚡ Web Workers | Crypto offloaded to background thread — zero UI freeze |
+| ⚡ Web Workers | Crypto offloaded to background thread - zero UI freeze |
 
 ---
 
