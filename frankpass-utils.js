@@ -1,30 +1,87 @@
 /**
  * FrankPass Utilities
- * Centralized logic for platform normalization and UI helpers.
+ * Centralized logic for platform normalization, SSO brand aliasing, and UI helpers.
  * Shared between Web and Extension.
  */
 
 const FrankPassUtils = (function () {
     
-    // Global Aliases: mapping input to canonical slug
+    // Global Aliases: mapping input & sibling brands to canonical Single Sign-On (SSO) slug
     const GLOBAL_ALIASES = {
-        'x': 'twitter', 'tw': 'twitter', 'twtr': 'twitter',
-        'ig': 'instagram', 'insta': 'instagram',
-        'fb': 'facebook', 'yt': 'youtube', 'wa': 'whatsapp', 'amzn': 'amazon',
-        'snap': 'snapchat', 'pin': 'pinterest', 'gpay': 'googlepay', 'appleid': 'apple',
-        'ms': 'microsoft', 'outlook': 'microsoft', 'live': 'microsoft',
-        'gh': 'github', 'pp': 'paypal', 'tt': 'tiktok', 'nf': 'netflix',
-        'tv': 'twitch', 'st': 'steam', 'dc': 'discord', 'rd': 'reddit',
-        'tg': 'telegram', 'ln': 'linkedin'
+        // Google Ecosystem (Unified Google Account SSO)
+        'gmail': 'google',
+        'googlemail': 'google',
+        'gdrive': 'google',
+        'googleaccount': 'google',
+        'goog': 'google',
+
+        // Microsoft Ecosystem (Unified Microsoft Account SSO)
+        'ms': 'microsoft',
+        'outlook': 'microsoft',
+        'live': 'microsoft',
+        'hotmail': 'microsoft',
+        'msn': 'microsoft',
+        'office365': 'microsoft',
+        'office': 'microsoft',
+        'xbox': 'microsoft',
+
+        // Apple Ecosystem (Unified Apple ID / iCloud SSO)
+        'appleid': 'apple',
+        'icloud': 'apple',
+        'itunes': 'apple',
+        'appstore': 'apple',
+
+        // Meta / Social Ecosystem
+        'fb': 'facebook',
+        'meta': 'facebook',
+        'x': 'twitter',
+        'tw': 'twitter',
+        'twtr': 'twitter',
+        'ig': 'instagram',
+        'insta': 'instagram',
+        'yt': 'youtube',
+        'wa': 'whatsapp',
+        'amzn': 'amazon',
+        'snap': 'snapchat',
+        'pin': 'pinterest',
+        'gpay': 'googlepay',
+        'gh': 'github',
+        'pp': 'paypal',
+        'tt': 'tiktok',
+        'nf': 'netflix',
+        'tv': 'twitch',
+        'st': 'steam',
+        'dc': 'discord',
+        'rd': 'reddit',
+        'tg': 'telegram',
+        'ln': 'linkedin'
     };
 
-    // Full Domain Specific Aliases: for extra visual cleanup
+    // Full Domain Specific Aliases: for direct URL / domain input mapping
     const VISUAL_ALIASES = {
+        'gmail.com': 'google',
+        'googlemail.com': 'google',
+        'mail.google.com': 'google',
+        'accounts.google.com': 'google',
+        'drive.google.com': 'google',
+        'outlook.com': 'microsoft',
+        'hotmail.com': 'microsoft',
+        'live.com': 'microsoft',
+        'icloud.com': 'apple',
+        'appleid.apple.com': 'apple',
         'fb.com': 'facebook',
         't.me': 'telegram',
         'bit.ly': 'bitly',
         'amzn.to': 'amazon',
         'youtu.be': 'youtube'
+    };
+
+    // Human-friendly ecosystem labels
+    const ECOSYSTEM_LABELS = {
+        'google': 'Google Account',
+        'microsoft': 'Microsoft Account',
+        'apple': 'Apple ID',
+        'facebook': 'Meta / Facebook'
     };
 
     /**
@@ -43,30 +100,30 @@ const FrankPassUtils = (function () {
             platform = platform.split('@')[1];
         }
 
-        // 3. Strip subdomain noise
+        // 3. Strip common subdomain noise
         platform = platform.replace(/^(www\.|m\.|app\.|login\.|secure\.|auth\.|account\.)/, '');
         
-        // 3. Handle Visual Aliases (full domains)
+        // 4. Handle Visual Aliases (full domains)
         if (VISUAL_ALIASES[platform]) {
             return VISUAL_ALIASES[platform];
         }
 
-        // 4. Robust Domain Extraction (handles .co.uk, .com.au etc)
+        // 5. Robust Domain Extraction (handles .co.uk, .com.au, .co.in etc)
         let domainParts = platform.split('.');
         if (domainParts.length > 2 && (domainParts[domainParts.length - 2].length <= 3)) {
             // e.g., amazon.co.uk -> amazon
             platform = domainParts[domainParts.length - 3];
         } else if (domainParts.length >= 2) {
-            // e.g., google.com -> google
+            // e.g., google.com -> google, gmail.com -> gmail
             platform = domainParts[domainParts.length - 2];
         } else {
             platform = domainParts[0];
         }
         
-        // 5. Sanitize (only letters and numbers)
+        // 6. Sanitize (only letters and numbers)
         platform = platform.replace(/[^a-z0-9]/g, '');
 
-        // 6. Apply Global Aliases (e.g., fb -> facebook)
+        // 7. Apply Global Aliases (e.g., gmail -> google, outlook -> microsoft)
         return GLOBAL_ALIASES[platform] || platform;
     }
 
@@ -91,6 +148,14 @@ const FrankPassUtils = (function () {
     function getSeedHint(raw) {
         const normalized = getNormalizedPlatform(raw);
         if (!normalized) return '';
+        const rawClean = raw.toLowerCase().trim();
+        
+        // If an alias changed the name (like gmail -> google), show helpful context
+        if (rawClean !== normalized && (rawClean.includes('gmail') || rawClean.includes('outlook') || rawClean.includes('hotmail') || rawClean.includes('icloud') || rawClean.includes('appleid'))) {
+            const label = ECOSYSTEM_LABELS[normalized] || normalized;
+            return `Using as: "${normalized}" (${label})`;
+        }
+        
         return `Using as: "${normalized}"`;
     }
 
