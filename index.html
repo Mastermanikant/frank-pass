@@ -158,7 +158,7 @@
         <div class="form-group">
           <label class="form-label" for="platform-input">Site / Platform</label>
           <div class="input-wrapper">
-            <input id="platform-input" class="form-input" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="on" list="platform-list" spellcheck="false" aria-describedby="platform-hint">
+            <input id="platform-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="on" list="platform-list" spellcheck="false" aria-describedby="platform-hint">
             <datalist id="platform-list"></datalist>
             <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
@@ -171,7 +171,7 @@
         <div class="form-group">
           <label class="form-label" for="secret-key">Secret Key</label>
           <div class="input-wrapper">
-            <input id="secret-key" class="form-input" type="password" placeholder="Your memorable secret"¦" autocomplete="off" spellcheck="false" aria-describedby="secret-hint">
+            <input id="secret-key" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="password" placeholder="Your memorable secret"¦" autocomplete="off" spellcheck="false" aria-describedby="secret-hint">
             <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
               <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
@@ -190,7 +190,7 @@
           <!-- Username -->
           <div class="form-group">
             <label class="form-label" for="username-input">Username <span style="font-weight:400;opacity:0.6">(optional -  only for multiple accounts)</span></label>
-            <input id="username-input" class="form-input" type="text" placeholder="Leave blank for single account" autocomplete="off">
+            <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="Leave blank for single account" autocomplete="off">
           </div>
 
           <!-- Variant System (Dual Mode: 1-999 Counter & Month/Year Rotation) -->
@@ -278,9 +278,20 @@
           <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
             ···········
           </div>
-          <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
-            <svg id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          </button>
+          <div class="output-actions">
+            <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password (Privacy Shield)">
+              <svg id="mask-eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+            <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
+              <svg class="copy-icon" id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span>Copy</span>
+            </button>
+          </div>
         </div>
         <p class="output-note" aria-live="polite">Not stored anywhere &middot; <span id="clear-timer-label">Generated securely in memory</span></p>
 
@@ -887,6 +898,27 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
     genBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Generate Password`;
   }
 });
+
+
+/* ── Privacy Mask Toggle Logic ── */
+let isPasswordMasked = false;
+const maskBtn = document.getElementById('mask-toggle-btn');
+const outPassword = document.getElementById('output-password');
+const maskEyeIcon = document.getElementById('mask-eye-icon');
+
+const eyeOpenSVG = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+const eyeClosedSVG = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+
+if (maskBtn && outPassword) {
+  maskBtn.addEventListener('click', () => {
+    isPasswordMasked = !isPasswordMasked;
+    outPassword.classList.toggle('masked', isPasswordMasked);
+    if (maskEyeIcon) maskEyeIcon.innerHTML = isPasswordMasked ? eyeClosedSVG : eyeOpenSVG;
+    maskBtn.setAttribute('aria-label', isPasswordMasked ? 'Reveal password' : 'Mask password');
+    maskBtn.title = isPasswordMasked ? 'Reveal Password' : 'Mask Password (Anti-Screen Recording)';
+    showToast(isPasswordMasked ? 'Password masked (Anti-Screen Leak)' : 'Password revealed');
+  });
+}
 
 /* ── Copy button ── */
 document.getElementById('copy-btn').addEventListener('click', async () => {

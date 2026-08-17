@@ -1277,3 +1277,41 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   color: #0f172a !important;
   border-color: rgba(0, 0, 0, 0.12) !important;
 }
+
+
+/* ── PRIVACY MASK & EYE TOGGLE STYLES ──────────────── */
+.output-password.masked {
+  filter: blur(8px);
+  user-select: none;
+  -webkit-user-select: none;
+  transition: filter 0.2s ease;
+}
+.output-password:not(.masked) {
+  filter: blur(0px);
+  transition: filter 0.2s ease;
+}
+.output-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.mask-toggle-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+}
+.mask-toggle-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
