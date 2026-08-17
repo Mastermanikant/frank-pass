@@ -937,10 +937,11 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 .output-password {
   flex: 1;
-  font-family: 'Courier New', monospace;
-  font-size: 1rem;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, ui-monospace, monospace;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: var(--text-primary);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   word-break: break-all;
   min-height: 1.5em;
 }
