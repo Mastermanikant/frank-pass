@@ -320,6 +320,43 @@
 </section>
 
 <!-- ============================================================
+     SUPPORT MASTER MANIKANT & FRANKBASE ECOSYSTEM CARD
+     ============================================================ -->
+<section class="section-sm" aria-label="Support Master Manikant">
+  <div class="container" style="max-width:680px">
+    <div class="card-glass" style="padding:2rem;border:1px solid rgba(139,92,246,0.35);background:linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(99,102,241,0.04) 100%)">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
+        <span style="font-size:1.5rem">&#128156;</span>
+        <h2 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:0">
+          Love FrankPass? Support Master Manikant
+        </h2>
+      </div>
+      <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem">
+        FrankPass is 100% free, private, and ad-free for everyone worldwide. If our tools helped you stay secure, consider supporting our independent research, books, and ecosystem:
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.85rem">
+        <a href="https://buymeacoffee.com/mastermanikant" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+          <span style="font-size:1.2rem">☕</span>
+          <span>Buy Me a Coffee / Donate</span>
+        </a>
+        <a href="https://frankbase.com/ebooks" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+          <span style="font-size:1.2rem">📖</span>
+          <span>Cybersecurity &amp; Tech eBook</span>
+        </a>
+        <a href="/pro" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+          <span style="font-size:1.2rem">👑</span>
+          <span>FrankPass Pro Extension</span>
+        </a>
+        <a href="https://frankbase.com/products" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+          <span style="font-size:1.2rem">🚀</span>
+          <span>Visit Our Products Page &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      SHARE CARD
      Encourage users to spread mental-load-free security
      ============================================================ -->
@@ -901,6 +938,17 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
     applyMaskState();
     document.getElementById('copy-btn').disabled = false;
     updatePasswordStatus();
+
+    /* Instant Auto-Copy on Generation */
+    try {
+      await navigator.clipboard.writeText(password);
+      scheduleClipboardClear();
+      const sec = clipSelect ? parseInt(clipSelect.value, 10) : 120;
+      const clearNotice = sec > 0 ? ` (Auto-clears in ${sec >= 60 ? (sec/60) + ' min' : sec + 's'})` : '';
+      showToast(`⚡ Unbreakable password generated & copied! Press Ctrl+V anywhere${clearNotice}`, 'success');
+    } catch (_) {
+      showToast('⚡ Unbreakable password generated! Click Copy to use.', 'success');
+    }
 
     /* Save settings locally if toggle is on */
     if (document.getElementById('save-locally').checked) {
