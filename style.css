@@ -1316,3 +1316,15 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   color: #fff;
   border-color: var(--accent);
 }
+
+
+#platform-hint {
+  font-size: 0.78rem;
+  color: var(--accent);
+  min-height: 1.2em;
+  display: block;
+  margin-top: 0.35rem;
+  margin-bottom: 0.25rem;
+  line-height: 1.4;
+  font-weight: 500;
+}

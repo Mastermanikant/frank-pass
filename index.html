@@ -172,9 +172,17 @@
           <label class="form-label" for="secret-key">Secret Key</label>
           <div class="input-wrapper">
             <input id="secret-key" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="password" placeholder="Your memorable secret"¦" autocomplete="off" spellcheck="false" aria-describedby="secret-hint">
-            <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
+                        <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
               <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.45rem">
+            <label class="toggle-switch" for="remember-secret" style="margin:0;font-size:0.8rem;color:var(--text-muted);cursor:pointer">
+              <input type="checkbox" id="remember-secret" role="switch" aria-checked="false">
+              <span class="toggle-track" aria-hidden="true"></span>
+              <span>Remember Secret Key on this device</span>
+            </label>
+            <span id="saved-badge" style="display:none;font-size:0.72rem;color:var(--success);font-weight:700">&#10003; Encrypted Locally</span>
           </div>
           <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
         </div>
@@ -786,7 +794,109 @@ const lengthSlider = document.getElementById('length-slider');
 const lengthVal    = document.getElementById('length-val');
 lengthSlider.addEventListener('input', () => { lengthVal.textContent = lengthSlider.value; });
 
-/* ── Dual-Mode Variant Logic ── */
+/* ── Local AES-GCM Secret Key Vault ── */
+const LocalSecretVault = (function() {
+  const DEVICE_KEY_STORAGE = 'fp_dev_key';
+  
+  async function getDeviceKey() {
+    let rawKey = localStorage.getItem(DEVICE_KEY_STORAGE);
+    if (!rawKey) {
+      const arr = new Uint8Array(32);
+      window.crypto.getRandomValues(arr);
+      rawKey = Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+      localStorage.setItem(DEVICE_KEY_STORAGE, rawKey);
+    }
+    const keyBuf = new Uint8Array(rawKey.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+    return await window.crypto.subtle.importKey(
+      'raw', keyBuf, { name: 'AES-GCM' }, false, ['encrypt', 'decrypt']
+    );
+  }
+
+  async function encryptSecret(plainText) {
+    if (!plainText) return null;
+    const key = await getDeviceKey();
+    const iv = window.crypto.getRandomValues(new Uint8Array(12));
+    const encoded = new TextEncoder().encode(plainText);
+    const ciphertext = await window.crypto.subtle.encrypt(
+      { name: 'AES-GCM', iv }, key, encoded
+    );
+    return {
+      iv: Array.from(iv).map(b => b.toString(16).padStart(2, '0')).join(''),
+      data: Array.from(new Uint8Array(ciphertext)).map(b => b.toString(16).padStart(2, '0')).join('')
+    };
+  }
+
+  async function decryptSecret(encryptedObj) {
+    if (!encryptedObj || !encryptedObj.iv || !encryptedObj.data) return '';
+    try {
+      const key = await getDeviceKey();
+      const iv = new Uint8Array(encryptedObj.iv.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+      const data = new Uint8Array(encryptedObj.data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+      const decrypted = await window.crypto.subtle.decrypt(
+        { name: 'AES-GCM', iv }, key, data
+      );
+      return new TextDecoder().decode(decrypted);
+    } catch (_) {
+      return '';
+    }
+  }
+
+  return { encryptSecret, decryptSecret };
+})();
+
+/* ── Secret Key Local Persistence Controller ── */
+const rememberToggle = document.getElementById('remember-secret');
+const savedBadge = document.getElementById('saved-badge');
+const secretInputEl = document.getElementById('secret-key');
+
+async function handleSecretSave() {
+  if (!rememberToggle || !secretInputEl) return;
+  if (rememberToggle.checked) {
+    const val = secretInputEl.value.trim();
+    if (val) {
+      const enc = await LocalSecretVault.encryptSecret(val);
+      localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
+      localStorage.setItem('fp_remember_secret', 'true');
+      if (savedBadge) savedBadge.style.display = 'inline';
+    }
+  } else {
+    localStorage.removeItem('fp_enc_secret');
+    localStorage.removeItem('fp_remember_secret');
+    if (savedBadge) savedBadge.style.display = 'none';
+  }
+}
+
+if (rememberToggle) {
+  rememberToggle.addEventListener('change', () => {
+    handleSecretSave();
+    showToast(rememberToggle.checked ? 'Secret Key will be encrypted & remembered on this device' : 'Secret Key removed from device storage');
+  });
+}
+if (secretInputEl) {
+  secretInputEl.addEventListener('input', () => {
+    if (rememberToggle && rememberToggle.checked) {
+      handleSecretSave();
+    }
+  });
+}
+
+// Load remembered secret on startup immediately
+async function initRememberedSecret() {
+  if (localStorage.getItem('fp_remember_secret') === 'true' && rememberToggle && secretInputEl) {
+    rememberToggle.checked = true;
+    try {
+      const encData = JSON.parse(localStorage.getItem('fp_enc_secret') || '{}');
+      const plain = await LocalSecretVault.decryptSecret(encData);
+      if (plain) {
+        secretInputEl.value = plain;
+        if (savedBadge) savedBadge.style.display = 'inline';
+      }
+    } catch (_) {}
+  }
+}
+initRememberedSecret();
+
+/* ── Dual-Mode Variant Logic (ALWAYS COUNTER 1 BY DEFAULT) ── */
 let currentVariantMode = 'counter';
 const variantInput   = document.getElementById('variant-input');
 const variantVal     = document.getElementById('variant-val');
@@ -797,7 +907,7 @@ const dateWrap       = document.getElementById('variant-date-wrap');
 const monthSelect    = document.getElementById('variant-month-select');
 const yearInput      = document.getElementById('variant-year-input');
 
-// Initialize current month and year
+// Initialize month and year for optional date mode
 const now = new Date();
 const curMonth = String(now.getMonth() + 1).padStart(2, '0');
 const curYear  = String(now.getFullYear());
@@ -817,11 +927,18 @@ function updateVariantDisplay() {
   }
 }
 
+// Ensure Counter 1 is strictly set on load
 if (tabCounter) {
   tabCounter.addEventListener('click', () => {
     currentVariantMode = 'counter';
     tabCounter.classList.add('active');
-    if (tabDate) tabDate.classList.remove('active');
+    tabCounter.style.background = 'var(--accent)';
+    tabCounter.style.color = '#fff';
+    if (tabDate) {
+      tabDate.classList.remove('active');
+      tabDate.style.background = 'transparent';
+      tabDate.style.color = 'var(--text-muted)';
+    }
     if (counterWrap) counterWrap.style.display = 'flex';
     if (dateWrap) dateWrap.style.display = 'none';
     updateVariantDisplay();
@@ -832,7 +949,13 @@ if (tabDate) {
   tabDate.addEventListener('click', () => {
     currentVariantMode = 'date';
     tabDate.classList.add('active');
-    if (tabCounter) tabCounter.classList.remove('active');
+    tabDate.style.background = 'var(--accent)';
+    tabDate.style.color = '#fff';
+    if (tabCounter) {
+      tabCounter.classList.remove('active');
+      tabCounter.style.background = 'transparent';
+      tabCounter.style.color = 'var(--text-muted)';
+    }
     if (counterWrap) counterWrap.style.display = 'none';
     if (dateWrap) dateWrap.style.display = 'flex';
     updateVariantDisplay();
