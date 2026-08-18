@@ -1,3 +1,19 @@
 {
-    "dependencies": {}
+  "name": "frankpass",
+  "version": "3.2.3",
+  "description": "Stateless & Offline Zero-Knowledge Password Generator",
+  "main": "frankpass-core.js",
+  "scripts": {
+    "test": "python test_all_fixes.py"
+  },
+  "author": "Master Manikant",
+  "license": "MIT",
+  "homepage": "https://frankpass.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Mastermanikant/frank-pass.git"
+  },
+  "devDependencies": {
+    "playwright": "^1.40.0"
+  }
 }

@@ -11,7 +11,7 @@ const FRANKPASS_CONFIG = {
   SALE_MODE: true,
   DISCOUNT_PERCENT: 80,
   SALE_LABEL: "Launch Month Deal",
-  LAUNCH_SALE_END_DATE: "2026-05-16T23:59:59+05:30",
+  LAUNCH_SALE_END_DATE: "2026-12-31T23:59:59+05:30",
 
   /* ── Pricing ──────────────────────────────────────────────────── */
   PRICES: {
@@ -70,7 +70,7 @@ const FRANKPASS_CONFIG = {
   },
 
   /* ── Site Metadata ────────────────────────────────────────────── */
-  SITE_VERSION: "3.0.0",
+  SITE_VERSION: "3.2.3",
 
   /* ── Maintenance Mode ─────────────────────────────────────────── */
   MAINTENANCE_MODE: false,

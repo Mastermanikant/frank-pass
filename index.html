@@ -30,12 +30,7 @@
     "operatingSystem": "Any - runs in any modern browser",
     "url": "https://www.frankpass.com",
     "description": "A stateless, deterministic password generator. Zero cloud, zero storage, zero accounts. Same inputs always produce the same password - mathematically guaranteed.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "1250"
-    }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
 </head>
@@ -68,7 +63,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
-        <input id="country-search-input" type="search" placeholder="Search country"¦" autocomplete="off" aria-label="Search for a country">
+        <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
         <div id="country-list-scroll"></div>
       </div>
     </div>
@@ -163,7 +158,7 @@
         <div class="form-group">
           <label class="form-label" for="platform-input">Site / Platform</label>
           <div class="input-wrapper">
-            <input id="platform-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="on" list="platform-list" spellcheck="false" aria-describedby="platform-hint">
+            <input id="platform-input" class="form-input" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
             <datalist id="platform-list"></datalist>
             <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
@@ -191,7 +186,7 @@
         <div class="form-group">
           <label class="form-label" for="secret-key">Secret Key</label>
           <div class="input-wrapper">
-            <input id="secret-key" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="password" placeholder="Your memorable secret"¦" autocomplete="off" spellcheck="false" aria-describedby="secret-hint">
+            <input id="secret-key" class="form-input" type="password" placeholder="Your memorable secret…" autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" aria-describedby="secret-hint">
                         <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
               <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
@@ -639,7 +634,7 @@
         <strong style="font-size:1.1rem;color:var(--text-primary);display:block;margin-bottom:0.35rem">सीधे अपने WhatsApp पर पाएँ - बिना किसी Personal Info के!</strong>
         <p style="margin:0;font-size:0.9rem">सुरक्षा टिप्स, नई सुविधाएं और अपडेट्स - सीधे FrankPass WhatsApp Channel पर। कोई व्यक्तिगत जानकारी नहीं ली जाती। यह Channel पूरी तरह Privacy-First है।</p>
       </div>
-      <a id="whatsapp-cta-btn" href="#" class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Join FrankPass WhatsApp channel">
+      <a id="whatsapp-cta-btn" href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" class="btn-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Join FrankPass WhatsApp channel">
         Join Channel
       </a>
     </div>
@@ -872,11 +867,13 @@ async function handleSecretSave() {
       localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
       localStorage.setItem('fp_remember_secret', 'true');
       if (savedBadge) savedBadge.style.display = 'inline';
+    rememberToggle.setAttribute('aria-checked', 'true');
     }
   } else {
     localStorage.removeItem('fp_enc_secret');
     localStorage.removeItem('fp_remember_secret');
     if (savedBadge) savedBadge.style.display = 'none';
+    rememberToggle.setAttribute('aria-checked', 'false');
   }
 }
 
@@ -904,6 +901,7 @@ async function initRememberedSecret() {
       if (plain) {
         secretInputEl.value = plain;
         if (savedBadge) savedBadge.style.display = 'inline';
+    rememberToggle.setAttribute('aria-checked', 'true');
       }
     } catch (_) {}
   }
@@ -1022,23 +1020,40 @@ function getActiveVariant() {
   }
 }
 
-/* ── Preset buttons ── */
+/* ── Preset buttons & Type-Select Synchronizer (BUG-11 Fix) ── */
 const presets = {
   simple: { profile: 'alphanumeric', length: 12 },
   strong: { profile: 'standard',     length: 16 },
   max:    { profile: 'standard',     length: 32 },
 };
 let activeProfile = 'standard';
+const typeSelect = document.getElementById('type-select');
+
 document.querySelectorAll('.preset-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const p = presets[btn.dataset.preset];
     activeProfile = p.profile;
-    lengthSlider.value = p.length;
-    lengthVal.textContent = p.length;
+    if (typeSelect) typeSelect.value = p.profile;
+    if (lengthSlider) lengthSlider.value = p.length;
+    if (lengthVal) lengthVal.textContent = p.length;
   });
 });
+
+if (typeSelect) {
+  typeSelect.addEventListener('change', () => {
+    activeProfile = typeSelect.value;
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    if (typeSelect.value === 'alphanumeric') {
+      const sBtn = document.querySelector('[data-preset="simple"]');
+      if (sBtn) sBtn.classList.add('active');
+    } else if (typeSelect.value === 'standard') {
+      const stBtn = document.querySelector('[data-preset="strong"]');
+      if (stBtn) stBtn.classList.add('active');
+    }
+  });
+}
 
 /* ── Generate button ── */
 document.getElementById('generate-btn').addEventListener('click', async () => {
@@ -1058,7 +1073,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
 
   const genBtn = document.getElementById('generate-btn');
   genBtn.disabled = true;
-  genBtn.textContent = 'Generating"¦';
+  genBtn.textContent = 'Generating…';
 
   try {
     const password = await FRANKPASS_CORE.generate(
@@ -1209,13 +1224,37 @@ function setAccountMode(mode) {
 if (accTabSingle) accTabSingle.addEventListener('click', () => setAccountMode('single'));
 if (accTabMulti)  accTabMulti.addEventListener('click', () => setAccountMode('multi'));
 
-/* ── Clear Form Logic ── */
+/* ── Clear Form Logic (Complete Reset — BUG-10 Fix) ── */
 const clearAllBtn = document.getElementById('clear-all-btn');
 if (clearAllBtn) {
   clearAllBtn.addEventListener('click', () => {
     document.getElementById('platform-input').value = '';
     document.getElementById('secret-key').value = '';
     setAccountMode('single');
+    
+    // Reset variant counter to 1
+    if (variantInput) {
+      variantInput.value = 1;
+      if (typeof updateVariantDisplay === 'function') updateVariantDisplay();
+    }
+    if (tabCounter && currentVariantMode !== 'counter') tabCounter.click();
+    
+    // Reset length slider to 16
+    if (lengthSlider && lengthVal) {
+      lengthSlider.value = 16;
+      lengthVal.textContent = '16';
+    }
+    
+    // Reset presets to Strong
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    const strongPreset = document.querySelector('[data-preset="strong"]');
+    if (strongPreset) strongPreset.classList.add('active');
+    activeProfile = 'standard';
+    if (typeSelect) typeSelect.value = 'standard';
+    
+    // Close advanced panel if open
+    if (advPanel && advPanel.classList.contains('open')) advToggle.click();
+    
     const out = document.getElementById('output-password');
     out.textContent = '···········';
     out.classList.add('placeholder');
@@ -1379,6 +1418,31 @@ function shareLink(platform, e) {
   }
 })();
 </script>
+
+<!-- ============================================================
+     OFFLINE PWA SERVICE WORKER REGISTRATION (v3.2.3)
+     ============================================================ -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => {
+        // Service worker registered successfully
+      })
+      .catch(err => {
+        console.warn('ServiceWorker registration error:', err);
+      });
+  });
+}
+</script>
+
+<!-- ============================================================
+     FUTURE FEATURE SPECIFICATIONS & PLACEHOLDERS (DO NOT REMOVE)
+     1. FUTURE: First-visit product promotion splash (once per 24 hours via localStorage timestamp)
+     2. FUTURE: Auto-suggest platform detection from clipboard/URL bar
+     3. FUTURE: Password strength entropy visual indicator bar
+     ============================================================ -->
+
 </body>
 </html>
 

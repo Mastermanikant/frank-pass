@@ -1,4 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /.wrangler/
+
+User-agent: GPTBot
+Allow: /
 
 Sitemap: https://frankpass.com/sitemap.xml

@@ -76,13 +76,12 @@ p  { color: var(--text-muted); line-height: 1.7; }
 a  { color: var(--accent-light); text-decoration: none; transition: color var(--transition); }
 a:hover { color: var(--text-primary); }
 code {
-  font-family: 'Courier New', monospace;
+  font-family: 'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
   background: var(--glass-bg);
-  border: 1px solid var(--border);
-  padding: 0.15em 0.4em;
-  border-radius: 4px;
-  font-size: 0.87em;
-  color: var(--text-accent);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--accent-light);
+  font-size: 0.88em;
 }
 pre {
   background: var(--bg-tertiary);
@@ -93,7 +92,14 @@ pre {
   font-size: 0.88rem;
   line-height: 1.6;
 }
-pre code { background: none; border: none; padding: 0; }
+pre code {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
+  background: var(--glass-bg);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--accent-light);
+  font-size: 0.88em;
+}
 
 /* ── 5. GLASS CARD ───────────────────────────────────────── */
 .card-glass {
@@ -851,7 +857,14 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .country-option:hover, .country-option.selected { background: var(--glass-bg); }
 .c-flag { width: 24px; height: 18px; object-fit: cover; border-radius: 2px; flex-shrink: 0; }
 .c-name { flex: 1; font-size: 0.88rem; color: var(--text-primary); }
-.c-code { font-size: 0.75rem; color: var(--text-muted); }
+.c-code {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Courier New', monospace;
+  background: var(--glass-bg);
+  padding: 0.2rem 0.4rem;
+  border-radius: var(--radius-sm);
+  color: var(--accent-light);
+  font-size: 0.88em;
+}
 .country-no-results { padding: 1rem; text-align: center; color: var(--text-muted); font-size: 0.88rem; }
 
 /* ── 20. GENERATOR CARD ──────────────────────────────────── */
@@ -1365,5 +1378,21 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   .account-mode-tabs .acc-tab, .variant-mode-tabs .variant-tab {
     padding: 4px 6px !important;
     font-size: 0.7rem !important;
+  }
+}
+
+
+/* ── SCROLL MARGIN FOR STICKY HEADER ACCURACY ─────────────── */
+[id] {
+  scroll-margin-top: calc(var(--header-h) + 1.25rem);
+}
+
+/* ── ACCESSIBILITY: PREFERS REDUCED MOTION (WCAG 2.3.3) ───── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
