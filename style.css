@@ -1396,3 +1396,101 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
     scroll-behavior: auto !important;
   }
 }
+
+
+/* ── FOUNDER TRUST & GUARANTEE CARD ──────────────────────── */
+.founder-trust-card {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.25rem;
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(15, 15, 26, 0.95) 0%, rgba(20, 20, 40, 0.85) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.founder-trust-avatar-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 24px rgba(139, 92, 246, 0.4);
+  flex-shrink: 0;
+  background: var(--bg-tertiary);
+}
+.founder-trust-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.founder-trust-info {
+  flex: 1;
+}
+.founder-trust-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+.founder-trust-role {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.85rem;
+}
+.founder-trust-quote {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 1.15rem;
+}
+.founder-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.security-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-sm);
+}
+.founder-trust-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+@media (max-width: 640px) {
+  .founder-trust-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem 1.25rem;
+    gap: 1.25rem;
+  }
+  .founder-trust-avatar-wrap {
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+  }
+  .founder-trust-badges {
+    justify-content: center;
+  }
+  .founder-trust-actions {
+    justify-content: center;
+  }
+}
