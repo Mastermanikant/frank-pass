@@ -149,9 +149,24 @@
         </div>
 
         <!-- Country badge inside card -->
-        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;">
           <img id="header-flag-img" src="https://flagcdn.com/w160/in.png" alt="India" width="22" height="16" loading="lazy" style="border-radius:2px;">
           <span style="font-size:0.82rem;color:var(--text-muted)" id="card-country-label">India (IN)</span>
+        </div>
+
+        <!-- Account Mode (Single vs Multi-Account) - Positioned at Card Top -->
+        <div class="form-group" style="margin-bottom:0.75rem">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
+            <label class="form-label" style="margin:0">Account</label>
+            <div class="account-mode-tabs" role="tablist" style="display:flex;gap:3px;background:var(--bg-tertiary);padding:2px;border-radius:6px;border:1px solid var(--border)">
+              <button type="button" id="acc-tab-single" class="acc-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:4px;cursor:pointer">Single Account</button>
+              <button type="button" id="acc-tab-multi" class="acc-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:4px;cursor:pointer">Multiple Accounts</button>
+            </div>
+          </div>
+          <div id="username-group" style="display:none;margin-top:0.35rem">
+            <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="Username or email (e.g. work@gmail.com, personal)">
+            <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
+          </div>
         </div>
 
         <!-- Platform input -->
@@ -165,21 +180,6 @@
             </div>
           </div>
           <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.2rem;" aria-live="polite"></span>
-                </div>
-
-        <!-- Account Mode (Single vs Multi-Account) -->
-        <div class="form-group" style="margin-bottom:0.75rem">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
-            <label class="form-label" style="margin:0">Account</label>
-            <div class="account-mode-tabs" role="tablist" style="display:flex;gap:3px;background:var(--bg-tertiary);padding:2px;border-radius:6px;border:1px solid var(--border)">
-              <button type="button" id="acc-tab-single" class="acc-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:4px;cursor:pointer">Single Account</button>
-              <button type="button" id="acc-tab-multi" class="acc-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:4px;cursor:pointer">Multiple Accounts</button>
-            </div>
-          </div>
-          <div id="username-group" style="display:none;margin-top:0.35rem">
-            <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="Username or email (e.g. work@gmail.com, personal)">
-            <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
-          </div>
         </div>
 
         <!-- Secret key input -->
