@@ -130,37 +130,37 @@
     </div>
 
     <!-- Right: Generator Card -->
-    <div class="hero-card-col" id="generator">
-      <div class="generator-card card-glass" role="region" aria-label="Password Generator">
+    <div class="hero-card-col">
+      <div class="card-glass generator-card" id="generator-card" role="main" aria-label="Stateless Password Generator">
 
-        <!-- Card header -->
-        <div class="gen-card-header">
-          <div class="gen-card-title">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Password Generator
+        <!-- Card Header with Badges & Country Pill -->
+        <div class="gen-header">
+          <div class="gen-title">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+              <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
+              <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span>FrankPass Generator</span>
           </div>
-          <div class="gen-live-badge">
-            <span class="status-dot status-online" aria-hidden="true"></span>
-            LIVE
-          </div>
-        </div>
-
-        <!-- Country badge inside card -->
-        <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.6rem;">
-          <img id="header-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w160/in.png'" alt="India" width="22" height="16" style="display:inline-block;vertical-align:middle;border-radius:2px;">
-          <span style="font-size:0.82rem;color:var(--text-muted)" id="card-country-label">India (IN)</span>
-        </div>
-
-        <!-- Account Mode (Single vs Multi-Account) - Positioned at Card Top -->
-        <div class="form-group" style="margin-bottom:0.75rem">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
-            <label class="form-label" style="margin:0">Account</label>
-            <div class="account-mode-tabs" role="tablist" style="display:flex;gap:3px;background:var(--bg-tertiary);padding:2px;border-radius:6px;border:1px solid var(--border)">
-              <button type="button" id="acc-tab-single" class="acc-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:4px;cursor:pointer">Single Account</button>
-              <button type="button" id="acc-tab-multi" class="acc-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:4px;cursor:pointer">Multiple Accounts</button>
+          <div class="gen-header-badges">
+            <div class="gen-live-badge">
+              <span class="status-dot status-online" aria-hidden="true"></span>
+              100% Offline
+            </div>
+            <div class="card-country-pill" id="card-country-pill" title="Selected Region">
+              <img id="header-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w160/in.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+              <span id="card-country-label">IN</span>
             </div>
           </div>
-          <div id="username-group" style="display:none;margin-top:0.35rem">
+        </div>
+
+        <!-- Account Mode Segmented Switch -->
+        <div class="account-mode-wrap">
+          <div class="account-mode-tabs" role="tablist" aria-label="Account Mode">
+            <button type="button" id="acc-tab-single" class="acc-tab active" role="tab" aria-selected="true">Single Account</button>
+            <button type="button" id="acc-tab-multi" class="acc-tab" role="tab" aria-selected="false">Multiple Accounts</button>
+          </div>
+          <div id="username-group" style="display:none;margin-top:0.6rem">
             <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="Username or email (e.g. work@gmail.com, personal)">
             <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
           </div>
@@ -170,23 +170,32 @@
         <div class="form-group">
           <label class="form-label" for="platform-input">Site / Platform</label>
           <div class="input-wrapper">
-            <input id="platform-input" class="form-input" type="text" placeholder="e.g. instagram, gmail.com" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
+            <input id="platform-input" class="form-input" type="text" placeholder="e.g. gmail.com, instagram, github" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
             <datalist id="platform-list"></datalist>
             <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
           </div>
-          <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.2rem;" aria-live="polite"></span>
+          <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
         </div>
 
-        <!-- Secret key input -->
+        <!-- Secret key input & Strength Meter -->
         <div class="form-group">
-          <label class="form-label" for="secret-key">Secret Key</label>
+          <label class="form-label" for="secret-key">Master Secret Key</label>
           <div class="input-wrapper">
             <input id="secret-key" class="form-input" type="password" placeholder="Your memorable secret…" autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" aria-describedby="secret-hint">
-                        <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
+            <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
               <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
+          </div>
+          <!-- Dynamic 4-Segment Strength Meter -->
+          <div class="secret-strength-container" id="secret-strength-container">
+            <div class="strength-bar-segments">
+              <div class="strength-segment" id="str-seg-1"></div>
+              <div class="strength-segment" id="str-seg-2"></div>
+              <div class="strength-segment" id="str-seg-3"></div>
+              <div class="strength-segment" id="str-seg-4"></div>
+            </div>
           </div>
           <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.45rem">
             <label class="toggle-switch" for="remember-secret" style="margin:0;font-size:0.8rem;color:var(--text-muted);cursor:pointer">
@@ -199,30 +208,33 @@
           <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
         </div>
 
-        <!-- Advanced options toggle -->
+        <!-- Advanced options accordion -->
         <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-          Advanced Options
+          <span style="display:flex;align-items:center;gap:0.45rem">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Advanced Rules &amp; Rotation
+          </span>
+          <svg class="advanced-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
 
         <!-- Advanced panel (collapsed by default) -->
         <div class="advanced-panel" id="advanced-panel" aria-hidden="true">
-          <!-- Variant System (Dual Mode: 1-999 Counter & Month/Year Rotation) -->
+          <!-- Variant System -->
           <div class="form-group">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem">
               <label class="form-label" style="margin:0" for="variant-input">Variant Rotation <span style="font-weight:400;opacity:0.7" id="variant-val">(v1)</span></label>
               <!-- Variant Mode Tabs -->
-              <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:var(--bg-tertiary);padding:2px;border-radius:6px;border:1px solid var(--border)">
-                <button type="button" id="variant-tab-counter" class="variant-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 8px;border-radius:4px;cursor:pointer">Counter</button>
-                <button type="button" id="variant-tab-date" class="variant-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 8px;border-radius:4px;cursor:pointer">Month &amp; Year</button>
+              <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid rgba(255,255,255,0.08)">
+                <button type="button" id="variant-tab-counter" class="variant-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
+                <button type="button" id="variant-tab-date" class="variant-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
               </div>
             </div>
 
             <!-- Mode 1: Numeric Counter (1-999) with stepper -->
             <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
-              <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--bg-tertiary);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">−</button>
+              <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">−</button>
               <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
-              <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--bg-tertiary);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
+              <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
             </div>
 
             <!-- Mode 2: Month & Custom Year Rotation -->
@@ -249,17 +261,17 @@
 
           <!-- Password Type -->
           <div class="form-group">
-            <label class="form-label" for="type-select">Password Type</label>
+            <label class="form-label" for="type-select">Characters Type</label>
             <select id="type-select" class="form-input" style="width:100%;appearance:none;cursor:pointer">
-              <option value="numeric">Only Number</option>
-              <option value="alphanumeric">Number & Letters</option>
+              <option value="numeric">Only Number (PIN)</option>
+              <option value="alphanumeric">Number &amp; Letters</option>
               <option value="standard" selected>Number, Letters and Symbol</option>
             </select>
           </div>
 
           <!-- Length slider -->
           <div class="form-group">
-            <label class="form-label" for="length-slider">Password Length: <span id="length-val">16</span></label>
+            <label class="form-label" for="length-slider">Password Length: <span id="length-val" style="color:var(--accent);font-weight:700">16</span></label>
             <input id="length-slider" type="range" min="8" max="32" value="16" aria-label="Password length slider">
           </div>
 
@@ -269,11 +281,11 @@
             <div class="preset-btns" role="group" aria-label="Password preset selector">
               <button class="preset-btn" data-preset="simple"  type="button">Simple</button>
               <button class="preset-btn active" data-preset="strong" type="button">Strong</button>
-              <button class="preset-btn" data-preset="max"    type="button">Max</button>
+              <button class="preset-btn" data-preset="max"    type="button">Maximum</button>
             </div>
           </div>
 
-                    <!-- Save locally toggle -->
+          <!-- Save locally toggle -->
           <label class="toggle-switch" for="save-locally">
             <input type="checkbox" id="save-locally" role="switch" aria-checked="false">
             <span class="toggle-track" aria-hidden="true"></span>
@@ -281,14 +293,15 @@
           </label>
         </div>
 
-        <!-- Generate button -->
-        <div style="display:flex;gap:0.6rem;align-items:stretch">
-          <button id="generate-btn" class="btn-primary" style="flex:1" type="button" aria-label="Generate password">
+        <!-- Action buttons row -->
+        <div class="gen-actions-row">
+          <button id="generate-btn" class="btn-primary btn-generate" type="button" aria-label="Generate secure password">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Generate Password
+            Generate Secure Password
           </button>
-          <button id="clear-all-btn" class="btn-ghost" style="padding:0.75rem 1rem;font-size:0.9rem;border:1px solid var(--border);border-radius:var(--radius-sm);white-space:nowrap" type="button" aria-label="Clear form and password" title="Clear all inputs">
-            Clear Form
+          <button id="clear-all-btn" class="btn-ghost btn-reset" type="button" aria-label="Reset form" title="Reset all inputs">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset
           </button>
         </div>
 
@@ -298,7 +311,7 @@
             ···········
           </div>
           <div class="output-actions">
-            <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password (Privacy Shield)">
+            <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password">
               <svg id="mask-eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
@@ -312,7 +325,12 @@
             </button>
           </div>
         </div>
-        <p class="output-note" aria-live="polite">Not stored anywhere &middot; <span id="clear-timer-label">Generated securely in memory</span></p>
+        
+        <!-- Micro Trust Badge -->
+        <div class="gen-micro-footer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Zero Data Stored &middot; Client-Side WebCrypto &middot; 100% Offline</span>
+        </div>
 
       </div>
     </div>
@@ -1238,6 +1256,37 @@ function setAccountMode(mode) {
 
 if (accTabSingle) accTabSingle.addEventListener('click', () => setAccountMode('single'));
 if (accTabMulti)  accTabMulti.addEventListener('click', () => setAccountMode('multi'));
+
+
+/* ── Secret Key Entropy & Strength Bar Meter ── */
+const secretKeyEl = document.getElementById('secret-key');
+if (secretKeyEl) {
+  secretKeyEl.addEventListener('input', () => {
+    const val = secretKeyEl.value;
+    const s1 = document.getElementById('str-seg-1');
+    const s2 = document.getElementById('str-seg-2');
+    const s3 = document.getElementById('str-seg-3');
+    const s4 = document.getElementById('str-seg-4');
+    if (!s1 || !s2 || !s3 || !s4) return;
+    
+    [s1, s2, s3, s4].forEach(s => { s.className = 'strength-segment'; });
+    if (!val) return;
+    
+    let score = 0;
+    if (val.length >= 6) score++;
+    if (val.length >= 10) score++;
+    if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+    if (/[0-9]/.test(val) || /[^A-Za-z0-9]/.test(val)) score++;
+    
+    const colors = ['weak', 'fair', 'good', 'strong'];
+    const levelClass = colors[score - 1] || 'weak';
+    
+    if (score >= 1) s1.classList.add('active', levelClass);
+    if (score >= 2) s2.classList.add('active', levelClass);
+    if (score >= 3) s3.classList.add('active', levelClass);
+    if (score >= 4) s4.classList.add('active', levelClass);
+  });
+}
 
 /* ── Clear Form Logic (Complete Reset — BUG-10 Fix) ── */
 const clearAllBtn = document.getElementById('clear-all-btn');
