@@ -453,7 +453,7 @@ This means ~14 font files could be downloaded on first load.
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.frankpass.com/icons/icon-512.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@iamfrankpass">
+<meta name="twitter:site" content="@frankpasshq">
 ```
 
 **GOOD:**

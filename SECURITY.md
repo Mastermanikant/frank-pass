@@ -25,7 +25,7 @@ Despite our zero-database architecture, if you discover any security vulnerabili
 
 Instead, please report them directly to us:
 - **Email:** `contact@frankpass.com`
-- **Direct Message:** [@iamfrankpass on X (Twitter)](https://x.com/iamfrankpass)
+- **Direct Message:** [@frankpasshq on X (Twitter)](https://x.com/frankpasshq)
 
 We will respond locally within 24-48 hours.
 

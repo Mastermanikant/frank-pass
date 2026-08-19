@@ -50,13 +50,13 @@ const FRANKPASS_CONFIG = {
   /* ── Social Links ─────────────────────────────────────────────── */
   SOCIAL: {
     /* FrankPass brand */
-    X:               "https://x.com/iamfrankpass",
-    INSTAGRAM:       "https://instagram.com/iamfrankpass",
-    YOUTUBE:         "https://youtube.com/@iamfrankpass",
-    FACEBOOK:        "https://facebook.com/iamfrankpass",
-    REDDIT:          "https://reddit.com/r/iamfrankpass",
+    X:               "https://x.com/frankpasshq",
+    INSTAGRAM:       "https://instagram.com/frankpasshq",
+    YOUTUBE:         "https://youtube.com/@frankpasshq",
+    FACEBOOK:        "https://facebook.com/frankpasshq",
+    REDDIT:          "https://reddit.com/r/frankpasshq",
     WHATSAPP:        "https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z",
-    MASTODON_BRAND:  "https://fosstodon.org/@iamfrankpass",
+    MASTODON_BRAND:  "https://fosstodon.org/@frankpasshq",
     /* Founder - Master Manikant (Strict Handle: @mastermanikant everywhere) */
     FOUNDER_NAME:       "Master Manikant",
     FOUNDER_HANDLE:     "@mastermanikant",

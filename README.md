@@ -12,7 +12,7 @@
 > *Forget your passwords. Trust the math. 100% Client-Side. 0% Database.*
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/iamfrankpass/FrankPass/main/hero.png" alt="FrankPass UI Screenshot" width="80%">
+  <img src="https://raw.githubusercontent.com/frankpasshq/FrankPass/main/hero.png" alt="FrankPass UI Screenshot" width="80%">
 </p>
 
 ---
@@ -125,8 +125,8 @@ See [`legal.html`](https://frankpass.com/legal) for full terms.
 | Platform | Link |
 |---|---|
 | 🌐 Website | [frankpass.com](https://frankpass.com) |
-| 🐦 X (Twitter) | [@iamfrankpass](https://x.com/iamfrankpass) |
-| 📸 Instagram | [@iamfrankpass](https://instagram.com/iamfrankpass) |
+| 🐦 X (Twitter) | [@frankpasshq](https://x.com/frankpasshq) |
+| 📸 Instagram | [@frankpasshq](https://instagram.com/frankpasshq) |
 | 💬 WhatsApp | [Channel](https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z) |
 | 👤 Founder | [@mastermanikant](https://x.com/mastermanikant) |
 
