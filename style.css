@@ -1418,16 +1418,19 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   height: 170px;
   border-radius: 20px;
   overflow: hidden;
-  border: 2px solid var(--accent);
-  box-shadow: 0 0 32px rgba(139, 92, 246, 0.35);
+  border: 2px solid rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 32px rgba(139, 92, 246, 0.4);
   flex-shrink: 0;
-  background: var(--bg-tertiary);
+  background: linear-gradient(180deg, #18182e 0%, #0d0d1a 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 .founder-trust-avatar {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
+  object-fit: contain;
+  object-position: center bottom;
   display: block;
 }
 .founder-trust-info {
