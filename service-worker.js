@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.2.3 (100% Offline-First)
-const CACHE_NAME = 'frankpass-v3.2.3';
+// FrankPass Service Worker v3.2.4 (100% Offline-First with Smart Network-First Sync)
+const CACHE_NAME = 'frankpass-v3.2.4';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -31,7 +31,7 @@ self.addEventListener('install', (event) => {
     self.skipWaiting();
 });
 
-// Activate: Clean up old caches
+// Activate: Clean up old caches & claim clients immediately
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((cacheNames) => {
@@ -45,25 +45,33 @@ self.addEventListener('activate', (event) => {
     self.clients.claim();
 });
 
-// Fetch: Serve from cache first, then network (offline-first strategy)
+// Fetch: Network-First (with offline Cache Fallback)
 self.addEventListener('fetch', (event) => {
-    if (event.request.mode === 'navigate') {
-        event.respondWith(
-            fetch(event.request).catch(() => {
-                return caches.match('/') || caches.match('/index.html');
-            })
-        );
+    if (event.request.method !== 'GET') return;
+    
+    // Ignore chrome-extension or external analytics
+    if (!event.request.url.startsWith(self.location.origin) && !event.request.url.includes('flagcdn.com')) {
         return;
     }
 
     event.respondWith(
-        caches.match(event.request).then((cachedResponse) => {
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-            return fetch(event.request).catch(() => {
-                return caches.match('/');
-            });
-        })
+        fetch(event.request)
+            .then((networkResponse) => {
+                if (networkResponse && networkResponse.status === 200) {
+                    const responseClone = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseClone);
+                    });
+                }
+                return networkResponse;
+            })
+            .catch(() => {
+                return caches.match(event.request).then((cachedResponse) => {
+                    if (cachedResponse) return cachedResponse;
+                    if (event.request.mode === 'navigate') {
+                        return caches.match('/') || caches.match('/index.html');
+                    }
+                });
+            })
     );
 });
