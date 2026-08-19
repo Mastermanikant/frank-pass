@@ -188,13 +188,16 @@
               <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
               <!-- Info Guidance Popover Tooltip -->
               <div class="secret-info-wrap" id="secret-info-wrap">
-                <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="Master Secret Key क्या है?">
+                <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?">
                   <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
                 </button>
                 <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
-                  <div class="info-popover-title">🔑 Master Secret Key क्या है?</div>
-                  <p class="info-popover-desc">यह कोई साधारण पासवर्ड नहीं है — यह आपका <strong>एकमात्र मास्टर फॉर्मूला</strong> है। एक ही सीक्रेट की से सभी वेबसाइटों (Gmail, Amazon आदि) के अलग-अलग पासवर्ड्स बनते हैं।</p>
-                  <div class="info-popover-tip">💡 <strong>सुझाव:</strong> कोई यादगार वाक्य या कोड चुनें (उदा. <code>MyBook#2026</code>)। इसे कहीं स्टोर नहीं किया जाता।</div>
+                  <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
+                  <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password — it is your personal master seed. One memorable phrase generates unique, unhackable passwords for all your platforms (Gmail, Amazon, GitHub).</p>
+                  <div class="info-popover-tip">
+                    💡 <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
+                    ✨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized — no complex symbols needed!
+                  </div>
                 </div>
               </div>
             </div>
@@ -205,7 +208,7 @@
             </label>
           </div>
           <div class="input-wrapper">
-            <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="Your memorable secret…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
+            <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. i love reading books, my secret code..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
             <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
               <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
             </button>
