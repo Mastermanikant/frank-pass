@@ -119,6 +119,10 @@
             headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${country.code.toLowerCase()}.png`; };
             headerFlag.style.display = '';
         }
+        const cardLabel = document.getElementById('card-country-label');
+        if (cardLabel) cardLabel.textContent = country.code.toUpperCase();
+        const cardPill = document.getElementById('card-country-pill');
+        if (cardPill) cardPill.title = country.label;
 
         // Update hidden input (replaces old regionEl value)
         hiddenInput.value = country.label;

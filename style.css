@@ -1581,11 +1581,13 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   gap: 0.35rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.25rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 20px;
   font-size: 0.78rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--text-muted);
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
 }
 
 .account-mode-wrap {

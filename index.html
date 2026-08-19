@@ -161,7 +161,9 @@
             <button type="button" id="acc-tab-multi" class="acc-tab" role="tab" aria-selected="false">Multiple Accounts</button>
           </div>
           <div id="username-group" style="display:none;margin-top:0.6rem">
-            <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="Username or email (e.g. work@gmail.com, personal)">
+            <label class="form-label" for="username-input" style="font-size:0.8rem">Username / Account Email</label>
+            <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
+            <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
             <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
           </div>
         </div>
@@ -181,7 +183,14 @@
 
         <!-- Secret key input & Strength Meter -->
         <div class="form-group">
-          <label class="form-label" for="secret-key">Master Secret Key</label>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem">
+            <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
+            <label class="toggle-switch" for="remember-secret" style="margin:0;font-size:0.78rem;color:var(--text-muted);cursor:pointer" title="Remember Secret Key locally on this device">
+              <input type="checkbox" id="remember-secret" role="switch" aria-checked="false">
+              <span class="toggle-track" aria-hidden="true"></span>
+              <span style="font-size:0.75rem">Remember on this device</span>
+            </label>
+          </div>
           <div class="input-wrapper">
             <input id="secret-key" class="form-input" type="password" placeholder="Your memorable secret…" autocomplete="new-password" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" aria-describedby="secret-hint">
             <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
@@ -197,14 +206,7 @@
               <div class="strength-segment" id="str-seg-4"></div>
             </div>
           </div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.45rem">
-            <label class="toggle-switch" for="remember-secret" style="margin:0;font-size:0.8rem;color:var(--text-muted);cursor:pointer">
-              <input type="checkbox" id="remember-secret" role="switch" aria-checked="false">
-              <span class="toggle-track" aria-hidden="true"></span>
-              <span>Remember Secret Key on this device</span>
-            </label>
-            <span id="saved-badge" style="display:none;font-size:0.72rem;color:var(--success);font-weight:700">&#10003; Encrypted Locally</span>
-          </div>
+          <span id="saved-badge" style="display:none;font-size:0.72rem;color:var(--success);font-weight:700;margin-top:0.25rem">&#10003; Encrypted Locally</span>
           <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
         </div>
 
@@ -1258,6 +1260,21 @@ if (accTabSingle) accTabSingle.addEventListener('click', () => setAccountMode('s
 if (accTabMulti)  accTabMulti.addEventListener('click', () => setAccountMode('multi'));
 
 
+
+/* ── Username Input Live Hint (Using account: "...") ── */
+const uInput = document.getElementById('username-input');
+const uHint = document.getElementById('username-hint');
+if (uInput && uHint) {
+  uInput.addEventListener('input', () => {
+    const val = uInput.value.trim();
+    if (val) {
+      uHint.textContent = 'Using account: "' + val.toLowerCase() + '"';
+    } else {
+      uHint.textContent = '';
+    }
+  });
+}
+
 /* ── Secret Key Entropy & Strength Bar Meter ── */
 const secretKeyEl = document.getElementById('secret-key');
 if (secretKeyEl) {
@@ -1403,9 +1420,13 @@ document.addEventListener('DOMContentLoaded', () => {
 const regionEl = document.getElementById('region');
 if (regionEl) {
   regionEl.addEventListener('change', () => {
-    const label = regionEl.value || 'India (IN)';
+    const val = regionEl.value || 'India (IN)';
+    const m = val.match(/\(([A-Z]{2})\)/i);
+    const code = m ? m[1].toUpperCase() : val.substring(0, 2).toUpperCase();
     const cardLabel = document.getElementById('card-country-label');
-    if (cardLabel) cardLabel.textContent = label;
+    if (cardLabel) cardLabel.textContent = code;
+    const cardPill = document.getElementById('card-country-pill');
+    if (cardPill) cardPill.title = val;
   });
 }
 </script>
