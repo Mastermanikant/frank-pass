@@ -1823,3 +1823,74 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   background: #f8fafc !important;
   border-color: #e2e8f0 !important;
 }
+
+
+/* ── WCAG 2.1 AA ACCESSIBILITY & HIGH-CONTRAST SELECT / OPTION STYLING ── */
+select.form-input,
+.form-input select,
+select {
+  background-color: rgba(18, 20, 35, 0.95) !important;
+  color: #f8fafc !important;
+  border: 1px solid rgba(139, 92, 246, 0.35) !important;
+  border-radius: 12px !important;
+  padding: 0.65rem 0.95rem !important;
+  font-size: 0.92rem !important;
+  cursor: pointer !important;
+}
+
+select option {
+  background-color: #121324 !important;
+  color: #f8fafc !important;
+  padding: 0.65rem !important;
+  font-size: 0.92rem !important;
+}
+
+[data-theme="light"] select.form-input,
+[data-theme="light"] select option {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+/* Toggle Switch Right-Aligned Track */
+.toggle-switch-right {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+.toggle-switch-right .toggle-track {
+  width: 36px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  position: relative;
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+}
+.toggle-switch-right .toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.25s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.toggle-switch-right input:checked + .toggle-track {
+  background: var(--accent, #8b5cf6) !important;
+}
+.toggle-switch-right input:checked + .toggle-track::after {
+  transform: translateX(16px);
+}
+
+/* WCAG High Contrast Focus Indicators */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid #8b5cf6 !important;
+  outline-offset: 2px !important;
+}
