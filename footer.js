@@ -111,14 +111,7 @@
         <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
         <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer">YouTube</a>
       </div>
-        <a href="https://whatsapp.com/channel/0029Va4HkL58qIzrdn6bT83r" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a href="https://facebook.com/mastermanikant" target="_blank" rel="noopener noreferrer">Facebook</a>
-        <a href="https://instagram.com/mastermanikant" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
-        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer">YouTube</a>
-        <a href="https://mastodon.social/@mastermanikant" target="_blank" rel="me noopener noreferrer">Mastodon</a>
-      </div>
+
 
     </div>
 

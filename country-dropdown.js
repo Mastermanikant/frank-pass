@@ -6,7 +6,8 @@
 (function () {
     'use strict';
 
-    const CDN = 'https://flagcdn.com/w40/';
+    const CDN = '/flags/';
+    const FALLBACK_CDN = 'https://flagcdn.com/w40/';
     const DEFAULT_CODE = 'in';
     const DEFAULT_LABEL = 'India (IN)';
 
@@ -38,7 +39,7 @@
         img.src = getFlagUrl(country.code);
         img.alt = country.code.toUpperCase();
         img.loading = 'lazy';
-        img.onerror = function () { this.style.display = 'none'; };
+        img.onerror = function () { if (!this.src.includes('flagcdn.com')) { this.src = FALLBACK_CDN + country.code.toLowerCase() + '.png'; } else { this.style.display = 'none'; } };
 
         const name = document.createElement('span');
         name.className = 'c-name';
@@ -114,7 +115,8 @@
         // Update premium header flag
         const headerFlag = document.getElementById('header-flag-img');
         if (headerFlag) {
-            headerFlag.src = `https://flagcdn.com/w160/${country.code.toLowerCase()}.png`;
+            headerFlag.src = `/flags/${country.code.toLowerCase()}.png`;
+            headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${country.code.toLowerCase()}.png`; };
             headerFlag.style.display = '';
         }
 
@@ -197,7 +199,8 @@
             // Sync premium header flag on load
             const headerFlag = document.getElementById('header-flag-img');
             if (headerFlag) {
-                headerFlag.src = `https://flagcdn.com/w160/${initCountry.code.toLowerCase()}.png`;
+                headerFlag.src = `/flags/${initCountry.code.toLowerCase()}.png`;
+                headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${initCountry.code.toLowerCase()}.png`; };
                 headerFlag.style.display = '';
             }
 
