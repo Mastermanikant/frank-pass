@@ -1530,3 +1530,13 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   gap: 0.6rem;
   margin-left: 0.5rem;
 }
+
+
+/* ── FLAG IMAGE FLICKER PREVENTION ────────────────────────── */
+#country-flag-img, #header-flag-img, .c-flag {
+  display: inline-block !important;
+  vertical-align: middle;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}

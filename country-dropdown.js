@@ -191,17 +191,18 @@
 
         if (initCountry) {
             currentCode = initCountry.code;
-            triggerFlag.src = getFlagUrl(initCountry.code);
-            triggerFlag.style.display = '';
-            displayName.textContent = initCountry.label;
-            hiddenInput.value = initCountry.label;
+            
+            // Only update DOM if detected country differs from default India to prevent blinking
+            if (initCountry.code !== 'in') {
+                triggerFlag.src = getFlagUrl(initCountry.code);
+                displayName.textContent = initCountry.label;
+                hiddenInput.value = initCountry.label;
 
-            // Sync premium header flag on load
-            const headerFlag = document.getElementById('header-flag-img');
-            if (headerFlag) {
-                headerFlag.src = `/flags/${initCountry.code.toLowerCase()}.png`;
-                headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${initCountry.code.toLowerCase()}.png`; };
-                headerFlag.style.display = '';
+                const headerFlag = document.getElementById('header-flag-img');
+                if (headerFlag) {
+                    headerFlag.src = `/flags/${initCountry.code.toLowerCase()}.png`;
+                    headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${initCountry.code.toLowerCase()}.png`; };
+                }
             }
 
             // Load platform list for this country
