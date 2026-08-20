@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="/style.css?v=3.2.4">
+  <link rel="stylesheet" href="/style.css?v=3.2.5">
 
   <!-- Schema.org: SoftwareApplication + AggregateRating -->
   <script type="application/ld+json">
@@ -76,8 +76,8 @@
       <a href="/get-started.html" class="nav-link">Get Started</a>
       <a href="/docs.html" class="nav-link">Docs</a>
       <a href="/faq.html" class="nav-link">FAQ</a>
-      <a href="/about-us.html" class="nav-link">Founder</a>
-      <a href="https://frankbase.com/products" class="nav-link" target="_blank" rel="noopener noreferrer">Products ↗</a>
+      <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
+      <a href="/products.html" class="nav-link">Products</a>
       <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
       <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
         <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -739,7 +739,7 @@
 <script src="/platforms.js?v=3.2.1"></script>
 <script src="/frankpass-utils.js?v=3.2.1"></script>
 <script src="/frankpass-core.js?v=3.2.1"></script>
-<script src="/footer.js?v=3.2.4"></script>
+<script src="/footer.js?v=3.2.5"></script>
 
 <script>
 /* ── Sticky header scroll class ── */
@@ -813,16 +813,21 @@ platformInput.addEventListener('input', (e) => {
   platformValid.classList.toggle('visible', !!inDB);
 });
 
-function updateDatalist() {
+function populatePlatformDatalist(countryCode) {
   const list = document.getElementById('platform-list');
   if (!list || !window.regionalPlatforms) return;
-  
+
   list.innerHTML = '';
-  const regionVal = document.getElementById('region')?.value || 'India (IN)';
-  const currentRegion = regionVal.split(' ')[0].toLowerCase();
-  
-  const keys = ['af', 'Global'];
-  if (window.regionalPlatforms[currentRegion]) keys.push(currentRegion);
+  const raw = (countryCode || document.getElementById('region')?.value || 'in').toLowerCase();
+  const m = raw.match(/\(([a-z]{2})\)/i);
+  const targetCode = m ? m[1].toLowerCase() : raw.substring(0, 2).toLowerCase();
+
+  const keys = ['Global'];
+  if (window.regionalPlatforms[targetCode]) {
+    keys.unshift(targetCode);
+  } else if (window.regionalPlatforms['in']) {
+    keys.unshift('in');
+  }
 
   const fragment = document.createDocumentFragment();
   const seen = new Set();
@@ -838,8 +843,8 @@ function updateDatalist() {
   });
   list.appendChild(fragment);
 }
-setTimeout(updateDatalist, 500);
-window.addEventListener('countryChange', updateDatalist); 
+window.populatePlatformDatalist = populatePlatformDatalist;
+setTimeout(() => populatePlatformDatalist(), 200); 
 
 /* ── Advanced options toggle ── */
 const advToggle = document.getElementById('advanced-toggle');
@@ -906,41 +911,165 @@ const LocalSecretVault = (function() {
   return { encryptSecret, decryptSecret };
 })();
 
-/* ── Secret Key Local Persistence Controller ── */
+/* ── Secret Key Local Persistence & Biometric Controller ── */
 const rememberToggle = document.getElementById('remember-secret');
 const savedBadge = document.getElementById('saved-badge');
 const secretInputEl = document.getElementById('secret-key');
+function getBioModal() { return document.getElementById('biometric-modal'); }
 
-async function handleSecretSave() {
-  if (!rememberToggle || !secretInputEl) return;
-  if (rememberToggle.checked) {
-    const val = secretInputEl.value.trim();
-    if (val) {
-      const enc = await LocalSecretVault.encryptSecret(val);
-      localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
-      localStorage.setItem('fp_remember_secret', 'true');
-      if (savedBadge) savedBadge.style.display = 'inline';
-    rememberToggle.setAttribute('aria-checked', 'true');
-    }
-  } else {
-    localStorage.removeItem('fp_enc_secret');
-    localStorage.removeItem('fp_remember_secret');
-    if (savedBadge) savedBadge.style.display = 'none';
-    rememberToggle.setAttribute('aria-checked', 'false');
+let pendingSecretVal = '';
+
+async function saveEncryptedSecret(mode) {
+  const val = pendingSecretVal || (secretInputEl ? secretInputEl.value.trim() : '');
+  if (!val) return;
+  
+  const enc = await LocalSecretVault.encryptSecret(val);
+  localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
+  localStorage.setItem('fp_remember_secret', 'true');
+  localStorage.setItem('fp_bio_mode', mode); // 'biometric' or 'blind_encrypted'
+  
+  if (savedBadge) {
+    savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
+    savedBadge.style.display = 'inline';
   }
+  if (rememberToggle) {
+    rememberToggle.checked = true;
+    rememberToggle.setAttribute('aria-checked', 'true');
+  }
+  const bm = getBioModal(); if (bm) bm.style.display = 'none';
+  
+  showToast(mode === 'biometric' ? 'Secret Key protected with Biometrics!' : 'Secret Key saved with one-way encryption.');
 }
 
 if (rememberToggle) {
   rememberToggle.addEventListener('change', () => {
-    handleSecretSave();
-    showToast(rememberToggle.checked ? 'Secret Key will be encrypted & remembered on this device' : 'Secret Key removed from device storage');
+    if (rememberToggle.checked) {
+      pendingSecretVal = secretInputEl ? secretInputEl.value.trim() : '';
+      if (!pendingSecretVal) {
+        showToast('Please enter your Secret Key first.', 'error');
+        rememberToggle.checked = false;
+        return;
+      }
+      // Check if WebAuthn is available
+      const bm = getBioModal();
+      if (bm) {
+        bm.style.display = 'flex';
+      } else {
+        saveEncryptedSecret('blind_encrypted');
+      }
+    } else {
+      localStorage.removeItem('fp_enc_secret');
+      localStorage.removeItem('fp_remember_secret');
+      localStorage.removeItem('fp_bio_mode');
+      if (savedBadge) savedBadge.style.display = 'none';
+      rememberToggle.setAttribute('aria-checked', 'false');
+      showToast('Secret Key removed from device storage');
+    }
   });
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btnEnable = document.getElementById('btn-enable-bio');
+  const btnSkip = document.getElementById('btn-skip-bio');
+  if (btnEnable) {
+    btnEnable.addEventListener('click', async () => {
+      try {
+        const challenge = new Uint8Array(32);
+        window.crypto.getRandomValues(challenge);
+        const userId = new Uint8Array(16);
+        window.crypto.getRandomValues(userId);
+
+        const credential = await navigator.credentials.create({
+          publicKey: {
+            challenge,
+            rp: { name: "FrankPass Offline Vault" },
+            user: {
+              id: userId,
+              name: "frankpass_local_user",
+              displayName: "FrankPass Device User"
+            },
+            pubKeyCredParams: [{ alg: -7, type: "public-key" }, { alg: -257, type: "public-key" }],
+            authenticatorSelection: {
+              authenticatorAttachment: "platform",
+              userVerification: "preferred"
+            },
+            timeout: 60000
+          }
+        });
+        if (credential) {
+          await saveEncryptedSecret('biometric');
+        } else {
+          await saveEncryptedSecret('blind_encrypted');
+        }
+      } catch (err) {
+        await saveEncryptedSecret('blind_encrypted');
+      }
+    });
+  }
+  if (btnSkip) {
+    btnSkip.addEventListener('click', () => {
+      saveEncryptedSecret('blind_encrypted');
+    });
+  }
+});
+
+
 if (secretInputEl) {
   secretInputEl.addEventListener('input', () => {
     if (rememberToggle && rememberToggle.checked) {
-      handleSecretSave();
+      const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
+      pendingSecretVal = secretInputEl.value.trim();
+      if (pendingSecretVal) {
+        LocalSecretVault.encryptSecret(pendingSecretVal).then(enc => {
+          localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
+        });
+      }
     }
+  });
+}
+
+// Override Toggle Secret (Eye Icon) to enforce Biometric / Blind Encryption policy
+const toggleSecretBtn = document.getElementById('toggle-secret');
+if (toggleSecretBtn && secretInputEl) {
+  toggleSecretBtn.addEventListener('click', async (e) => {
+    const isRemembered = localStorage.getItem('fp_remember_secret') === 'true';
+    const bioMode = localStorage.getItem('fp_bio_mode');
+
+    if (secretInputEl.type === 'password') {
+      if (isRemembered && bioMode === 'blind_encrypted' && !secretInputEl.dataset.userTyped) {
+        showToast('🔒 This key was saved with blind local encryption (no biometrics). For security, it cannot be revealed in plaintext. You can type a new secret key anytime.', 'error');
+        return;
+      }
+      if (isRemembered && bioMode === 'biometric' && window.PublicKeyCredential) {
+        try {
+          const challenge = new Uint8Array(32);
+          window.crypto.getRandomValues(challenge);
+          const assertion = await navigator.credentials.get({
+            publicKey: {
+              challenge,
+              userVerification: "required",
+              timeout: 60000
+            }
+          });
+          if (assertion) {
+            secretInputEl.type = 'text';
+          }
+        } catch (_) {
+          showToast('Biometric verification cancelled.', 'error');
+        }
+        return;
+      }
+      secretInputEl.type = 'text';
+    } else {
+      secretInputEl.type = 'password';
+    }
+  });
+}
+
+if (secretInputEl) {
+  secretInputEl.addEventListener('keydown', () => {
+    secretInputEl.dataset.userTyped = 'true';
   });
 }
 
@@ -953,8 +1082,12 @@ async function initRememberedSecret() {
       const plain = await LocalSecretVault.decryptSecret(encData);
       if (plain) {
         secretInputEl.value = plain;
-        if (savedBadge) savedBadge.style.display = 'inline';
-    rememberToggle.setAttribute('aria-checked', 'true');
+        const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
+        if (savedBadge) {
+          savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
+          savedBadge.style.display = 'inline';
+        }
+        rememberToggle.setAttribute('aria-checked', 'true');
       }
     } catch (_) {}
   }
@@ -1542,6 +1675,37 @@ if ('serviceWorker' in navigator) {
      2. FUTURE: Auto-suggest platform detection from clipboard/URL bar
      3. FUTURE: Password strength entropy visual indicator bar
      ============================================================ -->
+
+
+<!-- Biometric & Local Encryption Choice Modal -->
+<div id="biometric-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="bio-modal-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.5rem;text-align:center">🛡️</div>
+    <h3 id="bio-modal-title" style="font-size:1.25rem;font-weight:800;color:#fff;text-align:center;margin-bottom:0.5rem">
+      Enable Biometric Lock?
+    </h3>
+    <p style="font-size:0.88rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+      Protect your Master Secret Key using your device's biometric authentication (Fingerprint, Face ID, or Windows Hello).
+    </p>
+
+    <!-- Important Notice Box -->
+    <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:0.85rem;margin-bottom:1.25rem">
+      <div style="font-size:0.78rem;font-weight:700;color:#f87171;margin-bottom:0.25rem">⚠️ Important Privacy Notice:</div>
+      <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.45;margin:0">
+        If you <strong>skip</strong> biometric protection, your Secret Key is saved with blind AES-GCM encryption for generating passwords, but <strong>you will NEVER be able to reveal/view the secret key on screen later</strong>. With biometrics enabled, you can reveal it anytime by scanning your fingerprint/face.
+      </p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0.65rem">
+      <button type="button" id="btn-enable-bio" class="btn-primary" style="width:100%;padding:0.75rem;font-size:0.9rem;font-weight:700;border-radius:10px;justify-content:center">
+        👆 Enable Biometric Lock
+      </button>
+      <button type="button" id="btn-skip-bio" class="btn-ghost" style="width:100%;padding:0.65rem;font-size:0.85rem;font-weight:600;border-radius:10px;justify-content:center">
+        Skip (Save Encrypted Only)
+      </button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>

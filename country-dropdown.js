@@ -232,6 +232,17 @@
             if (e.key === 'Escape') closeDropdown();
         });
 
+        
+        // ── Browser Back / Forward Sync ──────────────────────────────
+        window.addEventListener('popstate', (e) => {
+            let p = window.location.pathname.replace(/\//g, '').toLowerCase();
+            if (p === 'hn') p = 'in';
+            const matched = allCountries.find(c => c.code === p) || allCountries.find(c => c.code === DEFAULT_CODE);
+            if (matched && matched.code !== currentCode) {
+                selectCountry(matched);
+            }
+        });
+
         // Close on outside click
         document.addEventListener('click', (e) => {
             if (!trigger.closest('.custom-country-dropdown').contains(e.target)) {

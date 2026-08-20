@@ -1984,3 +1984,55 @@ a:focus-visible {
 [data-theme="light"] .info-popover-title {
   color: #0f172a;
 }
+
+
+/* ── CUSTOM MODAL OVERLAY (Biometric & Dialogs) ───────────── */
+.custom-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(4, 6, 14, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.custom-modal-card {
+  background: rgba(15, 17, 32, 0.96);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(139, 92, 246, 0.2);
+  animation: modalPop 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+[data-theme="light"] .custom-modal-card {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+[data-theme="light"] .custom-modal-card h3 {
+  color: #0f172a !important;
+}
+
+.product-item-card {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.product-item-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+}

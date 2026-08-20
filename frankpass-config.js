@@ -55,7 +55,7 @@ const FRANKPASS_CONFIG = {
     YOUTUBE:         "https://youtube.com/@frankpasshq",
     FACEBOOK:        "https://facebook.com/frankpasshq",
     REDDIT:          "https://reddit.com/r/frankpasshq",
-    WHATSAPP:        "https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z",
+    WHATSAPP:        "https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532",
     MASTODON_BRAND:  "https://fosstodon.org/@frankpasshq",
     /* Founder - Master Manikant (Strict Handle: @mastermanikant everywhere) */
     FOUNDER_NAME:       "Master Manikant",
@@ -70,7 +70,7 @@ const FRANKPASS_CONFIG = {
   },
 
   /* ── Site Metadata ────────────────────────────────────────────── */
-  SITE_VERSION: "3.2.4",
+  SITE_VERSION: "3.2.5",
 
   /* ── Maintenance Mode ─────────────────────────────────────────── */
   MAINTENANCE_MODE: false,

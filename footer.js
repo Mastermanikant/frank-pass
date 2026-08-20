@@ -83,6 +83,7 @@
       <div class="footer-col">
         <div class="footer-col-title">FrankPass</div>
         <a href="./index.html">Password Generator</a>
+        <a href="./products.html">All Products Hub 📦</a>
         <a href="./install.html">Install App 📱</a>
         <a href="./get-started.html">Get Started</a>
         <a href="./pro.html">FrankPass Pro 👑</a>
@@ -105,8 +106,8 @@
       <div class="footer-col">
         <div class="footer-col-title">Master Manikant</div>
         <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">MasterManikant.com ↗</a>
-        <a href="./about-us.html#founder">Founder Story</a>
-        <a href="https://whatsapp.com/channel/0029Va4HkL58qIzrdn6bT83r" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
+        <a href="./founder-mastermanikant.html">Founder Master Manikant</a>
+        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
         <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
         <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer">YouTube</a>
