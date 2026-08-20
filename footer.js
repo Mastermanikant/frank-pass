@@ -46,8 +46,8 @@
     <div class="footer-whatsapp-card" style="background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2rem">
       ${ico.whatsapp}
       <div style="flex:1;min-width:180px">
-        <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem">सीधे अपने WhatsApp पर पाएँ - बिना किसी Personal Info के!</strong>
-        <p style="margin:0;font-size:0.85rem;color:var(--text-muted)">सुरक्षा टिप्स, नई सुविधाएं और अपडेट्स - सीधे FrankPass WhatsApp Channel पर। कोई व्यक्तिगत जानकारी नहीं ली जाती। यह Channel पूरी तरह Privacy-First है।</p>
+        <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem">Get Security Tips &amp; Updates directly on WhatsApp!</strong>
+        <p style="margin:0;font-size:0.85rem;color:var(--text-muted)">Latest password security insights, cryptographic upgrades, and privacy practices - 100% Privacy-First channel with zero personal data collection.</p>
       </div>
       <a href="${waLink}" class="btn-whatsapp btn-sm" target="_blank" rel="noopener noreferrer" aria-label="Join FrankPass on WhatsApp">
         Join Channel
@@ -89,7 +89,8 @@
         <a href="./pro.html">FrankPass Pro 👑</a>
         <a href="./docs.html">Documentation</a>
         <a href="./faq.html">FAQ</a>
-        <a href="./about-us-hindi.html">About FrankPass (हिन्दी) 🇮🇳</a>
+        <a href="./about-us.html">About Us</a>
+        <a href="./about-us-hindi.html">About (Hindi) 🇮🇳</a>
         <a href="./legal.html">Privacy &amp; Terms</a>
       </div>
 
@@ -108,7 +109,7 @@
         <div class="footer-col-title">Master Manikant</div>
         <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">MasterManikant.com ↗</a>
         <a href="./founder-mastermanikant.html">Founder Master Manikant</a>
-        <a href="./founder-mastermanikant-hindi.html">संस्थापक परिचय (हिन्दी) 🇮🇳</a>
+        <a href="./founder-mastermanikant-hindi.html">Founder Profile (Hindi) 🇮🇳</a>
         <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
         <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
@@ -121,15 +122,15 @@
     <!-- PWA Install Strip -->
     <div id="footer-pwa-strip" style="display:none;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:1rem 1.5rem;margin-top:1.5rem;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between">
       <div>
-        <strong style="color:var(--text-primary);font-size:0.95rem">📱 FrankPass ऐप इंस्टॉल करें</strong>
-        <p style="margin:0.2rem 0 0;font-size:0.82rem;color:var(--text-muted)">एक बार Install करें - Internet के बिना भी हमेशा काम करेगा।</p>
+        <strong style="color:var(--text-primary);font-size:0.95rem">📱 Install FrankPass Web App (PWA)</strong>
+        <p style="margin:0.2rem 0 0;font-size:0.82rem;color:var(--text-muted)">Install once - works 100% offline without internet anytime, anywhere.</p>
       </div>
       <a href="#" class="pwa-install-btn btn-ghost" style="font-size:0.85rem;padding:0.6rem 1.2rem;white-space:nowrap">Install App ↓</a>
     </div>
 
     <!-- Footer bottom bar -->
     <div class="footer-bottom">
-      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="./founder-mastermanikant.html">Master Manikant Yadav</a> &middot; v${ver}</span>
+      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">Master Manikant Yadav</a> &middot; v${ver}</span>
       <div class="footer-legal-links">
         <a href="./legal.html#privacy">Privacy Policy</a>
         <a href="./legal.html#terms">Terms of Service</a>
