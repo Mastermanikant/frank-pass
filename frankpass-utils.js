@@ -54,7 +54,13 @@ const FrankPassUtils = (function () {
         'dc': 'discord',
         'rd': 'reddit',
         'tg': 'telegram',
-        'ln': 'linkedin'
+        'ln': 'linkedin',
+        'boi': 'bankofindia',
+        'sbi': 'statebankofindia',
+        'onlinesbi': 'statebankofindia',
+        'pnb': 'punjabnationalbank',
+        'hdfc': 'hdfcbank',
+        'icici': 'icicibank'
     };
 
     // Full Domain Specific Aliases: for direct URL / domain input mapping
@@ -101,9 +107,13 @@ const FrankPassUtils = (function () {
         }
 
         // 3. Strip common subdomain noise
-        platform = platform.replace(/^(www\.|m\.|app\.|login\.|secure\.|auth\.|account\.)/, '');
+        platform = platform.replace(/^(www\.|m\.|app\.|login\.|secure\.|auth\.|account\.|sellercentral\.)/, '');
         
-        // 4. Handle Visual Aliases (full domains)
+        // 4. Strip parenthetical and trailing hyphen acronym suffixes (e.g. "Bank of India - BOI" -> "Bank of India", "State Bank of India (SBI)" -> "State Bank of India")
+        platform = platform.replace(/\s*[-–—]\s*[a-z0-9\s]+$/, '');
+        platform = platform.replace(/\s*\([^)]*\)$/, '');
+
+        // 5. Handle Visual Aliases (full domains)
         if (VISUAL_ALIASES[platform]) {
             return VISUAL_ALIASES[platform];
         }
