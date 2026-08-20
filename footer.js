@@ -89,6 +89,7 @@
         <a href="./pro.html">FrankPass Pro 👑</a>
         <a href="./docs.html">Documentation</a>
         <a href="./faq.html">FAQ</a>
+        <a href="./about-us-hindi.html">About FrankPass (हिन्दी) 🇮🇳</a>
         <a href="./legal.html">Privacy &amp; Terms</a>
       </div>
 
@@ -107,6 +108,7 @@
         <div class="footer-col-title">Master Manikant</div>
         <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">MasterManikant.com ↗</a>
         <a href="./founder-mastermanikant.html">Founder Master Manikant</a>
+        <a href="./founder-mastermanikant-hindi.html">संस्थापक परिचय (हिन्दी) 🇮🇳</a>
         <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
         <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
@@ -127,7 +129,7 @@
 
     <!-- Footer bottom bar -->
     <div class="footer-bottom">
-      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="./about-us.html#founder">Master Manikant Yadav</a> &middot; v${ver}</span>
+      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="./founder-mastermanikant.html">Master Manikant Yadav</a> &middot; v${ver}</span>
       <div class="footer-legal-links">
         <a href="./legal.html#privacy">Privacy Policy</a>
         <a href="./legal.html#terms">Terms of Service</a>

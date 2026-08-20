@@ -91,8 +91,8 @@ Total: 4 clicks + 2 text inputs = GOOD
 
 **RECOMMENDED FIX:**
 - Change auto-copy success toast to:
-  - Desktop: "Password generated & copied! Press Ctrl+V anywhere"
-  - Mobile: "Password generated & copied! Tap to paste."
+ - Desktop: "Password generated & copied! Press Ctrl+V anywhere"
+ - Mobile: "Password generated & copied! Tap to paste."
   (Detect platform via navigator.platform or pointer type)
 
 ---

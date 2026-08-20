@@ -1,4 +1,4 @@
-# FRANKPASS — COMPLETE PROJECT DISCOVERY AUDIT
+# FRANKPASS - COMPLETE PROJECT DISCOVERY AUDIT
 
 **Audit Date:** August 17, 2026  
 **Auditor:** Deep Codebase & Runtime Inspection Agent (Antigravity IDE)  
@@ -39,59 +39,59 @@
 
 ### WORKING (Fully Implemented & Verified):
 1. **Deterministic Password Generation Engine (`frankpass-core.js`):**
-   - *What it does:* Derives passwords via `PBKDF2-HMAC-SHA256` with 1,000,000 rounds from platform, username, secret key, and variant salt.
-   - *Where:* Homepage (`index.html`), Docs interactive widget (`docs.html`), Quick tester.
-   - *Input:* Site (`#platform-input`), Secret Key (`#secret-key`), Username (`#username-input`), Variant (`#variant-input` / date selects).
-   - *Output:* High-entropy string in `#output-password` (`JetBrains Mono` font).
-   - *States:* Initial (`···········` placeholder), Generating (disabled button + spinner), Generated (unbreakable password string).
+  - *What it does:* Derives passwords via `PBKDF2-HMAC-SHA256` with 1,000,000 rounds from platform, username, secret key, and variant salt.
+  - *Where:* Homepage (`index.html`), Docs interactive widget (`docs.html`), Quick tester.
+  - *Input:* Site (`#platform-input`), Secret Key (`#secret-key`), Username (`#username-input`), Variant (`#variant-input` / date selects).
+  - *Output:* High-entropy string in `#output-password` (`JetBrains Mono` font).
+  - *States:* Initial (`···········` placeholder), Generating (disabled button + spinner), Generated (unbreakable password string).
 2. **Instant 1-Click Auto-Copy on Generation:**
-   - *What it does:* Automatically writes generated password to system clipboard during button click without triggering browser permission prompts.
-   - *Where:* `#generate-btn` handler.
-   - *Output:* System clipboard updated + floating toast notification: `⚡ Unbreakable password generated & copied! Press Ctrl+V anywhere`.
+  - *What it does:* Automatically writes generated password to system clipboard during button click without triggering browser permission prompts.
+  - *Where:* `#generate-btn` handler.
+  - *Output:* System clipboard updated + floating toast notification: `⚡ Unbreakable password generated & copied! Press Ctrl+V anywhere`.
 3. **Tri-State Privacy Mask (Default Blur Shield):**
-   - *What it does:* Prevents shoulder surfing and screen recorders from capturing passwords.
-   - *States:*
-     - *State A (Default Masked):* Password blurred via CSS `filter: blur(8px); user-select: none`.
-     - *State B (Hover Peek):* Moving mouse over password or eye button temporarily removes blur.
-     - *State C (Click Lock Visible):* Clicking `#mask-toggle-btn` permanently unmasks password with purple active border.
+  - *What it does:* Prevents shoulder surfing and screen recorders from capturing passwords.
+  - *States:*
+    - *State A (Default Masked):* Password blurred via CSS `filter: blur(8px); user-select: none`.
+    - *State B (Hover Peek):* Moving mouse over password or eye button temporarily removes blur.
+    - *State C (Click Lock Visible):* Clicking `#mask-toggle-btn` permanently unmasks password with purple active border.
 4. **Single vs Multiple Accounts Segmented Control:**
-   - *What it does:* Toggles between Single Account mode (minimal, no username field) and Multiple Accounts mode (reveals `#username-group`).
-   - *Where:* Directly between Site/Platform and Secret Key.
+  - *What it does:* Toggles between Single Account mode (minimal, no username field) and Multiple Accounts mode (reveals `#username-group`).
+  - *Where:* Directly between Site/Platform and Secret Key.
 5. **Client-Side AES-GCM Encrypted Local Secret Vault:**
-   - *What it does:* Allows users to safely persist their Secret Key on personal devices encrypted with AES-256-GCM.
-   - *Where:* `#remember-secret` toggle under Secret Key.
-   - *States:* Checked (encrypts and stores IV + ciphertext in `localStorage`), Unchecked (immediately purges ciphertext). On startup: Decrypts and restores Secret Key with `✓ Encrypted Locally` badge.
+  - *What it does:* Allows users to safely persist their Secret Key on personal devices encrypted with AES-256-GCM.
+  - *Where:* `#remember-secret` toggle under Secret Key.
+  - *States:* Checked (encrypts and stores IV + ciphertext in `localStorage`), Unchecked (immediately purges ciphertext). On startup: Decrypts and restores Secret Key with `✓ Encrypted Locally` badge.
 6. **Variant Rotation System (Dual-Mode):**
-   - *Mode 1 (Counter 1-999):* Numeric stepper (`-`, `+`, input) defaulting strictly to `1 (v1)`.
-   - *Mode 2 (Month & Year):* Full English month dropdown (`January`..`December`) + 4-digit Year input.
+  - *Mode 1 (Counter 1-999):* Numeric stepper (`-`, `+`, input) defaulting strictly to `1 (v1)`.
+  - *Mode 2 (Month & Year):* Full English month dropdown (`January`..`December`) + 4-digit Year input.
 7. **Character Presets & Length Controls:**
-   - *Presets:* `Simple` (12 chars alphanumeric), `Strong` (16 chars symbols, default), `Maximum` (32 chars), `PIN` (6 numeric digits).
-   - *Slider:* Smooth range slider from 6 to 64 characters with live length counter.
+  - *Presets:* `Simple` (12 chars alphanumeric), `Strong` (16 chars symbols, default), `Maximum` (32 chars), `PIN` (6 numeric digits).
+  - *Slider:* Smooth range slider from 6 to 64 characters with live length counter.
 8. **SSO Brand Aliasing & Canonical Normalization:**
-   - *What it does:* Automatically recognizes sibling brands and unifies them into canonical SSO master slugs (`Gmail` / `googlemail` → `"google"`, `Outlook` / `Hotmail` → `"microsoft"`, `iCloud` → `"apple"`).
-   - *Output:* Live hint below input (`Using as: "google" (Google Account)`).
+  - *What it does:* Automatically recognizes sibling brands and unifies them into canonical SSO master slugs (`Gmail` / `googlemail` → `"google"`, `Outlook` / `Hotmail` → `"microsoft"`, `iCloud` → `"apple"`).
+  - *Output:* Live hint below input (`Using as: "google" (Google Account)`).
 9. **Country Selector & Regional Platform Autocomplete:**
-   - *What it does:* 195-country searchable modal with flags providing top regional website suggestions.
+  - *What it does:* 195-country searchable modal with flags providing top regional website suggestions.
 10. **1-Click "Clear Form" Reset:**
-    - *What it does:* Wipes all inputs, resets variant to Counter 1, resets account mode to Single, and restores placeholder dots.
+   - *What it does:* Wipes all inputs, resets variant to Counter 1, resets account mode to Single, and restores placeholder dots.
 11. **Unified Light / Dark Mode Theme Controller:**
-    - *What it does:* Sun/Moon button in header switching `data-theme="light"` / `data-theme="dark"` with `localStorage` persistence.
+   - *What it does:* Sun/Moon button in header switching `data-theme="light"` / `data-theme="dark"` with `localStorage` persistence.
 12. **Offline PWA Engine (`service-worker.js v3.2.3`):**
-    - *What it does:* Cache-first offline execution; entire website runs without internet connection.
+   - *What it does:* Cache-first offline execution; entire website runs without internet connection.
 13. **Founder Ecosystem & Creator Support Card:**
-    - *What it does:* Promotes Master Manikant's eBooks (`https://frankbase.com/ebooks`), Pro Extension (`/pro`), Buy Me a Coffee (`https://buymeacoffee.com/mastermanikant`), and Products (`https://frankbase.com/products`).
+   - *What it does:* Promotes Master Manikant's eBooks (`https://frankbase.com/ebooks`), Pro Extension (`/pro`), Buy Me a Coffee (`https://buymeacoffee.com/mastermanikant`), and Products (`https://frankbase.com/products`).
 
 ### PARTIALLY WORKING:
 1. **PWA Install Prompt Banner (`footer-pwa-strip`):**
-   - *Status:* Functions on Chromium browsers supporting `beforeinstallprompt`. On iOS Safari / Firefox desktop, install instructions rely on manual browser menu / `/install.html` guide.
+  - *Status:* Functions on Chromium browsers supporting `beforeinstallprompt`. On iOS Safari / Firefox desktop, install instructions rely on manual browser menu / `/install.html` guide.
 
 ### PLACEHOLDER:
 1. **Dodo Payments Integration Links in `frankpass-config.js`:**
-   - *Status:* Configuration properties `[DODO_IN_SILVER_STD]`, `[DODO_USD_SILVER_STD]` etc. exist as configuration placeholders for live payment gateway URLs.
+  - *Status:* Configuration properties `[DODO_IN_SILVER_STD]`, `[DODO_USD_SILVER_STD]` etc. exist as configuration placeholders for live payment gateway URLs.
 
 ### NOT IMPLEMENTED:
 1. **Cloud Account Sync / Server-side User Logins:**
-   - *Status:* By deliberate cryptographic architecture, no user accounts, database logins, or server sync exist.
+  - *Status:* By deliberate cryptographic architecture, no user accounts, database logins, or server sync exist.
 
 ### FUTURE/PLANNED:
 1. **Official Browser Extension (Chrome/Edge/Firefox Pro Extension):** Documented at `/pro.html` and `/install.html` Tab 5 as a paid premium offering.
@@ -155,13 +155,13 @@
   2. **PBKDF2 Key Derivation:**
      $$	ext{KeyBytes} = 	ext{PBKDF2-HMAC-SHA256}(	ext{Password}=K_{clean}, 	ext{Salt}=	ext{Salt}, 	ext{Iterations}=1000000, 	ext{Length}=64 	ext{ bytes})$$
   3. **Character Matrix Entropy Mapping:**
-     - Modulo arithmetic maps pseudorandom bytes to character sets.
-     - Ambiguous characters removed: `O, 0, I, l, 1, C, c, S, s, V, v, W, w`.
-     - Output is enforced to contain at least 1 uppercase, 1 lowercase, 1 digit, and 1 symbol (for standard profile).
+    - Modulo arithmetic maps pseudorandom bytes to character sets.
+    - Ambiguous characters removed: `O, 0, I, l, 1, C, c, S, s, V, v, W, w`.
+    - Output is enforced to contain at least 1 uppercase, 1 lowercase, 1 digit, and 1 symbol (for standard profile).
 - **Validation Rules & Error States:**
-  - Empty Platform: Form highlights red; toast: `"Please enter a website or platform name"`.
-  - Empty Secret Key: Form highlights red; toast: `"Please enter your Secret Key"`.
-  - Variant Clamping: Enforced strictly between 1 and 999.
+ - Empty Platform: Form highlights red; toast: `"Please enter a website or platform name"`.
+ - Empty Secret Key: Form highlights red; toast: `"Please enter your Secret Key"`.
+ - Variant Clamping: Enforced strictly between 1 and 999.
 
 ---
 
@@ -196,48 +196,48 @@
 ### Exact Visible Hierarchy (Top to Bottom):
 1. **Skip to Main Content Link:** Accessibility keyboard anchor (`.skip-link`).
 2. **Site Header (`<header class="site-header">`):**
-   - Brand Logo: Shield SVG + `FrankPass` typographic lockup (clickable to `/`).
-   - Country Selector: `🇮🇳 India (IN)` button opening 195-country modal.
-   - Desktop Nav Links: `Get Started`, `Docs`, `FAQ`, `About`, `Get Pro →`.
-   - Theme Switcher: Sun/Moon button (`#theme-toggle`).
-   - Mobile Hamburger: Animated 3-bar toggle (`#hamburger`).
+  - Brand Logo: Shield SVG + `FrankPass` typographic lockup (clickable to `/`).
+  - Country Selector: `🇮🇳 India (IN)` button opening 195-country modal.
+  - Desktop Nav Links: `Get Started`, `Docs`, `FAQ`, `About`, `Get Pro →`.
+  - Theme Switcher: Sun/Moon button (`#theme-toggle`).
+  - Mobile Hamburger: Animated 3-bar toggle (`#hamburger`).
 3. **Hero Section (`<section class="hero-section">`):**
-   - Left Column (Hero Copy):
-     - Pill Badge: `Zero-Knowledge Password Technology`.
-     - H1 Headline: `Stop storing passwords. Start generating them.`
-     - Subtitle: `No cloud. No storage. No breach risk. Just mathematics. Same input → same password. Always. Forever.`
-     - CTA Buttons: `Try the Generator ↓` and `See How It Works`.
-   - Right Column (Live Generator Card - `#generator`):
-     - Card Header: Lock icon, `Password Generator`, Live green pulse badge.
-     - Country indicator: `🇮🇳 India (IN)`.
-     - Platform Input: `#platform-input` with datalist autocomplete + `#platform-hint`.
-     - Account Selector: `[Single Account]` vs `[Multiple Accounts]` segmented tabs.
-     - (Conditional) Username Input: `#username-group`.
-     - Secret Key Input: `#secret-key` + Eye visibility button (`#toggle-secret`).
-     - Remember Secret Toggle: `#remember-secret` toggle + `#saved-badge`.
-     - Advanced Options Toggle: `#advanced-toggle` (chevron accordion).
-     - (Collapsed Panel) Advanced Options:
-       - Variant Rotation: `[Counter]` (1-999 stepper) vs `[Month & Year]` (Month select + Year input).
-       - Password Profile: `Simple`, `Strong`, `Maximum`, `PIN` preset buttons.
-       - Length Slider: Range 6 to 64 with live number display.
-       - Save Locally Toggle: Checkbox for session settings persistence.
-     - Action Buttons: `⚡ Generate Password` (primary gradient) + `Clear Form` (secondary ghost).
-     - Output Display Box: `#output-password` (JetBrains Mono, Masked blur by default) + `#mask-toggle-btn` (Peek/Lock eye) + `#copy-btn`.
-     - Card Sub-note: `Not stored anywhere · Generated securely in memory`.
+  - Left Column (Hero Copy):
+    - Pill Badge: `Zero-Knowledge Password Technology`.
+    - H1 Headline: `Stop storing passwords. Start generating them.`
+    - Subtitle: `No cloud. No storage. No breach risk. Just mathematics. Same input → same password. Always. Forever.`
+    - CTA Buttons: `Try the Generator ↓` and `See How It Works`.
+  - Right Column (Live Generator Card - `#generator`):
+    - Card Header: Lock icon, `Password Generator`, Live green pulse badge.
+    - Country indicator: `🇮🇳 India (IN)`.
+    - Platform Input: `#platform-input` with datalist autocomplete + `#platform-hint`.
+    - Account Selector: `[Single Account]` vs `[Multiple Accounts]` segmented tabs.
+    - (Conditional) Username Input: `#username-group`.
+    - Secret Key Input: `#secret-key` + Eye visibility button (`#toggle-secret`).
+    - Remember Secret Toggle: `#remember-secret` toggle + `#saved-badge`.
+    - Advanced Options Toggle: `#advanced-toggle` (chevron accordion).
+    - (Collapsed Panel) Advanced Options:
+      - Variant Rotation: `[Counter]` (1-999 stepper) vs `[Month & Year]` (Month select + Year input).
+      - Password Profile: `Simple`, `Strong`, `Maximum`, `PIN` preset buttons.
+      - Length Slider: Range 6 to 64 with live number display.
+      - Save Locally Toggle: Checkbox for session settings persistence.
+    - Action Buttons: `⚡ Generate Password` (primary gradient) + `Clear Form` (secondary ghost).
+    - Output Display Box: `#output-password` (JetBrains Mono, Masked blur by default) + `#mask-toggle-btn` (Peek/Lock eye) + `#copy-btn`.
+    - Card Sub-note: `Not stored anywhere · Generated securely in memory`.
 4. **Creator Support & Ecosystem Card:**
-   - Header: `💜 Love FrankPass? Support Master Manikant`.
-   - Subtitle: `FrankPass is 100% free, private & ad-free for everyone.`
-   - 4 Action Buttons: `☕ Buy Me a Coffee`, `📖 Cyber Security eBook`, `👑 Pro Extension`, `🚀 Visit Our Products Page →`.
+  - Header: `💜 Love FrankPass? Support Master Manikant`.
+  - Subtitle: `FrankPass is 100% free, private & ad-free for everyone.`
+  - 4 Action Buttons: `☕ Buy Me a Coffee`, `📖 Cyber Security eBook`, `👑 Pro Extension`, `🚀 Visit Our Products Page →`.
 5. **Interactive Feature & FAQ Sections:**
-   - 4 Feature Cards (Zero-Storage, 100% Offline, Deterministic, Open Architecture).
-   - Live Security Comparison Table.
-   - Quick FAQ Accordion.
+  - 4 Feature Cards (Zero-Storage, 100% Offline, Deterministic, Open Architecture).
+  - Live Security Comparison Table.
+  - Quick FAQ Accordion.
 6. **Footer (`#site-footer` via `footer.js`):**
-   - WhatsApp Channel CTA banner.
-   - Brand column + Social icons (X, Instagram, YouTube, Facebook, Reddit, Mastodon).
-   - Product links, Company links, Founder links (`Master Manikant`).
-   - PWA Install banner.
-   - Copyright & legal disclaimer.
+  - WhatsApp Channel CTA banner.
+  - Brand column + Social icons (X, Instagram, YouTube, Facebook, Reddit, Mastodon).
+  - Product links, Company links, Founder links (`Master Manikant`).
+  - PWA Install banner.
+  - Copyright & legal disclaimer.
 
 ---
 
@@ -286,15 +286,15 @@
 ==================================================
 
 - **Breakpoints:**
-  - Mobile: `< 768px` (Single-column layout, generator stacked below headline, mobile slide-down menu).
-  - Tablet: `768px - 1024px` (Fluid width grid, 2-column hero).
-  - Desktop: `> 1024px` (Fixed max-width `1200px` container, side-by-side hero).
+ - Mobile: `< 768px` (Single-column layout, generator stacked below headline, mobile slide-down menu).
+ - Tablet: `768px - 1024px` (Fluid width grid, 2-column hero).
+ - Desktop: `> 1024px` (Fixed max-width `1200px` container, side-by-side hero).
 - **Navigation Behavior:**
-  - Desktop: Horizontal inline flex links with vertical separator pipes.
-  - Mobile: Hamburger button transforms into slide-down full-width menu (`.mobile-menu.open`).
+ - Desktop: Horizontal inline flex links with vertical separator pipes.
+ - Mobile: Hamburger button transforms into slide-down full-width menu (`.mobile-menu.open`).
 - **Generator Touch Usability:**
-  - Touch targets for `-`, `+`, copy buttons, eye toggles are $\ge 40	ext{px} 	imes 40	ext{px}$.
-  - Sliders and selects have native mobile touch behavior.
+ - Touch targets for `-`, `+`, copy buttons, eye toggles are $\ge 40	ext{px} 	imes 40	ext{px}$.
+ - Sliders and selects have native mobile touch behavior.
 - **Zero Horizontal Overflow:** Verified across Chromium, WebKit, and Gecko viewports down to 320px width.
 
 ---
@@ -306,9 +306,9 @@
 - **Offline / Local Verification:** Verified via Playwright in Airplane/Offline mode. The full PBKDF2 cryptography engine runs 100% locally in `window.crypto.subtle`.
 - **Zero Transmission Guarantee:** Zero outbound HTTP requests are dispatched during password computation.
 - **LocalStorage Data Audit:**
-  - Plaintext Secret Key is **NEVER** stored.
-  - When `#remember-secret` is enabled, only an AES-GCM ciphertext + random 12-byte IV is stored (`fp_enc_secret`).
-  - Settings stored: `fp_theme` (`light` / `dark`), `fp_remember_secret` (`true` / `false`).
+ - Plaintext Secret Key is **NEVER** stored.
+ - When `#remember-secret` is enabled, only an AES-GCM ciphertext + random 12-byte IV is stored (`fp_enc_secret`).
+ - Settings stored: `fp_theme` (`light` / `dark`), `fp_remember_secret` (`true` / `false`).
 - **Zero Third-Party Trackers:** Zero Google Analytics, Facebook Pixels, or external ad scripts.
 
 ---
@@ -415,10 +415,10 @@ D:_Websites_and_Content\MMY_Website_Project_frankpass.com_Website_App├─�
 - **Meta Descriptions:** Compelling 145-165 char summaries with zero long dashes.
 - **Canonical URLs:** Absolute canonical links on all pages.
 - **Schema.org Structured Data:**
-  - `index.html`: `SoftwareApplication` + `AggregateRating`
-  - `about-us.html`: `Organization` + `Person` (`Master Manikant`)
-  - `faq.html`: `FAQPage` rich snippet schema
-  - `get-started.html`: `HowTo` step-by-step schema
+ - `index.html`: `SoftwareApplication` + `AggregateRating`
+ - `about-us.html`: `Organization` + `Person` (`Master Manikant`)
+ - `faq.html`: `FAQPage` rich snippet schema
+ - `get-started.html`: `HowTo` step-by-step schema
 - **Sitemap & Robots:** `sitemap.xml` validated with 8 routes; `robots.txt` allowing full indexing.
 
 ---

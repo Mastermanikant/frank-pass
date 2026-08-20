@@ -1,4 +1,4 @@
-# 🗺️ FRANKPASS — मास्टर फ़ोल्डर संरचना एवं परिवर्तन प्रभाव गाइड (Change Impact & Control Guide)
+# 🗺️ FRANKPASS - मास्टर फ़ोल्डर संरचना एवं परिवर्तन प्रभाव गाइड (Change Impact & Control Guide)
 
 **प्रोजेक्ट नाम:** FrankPass (Stateless & Offline Zero-Knowledge Password Generator)  
 **इकोसिस्टम:** Master Manikant / FrankBase Network  

@@ -1,12 +1,12 @@
-# FRANKPASS.COM — COMPLETE 360-DEGREE PROJECT AUDIT PROMPT
+# FRANKPASS.COM - COMPLETE 360-DEGREE PROJECT AUDIT PROMPT
 
-> **Purpose:** This prompt is designed to be fed to an AI agent (or used as a manual checklist) to perform an exhaustive, no-stone-unturned audit of the entire FrankPass ecosystem — website, codebase, business model, user experience, accessibility, security, GitHub sync, and future-proofing.
+> **Purpose:** This prompt is designed to be fed to an AI agent (or used as a manual checklist) to perform an exhaustive, no-stone-unturned audit of the entire FrankPass ecosystem - website, codebase, business model, user experience, accessibility, security, GitHub sync, and future-proofing.
 >
 > **Philosophy:** Think like EVERY type of user who will ever touch frankpass.com. Think like a first-time visitor, a returning power user, a developer reading the code, a screen-reader user, a rural Indian on a 2G phone, a corporate IT admin, and a competitor reverse-engineering the product.
 >
-> **Golden Rule:** After this audit and all fixes are applied, the website should be SO complete and SO polished that **NO future changes are ever needed** — except:
+> **Golden Rule:** After this audit and all fixes are applied, the website should be SO complete and SO polished that **NO future changes are ever needed** - except:
 > 1. Adding new auto-suggest platforms to the autocomplete database.
-> 2. (Future) Adding a first-visit product promotion splash (shown once per 24 hours, via `localStorage` timestamp check — implemented later, placeholder HTML comment in code now).
+> 2. (Future) Adding a first-visit product promotion splash (shown once per 24 hours, via `localStorage` timestamp check - implemented later, placeholder HTML comment in code now).
 
 ---
 
@@ -29,47 +29,47 @@ Think deeply. Who will actually visit frankpass.com? For EACH user type, documen
 #### Mandatory User Types to Analyze:
 
 1. **The First-Timer (Non-Technical Indian User, Hindi-speaking, Mobile)**
-   - Comes from WhatsApp forward or YouTube video
-   - Has never heard of "stateless password generation"
-   - Uses a ₹8,000-₹15,000 Android phone on Jio/Airtel 4G
-   - Needs to understand: "Is this safe? Will I lose my passwords?"
+  - Comes from WhatsApp forward or YouTube video
+  - Has never heard of "stateless password generation"
+  - Uses a ₹8,000-₹15,000 Android phone on Jio/Airtel 4G
+  - Needs to understand: "Is this safe? Will I lose my passwords?"
 
 2. **The Privacy-Conscious Tech Enthusiast**
-   - Knows what PBKDF2 and zero-knowledge means
-   - Wants to verify the crypto implementation
-   - Will read source code on GitHub
-   - Wants technical proof, not marketing fluff
+  - Knows what PBKDF2 and zero-knowledge means
+  - Wants to verify the crypto implementation
+  - Will read source code on GitHub
+  - Wants technical proof, not marketing fluff
 
 3. **The "I Just Need a Password Right Now" User**
-   - Doesn't care about how it works
-   - Wants to type a site name, get a password, copy it, and leave in under 10 seconds
-   - Any extra step = annoyance
+  - Doesn't care about how it works
+  - Wants to type a site name, get a password, copy it, and leave in under 10 seconds
+  - Any extra step = annoyance
 
 4. **The Multi-Account Professional / Corporate Employee**
-   - Has 3 Gmail accounts, 2 AWS accounts, multiple GitHub orgs
-   - Needs distinct passwords per username per platform
-   - May need monthly/quarterly password rotation (compliance requirement)
+  - Has 3 Gmail accounts, 2 AWS accounts, multiple GitHub orgs
+  - Needs distinct passwords per username per platform
+  - May need monthly/quarterly password rotation (compliance requirement)
 
 5. **The Student / Budget User**
-   - Zero budget for any paid tool
-   - Will be annoyed by ANY payment prompt, donation ask, or paywall feel
-   - Needs to feel: "This is 100% free, no strings attached"
+  - Zero budget for any paid tool
+  - Will be annoyed by ANY payment prompt, donation ask, or paywall feel
+  - Needs to feel: "This is 100% free, no strings attached"
 
 6. **The Developer / Open-Source Contributor**
-   - Wants clean, well-commented code
-   - Wants to understand the architecture from reading the source
-   - May want to fork, contribute, or audit the crypto
+  - Wants clean, well-commented code
+  - Wants to understand the architecture from reading the source
+  - May want to fork, contribute, or audit the crypto
 
 7. **The Accessibility User (Screen Reader / Keyboard-Only / Low Vision)**
-   - Uses NVDA, JAWS, or VoiceOver
-   - Navigates entirely with Tab, Enter, and Arrow keys
-   - Needs proper ARIA labels, focus management, and contrast ratios
+  - Uses NVDA, JAWS, or VoiceOver
+  - Navigates entirely with Tab, Enter, and Arrow keys
+  - Needs proper ARIA labels, focus management, and contrast ratios
 
 8. **The Returning Daily User**
-   - Uses FrankPass 2-5 times per day
-   - Has `Remember Secret Key` enabled
-   - Knows the interface by heart
-   - Any UI change or unexpected behavior = trust break
+  - Uses FrankPass 2-5 times per day
+  - Has `Remember Secret Key` enabled
+  - Knows the interface by heart
+  - Any UI change or unexpected behavior = trust break
 
 ### 1.2 The "Single User vs Multi User" Minimum Specification
 
@@ -79,8 +79,8 @@ Document exactly:
 - Is there ANY user type that is NOT served by these two modes?
 - If someone has 50 accounts across 30 platforms, does this system scale without a database?
 - What is the absolute MINIMUM interaction needed to generate a password?
-  - Count exact clicks and keystrokes for Single Account mode
-  - Count exact clicks and keystrokes for Multiple Accounts mode
+ - Count exact clicks and keystrokes for Single Account mode
+ - Count exact clicks and keystrokes for Multiple Accounts mode
 
 ---
 
@@ -173,7 +173,7 @@ For EVERY `.js` file (`frankpass-core.js`, `frankpass-utils.js`, `frankpass-conf
 **For every JS file, ensure comments like:**
 ```javascript
 // ============================================================
-// frankpass-core.js — Deterministic Password Generation Engine
+// frankpass-core.js - Deterministic Password Generation Engine
 // Algorithm: PBKDF2-HMAC-SHA256 (1,000,000 iterations)
 // API: W3C WebCrypto (window.crypto.subtle)
 // WARNING: DO NOT modify the salt formula or iteration count.
@@ -195,7 +195,7 @@ For EVERY `.js` file (`frankpass-core.js`, `frankpass-utils.js`, `frankpass-conf
 ==================================================
 
 ### 3.1 Perceivable
-- [ ] Color contrast ratio ≥ 4.5:1 for normal text (AA) and ≥ 7:1 for enhanced (AAA) — check BOTH dark and light themes
+- [ ] Color contrast ratio ≥ 4.5:1 for normal text (AA) and ≥ 7:1 for enhanced (AAA) - check BOTH dark and light themes
 - [ ] No information conveyed by color alone (e.g., error states must have text + icon, not just red border)
 - [ ] All non-text content has text alternatives
 - [ ] Text can be resized up to 200% without loss of content
@@ -233,7 +233,7 @@ The user (Master Manikant) wants to understand exactly how the monetization shou
 
 **Current monetization touchpoints on frankpass.com:**
 1. Support Card: "Buy Me a Coffee" button
-2. Support Card: "Cyber Security eBooks" button (links to frankbase.com/ebooks — free? paid?)
+2. Support Card: "Cyber Security eBooks" button (links to frankbase.com/ebooks - free? paid?)
 3. Support Card: "Pro Extension" button
 4. Support Card: "All Products" button
 5. Footer: Donate link
@@ -279,7 +279,7 @@ Walk through frankpass.com as a COMPLETE FIRST-TIME VISITOR:
 - [ ] Does the site remember my theme preference? (Yes, via localStorage)
 - [ ] Does the site remember my Secret Key if I toggled "Remember"? (Yes, encrypted)
 - [ ] Does the site remember my last-used platform? (via fp_settings)
-- [ ] Is there any scenario where a returning user gets a DIFFERENT password for the same inputs? (This would be catastrophic — verify IMPOSSIBLE)
+- [ ] Is there any scenario where a returning user gets a DIFFERENT password for the same inputs? (This would be catastrophic - verify IMPOSSIBLE)
 - [ ] If the service worker cache is stale, does the user get an old version? How is cache invalidation handled?
 
 ---
@@ -387,7 +387,7 @@ List EVERY technology, library, API, and external dependency:
 ### 7.2 Network & Data Transmission Audit
 
 - [ ] Open browser DevTools → Network tab → Generate a password → Are there ANY outbound requests? (Should be ZERO during generation)
-- [ ] Are Google Fonts loaded at page load? (Yes — this means Google knows the user visited frankpass.com)
+- [ ] Are Google Fonts loaded at page load? (Yes - this means Google knows the user visited frankpass.com)
 - [ ] Should fonts be self-hosted to achieve TRUE zero-tracking? Document tradeoff.
 - [ ] Are there any `fetch()` or `XMLHttpRequest` calls in the codebase? (Should be ZERO except for service worker cache)
 - [ ] Is Content Security Policy (CSP) set in `_headers`? What does it allow?
@@ -498,15 +498,15 @@ List every place on the website where a product, service, or donation is promote
 ```html
 <!-- ========== FUTURE: FIRST-VISIT PRODUCT PROMOTION SPLASH ========== -->
 <!-- 
-  Implementation Plan (DO NOT BUILD YET — placeholder only):
-  - Show a modal/splash screen on FIRST visit to frankpass.com
-  - Content: Brief introduction to FrankPass + link to FrankBase ecosystem
-  - Frequency: Once per 24 hours (check localStorage timestamp)
-  - Dismissable: Click "Got it" or click outside to close
-  - localStorage key: 'fp_promo_last_shown'
-  - Logic: if (Date.now() - lastShown > 86400000) showPromo();
-  - Design: Minimal, non-intrusive, matches site theme
-  - MUST NOT interfere with the password generator functionality
+  Implementation Plan (DO NOT BUILD YET - placeholder only):
+ - Show a modal/splash screen on FIRST visit to frankpass.com
+ - Content: Brief introduction to FrankPass + link to FrankBase ecosystem
+ - Frequency: Once per 24 hours (check localStorage timestamp)
+ - Dismissable: Click "Got it" or click outside to close
+ - localStorage key: 'fp_promo_last_shown'
+ - Logic: if (Date.now() - lastShown > 86400000) showPromo();
+ - Design: Minimal, non-intrusive, matches site theme
+ - MUST NOT interfere with the password generator functionality
 -->
 ```
 
@@ -605,7 +605,7 @@ Test on:
 - [ ] `USER_GUIDE_A_TO_Z.md` ✓
 - [ ] `DEVELOPER_AND_FOUNDER_BLUEPRINT.md` ✓
 - [ ] `PROJECT_DISCOVERY_AUDIT.md` ✓
-- [ ] `icons/` directory (favicon, PWA icons) — **CHECK IF PRESENT**
+- [ ] `icons/` directory (favicon, PWA icons) - **CHECK IF PRESENT**
 
 ### 12.2 Files That MUST NOT Be on GitHub
 
@@ -630,12 +630,12 @@ Test on:
 
 ### 13.1 What Should NEVER Change (Invariants)
 
-1. **PBKDF2 salt derivation formula** — changing this breaks ALL existing passwords
-2. **Iteration count (1,000,000)** — changing this breaks ALL existing passwords
-3. **Character matrix and ambiguity filtering** — changing this breaks ALL existing passwords
-4. **SSO aliasing rules** (`gmail` → `google`) — changing this breaks existing passwords
-5. **URL normalization logic** — changing this breaks existing passwords
-6. **AES-GCM local storage format** — changing this loses users' saved secret keys
+1. **PBKDF2 salt derivation formula** - changing this breaks ALL existing passwords
+2. **Iteration count (1,000,000)** - changing this breaks ALL existing passwords
+3. **Character matrix and ambiguity filtering** - changing this breaks ALL existing passwords
+4. **SSO aliasing rules** (`gmail` → `google`) - changing this breaks existing passwords
+5. **URL normalization logic** - changing this breaks existing passwords
+6. **AES-GCM local storage format** - changing this loses users' saved secret keys
 
 ### 13.2 What CAN Change Safely
 
@@ -671,7 +671,7 @@ After completing this audit, produce:
 1. **Bug Report:** Every bug found, ranked P0-P3, with exact reproduction steps
 2. **Fix Diff:** Every code change made, with before/after
 3. **Comment Injection:** Verified HTML/JS comments added to all major sections
-4. **GitHub Sync Report:** Files added, files removed, files modified — all committed and pushed
+4. **GitHub Sync Report:** Files added, files removed, files modified - all committed and pushed
 5. **Cloudflare Deploy Confirmation:** Latest version live on `frankpass.com`
 6. **Central Ledger Entry:** Operation recorded in `00_MM_Central_Command/operation_ledger.jsonl`
 7. **Future Placeholder Comments:** All future feature comments injected in code
