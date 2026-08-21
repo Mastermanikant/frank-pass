@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="/style.css?v=3.2.7">
+  <link rel="stylesheet" href="/style.css?v=3.2.8">
 
   <!-- Schema.org: SoftwareApplication + AggregateRating -->
   <script type="application/ld+json">
@@ -733,13 +733,13 @@
 <!-- ============================================================
      SCRIPTS - load order is critical
      ============================================================ -->
-<script src="/frankpass-config.js?v=3.2.7"></script>
+<script src="/frankpass-config.js?v=3.2.8"></script>
 <script src="/country-data.js"></script>
-<script src="/country-dropdown.js?v=3.2.7"></script>
-<script src="/platforms.js?v=3.2.7"></script>
-<script src="/frankpass-utils.js?v=3.2.7"></script>
-<script src="/frankpass-core.js?v=3.2.7"></script>
-<script src="/footer.js?v=3.2.7"></script>
+<script src="/country-dropdown.js?v=3.2.8"></script>
+<script src="/platforms.js?v=3.2.8"></script>
+<script src="/frankpass-utils.js?v=3.2.8"></script>
+<script src="/frankpass-core.js?v=3.2.8"></script>
+<script src="/footer.js?v=3.2.8"></script>
 
 <script>
 /* ── Sticky header scroll class ── */
@@ -783,17 +783,8 @@ function updatePasswordStatus() {
   if (label) label.textContent = 'Ready to copy';
 }
 
-/* ── Secret key visibility toggle ── */
+/* ── Secret key visibility controller (Unified Biometric + Blind Policy) ── */
 const secretInput = document.getElementById('secret-key');
-const toggleBtn   = document.getElementById('toggle-secret');
-toggleBtn.addEventListener('click', () => {
-  const isHidden = secretInput.type === 'password';
-  secretInput.type = isHidden ? 'text' : 'password';
-  toggleBtn.setAttribute('aria-label', isHidden ? 'Hide secret key' : 'Show secret key');
-  document.getElementById('eye-icon').innerHTML = isHidden
-    ? '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>'
-    : '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
-});
 
 /* ── Platform hint & Autocomplete ── */
 const platformInput = document.getElementById('platform-input');
@@ -867,13 +858,15 @@ const LocalSecretVault = (function() {
   
   async function getDeviceKey() {
     let rawKey = localStorage.getItem(DEVICE_KEY_STORAGE);
-    if (!rawKey) {
+    const matches = rawKey ? rawKey.match(/.{1,2}/g) : null;
+    if (!rawKey || !matches || matches.length !== 32) {
       const arr = new Uint8Array(32);
       window.crypto.getRandomValues(arr);
       rawKey = Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
       localStorage.setItem(DEVICE_KEY_STORAGE, rawKey);
     }
-    const keyBuf = new Uint8Array(rawKey.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+    const validMatches = rawKey.match(/.{1,2}/g);
+    const keyBuf = new Uint8Array(validMatches.map(byte => parseInt(byte, 16)));
     return await window.crypto.subtle.importKey(
       'raw', keyBuf, { name: 'AES-GCM' }, false, ['encrypt', 'decrypt']
     );
@@ -1029,12 +1022,13 @@ if (secretInputEl) {
   });
 }
 
-// Override Toggle Secret (Eye Icon) to enforce Biometric / Blind Encryption policy
+// Unified Secret Key Visibility Controller with Biometric Lock & Blind Encryption Policy
 const toggleSecretBtn = document.getElementById('toggle-secret');
 if (toggleSecretBtn && secretInputEl) {
   toggleSecretBtn.addEventListener('click', async (e) => {
     const isRemembered = localStorage.getItem('fp_remember_secret') === 'true';
     const bioMode = localStorage.getItem('fp_bio_mode');
+    const eyeIcon = document.getElementById('eye-icon');
 
     if (secretInputEl.type === 'password') {
       if (isRemembered && bioMode === 'blind_encrypted' && !secretInputEl.dataset.userTyped) {
@@ -1054,6 +1048,8 @@ if (toggleSecretBtn && secretInputEl) {
           });
           if (assertion) {
             secretInputEl.type = 'text';
+            toggleSecretBtn.setAttribute('aria-label', 'Hide secret key');
+            if (eyeIcon) eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
           }
         } catch (_) {
           showToast('Biometric verification cancelled.', 'error');
@@ -1061,8 +1057,12 @@ if (toggleSecretBtn && secretInputEl) {
         return;
       }
       secretInputEl.type = 'text';
+      toggleSecretBtn.setAttribute('aria-label', 'Hide secret key');
+      if (eyeIcon) eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
     } else {
       secretInputEl.type = 'password';
+      toggleSecretBtn.setAttribute('aria-label', 'Show secret key');
+      if (eyeIcon) eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
     }
   });
 }
@@ -1479,7 +1479,15 @@ if (clearAllBtn) {
   clearAllBtn.addEventListener('click', () => {
     document.getElementById('platform-input').value = '';
     document.getElementById('secret-key').value = '';
+    const uInp = document.getElementById('username-input');
+    if (uInp) uInp.value = '';
     setAccountMode('single');
+    
+    // Reset strength bar meter segments
+    ['str-seg-1', 'str-seg-2', 'str-seg-3', 'str-seg-4'].forEach(id => {
+      const seg = document.getElementById(id);
+      if (seg) seg.className = 'strength-segment';
+    });
     
     // Reset variant counter to 1
     if (variantInput) {
@@ -1622,7 +1630,7 @@ function openAI(bot) {
 function shareLink(platform, e) {
   e.preventDefault();
   const siteUrl = 'https://frankpass.com';
-  const msg = 'I found this awesome FREE tool &#10024; - FrankPass: a stateless password manager that generates your passwords from math. No accounts, no cloud, no storage. Works offline too! ' + siteUrl;
+  const msg = 'I found this awesome FREE tool ✨ - FrankPass: a stateless password manager that generates your passwords from math. No accounts, no cloud, no storage. Works offline too! ' + siteUrl;
   const encodedMsg = encodeURIComponent(msg);
   const encodedUrl = encodeURIComponent(siteUrl);
   let url = '';
