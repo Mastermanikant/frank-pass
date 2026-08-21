@@ -11,6 +11,7 @@ const CACHED_URLS = [
     '/founder-mastermanikant.html',
     '/founder-mastermanikant-hindi.html',
     '/about-us-hindi.html',
+  '/limitations-and-advantages.html',
   '/limitations-and-advantages-hindi.html',
     '/products.html',
     '/legal.html',
