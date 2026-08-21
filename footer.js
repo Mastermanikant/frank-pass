@@ -132,7 +132,17 @@
 
     <!-- Footer bottom bar -->
     <div class="footer-bottom">
-      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">Master Manikant Yadav</a> &middot; v${ver}</span>
+      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Built by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">Master Manikant Yadav</a> &middot; 
+        <span class="footer-version-badge-wrap" id="fp-version-wrap">
+          <button type="button" class="footer-version-btn" id="fp-version-btn" aria-label="Version and Immutable Algorithm Guarantee">
+            v${ver}<span class="version-dot"></span>
+          </button>
+          <span class="version-popover" id="fp-version-popover" role="tooltip">
+            <strong class="version-popover-title">🛡️ Immutable Algorithm Guarantee</strong>
+            <span class="version-popover-text">The core password derivation formula (PBKDF2-HMAC-SHA512 at 1M rounds) is <strong>permanently frozen and immutable</strong>. It will NEVER change in future updates. The same platform and secret key will always generate the exact same password, forever. Version updates only reflect UI speed, PWA caching, and theme improvements.</span>
+          </span>
+        </span>
+      </span>
       <div class="footer-legal-links">
         <a href="./legal.html#privacy">Privacy Policy</a>
         <a href="./legal.html#terms">Terms of Service</a>
@@ -146,7 +156,26 @@
 
   /* Run after DOM + config ready */
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', buildFooter);
+    document.addEventListener('DOMContentLoaded', () => {
+      buildFooter();
+
+    // Mobile click toggle for version popover
+    const vWrap = document.getElementById('fp-version-wrap');
+    const vBtn = document.getElementById('fp-version-btn');
+    if (vWrap && vBtn) {
+      vBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        vWrap.classList.toggle('open');
+      });
+      document.addEventListener('click', (e) => {
+        if (!vWrap.contains(e.target)) {
+          vWrap.classList.remove('open');
+        }
+      });
+    }
+
+    });
   } else {
     buildFooter();
   }

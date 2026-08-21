@@ -184,6 +184,18 @@
  </div>
  </details>
 
+  <!-- Q-Version - Version Updates and Password Stability -->
+  <details class="faq-item" id="faq-version-stability">
+  <summary>
+  <span>If FrankPass updates to a new version (e.g. from v3 to v4), will my old passwords change?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>No, absolutely never.</strong> The core cryptographic password derivation algorithm (PBKDF2 with HMAC-SHA512 at 1,000,000 iterations and Base94 character mapping) is <strong>permanently frozen, immutable, and mathematically constant</strong>. The same platform name and secret key will generate the exact same cryptographic password 10, 20, or 50 years from now. Version numbers (like v3.2.7 &rarr; v3.2.8) only represent frontend design enhancements, dark/light theme contrast refinements, and offline PWA speed optimizations. Your passwords will never change.
+  </div>
+  </details>
+
+
  <!-- Q3 - Site goes down -->
  <details class="faq-item" id="faq-3">
  <summary>
