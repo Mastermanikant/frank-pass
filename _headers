@@ -1,4 +1,4 @@
-# Cloudflare Pages Headers Configuration — Production Hardened
+# Cloudflare Pages Headers Configuration - Production Hardened & UTF-8 Enforced
 
 /*
   X-Frame-Options: DENY
@@ -6,5 +6,23 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://flagcdn.com https://www.frankpass.com; connect-src 'self'; worker-src 'self' blob:;
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://flagcdn.com https://frankpass.com https://www.frankpass.com; connect-src 'self'; worker-src 'self' blob:;
   Cache-Control: public, max-age=0, must-revalidate
+
+/*.html
+  Content-Type: text/html; charset=utf-8
+
+/
+  Content-Type: text/html; charset=utf-8
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+
+/manifest.json
+  Content-Type: application/manifest+json; charset=utf-8
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8

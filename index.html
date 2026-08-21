@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FrankPass - Stateless &amp; Offline Password Generator</title>
-  <meta name="description" content="Generate strong, unique passwords without storing them. Pure cryptographic math - no cloud, no database, no accounts. Works fully offline after first load.">
-  <link rel="canonical" href="https://frankpass.com/">
-  <meta property="og:title" content="FrankPass - Stateless &amp; Offline Password Generator">
-  <meta property="og:description" content="Generate strong passwords without storing them. Pure math - no cloud, no database, no accounts. Works offline forever.">
-  <meta property="og:url" content="https://www.frankpass.com/">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.frankpass.com/icons/icon-512.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@frankpasshq">
-  <link rel="icon" href="/icons/favicon.png">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="/style.css?v=3.2.8">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>FrankPass - Stateless &amp; Offline Password Generator</title>
+ <meta name="description" content="Generate strong, unique passwords without storing them. Pure cryptographic math - no cloud, no database, no accounts. Works fully offline after first load.">
+ <link rel="canonical" href="https://frankpass.com/">
+ <meta property="og:title" content="FrankPass - Stateless &amp; Offline Password Generator">
+ <meta property="og:description" content="Generate strong passwords without storing them. Pure math - no cloud, no database, no accounts. Works offline forever.">
+ <meta property="og:url" content="https://www.frankpass.com/">
+ <meta property="og:type" content="website">
+ <meta property="og:image" content="https://www.frankpass.com/icons/icon-512.png">
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:site" content="@frankpasshq">
+ <link rel="icon" href="/icons/favicon.png">
+ <link rel="manifest" href="/manifest.json">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+ <link rel="stylesheet" href="/style.css?v=3.2.8">
 
-  <!-- Schema.org: SoftwareApplication + AggregateRating -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "FrankPass",
-    "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Any - runs in any modern browser",
-    "url": "https://www.frankpass.com",
-    "description": "A stateless, deterministic password generator. Zero cloud, zero storage, zero accounts. Same inputs always produce the same password - mathematically guaranteed.",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+ <!-- Schema.org: SoftwareApplication + AggregateRating -->
+ <script type="application/ld+json">
+ {
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "FrankPass",
+ "applicationCategory": "SecurityApplication",
+ "operatingSystem": "Any - runs in any modern browser",
+ "url": "https://www.frankpass.com",
+ "description": "A stateless, deterministic password generator. Zero cloud, zero storage, zero accounts. Same inputs always produce the same password - mathematically guaranteed.",
+ "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+ }
+ </script>
 </head>
 <body>
 
@@ -40,656 +40,656 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ============================================================
-     STICKY HEADER
-     Logo + Country Dropdown | Nav links | Get Pro button
-     ============================================================ -->
+ STICKY HEADER
+ Logo + Country Dropdown | Nav links | Get Pro button
+ ============================================================ -->
 <header class="site-header" id="site-header" role="banner">
-  <div class="header-inner">
-    <!-- Logo -->
-    <a href="/" class="header-logo" aria-label="FrankPass - Home">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
-        <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
-        <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
-        <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
-      <span class="logo-text"><span>Frank</span>Pass</span>
-    </a>
+ <div class="header-inner">
+ <!-- Logo -->
+ <a href="/" class="header-logo" aria-label="FrankPass - Home">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+ <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+ <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+ <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+ </svg>
+ <span class="logo-text"><span>Frank</span>Pass</span>
+ </a>
 
-    <!-- Country dropdown (populated by country-dropdown.js) -->
-    <div class="header-country custom-country-dropdown" aria-label="Select your country">
-      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
-        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
-        <span id="country-display-name">India (IN)</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
-        <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
-        <div id="country-list-scroll"></div>
-      </div>
-    </div>
-    <!-- Hidden input that other scripts listen to for region changes -->
-    <input type="hidden" id="region" value="India (IN)">
+ <!-- Country dropdown (populated by country-dropdown.js) -->
+ <div class="header-country custom-country-dropdown" aria-label="Select your country">
+ <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+ <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+ <span id="country-display-name">India (IN)</span>
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+ </button>
+ <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+ <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+ <div id="country-list-scroll"></div>
+ </div>
+ </div>
+ <!-- Hidden input that other scripts listen to for region changes -->
+ <input type="hidden" id="region" value="India (IN)">
 
-    <!-- Desktop navigation -->
-    <nav class="header-nav" aria-label="Main navigation">
-      <a href="/" class="nav-link active" aria-current="page">Generator</a>
-      <a href="/get-started.html" class="nav-link">Get Started</a>
-      <a href="/docs.html" class="nav-link">Docs</a>
-      <a href="/faq.html" class="nav-link">FAQ</a>
-      <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
-      <a href="/products.html" class="nav-link">Products</a>
-      <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
-      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
-        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      </button>
-    </nav>
+ <!-- Desktop navigation -->
+ <nav class="header-nav" aria-label="Main navigation">
+ <a href="/" class="nav-link active" aria-current="page">Generator</a>
+ <a href="/get-started.html" class="nav-link">Get Started</a>
+ <a href="/docs.html" class="nav-link">Docs</a>
+ <a href="/faq.html" class="nav-link">FAQ</a>
+ <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
+ <a href="/products.html" class="nav-link">Products</a>
+ <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+ <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+ <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+ </button>
+ </nav>
 
-    <!-- Mobile hamburger -->
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+ <!-- Mobile hamburger -->
+ <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+ <span></span><span></span><span></span>
+ </button>
+ </div>
 </header>
 
 <!-- Mobile slide-down menu -->
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-  <a href="/get-started.html">Get Started</a>
-  <a href="/docs.html">Docs</a>
-  <a href="/faq.html">FAQ</a>
-  <a href="/about-us.html">About</a>
-  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a><a href="#" id="pwa-install-btn-mobile" class="pwa-install-btn" style="display:none; color:var(--accent); font-weight:600; text-align:center;">Install App &darr;</a>
+ <a href="/get-started.html">Get Started</a>
+ <a href="/docs.html">Docs</a>
+ <a href="/faq.html">FAQ</a>
+ <a href="/about-us.html">About</a>
+ <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a><a href="#" id="pwa-install-btn-mobile" class="pwa-install-btn" style="display:none; color:var(--accent); font-weight:600; text-align:center;">Install App &darr;</a>
 </nav>
 
 <!-- ============================================================
-     HERO SECTION
-     Left: Headline + CTAs | Right: Live Generator Card
-     ============================================================ -->
+ HERO SECTION
+ Left: Headline + CTAs | Right: Live Generator Card
+ ============================================================ -->
 <main id="main-content">
 <section class="hero-section" aria-labelledby="hero-heading">
-  <div class="hero-bg-glow" aria-hidden="true"></div>
-  <div class="hero-grid">
+ <div class="hero-bg-glow" aria-hidden="true"></div>
+ <div class="hero-grid">
 
-    <!-- Left: Headline -->
-    <div class="hero-copy">
-      <div class="hero-eyebrow" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Zero-Knowledge Password Technology
-      </div>
-      <h1 id="hero-heading" class="hero-title">
-        Stop storing<br>passwords.<br>
-        <span>Start generating</span><br>them.
-      </h1>
-      <p class="hero-subtitle">No cloud. No storage. No breach risk. Just mathematics.<br>Same input → same password. Always. Forever.</p>
-      <div class="hero-ctas">
-        <a href="#generator" class="btn-primary btn-lg" aria-label="Try the password generator">
-          Try the Generator
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </a>
-        <a href="/docs.html#why-stateless" class="btn-ghost btn-lg">See How It Works</a>
-      </div>
-    </div>
+ <!-- Left: Headline -->
+ <div class="hero-copy">
+ <div class="hero-eyebrow" aria-hidden="true">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+ Zero-Knowledge Password Technology
+ </div>
+ <h1 id="hero-heading" class="hero-title">
+ Stop storing<br>passwords.<br>
+ <span>Start generating</span><br>them.
+ </h1>
+ <p class="hero-subtitle">No cloud. No storage. No breach risk. Just mathematics.<br>Same input → same password. Always. Forever.</p>
+ <div class="hero-ctas">
+ <a href="#generator" class="btn-primary btn-lg" aria-label="Try the password generator">
+ Try the Generator
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+ </a>
+ <a href="/docs.html#why-stateless" class="btn-ghost btn-lg">See How It Works</a>
+ </div>
+ </div>
 
-    <!-- Right: Generator Card -->
-    <div class="hero-card-col">
-      <div class="card-glass generator-card" id="generator-card" role="main" aria-label="Stateless Password Generator">
+ <!-- Right: Generator Card -->
+ <div class="hero-card-col">
+ <div class="card-glass generator-card" id="generator-card" role="main" aria-label="Stateless Password Generator">
 
-        <!-- Card Header with Badges & Country Pill -->
-        <div class="gen-header">
-          <div class="gen-title">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
-              <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
-              <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            </svg>
-            <span>FrankPass Generator</span>
-          </div>
-          <div class="gen-header-badges">
-            <div class="gen-live-badge">
-              <span class="status-dot status-online" aria-hidden="true"></span>
-              100% Offline
-            </div>
-            <div class="card-country-pill" id="card-country-pill" title="Selected Region">
-              <img id="header-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w160/in.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;">
-              <span id="card-country-label">IN</span>
-            </div>
-          </div>
-        </div>
+ <!-- Card Header with Badges & Country Pill -->
+ <div class="gen-header">
+ <div class="gen-title">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+ <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
+ <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+ </svg>
+ <span>FrankPass Generator</span>
+ </div>
+ <div class="gen-header-badges">
+ <div class="gen-live-badge">
+ <span class="status-dot status-online" aria-hidden="true"></span>
+ 100% Offline
+ </div>
+ <div class="card-country-pill" id="card-country-pill" title="Selected Region">
+ <img id="header-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w160/in.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+ <span id="card-country-label">IN</span>
+ </div>
+ </div>
+ </div>
 
-        <!-- Account Mode Segmented Switch -->
-        <div class="account-mode-wrap">
-          <div class="account-mode-tabs" role="tablist" aria-label="Account Mode">
-            <button type="button" id="acc-tab-single" class="acc-tab active" role="tab" aria-selected="true">Single Account</button>
-            <button type="button" id="acc-tab-multi" class="acc-tab" role="tab" aria-selected="false">Multiple Accounts</button>
-          </div>
-          <div id="username-group" style="display:none;margin-top:0.6rem">
-            <label class="form-label" for="username-input" style="font-size:0.8rem">Username / Account Email</label>
-            <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
-            <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
-            <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
-          </div>
-        </div>
+ <!-- Account Mode Segmented Switch -->
+ <div class="account-mode-wrap">
+ <div class="account-mode-tabs" role="tablist" aria-label="Account Mode">
+ <button type="button" id="acc-tab-single" class="acc-tab active" role="tab" aria-selected="true">Single Account</button>
+ <button type="button" id="acc-tab-multi" class="acc-tab" role="tab" aria-selected="false">Multiple Accounts</button>
+ </div>
+ <div id="username-group" style="display:none;margin-top:0.6rem">
+ <label class="form-label" for="username-input" style="font-size:0.8rem">Username / Account Email</label>
+ <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
+ <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
+ <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
+ </div>
+ </div>
 
-        <!-- Platform input -->
-        <div class="form-group">
-          <label class="form-label" for="platform-input">Site / Platform</label>
-          <div class="input-wrapper">
-            <input id="platform-input" class="form-input" type="text" placeholder="e.g. gmail.com, instagram, github" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
-            <datalist id="platform-list"></datalist>
-            <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-          </div>
-          <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
-        </div>
+ <!-- Platform input -->
+ <div class="form-group">
+ <label class="form-label" for="platform-input">Site / Platform</label>
+ <div class="input-wrapper">
+ <input id="platform-input" class="form-input" type="text" placeholder="e.g. gmail.com, instagram, github" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
+ <datalist id="platform-list"></datalist>
+ <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+ </div>
+ </div>
+ <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
+ </div>
 
-        <!-- Secret key input & Strength Meter -->
-        <div class="form-group">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
-            <div style="display:flex;align-items:center;gap:0.4rem">
-              <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
-              <!-- Info Guidance Popover Tooltip -->
-              <div class="secret-info-wrap" id="secret-info-wrap">
-                <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                </button>
-                <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
-                  <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
-                  <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. One memorable phrase generates unique, unhackable passwords for all your platforms (Gmail, Amazon, GitHub).</p>
-                  <div class="info-popover-tip">
-                    💡 <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
-                    ✨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
-                  </div>
-                </div>
-              </div>
-            </div>
-            <label class="toggle-switch-right" for="remember-secret" style="display:inline-flex;align-items:center;gap:0.45rem;margin:0;cursor:pointer" title="Remember Secret Key on this device">
-              <span style="font-size:0.78rem;color:var(--text-muted)">Remember on this device</span>
-              <input type="checkbox" id="remember-secret" role="switch" aria-checked="false" style="display:none">
-              <span class="toggle-track" aria-hidden="true"></span>
-            </label>
-          </div>
-          <div class="input-wrapper">
-            <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. i love reading books, my secret code..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
-            <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
-              <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            </button>
-          </div>
-          <!-- Dynamic 4-Segment Strength Meter -->
-          <div class="secret-strength-container" id="secret-strength-container">
-            <div class="strength-bar-segments">
-              <div class="strength-segment" id="str-seg-1"></div>
-              <div class="strength-segment" id="str-seg-2"></div>
-              <div class="strength-segment" id="str-seg-3"></div>
-              <div class="strength-segment" id="str-seg-4"></div>
-            </div>
-          </div>
-          <span id="saved-badge" style="display:none;font-size:0.72rem;color:var(--success);font-weight:700;margin-top:0.25rem">&#10003; Encrypted Locally</span>
-          <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
-        </div>
+ <!-- Secret key input & Strength Meter -->
+ <div class="form-group">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
+ <div style="display:flex;align-items:center;gap:0.4rem">
+ <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
+ <!-- Info Guidance Popover Tooltip -->
+ <div class="secret-info-wrap" id="secret-info-wrap">
+ <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?">
+ <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+ </button>
+ <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
+ <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
+ <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. One memorable phrase generates unique, unhackable passwords for all your platforms (Gmail, Amazon, GitHub).</p>
+ <div class="info-popover-tip">
+ 💡 <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
+ ✨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
+ </div>
+ </div>
+ </div>
+ </div>
+ <label class="toggle-switch-right" for="remember-secret" style="display:inline-flex;align-items:center;gap:0.45rem;margin:0;cursor:pointer" title="Remember Secret Key on this device">
+ <span style="font-size:0.78rem;color:var(--text-muted)">Remember on this device</span>
+ <input type="checkbox" id="remember-secret" role="switch" aria-checked="false" style="display:none">
+ <span class="toggle-track" aria-hidden="true"></span>
+ </label>
+ </div>
+ <div class="input-wrapper">
+ <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. i love reading books, my secret code..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
+ <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
+ <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+ </button>
+ </div>
+ <!-- Dynamic 4-Segment Strength Meter -->
+ <div class="secret-strength-container" id="secret-strength-container">
+ <div class="strength-bar-segments">
+ <div class="strength-segment" id="str-seg-1"></div>
+ <div class="strength-segment" id="str-seg-2"></div>
+ <div class="strength-segment" id="str-seg-3"></div>
+ <div class="strength-segment" id="str-seg-4"></div>
+ </div>
+ </div>
+ <span id="saved-badge" style="display:none;font-size:0.72rem;color:var(--success);font-weight:700;margin-top:0.25rem">&#10003; Encrypted Locally</span>
+ <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
+ </div>
 
-        <!-- Advanced options accordion -->
-        <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel">
-          <span style="display:flex;align-items:center;gap:0.45rem">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            Advanced Rules &amp; Rotation
-          </span>
-          <svg class="advanced-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-        </button>
+ <!-- Advanced options accordion -->
+ <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel">
+ <span style="display:flex;align-items:center;gap:0.45rem">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+ Advanced Rules &amp; Rotation
+ </span>
+ <svg class="advanced-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+ </button>
 
-        <!-- Advanced panel (collapsed by default) -->
-        <div class="advanced-panel" id="advanced-panel" aria-hidden="true">
-          <!-- Variant System -->
-          <div class="form-group">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem">
-              <label class="form-label" style="margin:0" for="variant-input">Variant Rotation <span style="font-weight:400;opacity:0.7" id="variant-val">(v1)</span></label>
-              <!-- Variant Mode Tabs -->
-              <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid rgba(255,255,255,0.08)">
-                <button type="button" id="variant-tab-counter" class="variant-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
-                <button type="button" id="variant-tab-date" class="variant-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
-              </div>
-            </div>
+ <!-- Advanced panel (collapsed by default) -->
+ <div class="advanced-panel" id="advanced-panel" aria-hidden="true">
+ <!-- Variant System -->
+ <div class="form-group">
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem">
+ <label class="form-label" style="margin:0" for="variant-input">Variant Rotation <span style="font-weight:400;opacity:0.7" id="variant-val">(v1)</span></label>
+ <!-- Variant Mode Tabs -->
+ <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid rgba(255,255,255,0.08)">
+ <button type="button" id="variant-tab-counter" class="variant-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
+ <button type="button" id="variant-tab-date" class="variant-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
+ </div>
+ </div>
 
-            <!-- Mode 1: Numeric Counter (1-999) with stepper -->
-            <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
-              <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">−</button>
-              <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
-              <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
-            </div>
+ <!-- Mode 1: Numeric Counter (1-999) with stepper -->
+ <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
+ <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">−</button>
+ <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
+ <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
+ </div>
 
-            <!-- Mode 2: Month & Custom Year Rotation -->
-            <div id="variant-date-wrap" style="display:none;gap:0.5rem">
-              <select id="variant-month-select" class="form-input" style="flex:1.2;cursor:pointer" aria-label="Rotation Month">
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-              <input id="variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
-            </div>
+ <!-- Mode 2: Month & Custom Year Rotation -->
+ <div id="variant-date-wrap" style="display:none;gap:0.5rem">
+ <select id="variant-month-select" class="form-input" style="flex:1.2;cursor:pointer" aria-label="Rotation Month">
+ <option value="01">January</option>
+ <option value="02">February</option>
+ <option value="03">March</option>
+ <option value="04">April</option>
+ <option value="05">May</option>
+ <option value="06">June</option>
+ <option value="07">July</option>
+ <option value="08">August</option>
+ <option value="09">September</option>
+ <option value="10">October</option>
+ <option value="11">November</option>
+ <option value="12">December</option>
+ </select>
+ <input id="variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
+ </div>
 
-            <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">Change number or date to rotate password without changing your Secret Key.</span>
-          </div>
+ <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">Change number or date to rotate password without changing your Secret Key.</span>
+ </div>
 
-          <!-- Password Type -->
-          <div class="form-group">
-            <label class="form-label" for="type-select">Characters Type</label>
-            <select id="type-select" class="form-input" style="width:100%;appearance:none;cursor:pointer">
-              <option value="numeric">Only Number (PIN)</option>
-              <option value="alphanumeric">Number &amp; Letters</option>
-              <option value="standard" selected>Number, Letters and Symbol</option>
-            </select>
-          </div>
+ <!-- Password Type -->
+ <div class="form-group">
+ <label class="form-label" for="type-select">Characters Type</label>
+ <select id="type-select" class="form-input" style="width:100%;appearance:none;cursor:pointer">
+ <option value="numeric">Only Number (PIN)</option>
+ <option value="alphanumeric">Number &amp; Letters</option>
+ <option value="standard" selected>Number, Letters and Symbol</option>
+ </select>
+ </div>
 
-          <!-- Length slider -->
-          <div class="form-group">
-            <label class="form-label" for="length-slider">Password Length: <span id="length-val" style="color:var(--accent);font-weight:700">16</span></label>
-            <input id="length-slider" type="range" min="8" max="32" value="16" aria-label="Password length slider">
-          </div>
+ <!-- Length slider -->
+ <div class="form-group">
+ <label class="form-label" for="length-slider">Password Length: <span id="length-val" style="color:var(--accent);font-weight:700">16</span></label>
+ <input id="length-slider" type="range" min="8" max="32" value="16" aria-label="Password length slider">
+ </div>
 
-          <!-- Presets -->
-          <div class="form-group">
-            <div class="form-label">Preset</div>
-            <div class="preset-btns" role="group" aria-label="Password preset selector">
-              <button class="preset-btn" data-preset="simple"  type="button">Simple</button>
-              <button class="preset-btn active" data-preset="strong" type="button">Strong</button>
-              <button class="preset-btn" data-preset="max"    type="button">Maximum</button>
-            </div>
-          </div>
+ <!-- Presets -->
+ <div class="form-group">
+ <div class="form-label">Preset</div>
+ <div class="preset-btns" role="group" aria-label="Password preset selector">
+ <button class="preset-btn" data-preset="simple" type="button">Simple</button>
+ <button class="preset-btn active" data-preset="strong" type="button">Strong</button>
+ <button class="preset-btn" data-preset="max" type="button">Maximum</button>
+ </div>
+ </div>
 
-          <!-- Save locally toggle (Text Left, Toggle Right) -->
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.75rem;padding-top:0.6rem;border-top:1px solid rgba(255,255,255,0.06)">
-            <span style="font-size:0.82rem;color:var(--text-muted)">Save settings locally (no password stored)</span>
-            <label class="toggle-switch-right" for="save-locally" style="display:inline-flex;align-items:center;margin:0;cursor:pointer" title="Save settings locally">
-              <input type="checkbox" id="save-locally" role="switch" aria-checked="false" style="display:none">
-              <span class="toggle-track" aria-hidden="true"></span>
-            </label>
-          </div>
-        </div>
+ <!-- Save locally toggle (Text Left, Toggle Right) -->
+ <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.75rem;padding-top:0.6rem;border-top:1px solid rgba(255,255,255,0.06)">
+ <span style="font-size:0.82rem;color:var(--text-muted)">Save settings locally (no password stored)</span>
+ <label class="toggle-switch-right" for="save-locally" style="display:inline-flex;align-items:center;margin:0;cursor:pointer" title="Save settings locally">
+ <input type="checkbox" id="save-locally" role="switch" aria-checked="false" style="display:none">
+ <span class="toggle-track" aria-hidden="true"></span>
+ </label>
+ </div>
+ </div>
 
-        <!-- Action buttons row -->
-        <div class="gen-actions-row">
-          <button id="generate-btn" class="btn-primary btn-generate" type="button" aria-label="Generate secure password">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-            Generate Secure Password
-          </button>
-          <button id="clear-all-btn" class="btn-ghost btn-reset" type="button" aria-label="Reset form" title="Reset all inputs">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            Reset
-          </button>
-        </div>
+ <!-- Action buttons row -->
+ <div class="gen-actions-row">
+ <button id="generate-btn" class="btn-primary btn-generate" type="button" aria-label="Generate secure password">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+ Generate Secure Password
+ </button>
+ <button id="clear-all-btn" class="btn-ghost btn-reset" type="button" aria-label="Reset form" title="Reset all inputs">
+ <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+ Reset
+ </button>
+ </div>
 
-        <!-- Output box -->
-        <div class="output-box" role="region" aria-label="Generated password output" aria-live="polite">
-          <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
-            ···········
-          </div>
-          <div class="output-actions">
-            <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password">
-              <svg id="mask-eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
-            </button>
-            <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
-              <svg class="copy-icon" id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
-                <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-              </svg>
-              <span>Copy</span>
-            </button>
-          </div>
-        </div>
-        
-        <!-- Micro Trust Badge -->
-        <div class="gen-micro-footer">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>Zero Data Stored &middot; Client-Side WebCrypto &middot; 100% Offline</span>
-        </div>
+ <!-- Output box -->
+ <div class="output-box" role="region" aria-label="Generated password output" aria-live="polite">
+ <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
+ ···········
+ </div>
+ <div class="output-actions">
+ <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password">
+ <svg id="mask-eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+ <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+ <circle cx="12" cy="12" r="3"></circle>
+ </svg>
+ </button>
+ <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
+ <svg class="copy-icon" id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
+ <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+ </svg>
+ <span>Copy</span>
+ </button>
+ </div>
+ </div>
+ 
+ <!-- Micro Trust Badge -->
+ <div class="gen-micro-footer">
+ <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+ <span>Zero Data Stored &middot; Client-Side WebCrypto &middot; 100% Offline</span>
+ </div>
 
-      </div>
-    </div>
-  </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ============================================================
-     SUPPORT MASTER MANIKANT & FRANKBASE ECOSYSTEM CARD
-     ============================================================ -->
+ SUPPORT MASTER MANIKANT & FRANKBASE ECOSYSTEM CARD
+ ============================================================ -->
 <section class="section-sm" aria-label="Support Master Manikant">
-  <div class="container" style="max-width:680px">
-    <div class="card-glass" style="padding:2rem;border:1px solid rgba(139,92,246,0.35);background:linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(99,102,241,0.04) 100%)">
-      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
-        <span style="font-size:1.5rem">&#128156;</span>
-        <h2 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:0">
-          Love FrankPass? Support Master Manikant
-        </h2>
-      </div>
-      <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem">
-        FrankPass is 100% free, private, and ad-free for everyone worldwide. If our tools helped you stay secure, consider supporting our independent research, books, and ecosystem:
-      </p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.85rem">
-        <a href="https://buymeacoffee.com/mastermanikant" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
-          <span style="font-size:1.2rem">☕</span>
-          <span>Buy Me a Coffee / Donate</span>
-        </a>
-        <a href="https://frankbase.com/ebooks" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
-          <span style="font-size:1.2rem">📖</span>
-          <span>Cybersecurity &amp; Tech eBook</span>
-        </a>
-        <a href="/pro.html" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
-          <span style="font-size:1.2rem">👑</span>
-          <span>FrankPass Pro Extension</span>
-        </a>
-        <a href="https://frankbase.com/products" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
-          <span style="font-size:1.2rem">🚀</span>
-          <span>Visit Our Products Page &rarr;</span>
-        </a>
-      </div>
-    </div>
-  </div>
+ <div class="container" style="max-width:680px">
+ <div class="card-glass" style="padding:2rem;border:1px solid rgba(139,92,246,0.35);background:linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(99,102,241,0.04) 100%)">
+ <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
+ <span style="font-size:1.5rem">&#128156;</span>
+ <h2 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:0">
+ Love FrankPass? Support Master Manikant
+ </h2>
+ </div>
+ <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.5rem">
+ FrankPass is 100% free, private, and ad-free for everyone worldwide. If our tools helped you stay secure, consider supporting our independent research, books, and ecosystem:
+ </p>
+ <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.85rem">
+ <a href="https://buymeacoffee.com/mastermanikant" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+ <span style="font-size:1.2rem">☕</span>
+ <span>Buy Me a Coffee / Donate</span>
+ </a>
+ <a href="https://frankbase.com/ebooks" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+ <span style="font-size:1.2rem">📖</span>
+ <span>Cybersecurity &amp; Tech eBook</span>
+ </a>
+ <a href="/pro.html" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+ <span style="font-size:1.2rem">👑</span>
+ <span>FrankPass Pro Extension</span>
+ </a>
+ <a href="https://frankbase.com/products" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
+ <span style="font-size:1.2rem">🚀</span>
+ <span>Visit Our Products Page &rarr;</span>
+ </a>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ============================================================
-     SHARE CARD
-     Encourage users to spread mental-load-free security
-     ============================================================ -->
+ SHARE CARD
+ Encourage users to spread mental-load-free security
+ ============================================================ -->
 <section class="section-sm" aria-label="Share FrankPass">
-  <div class="container" style="max-width:680px">
-    <div class="card-glass" style="padding:2rem">
-      <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
-        <div style="width:44px;height:44px;background:rgba(139,92,246,0.12);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-        </div>
-        <div style="flex:1;min-width:200px">
-          <strong style="font-size:1.05rem;color:var(--text-primary);display:block;margin-bottom:0.35rem">Help someone live stress-free &#128156;</strong>
-          <p style="margin:0;font-size:0.9rem;color:var(--text-muted);line-height:1.6">Share FrankPass with your family &amp; friends. Help them live mentally load-free and become security-aware - without paying anything.</p>
-        </div>
-      </div>
+ <div class="container" style="max-width:680px">
+ <div class="card-glass" style="padding:2rem">
+ <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+ <div style="width:44px;height:44px;background:rgba(139,92,246,0.12);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+ </div>
+ <div style="flex:1;min-width:200px">
+ <strong style="font-size:1.05rem;color:var(--text-primary);display:block;margin-bottom:0.35rem">Help someone live stress-free &#128156;</strong>
+ <p style="margin:0;font-size:0.9rem;color:var(--text-muted);line-height:1.6">Share FrankPass with your family &amp; friends. Help them live mentally load-free and become security-aware - without paying anything.</p>
+ </div>
+ </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem">
-        <!-- WhatsApp -->
-        <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('whatsapp',event)" aria-label="Share on WhatsApp"
-           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;text-decoration:none;transition:var(--transition)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          WhatsApp
-        </a>
-        <!-- Facebook -->
-        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('facebook',event)" aria-label="Share on Facebook"
-           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(24,119,242,0.1);border:1px solid rgba(24,119,242,0.3);color:#1877F2;text-decoration:none;transition:var(--transition)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          Facebook
-        </a>
-        <!-- X / Twitter -->
-        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('x',event)" aria-label="Share on X"
-           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);text-decoration:none;transition:var(--transition)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          X (Twitter)
-        </a>
-        <!-- Reddit -->
-        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('reddit',event)" aria-label="Share on Reddit"
-           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(255,69,0,0.1);border:1px solid rgba(255,69,0,0.3);color:#ff4500;text-decoration:none;transition:var(--transition)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
-          Reddit
-        </a>
-        <!-- Copy Link -->
-        <button onclick="shareLink('copy',event)" aria-label="Copy link"
-           style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;transition:var(--transition)">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy Link
-        </button>
-      </div>
-    </div>
-  </div>
+ <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem">
+ <!-- WhatsApp -->
+ <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('whatsapp',event)" aria-label="Share on WhatsApp"
+ style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;text-decoration:none;transition:var(--transition)">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+ WhatsApp
+ </a>
+ <!-- Facebook -->
+ <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('facebook',event)" aria-label="Share on Facebook"
+ style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(24,119,242,0.1);border:1px solid rgba(24,119,242,0.3);color:#1877F2;text-decoration:none;transition:var(--transition)">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+ Facebook
+ </a>
+ <!-- X / Twitter -->
+ <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('x',event)" aria-label="Share on X"
+ style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-primary);text-decoration:none;transition:var(--transition)">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+ X (Twitter)
+ </a>
+ <!-- Reddit -->
+ <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('reddit',event)" aria-label="Share on Reddit"
+ style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(255,69,0,0.1);border:1px solid rgba(255,69,0,0.3);color:#ff4500;text-decoration:none;transition:var(--transition)">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+ Reddit
+ </a>
+ <!-- Copy Link -->
+ <button onclick="shareLink('copy',event)" aria-label="Copy link"
+ style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;transition:var(--transition)">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+ Copy Link
+ </button>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ============================================================
-     TRUST STRIP
-     4 glass badges highlighting core properties
-     ============================================================ -->
+ TRUST STRIP
+ 4 glass badges highlighting core properties
+ ============================================================ -->
 <section class="section-sm" aria-label="Trust indicators">
-  <div class="container">
-    <div class="trust-strip">
-      <div class="trust-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M1 6s4-2 11-2 11 2 11 2M1 18s4 2 11 2 11-2 11-2"/><path d="M3 12c0-3 4-5 9-5s9 2 9 5"/></svg>
-        100% Offline
-      </div>
-      <div class="trust-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Zero Data Stored
-      </div>
-      <div class="trust-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
-        Same Input = Same Output
-      </div>
-      <div class="trust-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        Open Algorithm
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:var(--text-muted)">
-      Don't trust us? Turn off your internet and try it.
-    </p>
-  </div>
+ <div class="container">
+ <div class="trust-strip">
+ <div class="trust-badge">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M1 6s4-2 11-2 11 2 11 2M1 18s4 2 11 2 11-2 11-2"/><path d="M3 12c0-3 4-5 9-5s9 2 9 5"/></svg>
+ 100% Offline
+ </div>
+ <div class="trust-badge">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+ Zero Data Stored
+ </div>
+ <div class="trust-badge">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+ Same Input = Same Output
+ </div>
+ <div class="trust-badge">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+ Open Algorithm
+ </div>
+ </div>
+ <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:var(--text-muted)">
+ Don't trust us? Turn off your internet and try it.
+ </p>
+ </div>
 </section>
 
 <!-- ============================================================
-     HOW IT WORKS
-     3 connected glass step cards
-     ============================================================ -->
+ HOW IT WORKS
+ 3 connected glass step cards
+ ============================================================ -->
 <section class="section" aria-labelledby="how-heading">
-  <div class="container">
-    <div class="text-center mb-4">
-      <div class="section-label" aria-hidden="true">No vault. No sync. No breach.</div>
-      <h2 id="how-heading" class="section-title">The Stateless Workflow</h2>
-      <p class="section-desc">Three inputs. One mathematical function. One password. No storage.</p>
-    </div>
-    <div class="grid-3" role="list">
-      <!-- Step 1 -->
-      <article class="card-glass step-card" role="listitem" aria-label="Step 1: Enter your platform">
-        <div class="step-num" aria-hidden="true">1</div>
-        <div class="step-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-        </div>
-        <h3>Enter Site / Platform</h3>
-        <p>Type any platform name or paste a URL. FrankPass normalizes it automatically - <code>facebook.com</code>, <code>www.facebook.com</code>, or just <code>facebook</code> all produce the exact same result.</p>
-      </article>
-      <!-- Step 2 -->
-      <article class="card-glass step-card" role="listitem" aria-label="Step 2: Enter your secret key">
-        <div class="step-num" aria-hidden="true">2</div>
-        <div class="step-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-        </div>
-        <h3>Enter Your Secret Key</h3>
-        <p>Your secret key is the seed. It never leaves your device. PBKDF2 with 1,000,000 iterations and HMAC-SHA512 expansion transform it into an unbreakable cryptographic anchor.</p>
-      </article>
-      <!-- Step 3 -->
-      <article class="card-glass step-card" role="listitem" aria-label="Step 3: Copy your password">
-        <div class="step-num" aria-hidden="true">3</div>
-        <div class="step-icon" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        </div>
-        <h3>Copy &amp; Use</h3>
-        <p>Your password is generated in milliseconds - entirely on your device. Copy it, use it, and forget it. The math will reproduce it identically next time. Nothing is ever saved.</p>
-      </article>
-    </div>
-  </div>
+ <div class="container">
+ <div class="text-center mb-4">
+ <div class="section-label" aria-hidden="true">No vault. No sync. No breach.</div>
+ <h2 id="how-heading" class="section-title">The Stateless Workflow</h2>
+ <p class="section-desc">Three inputs. One mathematical function. One password. No storage.</p>
+ </div>
+ <div class="grid-3" role="list">
+ <!-- Step 1 -->
+ <article class="card-glass step-card" role="listitem" aria-label="Step 1: Enter your platform">
+ <div class="step-num" aria-hidden="true">1</div>
+ <div class="step-icon" aria-hidden="true">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+ </div>
+ <h3>Enter Site / Platform</h3>
+ <p>Type any platform name or paste a URL. FrankPass normalizes it automatically - <code>facebook.com</code>, <code>www.facebook.com</code>, or just <code>facebook</code> all produce the exact same result.</p>
+ </article>
+ <!-- Step 2 -->
+ <article class="card-glass step-card" role="listitem" aria-label="Step 2: Enter your secret key">
+ <div class="step-num" aria-hidden="true">2</div>
+ <div class="step-icon" aria-hidden="true">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+ </div>
+ <h3>Enter Your Secret Key</h3>
+ <p>Your secret key is the seed. It never leaves your device. PBKDF2 with 1,000,000 iterations and HMAC-SHA512 expansion transform it into an unbreakable cryptographic anchor.</p>
+ </article>
+ <!-- Step 3 -->
+ <article class="card-glass step-card" role="listitem" aria-label="Step 3: Copy your password">
+ <div class="step-num" aria-hidden="true">3</div>
+ <div class="step-icon" aria-hidden="true">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+ </div>
+ <h3>Copy &amp; Use</h3>
+ <p>Your password is generated in milliseconds - entirely on your device. Copy it, use it, and forget it. The math will reproduce it identically next time. Nothing is ever saved.</p>
+ </article>
+ </div>
+ </div>
 </section>
 
 <!-- ============================================================
-     ASK AI (MULTILINGUAL ASSISTANT)
-     ============================================================ -->
+ ASK AI (MULTILINGUAL ASSISTANT)
+ ============================================================ -->
 <section id="ask-ai-section" class="section" style="background:var(--bg-primary); padding: 4rem 0;" aria-labelledby="ask-ai-heading">
-  <div class="container" style="max-width:680px">
-    <div class="text-center mb-4">
-      <div class="section-label" aria-hidden="true">Multilingual Guide</div>
-      <h2 id="ask-ai-heading">Learn FrankPass in your language</h2>
-      <p class="section-desc mt-2">No complicated translation tables. Just tell AI your language and script, and get a complete, structured tutorial instantly.</p>
-    </div>
-    
-    <div class="card-glass" style="padding:2.25rem">
-      <div class="form-group" style="margin-bottom:1.5rem">
-        <label for="ai-lang" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Your Language</label>
-        <input type="text" id="ai-lang" placeholder="e.g. Hindi, Spanish, Tamil" value="Hindi" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;transition:var(--transition)">
-      </div>
-      
-      <div class="form-group" style="margin-bottom:2rem">
-        <label for="ai-script" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Preferred Script</label>
-        <select id="ai-script" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;appearance:none;cursor:pointer">
-          <option value="Devanagari">Devanagari (देवनागरी)</option>
-          <option value="Latin">Latin (A, B, C...)</option>
-          <option value="Arabic">Arabic (العربية)</option>
-          <option value="Cyrillic">Cyrillic (Кириллица)</option>
-          <option value="Native">Native to Language</option>
-        </select>
-      </div>
+ <div class="container" style="max-width:680px">
+ <div class="text-center mb-4">
+ <div class="section-label" aria-hidden="true">Multilingual Guide</div>
+ <h2 id="ask-ai-heading">Learn FrankPass in your language</h2>
+ <p class="section-desc mt-2">No complicated translation tables. Just tell AI your language and script, and get a complete, structured tutorial instantly.</p>
+ </div>
+ 
+ <div class="card-glass" style="padding:2.25rem">
+ <div class="form-group" style="margin-bottom:1.5rem">
+ <label for="ai-lang" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Your Language</label>
+ <input type="text" id="ai-lang" placeholder="e.g. Hindi, Spanish, Tamil" value="Hindi" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;transition:var(--transition)">
+ </div>
+ 
+ <div class="form-group" style="margin-bottom:2rem">
+ <label for="ai-script" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Preferred Script</label>
+ <select id="ai-script" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;appearance:none;cursor:pointer">
+ <option value="Devanagari">Devanagari (देवनागरी)</option>
+ <option value="Latin">Latin (A, B, C...)</option>
+ <option value="Arabic">Arabic (العربية)</option>
+ <option value="Cyrillic">Cyrillic (Кириллица)</option>
+ <option value="Native">Native to Language</option>
+ </select>
+ </div>
 
-      <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Click an AI below. We will copy a smart prompt to your clipboard and open the app. <strong style="color:var(--text-primary)">Just paste it!</strong></p>
+ <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Click an AI below. We will copy a smart prompt to your clipboard and open the app. <strong style="color:var(--text-primary)">Just paste it!</strong></p>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
-        <button onclick="openAI('chatgpt')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
-          ChatGPT
-        </button>
-        <button onclick="openAI('claude')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
-          Claude
-        </button>
-        <button onclick="openAI('gemini')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
-          Gemini
-        </button>
-        <button onclick="openAI('perplexity')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
-          Perplexity
-        </button>
-      </div>
-    </div>
-  </div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
+ <button onclick="openAI('chatgpt')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ ChatGPT
+ </button>
+ <button onclick="openAI('claude')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ Claude
+ </button>
+ <button onclick="openAI('gemini')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ Gemini
+ </button>
+ <button onclick="openAI('perplexity')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ Perplexity
+ </button>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ============================================================
-     WHY NOT CLOUD
-     3 key arguments against cloud password storage
-     ============================================================ -->
+ WHY NOT CLOUD
+ 3 key arguments against cloud password storage
+ ============================================================ -->
 <section class="section" style="background:var(--bg-secondary)" aria-labelledby="why-heading">
-  <div class="container">
-    <div class="text-center mb-4">
-      <div class="section-label" aria-hidden="true">The stateless advantage</div>
-      <h2 id="why-heading">Why not a cloud password manager?</h2>
-    </div>
-    <div class="grid-3">
-      <div class="card-glass" style="padding:1.75rem">
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
-          <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
-          <h3 style="margin:0;font-size:1.1rem">Cloud vaults can be breached</h3>
-        </div>
-        <p>Every major password manager has had a security incident. When they store your encrypted vault online, they create a honeypot - a single point of failure that makes your entire digital life a target for one attack.</p>
-      </div>
-      <div class="card-glass" style="padding:1.75rem">
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
-          <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
-          <h3 style="margin:0;font-size:1.1rem">You can't breach what doesn't exist</h3>
-        </div>
-        <p>FrankPass has no servers, no databases, no user accounts, no synced vault. There is simply nothing to steal. Your password exists only during the brief moment it appears on your screen.</p>
-      </div>
-      <div class="card-glass" style="padding:1.75rem">
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
-          <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
-          <h3 style="margin:0;font-size:1.1rem">Works when the internet doesn't</h3>
-        </div>
-        <p>Cloud managers fail when their servers go down or when you're offline. FrankPass is a PWA - install it once and it works forever, even in airplane mode, even if our domain expired.</p>
-      </div>
-    </div>
-  </div>
+ <div class="container">
+ <div class="text-center mb-4">
+ <div class="section-label" aria-hidden="true">The stateless advantage</div>
+ <h2 id="why-heading">Why not a cloud password manager?</h2>
+ </div>
+ <div class="grid-3">
+ <div class="card-glass" style="padding:1.75rem">
+ <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+ <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
+ <h3 style="margin:0;font-size:1.1rem">Cloud vaults can be breached</h3>
+ </div>
+ <p>Every major password manager has had a security incident. When they store your encrypted vault online, they create a honeypot - a single point of failure that makes your entire digital life a target for one attack.</p>
+ </div>
+ <div class="card-glass" style="padding:1.75rem">
+ <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+ <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
+ <h3 style="margin:0;font-size:1.1rem">You can't breach what doesn't exist</h3>
+ </div>
+ <p>FrankPass has no servers, no databases, no user accounts, no synced vault. There is simply nothing to steal. Your password exists only during the brief moment it appears on your screen.</p>
+ </div>
+ <div class="card-glass" style="padding:1.75rem">
+ <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
+ <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
+ <h3 style="margin:0;font-size:1.1rem">Works when the internet doesn't</h3>
+ </div>
+ <p>Cloud managers fail when their servers go down or when you're offline. FrankPass is a PWA - install it once and it works forever, even in airplane mode, even if our domain expired.</p>
+ </div>
+ </div>
+ </div>
 </section>
 
 
 <!-- ============================================================
-     FOUNDER TRUST & PRIVACY GUARANTEE
-     Personal Accountability, Zero-Knowledge Promise & Architecture
-     ============================================================ -->
+ FOUNDER TRUST & PRIVACY GUARANTEE
+ Personal Accountability, Zero-Knowledge Promise & Architecture
+ ============================================================ -->
 <section class="section" aria-labelledby="founder-trust-heading">
-  <div class="container" style="max-width:840px">
-    <div class="text-center mb-4">
-      <div class="section-label" aria-hidden="true">Founder Trust &amp; Guarantee</div>
-      <h2 id="founder-trust-heading" class="section-title">Built on Mathematical Certainty</h2>
-      <p class="section-desc">No corporate trackers, no venture capital metrics, no cloud vaults. Designed by Master Manikant to protect human digital freedom.</p>
-    </div>
+ <div class="container" style="max-width:840px">
+ <div class="text-center mb-4">
+ <div class="section-label" aria-hidden="true">Founder Trust &amp; Guarantee</div>
+ <h2 id="founder-trust-heading" class="section-title">Built on Mathematical Certainty</h2>
+ <p class="section-desc">No corporate trackers, no venture capital metrics, no cloud vaults. Designed by Master Manikant to protect human digital freedom.</p>
+ </div>
 
-    <div class="founder-trust-card">
-      <div class="founder-trust-avatar-wrap">
-        <img src="/icons/founder-master-manikant-yadav.png" onerror="this.onerror=null;this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbeMsLb7-1opZtRl9NwEao44eomwjGZSocV3Ljhe24PVTmP3k97fqGbyIREDJWjq9PEsJvpG6djUNDltOp2DcTwFaVU2nwFDlD-uZZUpgLnOZTpdALH2y-xaJtrseMbuYPnKzGfGNLKs_O3cGmG_LDEApjU_cyBA1Xn1mTQtCcRwdZ0afg9gj_mqf7WZmU/w388-h388/Profie-Pic-of-Master-Manikant.png'" alt="Master Manikant Yadav - Founder of FrankPass" class="founder-trust-avatar" width="140" height="140" loading="lazy">
-      </div>
-      <div class="founder-trust-info">
-        <div class="founder-trust-name">Master Manikant Yadav</div>
-        <div class="founder-trust-role">Founder &amp; Systems Architect &middot; FrankBase Ecosystem</div>
-        <p class="founder-trust-quote">
-          &ldquo;The mission of FrankPass is simple: to provide 100% digital security through pure mathematics - without databases, tracking, or cloud storage. A password that was never stored on a server can never be stolen in a data breach.&rdquo;
-        </p>
-        <div class="founder-trust-badges">
-          <span class="security-badge">🛡️ Zero-Knowledge Architecture</span>
-          <span class="security-badge">🔒 100% Client-Side WebCrypto</span>
-          <span class="security-badge">⚡ Zero Tracking &amp; No Data Stored</span>
-          <span class="security-badge">🌐 Open Algorithm &amp; Verifiable</span>
-        </div>
-        <div class="founder-trust-actions">
-          <a href="/about-us.html" class="btn-primary" style="padding:0.6rem 1.15rem;font-size:0.85rem">Read Founder Story &rarr;</a>
-          <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.6rem 1.15rem;font-size:0.85rem">Visit MasterManikant.com ↗</a>
-          <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.6rem 1.15rem;font-size:0.85rem">FrankBase Network ↗</a>
-        </div>
-      </div>
-    </div>
-  </div>
+ <div class="founder-trust-card">
+ <div class="founder-trust-avatar-wrap">
+ <img src="/icons/founder-master-manikant-yadav.png" onerror="this.onerror=null;this.src='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgbeMsLb7-1opZtRl9NwEao44eomwjGZSocV3Ljhe24PVTmP3k97fqGbyIREDJWjq9PEsJvpG6djUNDltOp2DcTwFaVU2nwFDlD-uZZUpgLnOZTpdALH2y-xaJtrseMbuYPnKzGfGNLKs_O3cGmG_LDEApjU_cyBA1Xn1mTQtCcRwdZ0afg9gj_mqf7WZmU/w388-h388/Profie-Pic-of-Master-Manikant.png'" alt="Master Manikant Yadav - Founder of FrankPass" class="founder-trust-avatar" width="140" height="140" loading="lazy">
+ </div>
+ <div class="founder-trust-info">
+ <div class="founder-trust-name">Master Manikant Yadav</div>
+ <div class="founder-trust-role">Founder &amp; Systems Architect &middot; FrankBase Ecosystem</div>
+ <p class="founder-trust-quote">
+ &ldquo;The mission of FrankPass is simple: to provide 100% digital security through pure mathematics - without databases, tracking, or cloud storage. A password that was never stored on a server can never be stolen in a data breach.&rdquo;
+ </p>
+ <div class="founder-trust-badges">
+ <span class="security-badge">🛡️ Zero-Knowledge Architecture</span>
+ <span class="security-badge">🔒 100% Client-Side WebCrypto</span>
+ <span class="security-badge">⚡ Zero Tracking &amp; No Data Stored</span>
+ <span class="security-badge">🌐 Open Algorithm &amp; Verifiable</span>
+ </div>
+ <div class="founder-trust-actions">
+ <a href="/about-us.html" class="btn-primary" style="padding:0.6rem 1.15rem;font-size:0.85rem">Read Founder Story &rarr;</a>
+ <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.6rem 1.15rem;font-size:0.85rem">Visit MasterManikant.com ↗</a>
+ <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.6rem 1.15rem;font-size:0.85rem">FrankBase Network ↗</a>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ============================================================
-     COMMUNITY FEEDBACK & REVIEWS SECTION
-     (Real reviews from Chrome Web Store / ProductHunt will appear here)
-     ============================================================ -->
+ COMMUNITY FEEDBACK & REVIEWS SECTION
+ (Real reviews from Chrome Web Store / ProductHunt will appear here)
+ ============================================================ -->
 <!-- FUTURE: Real User Ratings & Verified Reviews Integration Placeholder -->
 <!--
-  When live verified reviews are received from Chrome Web Store or Trustpilot:
-  1. Insert real verified reviews with source links and user avatars.
-  2. Embed Schema.org Review structured data linked to verified third-party URL.
+ When live verified reviews are received from Chrome Web Store or Trustpilot:
+ 1. Insert real verified reviews with source links and user avatars.
+ 2. Embed Schema.org Review structured data linked to verified third-party URL.
 -->
 <section class="section" aria-labelledby="community-feedback-heading">
-  <div class="container" style="max-width:760px">
-    <div class="text-center mb-4">
-      <div class="section-label" aria-hidden="true">Community &amp; Open Feedback</div>
-      <h2 id="community-feedback-heading">Built with Transparency</h2>
-      <p class="section-desc">FrankPass is 100% open-source and community-driven. Share your feedback, report issues, or connect with our community.</p>
-    </div>
-    <div class="card-glass" style="padding:2rem;text-align:center;border:1px solid rgba(139,92,246,0.25)">
-      <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;align-items:center">
-        <a href="https://github.com/Mastermanikant/frank-pass/discussions" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          Leave Feedback on GitHub
-        </a>
-        <a href="https://reddit.com/r/FrankPass" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#ff4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
-          Join r/FrankPass
-        </a>
-      </div>
-    </div>
-  </div>
+ <div class="container" style="max-width:760px">
+ <div class="text-center mb-4">
+ <div class="section-label" aria-hidden="true">Community &amp; Open Feedback</div>
+ <h2 id="community-feedback-heading">Built with Transparency</h2>
+ <p class="section-desc">FrankPass is 100% open-source and community-driven. Share your feedback, report issues, or connect with our community.</p>
+ </div>
+ <div class="card-glass" style="padding:2rem;text-align:center;border:1px solid rgba(139,92,246,0.25)">
+ <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;align-items:center">
+ <a href="https://github.com/Mastermanikant/frank-pass/discussions" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600">
+ <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+ Leave Feedback on GitHub
+ </a>
+ <a href="https://reddit.com/r/FrankPass" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600">
+ <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#ff4500"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+ Join r/FrankPass
+ </a>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ============================================================
-     REDDIT CTA
-     Invite to join the community
-     ============================================================ -->
+ REDDIT CTA
+ Invite to join the community
+ ============================================================ -->
 <section class="section-sm" aria-label="Community call to action">
-  <div class="container" style="max-width:680px">
-    <div class="card-glass" style="padding:2rem;text-align:center">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff4500" width="36" height="36" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
-      <h2 style="margin:0.75rem 0 0.5rem">Join r/FrankPass</h2>
-      <p style="margin-bottom:1.5rem">Share your setup, ask questions, and connect with others who care about privacy-first security.</p>
-      <a href="https://reddit.com/r/FrankPass" class="btn-ghost" target="_blank" rel="noopener noreferrer" aria-label="Join the FrankPass community on Reddit">
-        Visit the Subreddit &rarr;
-      </a>
-    </div>
-  </div>
+ <div class="container" style="max-width:680px">
+ <div class="card-glass" style="padding:2rem;text-align:center">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff4500" width="36" height="36" aria-hidden="true"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+ <h2 style="margin:0.75rem 0 0.5rem">Join r/FrankPass</h2>
+ <p style="margin-bottom:1.5rem">Share your setup, ask questions, and connect with others who care about privacy-first security.</p>
+ <a href="https://reddit.com/r/FrankPass" class="btn-ghost" target="_blank" rel="noopener noreferrer" aria-label="Join the FrankPass community on Reddit">
+ Visit the Subreddit &rarr;
+ </a>
+ </div>
+ </div>
 </section>
 
 
@@ -697,42 +697,42 @@
 </main>
 
 <!-- ============================================================
-     FOOTER - rendered by footer.js
-     ============================================================ -->
+ FOOTER - rendered by footer.js
+ ============================================================ -->
 <div id="site-footer"></div>
 
 <!-- ============================================================
-     MOBILE BOTTOM NAVIGATION
-     ============================================================ -->
+ MOBILE BOTTOM NAVIGATION
+ ============================================================ -->
 <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
-  <a href="/" class="mob-nav-item active" aria-label="Home" aria-current="page">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span>Home</span>
-  </a>
-  <a href="/get-started.html" class="mob-nav-item" aria-label="Get Started">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
-    <span>Start</span>
-  </a>
-  <a href="/pro.html" class="mob-nav-item" aria-label="Get Pro">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-    <span>Pro</span>
-  </a>
-  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    <span>FAQ</span>
-  </a>
-  <a href="/about-us.html" class="mob-nav-item" aria-label="About">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    <span>About</span>
-  </a>
+ <a href="/" class="mob-nav-item active" aria-label="Home" aria-current="page">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+ <span>Home</span>
+ </a>
+ <a href="/get-started.html" class="mob-nav-item" aria-label="Get Started">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+ <span>Start</span>
+ </a>
+ <a href="/pro.html" class="mob-nav-item" aria-label="Get Pro">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+ <span>Pro</span>
+ </a>
+ <a href="/faq.html" class="mob-nav-item" aria-label="FAQ">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+ <span>FAQ</span>
+ </a>
+ <a href="/about-us.html" class="mob-nav-item" aria-label="About">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+ <span>About</span>
+ </a>
 </nav>
 
 <!-- Toast container -->
 <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
 <!-- ============================================================
-     SCRIPTS - load order is critical
-     ============================================================ -->
+ SCRIPTS - load order is critical
+ ============================================================ -->
 <script src="/frankpass-config.js?v=3.2.8"></script>
 <script src="/country-data.js"></script>
 <script src="/country-dropdown.js?v=3.2.8"></script>
@@ -745,42 +745,42 @@
 /* ── Sticky header scroll class ── */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 10);
+ header.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
 
 /* ── Hamburger menu toggle ── */
-const hamburger   = document.getElementById('hamburger');
-const mobileMenu  = document.getElementById('mobile-menu');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
 if (hamburger && mobileMenu) {
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', String(isOpen));
-  });
+ hamburger.addEventListener('click', () => {
+ const isOpen = mobileMenu.classList.toggle('open');
+ hamburger.classList.toggle('open', isOpen);
+ hamburger.setAttribute('aria-expanded', String(isOpen));
+ });
 
-  document.addEventListener('click', (e) => {
-    const header = document.getElementById('site-header');
-    if (header && !header.contains(e.target) && !mobileMenu.contains(e.target)) {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
-  });
+ document.addEventListener('click', (e) => {
+ const header = document.getElementById('site-header');
+ if (header && !header.contains(e.target) && !mobileMenu.contains(e.target)) {
+ mobileMenu.classList.remove('open');
+ hamburger.classList.remove('open');
+ hamburger.setAttribute('aria-expanded', 'false');
+ }
+ });
 }
 
 /* ── Toast helper ── */
 function showToast(msg, type = '') {
-  const t = document.createElement('div');
-  t.className = 'toast' + (type ? ' ' + type : '');
-  t.textContent = msg;
-  document.getElementById('toast-container').appendChild(t);
-  setTimeout(() => t.remove(), 3000);
+ const t = document.createElement('div');
+ t.className = 'toast' + (type ? ' ' + type : '');
+ t.textContent = msg;
+ document.getElementById('toast-container').appendChild(t);
+ setTimeout(() => t.remove(), 3000);
 }
 
 /* ── Password status helper ── */
 function updatePasswordStatus() {
-  const label = document.getElementById('clear-timer-label');
-  if (label) label.textContent = 'Ready to copy';
+ const label = document.getElementById('clear-timer-label');
+ if (label) label.textContent = 'Ready to copy';
 }
 
 /* ── Secret key visibility controller (Unified Biometric + Blind Policy) ── */
@@ -788,120 +788,120 @@ const secretInput = document.getElementById('secret-key');
 
 /* ── Platform hint & Autocomplete ── */
 const platformInput = document.getElementById('platform-input');
-const platformHint  = document.getElementById('platform-hint');
+const platformHint = document.getElementById('platform-hint');
 const platformValid = document.getElementById('platform-valid-icon');
 
 platformInput.addEventListener('input', (e) => {
-  const raw = e.target.value.trim();
-  if (typeof FrankPassUtils === 'undefined') return;
-  
-  const hint = raw ? FrankPassUtils.getSeedHint(raw) : '';
-  platformHint.textContent = hint;
+ const raw = e.target.value.trim();
+ if (typeof FrankPassUtils === 'undefined') return;
+ 
+ const hint = raw ? FrankPassUtils.getSeedHint(raw) : '';
+ platformHint.textContent = hint;
 
-  /* Show indicator if recognized in DB */
-  const normalized = FrankPassUtils.getNormalizedPlatform(raw);
-  const inDB = FrankPassUtils.getPrettyNameFromDB(normalized, window.regionalPlatforms);
-  platformValid.classList.toggle('visible', !!inDB);
+ /* Show indicator if recognized in DB */
+ const normalized = FrankPassUtils.getNormalizedPlatform(raw);
+ const inDB = FrankPassUtils.getPrettyNameFromDB(normalized, window.regionalPlatforms);
+ platformValid.classList.toggle('visible', !!inDB);
 });
 
 function populatePlatformDatalist(countryCode) {
-  const list = document.getElementById('platform-list');
-  if (!list || !window.regionalPlatforms) return;
+ const list = document.getElementById('platform-list');
+ if (!list || !window.regionalPlatforms) return;
 
-  list.innerHTML = '';
-  const raw = (countryCode || document.getElementById('region')?.value || 'in').toLowerCase();
-  const m = raw.match(/\(([a-z]{2})\)/i);
-  const targetCode = m ? m[1].toLowerCase() : raw.substring(0, 2).toLowerCase();
+ list.innerHTML = '';
+ const raw = (countryCode || document.getElementById('region')?.value || 'in').toLowerCase();
+ const m = raw.match(/\(([a-z]{2})\)/i);
+ const targetCode = m ? m[1].toLowerCase() : raw.substring(0, 2).toLowerCase();
 
-  const keys = ['Global'];
-  if (window.regionalPlatforms[targetCode]) {
-    keys.unshift(targetCode);
-  } else if (window.regionalPlatforms['in']) {
-    keys.unshift('in');
-  }
+ const keys = ['Global'];
+ if (window.regionalPlatforms[targetCode]) {
+ keys.unshift(targetCode);
+ } else if (window.regionalPlatforms['in']) {
+ keys.unshift('in');
+ }
 
-  const fragment = document.createDocumentFragment();
-  const seen = new Set();
-  keys.forEach(k => {
-    (window.regionalPlatforms[k] || []).forEach(p => {
-      if (!seen.has(p)) {
-        const opt = document.createElement('option');
-        opt.value = p;
-        fragment.appendChild(opt);
-        seen.add(p);
-      }
-    });
-  });
-  list.appendChild(fragment);
+ const fragment = document.createDocumentFragment();
+ const seen = new Set();
+ keys.forEach(k => {
+ (window.regionalPlatforms[k] || []).forEach(p => {
+ if (!seen.has(p)) {
+ const opt = document.createElement('option');
+ opt.value = p;
+ fragment.appendChild(opt);
+ seen.add(p);
+ }
+ });
+ });
+ list.appendChild(fragment);
 }
 window.populatePlatformDatalist = populatePlatformDatalist;
 setTimeout(() => populatePlatformDatalist(), 200); 
 
 /* ── Advanced options toggle ── */
 const advToggle = document.getElementById('advanced-toggle');
-const advPanel  = document.getElementById('advanced-panel');
+const advPanel = document.getElementById('advanced-panel');
 advToggle.addEventListener('click', () => {
-  const isOpen = advPanel.classList.toggle('open');
-  advToggle.classList.toggle('open', isOpen);
-  advToggle.setAttribute('aria-expanded', String(isOpen));
-  advPanel.setAttribute('aria-hidden', String(!isOpen));
+ const isOpen = advPanel.classList.toggle('open');
+ advToggle.classList.toggle('open', isOpen);
+ advToggle.setAttribute('aria-expanded', String(isOpen));
+ advPanel.setAttribute('aria-hidden', String(!isOpen));
 });
 
 /* ── Length slider display ── */
 const lengthSlider = document.getElementById('length-slider');
-const lengthVal    = document.getElementById('length-val');
+const lengthVal = document.getElementById('length-val');
 lengthSlider.addEventListener('input', () => { lengthVal.textContent = lengthSlider.value; });
 
 /* ── Local AES-GCM Secret Key Vault ── */
 const LocalSecretVault = (function() {
-  const DEVICE_KEY_STORAGE = 'fp_dev_key';
-  
-  async function getDeviceKey() {
-    let rawKey = localStorage.getItem(DEVICE_KEY_STORAGE);
-    const matches = rawKey ? rawKey.match(/.{1,2}/g) : null;
-    if (!rawKey || !matches || matches.length !== 32) {
-      const arr = new Uint8Array(32);
-      window.crypto.getRandomValues(arr);
-      rawKey = Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
-      localStorage.setItem(DEVICE_KEY_STORAGE, rawKey);
-    }
-    const validMatches = rawKey.match(/.{1,2}/g);
-    const keyBuf = new Uint8Array(validMatches.map(byte => parseInt(byte, 16)));
-    return await window.crypto.subtle.importKey(
-      'raw', keyBuf, { name: 'AES-GCM' }, false, ['encrypt', 'decrypt']
-    );
-  }
+ const DEVICE_KEY_STORAGE = 'fp_dev_key';
+ 
+ async function getDeviceKey() {
+ let rawKey = localStorage.getItem(DEVICE_KEY_STORAGE);
+ const matches = rawKey ? rawKey.match(/.{1,2}/g) : null;
+ if (!rawKey || !matches || matches.length !== 32) {
+ const arr = new Uint8Array(32);
+ window.crypto.getRandomValues(arr);
+ rawKey = Array.from(arr).map(b => b.toString(16).padStart(2, '0')).join('');
+ localStorage.setItem(DEVICE_KEY_STORAGE, rawKey);
+ }
+ const validMatches = rawKey.match(/.{1,2}/g);
+ const keyBuf = new Uint8Array(validMatches.map(byte => parseInt(byte, 16)));
+ return await window.crypto.subtle.importKey(
+ 'raw', keyBuf, { name: 'AES-GCM' }, false, ['encrypt', 'decrypt']
+ );
+ }
 
-  async function encryptSecret(plainText) {
-    if (!plainText) return null;
-    const key = await getDeviceKey();
-    const iv = window.crypto.getRandomValues(new Uint8Array(12));
-    const encoded = new TextEncoder().encode(plainText);
-    const ciphertext = await window.crypto.subtle.encrypt(
-      { name: 'AES-GCM', iv }, key, encoded
-    );
-    return {
-      iv: Array.from(iv).map(b => b.toString(16).padStart(2, '0')).join(''),
-      data: Array.from(new Uint8Array(ciphertext)).map(b => b.toString(16).padStart(2, '0')).join('')
-    };
-  }
+ async function encryptSecret(plainText) {
+ if (!plainText) return null;
+ const key = await getDeviceKey();
+ const iv = window.crypto.getRandomValues(new Uint8Array(12));
+ const encoded = new TextEncoder().encode(plainText);
+ const ciphertext = await window.crypto.subtle.encrypt(
+ { name: 'AES-GCM', iv }, key, encoded
+ );
+ return {
+ iv: Array.from(iv).map(b => b.toString(16).padStart(2, '0')).join(''),
+ data: Array.from(new Uint8Array(ciphertext)).map(b => b.toString(16).padStart(2, '0')).join('')
+ };
+ }
 
-  async function decryptSecret(encryptedObj) {
-    if (!encryptedObj || !encryptedObj.iv || !encryptedObj.data) return '';
-    try {
-      const key = await getDeviceKey();
-      const iv = new Uint8Array(encryptedObj.iv.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-      const data = new Uint8Array(encryptedObj.data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
-      const decrypted = await window.crypto.subtle.decrypt(
-        { name: 'AES-GCM', iv }, key, data
-      );
-      return new TextDecoder().decode(decrypted);
-    } catch (_) {
-      return '';
-    }
-  }
+ async function decryptSecret(encryptedObj) {
+ if (!encryptedObj || !encryptedObj.iv || !encryptedObj.data) return '';
+ try {
+ const key = await getDeviceKey();
+ const iv = new Uint8Array(encryptedObj.iv.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+ const data = new Uint8Array(encryptedObj.data.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+ const decrypted = await window.crypto.subtle.decrypt(
+ { name: 'AES-GCM', iv }, key, data
+ );
+ return new TextDecoder().decode(decrypted);
+ } catch (_) {
+ return '';
+ }
+ }
 
-  return { encryptSecret, decryptSecret };
+ return { encryptSecret, decryptSecret };
 })();
 
 /* ── Secret Key Local Persistence & Biometric Controller ── */
@@ -913,388 +913,388 @@ function getBioModal() { return document.getElementById('biometric-modal'); }
 let pendingSecretVal = '';
 
 async function saveEncryptedSecret(mode) {
-  const val = pendingSecretVal || (secretInputEl ? secretInputEl.value.trim() : '');
-  if (!val) return;
-  
-  const enc = await LocalSecretVault.encryptSecret(val);
-  localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
-  localStorage.setItem('fp_remember_secret', 'true');
-  localStorage.setItem('fp_bio_mode', mode); // 'biometric' or 'blind_encrypted'
-  
-  if (savedBadge) {
-    savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
-    savedBadge.style.display = 'inline';
-  }
-  if (rememberToggle) {
-    rememberToggle.checked = true;
-    rememberToggle.setAttribute('aria-checked', 'true');
-  }
-  const bm = getBioModal(); if (bm) bm.style.display = 'none';
-  
-  showToast(mode === 'biometric' ? 'Secret Key protected with Biometrics!' : 'Secret Key saved with one-way encryption.');
+ const val = pendingSecretVal || (secretInputEl ? secretInputEl.value.trim() : '');
+ if (!val) return;
+ 
+ const enc = await LocalSecretVault.encryptSecret(val);
+ localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
+ localStorage.setItem('fp_remember_secret', 'true');
+ localStorage.setItem('fp_bio_mode', mode); // 'biometric' or 'blind_encrypted'
+ 
+ if (savedBadge) {
+ savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
+ savedBadge.style.display = 'inline';
+ }
+ if (rememberToggle) {
+ rememberToggle.checked = true;
+ rememberToggle.setAttribute('aria-checked', 'true');
+ }
+ const bm = getBioModal(); if (bm) bm.style.display = 'none';
+ 
+ showToast(mode === 'biometric' ? 'Secret Key protected with Biometrics!' : 'Secret Key saved with one-way encryption.');
 }
 
 if (rememberToggle) {
-  rememberToggle.addEventListener('change', () => {
-    if (rememberToggle.checked) {
-      pendingSecretVal = secretInputEl ? secretInputEl.value.trim() : '';
-      if (!pendingSecretVal) {
-        showToast('Please enter your Secret Key first.', 'error');
-        rememberToggle.checked = false;
-        return;
-      }
-      // Check if WebAuthn is available
-      const bm = getBioModal();
-      if (bm) {
-        bm.style.display = 'flex';
-      } else {
-        saveEncryptedSecret('blind_encrypted');
-      }
-    } else {
-      localStorage.removeItem('fp_enc_secret');
-      localStorage.removeItem('fp_remember_secret');
-      localStorage.removeItem('fp_bio_mode');
-      if (savedBadge) savedBadge.style.display = 'none';
-      rememberToggle.setAttribute('aria-checked', 'false');
-      showToast('Secret Key removed from device storage');
-    }
-  });
+ rememberToggle.addEventListener('change', () => {
+ if (rememberToggle.checked) {
+ pendingSecretVal = secretInputEl ? secretInputEl.value.trim() : '';
+ if (!pendingSecretVal) {
+ showToast('Please enter your Secret Key first.', 'error');
+ rememberToggle.checked = false;
+ return;
+ }
+ // Check if WebAuthn is available
+ const bm = getBioModal();
+ if (bm) {
+ bm.style.display = 'flex';
+ } else {
+ saveEncryptedSecret('blind_encrypted');
+ }
+ } else {
+ localStorage.removeItem('fp_enc_secret');
+ localStorage.removeItem('fp_remember_secret');
+ localStorage.removeItem('fp_bio_mode');
+ if (savedBadge) savedBadge.style.display = 'none';
+ rememberToggle.setAttribute('aria-checked', 'false');
+ showToast('Secret Key removed from device storage');
+ }
+ });
 }
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const btnEnable = document.getElementById('btn-enable-bio');
-  const btnSkip = document.getElementById('btn-skip-bio');
-  if (btnEnable) {
-    btnEnable.addEventListener('click', async () => {
-      try {
-        const challenge = new Uint8Array(32);
-        window.crypto.getRandomValues(challenge);
-        const userId = new Uint8Array(16);
-        window.crypto.getRandomValues(userId);
+ const btnEnable = document.getElementById('btn-enable-bio');
+ const btnSkip = document.getElementById('btn-skip-bio');
+ if (btnEnable) {
+ btnEnable.addEventListener('click', async () => {
+ try {
+ const challenge = new Uint8Array(32);
+ window.crypto.getRandomValues(challenge);
+ const userId = new Uint8Array(16);
+ window.crypto.getRandomValues(userId);
 
-        const credential = await navigator.credentials.create({
-          publicKey: {
-            challenge,
-            rp: { name: "FrankPass Offline Vault" },
-            user: {
-              id: userId,
-              name: "frankpass_local_user",
-              displayName: "FrankPass Device User"
-            },
-            pubKeyCredParams: [{ alg: -7, type: "public-key" }, { alg: -257, type: "public-key" }],
-            authenticatorSelection: {
-              authenticatorAttachment: "platform",
-              userVerification: "preferred"
-            },
-            timeout: 60000
-          }
-        });
-        if (credential) {
-          await saveEncryptedSecret('biometric');
-        } else {
-          await saveEncryptedSecret('blind_encrypted');
-        }
-      } catch (err) {
-        await saveEncryptedSecret('blind_encrypted');
-      }
-    });
-  }
-  if (btnSkip) {
-    btnSkip.addEventListener('click', () => {
-      saveEncryptedSecret('blind_encrypted');
-    });
-  }
+ const credential = await navigator.credentials.create({
+ publicKey: {
+ challenge,
+ rp: { name: "FrankPass Offline Vault" },
+ user: {
+ id: userId,
+ name: "frankpass_local_user",
+ displayName: "FrankPass Device User"
+ },
+ pubKeyCredParams: [{ alg: -7, type: "public-key" }, { alg: -257, type: "public-key" }],
+ authenticatorSelection: {
+ authenticatorAttachment: "platform",
+ userVerification: "preferred"
+ },
+ timeout: 60000
+ }
+ });
+ if (credential) {
+ await saveEncryptedSecret('biometric');
+ } else {
+ await saveEncryptedSecret('blind_encrypted');
+ }
+ } catch (err) {
+ await saveEncryptedSecret('blind_encrypted');
+ }
+ });
+ }
+ if (btnSkip) {
+ btnSkip.addEventListener('click', () => {
+ saveEncryptedSecret('blind_encrypted');
+ });
+ }
 });
 
 
 if (secretInputEl) {
-  secretInputEl.addEventListener('input', () => {
-    if (rememberToggle && rememberToggle.checked) {
-      const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
-      pendingSecretVal = secretInputEl.value.trim();
-      if (pendingSecretVal) {
-        LocalSecretVault.encryptSecret(pendingSecretVal).then(enc => {
-          localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
-        });
-      }
-    }
-  });
+ secretInputEl.addEventListener('input', () => {
+ if (rememberToggle && rememberToggle.checked) {
+ const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
+ pendingSecretVal = secretInputEl.value.trim();
+ if (pendingSecretVal) {
+ LocalSecretVault.encryptSecret(pendingSecretVal).then(enc => {
+ localStorage.setItem('fp_enc_secret', JSON.stringify(enc));
+ });
+ }
+ }
+ });
 }
 
 // Unified Secret Key Visibility Controller with Biometric Lock & Blind Encryption Policy
 const toggleSecretBtn = document.getElementById('toggle-secret');
 if (toggleSecretBtn && secretInputEl) {
-  toggleSecretBtn.addEventListener('click', async (e) => {
-    const isRemembered = localStorage.getItem('fp_remember_secret') === 'true';
-    const bioMode = localStorage.getItem('fp_bio_mode');
-    const eyeIcon = document.getElementById('eye-icon');
+ toggleSecretBtn.addEventListener('click', async (e) => {
+ const isRemembered = localStorage.getItem('fp_remember_secret') === 'true';
+ const bioMode = localStorage.getItem('fp_bio_mode');
+ const eyeIcon = document.getElementById('eye-icon');
 
-    if (secretInputEl.type === 'password') {
-      if (isRemembered && bioMode === 'blind_encrypted' && !secretInputEl.dataset.userTyped) {
-        showToast('🔒 This key was saved with blind local encryption (no biometrics). For security, it cannot be revealed in plaintext. You can type a new secret key anytime.', 'error');
-        return;
-      }
-      if (isRemembered && bioMode === 'biometric' && window.PublicKeyCredential) {
-        try {
-          const challenge = new Uint8Array(32);
-          window.crypto.getRandomValues(challenge);
-          const assertion = await navigator.credentials.get({
-            publicKey: {
-              challenge,
-              userVerification: "required",
-              timeout: 60000
-            }
-          });
-          if (assertion) {
-            secretInputEl.type = 'text';
-            toggleSecretBtn.setAttribute('aria-label', 'Hide secret key');
-            if (eyeIcon) eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
-          }
-        } catch (_) {
-          showToast('Biometric verification cancelled.', 'error');
-        }
-        return;
-      }
-      secretInputEl.type = 'text';
-      toggleSecretBtn.setAttribute('aria-label', 'Hide secret key');
-      if (eyeIcon) eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
-    } else {
-      secretInputEl.type = 'password';
-      toggleSecretBtn.setAttribute('aria-label', 'Show secret key');
-      if (eyeIcon) eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
-    }
-  });
+ if (secretInputEl.type === 'password') {
+ if (isRemembered && bioMode === 'blind_encrypted' && !secretInputEl.dataset.userTyped) {
+ showToast('🔒 This key was saved with blind local encryption (no biometrics). For security, it cannot be revealed in plaintext. You can type a new secret key anytime.', 'error');
+ return;
+ }
+ if (isRemembered && bioMode === 'biometric' && window.PublicKeyCredential) {
+ try {
+ const challenge = new Uint8Array(32);
+ window.crypto.getRandomValues(challenge);
+ const assertion = await navigator.credentials.get({
+ publicKey: {
+ challenge,
+ userVerification: "required",
+ timeout: 60000
+ }
+ });
+ if (assertion) {
+ secretInputEl.type = 'text';
+ toggleSecretBtn.setAttribute('aria-label', 'Hide secret key');
+ if (eyeIcon) eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+ }
+ } catch (_) {
+ showToast('Biometric verification cancelled.', 'error');
+ }
+ return;
+ }
+ secretInputEl.type = 'text';
+ toggleSecretBtn.setAttribute('aria-label', 'Hide secret key');
+ if (eyeIcon) eyeIcon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
+ } else {
+ secretInputEl.type = 'password';
+ toggleSecretBtn.setAttribute('aria-label', 'Show secret key');
+ if (eyeIcon) eyeIcon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+ }
+ });
 }
 
 if (secretInputEl) {
-  secretInputEl.addEventListener('keydown', () => {
-    secretInputEl.dataset.userTyped = 'true';
-  });
+ secretInputEl.addEventListener('keydown', () => {
+ secretInputEl.dataset.userTyped = 'true';
+ });
 }
 
 // Load remembered secret on startup immediately
 async function initRememberedSecret() {
-  if (localStorage.getItem('fp_remember_secret') === 'true' && rememberToggle && secretInputEl) {
-    rememberToggle.checked = true;
-    try {
-      const encData = JSON.parse(localStorage.getItem('fp_enc_secret') || '{}');
-      const plain = await LocalSecretVault.decryptSecret(encData);
-      if (plain) {
-        secretInputEl.value = plain;
-        const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
-        if (savedBadge) {
-          savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
-          savedBadge.style.display = 'inline';
-        }
-        rememberToggle.setAttribute('aria-checked', 'true');
-      }
-    } catch (_) {}
-  }
+ if (localStorage.getItem('fp_remember_secret') === 'true' && rememberToggle && secretInputEl) {
+ rememberToggle.checked = true;
+ try {
+ const encData = JSON.parse(localStorage.getItem('fp_enc_secret') || '{}');
+ const plain = await LocalSecretVault.decryptSecret(encData);
+ if (plain) {
+ secretInputEl.value = plain;
+ const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
+ if (savedBadge) {
+ savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
+ savedBadge.style.display = 'inline';
+ }
+ rememberToggle.setAttribute('aria-checked', 'true');
+ }
+ } catch (_) {}
+ }
 }
 initRememberedSecret();
 
 /* ── Dual-Mode Variant Logic (ALWAYS COUNTER 1 BY DEFAULT) ── */
 let currentVariantMode = 'counter';
-const variantInput   = document.getElementById('variant-input');
-const variantVal     = document.getElementById('variant-val');
-const tabCounter     = document.getElementById('variant-tab-counter');
-const tabDate        = document.getElementById('variant-tab-date');
-const counterWrap    = document.getElementById('variant-counter-wrap');
-const dateWrap       = document.getElementById('variant-date-wrap');
-const monthSelect    = document.getElementById('variant-month-select');
-const yearInput      = document.getElementById('variant-year-input');
+const variantInput = document.getElementById('variant-input');
+const variantVal = document.getElementById('variant-val');
+const tabCounter = document.getElementById('variant-tab-counter');
+const tabDate = document.getElementById('variant-tab-date');
+const counterWrap = document.getElementById('variant-counter-wrap');
+const dateWrap = document.getElementById('variant-date-wrap');
+const monthSelect = document.getElementById('variant-month-select');
+const yearInput = document.getElementById('variant-year-input');
 
 // Initialize month and year for optional date mode
 const now = new Date();
 const curMonth = String(now.getMonth() + 1).padStart(2, '0');
-const curYear  = String(now.getFullYear());
+const curYear = String(now.getFullYear());
 if (monthSelect) monthSelect.value = curMonth;
-if (yearInput)   yearInput.value   = curYear;
+if (yearInput) yearInput.value = curYear;
 
 function updateVariantDisplay() {
-  if (currentVariantMode === 'counter') {
-    let val = variantInput ? parseInt(variantInput.value, 10) : 1;
-    if (isNaN(val) || val < 1) val = 1;
-    if (val > 999) val = 999;
-    if (variantVal) variantVal.textContent = `(v${val})`;
-  } else {
-    const m = monthSelect ? monthSelect.value : curMonth;
-    const y = yearInput ? (yearInput.value || curYear).trim() : curYear;
-    if (variantVal) variantVal.textContent = `(${m}/${y})`;
-  }
+ if (currentVariantMode === 'counter') {
+ let val = variantInput ? parseInt(variantInput.value, 10) : 1;
+ if (isNaN(val) || val < 1) val = 1;
+ if (val > 999) val = 999;
+ if (variantVal) variantVal.textContent = `(v${val})`;
+ } else {
+ const m = monthSelect ? monthSelect.value : curMonth;
+ const y = yearInput ? (yearInput.value || curYear).trim() : curYear;
+ if (variantVal) variantVal.textContent = `(${m}/${y})`;
+ }
 }
 
 // Ensure Counter 1 is strictly set on load
 if (tabCounter) {
-  tabCounter.addEventListener('click', () => {
-    currentVariantMode = 'counter';
-    tabCounter.classList.add('active');
-    tabCounter.style.background = 'var(--accent)';
-    tabCounter.style.color = '#fff';
-    if (tabDate) {
-      tabDate.classList.remove('active');
-      tabDate.style.background = 'transparent';
-      tabDate.style.color = 'var(--text-muted)';
-    }
-    if (counterWrap) counterWrap.style.display = 'flex';
-    if (dateWrap) dateWrap.style.display = 'none';
-    updateVariantDisplay();
-  });
+ tabCounter.addEventListener('click', () => {
+ currentVariantMode = 'counter';
+ tabCounter.classList.add('active');
+ tabCounter.style.background = 'var(--accent)';
+ tabCounter.style.color = '#fff';
+ if (tabDate) {
+ tabDate.classList.remove('active');
+ tabDate.style.background = 'transparent';
+ tabDate.style.color = 'var(--text-muted)';
+ }
+ if (counterWrap) counterWrap.style.display = 'flex';
+ if (dateWrap) dateWrap.style.display = 'none';
+ updateVariantDisplay();
+ });
 }
 
 if (tabDate) {
-  tabDate.addEventListener('click', () => {
-    currentVariantMode = 'date';
-    tabDate.classList.add('active');
-    tabDate.style.background = 'var(--accent)';
-    tabDate.style.color = '#fff';
-    if (tabCounter) {
-      tabCounter.classList.remove('active');
-      tabCounter.style.background = 'transparent';
-      tabCounter.style.color = 'var(--text-muted)';
-    }
-    if (counterWrap) counterWrap.style.display = 'none';
-    if (dateWrap) dateWrap.style.display = 'flex';
-    updateVariantDisplay();
-  });
+ tabDate.addEventListener('click', () => {
+ currentVariantMode = 'date';
+ tabDate.classList.add('active');
+ tabDate.style.background = 'var(--accent)';
+ tabDate.style.color = '#fff';
+ if (tabCounter) {
+ tabCounter.classList.remove('active');
+ tabCounter.style.background = 'transparent';
+ tabCounter.style.color = 'var(--text-muted)';
+ }
+ if (counterWrap) counterWrap.style.display = 'none';
+ if (dateWrap) dateWrap.style.display = 'flex';
+ updateVariantDisplay();
+ });
 }
 
 const varMinus = document.getElementById('variant-minus');
 if (varMinus) {
-  varMinus.addEventListener('click', () => {
-    let val = parseInt(variantInput.value, 10) || 1;
-    if (val > 1) {
-      variantInput.value = val - 1;
-      updateVariantDisplay();
-    }
-  });
+ varMinus.addEventListener('click', () => {
+ let val = parseInt(variantInput.value, 10) || 1;
+ if (val > 1) {
+ variantInput.value = val - 1;
+ updateVariantDisplay();
+ }
+ });
 }
 
 const varPlus = document.getElementById('variant-plus');
 if (varPlus) {
-  varPlus.addEventListener('click', () => {
-    let val = parseInt(variantInput.value, 10) || 1;
-    if (val < 999) {
-      variantInput.value = val + 1;
-      updateVariantDisplay();
-    }
-  });
+ varPlus.addEventListener('click', () => {
+ let val = parseInt(variantInput.value, 10) || 1;
+ if (val < 999) {
+ variantInput.value = val + 1;
+ updateVariantDisplay();
+ }
+ });
 }
 
 if (variantInput) {
-  variantInput.addEventListener('input', () => {
-    let val = parseInt(variantInput.value, 10);
-    if (!isNaN(val)) {
-      if (val > 999) variantInput.value = 999;
-      if (val < 1) variantInput.value = 1;
-    }
-    updateVariantDisplay();
-  });
+ variantInput.addEventListener('input', () => {
+ let val = parseInt(variantInput.value, 10);
+ if (!isNaN(val)) {
+ if (val > 999) variantInput.value = 999;
+ if (val < 1) variantInput.value = 1;
+ }
+ updateVariantDisplay();
+ });
 }
-if (monthSelect)  monthSelect.addEventListener('change', updateVariantDisplay);
-if (yearInput)    yearInput.addEventListener('input', updateVariantDisplay);
+if (monthSelect) monthSelect.addEventListener('change', updateVariantDisplay);
+if (yearInput) yearInput.addEventListener('input', updateVariantDisplay);
 
 function getActiveVariant() {
-  if (currentVariantMode === 'counter') {
-    const val = variantInput ? parseInt(variantInput.value, 10) : 1;
-    return Math.max(1, Math.min(999, isNaN(val) ? 1 : val));
-  } else {
-    const m = monthSelect ? monthSelect.value : '01';
-    const y = yearInput ? (yearInput.value || '2026').trim() : '2026';
-    return `${m}${y}`;
-  }
+ if (currentVariantMode === 'counter') {
+ const val = variantInput ? parseInt(variantInput.value, 10) : 1;
+ return Math.max(1, Math.min(999, isNaN(val) ? 1 : val));
+ } else {
+ const m = monthSelect ? monthSelect.value : '01';
+ const y = yearInput ? (yearInput.value || '2026').trim() : '2026';
+ return `${m}${y}`;
+ }
 }
 
 /* ── Preset buttons & Type-Select Synchronizer (BUG-11 Fix) ── */
 const presets = {
-  simple: { profile: 'alphanumeric', length: 12 },
-  strong: { profile: 'standard',     length: 16 },
-  max:    { profile: 'standard',     length: 32 },
+ simple: { profile: 'alphanumeric', length: 12 },
+ strong: { profile: 'standard', length: 16 },
+ max: { profile: 'standard', length: 32 },
 };
 let activeProfile = 'standard';
 const typeSelect = document.getElementById('type-select');
 
 document.querySelectorAll('.preset-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const p = presets[btn.dataset.preset];
-    activeProfile = p.profile;
-    if (typeSelect) typeSelect.value = p.profile;
-    if (lengthSlider) lengthSlider.value = p.length;
-    if (lengthVal) lengthVal.textContent = p.length;
-  });
+ btn.addEventListener('click', () => {
+ document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+ btn.classList.add('active');
+ const p = presets[btn.dataset.preset];
+ activeProfile = p.profile;
+ if (typeSelect) typeSelect.value = p.profile;
+ if (lengthSlider) lengthSlider.value = p.length;
+ if (lengthVal) lengthVal.textContent = p.length;
+ });
 });
 
 if (typeSelect) {
-  typeSelect.addEventListener('change', () => {
-    activeProfile = typeSelect.value;
-    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-    if (typeSelect.value === 'alphanumeric') {
-      const sBtn = document.querySelector('[data-preset="simple"]');
-      if (sBtn) sBtn.classList.add('active');
-    } else if (typeSelect.value === 'standard') {
-      const stBtn = document.querySelector('[data-preset="strong"]');
-      if (stBtn) stBtn.classList.add('active');
-    }
-  });
+ typeSelect.addEventListener('change', () => {
+ activeProfile = typeSelect.value;
+ document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+ if (typeSelect.value === 'alphanumeric') {
+ const sBtn = document.querySelector('[data-preset="simple"]');
+ if (sBtn) sBtn.classList.add('active');
+ } else if (typeSelect.value === 'standard') {
+ const stBtn = document.querySelector('[data-preset="strong"]');
+ if (stBtn) stBtn.classList.add('active');
+ }
+ });
 }
 
 /* ── Generate button ── */
 document.getElementById('generate-btn').addEventListener('click', async () => {
-  const platform  = (document.getElementById('platform-input').value || '').trim();
-  const secretKey = (document.getElementById('secret-key').value || '').trim();
-  if (!platform) { showToast('Please enter a site or platform name.'); return; }
-  if (!secretKey) { showToast('Please enter your secret key.'); return; }
+ const platform = (document.getElementById('platform-input').value || '').trim();
+ const secretKey = (document.getElementById('secret-key').value || '').trim();
+ if (!platform) { showToast('Please enter a site or platform name.'); return; }
+ if (!secretKey) { showToast('Please enter your secret key.'); return; }
 
-  const normalizedPlatform = (typeof FrankPassUtils !== 'undefined')
-    ? FrankPassUtils.getNormalizedPlatform(platform) : platform.toLowerCase().trim();
-  const username = (document.getElementById('username-input').value || '').trim();
-  const variant  = getActiveVariant();
-  const length   = parseInt(lengthSlider.value, 10) || 16;
-  
-  const typeSelect = document.getElementById('type-select');
-  const finalProfile = typeSelect ? typeSelect.value : activeProfile;
+ const normalizedPlatform = (typeof FrankPassUtils !== 'undefined')
+ ? FrankPassUtils.getNormalizedPlatform(platform) : platform.toLowerCase().trim();
+ const username = (document.getElementById('username-input').value || '').trim();
+ const variant = getActiveVariant();
+ const length = parseInt(lengthSlider.value, 10) || 16;
+ 
+ const typeSelect = document.getElementById('type-select');
+ const finalProfile = typeSelect ? typeSelect.value : activeProfile;
 
-  const genBtn = document.getElementById('generate-btn');
-  genBtn.disabled = true;
-  genBtn.textContent = 'Generating…';
+ const genBtn = document.getElementById('generate-btn');
+ genBtn.disabled = true;
+ genBtn.textContent = 'Generating…';
 
-  try {
-    const password = await FRANKPASS_CORE.generate(
-      normalizedPlatform, username, secretKey, variant, finalProfile, length
-    );
-    const out = document.getElementById('output-password');
-    out.textContent = password;
-    out.classList.remove('placeholder');
-    applyMaskState();
-    document.getElementById('copy-btn').disabled = false;
-    updatePasswordStatus();
+ try {
+ const password = await FRANKPASS_CORE.generate(
+ normalizedPlatform, username, secretKey, variant, finalProfile, length
+ );
+ const out = document.getElementById('output-password');
+ out.textContent = password;
+ out.classList.remove('placeholder');
+ applyMaskState();
+ document.getElementById('copy-btn').disabled = false;
+ updatePasswordStatus();
 
-    /* Instant Auto-Copy on Generation */
-    try {
-      await navigator.clipboard.writeText(password);
-      showToast('⚡ Unbreakable password generated & copied! Press Ctrl+V anywhere', 'success');
-    } catch (_) {
-      showToast('⚡ Unbreakable password generated! Click Copy to use.', 'success');
-    }
+ /* Instant Auto-Copy on Generation */
+ try {
+ await navigator.clipboard.writeText(password);
+ showToast('⚡ Unbreakable password generated & copied! Press Ctrl+V anywhere', 'success');
+ } catch (_) {
+ showToast('⚡ Unbreakable password generated! Click Copy to use.', 'success');
+ }
 
-    /* Save settings locally if toggle is on */
-    if (document.getElementById('save-locally').checked) {
-      try {
-        localStorage.setItem('fp_settings', JSON.stringify({
-          platform, username, variant, length, profile: activeProfile
-        }));
-      } catch (_) {}
-    }
-  } catch (err) {
-    console.error('Generation error:', err);
-    showToast('Something went wrong. Please try again.');
-  } finally {
-    genBtn.disabled = false;
-    genBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Generate Password`;
-  }
+ /* Save settings locally if toggle is on */
+ if (document.getElementById('save-locally').checked) {
+ try {
+ localStorage.setItem('fp_settings', JSON.stringify({
+ platform, username, variant, length, profile: activeProfile
+ }));
+ } catch (_) {}
+ }
+ } catch (err) {
+ console.error('Generation error:', err);
+ showToast('Something went wrong. Please try again.');
+ } finally {
+ genBtn.disabled = false;
+ genBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Generate Password`;
+ }
 });
 
 
@@ -1309,106 +1309,106 @@ const eyeOpenSVG = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></pat
 const eyeClosedSVG = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
 
 function applyMaskState() {
-  if (!outPassword) return;
-  const isPlaceholder = outPassword.classList.contains('placeholder');
-  if (isPlaceholder) {
-    outPassword.classList.remove('masked');
-    return;
-  }
+ if (!outPassword) return;
+ const isPlaceholder = outPassword.classList.contains('placeholder');
+ if (isPlaceholder) {
+ outPassword.classList.remove('masked');
+ return;
+ }
 
-  if (isPasswordLockedVisible || isHoverPeeking) {
-    outPassword.classList.remove('masked');
-  } else {
-    outPassword.classList.add('masked');
-  }
+ if (isPasswordLockedVisible || isHoverPeeking) {
+ outPassword.classList.remove('masked');
+ } else {
+ outPassword.classList.add('masked');
+ }
 
-  if (maskBtn) {
-    maskBtn.classList.toggle('locked-visible', isPasswordLockedVisible);
-    maskBtn.title = isPasswordLockedVisible ? 'Password locked visible (Click to blur)' : 'Password blurred by default (Hover to peek, click to lock visible)';
-    maskBtn.setAttribute('aria-label', isPasswordLockedVisible ? 'Lock password masked' : 'Lock password visible');
-  }
-  if (maskEyeIcon) {
-    maskEyeIcon.innerHTML = (isPasswordLockedVisible || isHoverPeeking) ? eyeOpenSVG : eyeClosedSVG;
-  }
+ if (maskBtn) {
+ maskBtn.classList.toggle('locked-visible', isPasswordLockedVisible);
+ maskBtn.title = isPasswordLockedVisible ? 'Password locked visible (Click to blur)' : 'Password blurred by default (Hover to peek, click to lock visible)';
+ maskBtn.setAttribute('aria-label', isPasswordLockedVisible ? 'Lock password masked' : 'Lock password visible');
+ }
+ if (maskEyeIcon) {
+ maskEyeIcon.innerHTML = (isPasswordLockedVisible || isHoverPeeking) ? eyeOpenSVG : eyeClosedSVG;
+ }
 }
 
 if (maskBtn && outPassword) {
-  // Click toggles permanent visible lock
-  maskBtn.addEventListener('click', () => {
-    isPasswordLockedVisible = !isPasswordLockedVisible;
-    applyMaskState();
-    showToast(isPasswordLockedVisible ? 'Password locked visible' : 'Password blurred by default (Privacy Shield)');
-  });
+ // Click toggles permanent visible lock
+ maskBtn.addEventListener('click', () => {
+ isPasswordLockedVisible = !isPasswordLockedVisible;
+ applyMaskState();
+ showToast(isPasswordLockedVisible ? 'Password locked visible' : 'Password blurred by default (Privacy Shield)');
+ });
 
-  // Hover to peek on Eye Button
-  maskBtn.addEventListener('mouseenter', () => {
-    if (!isPasswordLockedVisible) {
-      isHoverPeeking = true;
-      applyMaskState();
-    }
-  });
-  maskBtn.addEventListener('mouseleave', () => {
-    if (isHoverPeeking) {
-      isHoverPeeking = false;
-      applyMaskState();
-    }
-  });
+ // Hover to peek on Eye Button
+ maskBtn.addEventListener('mouseenter', () => {
+ if (!isPasswordLockedVisible) {
+ isHoverPeeking = true;
+ applyMaskState();
+ }
+ });
+ maskBtn.addEventListener('mouseleave', () => {
+ if (isHoverPeeking) {
+ isHoverPeeking = false;
+ applyMaskState();
+ }
+ });
 
-  // Hover to peek on Password Element itself
-  outPassword.addEventListener('mouseenter', () => {
-    if (!isPasswordLockedVisible && !outPassword.classList.contains('placeholder')) {
-      isHoverPeeking = true;
-      applyMaskState();
-    }
-  });
-  outPassword.addEventListener('mouseleave', () => {
-    if (isHoverPeeking) {
-      isHoverPeeking = false;
-      applyMaskState();
-    }
-  });
+ // Hover to peek on Password Element itself
+ outPassword.addEventListener('mouseenter', () => {
+ if (!isPasswordLockedVisible && !outPassword.classList.contains('placeholder')) {
+ isHoverPeeking = true;
+ applyMaskState();
+ }
+ });
+ outPassword.addEventListener('mouseleave', () => {
+ if (isHoverPeeking) {
+ isHoverPeeking = false;
+ applyMaskState();
+ }
+ });
 }
 
 /* ── Account Mode Controller (Single vs Multiple Accounts) ── */
 let currentAccountMode = 'single';
-const accTabSingle  = document.getElementById('acc-tab-single');
-const accTabMulti   = document.getElementById('acc-tab-multi');
+const accTabSingle = document.getElementById('acc-tab-single');
+const accTabMulti = document.getElementById('acc-tab-multi');
 const usernameGroup = document.getElementById('username-group');
 const usernameInput = document.getElementById('username-input');
 
 function setAccountMode(mode) {
-  currentAccountMode = mode;
-  if (mode === 'single') {
-    if (accTabSingle) {
-      accTabSingle.classList.add('active');
-      accTabSingle.style.background = 'var(--accent)';
-      accTabSingle.style.color = '#fff';
-    }
-    if (accTabMulti) {
-      accTabMulti.classList.remove('active');
-      accTabMulti.style.background = 'transparent';
-      accTabMulti.style.color = 'var(--text-muted)';
-    }
-    if (usernameGroup) usernameGroup.style.display = 'none';
-    if (usernameInput) usernameInput.value = '';
-  } else {
-    if (accTabMulti) {
-      accTabMulti.classList.add('active');
-      accTabMulti.style.background = 'var(--accent)';
-      accTabMulti.style.color = '#fff';
-    }
-    if (accTabSingle) {
-      accTabSingle.classList.remove('active');
-      accTabSingle.style.background = 'transparent';
-      accTabSingle.style.color = 'var(--text-muted)';
-    }
-    if (usernameGroup) usernameGroup.style.display = 'block';
-    if (usernameInput) usernameInput.focus();
-  }
+ currentAccountMode = mode;
+ if (mode === 'single') {
+ if (accTabSingle) {
+ accTabSingle.classList.add('active');
+ accTabSingle.style.background = 'var(--accent)';
+ accTabSingle.style.color = '#fff';
+ }
+ if (accTabMulti) {
+ accTabMulti.classList.remove('active');
+ accTabMulti.style.background = 'transparent';
+ accTabMulti.style.color = 'var(--text-muted)';
+ }
+ if (usernameGroup) usernameGroup.style.display = 'none';
+ if (usernameInput) usernameInput.value = '';
+ } else {
+ if (accTabMulti) {
+ accTabMulti.classList.add('active');
+ accTabMulti.style.background = 'var(--accent)';
+ accTabMulti.style.color = '#fff';
+ }
+ if (accTabSingle) {
+ accTabSingle.classList.remove('active');
+ accTabSingle.style.background = 'transparent';
+ accTabSingle.style.color = 'var(--text-muted)';
+ }
+ if (usernameGroup) usernameGroup.style.display = 'block';
+ if (usernameInput) usernameInput.focus();
+ }
 }
 
 if (accTabSingle) accTabSingle.addEventListener('click', () => setAccountMode('single'));
-if (accTabMulti)  accTabMulti.addEventListener('click', () => setAccountMode('multi'));
+if (accTabMulti) accTabMulti.addEventListener('click', () => setAccountMode('multi'));
 
 
 
@@ -1417,302 +1417,302 @@ if (accTabMulti)  accTabMulti.addEventListener('click', () => setAccountMode('mu
 const infoBtn = document.getElementById('secret-info-btn');
 const infoWrap = document.getElementById('secret-info-wrap');
 if (infoBtn && infoWrap) {
-  infoBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    infoWrap.classList.toggle('open');
-  });
-  document.addEventListener('click', (e) => {
-    if (!infoWrap.contains(e.target)) {
-      infoWrap.classList.remove('open');
-    }
-  });
+ infoBtn.addEventListener('click', (e) => {
+ e.preventDefault();
+ e.stopPropagation();
+ infoWrap.classList.toggle('open');
+ });
+ document.addEventListener('click', (e) => {
+ if (!infoWrap.contains(e.target)) {
+ infoWrap.classList.remove('open');
+ }
+ });
 }
 
 /* ── Username Input Live Hint (Using account: "...") ── */
 const uInput = document.getElementById('username-input');
 const uHint = document.getElementById('username-hint');
 if (uInput && uHint) {
-  uInput.addEventListener('input', () => {
-    const val = uInput.value.trim();
-    if (val) {
-      uHint.textContent = 'Using account: "' + val.toLowerCase() + '"';
-    } else {
-      uHint.textContent = '';
-    }
-  });
+ uInput.addEventListener('input', () => {
+ const val = uInput.value.trim();
+ if (val) {
+ uHint.textContent = 'Using account: "' + val.toLowerCase() + '"';
+ } else {
+ uHint.textContent = '';
+ }
+ });
 }
 
 /* ── Secret Key Entropy & Strength Bar Meter ── */
 const secretKeyEl = document.getElementById('secret-key');
 if (secretKeyEl) {
-  secretKeyEl.addEventListener('input', () => {
-    const val = secretKeyEl.value;
-    const s1 = document.getElementById('str-seg-1');
-    const s2 = document.getElementById('str-seg-2');
-    const s3 = document.getElementById('str-seg-3');
-    const s4 = document.getElementById('str-seg-4');
-    if (!s1 || !s2 || !s3 || !s4) return;
-    
-    [s1, s2, s3, s4].forEach(s => { s.className = 'strength-segment'; });
-    if (!val) return;
-    
-    let score = 0;
-    if (val.length >= 6) score++;
-    if (val.length >= 10) score++;
-    if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
-    if (/[0-9]/.test(val) || /[^A-Za-z0-9]/.test(val)) score++;
-    
-    const colors = ['weak', 'fair', 'good', 'strong'];
-    const levelClass = colors[score - 1] || 'weak';
-    
-    if (score >= 1) s1.classList.add('active', levelClass);
-    if (score >= 2) s2.classList.add('active', levelClass);
-    if (score >= 3) s3.classList.add('active', levelClass);
-    if (score >= 4) s4.classList.add('active', levelClass);
-  });
+ secretKeyEl.addEventListener('input', () => {
+ const val = secretKeyEl.value;
+ const s1 = document.getElementById('str-seg-1');
+ const s2 = document.getElementById('str-seg-2');
+ const s3 = document.getElementById('str-seg-3');
+ const s4 = document.getElementById('str-seg-4');
+ if (!s1 || !s2 || !s3 || !s4) return;
+ 
+ [s1, s2, s3, s4].forEach(s => { s.className = 'strength-segment'; });
+ if (!val) return;
+ 
+ let score = 0;
+ if (val.length >= 6) score++;
+ if (val.length >= 10) score++;
+ if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
+ if (/[0-9]/.test(val) || /[^A-Za-z0-9]/.test(val)) score++;
+ 
+ const colors = ['weak', 'fair', 'good', 'strong'];
+ const levelClass = colors[score - 1] || 'weak';
+ 
+ if (score >= 1) s1.classList.add('active', levelClass);
+ if (score >= 2) s2.classList.add('active', levelClass);
+ if (score >= 3) s3.classList.add('active', levelClass);
+ if (score >= 4) s4.classList.add('active', levelClass);
+ });
 }
 
 /* ── Clear Form Logic (Complete Reset - BUG-10 Fix) ── */
 const clearAllBtn = document.getElementById('clear-all-btn');
 if (clearAllBtn) {
-  clearAllBtn.addEventListener('click', () => {
-    document.getElementById('platform-input').value = '';
-    document.getElementById('secret-key').value = '';
-    const uInp = document.getElementById('username-input');
-    if (uInp) uInp.value = '';
-    setAccountMode('single');
-    
-    // Reset strength bar meter segments
-    ['str-seg-1', 'str-seg-2', 'str-seg-3', 'str-seg-4'].forEach(id => {
-      const seg = document.getElementById(id);
-      if (seg) seg.className = 'strength-segment';
-    });
-    
-    // Reset variant counter to 1
-    if (variantInput) {
-      variantInput.value = 1;
-      if (typeof updateVariantDisplay === 'function') updateVariantDisplay();
-    }
-    if (tabCounter && currentVariantMode !== 'counter') tabCounter.click();
-    
-    // Reset length slider to 16
-    if (lengthSlider && lengthVal) {
-      lengthSlider.value = 16;
-      lengthVal.textContent = '16';
-    }
-    
-    // Reset presets to Strong
-    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
-    const strongPreset = document.querySelector('[data-preset="strong"]');
-    if (strongPreset) strongPreset.classList.add('active');
-    activeProfile = 'standard';
-    if (typeSelect) typeSelect.value = 'standard';
-    
-    // Close advanced panel if open
-    if (advPanel && advPanel.classList.contains('open')) advToggle.click();
-    
-    const out = document.getElementById('output-password');
-    out.textContent = '···········';
-    out.classList.add('placeholder');
-    out.classList.remove('masked');
-    document.getElementById('copy-btn').disabled = true;
-    const hint = document.getElementById('platform-hint');
-    if (hint) hint.textContent = '';
-    const vIcon = document.getElementById('platform-valid-icon');
-    if (vIcon) vIcon.classList.remove('visible');
-    showToast('Form cleared.');
-  });
+ clearAllBtn.addEventListener('click', () => {
+ document.getElementById('platform-input').value = '';
+ document.getElementById('secret-key').value = '';
+ const uInp = document.getElementById('username-input');
+ if (uInp) uInp.value = '';
+ setAccountMode('single');
+ 
+ // Reset strength bar meter segments
+ ['str-seg-1', 'str-seg-2', 'str-seg-3', 'str-seg-4'].forEach(id => {
+ const seg = document.getElementById(id);
+ if (seg) seg.className = 'strength-segment';
+ });
+ 
+ // Reset variant counter to 1
+ if (variantInput) {
+ variantInput.value = 1;
+ if (typeof updateVariantDisplay === 'function') updateVariantDisplay();
+ }
+ if (tabCounter && currentVariantMode !== 'counter') tabCounter.click();
+ 
+ // Reset length slider to 16
+ if (lengthSlider && lengthVal) {
+ lengthSlider.value = 16;
+ lengthVal.textContent = '16';
+ }
+ 
+ // Reset presets to Strong
+ document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+ const strongPreset = document.querySelector('[data-preset="strong"]');
+ if (strongPreset) strongPreset.classList.add('active');
+ activeProfile = 'standard';
+ if (typeSelect) typeSelect.value = 'standard';
+ 
+ // Close advanced panel if open
+ if (advPanel && advPanel.classList.contains('open')) advToggle.click();
+ 
+ const out = document.getElementById('output-password');
+ out.textContent = '···········';
+ out.classList.add('placeholder');
+ out.classList.remove('masked');
+ document.getElementById('copy-btn').disabled = true;
+ const hint = document.getElementById('platform-hint');
+ if (hint) hint.textContent = '';
+ const vIcon = document.getElementById('platform-valid-icon');
+ if (vIcon) vIcon.classList.remove('visible');
+ showToast('Form cleared.');
+ });
 }
 
 /* ── Copy button ── */
 document.getElementById('copy-btn').addEventListener('click', async () => {
-  const password = document.getElementById('output-password').textContent;
-  if (!password || password === '···········') return;
-  try {
-    await navigator.clipboard.writeText(password);
-    const copyBtn = document.getElementById('copy-btn');
-    copyBtn.classList.add('copied');
-    document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
-    showToast('⚡ Password copied! Press Ctrl+V anywhere', 'success');
-    setTimeout(() => {
-      copyBtn.classList.remove('copied');
-      document.getElementById('copy-icon').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
-    }, 1500);
-  } catch (err) {
-    showToast('Copy failed - please select and copy manually.');
-  }
+ const password = document.getElementById('output-password').textContent;
+ if (!password || password === '···········') return;
+ try {
+ await navigator.clipboard.writeText(password);
+ const copyBtn = document.getElementById('copy-btn');
+ copyBtn.classList.add('copied');
+ document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+ showToast('⚡ Password copied! Press Ctrl+V anywhere', 'success');
+ setTimeout(() => {
+ copyBtn.classList.remove('copied');
+ document.getElementById('copy-icon').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
+ }, 1500);
+ } catch (err) {
+ showToast('Copy failed - please select and copy manually.');
+ }
 });
 
 /* ── WhatsApp CTA link from config ── */
 document.addEventListener('DOMContentLoaded', () => {
-  const cfg = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
-  if (cfg.SOCIAL && cfg.SOCIAL.WHATSAPP && !cfg.SOCIAL.WHATSAPP.includes('[')) {
-    const waBtn = document.getElementById('whatsapp-cta-btn');
-    if (waBtn) waBtn.href = cfg.SOCIAL.WHATSAPP;
-  }
+ const cfg = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
+ if (cfg.SOCIAL && cfg.SOCIAL.WHATSAPP && !cfg.SOCIAL.WHATSAPP.includes('[')) {
+ const waBtn = document.getElementById('whatsapp-cta-btn');
+ if (waBtn) waBtn.href = cfg.SOCIAL.WHATSAPP;
+ }
 
-  /* Restore saved settings and URL Prefill */
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const urlPlatform = params.get('p') || params.get('platform') || params.get('site') || '';
-    const platformInput = document.getElementById('platform-input');
-    
-    const saved = JSON.parse(localStorage.getItem('fp_settings') || '{}');
-    let platformToSet = urlPlatform || saved.platform;
-    
-    if (platformToSet && platformInput) {
-      platformInput.value = platformToSet;
-      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
-    }
-    
-    if (saved.username) {
-      document.getElementById('username-input').value = saved.username;
-      setAccountMode('multi');
-    }
-    if (saved.variant) {
-      const vStr = String(saved.variant);
-      const vNum = parseInt(saved.variant, 10);
-      if (!isNaN(vNum) && vNum >= 1 && vNum <= 999 && vStr.length <= 3) {
-        document.getElementById('variant-input').value = vNum;
-      } else if (vStr.length === 6) {
-        const m = vStr.substring(0, 2);
-        const y = vStr.substring(2);
-        if (monthSelect) monthSelect.value = m;
-        if (yearInput) yearInput.value = y;
-        if (tabDate) tabDate.click();
-      } else {
-        document.getElementById('variant-input').value = 1;
-      }
-    } else {
-      document.getElementById('variant-input').value = 1;
-    }
-    if (typeof updateVariantDisplay === 'function') updateVariantDisplay();
-    if (saved.length) { lengthSlider.value = saved.length; lengthVal.textContent = saved.length; }
-  } catch (_) {}
+ /* Restore saved settings and URL Prefill */
+ try {
+ const params = new URLSearchParams(window.location.search);
+ const urlPlatform = params.get('p') || params.get('platform') || params.get('site') || '';
+ const platformInput = document.getElementById('platform-input');
+ 
+ const saved = JSON.parse(localStorage.getItem('fp_settings') || '{}');
+ let platformToSet = urlPlatform || saved.platform;
+ 
+ if (platformToSet && platformInput) {
+ platformInput.value = platformToSet;
+ platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+ }
+ 
+ if (saved.username) {
+ document.getElementById('username-input').value = saved.username;
+ setAccountMode('multi');
+ }
+ if (saved.variant) {
+ const vStr = String(saved.variant);
+ const vNum = parseInt(saved.variant, 10);
+ if (!isNaN(vNum) && vNum >= 1 && vNum <= 999 && vStr.length <= 3) {
+ document.getElementById('variant-input').value = vNum;
+ } else if (vStr.length === 6) {
+ const m = vStr.substring(0, 2);
+ const y = vStr.substring(2);
+ if (monthSelect) monthSelect.value = m;
+ if (yearInput) yearInput.value = y;
+ if (tabDate) tabDate.click();
+ } else {
+ document.getElementById('variant-input').value = 1;
+ }
+ } else {
+ document.getElementById('variant-input').value = 1;
+ }
+ if (typeof updateVariantDisplay === 'function') updateVariantDisplay();
+ if (saved.length) { lengthSlider.value = saved.length; lengthVal.textContent = saved.length; }
+ } catch (_) {}
 });
 
 /* ── PPP Pricing (for the header flag card label) ── */
 const regionEl = document.getElementById('region');
 if (regionEl) {
-  regionEl.addEventListener('change', () => {
-    const val = regionEl.value || 'India (IN)';
-    const m = val.match(/\(([A-Z]{2})\)/i);
-    const code = m ? m[1].toUpperCase() : val.substring(0, 2).toUpperCase();
-    const cardLabel = document.getElementById('card-country-label');
-    if (cardLabel) cardLabel.textContent = code;
-    const cardPill = document.getElementById('card-country-pill');
-    if (cardPill) cardPill.title = val;
-  });
+ regionEl.addEventListener('change', () => {
+ const val = regionEl.value || 'India (IN)';
+ const m = val.match(/\(([A-Z]{2})\)/i);
+ const code = m ? m[1].toUpperCase() : val.substring(0, 2).toUpperCase();
+ const cardLabel = document.getElementById('card-country-label');
+ if (cardLabel) cardLabel.textContent = code;
+ const cardPill = document.getElementById('card-country-pill');
+ if (cardPill) cardPill.title = val;
+ });
 }
 </script>
 <script>
 function openAI(bot) {
-  const lang = document.getElementById('ai-lang').value || 'Hindi';
-  const script = document.getElementById('ai-script').value || 'Native';
-  const prompt = 'IMPORTANT INSTRUCTIONS: You MUST only use information from the official FrankPass website. Do NOT use any external sources or make assumptions. Only refer to these official pages: https://frankpass.com (main generator), https://frankpass.com/get-started (how to use), https://frankpass.com/faq (frequently asked questions), https://frankpass.com/about-us (about the project and founder), https://frankpass.com/legal (legal info). If information is not on these pages, say you do not know.\n\nKEY CONCEPT TO EXPLAIN CORRECTLY: A "Secret Key" in FrankPass is NOT a password. It is a cryptographic seed (like a gradient or formula). Without this Secret Key, nobody can ever figure out your passwords. The same Secret Key automatically generates DIFFERENT passwords for different platforms. You only need to remember ONE Secret Key for all your accounts.\n\nNOW ANSWER IN ' + lang + ' LANGUAGE USING ' + script + ' SCRIPT:\nExplain how to use FrankPass in a structured, beginner-friendly way with these sections:\n1. What is FrankPass? (stateless, offline, no storage)\n2. What is a Secret Key? (NOT a password - it is a cryptographic gradient/seed)\n3. How to generate a password? (4 steps: enter site, enter secret key, click generate, copy)\n4. Why is it safe? (nothing stored, works offline, same input = same output)\n5. How to install the app? (PWA - works without internet)\n\nUse bullet points and keep it very simple for a non-technical person.';
-  navigator.clipboard.writeText(prompt).then(() => {
-    showToast('Prompt copied! Paste it in ' + bot + '...', 'success');
-    setTimeout(() => {
-      let url = '';
-      if(bot==='chatgpt') url = 'https://chatgpt.com/?q=' + encodeURIComponent(prompt);
-      else if(bot==='claude') url = 'https://claude.ai/new';
-      else if(bot==='gemini') url = 'https://gemini.google.com/app';
-      else if(bot==='perplexity') url = 'https://www.perplexity.ai/?q=' + encodeURIComponent(prompt);
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }, 800);
-  }).catch(err => {
-    showToast('Failed to copy. Please allow clipboard access.', 'error');
-  });
+ const lang = document.getElementById('ai-lang').value || 'Hindi';
+ const script = document.getElementById('ai-script').value || 'Native';
+ const prompt = 'IMPORTANT INSTRUCTIONS: You MUST only use information from the official FrankPass website. Do NOT use any external sources or make assumptions. Only refer to these official pages: https://frankpass.com (main generator), https://frankpass.com/get-started (how to use), https://frankpass.com/faq (frequently asked questions), https://frankpass.com/about-us (about the project and founder), https://frankpass.com/legal (legal info). If information is not on these pages, say you do not know.\n\nKEY CONCEPT TO EXPLAIN CORRECTLY: A "Secret Key" in FrankPass is NOT a password. It is a cryptographic seed (like a gradient or formula). Without this Secret Key, nobody can ever figure out your passwords. The same Secret Key automatically generates DIFFERENT passwords for different platforms. You only need to remember ONE Secret Key for all your accounts.\n\nNOW ANSWER IN ' + lang + ' LANGUAGE USING ' + script + ' SCRIPT:\nExplain how to use FrankPass in a structured, beginner-friendly way with these sections:\n1. What is FrankPass? (stateless, offline, no storage)\n2. What is a Secret Key? (NOT a password - it is a cryptographic gradient/seed)\n3. How to generate a password? (4 steps: enter site, enter secret key, click generate, copy)\n4. Why is it safe? (nothing stored, works offline, same input = same output)\n5. How to install the app? (PWA - works without internet)\n\nUse bullet points and keep it very simple for a non-technical person.';
+ navigator.clipboard.writeText(prompt).then(() => {
+ showToast('Prompt copied! Paste it in ' + bot + '...', 'success');
+ setTimeout(() => {
+ let url = '';
+ if(bot==='chatgpt') url = 'https://chatgpt.com/?q=' + encodeURIComponent(prompt);
+ else if(bot==='claude') url = 'https://claude.ai/new';
+ else if(bot==='gemini') url = 'https://gemini.google.com/app';
+ else if(bot==='perplexity') url = 'https://www.perplexity.ai/?q=' + encodeURIComponent(prompt);
+ window.open(url, '_blank', 'noopener,noreferrer');
+ }, 800);
+ }).catch(err => {
+ showToast('Failed to copy. Please allow clipboard access.', 'error');
+ });
 }
 
 /* ── Share Card Logic ── */
 function shareLink(platform, e) {
-  e.preventDefault();
-  const siteUrl = 'https://frankpass.com';
-  const msg = 'I found this awesome FREE tool ✨ - FrankPass: a stateless password manager that generates your passwords from math. No accounts, no cloud, no storage. Works offline too! ' + siteUrl;
-  const encodedMsg = encodeURIComponent(msg);
-  const encodedUrl = encodeURIComponent(siteUrl);
-  let url = '';
-  switch(platform) {
-    case 'whatsapp':
-      url = 'https://wa.me/?text=' + encodedMsg;
-      break;
-    case 'facebook':
-      url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl + '&quote=' + encodedMsg;
-      break;
-    case 'x':
-      url = 'https://twitter.com/intent/tweet?text=' + encodedMsg;
-      break;
-    case 'reddit':
-      url = 'https://www.reddit.com/submit?url=' + encodedUrl + '&title=' + encodeURIComponent('FrankPass - stateless password manager. No cloud. No storage. Pure math.');
-      break;
-    case 'copy':
-      navigator.clipboard.writeText(siteUrl + ' - ' + msg).then(() => {
-        showToast('Link copied to clipboard!', 'success');
-      }).catch(() => {
-        showToast('Copy failed - please copy manually.');
-      });
-      return;
-  }
-  if (url) window.open(url, '_blank', 'noopener,noreferrer');
+ e.preventDefault();
+ const siteUrl = 'https://frankpass.com';
+ const msg = 'I found this awesome FREE tool ✨ - FrankPass: a stateless password manager that generates your passwords from math. No accounts, no cloud, no storage. Works offline too! ' + siteUrl;
+ const encodedMsg = encodeURIComponent(msg);
+ const encodedUrl = encodeURIComponent(siteUrl);
+ let url = '';
+ switch(platform) {
+ case 'whatsapp':
+ url = 'https://wa.me/?text=' + encodedMsg;
+ break;
+ case 'facebook':
+ url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodedUrl + '&quote=' + encodedMsg;
+ break;
+ case 'x':
+ url = 'https://twitter.com/intent/tweet?text=' + encodedMsg;
+ break;
+ case 'reddit':
+ url = 'https://www.reddit.com/submit?url=' + encodedUrl + '&title=' + encodeURIComponent('FrankPass - stateless password manager. No cloud. No storage. Pure math.');
+ break;
+ case 'copy':
+ navigator.clipboard.writeText(siteUrl + ' - ' + msg).then(() => {
+ showToast('Link copied to clipboard!', 'success');
+ }).catch(() => {
+ showToast('Copy failed - please copy manually.');
+ });
+ return;
+ }
+ if (url) window.open(url, '_blank', 'noopener,noreferrer');
 }
 </script>
 
 
 <!-- ============================================================
-     OFFLINE PWA SERVICE WORKER REGISTRATION (v3.2.3)
-     ============================================================ -->
+ OFFLINE PWA SERVICE WORKER REGISTRATION (v3.2.3)
+ ============================================================ -->
 <script>
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => {
-        // Service worker registered successfully
-      })
-      .catch(err => {
-        console.warn('ServiceWorker registration error:', err);
-      });
-  });
+ window.addEventListener('load', () => {
+ navigator.serviceWorker.register('/service-worker.js')
+ .then(reg => {
+ // Service worker registered successfully
+ })
+ .catch(err => {
+ console.warn('ServiceWorker registration error:', err);
+ });
+ });
 }
 </script>
 
 <!-- ============================================================
-     FUTURE FEATURE SPECIFICATIONS & PLACEHOLDERS (DO NOT REMOVE)
-     1. FUTURE: First-visit product promotion splash (once per 24 hours via localStorage timestamp)
-     2. FUTURE: Auto-suggest platform detection from clipboard/URL bar
-     3. FUTURE: Password strength entropy visual indicator bar
-     ============================================================ -->
+ FUTURE FEATURE SPECIFICATIONS & PLACEHOLDERS (DO NOT REMOVE)
+ 1. FUTURE: First-visit product promotion splash (once per 24 hours via localStorage timestamp)
+ 2. FUTURE: Auto-suggest platform detection from clipboard/URL bar
+ 3. FUTURE: Password strength entropy visual indicator bar
+ ============================================================ -->
 
 
 <!-- Biometric & Local Encryption Choice Modal -->
 <div id="biometric-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="bio-modal-title">
-  <div class="custom-modal-card">
-    <div style="font-size:2.2rem;margin-bottom:0.5rem;text-align:center">🛡️</div>
-    <h3 id="bio-modal-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.5rem">
-      Enable Biometric Lock?
-    </h3>
-    <p style="font-size:0.88rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
-      Protect your Master Secret Key using your device's biometric authentication (Fingerprint, Face ID, or Windows Hello).
-    </p>
+ <div class="custom-modal-card">
+ <div style="font-size:2.2rem;margin-bottom:0.5rem;text-align:center">🛡️</div>
+ <h3 id="bio-modal-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.5rem">
+ Enable Biometric Lock?
+ </h3>
+ <p style="font-size:0.88rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+ Protect your Master Secret Key using your device's biometric authentication (Fingerprint, Face ID, or Windows Hello).
+ </p>
 
-    <!-- Important Notice Box -->
-    <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:0.85rem;margin-bottom:1.25rem">
-      <div style="font-size:0.78rem;font-weight:700;color:#f87171;margin-bottom:0.25rem">⚠️ Important Privacy Notice:</div>
-      <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.45;margin:0">
-        If you <strong>skip</strong> biometric protection, your Secret Key is saved with blind AES-GCM encryption for generating passwords, but <strong>you will NEVER be able to reveal/view the secret key on screen later</strong>. With biometrics enabled, you can reveal it anytime by scanning your fingerprint/face.
-      </p>
-    </div>
+ <!-- Important Notice Box -->
+ <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:0.85rem;margin-bottom:1.25rem">
+ <div style="font-size:0.78rem;font-weight:700;color:#f87171;margin-bottom:0.25rem">⚠️ Important Privacy Notice:</div>
+ <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.45;margin:0">
+ If you <strong>skip</strong> biometric protection, your Secret Key is saved with blind AES-GCM encryption for generating passwords, but <strong>you will NEVER be able to reveal/view the secret key on screen later</strong>. With biometrics enabled, you can reveal it anytime by scanning your fingerprint/face.
+ </p>
+ </div>
 
-    <div style="display:flex;flex-direction:column;gap:0.65rem">
-      <button type="button" id="btn-enable-bio" class="btn-primary" style="width:100%;padding:0.75rem;font-size:0.9rem;font-weight:700;border-radius:10px;justify-content:center">
-        👆 Enable Biometric Lock
-      </button>
-      <button type="button" id="btn-skip-bio" class="btn-ghost" style="width:100%;padding:0.65rem;font-size:0.85rem;font-weight:600;border-radius:10px;justify-content:center">
-        Skip (Save Encrypted Only)
-      </button>
-    </div>
-  </div>
+ <div style="display:flex;flex-direction:column;gap:0.65rem">
+ <button type="button" id="btn-enable-bio" class="btn-primary" style="width:100%;padding:0.75rem;font-size:0.9rem;font-weight:700;border-radius:10px;justify-content:center">
+ 👆 Enable Biometric Lock
+ </button>
+ <button type="button" id="btn-skip-bio" class="btn-ghost" style="width:100%;padding:0.65rem;font-size:0.85rem;font-weight:600;border-radius:10px;justify-content:center">
+ Skip (Save Encrypted Only)
+ </button>
+ </div>
+ </div>
 </div>
 
 </body>
