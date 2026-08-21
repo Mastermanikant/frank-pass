@@ -91,6 +91,7 @@
         <a href="./faq.html">FAQ</a>
         <a href="./about-us.html">About Us</a>
         <a href="./about-us-hindi.html">About (Hindi) 🇮🇳</a>
+        <a href="./limitations-and-advantages-hindi.html">कमियां एवं अच्छाइयां (हिन्दी) 🇮🇳</a>
         <a href="./legal.html">Privacy &amp; Terms</a>
       </div>
 
