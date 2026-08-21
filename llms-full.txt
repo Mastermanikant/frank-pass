@@ -51,3 +51,10 @@ Same input (Site + Secret Key) always generates the exact same password determin
 
 ## E-Commerce & Licensing
 - Pro licenses and digital products are processed through https://store.frankbase.com / https://digital.frankbase.com.
+
+## Technical Architecture & Cryptographic Primitives
+1. Key Derivation: PBKDF2 (Password-Based Key Derivation Function 2)
+2. Hash Function: SHA-512 in HMAC Mode
+3. Iteration Count: 1,000,000 iterations (exceeding OWASP 2026 guidelines)
+4. Normalization Algorithm: Strips URI protocols, common subdomains, and trailing acronyms.
+5. Local Storage Vault: Blind AES-GCM 256-bit encryption with WebAuthn hardware-bound keys.
