@@ -68,7 +68,7 @@ main {
 body.no-mobile-nav { padding-bottom: 0; }
 
 /* ── 4. TYPOGRAPHY ───────────────────────────────────────── */
-h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; font-weight: 700; }
+h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; font-weight: 800; }
 h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
 h2 { font-size: clamp(1.5rem, 3.5vw, 2.4rem); }
 h3 { font-size: clamp(1.1rem, 2.5vw, 1.5rem); }
@@ -229,7 +229,23 @@ pre code {
   text-decoration: none;
   flex-shrink: 0;
 }
-.header-logo svg { flex-shrink: 0; }
+
+.header-logo svg {
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5));
+  transition: filter 0.3s ease;
+}
+.header-logo:hover svg {
+  filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.9));
+}
+.logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
 .logo-text {
   font-family: var(--font-heading);
   font-size: 1.3rem;
