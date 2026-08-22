@@ -1281,12 +1281,48 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  document.getElementById('copy-btn').disabled = false;
  updatePasswordStatus();
 
- /* Instant Auto-Copy on Generation */
+ /* Instant Auto-Copy on Generation (Fallback Supported + UI Update) */
+ const triggerCopyUI = () => {
+ const copyBtn = document.getElementById('copy-btn');
+ const copyIcon = document.getElementById('copy-icon');
+ if (copyBtn && copyIcon) {
+ copyBtn.classList.add('copied');
+ copyIcon.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
+ setTimeout(() => {
+ copyBtn.classList.remove('copied');
+ copyIcon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
+ }, 2500);
+ }
+ };
+ 
  try {
+ if (navigator.clipboard && window.isSecureContext) {
  await navigator.clipboard.writeText(password);
- showToast('⚡ Unbreakable password generated & copied! Press Ctrl+V anywhere', 'success');
+ } else {
+ throw new Error("Fallback");
+ }
+ triggerCopyUI();
+ showToast('⚡ Password generated & auto-copied!', 'success');
  } catch (_) {
- showToast('⚡ Unbreakable password generated! Click Copy to use.', 'success');
+ try {
+ const textArea = document.createElement('textarea');
+ textArea.value = password;
+ textArea.style.position = 'fixed';
+ textArea.style.left = '-9999px';
+ document.body.appendChild(textArea);
+ textArea.focus();
+ textArea.select();
+ const successful = document.execCommand('copy');
+ document.body.removeChild(textArea);
+ if(successful) {
+ triggerCopyUI();
+ showToast('⚡ Password generated & auto-copied!', 'success');
+ } else {
+ showToast('⚡ Password generated! Please click Copy to use.', 'success');
+ }
+ } catch (e) {
+ showToast('⚡ Password generated! Please click Copy to use.', 'success');
+ }
  }
 
  /* Save settings locally if toggle is on */
