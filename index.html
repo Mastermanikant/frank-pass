@@ -954,6 +954,7 @@ if (rememberToggle) {
  localStorage.removeItem('fp_enc_secret');
  localStorage.removeItem('fp_remember_secret');
  localStorage.removeItem('fp_bio_mode');
+ localStorage.removeItem('fp_credential_id');
  if (savedBadge) savedBadge.style.display = 'none';
  rememberToggle.setAttribute('aria-checked', 'false');
  showToast('Secret Key removed from device storage');
@@ -991,6 +992,8 @@ document.addEventListener('DOMContentLoaded', () => {
  }
  });
  if (credential) {
+ const rawIdHex = Array.from(new Uint8Array(credential.rawId)).map(b => b.toString(16).padStart(2, '0')).join('');
+ localStorage.setItem('fp_credential_id', rawIdHex);
  await saveEncryptedSecret('biometric');
  } else {
  await saveEncryptedSecret('blind_encrypted');
@@ -1035,17 +1038,23 @@ if (toggleSecretBtn && secretInputEl) {
  showToast('🔒 This key was saved with blind local encryption (no biometrics). For security, it cannot be revealed in plaintext. You can type a new secret key anytime.', 'error');
  return;
  }
- if (isRemembered && bioMode === 'biometric' && window.PublicKeyCredential) {
+ if (isRemembered && bioMode === 'biometric' && window.PublicKeyCredential && !secretInputEl.dataset.userTyped) {
  try {
  const challenge = new Uint8Array(32);
  window.crypto.getRandomValues(challenge);
- const assertion = await navigator.credentials.get({
+ const getOptions = {
  publicKey: {
  challenge,
  userVerification: "required",
  timeout: 60000
  }
- });
+ };
+ const savedIdHex = localStorage.getItem('fp_credential_id');
+ if (savedIdHex) {
+ const rawId = new Uint8Array(savedIdHex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+ getOptions.publicKey.allowCredentials = [{ id: rawId, type: "public-key" }];
+ }
+ const assertion = await navigator.credentials.get(getOptions);
  if (assertion) {
  secretInputEl.type = 'text';
  toggleSecretBtn.setAttribute('aria-label', 'Hide secret key');
