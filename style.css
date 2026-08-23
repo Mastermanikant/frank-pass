@@ -2140,3 +2140,42 @@ a:focus-visible {
     transform: translateY(0);
   }
 }
+
+
+/* ── MOBILE UI POLISH (AUTO-AUDITED) ─────────────────────── */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 1rem 0 2rem 0;
+    min-height: auto;
+  }
+  .hero-grid {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  .generator-card {
+    padding: 1.25rem 1rem;
+    border-radius: var(--radius-lg);
+  }
+  .founder-trust-card {
+    padding: 1rem;
+  }
+  .founder-trust-card .btn-primary,
+  .founder-trust-card .btn-ghost {
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+    justify-content: center;
+    padding: 8px 10px;
+  }
+  body:not(.no-mobile-nav) {
+    padding-bottom: calc(var(--mobile-nav-h) + 1.5rem);
+  }
+}
+@media (max-width: 420px) {
+  .founder-trust-card .btn-primary,
+  .founder-trust-card .btn-ghost {
+    flex: 1 1 100%;
+  }
+  .hero-title {
+    font-size: 1.75rem;
+  }
+}
