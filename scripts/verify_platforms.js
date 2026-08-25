@@ -15,23 +15,24 @@ if (!db || typeof db !== 'object') {
     process.exit(1);
 }
 
-const countryKeys = Object.keys(db);
-console.log(`PASS: Loaded ${countryKeys.length} countries.`);
+const keys = Object.keys(db);
+const countryKeys = keys.filter(k => k !== 'Global');
+console.log(`PASS: Loaded ${countryKeys.length} countries + 1 Global repository.`);
 
 const allUnique = new Set();
 let totalEntries = 0;
 
-countryKeys.forEach(k => {
+keys.forEach(k => {
     const list = db[k];
     if (!Array.isArray(list)) {
-        console.error(`FAIL: country ${k} is not an array.`);
+        console.error(`FAIL: key ${k} is not an array.`);
         process.exit(1);
     }
     totalEntries += list.length;
     list.forEach(item => allUnique.add(item));
 });
 
-console.log(`PASS: Total Country-Mapped Entries: ${totalEntries}`);
+console.log(`PASS: Total Array Entries: ${totalEntries}`);
 console.log(`PASS: Total Unique Platforms: ${allUnique.size}`);
 
 // Required key brand checks
@@ -56,19 +57,44 @@ const mustHaveBrands = [
     "Cloudflare",
     "GitHub",
     "Razorpay",
-    "Cashfree Payments"
+    "Cashfree Payments",
+    "State Bank of India (SBI)",
+    "HDFC Bank",
+    "ICICI Bank"
 ];
 
 console.log('\n--- Checking Key Brand Inclusions ---');
 let missingCount = 0;
+
+// Helper to simulate getPrettyNameFromDB
+function findInDB(brand) {
+    for (let region in db) {
+        if (db[region].includes(brand)) return true;
+    }
+    return false;
+}
+
+// Helper to simulate populatePlatformDatalist
+function getCountryDatalist(countryCode) {
+    const combined = new Set();
+    const targetCode = countryCode.toLowerCase();
+    const searchKeys = ['Global'];
+    if (db[targetCode]) searchKeys.unshift(targetCode);
+    searchKeys.forEach(k => {
+        (db[k] || []).forEach(item => combined.add(item));
+    });
+    return Array.from(combined);
+}
+
 mustHaveBrands.forEach(brand => {
-    // Check in 'in' and 'us'
-    const inFound = db['in'] && db['in'].includes(brand);
-    const usFound = db['us'] && db['us'].includes(brand);
-    if (inFound && usFound) {
-        console.log(`  ✓ [FOUND in IN & US] ${brand}`);
+    const exists = findInDB(brand);
+    const inIndiaList = getCountryDatalist('in').includes(brand);
+    const inUSList = getCountryDatalist('us').includes(brand);
+    
+    if (exists && inIndiaList && inUSList) {
+        console.log(`  ✓ [FOUND & ACTIVE in IN & US] ${brand}`);
     } else {
-        console.error(`  ✗ [MISSING] ${brand}`);
+        console.error(`  ✗ [MISSING] ${brand} (exists: ${exists}, inIndia: ${inIndiaList}, inUS: ${inUSList})`);
         missingCount++;
     }
 });
