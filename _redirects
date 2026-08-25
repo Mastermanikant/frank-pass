@@ -1,14 +1,23 @@
 # Cloudflare Pages Direct Deployment & Cloudflare Router Config
 
-# Install & App Hub Aliases (Cloudflare Pages auto-serves install.html at /install)
-/app /install 301
-/download /install 301
-/pwa /install 301
-
-# Clean URLs & Rewrites
-/privacy /legal 301
-/terms /legal 301
-/disclaimer /legal 301
+# Internal Clean URL Rewrites & Aliases
+/app /install.html 301
+/download /install.html 301
+/pwa /install.html 301
+/install /install.html 301
+/pro /pro.html 301
+/pricing /pro.html 301
+/pricing/extensions /pro.html 301
+/docs /docs.html 301
+/faq /faq.html 301
+/about /about-us.html 301
+/about-us /about-us.html 301
+/founder /founder-mastermanikant.html 301
+/get-started /get-started.html 301
+/products /products.html 301
+/privacy /legal.html 301
+/terms /legal.html 301
+/disclaimer /legal.html 301
 /hn / 200
 
 # Canonical Page Redirects
@@ -31,7 +40,8 @@
 /facebook https://facebook.com/frankpasshq 301
 /reddit https://reddit.com/r/frankpasshq 301
 
-# FrankBase Ecosystem & Support Redirects
-/products https://frankbase.com/products 302
-/ebooks https://frankbase.com/ebooks 302
+# FrankBase Central Store & Ecosystem Redirects
+/store https://store.frankbase.com 302
+/digital https://digital.frankbase.com 302
+/ebooks https://store.frankbase.com/ebooks 302
 /donate https://buymeacoffee.com/mastermanikant 302

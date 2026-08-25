@@ -19,30 +19,32 @@ const FRANKPASS_CONFIG = {
     GLOBAL: { silver: 0.99, gold: 1.99, platinum: 9.99 }
   },
 
-  /* ── Payment Links (replace placeholders with live Dodo URLs) ─── */
+  /* ── Central Store & Payment Links (store.frankbase.com) ──────── */
+  STORE_URL: "https://store.frankbase.com",
+  EBOOKS_URL: "https://store.frankbase.com/ebooks",
   PAYMENT_LINKS: {
     STANDARD: {
       INDIA:  {
-        silver:   "[DODO_IN_SILVER_STD]",
-        gold:     "[DODO_IN_GOLD_STD]",
-        platinum: "[DODO_IN_PLATINUM_STD]"
+        silver:   "https://store.frankbase.com/products/frankpass-silver",
+        gold:     "https://store.frankbase.com/products/frankpass-gold",
+        platinum: "https://store.frankbase.com/products/frankpass-platinum"
       },
       GLOBAL: {
-        silver:   "[DODO_USD_SILVER_STD]",
-        gold:     "[DODO_USD_GOLD_STD]",
-        platinum: "[DODO_USD_PLATINUM_STD]"
+        silver:   "https://store.frankbase.com/products/frankpass-silver-global",
+        gold:     "https://store.frankbase.com/products/frankpass-gold-global",
+        platinum: "https://store.frankbase.com/products/frankpass-platinum-global"
       }
     },
     SALE: {
       INDIA:  {
-        silver:   "[DODO_IN_SILVER_SALE]",
-        gold:     "[DODO_IN_GOLD_SALE]",
-        platinum: "[DODO_IN_PLATINUM_SALE]"
+        silver:   "https://store.frankbase.com/products/frankpass-silver?sale=1",
+        gold:     "https://store.frankbase.com/products/frankpass-gold?sale=1",
+        platinum: "https://store.frankbase.com/products/frankpass-platinum?sale=1"
       },
       GLOBAL: {
-        silver:   "[DODO_USD_SILVER_SALE]",
-        gold:     "[DODO_USD_GOLD_SALE]",
-        platinum: "[DODO_USD_PLATINUM_SALE]"
+        silver:   "https://store.frankbase.com/products/frankpass-silver-global?sale=1",
+        gold:     "https://store.frankbase.com/products/frankpass-gold-global?sale=1",
+        platinum: "https://store.frankbase.com/products/frankpass-platinum-global?sale=1"
       }
     }
   },
