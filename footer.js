@@ -102,8 +102,8 @@
         <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer">FrankBase.com ↗</a>
         <a href="https://digital.frankbase.com" target="_blank" rel="noopener noreferrer">Digital Products Store ↗</a>
         <a href="https://frankbase.com/products" target="_blank" rel="noopener noreferrer">All Tools &amp; Products ↗</a>
-        <a href="https://frankbase.com/ebooks" target="_blank" rel="noopener noreferrer">Cyber Security eBooks ↗</a>
-        <a href="https://buymeacoffee.com/mastermanikant" target="_blank" rel="noopener noreferrer">Support &amp; Donate ☕</a>
+        <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer">Cyber Security eBooks ↗</a>
+        <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer">Free eBook (Pay What You Want) 📖</a>
       </div>
 
       <!-- Founder links -->
