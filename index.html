@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -47,7 +47,7 @@
  <div class="header-inner">
  <!-- Logo -->
  <a href="/" class="header-logo" aria-label="FrankPass - Home">
- <img src="/icons/logo-lock-64.webp" onerror="this.src='/icons/logo-lock-64.png'" alt="FrankPass 3D Logo" width="32" height="32" class="header-brand-icon">
+ <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon">
  <span class="logo-text"><span>Frank</span>Pass</span>
  </a>
 
@@ -59,7 +59,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
  <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
- <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+ <input id="country-search-input" type="search" placeholder="Search countryâ€¦" autocomplete="off" aria-label="Search for a country">
  <div id="country-list-scroll"></div>
  </div>
  </div>
@@ -154,7 +154,7 @@
         <div style="display: flex; gap: 8px; flex-wrap: wrap; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.06);">
           <a href="/founder-mastermanikant.html" class="btn-primary" style="font-size: 0.78rem; padding: 7px 14px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; font-weight: 600;">Founder Story &rarr;</a>
           <a href="/limitations-and-advantages.html" class="btn-ghost" style="font-size: 0.78rem; border: 1px solid var(--border); color: var(--text-primary); padding: 7px 14px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; font-weight: 500;">Know In-Depth &nearr;</a>
-          <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size: 0.78rem; border: 1px solid var(--border); color: var(--text-primary); padding: 7px 14px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; font-weight: 500;">MasterManikant.com ↗</a>
+          <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size: 0.78rem; border: 1px solid var(--border); color: var(--text-primary); padding: 7px 14px; border-radius: 7px; text-decoration: none; display: inline-flex; align-items: center; font-weight: 500;">MasterManikant.com â†—</a>
         </div>
       </div>
     </div>
@@ -222,11 +222,11 @@
  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
  </button>
  <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
- <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
+ <div class="info-popover-title">ðŸ”‘ What is a Master Secret Key?</div>
  <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. One memorable phrase generates unique, unhackable passwords for all your platforms (Gmail, Amazon, GitHub).</p>
  <div class="info-popover-tip">
- 💡 <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
- ✨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
+ ðŸ’¡ <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
+ âœ¨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
  </div>
  </div>
  </div>
@@ -280,7 +280,7 @@
 
  <!-- Mode 1: Numeric Counter (1-999) with stepper -->
  <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
- <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">−</button>
+ <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">âˆ’</button>
  <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
  <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
  </div>
@@ -358,7 +358,7 @@
  <!-- Output box -->
  <div class="output-box" role="region" aria-label="Generated password output" aria-live="polite">
  <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
- ···········
+ Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·
  </div>
  <div class="output-actions">
  <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password">
@@ -403,21 +403,21 @@
  FrankPass is 100% free, private, and ad-free for everyone worldwide. If our tools helped you stay secure, consider supporting our independent research, books, and ecosystem:
  </p>
  <div style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 14px; padding: 1rem 1.25rem; text-align: left; margin-bottom: 1.25rem;">
- <strong style="color: var(--text-primary); font-size: 0.95rem; display: block; margin-bottom: 0.25rem;">📖 Essential Security eBook is 100% Free For All</strong>
+ <strong style="color: var(--text-primary); font-size: 0.95rem; display: block; margin-bottom: 0.25rem;">ðŸ“– Essential Security eBook is 100% Free For All</strong>
  <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 0.75rem;">
- Both FrankPass and our foundational cybersecurity eBook are 100% free for everyone. If you wish to support our work, you can pay whatever you want (₹0+) when claiming the eBook on FrankBase Store.
+ Both FrankPass and our foundational cybersecurity eBook are 100% free for everyone. If you wish to support our work, you can pay whatever you want (â‚¹0+) when claiming the eBook on FrankBase Store.
  </p>
  <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm" style="display:inline-flex;align-items:center;gap:0.4rem;font-weight:700">
- <span>📖</span> Get Free eBook (Pay What You Want) &rarr;
+ <span>ðŸ“–</span> Get Free eBook (Pay What You Want) &rarr;
  </a>
  </div>
  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.85rem">
  <a href="/pro.html" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
- <span style="font-size:1.2rem">👑</span>
+ <span style="font-size:1.2rem">ðŸ‘‘</span>
  <span>FrankPass Pro Extension</span>
  </a>
  <a href="https://frankbase.com/products" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.85rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.9rem;font-weight:600;transition:var(--transition)">
- <span style="font-size:1.2rem">🚀</span>
+ <span style="font-size:1.2rem">ðŸš€</span>
  <span>Visit Our Products Page &rarr;</span>
  </a>
  </div>
@@ -571,10 +571,10 @@
  <div class="form-group" style="margin-bottom:2rem">
  <label for="ai-script" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Preferred Script</label>
  <select id="ai-script" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;appearance:none;cursor:pointer">
- <option value="Devanagari">Devanagari (देवनागरी)</option>
+ <option value="Devanagari">Devanagari (à¤¦à¥‡à¤µà¤¨à¤¾à¤—à¤°à¥€)</option>
  <option value="Latin">Latin (A, B, C...)</option>
- <option value="Arabic">Arabic (العربية)</option>
- <option value="Cyrillic">Cyrillic (Кириллица)</option>
+ <option value="Arabic">Arabic (Ø§Ù„Ø¹Ø±Ø¨ÙŠØ©)</option>
+ <option value="Cyrillic">Cyrillic (ÐšÐ¸Ñ€Ð¸Ð»Ð»Ð¸Ñ†Ð°)</option>
  <option value="Native">Native to Language</option>
  </select>
  </div>
@@ -663,7 +663,7 @@
  r/FrankPass Reddit
  </a>
  <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600;border-color:var(--accent)">
- <span>📖</span> Free eBook (Pay What You Want)
+ <span>ðŸ“–</span> Free eBook (Pay What You Want)
  </a>
  </div>
  </div>
@@ -718,13 +718,13 @@
 <script src="/footer.js?v=3.2.8"></script>
 
 <script>
-/* ── Sticky header scroll class ── */
+/* â”€â”€ Sticky header scroll class â”€â”€ */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => {
  header.classList.toggle('scrolled', window.scrollY > 10);
 }, { passive: true });
 
-/* ── Hamburger menu toggle ── */
+/* â”€â”€ Hamburger menu toggle â”€â”€ */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 if (hamburger && mobileMenu) {
@@ -744,7 +744,7 @@ if (hamburger && mobileMenu) {
  });
 }
 
-/* ── Toast helper ── */
+/* â”€â”€ Toast helper â”€â”€ */
 function showToast(msg, type = '') {
  const t = document.createElement('div');
  t.className = 'toast' + (type ? ' ' + type : '');
@@ -753,16 +753,16 @@ function showToast(msg, type = '') {
  setTimeout(() => t.remove(), 3000);
 }
 
-/* ── Password status helper ── */
+/* â”€â”€ Password status helper â”€â”€ */
 function updatePasswordStatus() {
  const label = document.getElementById('clear-timer-label');
  if (label) label.textContent = 'Ready to copy';
 }
 
-/* ── Secret key visibility controller (Unified Biometric + Blind Policy) ── */
+/* â”€â”€ Secret key visibility controller (Unified Biometric + Blind Policy) â”€â”€ */
 const secretInput = document.getElementById('secret-key');
 
-/* ── Platform hint & Autocomplete ── */
+/* â”€â”€ Platform hint & Autocomplete â”€â”€ */
 const platformInput = document.getElementById('platform-input');
 const platformHint = document.getElementById('platform-hint');
 const platformValid = document.getElementById('platform-valid-icon');
@@ -813,7 +813,7 @@ function populatePlatformDatalist(countryCode) {
 window.populatePlatformDatalist = populatePlatformDatalist;
 setTimeout(() => populatePlatformDatalist(), 200); 
 
-/* ── Advanced options toggle ── */
+/* â”€â”€ Advanced options toggle â”€â”€ */
 const advToggle = document.getElementById('advanced-toggle');
 const advPanel = document.getElementById('advanced-panel');
 advToggle.addEventListener('click', () => {
@@ -823,12 +823,12 @@ advToggle.addEventListener('click', () => {
  advPanel.setAttribute('aria-hidden', String(!isOpen));
 });
 
-/* ── Length slider display ── */
+/* â”€â”€ Length slider display â”€â”€ */
 const lengthSlider = document.getElementById('length-slider');
 const lengthVal = document.getElementById('length-val');
 lengthSlider.addEventListener('input', () => { lengthVal.textContent = lengthSlider.value; });
 
-/* ── Local AES-GCM Secret Key Vault ── */
+/* â”€â”€ Local AES-GCM Secret Key Vault â”€â”€ */
 const LocalSecretVault = (function() {
  const DEVICE_KEY_STORAGE = 'fp_dev_key';
  
@@ -880,7 +880,7 @@ const LocalSecretVault = (function() {
  return { encryptSecret, decryptSecret };
 })();
 
-/* ── Secret Key Local Persistence & Biometric Controller ── */
+/* â”€â”€ Secret Key Local Persistence & Biometric Controller â”€â”€ */
 const rememberToggle = document.getElementById('remember-secret');
 const savedBadge = document.getElementById('saved-badge');
 const secretInputEl = document.getElementById('secret-key');
@@ -898,7 +898,7 @@ async function saveEncryptedSecret(mode) {
  localStorage.setItem('fp_bio_mode', mode); // 'biometric' or 'blind_encrypted'
  
  if (savedBadge) {
- savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
+ savedBadge.textContent = mode === 'biometric' ? 'âœ“ Biometric Protected' : 'âœ“ Encrypted Locally';
  savedBadge.style.display = 'inline';
  }
  if (rememberToggle) {
@@ -1011,7 +1011,7 @@ if (toggleSecretBtn && secretInputEl) {
 
  if (secretInputEl.type === 'password') {
  if (isRemembered && bioMode === 'blind_encrypted' && !secretInputEl.dataset.userTyped) {
- showToast('🔒 This key was saved with blind local encryption (no biometrics). For security, it cannot be revealed in plaintext. You can type a new secret key anytime.', 'error');
+ showToast('ðŸ”’ This key was saved with blind local encryption (no biometrics). For security, it cannot be revealed in plaintext. You can type a new secret key anytime.', 'error');
  return;
  }
  if (isRemembered && bioMode === 'biometric' && window.PublicKeyCredential && !secretInputEl.dataset.userTyped) {
@@ -1069,7 +1069,7 @@ async function initRememberedSecret() {
  secretInputEl.value = plain;
  const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
  if (savedBadge) {
- savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
+ savedBadge.textContent = mode === 'biometric' ? 'âœ“ Biometric Protected' : 'âœ“ Encrypted Locally';
  savedBadge.style.display = 'inline';
  }
  rememberToggle.setAttribute('aria-checked', 'true');
@@ -1079,7 +1079,7 @@ async function initRememberedSecret() {
 }
 initRememberedSecret();
 
-/* ── Dual-Mode Variant Logic (ALWAYS COUNTER 1 BY DEFAULT) ── */
+/* â”€â”€ Dual-Mode Variant Logic (ALWAYS COUNTER 1 BY DEFAULT) â”€â”€ */
 let currentVariantMode = 'counter';
 const variantInput = document.getElementById('variant-input');
 const variantVal = document.getElementById('variant-val');
@@ -1191,7 +1191,7 @@ function getActiveVariant() {
  }
 }
 
-/* ── Preset buttons & Type-Select Synchronizer (BUG-11 Fix) ── */
+/* â”€â”€ Preset buttons & Type-Select Synchronizer (BUG-11 Fix) â”€â”€ */
 const presets = {
  simple: { profile: 'alphanumeric', length: 12 },
  strong: { profile: 'standard', length: 16 },
@@ -1226,7 +1226,7 @@ if (typeSelect) {
  });
 }
 
-/* ── Generate button ── */
+/* â”€â”€ Generate button â”€â”€ */
 document.getElementById('generate-btn').addEventListener('click', async () => {
  const platform = (document.getElementById('platform-input').value || '').trim();
  const secretKey = (document.getElementById('secret-key').value || '').trim();
@@ -1244,7 +1244,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
 
  const genBtn = document.getElementById('generate-btn');
  genBtn.disabled = true;
- genBtn.textContent = 'Generating…';
+ genBtn.textContent = 'Generatingâ€¦';
 
  try {
  const password = await FRANKPASS_CORE.generate(
@@ -1278,7 +1278,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  throw new Error("Fallback");
  }
  triggerCopyUI();
- showToast('⚡ Password generated & auto-copied!', 'success');
+ showToast('âš¡ Password generated & auto-copied!', 'success');
  } catch (_) {
  try {
  const textArea = document.createElement('textarea');
@@ -1292,12 +1292,12 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  document.body.removeChild(textArea);
  if(successful) {
  triggerCopyUI();
- showToast('⚡ Password generated & auto-copied!', 'success');
+ showToast('âš¡ Password generated & auto-copied!', 'success');
  } else {
- showToast('⚡ Password generated! Please click Copy to use.', 'success');
+ showToast('âš¡ Password generated! Please click Copy to use.', 'success');
  }
  } catch (e) {
- showToast('⚡ Password generated! Please click Copy to use.', 'success');
+ showToast('âš¡ Password generated! Please click Copy to use.', 'success');
  }
  }
 
@@ -1319,7 +1319,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
 });
 
 
-/* ── Privacy Mask Tri-State Logic (Default Blur + Hover Peek + Click Lock) ── */
+/* â”€â”€ Privacy Mask Tri-State Logic (Default Blur + Hover Peek + Click Lock) â”€â”€ */
 let isPasswordLockedVisible = false;
 let isHoverPeeking = false;
 const maskBtn = document.getElementById('mask-toggle-btn');
@@ -1390,7 +1390,7 @@ if (maskBtn && outPassword) {
  });
 }
 
-/* ── Account Mode Controller (Single vs Multiple Accounts) ── */
+/* â”€â”€ Account Mode Controller (Single vs Multiple Accounts) â”€â”€ */
 let currentAccountMode = 'single';
 const accTabSingle = document.getElementById('acc-tab-single');
 const accTabMulti = document.getElementById('acc-tab-multi');
@@ -1434,7 +1434,7 @@ if (accTabMulti) accTabMulti.addEventListener('click', () => setAccountMode('mul
 
 
 
-/* ── Secret Key Info Tooltip Toggle (Mobile & Click) ── */
+/* â”€â”€ Secret Key Info Tooltip Toggle (Mobile & Click) â”€â”€ */
 const infoBtn = document.getElementById('secret-info-btn');
 const infoWrap = document.getElementById('secret-info-wrap');
 if (infoBtn && infoWrap) {
@@ -1450,7 +1450,7 @@ if (infoBtn && infoWrap) {
  });
 }
 
-/* ── Username Input Live Hint (Using account: "...") ── */
+/* â”€â”€ Username Input Live Hint (Using account: "...") â”€â”€ */
 const uInput = document.getElementById('username-input');
 const uHint = document.getElementById('username-hint');
 if (uInput && uHint) {
@@ -1464,7 +1464,7 @@ if (uInput && uHint) {
  });
 }
 
-/* ── Secret Key Entropy & Strength Bar Meter ── */
+/* â”€â”€ Secret Key Entropy & Strength Bar Meter â”€â”€ */
 const secretKeyEl = document.getElementById('secret-key');
 if (secretKeyEl) {
  secretKeyEl.addEventListener('input', () => {
@@ -1494,7 +1494,7 @@ if (secretKeyEl) {
  });
 }
 
-/* ── Clear Form Logic (Complete Reset - BUG-10 Fix) ── */
+/* â”€â”€ Clear Form Logic (Complete Reset - BUG-10 Fix) â”€â”€ */
 const clearAllBtn = document.getElementById('clear-all-btn');
 if (clearAllBtn) {
  clearAllBtn.addEventListener('click', () => {
@@ -1534,7 +1534,7 @@ if (clearAllBtn) {
  if (advPanel && advPanel.classList.contains('open')) advToggle.click();
  
  const out = document.getElementById('output-password');
- out.textContent = '···········';
+ out.textContent = 'Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·';
  out.classList.add('placeholder');
  out.classList.remove('masked');
  document.getElementById('copy-btn').disabled = true;
@@ -1546,16 +1546,16 @@ if (clearAllBtn) {
  });
 }
 
-/* ── Copy button ── */
+/* â”€â”€ Copy button â”€â”€ */
 document.getElementById('copy-btn').addEventListener('click', async () => {
  const password = document.getElementById('output-password').textContent;
- if (!password || password === '···········') return;
+ if (!password || password === 'Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·Â·') return;
  try {
  await navigator.clipboard.writeText(password);
  const copyBtn = document.getElementById('copy-btn');
  copyBtn.classList.add('copied');
  document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
- showToast('⚡ Password copied! Press Ctrl+V anywhere', 'success');
+ showToast('âš¡ Password copied! Press Ctrl+V anywhere', 'success');
  setTimeout(() => {
  copyBtn.classList.remove('copied');
  document.getElementById('copy-icon').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
@@ -1565,7 +1565,7 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
  }
 });
 
-/* ── WhatsApp CTA link from config ── */
+/* â”€â”€ WhatsApp CTA link from config â”€â”€ */
 document.addEventListener('DOMContentLoaded', () => {
  const cfg = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
  if (cfg.SOCIAL && cfg.SOCIAL.WHATSAPP && !cfg.SOCIAL.WHATSAPP.includes('[')) {
@@ -1613,7 +1613,7 @@ document.addEventListener('DOMContentLoaded', () => {
  } catch (_) {}
 });
 
-/* ── PPP Pricing (for the header flag card label) ── */
+/* â”€â”€ PPP Pricing (for the header flag card label) â”€â”€ */
 const regionEl = document.getElementById('region');
 if (regionEl) {
  regionEl.addEventListener('change', () => {
@@ -1647,11 +1647,11 @@ function openAI(bot) {
  });
 }
 
-/* ── Share Card Logic ── */
+/* â”€â”€ Share Card Logic â”€â”€ */
 function shareLink(platform, e) {
  e.preventDefault();
  const siteUrl = 'https://frankpass.com';
- const msg = 'I found this awesome FREE tool ✨ - FrankPass: a stateless password manager that generates your passwords from math. No accounts, no cloud, no storage. Works offline too! ' + siteUrl;
+ const msg = 'I found this awesome FREE tool âœ¨ - FrankPass: a stateless password manager that generates your passwords from math. No accounts, no cloud, no storage. Works offline too! ' + siteUrl;
  const encodedMsg = encodeURIComponent(msg);
  const encodedUrl = encodeURIComponent(siteUrl);
  let url = '';
@@ -1709,7 +1709,7 @@ if ('serviceWorker' in navigator) {
 <!-- Biometric & Local Encryption Choice Modal -->
 <div id="biometric-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="bio-modal-title">
  <div class="custom-modal-card">
- <div style="font-size:2.2rem;margin-bottom:0.5rem;text-align:center">🛡️</div>
+ <div style="font-size:2.2rem;margin-bottom:0.5rem;text-align:center">ðŸ›¡ï¸</div>
  <h3 id="bio-modal-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.5rem">
  Enable Biometric Lock?
  </h3>
@@ -1719,7 +1719,7 @@ if ('serviceWorker' in navigator) {
 
  <!-- Important Notice Box -->
  <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:0.85rem;margin-bottom:1.25rem">
- <div style="font-size:0.78rem;font-weight:700;color:#f87171;margin-bottom:0.25rem">⚠️ Important Privacy Notice:</div>
+ <div style="font-size:0.78rem;font-weight:700;color:#f87171;margin-bottom:0.25rem">âš ï¸ Important Privacy Notice:</div>
  <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.45;margin:0">
  If you <strong>skip</strong> biometric protection, your Secret Key is saved with blind AES-GCM encryption for generating passwords, but <strong>you will NEVER be able to reveal/view the secret key on screen later</strong>. With biometrics enabled, you can reveal it anytime by scanning your fingerprint/face.
  </p>
@@ -1727,7 +1727,7 @@ if ('serviceWorker' in navigator) {
 
  <div style="display:flex;flex-direction:column;gap:0.65rem">
  <button type="button" id="btn-enable-bio" class="btn-primary" style="width:100%;padding:0.75rem;font-size:0.9rem;font-weight:700;border-radius:10px;justify-content:center">
- 👆 Enable Biometric Lock
+ ðŸ‘† Enable Biometric Lock
  </button>
  <button type="button" id="btn-skip-bio" class="btn-ghost" style="width:100%;padding:0.65rem;font-size:0.85rem;font-weight:600;border-radius:10px;justify-content:center">
  Skip (Save Encrypted Only)
@@ -1738,5 +1738,6 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
