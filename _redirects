@@ -12,9 +12,8 @@
 /hn / 200
 
 # Canonical Page Redirects
-/contact /contact-us 301
-/support /support-us 301
-/founder-mastermanikant.html /meet-the-founder-MasterManikant 301
+/contact /about-us.html 301
+/support /about-us.html 301
 
 # Founder Social Redirects (Strict: @mastermanikant)
 /mastermanikant/x https://x.com/MasterManikant 301
@@ -24,13 +23,13 @@
 /mastermanikant/facebook https://facebook.com/mastermanikant 301
 /whatsapp/mastermanikant https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h 301
 
-# FrankPass Brand Social Redirects
-/x https://x.com/iamfrankpass 301
-/youtube https://youtube.com/@iamfrankpass 301
-/instagram https://instagram.com/iamfrankpass 301
-/whatsapp https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z 301
-/facebook https://facebook.com/iamfrankpass 301
-/reddit https://reddit.com/r/iamfrankpass 301
+# FrankPass Brand Social Redirects (Strict: @frankpasshq)
+/x https://x.com/frankpasshq 301
+/youtube https://youtube.com/@frankpasshq 301
+/instagram https://instagram.com/frankpasshq 301
+/whatsapp https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532 301
+/facebook https://facebook.com/frankpasshq 301
+/reddit https://reddit.com/r/frankpasshq 301
 
 # FrankBase Ecosystem & Support Redirects
 /products https://frankbase.com/products 302
