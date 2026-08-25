@@ -19,7 +19,7 @@ export async function onRequestPost(context) {
       const array = new Uint8Array(16);
       crypto.getRandomValues(array);
       const randomHex = Array.from(array).map(b => b.toString(16).padStart(2, "0")).join("");
-      const keyStr = FRANK- + tier.toUpperCase().charAt(0) + - + randomHex.substring(0, 14).toUpperCase();
+      const keyStr = "FRANK-" + tier.toUpperCase().charAt(0) + "-" + randomHex.substring(0, 14).toUpperCase();
 
       const licenseData = {
         key: keyStr,
@@ -34,21 +34,21 @@ export async function onRequestPost(context) {
         deviceCount: 0
       };
 
-      await env.FRANKPASS_KV.put(license_ + keyStr, JSON.stringify(licenseData));
-      await env.FRANKPASS_KV.put(customer_ + email, keyStr);
-      console.log(License generated for  + email);
+      await env.FRANKPASS_KV.put("license_" + keyStr, JSON.stringify(licenseData));
+      await env.FRANKPASS_KV.put("customer_" + email, keyStr);
+      console.log("License generated for " + email);
     }
 
     if (event === "subscription.canceled") {
       const email = data.customer?.email;
       if (email) {
-        const keyStr = await env.FRANKPASS_KV.get(customer_ + email);
+        const keyStr = await env.FRANKPASS_KV.get("customer_" + email);
         if (keyStr) {
-           const licenseStr = await env.FRANKPASS_KV.get(license_ + keyStr);
+           const licenseStr = await env.FRANKPASS_KV.get("license_" + keyStr);
            if (licenseStr) {
              const license = JSON.parse(licenseStr);
              license.status = "canceled";
-             await env.FRANKPASS_KV.put(license_ + keyStr, JSON.stringify(license));
+             await env.FRANKPASS_KV.put("license_" + keyStr, JSON.stringify(license));
            }
         }
       }

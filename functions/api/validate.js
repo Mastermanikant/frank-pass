@@ -28,14 +28,14 @@ export async function onRequestPost(context) {
     }
 
     const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
-    const rlKey = l_validate_ + clientIP;
+    const rlKey = "rl_validate_" + clientIP;
     let attempts = parseInt((await env.FRANKPASS_KV.get(rlKey)) || "0");
     if (attempts >= 20) {
       return new Response(JSON.stringify({ valid: false, error: "Too many validation attempts." }), { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } });
     }
     await env.FRANKPASS_KV.put(rlKey, (attempts + 1).toString(), { expirationTtl: 3600 });
 
-    const licenseString = await env.FRANKPASS_KV.get(license_ + key);
+    const licenseString = await env.FRANKPASS_KV.get("license_" + key);
     
     if (!licenseString) {
       return new Response(JSON.stringify({ valid: false, error: "Invalid license key" }), { status: 404, headers: { "Content-Type": "application/json", ...corsHeaders } });
@@ -47,7 +47,7 @@ export async function onRequestPost(context) {
        return new Response(JSON.stringify({ valid: false, error: "License expired" }), { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } });
     }
     if (license.status !== "active") {
-      return new Response(JSON.stringify({ valid: false, error: License is  + license.status }), { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } });
+      return new Response(JSON.stringify({ valid: false, error: "License is " + license.status }), { status: 403, headers: { "Content-Type": "application/json", ...corsHeaders } });
     }
 
     let label = "Silver Plan";
