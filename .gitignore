@@ -1,15 +1,25 @@
 # FrankPass .gitignore
-# Standard exclusions for a production-ready web project
+# Exclusions for public production repository
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Logs
+# Logs & temp
 *.log
+*.tmp
+
+# Python test scripts & caches
+*.py
+__pycache__/
+.pytest_cache/
 
 # Dependencies
 node_modules/
+
+# Cloudflare & local deployment state
+.wrangler/
+.vercel/
 
 # Environment files — NEVER commit these (contain secret API keys)
 .env
@@ -19,8 +29,9 @@ node_modules/
 .env.production.local
 .env.test.local
 
-# Vercel local config
-.vercel
+# Internal strategy & audits (keep in 04_Strategy_and_Docs)
+_internal_docs/
+_rollback_vault/
 
 # Build outputs
 dist/
