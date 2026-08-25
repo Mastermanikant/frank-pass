@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -26,14 +26,10 @@
 <!-- STICKY HEADER -->
 <header class="site-header" id="site-header" role="banner">
  <div class="header-inner">
- <a href="/" class="header-logo" aria-label="FrankPass Home">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
- <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
- <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
- <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
- </svg>
- <span class="logo-text"><span>Frank</span>Pass</span>
- </a>
+ <a href="/" class="header-logo" aria-label="FrankPass - Home">
+      <img src="/icons/logo-lock-64.webp" onerror="this.src='/icons/logo-lock-64.png'" alt="FrankPass 3D Logo" width="32" height="32" class="header-brand-icon">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
  <div class="header-country custom-country-dropdown">
  <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
  <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
@@ -41,7 +37,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
  <div id="country-dropdown-panel" role="listbox">
- <input id="country-search-input" type="search" placeholder="Search country… autocomplete="off" aria-label="Search for a country">
+ <input id="country-search-input" type="search" placeholder="Search countryâ€¦ autocomplete="off" aria-label="Search for a country">
  <div id="country-list-scroll"></div>
  </div>
  </div>
@@ -137,7 +133,7 @@
  </div>
  </div>
  <h2 style="font-size:1.35rem;margin-top:0.75rem">Install as an App (PWA)</h2>
- <p>In your browser's address bar, tap the install icon (or go to your browser menu → "Add to Home Screen"). FrankPass becomes a full offline app. Works forever, even without internet.</p>
+ <p>In your browser's address bar, tap the install icon (or go to your browser menu â†’ "Add to Home Screen"). FrankPass becomes a full offline app. Works forever, even without internet.</p>
  </article>
 
  </div>
@@ -181,11 +177,11 @@
 <script src="/country-dropdown.js?v=3.2.8"></script>
 <script src="/footer.js?v=3.2.8"></script>
 <script>
-/* ── Header scroll ── */
+/* â”€â”€ Header scroll â”€â”€ */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
 
-/* ── Hamburger ── */
+/* â”€â”€ Hamburger â”€â”€ */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
@@ -197,5 +193,6 @@ hamburger.addEventListener('click', () => {
 
 </body>
 </html>
+
 
 

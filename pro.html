@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -27,7 +27,7 @@
  SALE BANNER - shown only when SALE_MODE is true
  ============================================================ -->
 <div id="sale-banner" class="sale-banner" role="region" aria-label="Launch sale promotion" style="display:none">
- Launch Sale: <strong id="sale-percent-label">80% OFF</strong> - Ends in: <strong class="countdown" id="sale-countdown" aria-live="off">calculating…</strong>
+ Launch Sale: <strong id="sale-percent-label">80% OFF</strong> - Ends in: <strong class="countdown" id="sale-countdown" aria-live="off">calculatingâ€¦</strong>
  <button class="dismiss-btn" id="dismiss-banner" aria-label="Dismiss sale banner">&times;</button>
 </div>
 
@@ -36,14 +36,10 @@
  ============================================================ -->
 <header class="site-header" id="site-header" role="banner">
  <div class="header-inner">
- <a href="/" class="header-logo" aria-label="FrankPass Home">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
- <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
- <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
- <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
- </svg>
- <span class="logo-text"><span>Frank</span>Pass</span>
- </a>
+ <a href="/" class="header-logo" aria-label="FrankPass - Home">
+      <img src="/icons/logo-lock-64.webp" onerror="this.src='/icons/logo-lock-64.png'" alt="FrankPass 3D Logo" width="32" height="32" class="header-brand-icon">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
  <div class="header-country custom-country-dropdown">
  <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
  <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
@@ -51,7 +47,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
  <div id="country-dropdown-panel" role="listbox">
- <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+ <input id="country-search-input" type="search" placeholder="Search countryâ€¦" autocomplete="off" aria-label="Search for a country">
  <div id="country-list-scroll"></div>
  </div>
  </div>
@@ -103,17 +99,17 @@
 <section class="section-sm" aria-labelledby="plans-heading">
  <div class="container">
  <h2 id="plans-heading" class="sr-only">Subscription Plans</h2>
- <p class="swipe-hint" aria-hidden="true">← Swipe to compare plans →</p>
+ <p class="swipe-hint" aria-hidden="true">â† Swipe to compare plans â†’</p>
  <div class="scroll-container" role="list" aria-label="Subscription plan options">
 
  <!-- Silver -->
  <article class="scroll-item pricing-card card-glass" role="listitem" aria-label="Silver plan">
  <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Silver</div>
  <div id="sale-orig-silver" style="display:none" class="price-original">
- <span class="price-currency">₹</span><span data-orig-silver></span>/mo
+ <span class="price-currency">â‚¹</span><span data-orig-silver></span>/mo
  </div>
  <div class="price-display">
- <span class="price-amount" data-price-silver>₹49</span>
+ <span class="price-amount" data-price-silver>â‚¹49</span>
  <span class="price-period">/mo</span>
  </div>
  <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">1 Profile</strong></p>
@@ -147,10 +143,10 @@
  <div class="popular-badge">Most Popular</div>
  <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-top:0.5rem">Gold</div>
  <div id="sale-orig-gold" style="display:none" class="price-original">
- <span class="price-currency">₹</span><span data-orig-gold></span>/mo
+ <span class="price-currency">â‚¹</span><span data-orig-gold></span>/mo
  </div>
  <div class="price-display">
- <span class="price-amount" data-price-gold>₹99</span>
+ <span class="price-amount" data-price-gold>â‚¹99</span>
  <span class="price-period">/mo</span>
  </div>
  <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">5 Profiles</strong></p>
@@ -183,10 +179,10 @@
  <article class="scroll-item pricing-card card-glass" role="listitem" aria-label="Platinum plan">
  <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Platinum</div>
  <div id="sale-orig-platinum" style="display:none" class="price-original">
- <span class="price-currency">₹</span><span data-orig-platinum></span>/mo
+ <span class="price-currency">â‚¹</span><span data-orig-platinum></span>/mo
  </div>
  <div class="price-display">
- <span class="price-amount" data-price-platinum>₹499</span>
+ <span class="price-amount" data-price-platinum>â‚¹499</span>
  <span class="price-period">/mo</span>
  </div>
  <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">30 Profiles</strong></p>
@@ -345,11 +341,11 @@
 <script src="/footer.js?v=3.2.8"></script>
 
 <script>
-/* ── Header scroll ── */
+/* â”€â”€ Header scroll â”€â”€ */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
 
-/* ── Hamburger ── */
+/* â”€â”€ Hamburger â”€â”€ */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
@@ -358,12 +354,12 @@ hamburger.addEventListener('click', () => {
  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
-/* ── Sale Banner & Countdown ── */
+/* â”€â”€ Sale Banner & Countdown â”€â”€ */
 function updatePricingDisplay(regionValue) {
  const cfg = FRANKPASS_CONFIG;
  const isIndia = regionValue && regionValue.includes('(IN)');
  const prices = isIndia ? cfg.PRICES.INDIA : cfg.PRICES.GLOBAL;
- const currency = isIndia ? '₹' : '$';
+ const currency = isIndia ? 'â‚¹' : '$';
  const links = cfg.SALE_MODE
  ? (isIndia ? cfg.PAYMENT_LINKS.SALE.INDIA : cfg.PAYMENT_LINKS.SALE.GLOBAL)
  : (isIndia ? cfg.PAYMENT_LINKS.STANDARD.INDIA : cfg.PAYMENT_LINKS.STANDARD.GLOBAL);
@@ -422,3 +418,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
