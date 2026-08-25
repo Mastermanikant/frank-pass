@@ -37,7 +37,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
  <div id="country-dropdown-panel" role="listbox">
- <input id="country-search-input" type="search" placeholder="Search countryâ€¦ autocomplete="off" aria-label="Search for a country">
+ <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
  <div id="country-list-scroll"></div>
  </div>
  </div>
@@ -67,6 +67,7 @@
  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a><a href="#" id="pwa-install-btn-mobile" class="pwa-install-btn" style="display:none; color:var(--accent); font-weight:600; text-align:center;">Install App &darr;</a>
 </nav>
 
+<main id="main-content">
 <section class="section" style="text-align:center;padding-bottom:2rem" aria-labelledby="gs-heading">
  <div class="container" style="max-width:640px">
  <div class="section-label" aria-hidden="true">Setup in under 5 minutes</div>
@@ -133,7 +134,7 @@
  </div>
  </div>
  <h2 style="font-size:1.35rem;margin-top:0.75rem">Install as an App (PWA)</h2>
- <p>In your browser's address bar, tap the install icon (or go to your browser menu â†’ "Add to Home Screen"). FrankPass becomes a full offline app. Works forever, even without internet.</p>
+ <p>In your browser's address bar, tap the install icon (or go to your browser menu → "Add to Home Screen"). FrankPass becomes a full offline app. Works forever, even without internet.</p>
  </article>
 
  </div>
@@ -177,11 +178,11 @@
 <script src="/country-dropdown.js?v=3.2.8"></script>
 <script src="/footer.js?v=3.2.8"></script>
 <script>
-/* â”€â”€ Header scroll â”€â”€ */
+/* ── Header scroll ── */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
 
-/* â”€â”€ Hamburger â”€â”€ */
+/* ── Hamburger ── */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {

@@ -37,7 +37,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
  <div id="country-dropdown-panel" role="listbox">
- <input id="country-search-input" type="search" placeholder="Search countryâ€¦ autocomplete="off" aria-label="Search for a country">
+ <input id="country-search-input" type="search" placeholder="Search country… autocomplete="off" aria-label="Search for a country">
  <div id="country-list-scroll"></div>
  </div>
  </div>
@@ -121,7 +121,7 @@
  <!-- Main content -->
  <div class="docs-content">
 
- <!-- â”€â”€ Chapter 1: Why Stateless? â”€â”€ -->
+ <!-- ── Chapter 1: Why Stateless? ── -->
  <article id="why-stateless" style="margin-bottom:4rem" aria-labelledby="ch1-heading">
  <h2 id="ch1-heading">Chapter 1: Why Stateless?</h2>
  <p style="color:var(--text-muted);margin-bottom:1.5rem">The strongest argument for a fundamentally different approach to password management.</p>
@@ -146,9 +146,9 @@
  <code style="display:block;font-size:0.85rem;line-height:1.7;background:none;border:none;padding:0;color:var(--text-accent)">
  // The verification loop - same inputs, always same output<br>
  PBKDF2(secretKey, contextVector, 1,000,000 iterations, SHA-512)<br>
- â†’ HMAC-SHA512 expansion<br>
- â†’ Character mapping with ambiguity removal<br>
- â†’ Your password
+ → HMAC-SHA512 expansion<br>
+ → Character mapping with ambiguity removal<br>
+ → Your password
  </code>
  </div>
 
@@ -156,7 +156,7 @@
  <p>Stateless systems reduce the attack surface dramatically. There is no database to breach, no encrypted vault to crack, no backup file to steal. The only way to obtain someone's FrankPass-generated password is to know their secret key - and that is never transmitted, never stored, and never leaves their mind.</p>
  </article>
 
- <!-- â”€â”€ Chapter 2: How It Works â”€â”€ -->
+ <!-- ── Chapter 2: How It Works ── -->
  <article id="how-it-works" style="margin-bottom:4rem" aria-labelledby="ch2-heading">
  <h2 id="ch2-heading">Chapter 2: How It Works</h2>
  <p style="color:var(--text-muted);margin-bottom:1.5rem">A step-by-step walkthrough of the cryptographic process inside FrankPass.</p>
@@ -177,7 +177,7 @@
  <p>The byte stream is mapped to characters using bias-free rejection sampling - a technique that ensures each character in the output is uniformly distributed. Visually ambiguous characters (l, I, O, 0, 1, C, c, S, s, V, v, W, w) are excluded. The algorithm then verifies that the password satisfies the character class requirements of the selected profile and makes surgical replacements if needed.</p>
  </article>
 
- <!-- â”€â”€ Chapter 3: Keys vs Passwords â”€â”€ -->
+ <!-- ── Chapter 3: Keys vs Passwords ── -->
  <article id="keys-vs-passwords" style="margin-bottom:4rem" aria-labelledby="ch3-heading">
  <h2 id="ch3-heading">Chapter 3: Keys vs Passwords</h2>
  <p style="color:var(--text-muted);margin-bottom:1.5rem">Understanding the distinction between your Secret Key and the passwords FrankPass generates.</p>
@@ -193,7 +193,7 @@
  <p>Never use a generated password as your secret key. And never use your secret key as a password anywhere. The secret key is your master seed - if an attacker ever learns it, they can derive all your passwords for all platforms. Protect it accordingly.</p>
  </article>
 
- <!-- â”€â”€ Chapter 4: Security Model â”€â”€ -->
+ <!-- ── Chapter 4: Security Model ── -->
  <article id="security-model" style="margin-bottom:4rem" aria-labelledby="ch4-heading">
  <h2 id="ch4-heading">Chapter 4: Security Model</h2>
  <p style="color:var(--text-muted);margin-bottom:1.5rem">What FrankPass protects against, and what remains your responsibility.</p>
@@ -208,7 +208,7 @@
  <p>The cryptographic engine in frankpass-core.js uses only the Web Cryptography API - browser-native cryptography that is audited, standardized, and used by financial institutions worldwide. PBKDF2 and HMAC-SHA512 are NIST-approved primitives. There is no proprietary cryptography, no custom hash functions, no security through obscurity.</p>
  </article>
 
- <!-- â”€â”€ Chapter 5: Advanced Options â”€â”€ -->
+ <!-- ── Chapter 5: Advanced Options ── -->
  <article id="advanced-options" style="margin-bottom:4rem" aria-labelledby="ch5-heading">
  <h2 id="ch5-heading">Chapter 5: Advanced Options</h2>
  <p style="color:var(--text-muted);margin-bottom:1.5rem">A complete reference for every option in the generator's advanced panel.</p>
@@ -226,7 +226,7 @@
  <p>Three presets are available. <strong>Simple</strong> uses alphanumeric characters only (letters and numbers, no symbols) and sets length to 12 - for websites that don't accept symbols. <strong>Strong</strong> is the default: all character classes including symbols, length 16, providing excellent security for most purposes. <strong>Max</strong> uses all character classes at length 32 - the maximum possible entropy for any given secret key and platform combination.</p>
  </article>
 
- <!-- â”€â”€ Chapter 6: Platform Tips â”€â”€ -->
+ <!-- ── Chapter 6: Platform Tips ── -->
  <article id="platform-tips" style="margin-bottom:4rem" aria-labelledby="ch6-heading">
  <h2 id="ch6-heading">Chapter 6: Platform Tips</h2>
  <p style="color:var(--text-muted);margin-bottom:1.5rem">How to handle common scenarios when using FrankPass with real-world websites.</p>
@@ -244,7 +244,7 @@
  <p>If you manage multiple accounts on the same platform (e.g., two email addresses on Gmail, or two Instagram profiles), use the Username field to distinguish them. Enter something stable - ideally a fixed identifier like the account number or handle - not a changeable email address.</p>
  </article>
 
- <!-- â”€â”€ Chapter 7: SDK (Coming Soon) â”€â”€ -->
+ <!-- ── Chapter 7: SDK (Coming Soon) ── -->
  <article id="sdk" style="margin-bottom:4rem;opacity:0.6" aria-labelledby="ch7-heading">
  <h2 id="ch7-heading">Chapter 7: SDK <span class="coming-soon-badge" style="vertical-align:middle">Coming Soon</span></h2>
  <p style="color:var(--text-muted)">The FrankPass JavaScript SDK will expose the same PBKDF2 + HMAC-SHA512 engine as a standalone npm package and browser module, so developers can integrate stateless password generation into their own applications. Documentation will appear here at launch.</p>
@@ -296,7 +296,7 @@ hamburger.addEventListener('click', () => {
  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
-/* â”€â”€ Show mobile TOC on small screens â”€â”€ */
+/* ── Show mobile TOC on small screens ── */
 const mobileToc = document.getElementById('mobile-toc');
 function checkMobile() {
  if (mobileToc) mobileToc.style.display = window.innerWidth < 900 ? 'block' : 'none';
@@ -304,7 +304,7 @@ function checkMobile() {
 checkMobile();
 window.addEventListener('resize', checkMobile, { passive: true });
 
-/* â”€â”€ Highlight active TOC link on scroll â”€â”€ */
+/* ── Highlight active TOC link on scroll ── */
 const sections = document.querySelectorAll('article[id]');
 const tocLinks = document.querySelectorAll('.docs-toc-link');
 const io = new IntersectionObserver(entries => {

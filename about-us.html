@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
@@ -46,10 +46,14 @@
 <!-- HEADER -->
 <header class="site-header" id="site-header" role="banner">
  <div class="header-inner">
- <a href="/" class="header-logo" aria-label="FrankPass - Home">
-      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon">
-      <span class="logo-text"><span>Frank</span>Pass</span>
-    </a>
+ <a href="/" class="header-logo" aria-label="FrankPass Home">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+ <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+ <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+ <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+ </svg>
+ <span class="logo-text"><span>Frank</span>Pass</span>
+ </a>
  <div class="header-country custom-country-dropdown">
  <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
  <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
@@ -57,7 +61,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
  <div id="country-dropdown-panel" role="listbox">
- <input id="country-search-input" type="search" placeholder="Search countryâ€¦ autocomplete="off" aria-label="Search for a country">
+ <input id="country-search-input" type="search" placeholder="Search country… autocomplete="off" aria-label="Search for a country">
  <div id="country-list-scroll"></div>
  </div>
  </div>
@@ -90,7 +94,7 @@
 <main id="main-content">
  <div class="container" style="max-width:960px;margin:1rem auto 0 auto;padding:0 1.5rem;display:flex;justify-content:flex-end">
  <a href="/about-us-hindi.html" class="btn-ghost" style="padding:0.35rem 0.85rem;font-size:0.8rem;border-radius:8px">
- ðŸ‡®ðŸ‡³ à¤¹à¤¿à¤‚à¤¦à¥€ à¤®à¥‡à¤‚ à¤ªà¤¢à¤¼à¥‡à¤‚ â†’
+ 🇮🇳 हिंदी में पढ़ें →
  </a>
  </div>
 
@@ -224,11 +228,11 @@
  <h3 style="font-size:1rem;margin-bottom:0.4rem">Join the Community</h3><p style="font-size:0.85rem">Connect on WhatsApp for updates &amp; tips, or join r/FrankPass on Reddit to discuss digital security with others.</p><div style="display:flex;gap:0.5rem;flex-wrap:wrap"><a href="#" class="btn-whatsapp btn-sm" id="about-whatsapp-btn" style="margin-top:0.75rem;display:inline-flex" target="_blank" rel="noopener noreferrer" aria-label="Join FrankPass on WhatsApp">WhatsApp Channel</a><a href="https://reddit.com/r/FrankPass" class="btn-ghost btn-sm" style="margin-top:0.75rem;display:inline-flex" target="_blank" rel="noopener noreferrer" aria-label="Join the FrankPass subreddit">r/FrankPass Reddit</a></div>
  </div>
  <div class="card-glass" style="padding:1.5rem;text-align:left">
-   <div style="font-size:1.5rem;margin-bottom:0.75rem">ðŸ“–</div>
+   <div style="font-size:1.5rem;margin-bottom:0.75rem">📖</div>
    <h3 style="font-size:1rem;margin-bottom:0.4rem">Free eBook (Pay What You Want)</h3>
-   <p style="font-size:0.85rem">Our foundational cybersecurity eBook and FrankPass are 100% free &amp; ad-free for everyone. If you'd like to support our work, you can pay whatever you want (â‚¹0+) when claiming your copy on FrankBase Store.</p>
+   <p style="font-size:0.85rem">Our foundational cybersecurity eBook and FrankPass are 100% free &amp; ad-free for everyone. If you'd like to support our work, you can pay whatever you want (₹0+) when claiming your copy on FrankBase Store.</p>
    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-     <a href="https://store.frankbase.com/ebooks" class="btn-primary btn-sm" style="margin-top:0.75rem;display:inline-flex;font-weight:700" target="_blank" rel="noopener noreferrer" aria-label="Claim Free Security eBook on FrankBase Store">Get Free eBook (â‚¹0+) ðŸ“–</a>
+     <a href="https://store.frankbase.com/ebooks" class="btn-primary btn-sm" style="margin-top:0.75rem;display:inline-flex;font-weight:700" target="_blank" rel="noopener noreferrer" aria-label="Claim Free Security eBook on FrankBase Store">Get Free eBook (₹0+) 📖</a>
    </div>
  </div>
  </div>
@@ -328,8 +332,6 @@ hamburger.addEventListener('click', () => {
 
 </body>
 </html>
-
-
 
 
 

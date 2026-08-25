@@ -78,7 +78,7 @@
  <div class="container" style="max-width:820px">
  <div style="display:flex;flex-direction:column;gap:0.85rem">
 
- <!-- â”€â”€ 1. Privacy Policy â”€â”€ -->
+ <!-- ── 1. Privacy Policy ── -->
  <details class="faq-item" id="privacy" open>
  <summary>
  <span style="display:flex;align-items:center;gap:0.65rem">
@@ -100,7 +100,7 @@
  </div>
  </details>
 
- <!-- â”€â”€ 2. Terms of Service â”€â”€ -->
+ <!-- ── 2. Terms of Service ── -->
  <details class="faq-item" id="terms">
  <summary>
  <span style="display:flex;align-items:center;gap:0.65rem">
@@ -122,7 +122,7 @@
  </div>
  </details>
 
- <!-- â”€â”€ 3. Limited Liability & Disclaimer â”€â”€ -->
+ <!-- ── 3. Limited Liability & Disclaimer ── -->
  <details class="faq-item" id="disclaimer">
  <summary>
  <span style="display:flex;align-items:center;gap:0.65rem">
@@ -142,7 +142,7 @@
  </div>
  </details>
 
- <!-- â”€â”€ 4. Refund Policy â”€â”€ -->
+ <!-- ── 4. Refund Policy ── -->
  <details class="faq-item" id="refunds">
  <summary>
  <span style="display:flex;align-items:center;gap:0.65rem">
@@ -160,7 +160,7 @@
  </div>
  </details>
 
- <!-- â”€â”€ 5. Affiliate & Extension Licence â”€â”€ -->
+ <!-- ── 5. Affiliate & Extension Licence ── -->
  <details class="faq-item" id="affiliate">
  <summary>
  <span style="display:flex;align-items:center;gap:0.65rem">
@@ -176,7 +176,7 @@
  </div>
  </details>
 
- <!-- â”€â”€ 6. Security Scope â”€â”€ -->
+ <!-- ── 6. Security Scope ── -->
  <details class="faq-item" id="security" style="border-color:rgba(16,185,129,0.25)">
  <summary>
  <span style="display:flex;align-items:center;gap:0.65rem">
@@ -197,7 +197,7 @@
  </div>
 
  
-  <!-- â”€â”€ 7. Statutory Compliance & Grievance Redressal (DPDP Act 2023 / IT Act / GDPR) â”€â”€ -->
+  <!-- ── 7. Statutory Compliance & Grievance Redressal (DPDP Act 2023 / IT Act / GDPR) ── -->
   <details class="faq-item" id="compliance">
   <summary>
   <span style="display:flex;align-items:center;gap:0.65rem">
@@ -239,11 +239,11 @@
 <script src="/frankpass-config.js?v=3.2.8"></script>
 <script src="/footer.js?v=3.2.8"></script>
 <script>
-/* â”€â”€ Header scroll â”€â”€ */
+/* ── Header scroll ── */
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
 
-/* â”€â”€ Hamburger â”€â”€ */
+/* ── Hamburger ── */
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
@@ -252,7 +252,7 @@ hamburger.addEventListener('click', () => {
  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
-/* â”€â”€ One-open-at-a-time accordion â”€â”€ */
+/* ── One-open-at-a-time accordion ── */
 const items = document.querySelectorAll('.faq-item');
 items.forEach(item => {
  item.addEventListener('toggle', () => {
