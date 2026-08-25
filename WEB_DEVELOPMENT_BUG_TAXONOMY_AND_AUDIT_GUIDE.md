@@ -53,9 +53,17 @@ This document serves as an exhaustive, high-density reference manual categorizin
 | **WCAG 2.1 AA Contrast Failure** | Using muted text (`#64748b` on dark backgrounds) resulting in contrast ratios below 4.5:1 for normal text or 3:1 for large text. | Visually impaired users cannot read password hints, secondary descriptions, or badges. | Use audited palette tokens (e.g., `#cbd5e1` on `#0a0a12` = 11.2:1 contrast in dark mode; `#475569` on `#ffffff` = 7.1:1 in light mode). |
 | **Form Control OS Inversion Failure** | Not explicitly declaring background and text color on `<select>`, `<option>`, and `<input>`. On Windows/macOS dark mode, native dropdown menus render unreadable OS default colors. | Country dropdowns or preset pickers show white text on white backgrounds in certain OS environments. | Explicitly define `background: var(--input-bg); color: var(--input-text);` on all `<select>` and `<option>` elements. |
 
+### 1.4 Character Encoding, Mojibake Double-Encoding & Big-Data Architecture
+
+| Bug Category | Failure Mechanism | Real-World Impact | Prevention / Fix |
+| :--- | :--- | :--- | :--- |
+| **Mojibake / Double-Encoding Corruption** | Editing UTF-8 source files in environments where system default encoding (e.g. Windows-1252 / ANSI) interprets multibyte sequences as single-byte characters and saves them back to UTF-8. | Emojis become `ðŸ“–`, Devanagari Hindi becomes `à¤®à¤¾à¤¸à¥...`, middle dots `·` become `Â·`, and currency symbols `₹` become `â‚¹`. Masked password placeholder renders as `Â·Â·Â·Â·Â·`. | Strictly enforce `utf8` in all file system streams (`fs.writeFileSync(file, content, 'utf8')`). Never use unparameterized shell write commands. Run automated Regex scans for `/[ÂÃð]/` during build audits. |
+| **Monolithic N×M Array Bloat** | Duplicating universal/global items (1,600+ platforms) across 195 regional country arrays in a single synchronous JS file. | JS bundle size explodes from ~500 KB to >7.2 MB, causing high mobile data consumption, memory exhaustion, and slow Service Worker caching. | Implement hierarchical shared keys (`window.regionalPlatforms['Global']`) where universal entities reside in a single shared repository and only country-specific entities reside in regional arrays. |
+| **Destructive String Splitting on Semantic Delimiters** | Naively splitting strings on `/` to strip URL paths before handling brand names with composite titles (e.g. `Zerodha (Kite / Coin)` or `AI4Bharat / BharatGen`). | Splitting severs closing parentheses, leaving orphan strings like `zerodha (kite ` that fail regex parenthetical stripping and produce malformed slugs (`zerodhakite`). | Always strip semantic wrappers (parentheses, brackets) first, and only split on `/` when the string has been verified as a true URL protocol/domain. |
+
 ---
 
-### 1.3 DOM Lifecycle, Event & State Management Bugs
+### 1.5 DOM Lifecycle, Event & State Management Bugs
 
 | Bug Category | Failure Mechanism | Real-World Impact | Prevention / Fix |
 | :--- | :--- | :--- | :--- |
