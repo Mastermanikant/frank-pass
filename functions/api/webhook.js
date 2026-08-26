@@ -1,3 +1,7 @@
+/**
+ * FrankPass Cloudflare Pages Function
+ * Note: frankpass.com is 100% stateless. E-commerce payments & licenses are processed via store.frankbase.com.
+ */
 export async function onRequestPost(context) {
   const { request, env } = context;
 

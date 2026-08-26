@@ -2410,3 +2410,72 @@ html, body {
     justify-content: space-between;
   }
 }
+
+/* ── PRIVACY-FRIENDLY RATING SYSTEM ─────────────────── */
+.privacy-rating-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.privacy-rating-card:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+.rating-stars-container {
+  display: inline-flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  align-items: center;
+  justify-content: center;
+}
+.star-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: transform 0.15s ease, color 0.15s ease;
+  border-radius: 8px;
+}
+.star-btn:hover,
+.star-btn.active,
+.star-btn:focus-visible {
+  color: #fbbf24;
+  transform: scale(1.2);
+  outline: none;
+}
+.star-btn:focus-visible {
+  box-shadow: 0 0 0 2px var(--accent);
+}
+.rating-feedback-msg {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 0.75rem;
+  min-height: 1.5rem;
+}
+.rating-pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  background: rgba(139, 92, 246, 0.12);
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+[data-theme="light"] .privacy-rating-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
