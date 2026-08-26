@@ -687,6 +687,26 @@
       </div>
       
       <div class="rating-feedback-msg" id="rating-feedback-text" aria-live="polite">Click a star to submit your rating</div>
+      
+      <div id="rating-comment-form" style="display:none;margin-top:1rem;text-align:left;animation:slideDown 0.3s ease forwards;">
+        <input type="text" id="rating-name-input" placeholder="Your Name or leave blank for Anonymous" style="width:100%;padding:0.75rem;margin-bottom:0.75rem;border-radius:0.5rem;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;" aria-label="Your Name">
+        <textarea id="rating-comment-input" placeholder="What do you like about FrankPass or how can we improve? (optional)" style="width:100%;padding:0.75rem;margin-bottom:0.75rem;border-radius:0.5rem;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;min-height:80px;resize:vertical;" aria-label="Your Feedback"></textarea>
+        <button id="submit-review-btn" class="btn-primary" style="width:100%;padding:0.75rem;border-radius:0.5rem;font-weight:600;display:flex;justify-content:center;align-items:center;gap:0.5rem;cursor:pointer;border:none;">
+          Submit Honest Review
+        </button>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;align-items:center;margin-top:1.5rem">
+      <a href="https://alternativeto.net/software/frankpass/" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600;font-size:0.9rem">
+        Review on AlternativeTo ↗
+      </a>
+      <a href="https://www.producthunt.com/products/frankpass" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600;font-size:0.9rem">
+        Review on Product Hunt ↗
+      </a>
+      <a href="https://www.trustpilot.com/review/frankpass.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.25rem;font-weight:600;font-size:0.9rem">
+        Review on Trustpilot ↗
+      </a>
     </div>
 
     <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;align-items:center;margin-top:1.5rem">
@@ -1719,10 +1739,32 @@ function shareLink(platform, e) {
 (function() {
   const ratingGroup = document.getElementById('rating-stars-group');
   const ratingFeedback = document.getElementById('rating-feedback-text');
+  const commentForm = document.getElementById('rating-comment-form');
+  const nameInput = document.getElementById('rating-name-input');
+  const commentInput = document.getElementById('rating-comment-input');
+  const submitBtn = document.getElementById('submit-review-btn');
+  const ratingBadgeText = document.querySelector('.rating-pill-badge');
   if (!ratingGroup || !ratingFeedback) return;
 
+  let currentRating = 0;
   const starBtns = ratingGroup.querySelectorAll('.star-btn');
   const STORAGE_KEY = 'frankpass_user_rating';
+  const STORAGE_REVIEW_KEY = 'frankpass_user_review_submitted';
+
+  // Live fetch reviews on load
+  fetch('/api/reviews')
+    .then(res => res.json())
+    .then(data => {
+      if (data.success && data.stats) {
+        const total = data.stats.totalReviews;
+        if (total > 0 && ratingBadgeText) {
+          ratingBadgeText.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ' + data.stats.averageRating + ' ⭐ based on ' + total + ' reviews';
+        } else if (total === 0 && ratingBadgeText) {
+          ratingBadgeText.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Be the first to rate';
+        }
+      }
+    })
+    .catch(err => console.warn('Failed to fetch reviews:', err));
 
   function updateStarUI(val, isSaved = false) {
     starBtns.forEach(btn => {
@@ -1739,18 +1781,21 @@ function shareLink(platform, e) {
     if (isSaved) {
       ratingFeedback.innerHTML = '⭐ You rated FrankPass <strong>' + val + '/5 stars</strong>! Thank you for supporting zero-knowledge privacy.';
       ratingFeedback.style.color = 'var(--text-primary)';
+      if (commentForm) commentForm.style.display = 'none';
     }
   }
 
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
+    const submitted = localStorage.getItem(STORAGE_REVIEW_KEY);
+    if (saved && submitted) {
       updateStarUI(parseInt(saved, 10), true);
     }
   } catch (e) {}
 
   starBtns.forEach(btn => {
     btn.addEventListener('mouseenter', () => {
+      if (localStorage.getItem(STORAGE_REVIEW_KEY)) return;
       const val = parseInt(btn.dataset.star, 10);
       starBtns.forEach(b => {
         b.style.color = parseInt(b.dataset.star, 10) <= val ? '#fbbf24' : '';
@@ -1758,22 +1803,92 @@ function shareLink(platform, e) {
     });
 
     btn.addEventListener('click', () => {
+      if (localStorage.getItem(STORAGE_REVIEW_KEY)) return;
       const val = parseInt(btn.dataset.star, 10);
-      try {
-        localStorage.setItem(STORAGE_KEY, val);
-      } catch (e) {}
-      updateStarUI(val, true);
-      showToast('⭐ Rated ' + val + '/5 Stars! Thank you for your feedback.', 'success');
+      currentRating = val;
+      
+      starBtns.forEach(b => {
+        const starVal = parseInt(b.dataset.star, 10);
+        if (starVal <= val) {
+          b.classList.add('active');
+          b.style.color = '#fbbf24';
+        } else {
+          b.classList.remove('active');
+          b.style.color = '';
+        }
+      });
+      
+      if (commentForm) {
+        commentForm.style.display = 'block';
+        ratingFeedback.innerHTML = 'You selected ' + val + ' stars. Add an optional comment below.';
+      }
     });
   });
 
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      if (currentRating === 0) return;
+      
+      const btnText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Submitting...';
+      submitBtn.disabled = true;
+      
+      const payload = {
+        rating: currentRating,
+        name: nameInput ? nameInput.value : '',
+        comment: commentInput ? commentInput.value : ''
+      };
+      
+      fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.error && data.error.includes("already submitted")) {
+           showToast(data.error);
+        } else if (data.error) {
+           showToast('Error: ' + data.error, 'error');
+        } else {
+           showToast('⭐ Review submitted successfully! Thank you.', 'success');
+           try {
+             localStorage.setItem(STORAGE_KEY, currentRating);
+             localStorage.setItem(STORAGE_REVIEW_KEY, '1');
+           } catch(e) {}
+           updateStarUI(currentRating, true);
+        }
+      })
+      .catch(err => {
+        console.warn('Submission failed online, saving to localStorage fallback.', err);
+        try {
+          localStorage.setItem(STORAGE_KEY, currentRating);
+          localStorage.setItem(STORAGE_REVIEW_KEY, '1');
+        } catch(e) {}
+        updateStarUI(currentRating, true);
+        showToast('⭐ Rated ' + currentRating + '/5 Stars! Saved offline.', 'success');
+      })
+      .finally(() => {
+        submitBtn.innerHTML = btnText;
+        submitBtn.disabled = false;
+      });
+    });
+  }
+
   ratingGroup.addEventListener('mouseleave', () => {
+    if (localStorage.getItem(STORAGE_REVIEW_KEY)) return;
+    if (currentRating > 0) {
+       starBtns.forEach(b => {
+         b.style.color = parseInt(b.dataset.star, 10) <= currentRating ? '#fbbf24' : '';
+       });
+       return;
+    }
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
-      if (saved) {
+      if (saved && localStorage.getItem(STORAGE_REVIEW_KEY)) {
         updateStarUI(parseInt(saved, 10), true);
       } else {
-        starBtns.forEach(b => { b.style.color = ''; });
+        starBtns.forEach(b => { b.style.color = ''; b.classList.remove('active'); });
       }
     } catch (e) {}
   });
