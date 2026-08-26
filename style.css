@@ -2511,3 +2511,108 @@ html, body {
   border-color: #e2e8f0;
 }
 
+
+
+/* ── 30. UNIVERSAL MOBILE FLUID CARD & SPACING ENHANCEMENTS ── */
+:root {
+  --container-pad: clamp(1rem, 4vw, 2rem);
+  --card-pad-pc: 2.25rem 2rem;
+  --card-pad-mob: 1.15rem 1rem;
+}
+
+.page-container, .container {
+  padding-left: var(--container-pad) !important;
+  padding-right: var(--container-pad) !important;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-pad: 0.85rem;
+  }
+  .page-container, .container {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  /* Fluid Card Padding: Eliminate wasted side margins on mobile */
+  .card-glass,
+  .featured-card,
+  .article-card,
+  .founder-trust-card,
+  .generator-card,
+  .privacy-rating-card,
+  [style*="padding:2.5rem"],
+  [style*="padding: 2.5rem"],
+  [style*="padding:2.25rem"],
+  [style*="padding: 2.25rem"],
+  [style*="padding:2rem"],
+  [style*="padding: 2rem"],
+  [style*="padding:1.75rem"],
+  [style*="padding: 1.75rem"],
+  [style*="padding:1.5rem"],
+  [style*="padding: 1.5rem"] {
+    padding: 1.15rem 1rem !important;
+    border-radius: var(--radius-md) !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  /* Force multi-column grids to stack into 100% full-width cards on mobile */
+  .grid-2,
+  .grid-3,
+  .founder-grid,
+  .articles-grid,
+  [style*="grid-template-columns:repeat(auto-fit"],
+  [style*="grid-template-columns: repeat(auto-fit"],
+  [style*="grid-template-columns:repeat(auto-fill"],
+  [style*="grid-template-columns: repeat(auto-fill"] {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Hero & Founder side-by-side flex stacking */
+  [style*="display:flex"][style*="align-items:center"][style*="flex-wrap:wrap"] {
+    gap: 1.25rem !important;
+  }
+
+  /* Responsive typography */
+  h1 {
+    font-size: clamp(1.65rem, 6vw, 2.4rem) !important;
+    line-height: 1.2 !important;
+  }
+  h2 {
+    font-size: clamp(1.3rem, 5vw, 1.75rem) !important;
+    line-height: 1.25 !important;
+  }
+  p {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+  }
+
+  /* Hide overflowing desktop nav when hamburger is active */
+  .site-header .header-nav {
+    display: none !important;
+  }
+  .site-header .hamburger {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --container-pad: 0.65rem;
+  }
+  .page-container, .container {
+    padding-left: 0.65rem !important;
+    padding-right: 0.65rem !important;
+  }
+  .card-glass,
+  .featured-card,
+  .article-card,
+  .founder-trust-card,
+  .generator-card {
+    padding: 1rem 0.85rem !important;
+  }
+}

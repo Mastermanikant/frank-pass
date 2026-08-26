@@ -190,7 +190,32 @@
     }
   }
 
+  
+  // Universal Rock-Solid Mobile Hamburger Navigation Handler
+  function setupMobileMenu() {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu && !hamburger._hasMenuListener) {
+      hamburger._hasMenuListener = true;
+      hamburger.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      document.addEventListener('click', function (e) {
+        if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+          mobileMenu.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  }
+
   function initFooter() {
+    setupMobileMenu();
     buildFooter();
     setupVersionPopover();
   }
