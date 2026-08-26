@@ -1,8 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="robots" content="noindex, follow">
  <title>FrankPass FAQ | Frequently Asked Questions</title>
  <meta name="description" content="Answers to every FrankPass question - security architecture, offline use, secret key recovery, domain normalization, variant counter, and more. 12 questions answered.">
  <link rel="canonical" href="https://frankpass.com/faq.html">
@@ -89,7 +90,7 @@
  ]
  }
  </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is FrankPass?","acceptedAnswer":{"@type":"Answer","text":"FrankPass is a stateless, offline-first password generator. It uses PBKDF2 cryptography to generate passwords mathematically. Nothing is ever stored - not on our servers, not on your device."}},{"@type":"Question","name":"What is a Secret Key in FrankPass?","acceptedAnswer":{"@type":"Answer","text":"A Secret Key is NOT a password. It is a cryptographic seed (gradient) that drives the math. Without your Secret Key, nobody can ever reproduce your passwords. You only need to remember one Secret Key - FrankPass generates different passwords for every platform automatically."}},{"@type":"Question","name":"Is FrankPass free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The FrankPass web generator at frankpass.com is completely free and always will be. A Pro browser extension is available for power users."}},{"@type":"Question","name":"Does FrankPass work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. FrankPass is a PWA (Progressive Web App). Once installed, it works entirely offline - even with no internet connection, even if our domain expired."}},{"@type":"Question","name":"If I forget my Secret Key, can I recover my passwords?","acceptedAnswer":{"@type":"Answer","text":"No. Since nothing is stored anywhere, there is no recovery mechanism. This is by design - it means there is also nothing to steal. Keep your Secret Key memorable but known only to you."}},{"@type":"Question","name":"Can I use the same Secret Key for all platforms?","acceptedAnswer":{"@type":"Answer","text":"Yes, that is exactly how FrankPass works. Use one Secret Key for everything - FrankPass generates a unique, different password for each platform automatically."}}]}</script></head>
+</head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -107,7 +108,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
  <div id="country-dropdown-panel" role="listbox">
- <input id="country-search-input" type="search" placeholder="Search country… autocomplete="off" aria-label="Search for a country">
+ <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
  <div id="country-list-scroll"></div>
  </div>
  </div>

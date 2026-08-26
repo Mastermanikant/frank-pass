@@ -2,7 +2,7 @@ export async function onRequestPost(context) {
   const { request, env } = context;
 
   const corsHeaders = {
-    "Access-Control-Allow-Origin": "*", 
+    "Access-Control-Allow-Origin": "https://frankpass.com", 
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
