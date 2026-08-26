@@ -1059,6 +1059,38 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .footer-col a { display: block; color: var(--text-muted); font-size: 0.88rem; padding: 0.3rem 0; transition: color var(--transition); }
 .footer-col a:hover { color: var(--text-primary); }
 
+.footer-link-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+.footer-link-group a:first-child {
+  padding: 0;
+  display: inline;
+}
+.footer-lang-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  background: rgba(139, 92, 246, 0.12);
+  color: var(--accent) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  text-decoration: none !important;
+  transition: var(--transition);
+  line-height: 1.2;
+}
+.footer-lang-pill:hover {
+  background: var(--accent);
+  color: #ffffff !important;
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
 .footer-social { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
 .footer-social-link {
   display: flex;

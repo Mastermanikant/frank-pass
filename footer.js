@@ -83,16 +83,30 @@
       <div class="footer-col">
         <div class="footer-col-title">FrankPass</div>
         <a href="./index.html">Password Generator</a>
-        <a href="./products.html">All Products Hub 📦</a>
-        <a href="./install.html">Install App 📱</a>
-        <a href="./get-started.html">Get Started</a>
         <a href="./pro.html">FrankPass Pro 👑</a>
+        <a href="./products.html">All Products Hub 📦</a>
+        <a href="./install.html">Install Web App 📱</a>
+        <a href="./blog.html">Blog &amp; Insights ✍️</a>
         <a href="./docs.html">Documentation</a>
         <a href="./faq.html">FAQ</a>
-        <a href="./about-us.html">About Us</a>
-        <a href="./about-us-hindi.html">About (Hindi) 🇮🇳</a>
-        <a href="./limitations-and-advantages.html">Why Our Flaws Are Strengths</a>
-        <a href="./limitations-and-advantages-hindi.html">कमियां एवं अच्छाइयां (हिन्दी) 🇮🇳</a>
+      </div>
+
+      <!-- Trust & Founder links -->
+      <div class="footer-col">
+        <div class="footer-col-title">Trust &amp; Founder</div>
+        <div class="footer-link-group">
+          <a href="./about-us.html">About Us</a>
+          <a href="./about-us-hindi.html" class="footer-lang-pill" title="About Us in Hindi">हिन्दी 🇮🇳</a>
+        </div>
+        <div class="footer-link-group">
+          <a href="./limitations-and-advantages.html">Flaws &amp; Strengths</a>
+          <a href="./limitations-and-advantages-hindi.html" class="footer-lang-pill" title="कमियां एवं अच्छाइयां हिन्दी में">हिन्दी 🇮🇳</a>
+        </div>
+        <div class="footer-link-group">
+          <a href="./founder-mastermanikant.html">Master Manikant</a>
+          <a href="./founder-mastermanikant-hindi.html" class="footer-lang-pill" title="फाउंडर प्रोफाइल हिन्दी में">हिन्दी 🇮🇳</a>
+        </div>
+        <a href="./get-started.html">Get Started Guide</a>
         <a href="./legal.html">Privacy &amp; Terms</a>
       </div>
 
@@ -103,19 +117,8 @@
         <a href="https://digital.frankbase.com" target="_blank" rel="noopener noreferrer">Digital Products Store ↗</a>
         <a href="https://frankbase.com/products" target="_blank" rel="noopener noreferrer">All Tools &amp; Products ↗</a>
         <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer">Cyber Security eBooks ↗</a>
-        <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer">Free eBook (Pay What You Want) 📖</a>
-      </div>
-
-      <!-- Founder links -->
-      <div class="footer-col">
-        <div class="footer-col-title">Master Manikant</div>
-        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer">MasterManikant.com ↗</a>
-        <a href="./founder-mastermanikant.html">Founder Master Manikant</a>
-        <a href="./founder-mastermanikant-hindi.html">Founder Profile (Hindi) 🇮🇳</a>
-        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer">WhatsApp Channel</a>
-        <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://x.com/MasterManikant" target="_blank" rel="noopener noreferrer">X (Twitter)</a>
-        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer">YouTube</a>
+        <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer">Free eBook (Pay What You Want) 📚</a>
+        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer">WhatsApp Channel ↗</a>
       </div>
 
 

@@ -29,6 +29,7 @@ Same input (Site + Secret Key) always generates the exact same password determin
 - Getting Started: https://frankpass.com/get-started.html
 - Documentation: https://frankpass.com/docs.html
 - FAQ: https://frankpass.com/faq.html
+- Security Blog: https://frankpass.com/blog.html
 - Pro Extension: https://frankpass.com/pro.html
 - About Us (English): https://frankpass.com/about-us.html
 - About Us (Hindi): https://frankpass.com/about-us-hindi.html

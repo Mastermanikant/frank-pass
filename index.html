@@ -243,7 +243,7 @@
  <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. One memorable phrase generates unique, unhackable passwords for all your platforms (Gmail, Amazon, GitHub).</p>
  <div class="info-popover-tip">
  💡 <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
- âœ¨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
+ ✨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
  </div>
  </div>
  </div>
@@ -297,7 +297,7 @@
 
  <!-- Mode 1: Numeric Counter (1-999) with stepper -->
  <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
- <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">âˆ’</button>
+ <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">&minus;</button>
  <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
  <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
  </div>
@@ -321,7 +321,7 @@
  <input id="variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
  </div>
 
- <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">Change number or date to rotate password without changing your Secret Key.</span>
+ <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">Permanent default is Counter 1. Only change if you want to rotate your password without changing your Secret Key.</span>
  </div>
 
  <!-- Password Type -->
@@ -954,7 +954,7 @@ async function saveEncryptedSecret(mode) {
  localStorage.setItem('fp_bio_mode', mode); // 'biometric' or 'blind_encrypted'
  
  if (savedBadge) {
- savedBadge.textContent = mode === 'biometric' ? 'âœ“ Biometric Protected' : 'âœ“ Encrypted Locally';
+ savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
  savedBadge.style.display = 'inline';
  }
  if (rememberToggle) {
@@ -1125,7 +1125,7 @@ async function initRememberedSecret() {
  secretInputEl.value = plain;
  const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
  if (savedBadge) {
- savedBadge.textContent = mode === 'biometric' ? 'âœ“ Biometric Protected' : 'âœ“ Encrypted Locally';
+ savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
  savedBadge.style.display = 'inline';
  }
  rememberToggle.setAttribute('aria-checked', 'true');
@@ -1334,7 +1334,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  throw new Error("Fallback");
  }
  triggerCopyUI();
- showToast('âš¡ Password generated & auto-copied!', 'success');
+ showToast('⚡ Password generated & auto-copied!', 'success');
  } catch (_) {
  try {
  const textArea = document.createElement('textarea');
@@ -1348,12 +1348,12 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  document.body.removeChild(textArea);
  if(successful) {
  triggerCopyUI();
- showToast('âš¡ Password generated & auto-copied!', 'success');
+ showToast('⚡ Password generated & auto-copied!', 'success');
  } else {
- showToast('âš¡ Password generated! Please click Copy to use.', 'success');
+ showToast('⚡ Password generated! Please click Copy to use.', 'success');
  }
  } catch (e) {
- showToast('âš¡ Password generated! Please click Copy to use.', 'success');
+ showToast('⚡ Password generated! Please click Copy to use.', 'success');
  }
  }
 
@@ -1611,7 +1611,7 @@ document.getElementById('copy-btn').addEventListener('click', async () => {
  const copyBtn = document.getElementById('copy-btn');
  copyBtn.classList.add('copied');
  document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
- showToast('âš¡ Password copied! Press Ctrl+V anywhere', 'success');
+ showToast('⚡ Password copied! Press Ctrl+V anywhere', 'success');
  setTimeout(() => {
  copyBtn.classList.remove('copied');
  document.getElementById('copy-icon').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
