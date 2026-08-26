@@ -1,40 +1,27 @@
-# Cloudflare Pages Direct Deployment & Cloudflare Router Config
+# Cloudflare Pages Direct Deployment & Router Config
+# Note: Cloudflare Pages natively maps extensionless URLs (e.g. /get-started -> get-started.html).
+# Do NOT add self-referential rules (e.g. /get-started /get-started.html) as it causes ERR_TOO_MANY_REDIRECTS.
 
-# Internal Clean URL Rewrites & Aliases
-/app /install.html 301
-/download /install.html 301
-/pwa /install.html 301
-/install /install.html 301
-/pro /pro.html 301
-/pricing /pro.html 301
-/pricing/extensions /pro.html 301
-/docs /docs.html 301
-/faq /faq.html 301
-/about /about-us.html 301
-/about-us /about-us.html 301
-/about-us-hindi /about-us-hindi.html 301
-/about-hindi /about-us-hindi.html 301
-/founder /founder-mastermanikant.html 301
-/founder-mastermanikant /founder-mastermanikant.html 301
-/founder-mastermanikant-hindi /founder-mastermanikant-hindi.html 301
-/founder-hindi /founder-mastermanikant-hindi.html 301
-/limitations-and-advantages /limitations-and-advantages.html 301
-/limitations-and-advantages-hindi /limitations-and-advantages-hindi.html 301
-/advantages /limitations-and-advantages.html 301
-/advantages-hindi /limitations-and-advantages-hindi.html 301
-/get-started /get-started.html 301
-/products /products.html 301
-/legal /legal.html 301
-/privacy /legal.html 301
-/terms /legal.html 301
-/disclaimer /legal.html 301
+# Aliases & Short URLs
+/app /install 301
+/download /install 301
+/pwa /install 301
+/pricing /pro 301
+/pricing/extensions /pro 301
+/about /about-us 301
+/about-hindi /about-us-hindi 301
+/founder /founder-mastermanikant 301
+/founder-hindi /founder-mastermanikant-hindi 301
+/advantages /limitations-and-advantages 301
+/advantages-hindi /limitations-and-advantages-hindi 301
+/contact /about-us 301
+/support /about-us 301
+/privacy /legal 301
+/terms /legal 301
+/disclaimer /legal 301
 /hn / 200
 
-# Canonical Page Redirects
-/contact /about-us.html 301
-/support /about-us.html 301
-
-# Founder Social Redirects (Strict: @mastermanikant)
+# Founder Social Links
 /mastermanikant/x https://x.com/MasterManikant 301
 /mastermanikant/linkedin https://linkedin.com/in/mastermanikant 301
 /mastermanikant/youtube https://youtube.com/@MasterManikant 301
@@ -42,7 +29,7 @@
 /mastermanikant/facebook https://facebook.com/mastermanikant 301
 /whatsapp/mastermanikant https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h 301
 
-# FrankPass Brand Social Redirects (Strict: @frankpasshq)
+# FrankPass Brand Links
 /x https://x.com/frankpasshq 301
 /youtube https://youtube.com/@frankpasshq 301
 /instagram https://instagram.com/frankpasshq 301
@@ -50,7 +37,7 @@
 /facebook https://facebook.com/frankpasshq 301
 /reddit https://reddit.com/r/frankpasshq 301
 
-# FrankBase Central Store & Ecosystem Redirects
+# FrankBase Central Store & Ecosystem Links
 /store https://store.frankbase.com 302
 /digital https://digital.frankbase.com 302
 /ebooks https://store.frankbase.com/ebooks 302
