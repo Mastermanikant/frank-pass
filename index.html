@@ -248,7 +248,7 @@
  </div>
  </div>
  </div>
- <label class="toggle-switch-right" for="remember-secret" style="display:inline-flex;align-items:center;gap:0.45rem;margin:0;cursor:pointer" title="Remember Secret Key on this device" style="margin-right:12px;">
+ <label class="toggle-switch-right" for="remember-secret" style="display:inline-flex;align-items:center;gap:0.5rem;margin:0 12px 0 0;cursor:pointer" title="Remember Secret Key on this device">
  <span style="font-size:0.78rem;color:var(--text-muted)">Remember on this device</span>
  <input type="checkbox" id="remember-secret" role="switch" aria-checked="false" style="display:none">
  <span class="toggle-track" aria-hidden="true"></span>
@@ -269,7 +269,7 @@
  <div class="strength-segment" id="str-seg-4"></div>
  </div>
  </div>
- <span id="saved-badge" style="display:none;font-size:0.72rem;color:var(--success);font-weight:700;margin-top:0.25rem">&#10003; Encrypted Locally</span>
+ <div id="saved-badge" style="display:none;align-items:center;gap:0.35rem;font-size:0.75rem;color:var(--success);font-weight:700;margin:0.5rem 0 0.35rem 0"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline-block;vertical-align:-1px;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg><span id="saved-badge-text">Encrypted Locally</span></div>
  <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
  </div>
 
@@ -954,9 +954,10 @@ async function saveEncryptedSecret(mode) {
  localStorage.setItem('fp_bio_mode', mode); // 'biometric' or 'blind_encrypted'
  
  if (savedBadge) {
- savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
- savedBadge.style.display = 'inline';
- }
+        const sText = document.getElementById('saved-badge-text');
+        if (sText) sText.textContent = mode === 'biometric' ? 'Biometric Protected' : 'Encrypted Locally';
+        savedBadge.style.display = 'inline-flex';
+      }
  if (rememberToggle) {
  rememberToggle.checked = true;
  rememberToggle.setAttribute('aria-checked', 'true');
@@ -1125,9 +1126,10 @@ async function initRememberedSecret() {
  secretInputEl.value = plain;
  const mode = localStorage.getItem('fp_bio_mode') || 'blind_encrypted';
  if (savedBadge) {
- savedBadge.textContent = mode === 'biometric' ? '✓ Biometric Protected' : '✓ Encrypted Locally';
- savedBadge.style.display = 'inline';
- }
+        const sText = document.getElementById('saved-badge-text');
+        if (sText) sText.textContent = mode === 'biometric' ? 'Biometric Protected' : 'Encrypted Locally';
+        savedBadge.style.display = 'inline-flex';
+      }
  rememberToggle.setAttribute('aria-checked', 'true');
  }
  } catch (_) {}

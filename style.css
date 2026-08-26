@@ -2616,3 +2616,29 @@ html, body {
     padding: 1rem 0.85rem !important;
   }
 }
+
+
+/* ── 31. EXTRA BREATHING SPACE & REFINED PADDING ── */
+.generator-card {
+  padding: 1.75rem 1.65rem;
+}
+.generator-card .form-group {
+  margin-bottom: 1.15rem;
+}
+.generator-card .input-wrapper {
+  margin-bottom: 0.35rem;
+}
+.toggle-switch-right {
+  margin-right: 12px !important;
+  padding-right: 4px;
+}
+.advanced-toggle {
+  margin: 0.95rem 0 1rem 0 !important;
+}
+.gen-actions-row {
+  margin-top: 1.15rem !important;
+  margin-bottom: 1.15rem !important;
+}
+.output-box {
+  margin-top: 1.15rem !important;
+}
