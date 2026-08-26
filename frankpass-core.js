@@ -93,36 +93,45 @@ const FRANKPASS_CORE = (function () {
 
     return {
         generate: async function (platform, username, secretKey, variant, profile, length, pepperedString = null) {
-            const encoder = new TextEncoder();
+            if (typeof crypto === 'undefined' || !crypto.subtle) {
+                throw new Error('WebCrypto API (crypto.subtle) is not supported or not in a secure context (HTTPS).');
+            }
 
-            // 1. Use provided pepper or generate locally
-            const pepper = pepperedString || await getLocalPepper(platform, username, secretKey);
+            try {
+                const encoder = new TextEncoder();
 
-            // 2. Context Vector
-            const ctxString = `${APP_ID.length}:${APP_ID}|${VERSION.length}:${VERSION}|${platform.length}:${platform}|${username.length}:${username}|${pepper.length}:${pepper}|${variant.toString().length}:${variant}|${profile.length}:${profile}|${length.toString().length}:${length}`;
-            const seedData = encoder.encode(ctxString.normalize('NFC'));
+                // 1. Use provided pepper or generate locally
+                const pepper = pepperedString || await getLocalPepper(platform, username, secretKey);
 
-            // 3. PBKDF2
-            const baseKey = await crypto.subtle.importKey(
-                'raw', encoder.encode(pepper.normalize('NFC')), 'PBKDF2', false, ['deriveBits']
-            );
-            const pbkdf2Bits = await crypto.subtle.deriveBits(
-                { name: 'PBKDF2', salt: seedData, iterations: 1000000, hash: 'SHA-512' }, baseKey, 512
-            );
+                // 2. Context Vector
+                const ctxString = `${APP_ID.length}:${APP_ID}|${VERSION.length}:${VERSION}|${platform.length}:${platform}|${username.length}:${username}|${pepper.length}:${pepper}|${variant.toString().length}:${variant}|${profile.length}:${profile}|${length.toString().length}:${length}`;
+                const seedData = encoder.encode(ctxString.normalize('NFC'));
 
-            // 4. HMAC Expansion
-            const prkKey = await crypto.subtle.importKey(
-                'raw', pbkdf2Bits, { name: 'HMAC', hash: 'SHA-512' }, false, ['sign']
-            );
+                // 3. PBKDF2
+                const baseKey = await crypto.subtle.importKey(
+                    'raw', encoder.encode(pepper.normalize('NFC')), 'PBKDF2', false, ['deriveBits']
+                );
+                const pbkdf2Bits = await crypto.subtle.deriveBits(
+                    { name: 'PBKDF2', salt: seedData, iterations: 1000000, hash: 'SHA-512' }, baseKey, 512
+                );
 
-            let outputBytes = new Uint8Array(0);
-            let sig1 = await crypto.subtle.sign('HMAC', prkKey, new Uint8Array([1]));
-            outputBytes = new Uint8Array([...outputBytes, ...new Uint8Array(sig1)]);
-            let sig2 = await crypto.subtle.sign('HMAC', prkKey, new Uint8Array([...new Uint8Array(sig1), 2]));
-            outputBytes = new Uint8Array([...outputBytes, ...new Uint8Array(sig2)]);
+                // 4. HMAC Expansion
+                const prkKey = await crypto.subtle.importKey(
+                    'raw', pbkdf2Bits, { name: 'HMAC', hash: 'SHA-512' }, false, ['sign']
+                );
 
-            // 5. Bytes to Chars
-            return bytesToCharacters(outputBytes, profile, length);
+                let outputBytes = new Uint8Array(0);
+                let sig1 = await crypto.subtle.sign('HMAC', prkKey, new Uint8Array([1]));
+                outputBytes = new Uint8Array([...outputBytes, ...new Uint8Array(sig1)]);
+                let sig2 = await crypto.subtle.sign('HMAC', prkKey, new Uint8Array([...new Uint8Array(sig1), 2]));
+                outputBytes = new Uint8Array([...outputBytes, ...new Uint8Array(sig2)]);
+
+                // 5. Bytes to Chars
+                return bytesToCharacters(outputBytes, profile, length);
+            } catch (err) {
+                console.error('FrankPass Core Generation Error:', err);
+                throw err;
+            }
         }
     };
 })();

@@ -5,6 +5,8 @@
 
 /* ── 1. RESET & BASE ─────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { max-width: 100vw; overflow-x: clip; }
+img { max-width: 100%; height: auto; }
 
 /* ── 2. DESIGN TOKENS ────────────────────────────────────── */
 :root {
@@ -311,12 +313,22 @@ pre code {
 .hamburger {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 0.5rem;
   margin-left: auto;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition);
+}
+.hamburger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 .hamburger span {
   display: block;
@@ -337,18 +349,28 @@ pre code {
   top: var(--header-h);
   left: 0;
   right: 0;
+  max-height: calc(100vh - var(--header-h));
+  max-height: calc(100dvh - var(--header-h));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--bg-secondary);
   border-bottom: 1px solid var(--border);
   z-index: 999;
-  padding: 1rem;
+  padding: 1rem 1.25rem 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.35rem;
   transform: translateY(-110%);
   opacity: 0;
+  pointer-events: none;
   transition: transform 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
 }
-.mobile-menu.open { transform: translateY(0); opacity: 1; }
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
 .mobile-menu a {
   display: block;
   padding: 0.85rem 1rem;
@@ -545,6 +567,15 @@ input[type="range"]::-webkit-slider-thumb {
   border-radius: 20px;
   background: var(--accent);
   cursor: pointer;
+  box-shadow: 0 0 8px rgba(139,92,246,0.5);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 20px;
+  background: var(--accent);
+  cursor: pointer;
+  border: none;
   box-shadow: 0 0 8px rgba(139,92,246,0.5);
 }
 
@@ -1096,12 +1127,12 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   gap: 0.2rem;
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 500;
-  padding: 0.4rem 0.75rem;
+  padding: 0.4rem 0.6rem;
   border-radius: var(--radius-sm);
   transition: color var(--transition);
-  min-width: 52px;
+  min-width: 50px;
 }
 .mob-nav-item svg { width: 22px; height: 22px; }
 .mob-nav-item.active { color: var(--accent); }

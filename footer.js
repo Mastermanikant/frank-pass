@@ -154,15 +154,26 @@
 </footer>`;
   }
 
-  /* Run after DOM + config ready */
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      buildFooter();
+  /* Helper for safe storage */
+  function safeGet(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return null;
+    }
+  }
 
-    // Mobile click toggle for version popover
+  function safeSet(key, val) {
+    try {
+      localStorage.setItem(key, val);
+    } catch (e) {}
+  }
+
+  function setupVersionPopover() {
     const vWrap = document.getElementById('fp-version-wrap');
     const vBtn = document.getElementById('fp-version-btn');
-    if (vWrap && vBtn) {
+    if (vWrap && vBtn && !vBtn._hasFpListener) {
+      vBtn._hasFpListener = true;
       vBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -174,10 +185,18 @@
         }
       });
     }
+  }
 
-    });
-  } else {
+  function initFooter() {
     buildFooter();
+    setupVersionPopover();
+  }
+
+  /* Run after DOM + config ready */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFooter);
+  } else {
+    initFooter();
   }
 
 })();
@@ -213,6 +232,13 @@ window.addEventListener('beforeinstallprompt', (e) => {
   const moonSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
   const sunSVG  = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
 
+  function safeGet(key) {
+    try { return localStorage.getItem(key); } catch(e) { return null; }
+  }
+  function safeSet(key, val) {
+    try { localStorage.setItem(key, val); } catch(e) {}
+  }
+
   function updateIcons(isLight) {
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
       btn.innerHTML = isLight ? moonSVG : sunSVG;
@@ -224,34 +250,43 @@ window.addEventListener('beforeinstallprompt', (e) => {
   function setTheme(theme) {
     if (theme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
-      localStorage.setItem('frankpass_theme', 'light');
-      localStorage.setItem('fp_theme', 'light');
+      safeSet('frankpass_theme', 'light');
+      safeSet('fp_theme', 'light');
       updateIcons(true);
     } else {
       document.documentElement.removeAttribute('data-theme');
-      localStorage.setItem('frankpass_theme', 'dark');
-      localStorage.setItem('fp_theme', 'dark');
+      safeSet('frankpass_theme', 'dark');
+      safeSet('fp_theme', 'dark');
       updateIcons(false);
     }
   }
 
-  // Initial theme on load
-  const saved = localStorage.getItem('frankpass_theme') || localStorage.getItem('fp_theme');
+  // Initial theme check on script load
+  const saved = safeGet('frankpass_theme') || safeGet('fp_theme');
   if (saved === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
+  function setupThemeListeners() {
     const isCurrentlyLight = document.documentElement.getAttribute('data-theme') === 'light';
     updateIcons(isCurrentlyLight);
 
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-      btn.onclick = function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        setTheme(isLight ? 'dark' : 'light');
-      };
+      if (!btn._themeListenerAttached) {
+        btn._themeListenerAttached = true;
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          setTheme(isLight ? 'dark' : 'light');
+        });
+      }
     });
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupThemeListeners);
+  } else {
+    setupThemeListeners();
+  }
 })();

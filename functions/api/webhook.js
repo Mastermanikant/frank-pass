@@ -3,7 +3,38 @@ export async function onRequestPost(context) {
 
   try {
     const rawBody = await request.clone().text();
-    const signature = request.headers.get("Dodo-Signature");
+    const signature = request.headers.get("Dodo-Signature") || request.headers.get("dodo-signature");
+
+    // Optional webhook signature verification if DODO_WEBHOOK_SECRET is configured
+    if (env.DODO_WEBHOOK_SECRET) {
+      if (!signature) {
+        return new Response(JSON.stringify({ error: "Missing webhook signature" }), {
+          status: 401,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+
+      const encoder = new TextEncoder();
+      const key = await crypto.subtle.importKey(
+        "raw",
+        encoder.encode(env.DODO_WEBHOOK_SECRET),
+        { name: "HMAC", hash: "SHA-256" },
+        false,
+        ["sign"]
+      );
+      const signatureBuffer = await crypto.subtle.sign("HMAC", key, encoder.encode(rawBody));
+      const expectedSignature = Array.from(new Uint8Array(signatureBuffer))
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+
+      if (signature !== expectedSignature) {
+        return new Response(JSON.stringify({ error: "Invalid webhook signature" }), {
+          status: 401,
+          headers: { "Content-Type": "application/json" }
+        });
+      }
+    }
+
     const payload = await request.json();
     const event = payload.type;
     const data = payload.data;

@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.3.5 (100% Offline-First with Smart Network-First Sync)
-const CACHE_NAME = 'frankpass-v3.3.5';
+// FrankPass Service Worker v3.3.6 (100% Offline-First with Smart Network-First Sync)
+const CACHE_NAME = 'frankpass-v3.3.6';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -11,8 +11,8 @@ const CACHED_URLS = [
     '/founder-mastermanikant.html',
     '/founder-mastermanikant-hindi.html',
     '/about-us-hindi.html',
-  '/limitations-and-advantages.html',
-  '/limitations-and-advantages-hindi.html',
+    '/limitations-and-advantages.html',
+    '/limitations-and-advantages-hindi.html',
     '/products.html',
     '/legal.html',
     '/get-started.html',
@@ -75,8 +75,9 @@ self.addEventListener('fetch', (event) => {
                 return caches.match(event.request).then((cachedResponse) => {
                     if (cachedResponse) return cachedResponse;
                     if (event.request.mode === 'navigate') {
-                        return caches.match('/') || caches.match('/index.html');
+                        return caches.match('/').then(res => res || caches.match('/index.html'));
                     }
+                    return null;
                 });
             })
     );

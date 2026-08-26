@@ -108,9 +108,13 @@
         currentCode = country.code;
 
         // Update trigger display
-        triggerFlag.src = getFlagUrl(country.code);
-        triggerFlag.style.display = '';
-        displayName.textContent = country.label;
+        if (triggerFlag) {
+            triggerFlag.src = getFlagUrl(country.code);
+            triggerFlag.style.display = '';
+        }
+        if (displayName) {
+            displayName.textContent = country.label;
+        }
 
         // Update premium header flag
         const headerFlag = document.getElementById('header-flag-img');
@@ -125,9 +129,11 @@
         if (cardPill) cardPill.title = country.label;
 
         // Update hidden input (replaces old regionEl value)
-        hiddenInput.value = country.label;
-        // Fire change event so script.js listeners pick it up
-        hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+        if (hiddenInput) {
+            hiddenInput.value = country.label;
+            // Fire change event so script.js listeners pick it up
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
 
         // Update platform datalist
         if (typeof populatePlatformDatalist === 'function') {
@@ -160,7 +166,7 @@
         hiddenInput  = document.getElementById('region');
         flagBadge    = document.getElementById('flag-badge');
 
-        if (!trigger || !panel || !searchInput || !listScroll) return;
+        if (!trigger || !panel || !searchInput || !listScroll || !displayName || !triggerFlag || !hiddenInput) return;
 
         // ── Auto-detect initial country ────────────────────────────────
         let initCode = DEFAULT_CODE;
@@ -198,9 +204,9 @@
             
             // Only update DOM if detected country differs from default India to prevent blinking
             if (initCountry.code !== 'in') {
-                triggerFlag.src = getFlagUrl(initCountry.code);
-                displayName.textContent = initCountry.label;
-                hiddenInput.value = initCountry.label;
+                if (triggerFlag) triggerFlag.src = getFlagUrl(initCountry.code);
+                if (displayName) displayName.textContent = initCountry.label;
+                if (hiddenInput) hiddenInput.value = initCountry.label;
 
                 const headerFlag = document.getElementById('header-flag-img');
                 if (headerFlag) {
