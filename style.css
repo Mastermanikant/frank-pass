@@ -2707,3 +2707,95 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ── GENERATOR OUTPUT ACTIONS (EYE & COPY BUTTONS SIDE-BY-SIDE) ── */
+.output-actions {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-shrink: 0 !important;
+}
+
+.mask-toggle-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 9px !important;
+  cursor: pointer;
+  color: var(--text-muted) !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  padding: 0 !important;
+  flex-shrink: 0 !important;
+}
+.mask-toggle-btn:hover {
+  background: rgba(139, 92, 246, 0.15) !important;
+  border-color: var(--accent) !important;
+  color: var(--accent-light) !important;
+}
+
+.copy-btn {
+  background: rgba(139, 92, 246, 0.12) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  border-radius: 9px !important;
+  cursor: pointer;
+  color: var(--text-primary) !important;
+  height: 36px !important;
+  padding: 0 0.85rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+.copy-btn:hover:not(:disabled) {
+  background: var(--accent) !important;
+  color: #ffffff !important;
+  border-color: var(--accent) !important;
+}
+
+.gen-actions-row {
+  display: flex !important;
+  gap: 0.6rem !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.btn-generate {
+  flex: 1 !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+.btn-reset {
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  padding: 0.85rem 1rem !important;
+}
+
+@media (max-width: 420px) {
+  .btn-generate {
+    font-size: 0.9rem !important;
+    padding: 0.85rem 1rem !important;
+  }
+  .btn-reset {
+    padding: 0.85rem 0.85rem !important;
+    font-size: 0.82rem !important;
+  }
+}
+@media (max-width: 350px) {
+  .gen-actions-row {
+    flex-direction: column !important;
+  }
+  .btn-reset {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
