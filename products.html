@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+</script>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>All Products Hub · FrankPass Security & Ecosystem</title>
@@ -22,7 +31,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
  
- <link rel="stylesheet" href="/style.css?v=3.5.8">
+ <link rel="stylesheet" href="/style.css?v=3.5.9">
  <link rel="icon" type="image/svg+xml" href="/icons/icon-192.png">
  <script type="application/ld+json">
  {
@@ -307,6 +316,6 @@
  <div id="site-footer"></div>
 
  <script src="/frankpass-config.js?v=3.2.8"></script>
- <script src="/footer.js?v=3.5.8"></script>
+ <script src="/footer.js?v=3.5.9"></script>
 </body>
 </html>

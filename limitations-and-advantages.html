@@ -1,6 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" >
 <head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+</script>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>FrankPass Limitations &amp; Advantages: Why Our Perceived Flaws Are Our Greatest Strengths | Master Manikant</title>
@@ -22,7 +31,7 @@
  <meta property="og:image" content="https://frankpass.com/icons/founder-master-manikant-yadav.png">
 
  <!-- Stylesheets -->
- <link rel="stylesheet" href="/style.css?v=3.5.8">
+ <link rel="stylesheet" href="/style.css?v=3.5.9">
  <link rel="icon" type="image/svg+xml" href="/icons/favicon.png">
 
  <!-- JSON-LD Structured Data (Article & Person) -->
@@ -302,6 +311,6 @@
  <div id="site-footer"></div>
 
  <script src="/frankpass-config.js?v=3.2.8"></script>
- <script src="/footer.js?v=3.5.8"></script>
+ <script src="/footer.js?v=3.5.9"></script>
 </body>
 </html>
