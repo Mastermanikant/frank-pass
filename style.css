@@ -754,15 +754,17 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .docs-sidebar {
   position: -webkit-sticky;
   position: sticky;
-  top: calc(var(--header-h) + 1.5rem);
+  top: calc(var(--header-h, 68px) + 2rem);
   align-self: start;
-  max-height: calc(100vh - var(--header-h) - 3rem);
-  max-height: calc(100dvh - var(--header-h) - 3rem);
+  max-height: calc(100vh - var(--header-h, 68px) - 3.5rem);
+  max-height: calc(100dvh - var(--header-h, 68px) - 3.5rem);
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--accent) transparent;
+  padding-top: 0.5rem;
   padding-right: 0.5rem;
-  z-index: 10;
+  padding-bottom: 1.5rem;
+  z-index: 100;
 }
 .docs-sidebar::-webkit-scrollbar { width: 4px; }
 .docs-sidebar::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
@@ -2650,4 +2652,64 @@ html, body {
 }
 .output-box {
   margin-top: 1.15rem !important;
+}
+
+
+/* ── FOUNDER CARD SOCIAL ICONS ── */
+.founder-social-strip {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+.founder-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.founder-social-btn svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: currentColor;
+}
+.founder-social-btn:hover {
+  background: var(--glass-bg);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+.founder-social-btn.btn-wa {
+  background: rgba(37, 211, 102, 0.12);
+  border-color: rgba(37, 211, 102, 0.35);
+  color: #25d366;
+}
+.founder-social-btn.btn-wa:hover {
+  background: #25d366;
+  color: #fff;
+  border-color: #25d366;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+}
+.founder-social-btn.btn-main {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border: none;
+  color: #fff;
+}
+.founder-social-btn.btn-main:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.5);
+  color: #fff;
 }
