@@ -204,7 +204,8 @@
  <p>The passwords FrankPass generates are the output - not inputs. They are strong, unique per platform, and reproducible. You don't need to remember them; you need to be able to re-derive them. As long as you remember your secret key and the settings you used, you can always reproduce any password.</p>
 
  <h3>The Critical Rule</h3>
- <p>Never use a generated password as your secret key. And never use your secret key as a password anywhere. The secret key is your master seed - if an attacker ever learns it, they can derive all your passwords for all platforms. Protect it accordingly.</p>
+  <p><strong>Never use a generated password as your Secret Key, and never use your Secret Key as a password on any website.</strong> Your Secret Key is your private mathematical master seed.</p>
+  <p>An attacker could only ever derive or calculate your passwords if they simultaneously obtain <strong>both</strong> your private Master Secret Key <strong>and</strong> the exact Password Number (Counter) you selected for that platform. Because both pieces of information reside exclusively in your mind and are never transmitted over the internet or stored on any server, guessing or reversing your password is mathematically impossible. Protect your Secret Key with absolute confidentiality.</p>
  </article>
 
  <!-- ── Chapter 4: Security Model ── -->
@@ -216,7 +217,17 @@
  <p>FrankPass's architecture protects you from server-side breaches (nothing to steal), network interception (no network traffic during generation), and database leaks (no database exists). Because every platform gets a unique password derived from the same key, a breach at one website reveals nothing about your passwords at any other website.</p>
 
  <h3>Responsibility Boundary</h3>
- <p>FrankPass does not protect against keyloggers on your device, shoulder surfing, or a compromised browser. It also cannot protect you if your secret key is guessable or if you share it with others. Security is a system - FrankPass secures the password storage and generation layer. Device security, phishing awareness, and secret key hygiene remain your responsibility.</p>
+  <p>FrankPass permanently eliminates centralized database breach vulnerabilities and cloud vault leaks. However, no software can protect you against hardware-level <a href="/blog.html" style="color:var(--accent);text-decoration:none;font-weight:600">keyloggers</a> installed on your physical machine, <a href="/blog.html" style="color:var(--accent);text-decoration:none;font-weight:600">shoulder surfing</a> (someone physically watching your screen or keyboard), or malicious <a href="/blog.html" style="color:var(--accent);text-decoration:none;font-weight:600">compromised browser extensions</a>. It also cannot protect you if your Secret Key is trivially guessable or shared with others.</p>
+  <p>Security is an interconnected ecosystem: FrankPass guarantees 100% unbreakable stateless password derivation and memory isolation. Physical device hygiene, anti-phishing vigilance, and Secret Key confidentiality remain your personal responsibility.</p>
+  
+  <div style="background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.3);border-radius:14px;padding:1.25rem;margin:1.5rem 0">
+    <h4 style="margin:0 0 0.4rem 0;font-size:0.95rem;color:var(--text-primary);display:flex;align-items:center;gap:0.4rem">
+      <span>📚</span> FrankBase Operational Security &amp; Cyber Defense Guides
+    </h4>
+    <p style="margin:0;font-size:0.88rem;color:var(--text-muted);line-height:1.6">
+      To master device hardening, anti-phishing defense, keylogger protection, and end-to-end digital privacy, explore our free guides and verified premium security eBooks in the <a href="/products.html" style="color:var(--accent);font-weight:600">FrankBase Products Catalog</a> and <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent);font-weight:600">FrankBase Digital Store ↗</a>.
+    </p>
+  </div>
 
  <h3>Open Algorithm</h3>
  <p>The cryptographic engine in frankpass-core.js uses only the Web Cryptography API - browser-native cryptography that is audited, standardized, and used by financial institutions worldwide. PBKDF2 and HMAC-SHA512 are NIST-approved primitives. There is no proprietary cryptography, no custom hash functions, no security through obscurity.</p>
@@ -228,19 +239,31 @@
  <p style="color:var(--text-muted);margin-bottom:1.5rem">A complete reference for every option in the generator's advanced panel.</p>
 
  <h3>Username Field</h3>
- <p>Leave this blank unless you have multiple accounts on the same platform. Changing your email or username on a website and having it in this field will produce a different password - potentially locking you out. The only valid use case is differentiating between, for example, two Instagram accounts you manage.</p>
+  <p><strong>Leave this field blank by default.</strong> The Username field is an optional input that alters the cryptographic derivation vector. If you fill in a username on one login (e.g. <code>user@example.com</code>) and leave it blank or type something else on the next, FrankPass will produce completely different passwords &mdash; locking you out and forcing you to use the website's <em>"Forgot Password"</em> recovery process.</p>
+  <p>The <strong>only valid use case</strong> for the Username field is managing multiple distinct accounts on the exact same domain (for example, differentiating between your personal profile <code>@john_dev</code> and your business profile <code>@agency_hq</code> on Instagram).</p>
 
- <h3>Variant Counter</h3>
- <p>The variant counter is your password rotation tool. If a website forces you to change your password, or if you believe a password may have been compromised, increment the variant number from 1 to 2 (or any number up to 99). This produces a completely new password for that platform without changing your secret key or any other settings. Keep a note of which variant number you're using for each platform.</p>
+  <h3>Password Number (Rotation Counter 1 to 999)</h3>
+  <p>The Password Number is your stateless password rotation mechanism. <strong>By permanent default, Counter is set to 1.</strong> For routine daily usage across all websites, you should always leave it at 1 so you never have to remember custom numbers.</p>
+  <p>If a website enforces a mandatory password expiration policy, or if an external service suffers a corporate data breach, you can increment your Password Number (from 1 to 2, 3, or any integer up to 999). This immediately derives a brand-new, mathematically orthogonal password for that website without requiring you to change your Master Secret Key.</p>
 
- <h3>Password Length</h3>
- <p>The length slider controls how many characters the generated password contains, from a minimum of 8 to a maximum of 32. Longer passwords are always more secure. Use 32 characters (the Max preset) for your most important accounts. Use shorter lengths only when a website has a character limit - and note that limit for future use.</p>
+  <h3>Password Length &amp; Default Recommendation</h3>
+  <p>The length slider controls how many characters the generated password contains, from a minimum of 8 to a maximum of 32. Longer passwords inherently possess exponentially higher entropy. By default, FrankPass is preset to <strong>16 characters</strong> &mdash; delivering $>95$ bits of cryptographic entropy that would require billions of years to brute-force with modern computing clusters.</p>
+  <p><strong>Expert Advice:</strong> We strongly advise sticking with the default 16-character length for 99.9% of your accounts. This ensures you never have to remember custom length settings across different devices. Only adjust the length slider if a legacy platform enforces an inflexible maximum character limit (e.g., legacy banking portals limited to 12 characters).</p>
 
- <h3>Profile Presets</h3>
- <p>Three presets are available. <strong>Simple</strong> uses alphanumeric characters only (letters and numbers, no symbols) and sets length to 12 - for websites that don't accept symbols. <strong>Strong</strong> is the default: all character classes including symbols, length 16, providing excellent security for most purposes. <strong>Max</strong> uses all character classes at length 32 - the maximum possible entropy for any given secret key and platform combination.</p>
- </article>
+  <h3>Characters Type &amp; Profile Presets</h3>
+  <p>FrankPass provides structured presets and character combinations designed to satisfy every platform's input constraints without breaking cryptographic strength:</p>
+  
+  <ul style="color:var(--text-muted);font-size:0.92rem;line-height:1.75;margin-bottom:1.5rem">
+    <li><strong>Strong (Default &amp; Recommended):</strong> Uses <em>Numbers, Letters and Symbols</em> at <strong>16 characters</strong>. This is the optimal industry standard offering world-class security and universal compatibility across modern web services.</li>
+    <li><strong>Simple:</strong> Uses <em>Number &amp; Letters</em> (alphanumeric only, no symbols) at <strong>12 characters</strong>. Built specifically for restrictive legacy portals or government systems that reject special characters.</li>
+    <li><strong>Maximum:</strong> Uses <em>Numbers, Letters and Symbols</em> at <strong>32 characters</strong>. Provides maximum theoretical entropy for sovereign root master keys, cold storage crypto wallets, and enterprise server infrastructure.</li>
+    <li><strong>Only Number (PIN):</strong> Generates pure numeric sequences (4 to 8 digits) for ATM cards, mobile SIM PINs, and hardware security tokens.</li>
+  </ul>
 
- <!-- ── Chapter 6: Platform Tips ── -->
+  <p><strong>Core Rule for Everyday Ease:</strong> Whenever possible, keep the default <strong>"Strong" (16 chars, Numbers + Letters + Symbols)</strong> and <strong>Password Number = 1</strong>. Using defaults guarantees zero mental overhead, zero configuration tracking, and 100% seamless password regeneration anywhere in the world.</p>
+  </article>
+
+  <!-- ── Chapter 6: Platform Tips ── -->
  <article id="platform-tips" style="margin-bottom:4rem" aria-labelledby="ch6-heading">
  <h2 id="ch6-heading">Chapter 6: Platform Tips</h2>
  <p style="color:var(--text-muted);margin-bottom:1.5rem">How to handle common scenarios when using FrankPass with real-world websites.</p>
@@ -252,7 +275,7 @@
  <p>Some older platforms have restrictive password policies - they may not accept symbols, or may have maximum length limits shorter than your setting. If a website rejects your password: first, try the Simple preset (alphanumeric only). If that doesn't work, reduce the length. Always note which settings you used for that website, because you'll need to use those exact settings every time you log in.</p>
 
  <h3>High-Security Accounts</h3>
- <p>For banking, email, and other critical accounts, use the Max preset (length 32, standard profile). Enable the Variant field and set it to a number you'll remember. Never use the same variant for high-security accounts as you do for routine ones.</p>
+ <p>For critical primary email accounts and root credentials, using the Maximum preset (32 characters, Full Characters) provides sovereign-grade mathematical strength. If you ever need to rotate passwords on sensitive accounts, increment the Password Number (Counter 1 to 999).</p>
 
  <h3>Multiple Accounts on One Platform</h3>
  <p>If you manage multiple accounts on the same platform (e.g., two email addresses on Gmail, or two Instagram profiles), use the Username field to distinguish them. Enter something stable - ideally a fixed identifier like the account number or handle - not a changeable email address.</p>
