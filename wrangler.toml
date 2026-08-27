@@ -1,0 +1,7 @@
+name = "frankpass"
+compatibility_date = "2026-08-27"
+pages_build_output_dir = "."
+
+[[kv_namespaces]]
+binding = "FRANKPASS_KV"
+id = "c833fab6a71d461b960dfb98d28c8684"

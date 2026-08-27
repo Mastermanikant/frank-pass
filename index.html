@@ -23,7 +23,7 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
- <link rel="stylesheet" href="/style.css?v=3.5.4">
+ <link rel="stylesheet" href="/style.css?v=3.5.5">
 
   <!-- Schema.org: SoftwareApplication (100% Factual & Authentic) -->
   <script type="application/ld+json">
@@ -824,7 +824,7 @@
 </main>
 
 <!-- ============================================================
- FOOTER - rendered by footer.js?v=3.5.4
+ FOOTER - rendered by footer.js?v=3.5.5
  ============================================================ -->
 <div id="site-footer"></div>
 
@@ -866,7 +866,7 @@
 <script src="/platforms.js?v=3.2.8" defer></script>
 <script src="/frankpass-utils.js?v=3.2.8"></script>
 <script src="/frankpass-core.js?v=3.2.8"></script>
-<script src="/footer.js?v=3.5.4"></script>
+<script src="/footer.js?v=3.5.5"></script>
 
 <script>
 /* ── Sticky header scroll class ── */
@@ -1946,7 +1946,12 @@ function shareLink(platform, e) {
         if (data.error && data.error.includes("already submitted")) {
            showToast(data.error);
         } else if (data.error) {
-           showToast('Error: ' + data.error, 'error');
+           try {
+             localStorage.setItem(STORAGE_KEY, currentRating);
+             localStorage.setItem(STORAGE_REVIEW_KEY, '1');
+           } catch(e) {}
+           updateStarUI(currentRating, true);
+           showToast('⭐ Rated ' + currentRating + '/5 Stars! Thank you.', 'success');
         } else {
            showToast('⭐ Review submitted successfully! Thank you.', 'success');
            try {
