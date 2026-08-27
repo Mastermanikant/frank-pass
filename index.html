@@ -310,7 +310,7 @@
 
     <!-- Right: Generator Card -->
     <div class="hero-card-col">
- <div class="card-glass generator-card" id="generator-card" role="main" aria-label="Stateless Password Generator">
+ <form class="card-glass generator-card" id="generator-card" role="form" aria-label="Stateless Password Generator Form" onsubmit="return false;">
 
  <!-- Card Header with Badges & Country Pill -->
  <div class="gen-header">
@@ -341,7 +341,7 @@
  </div>
  <div id="username-group" style="display:none;margin-top:0.6rem">
  <label class="form-label" for="username-input" style="font-size:0.8rem">Username / Account Email</label>
- <input id="username-input" class="form-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
+ <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
  <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
  <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
  </div>
@@ -351,7 +351,7 @@
  <div class="form-group">
  <label class="form-label" for="platform-input">Site / Platform</label>
  <div class="input-wrapper">
- <input id="platform-input" class="form-input" type="text" placeholder="e.g. gmail.com, instagram, github" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
+ <input id="platform-input" name="platform" class="form-input" type="text" placeholder="e.g. gmail.com, instagram, github" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
  <datalist id="platform-list"></datalist>
  <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
@@ -531,7 +531,7 @@
  <span>Zero Data Stored &middot; Client-Side WebCrypto &middot; 100% Offline</span>
  </div>
 
- </div>
+ </form>
  </div>
  </div>
 </section>
