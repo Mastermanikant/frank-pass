@@ -2718,3 +2718,77 @@ html, body {
   box-shadow: 0 4px 16px rgba(139, 92, 246, 0.5);
   color: #fff;
 }
+
+
+/* ── INTERACTIVE HOVER PREVIEW CARDS (MICRO-TOOLTIPS) ── */
+.has-hover-card {
+  position: relative;
+  display: inline-flex;
+}
+.hover-card-preview {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 250px;
+  padding: 0.85rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--accent);
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 20px rgba(139, 92, 246, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1200;
+  text-align: left;
+}
+.hover-card-preview::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--accent) transparent transparent transparent;
+}
+.has-hover-card:hover .hover-card-preview,
+.has-hover-card:focus-visible .hover-card-preview {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.hover-card-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent-light);
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.hover-card-desc {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+.hover-card-cta {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--accent-light);
+  font-weight: 600;
+  margin-top: 0.45rem;
+}
+.founder-social-btn.btn-snap {
+  background: rgba(255, 252, 0, 0.1);
+  border-color: rgba(255, 252, 0, 0.35);
+  color: #fffc00;
+}
+.founder-social-btn.btn-snap:hover {
+  background: #fffc00;
+  color: #000;
+  border-color: #fffc00;
+  box-shadow: 0 4px 14px rgba(255, 252, 0, 0.4);
+}
