@@ -2804,17 +2804,10 @@ html, body {
 /* ── ECOSYSTEM ACCORDION CARDS (Founder Page) ──────────────────────── */
 .ecosystem-accordion-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr; /* Single full-width card per row matching Hero Card */
   gap: 0.75rem;
   margin-bottom: 2.5rem;
-}
-.eco-grid-2col {
-  grid-template-columns: repeat(2, 1fr) !important;
-}
-@media (max-width: 520px) {
-  .eco-grid-2col {
-    grid-template-columns: 1fr !important;
-  }
+  width: 100%;
 }
 
 .eco-card {
@@ -2822,6 +2815,8 @@ html, body {
   border: 1px solid var(--border);
   border-radius: 16px;
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .eco-card:hover {
@@ -2836,7 +2831,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem 1.15rem;
+  padding: 0.95rem 1.35rem;
   cursor: pointer;
   user-select: none;
   gap: 0.75rem;
@@ -2844,13 +2839,16 @@ html, body {
 .eco-card-header-left {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   min-width: 0;
 }
 .eco-card-icon {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .eco-card-icon svg {
   width: 20px;
@@ -2858,7 +2856,7 @@ html, body {
   vertical-align: middle;
 }
 .eco-card-title {
-  font-size: 0.93rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
   white-space: nowrap;
@@ -2866,7 +2864,7 @@ html, body {
   text-overflow: ellipsis;
 }
 .eco-card-tagline {
-  font-size: 0.74rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   margin-top: 1px;
   white-space: nowrap;
@@ -2874,9 +2872,9 @@ html, body {
   text-overflow: ellipsis;
 }
 .eco-card-badge {
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  padding: 2px 7px;
+  padding: 3px 8px;
   border-radius: 8px;
   flex-shrink: 0;
   white-space: nowrap;
@@ -2893,36 +2891,36 @@ html, body {
   color: var(--accent-light);
 }
 
-/* Expanded body: glass card style matching hero card */
+/* Expanded body: full-width glass panel matching hero card */
 .eco-card-body {
   display: none;
-  margin: 0 0.85rem 0.85rem;
-  padding: 1.1rem 1.25rem 1.15rem;
+  margin: 0 1rem 1rem;
+  padding: 1.25rem 1.5rem;
   background: rgba(139,92,246,0.06);
-  border: 1px solid rgba(139,92,246,0.2);
-  border-radius: 12px;
+  border: 1px solid rgba(139,92,246,0.22);
+  border-radius: 14px;
   animation: fadeInUp 0.22s ease;
 }
 .eco-card.open .eco-card-body {
   display: block;
 }
 .eco-card-desc {
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
-  line-height: 1.68;
-  margin: 0 0 0.9rem;
+  line-height: 1.7;
+  margin: 0 0 1rem;
 }
 .eco-card-features {
-  display: flex;
-  flex-direction: column;
-  gap: 0.38rem;
-  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.15rem;
 }
 .eco-feature {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
 }
 .eco-feature::before {
@@ -2937,11 +2935,11 @@ html, body {
 .eco-card-cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.84rem;
+  gap: 0.45rem;
+  font-size: 0.86rem;
   font-weight: 600;
-  padding: 0.52rem 1rem;
-  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9px;
   text-decoration: none;
   border: 1px solid rgba(139,92,246,0.35);
   color: var(--text-primary);
@@ -2965,4 +2963,3 @@ html, body {
 .eco-card-cta.primary:hover {
   box-shadow: 0 4px 16px rgba(139,92,246,0.45);
 }
-
