@@ -60,11 +60,11 @@
           </svg>
           <span class="logo-text"><span>Frank</span>Pass</span>
         </a>
-        <p style="margin-top:0.75rem;font-size:0.86rem;color:var(--text-muted);line-height:1.6">
+        <p style="margin-top:0.75rem;font-size:0.86rem;color:var(--text-muted);line-height:1.65;max-width:300px">
           Stateless, zero-knowledge password generator powered by 1,000,000 PBKDF2-HMAC-SHA512 iterations. Zero cloud databases, zero telemetry, and 100% client-side WebCrypto privacy.
         </p>
         
-        <div class="footer-social" style="margin-top:1.15rem;display:flex;gap:8px;flex-wrap:wrap">
+        <div class="footer-social" style="margin-top:1.15rem;display:flex;gap:8px;flex-wrap:wrap;max-width:300px">
           ${socialLink('https://x.com/mastermanikant', 'X (Twitter)', ico.x, 'Real-time engineering insights & cybersecurity updates.')}
           ${socialLink('https://github.com/Mastermanikant', 'GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
           ${socialLink('https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin, 'Professional milestones & tech collaborations.')}

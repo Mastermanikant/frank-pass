@@ -1065,7 +1065,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
 
-.footer-brand p { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem; max-width: 220px; line-height: 1.6; }
+.footer-brand p { font-size: 0.86rem; color: var(--text-muted); margin-top: 0.75rem; max-width: 300px; line-height: 1.65; }
 .footer-col-title { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
 .footer-col a { display: block; color: var(--text-muted); font-size: 0.88rem; padding: 0.3rem 0; transition: color var(--transition); }
 .footer-col a:hover { color: var(--text-primary); }
