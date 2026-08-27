@@ -71,7 +71,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
  
- <link rel="stylesheet" href="/style.css?v=3.4.8">
+ <link rel="stylesheet" href="/style.css?v=3.4.9">
  <link rel="icon" type="image/svg+xml" href="/icons/icon-192.png">
 </head>
 <body>
@@ -310,101 +310,322 @@
 
    <!-- Digital Ecosystem Detailed Product Breakdown -->
   <div style="margin-bottom:2.5rem">
-    <h2 style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin-bottom:1.15rem">🌐 Digital Platforms &amp; Software Products</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem">
-      
-      <!-- FrankPass -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🔐 FrankPass</span>
-            <span style="font-size:0.72rem;background:rgba(139,92,246,0.15);color:var(--accent-light);padding:3px 8px;border-radius:10px;font-weight:700">Flagship Core</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            Stateless zero-knowledge password generator. Uses 1,000,000 PBKDF2-HMAC-SHA512 iterations directly in browser WebCrypto RAM. 100% serverless with zero cloud storage.
-          </p>
-        </div>
-        <a href="https://frankpass.com" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">Open FrankPass &rarr;</a>
-      </div>
+      <!-- ── ECOSYSTEM & SOCIAL ACCORDION SECTION ── -->
+  <h2 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);margin:0 0 1rem">🌐 Digital Platforms &amp; Ecosystem</h2>
+  <div class="ecosystem-accordion-grid">
 
-      <!-- Developer Tools -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🛠️ Developer Tools Suite</span>
-            <span style="font-size:0.72rem;background:rgba(16,185,129,0.15);color:var(--success);padding:3px 8px;border-radius:10px;font-weight:700">Utility Hub</span>
+    <!-- 1. FrankPass Core -->
+    <div class="eco-card" id="eco-frankpass">
+      <div class="eco-card-header" onclick="ecoToggle('eco-frankpass')" role="button" aria-expanded="false" aria-controls="eco-frankpass-body">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🔐</span>
+          <div>
+            <div class="eco-card-title">FrankPass</div>
+            <div class="eco-card-tagline">Zero-Knowledge Password Generator</div>
           </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            Suite of cryptographic utilities: real-time password entropy scoring, PBKDF2 WebCrypto speed benchmarking, and SHA-512 cryptographic hash calculators.
-          </p>
         </div>
-        <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">Launch Tools Suite &nearr;</a>
-      </div>
-
-      <!-- FrankBase Hub -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🌐 FrankBase Hub</span>
-            <span style="font-size:0.72rem;background:rgba(59,130,246,0.15);color:#60a5fa;padding:3px 8px;border-radius:10px;font-weight:700">Parent Ecosystem</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            The umbrella technology platform dedicated to creating privacy-first digital tools, state-of-the-art web architectures, and client-side computational systems.
-          </p>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(139,92,246,0.15);color:var(--accent-light)">Flagship</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
-        <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">Explore FrankBase &nearr;</a>
       </div>
-
-      <!-- EnglishVidya -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">📖 EnglishVidya</span>
-            <span style="font-size:0.72rem;background:rgba(234,179,8,0.15);color:#facc15;padding:3px 8px;border-radius:10px;font-weight:700">Education</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            India's clean, zero-distraction English grammar, linguistics, and bilingual educational portal built with lightning-fast static edge delivery and zero advertising noise.
-          </p>
+      <div class="eco-card-body" id="eco-frankpass-body">
+        <p class="eco-card-desc">Stateless zero-knowledge password generator. Your password is computed on-demand in browser WebCrypto RAM using 1,000,000 PBKDF2-HMAC-SHA512 iterations. Zero cloud, zero storage, zero trace.</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">Works fully offline (PWA)</span>
+          <span class="eco-feature">1,000,000 PBKDF2 iterations in browser</span>
+          <span class="eco-feature">No server, no database, no account needed</span>
+          <span class="eco-feature">Open algorithm, auditable in DevTools</span>
         </div>
-        <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">Visit EnglishVidya &nearr;</a>
+        <a href="https://frankpass.com" class="eco-card-cta primary">Open FrankPass &rarr;</a>
       </div>
-
-      <!-- Digital Store -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🛍️ Digital Store</span>
-            <span style="font-size:0.72rem;background:rgba(236,72,153,0.15);color:#f472b6;padding:3px 8px;border-radius:10px;font-weight:700">Digital Vault</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            Verified cybersecurity eBooks, password defense masterclasses, cognitive education materials, and digital productivity assets.
-          </p>
-        </div>
-        <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">Browse Digital Store &nearr;</a>
-      </div>
-
-      <!-- MasterManikant.com -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">👤 MasterManikant.com</span>
-            <span style="font-size:0.72rem;background:rgba(139,92,246,0.15);color:var(--accent-light);padding:3px 8px;border-radius:10px;font-weight:700">Executive Desk</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            Founder's personal home on the web: long-form essays on mathematics, software architecture philosophy, personal memoirs, and ecosystem roadmap.
-          </p>
-        </div>
-        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;font-weight:600">Visit Personal Portal &nearr;</a>
-      </div>
-
     </div>
+
+    <!-- 2. Developer Tools Suite -->
+    <div class="eco-card" id="eco-tools">
+      <div class="eco-card-header" onclick="ecoToggle('eco-tools')" role="button" aria-expanded="false" aria-controls="eco-tools-body">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🛠️</span>
+          <div>
+            <div class="eco-card-title">Developer Tools Suite</div>
+            <div class="eco-card-tagline">Cryptographic Utility Hub</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(16,185,129,0.15);color:var(--success)">Utility</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-tools-body">
+        <p class="eco-card-desc">A dedicated suite of developer and cryptographic utilities built for security researchers, developers, and power users.</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">Real-time password entropy scoring</span>
+          <span class="eco-feature">PBKDF2 WebCrypto speed benchmarking</span>
+          <span class="eco-feature">SHA-512 cryptographic hash calculator</span>
+          <span class="eco-feature">Browser-native, zero server dependency</span>
+        </div>
+        <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Launch Tools Suite &nearr;</a>
+      </div>
+    </div>
+
+    <!-- 3. FrankBase Hub -->
+    <div class="eco-card" id="eco-frankbase">
+      <div class="eco-card-header" onclick="ecoToggle('eco-frankbase')" role="button" aria-expanded="false" aria-controls="eco-frankbase-body">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🌐</span>
+          <div>
+            <div class="eco-card-title">FrankBase Hub</div>
+            <div class="eco-card-tagline">Parent Ecosystem Platform</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(59,130,246,0.15);color:#60a5fa">Ecosystem</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-frankbase-body">
+        <p class="eco-card-desc">The umbrella technology platform spanning privacy-first digital tools, state-of-the-art web architectures, and client-side computational systems built for millions.</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">Privacy-first product ecosystem</span>
+          <span class="eco-feature">Serverless &amp; edge-deployed architecture</span>
+          <span class="eco-feature">Parent brand of FrankPass and all tools</span>
+          <span class="eco-feature">Open developer documentation</span>
+        </div>
+        <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Explore FrankBase &nearr;</a>
+      </div>
+    </div>
+
+    <!-- 4. EnglishVidya -->
+    <div class="eco-card" id="eco-englishvidya">
+      <div class="eco-card-header" onclick="ecoToggle('eco-englishvidya')" role="button" aria-expanded="false" aria-controls="eco-englishvidya-body">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">📖</span>
+          <div>
+            <div class="eco-card-title">EnglishVidya</div>
+            <div class="eco-card-tagline">India's Clean English Education Portal</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(234,179,8,0.15);color:#facc15">Education</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-englishvidya-body">
+        <p class="eco-card-desc">India's zero-distraction, ad-free English grammar, linguistics, and bilingual educational portal. Built with lightning-fast static edge delivery and zero advertising noise.</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">Complete English grammar coverage</span>
+          <span class="eco-feature">Bilingual Hindi-English explanations</span>
+          <span class="eco-feature">Zero ads, zero tracking, zero distraction</span>
+          <span class="eco-feature">Lightning-fast Cloudflare edge delivery</span>
+        </div>
+        <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Visit EnglishVidya &nearr;</a>
+      </div>
+    </div>
+
+    <!-- 5. Digital Store -->
+    <div class="eco-card" id="eco-store">
+      <div class="eco-card-header" onclick="ecoToggle('eco-store')" role="button" aria-expanded="false" aria-controls="eco-store-body">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🛍️</span>
+          <div>
+            <div class="eco-card-title">Digital Store</div>
+            <div class="eco-card-tagline">Verified eBooks &amp; Digital Assets</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(236,72,153,0.15);color:#f472b6">Store</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-store-body">
+        <p class="eco-card-desc">Verified cybersecurity eBooks, password defense masterclasses, cognitive education materials, and digital assets. Core flagship: "The Unhackable You" — 14-chapter security masterclass.</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">"The Unhackable You" cybersecurity masterclass</span>
+          <span class="eco-feature">UPI fraud defense &amp; 1930 helpline protocols</span>
+          <span class="eco-feature">100+ Amazon KDP published titles</span>
+          <span class="eco-feature">Pay-what-you-want pricing (free available)</span>
+        </div>
+        <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Browse Digital Store &nearr;</a>
+      </div>
+    </div>
+
+    <!-- 6. MasterManikant.com -->
+    <div class="eco-card" id="eco-mastermanikant">
+      <div class="eco-card-header" onclick="ecoToggle('eco-mastermanikant')" role="button" aria-expanded="false" aria-controls="eco-mastermanikant-body">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">👤</span>
+          <div>
+            <div class="eco-card-title">MasterManikant.com</div>
+            <div class="eco-card-tagline">Founder's Personal Portal</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(139,92,246,0.15);color:var(--accent-light)">Personal</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-mastermanikant-body">
+        <p class="eco-card-desc">Founder's personal home on the web. Long-form mathematical essays, software architecture philosophy, personal memoirs, and the full ecosystem roadmap by Master Manikant Yadav.</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">Mathematical essays &amp; research</span>
+          <span class="eco-feature">Software architecture philosophy</span>
+          <span class="eco-feature">Personal founder memoirs</span>
+          <span class="eco-feature">Upcoming product roadmap</span>
+        </div>
+        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta primary">Visit Personal Portal &nearr;</a>
+      </div>
+    </div>
+
   </div>
+
+  <!-- ── CONNECT WITH FOUNDER (Social Accordion) ── -->
+  <h2 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);margin:0 0 1rem">🤝 Connect with Founder</h2>
+  <div class="ecosystem-accordion-grid">
+
+    <!-- X Twitter -->
+    <div class="eco-card" id="eco-x">
+      <div class="eco-card-header" onclick="ecoToggle('eco-x')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-primary)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+          <div>
+            <div class="eco-card-title">X (Twitter)</div>
+            <div class="eco-card-tagline">Engineering thoughts &amp; security updates</div>
+          </div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body" id="eco-x-body">
+        <p class="eco-card-desc">Real-time engineering thoughts, zero-knowledge security insights, product update announcements, and developer community discussions.</p>
+        <a href="https://x.com/mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Follow on X &nearr;</a>
+      </div>
+    </div>
+
+    <!-- GitHub -->
+    <div class="eco-card" id="eco-github">
+      <div class="eco-card-header" onclick="ecoToggle('eco-github')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-primary)"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></span>
+          <div>
+            <div class="eco-card-title">GitHub</div>
+            <div class="eco-card-tagline">Open-source cryptographic repositories</div>
+          </div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body" id="eco-github-body">
+        <p class="eco-card-desc">Audit cryptographic algorithms, explore client-side utility blueprints, and inspect the open developer tools powering the ecosystem.</p>
+        <a href="https://github.com/Mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Inspect on GitHub &nearr;</a>
+      </div>
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="eco-card" id="eco-linkedin">
+      <div class="eco-card-header" onclick="ecoToggle('eco-linkedin')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#0a66c2"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 0 0-1.63 1.63 1.63 1.63 0 0 0 1.63 1.63 1.63 1.63 0 0 0 1.63-1.63c0-.9-.73-1.63-1.63-1.63z"/></svg></span>
+          <div>
+            <div class="eco-card-title">LinkedIn</div>
+            <div class="eco-card-tagline">Professional network &amp; milestones</div>
+          </div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body" id="eco-linkedin-body">
+        <p class="eco-card-desc">Enterprise software milestones, zero-knowledge research publications, and verified professional partnerships and tech collaborations.</p>
+        <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Connect on LinkedIn &nearr;</a>
+      </div>
+    </div>
+
+    <!-- YouTube -->
+    <div class="eco-card" id="eco-youtube">
+      <div class="eco-card-header" onclick="ecoToggle('eco-youtube')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <div>
+            <div class="eco-card-title">YouTube</div>
+            <div class="eco-card-tagline">Product launches &amp; deep-dives</div>
+          </div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body" id="eco-youtube-body">
+        <p class="eco-card-desc">Upcoming product launch videos, project creation breakdowns, cryptography deep-dives, and architecture walkthroughs. Subscribe to stay updated.</p>
+        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Watch on YouTube &nearr;</a>
+      </div>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="eco-card" id="eco-whatsapp">
+      <div class="eco-card-header" onclick="ecoToggle('eco-whatsapp')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#25d366"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8 2.52 1.1 2.52.73 2.98.69.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg></span>
+          <div>
+            <div class="eco-card-title">WhatsApp Channel</div>
+            <div class="eco-card-tagline">Spam-free broadcast channel</div>
+          </div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body" id="eco-whatsapp-body">
+        <p class="eco-card-desc">Spam-free direct broadcast channel: instant security alerts, product releases, critical vulnerability bulletins, and ecosystem news. Zero promotional noise.</p>
+        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" class="eco-card-cta" style="border-color:#25d366;color:#25d366">Join Channel &nearr;</a>
+      </div>
+    </div>
+
+    <!-- Instagram -->
+    <div class="eco-card" id="eco-instagram">
+      <div class="eco-card-header" onclick="ecoToggle('eco-instagram')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#e1306c"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></span>
+          <div>
+            <div class="eco-card-title">Instagram</div>
+            <div class="eco-card-tagline">Visual tech &amp; founder life</div>
+          </div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body" id="eco-instagram-body">
+        <p class="eco-card-desc">Visual architecture diagrams, behind-the-scenes engineering stories, product design sneak peeks, and founder life moments.</p>
+        <a href="https://instagram.com/mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Follow on Instagram &nearr;</a>
+      </div>
+    </div>
+
+    <!-- Snapchat -->
+    <div class="eco-card" id="eco-snapchat">
+      <div class="eco-card-header" onclick="ecoToggle('eco-snapchat')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#fffc00"><path d="M12.004 2c-3.79 0-6.864 2.87-6.864 6.41 0 1.25.43 2.41 1.15 3.34-.14.49-.49 1.12-.98 1.57-.22.2-.18.55.08.69.7.38 1.63.53 2.39.46.42.54.95.99 1.57 1.3-.39.26-.95.54-1.74.83-.5.18-.84.66-.81 1.19.03.54.43.98.97 1.05 1.48.19 3.03.65 3.86 1.66.19.23.51.37.82.37s.63-.14.82-.37c.83-1.01 2.38-1.47 3.86-1.66.54-.07.94-.51.97-1.05.03-.53-.31-1.01-.81-1.19-.79-.29-1.35-.57-1.74-.83.62-.31 1.15-.76 1.57-1.3.76.07 1.69-.08 2.39-.46.26-.14.3-.49.08-.69-.49-.45-.84-1.08-.98-1.57.72-.93 1.15-2.09 1.15-3.34 0-3.54-3.074-6.41-6.864-6.41z"/></svg></span>
+          <div>
+            <div class="eco-card-title">Snapchat</div>
+            <div class="eco-card-tagline">AR lens &amp; interactive filters</div>
+          </div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body" id="eco-snapchat-body">
+        <p class="eco-card-desc">Custom FrankPass security AR lens, interactive creator filters, and stories. Try the exclusive lens we built for the FrankPass ecosystem.</p>
+        <a href="https://snapchat.com/add/mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta" style="border-color:#fffc00;color:#c8c800">Try on Snapchat &nearr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  function ecoToggle(id) {
+    var card = document.getElementById(id);
+    if (!card) return;
+    var isOpen = card.classList.contains('open');
+    card.classList.toggle('open', !isOpen);
+    var header = card.querySelector('.eco-card-header');
+    if (header) header.setAttribute('aria-expanded', String(!isOpen));
+  }
+  </script>
 
   </main>
 
  <div id="site-footer"></div>
 
  <script src="/frankpass-config.js?v=3.2.8"></script>
- <script src="/footer.js?v=3.4.8"></script>
+ <script src="/footer.js?v=3.4.9"></script>
 </body>
 </html>

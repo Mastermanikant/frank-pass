@@ -71,7 +71,7 @@
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
  
- <link rel="stylesheet" href="/style.css?v=3.4.8">
+ <link rel="stylesheet" href="/style.css?v=3.4.9">
  <link rel="icon" type="image/svg+xml" href="/icons/icon-192.png">
 </head>
 <body>
@@ -308,103 +308,251 @@
 
   </div>
 
-   <!-- Digital Ecosystem Detailed Product Breakdown (Hindi) -->
-  <div style="margin-bottom:2.5rem">
-    <h2 style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin-bottom:1.15rem">🌐 डिजिटल प्लेटफ़ॉर्म्स एवं सॉफ़्टवेयर उत्पाद</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem">
-      
-      <!-- FrankPass -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🔐 FrankPass</span>
-            <span style="font-size:0.72rem;background:rgba(139,92,246,0.15);color:var(--accent-light);padding:3px 8px;border-radius:10px;font-weight:700">प्रमुख कोर</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            स्टेटलेस ज़ीरो-नॉलेज पासवर्ड जनरेटर। सीधे ब्राउज़र WebCrypto RAM में 10,00,000 PBKDF2-HMAC-SHA512 राउंड का उपयोग। 100% सर्वरलेस और शून्य क्लाउड डेटाबेस।
-          </p>
-        </div>
-        <a href="https://frankpass.com" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">FrankPass खोलें &rarr;</a>
-      </div>
+     <!-- ── ECOSYSTEM & SOCIAL ACCORDION SECTION (Hindi) ── -->
+  <h2 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);margin:0 0 1rem">🌐 डिजिटल प्लेटफ़ॉर्म्स एवं इकोसिस्टम</h2>
+  <div class="ecosystem-accordion-grid">
 
-      <!-- Developer Tools -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🛠️ डेवलपर टूल्स सुइट</span>
-            <span style="font-size:0.72rem;background:rgba(16,185,129,0.15);color:var(--success);padding:3px 8px;border-radius:10px;font-weight:700">यूटिलिटी हब</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            क्रिप्टोग्राफ़िक उपयोगिता सुइट: रियल-टाइम पासवर्ड एन्ट्रॉपी स्कोरिंग, PBKDF2 WebCrypto गति बेंचमार्किंग और SHA-512 क्रिप्टोग्राफ़िक हैश कैलकुलेटर।
-          </p>
+    <div class="eco-card" id="eco-frankpass-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-frankpass-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🔐</span>
+          <div><div class="eco-card-title">FrankPass</div><div class="eco-card-tagline">ज़ीरो-नॉलेज पासवर्ड जनरेटर</div></div>
         </div>
-        <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">टूल्स सुइट देखें &nearr;</a>
-      </div>
-
-      <!-- FrankBase Hub -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🌐 FrankBase Hub</span>
-            <span style="font-size:0.72rem;background:rgba(59,130,246,0.15);color:#60a5fa;padding:3px 8px;border-radius:10px;font-weight:700">मूल इकोसिस्टम</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            प्राइवेसी-फर्स्ट डिजिटल टूल्स, आधुनिक वेब आर्किटेक्चर और क्लाइंट-साइड कंप्यूटेशनल सिस्टम्स के निर्माण के लिए समर्पित प्रमुख तकनीकी प्लेटफ़ॉर्म।
-          </p>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(139,92,246,0.15);color:var(--accent-light)">प्रमुख</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </div>
-        <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">FrankBase देखें &nearr;</a>
       </div>
-
-      <!-- EnglishVidya -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">📖 EnglishVidya</span>
-            <span style="font-size:0.72rem;background:rgba(234,179,8,0.15);color:#facc15;padding:3px 8px;border-radius:10px;font-weight:700">शिक्षा</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            भारत का साफ, बिना किसी भटकाव और विज्ञापन-मुक्त अंग्रेजी व्याकरण, भाषा विज्ञान और द्विभाषी शैक्षिक पोर्टल जो सुपर-फास्ट एज स्पीड पर डिलीवर होता है।
-          </p>
+      <div class="eco-card-body" id="eco-frankpass-hi-body">
+        <p class="eco-card-desc">स्टेटलेस ज़ीरो-नॉलेज पासवर्ड जनरेटर। ब्राउज़र WebCrypto RAM में 10,00,000 PBKDF2-HMAC-SHA512 राउंड द्वारा कम्प्यूट किया जाता है। कोई क्लाउड नहीं, कोई डेटाबेस नहीं, कोई अकाउंट नहीं।</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">100% ऑफलाइन कार्य करता है (PWA)</span>
+          <span class="eco-feature">10 लाख PBKDF2 राउंड ब्राउज़र में</span>
+          <span class="eco-feature">कोई सर्वर नहीं, कोई डेटाबेस नहीं</span>
+          <span class="eco-feature">DevTools में ऑडिट करने योग्य एल्गोरिद्म</span>
         </div>
-        <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">EnglishVidya देखें &nearr;</a>
+        <a href="https://frankpass.com" class="eco-card-cta primary">FrankPass खोलें &rarr;</a>
       </div>
-
-      <!-- Digital Store -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">🛍️ डिजिटल स्टोर</span>
-            <span style="font-size:0.72rem;background:rgba(236,72,153,0.15);color:#f472b6;padding:3px 8px;border-radius:10px;font-weight:700">डिजिटल वॉल्ट</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            सत्यापित साइबर सुरक्षा ई-बुक्स, पासवर्ड सुरक्षा मास्टरक्लास, संज्ञानात्मक शिक्षा सामग्री और डिजिटल गोपनीयता टूल्स।
-          </p>
-        </div>
-        <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;border:1px solid var(--border);font-weight:600">डिजिटल स्टोर खोलें &nearr;</a>
-      </div>
-
-      <!-- MasterManikant.com -->
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.65rem;display:flex;flex-direction:column;justify-content:space-between">
-        <div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
-            <span style="font-size:1.1rem;font-weight:700;color:var(--text-primary)">👤 MasterManikant.com</span>
-            <span style="font-size:0.72rem;background:rgba(139,92,246,0.15);color:var(--accent-light);padding:3px 8px;border-radius:10px;font-weight:700">कार्यकारी डेस्क</span>
-          </div>
-          <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem">
-            वेब पर संस्थापक का व्यक्तिगत होम: गणित पर विस्तृत शोध लेख, सॉफ़्टवेयर आर्किटेक्चर दर्शन, व्यक्तिगत संस्मरण और आगामी रोडमैप।
-          </p>
-        </div>
-        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.82rem;padding:0.55rem 1rem;border-radius:8px;text-align:center;text-decoration:none;font-weight:600">पर्सनल पोर्टल देखें &nearr;</a>
-      </div>
-
     </div>
+
+    <div class="eco-card" id="eco-tools-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-tools-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🛠️</span>
+          <div><div class="eco-card-title">डेवलपर टूल्स सुइट</div><div class="eco-card-tagline">क्रिप्टोग्राफ़िक यूटिलिटी हब</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(16,185,129,0.15);color:var(--success)">यूटिलिटी</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-tools-hi-body">
+        <p class="eco-card-desc">डेवलपर्स और सुरक्षा शोधकर्ताओं के लिए विशेष क्रिप्टोग्राफ़िक यूटिलिटी सुइट।</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">रियल-टाइम पासवर्ड एन्ट्रॉपी स्कोरिंग</span>
+          <span class="eco-feature">PBKDF2 WebCrypto गति बेंचमार्किंग</span>
+          <span class="eco-feature">SHA-512 क्रिप्टोग्राफ़िक हैश कैलकुलेटर</span>
+        </div>
+        <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">टूल्स सुइट देखें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-frankbase-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-frankbase-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🌐</span>
+          <div><div class="eco-card-title">FrankBase Hub</div><div class="eco-card-tagline">मूल इकोसिस्टम प्लेटफ़ॉर्म</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(59,130,246,0.15);color:#60a5fa">इकोसिस्टम</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-frankbase-hi-body">
+        <p class="eco-card-desc">प्राइवेसी-फर्स्ट डिजिटल टूल्स, आधुनिक वेब आर्किटेक्चर और क्लाइंट-साइड कंप्यूटेशनल सिस्टम्स का मूल प्लेटफ़ॉर्म।</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">प्राइवेसी-फर्स्ट प्रोडक्ट इकोसिस्टम</span>
+          <span class="eco-feature">FrankPass का पैरेंट ब्रांड</span>
+          <span class="eco-feature">ओपन डेवलपर डॉक्युमेंटेशन</span>
+        </div>
+        <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">FrankBase देखें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-englishvidya-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-englishvidya-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">📖</span>
+          <div><div class="eco-card-title">EnglishVidya</div><div class="eco-card-tagline">भारत का क्लीन अंग्रेजी शिक्षा पोर्टल</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(234,179,8,0.15);color:#facc15">शिक्षा</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-englishvidya-hi-body">
+        <p class="eco-card-desc">बिना विज्ञापन और बिना किसी भटकाव का अंग्रेजी व्याकरण, भाषा विज्ञान और द्विभाषी शैक्षिक पोर्टल।</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">सम्पूर्ण अंग्रेजी व्याकरण कवरेज</span>
+          <span class="eco-feature">हिंदी-अंग्रेजी द्विभाषी व्याख्या</span>
+          <span class="eco-feature">कोई विज्ञापन नहीं, कोई ट्रैकिंग नहीं</span>
+        </div>
+        <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">EnglishVidya देखें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-store-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-store-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">🛍️</span>
+          <div><div class="eco-card-title">डिजिटल स्टोर</div><div class="eco-card-tagline">सत्यापित ई-बुक्स एवं डिजिटल वॉल्ट</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(236,72,153,0.15);color:#f472b6">स्टोर</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-store-hi-body">
+        <p class="eco-card-desc">सत्यापित साइबर सुरक्षा ई-बुक्स और डिजिटल शैक्षिक संपत्तियां। प्रमुख: "द अनहैकेबल यू" - 14 अध्यायों की साइबर सुरक्षा मास्टरक्लास।</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">"द अनहैकेबल यू" साइबर सुरक्षा मास्टरक्लास</span>
+          <span class="eco-feature">UPI फ्रॉड डिफेंस एवं 1930 हेल्पलाइन</span>
+          <span class="eco-feature">पे-व्हाट-यू-वांट मूल्य निर्धारण</span>
+        </div>
+        <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta">डिजिटल स्टोर खोलें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-mastermanikant-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-mastermanikant-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon">👤</span>
+          <div><div class="eco-card-title">MasterManikant.com</div><div class="eco-card-tagline">संस्थापक का व्यक्तिगत पोर्टल</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:0.5rem">
+          <span class="eco-card-badge" style="background:rgba(139,92,246,0.15);color:var(--accent-light)">व्यक्तिगत</span>
+          <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="eco-card-body" id="eco-mastermanikant-hi-body">
+        <p class="eco-card-desc">वेब पर संस्थापक का व्यक्तिगत होम। गणितीय शोध लेख, सॉफ़्टवेयर आर्किटेक्चर दर्शन, व्यक्तिगत संस्मरण और आगामी रोडमैप।</p>
+        <div class="eco-card-features">
+          <span class="eco-feature">गणितीय शोध एवं निबंध</span>
+          <span class="eco-feature">सॉफ़्टवेयर आर्किटेक्चर दर्शन</span>
+          <span class="eco-feature">व्यक्तिगत संस्थापक संस्मरण</span>
+        </div>
+        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="eco-card-cta primary">पर्सनल पोर्टल देखें &nearr;</a>
+      </div>
+    </div>
+
   </div>
+
+  <!-- ── CONNECT WITH FOUNDER (Hindi Social Accordion) ── -->
+  <h2 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);margin:0 0 1rem">🤝 संस्थापक से जुड़ें</h2>
+  <div class="ecosystem-accordion-grid">
+
+    <div class="eco-card" id="eco-x-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-x-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-primary)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+          <div><div class="eco-card-title">X (Twitter)</div><div class="eco-card-tagline">इंजीनियरिंग विचार एवं सुरक्षा अपडेट</div></div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body">
+        <p class="eco-card-desc">रियल-टाइम इंजीनियरिंग विचार, साइबर सुरक्षा अंतर्दृष्टि और उत्पाद अपडेट।</p>
+        <a href="https://x.com/mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">X पर फॉलो करें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-github-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-github-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text-primary)"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></span>
+          <div><div class="eco-card-title">GitHub</div><div class="eco-card-tagline">ओपन-सोर्स क्रिप्टोग्राफ़िक रेपोज़</div></div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body">
+        <p class="eco-card-desc">क्रिप्टोग्राफ़िक एल्गोरिद्म, ओपन डेवलपर टूल्स और इकोसिस्टम ब्लूप्रिंट्स का ऑडिट करें।</p>
+        <a href="https://github.com/Mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">GitHub पर देखें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-youtube-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-youtube-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+          <div><div class="eco-card-title">YouTube</div><div class="eco-card-tagline">प्रोडक्ट लॉन्च एवं डीप-डाइव वीडियो</div></div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body">
+        <p class="eco-card-desc">आगामी प्रोडक्ट लॉन्च वीडियो, प्रोजेक्ट निर्माण ब्रेकडाउन और क्रिप्टोग्राफी डीप-डाइव।</p>
+        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">YouTube पर देखें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-whatsapp-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-whatsapp-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#25d366"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8 2.52 1.1 2.52.73 2.98.69.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg></span>
+          <div><div class="eco-card-title">WhatsApp चैनल</div><div class="eco-card-tagline">स्पैम-मुक्त ब्रॉडकास्ट चैनल</div></div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body">
+        <p class="eco-card-desc">तुरंत सुरक्षा अलर्ट, प्रोडक्ट रिलीज़ और इकोसिस्टम समाचार। कोई प्रमोशनल शोर नहीं।</p>
+        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" class="eco-card-cta" style="border-color:#25d366;color:#25d366">चैनल से जुड़ें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-instagram-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-instagram-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#e1306c"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></span>
+          <div><div class="eco-card-title">Instagram</div><div class="eco-card-tagline">विज़ुअल टेक एवं संस्थापक जीवन</div></div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body">
+        <p class="eco-card-desc">विज़ुअल आर्किटेक्चर डायग्राम, बिहाइंड-द-सीन्स इंजीनियरिंग और संस्थापक जीवन के पल।</p>
+        <a href="https://instagram.com/mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta">Instagram पर फॉलो करें &nearr;</a>
+      </div>
+    </div>
+
+    <div class="eco-card" id="eco-snapchat-hi">
+      <div class="eco-card-header" onclick="ecoToggle('eco-snapchat-hi')" role="button" aria-expanded="false">
+        <div class="eco-card-header-left">
+          <span class="eco-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="color:#fffc00"><path d="M12.004 2c-3.79 0-6.864 2.87-6.864 6.41 0 1.25.43 2.41 1.15 3.34-.14.49-.49 1.12-.98 1.57-.22.2-.18.55.08.69.7.38 1.63.53 2.39.46.42.54.95.99 1.57 1.3-.39.26-.95.54-1.74.83-.5.18-.84.66-.81 1.19.03.54.43.98.97 1.05 1.48.19 3.03.65 3.86 1.66.19.23.51.37.82.37s.63-.14.82-.37c.83-1.01 2.38-1.47 3.86-1.66.54-.07.94-.51.97-1.05.03-.53-.31-1.01-.81-1.19-.79-.29-1.35-.57-1.74-.83.62-.31 1.15-.76 1.57-1.3.76.07 1.69-.08 2.39-.46.26-.14.3-.49.08-.69-.49-.45-.84-1.08-.98-1.57.72-.93 1.15-2.09 1.15-3.34 0-3.54-3.074-6.41-6.864-6.41z"/></svg></span>
+          <div><div class="eco-card-title">Snapchat</div><div class="eco-card-tagline">AR लेंस एवं इंटरैक्टिव फ़िल्टर</div></div>
+        </div>
+        <svg class="eco-card-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="eco-card-body">
+        <p class="eco-card-desc">FrankPass इकोसिस्टम के लिए कस्टम सुरक्षा AR लेंस, इंटरैक्टिव फ़िल्टर और स्टोरीज़।</p>
+        <a href="https://snapchat.com/add/mastermanikant" target="_blank" rel="noopener noreferrer" class="eco-card-cta" style="border-color:#c8c800;color:#c8c800">Snapchat पर ट्राई करें &nearr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  function ecoToggle(id) {
+    var card = document.getElementById(id);
+    if (!card) return;
+    var isOpen = card.classList.contains('open');
+    card.classList.toggle('open', !isOpen);
+    var header = card.querySelector('.eco-card-header');
+    if (header) header.setAttribute('aria-expanded', String(!isOpen));
+  }
+  </script>
 
   </main>
 
  <div id="site-footer"></div>
 
  <script src="/frankpass-config.js?v=3.2.8"></script>
- <script src="/footer.js?v=3.4.8"></script>
+ <script src="/footer.js?v=3.4.9"></script>
 </body>
 </html>

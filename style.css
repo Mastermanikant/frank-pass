@@ -2799,3 +2799,146 @@ html, body {
     justify-content: center !important;
   }
 }
+
+
+/* ── ECOSYSTEM ACCORDION CARDS (Founder Page) ────────────────────────── */
+.ecosystem-accordion-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.eco-card {
+  background: var(--card-glass-bg);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.eco-card:hover {
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 6px 24px rgba(139,92,246,0.12);
+}
+.eco-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.35rem;
+  cursor: pointer;
+  user-select: none;
+  gap: 1rem;
+}
+.eco-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+.eco-card-icon {
+  font-size: 1.35rem;
+  flex-shrink: 0;
+}
+.eco-card-title {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.eco-card-tagline {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.eco-card-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.eco-card-chevron {
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+  color: var(--text-muted);
+}
+.eco-card.open .eco-card-chevron {
+  transform: rotate(180deg);
+}
+.eco-card-body {
+  display: none;
+  padding: 0 1.35rem 1.35rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  animation: fadeInUp 0.2s ease;
+}
+.eco-card.open .eco-card-body {
+  display: block;
+}
+.eco-card-desc {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin: 0.85rem 0 1rem;
+}
+.eco-card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+.eco-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.eco-feature::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.eco-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  background: rgba(255,255,255,0.03);
+  transition: all 0.2s ease;
+  width: 100%;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.eco-card-cta:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.eco-card-cta.primary {
+  background: linear-gradient(135deg,#8b5cf6 0%,#7c3aed 100%);
+  border-color: transparent;
+  color: #fff;
+}
+.eco-card-cta.primary:hover {
+  box-shadow: 0 4px 16px rgba(139,92,246,0.4);
+}
+
+@media (max-width: 600px) {
+  .ecosystem-accordion-grid {
+    grid-template-columns: 1fr;
+  }
+}
