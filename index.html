@@ -31,20 +31,48 @@
  <link rel="manifest" href="/manifest.json">
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+ <noscript>
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+ </noscript>
  <link rel="stylesheet" href="/style.css?v=3.5.9">
 
-  <!-- Schema.org: SoftwareApplication (100% Factual & Authentic) -->
+ <!-- AI Agentic Browsing & Discovery Standards -->
+ <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs Context">
+ <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLMs Full Context">
+ 
+ <!-- Multilingual SEO Hreflang Alternates -->
+ <link rel="alternate" hreflang="en" href="https://frankpass.com/">
+ <link rel="alternate" hreflang="hi" href="https://frankpass.com/about-us-hindi">
+ <link rel="alternate" hreflang="x-default" href="https://frankpass.com/">
+
+  <!-- Schema.org: SoftwareApplication & Agentic Actions -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "FrankPass",
     "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Any - runs in any modern browser",
+    "operatingSystem": "Any - Web, PWA, Chrome, Firefox, Edge, Safari",
     "url": "https://frankpass.com",
     "description": "A stateless, deterministic password generator. Zero cloud, zero storage, zero accounts. Same inputs always produce the same password - mathematically guaranteed.",
+    "softwareVersion": "3.5.9",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "potentialAction": {
+      "@type": "CreateAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://frankpass.com/?platform={platform}&username={username}",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/MobileWebPlatform"
+        ]
+      },
+      "result": {
+        "@type": "Thing",
+        "name": "DeterministicPassword"
+      }
+    },
     "author": {
       "@type": "Person",
       "name": "Master Manikant Yadav",
@@ -66,14 +94,14 @@
  <div class="header-inner">
  <!-- Logo -->
  <a href="/" class="header-logo" aria-label="FrankPass - Home">
- <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon">
+ <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
  <span class="logo-text"><span>Frank</span>Pass</span>
  </a>
 
  <!-- Country dropdown (populated by country-dropdown.js) -->
  <div class="header-country custom-country-dropdown" aria-label="Select your country">
  <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
- <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+ <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
  <span id="country-display-name">India (IN)</span>
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </button>
@@ -149,7 +177,7 @@
           <!-- Top Row: Portrait + Single-Line Headers -->
           <div style="display:flex;gap:18px;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap">
             <div style="flex-shrink:0;width:95px;height:115px;border-radius:18px;overflow:hidden;border:2px solid rgba(139,92,246,0.55);box-shadow:0 0 25px rgba(139,92,246,0.35);background:#0d0e1a">
-              <img src="/icons/founder-master-manikant-yadav.png" alt="Master Manikant Yadav" style="width:100%;height:100%;object-fit:cover;display:block">
+              <img src="/icons/founder-master-manikant-yadav.png" alt="Master Manikant Yadav" width="95" height="115" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
             </div>
             <div style="flex:1;min-width:210px">
               <h2 class="founder-card-name" style="font-size:1.4rem;font-weight:800;margin:0 0 4px 0;color:var(--text-primary);line-height:1.2">
@@ -299,7 +327,7 @@
  100% Offline
  </div>
  <div class="card-country-pill" id="card-country-pill" title="Selected Region">
- <img id="header-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w160/in.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+ <img id="header-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w160/in.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
  <span id="card-country-label">IN</span>
  </div>
  </div>
@@ -308,8 +336,8 @@
  <!-- Account Mode Segmented Switch -->
  <div class="account-mode-wrap">
  <div class="account-mode-tabs" role="tablist" aria-label="Account Mode">
- <button type="button" id="acc-tab-single" class="acc-tab active" role="tab" aria-selected="true">Single Account</button>
- <button type="button" id="acc-tab-multi" class="acc-tab" role="tab" aria-selected="false">Multiple Accounts</button>
+ <button type="button" id="acc-tab-single" class="acc-tab active" role="tab" aria-selected="true" aria-label="Single Account Mode">Single Account</button>
+ <button type="button" id="acc-tab-multi" class="acc-tab" role="tab" aria-selected="false" aria-label="Multiple Accounts Mode">Multiple Accounts</button>
  </div>
  <div id="username-group" style="display:none;margin-top:0.6rem">
  <label class="form-label" for="username-input" style="font-size:0.8rem">Username / Account Email</label>
@@ -378,7 +406,7 @@
  </div>
 
  <!-- Advanced options accordion -->
- <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel">
+ <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel" aria-label="Toggle advanced rules and rotation options">
  <span style="display:flex;align-items:center;gap:0.45rem">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
  Advanced Rules &amp; Rotation
@@ -394,8 +422,8 @@
  <label class="form-label" style="margin:0; text-transform: uppercase;" for="variant-input">Password Number <span style="display:none;" id="variant-val"></span></label>
  <!-- Variant Mode Tabs -->
  <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid var(--border)">
- <button type="button" id="variant-tab-counter" class="variant-tab active" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
- <button type="button" id="variant-tab-date" class="variant-tab" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
+ <button type="button" id="variant-tab-counter" class="variant-tab active" aria-label="Permanent Counter Mode" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
+ <button type="button" id="variant-tab-date" class="variant-tab" aria-label="Month and Year Rotation Mode" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
  </div>
  </div>
 
@@ -448,9 +476,9 @@
  <div class="form-group">
  <div class="form-label">Preset</div>
  <div class="preset-btns" role="group" aria-label="Password preset selector">
- <button class="preset-btn" data-preset="simple" type="button">Simple</button>
- <button class="preset-btn active" data-preset="strong" type="button">Strong</button>
- <button class="preset-btn" data-preset="max" type="button">Maximum</button>
+ <button class="preset-btn" data-preset="simple" type="button" aria-label="Apply Simple Preset">Simple</button>
+ <button class="preset-btn active" data-preset="strong" type="button" aria-label="Apply Strong Preset">Strong</button>
+ <button class="preset-btn" data-preset="max" type="button" aria-label="Apply Maximum Preset">Maximum</button>
  </div>
  </div>
 
@@ -703,16 +731,16 @@
  <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Click an AI below. We will copy a smart prompt to your clipboard and open the app. <strong style="color:var(--text-primary)">Just paste it!</strong></p>
 
  <div class="grid-2" style="gap:0.75rem">
- <button onclick="openAI('chatgpt')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ <button onclick="openAI('chatgpt')" class="btn-ghost" aria-label="Ask ChatGPT about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
  ChatGPT
  </button>
- <button onclick="openAI('claude')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ <button onclick="openAI('claude')" class="btn-ghost" aria-label="Ask Claude about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
  Claude
  </button>
- <button onclick="openAI('gemini')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ <button onclick="openAI('gemini')" class="btn-ghost" aria-label="Ask Gemini about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
  Gemini
  </button>
- <button onclick="openAI('perplexity')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
+ <button onclick="openAI('perplexity')" class="btn-ghost" aria-label="Ask Perplexity about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
  Perplexity
  </button>
  </div>
@@ -795,7 +823,7 @@
       <div id="rating-comment-form" style="display:none;margin-top:1rem;text-align:left;animation:slideDown 0.3s ease forwards;">
         <input type="text" id="rating-name-input" placeholder="Your Name or leave blank for Anonymous" style="width:100%;padding:0.75rem;margin-bottom:0.75rem;border-radius:0.5rem;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;" aria-label="Your Name">
         <textarea id="rating-comment-input" placeholder="What do you like about FrankPass or how can we improve? (optional)" style="width:100%;padding:0.75rem;margin-bottom:0.75rem;border-radius:0.5rem;border:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);font-family:inherit;min-height:80px;resize:vertical;" aria-label="Your Feedback"></textarea>
-        <button id="submit-review-btn" class="btn-primary" style="width:100%;padding:0.75rem;border-radius:0.5rem;font-weight:600;display:flex;justify-content:center;align-items:center;gap:0.5rem;cursor:pointer;border:none;">
+        <button id="submit-review-btn" class="btn-primary" aria-label="Submit Honest Review" style="width:100%;padding:0.75rem;border-radius:0.5rem;font-weight:600;display:flex;justify-content:center;align-items:center;gap:0.5rem;cursor:pointer;border:none;">
           Submit Honest Review
         </button>
       </div>
@@ -2059,10 +2087,10 @@ if ('serviceWorker' in navigator) {
     </div>
 
     <div style="display:flex;flex-direction:column;gap:0.65rem">
-      <button type="button" id="btn-enable-bio" class="btn-primary" style="width:100%;padding:0.75rem;font-size:0.9rem;font-weight:700;border-radius:10px;justify-content:center">
+      <button type="button" id="btn-enable-bio" class="btn-primary" aria-label="Enable Device Biometric Lock" style="width:100%;padding:0.75rem;font-size:0.9rem;font-weight:700;border-radius:10px;justify-content:center">
         👆 Enable Biometric Lock
       </button>
-      <button type="button" id="btn-skip-bio" class="btn-ghost" style="width:100%;padding:0.65rem;font-size:0.85rem;font-weight:600;border-radius:10px;justify-content:center">
+      <button type="button" id="btn-skip-bio" class="btn-ghost" aria-label="Skip Biometric Setup" style="width:100%;padding:0.65rem;font-size:0.85rem;font-weight:600;border-radius:10px;justify-content:center">
         Skip (Save Encrypted Only)
       </button>
     </div>

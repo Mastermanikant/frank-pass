@@ -24,6 +24,8 @@ const CACHED_URLS = [
     '/platforms.js',
     '/country-data.js',
     '/country-dropdown.js',
+    '/llms.txt',
+    '/icons/logo-key-64.webp',
     '/manifest.json'
 ];
 

@@ -3,7 +3,20 @@ Allow: /
 Disallow: /api/
 Disallow: /.wrangler/
 
+# Explicit AI Agent Discovery
 User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://frankpass.com/sitemap.xml
