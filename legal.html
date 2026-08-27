@@ -19,7 +19,7 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
- <link rel="stylesheet" href="/style.css?v=3.3.8">
+ <link rel="stylesheet" href="/style.css?v=3.3.9">
 
   <!-- WebPage & Organization Schema -->
   <script type="application/ld+json">
@@ -193,43 +193,42 @@
  </div>
  </details>
 
- <!-- ── 6. Security Scope ── -->
- <details class="faq-item" id="security" style="border-color:rgba(16,185,129,0.25)">
- <summary>
- <span style="display:flex;align-items:center;gap:0.65rem">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
- 6. Security Architecture &amp; Scope
- </span>
- <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
- </summary>
- <div class="faq-body">
- <h2 style="color:var(--success);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">What FrankPass Protects - and What It Doesn't</h2>
- <p><strong>What FrankPass secures:</strong> The password generation and storage layer. By storing nothing, we eliminate the most common attack vector - server-side breaches. FrankPass uses PBKDF2 with HMAC-SHA512 at 1,000,000 iterations, running exclusively via the browser-native Web Cryptography API. These are NIST-approved, industry-standard cryptographic primitives. No custom or proprietary cryptography is used.</p>
- <p style="margin-top:0.75rem"><strong>What FrankPass cannot protect against:</strong> Keyloggers or malware on your local device; phishing attacks where you voluntarily enter your Secret Key on a fake website; shoulder surfing; a weak or guessable Secret Key; browser extensions with malicious permissions; or any attack that occurs after you copy and paste your generated password.</p>
- <p style="margin-top:0.75rem"><strong>Responsible Disclosure:</strong> If you discover a security vulnerability in FrankPass, please report it responsibly via email to <a href="mailto:connect@mastermanikant.com">connect@mastermanikant.com</a> before making any public disclosure. We take security reports seriously and will respond promptly.</p>
- <p style="margin-top:0.75rem">Want to understand the cryptographic details in full? <a href="/docs.html#security-model">Read the Security Model chapter in our documentation &rarr;</a></p>
- </div>
- </details>
+     <!-- ── 6. Security Scope ── -->
+    <details class="faq-item" id="security" style="border-color:rgba(16,185,129,0.25)">
+      <summary>
+        <span style="display:flex;align-items:center;gap:0.65rem">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          6. Security Architecture &amp; Scope
+        </span>
+        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="faq-body">
+        <h2 style="color:var(--success);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">What FrankPass Protects - and What It Doesn't</h2>
+        <p><strong>What FrankPass secures:</strong> The password generation and storage layer. By storing nothing, we eliminate the most common attack vector - server-side breaches. FrankPass uses PBKDF2 with HMAC-SHA512 at 1,000,000 iterations, running exclusively via the browser-native Web Cryptography API. These are NIST-approved, industry-standard cryptographic primitives. No custom or proprietary cryptography is used.</p>
+        <p style="margin-top:0.75rem"><strong>What FrankPass cannot protect against:</strong> Keyloggers or malware on your local device; phishing attacks where you voluntarily enter your Secret Key on a fake website; shoulder surfing; a weak or guessable Secret Key; browser extensions with malicious permissions; or any attack that occurs after you copy and paste your generated password.</p>
+        <p style="margin-top:0.75rem"><strong>Responsible Disclosure:</strong> If you discover a security vulnerability in FrankPass, please report it responsibly via email to <a href="mailto:connect@mastermanikant.com">connect@mastermanikant.com</a> before making any public disclosure. We take security reports seriously and will respond promptly.</p>
+        <p style="margin-top:0.75rem">Want to understand the cryptographic details in full? <a href="/docs.html#security-model">Read the Security Model chapter in our documentation &rarr;</a></p>
+      </div>
+    </details>
 
- </div>
+    <!-- ── 7. Statutory Compliance & Grievance Redressal (DPDP Act 2023 / IT Act / GDPR) ── -->
+    <details class="faq-item" id="compliance">
+      <summary>
+        <span style="display:flex;align-items:center;gap:0.65rem">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          7. Statutory Compliance, DPDP Act 2023 &amp; Grievance Redressal
+        </span>
+        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </summary>
+      <div class="faq-body">
+        <h2 style="color:var(--accent);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">Zero-Data Statutory Exemption &amp; Grievance Officer</h2>
+        <p><strong>Digital Personal Data Protection (DPDP) Act 2023 &amp; GDPR Exemption:</strong> FrankPass does not process, store, index, or transmit personal data on any server. Because zero personal data is collected or retained, FrankPass operates under full statutory exemption from server-side data breach obligations. Your device is the sole processing unit.</p>
+        <p style="margin-top:0.75rem"><strong>Information Technology Act, 2000 (India):</strong> This service is provided as a pure mathematical client-side utility under Section 79 of the IT Act with strict limited liability protections.</p>
+        <p style="margin-top:0.75rem"><strong>Grievance &amp; Legal Officer:</strong> For statutory notices, IP inquiries, or legal concerns, reach our executive legal desk directly at: <a href="mailto:connect@mastermanikant.com">connect@mastermanikant.com</a> (Executive Desk of Master Manikant Yadav). All inquiries are responded to within 48 business hours.</p>
+      </div>
+    </details>
 
- 
-  <!-- ── 7. Statutory Compliance & Grievance Redressal (DPDP Act 2023 / IT Act / GDPR) ── -->
-  <details class="faq-item" id="compliance">
-  <summary>
-  <span style="display:flex;align-items:center;gap:0.65rem">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-  7. Statutory Compliance, DPDP Act 2023 &amp; Grievance Redressal
-  </span>
-  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-  </summary>
-  <div class="faq-body">
-  <h2 style="color:var(--accent);font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.75rem">Zero-Data Statutory Exemption &amp; Grievance Officer</h2>
-  <p><strong>Digital Personal Data Protection (DPDP) Act 2023 &amp; GDPR Exemption:</strong> FrankPass does not process, store, index, or transmit personal data on any server. Because zero personal data is collected or retained, FrankPass operates under full statutory exemption from server-side data breach obligations. Your device is the sole processing unit.</p>
-  <p style="margin-top:0.75rem"><strong>Information Technology Act, 2000 (India):</strong> This service is provided as a pure mathematical client-side utility under Section 79 of the IT Act with strict limited liability protections.</p>
-  <p style="margin-top:0.75rem"><strong>Grievance &amp; Legal Officer:</strong> For statutory notices, IP inquiries, or legal concerns, reach our executive legal desk directly at: <a href="mailto:connect@mastermanikant.com">connect@mastermanikant.com</a> (Executive Desk of Master Manikant Yadav). All inquiries are responded to within 48 business hours.</p>
-  </div>
-  </details>
+    </div>
 
   <!-- Back CTA -->
  <div style="margin-top:3rem;text-align:center">
@@ -254,7 +253,7 @@
 <div id="site-footer"></div>
 
 <script src="/frankpass-config.js?v=3.2.8"></script>
-<script src="/footer.js?v=3.3.8"></script>
+<script src="/footer.js?v=3.3.9"></script>
 <script>
 /* ── Header scroll ── */
 const header = document.getElementById('site-header');
