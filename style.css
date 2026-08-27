@@ -2942,3 +2942,13 @@ html, body {
     grid-template-columns: 1fr;
   }
 }
+
+/* Ecosystem grid: force 2-column layout */
+.eco-grid-2col {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+@media (max-width: 520px) {
+  .eco-grid-2col {
+    grid-template-columns: 1fr !important;
+  }
+}
