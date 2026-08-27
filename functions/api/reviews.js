@@ -1,11 +1,21 @@
-export async function onRequestGet(context) {
-  const { env } = context;
-
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://frankpass.com",
+function getCorsHeaders(request) {
+  const origin = (request && request.headers) ? (request.headers.get("Origin") || "") : "";
+  const allowed = (
+    origin === "https://frankpass.com" ||
+    origin === "https://www.frankpass.com" ||
+    origin.startsWith("chrome-extension://") ||
+    origin.startsWith("moz-extension://")
+  );
+  return {
+    "Access-Control-Allow-Origin": allowed ? origin : "https://frankpass.com",
     "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
+}
+
+export async function onRequestGet(context) {
+  const { request, env } = context;
+  const corsHeaders = getCorsHeaders(request);
 
   try {
     if (!env.FRANKPASS_KV) {
@@ -33,47 +43,14 @@ export async function onRequestGet(context) {
 
 export async function onRequestPost(context) {
   const { request, env } = context;
-
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://frankpass.com",
-    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-  };
+  const corsHeaders = getCorsHeaders(request);
 
   if (request.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    if (!env.FRANKPASS_KV) {
-      return new Response(JSON.stringify({
-        success: true,
-        message: "Thank you for your rating!",
-        review: {
-          id: "rev_" + Date.now().toString(36),
-          rating: rating || 5,
-          comment: (body && body.comment ? body.comment : "").substring(0, 500),
-          name: (body && body.name ? body.name : "").substring(0, 50) || "Anonymous",
-          date: new Date().toISOString().split("T")[0]
-        },
-        stats: { totalReviews: 1, averageRating: rating || 5 }
-      }), {
-        headers: { "Content-Type": "application/json", ...corsHeaders }
-      });
-    }
-
-    const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
-    const rateLimitKey = "rl_review_" + clientIP;
-
-    const hasReviewed = await env.FRANKPASS_KV.get(rateLimitKey);
-    if (hasReviewed) {
-      return new Response(JSON.stringify({ error: "You have already submitted a review recently. Thank you!" }), {
-        status: 429,
-        headers: { "Content-Type": "application/json", ...corsHeaders }
-      });
-    }
-
-    const body = await request.json();
+    const body = await request.json().catch(() => ({}));
     const rating = parseInt(body.rating, 10);
     if (isNaN(rating) || rating < 1 || rating > 5) {
       return new Response(JSON.stringify({ error: "Valid star rating (1-5) is required" }), {
@@ -94,6 +71,28 @@ export async function onRequestPost(context) {
       name: displayName,
       date: new Date().toISOString().split("T")[0]
     };
+
+    if (!env.FRANKPASS_KV) {
+      return new Response(JSON.stringify({
+        success: true,
+        message: "Thank you for your rating!",
+        review: newReview,
+        stats: { totalReviews: 1, averageRating: rating }
+      }), {
+        headers: { "Content-Type": "application/json", ...corsHeaders }
+      });
+    }
+
+    const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
+    const rateLimitKey = "rl_review_" + clientIP;
+
+    const hasReviewed = await env.FRANKPASS_KV.get(rateLimitKey);
+    if (hasReviewed) {
+      return new Response(JSON.stringify({ error: "You have already submitted a review recently. Thank you!" }), {
+        status: 429,
+        headers: { "Content-Type": "application/json", ...corsHeaders }
+      });
+    }
 
     // Retrieve existing reviews and stats
     const statsRaw = await env.FRANKPASS_KV.get("reviews_stats");

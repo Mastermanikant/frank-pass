@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.3.7 (100% Offline-First with Smart Network-First Sync)
-const CACHE_NAME = 'frankpass-v3.3.7';
+// FrankPass Service Worker v3.3.8 (100% Offline-First with Smart Network-First Sync)
+const CACHE_NAME = 'frankpass-v3.3.8';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -72,10 +72,10 @@ self.addEventListener('fetch', (event) => {
                 return networkResponse;
             })
             .catch(() => {
-                return caches.match(event.request).then((cachedResponse) => {
+                return caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
                     if (cachedResponse) return cachedResponse;
                     if (event.request.mode === 'navigate') {
-                        return caches.match('/').then(res => res || caches.match('/index.html'));
+                        return caches.match('/', { ignoreSearch: true }).then(res => res || caches.match('/index.html', { ignoreSearch: true }));
                     }
                     return null;
                 });

@@ -1,19 +1,28 @@
-export async function onRequestPost(context) {
-  const { request, env } = context;
-
-  // Set CORS headers
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://frankpass.com",
+function getCorsHeaders(request) {
+  const origin = (request && request.headers) ? (request.headers.get("Origin") || "") : "";
+  const allowed = (
+    origin === "https://frankpass.com" ||
+    origin === "https://www.frankpass.com" ||
+    origin.startsWith("chrome-extension://") ||
+    origin.startsWith("moz-extension://")
+  );
+  return {
+    "Access-Control-Allow-Origin": allowed ? origin : "https://frankpass.com",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
+}
+
+export async function onRequestPost(context) {
+  const { request, env } = context;
+  const corsHeaders = getCorsHeaders(request);
 
   if (request.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const body = await request.json();
+    const body = await request.json().catch(() => ({}));
     const { tier } = body;
     if (!tier) {
       return new Response(JSON.stringify({ error: "Tier is required" }), { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } });

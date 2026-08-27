@@ -1,18 +1,28 @@
-export async function onRequestPost(context) {
-  const { request, env } = context;
-
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "https://frankpass.com", 
+function getCorsHeaders(request) {
+  const origin = (request && request.headers) ? (request.headers.get("Origin") || "") : "";
+  const allowed = (
+    origin === "https://frankpass.com" ||
+    origin === "https://www.frankpass.com" ||
+    origin.startsWith("chrome-extension://") ||
+    origin.startsWith("moz-extension://")
+  );
+  return {
+    "Access-Control-Allow-Origin": allowed ? origin : "https://frankpass.com",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
+}
+
+export async function onRequestPost(context) {
+  const { request, env } = context;
+  const corsHeaders = getCorsHeaders(request);
 
   if (request.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
-    const body = await request.json();
+    const body = await request.json().catch(() => ({}));
     const { key, deviceId } = body;
 
     if (!key || !deviceId) {
@@ -53,6 +63,7 @@ export async function onRequestPost(context) {
     let label = "Silver Plan";
     if (license.tier === "gold") label = "Gold Plan";
     if (license.tier === "platinum") label = "Platinum Plan";
+    if (license.tier === "diamond") label = "Diamond Plan";
     if (license.type === "trial") label = "Free Trial";
 
     return new Response(JSON.stringify({ valid: true, tier: license.tier, type: license.type, label: label, expiresAt: license.expiresAt }), { headers: { "Content-Type": "application/json", ...corsHeaders } });

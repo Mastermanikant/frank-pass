@@ -55,6 +55,10 @@ export async function onRequestPost(context) {
     if (event === "payment.succeeded" || event === "subscription.created") {
       const email = data.customer?.email || "unknown@example.com";
       let tier = "silver";
+      const metaTier = (data.metadata?.tier || data.product?.name || data.description || "").toLowerCase();
+      if (metaTier.includes("diamond")) tier = "diamond";
+      else if (metaTier.includes("platinum")) tier = "platinum";
+      else if (metaTier.includes("gold")) tier = "gold";
       
       const array = new Uint8Array(16);
       crypto.getRandomValues(array);

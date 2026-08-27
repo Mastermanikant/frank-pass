@@ -222,7 +222,7 @@ const FrankPassUtils = (function () {
         platform = platform.replace(/^(www\.|m\.|app\.|login\.|secure\.|auth\.|account\.|sellercentral\.)/, '');
         
         // 4. Strip parenthetical and trailing hyphen acronym suffixes (e.g. "Bank of India - BOI" -> "Bank of India", "State Bank of India (SBI)" -> "State Bank of India", "Zerodha (Kite / Coin)" -> "Zerodha")
-        platform = platform.replace(/\s*[-–—]\s*[a-z0-9\s]+$/, '');
+        platform = platform.replace(/\s+[-–—]\s+[a-z0-9\s]+$/, '');
         platform = platform.replace(/\s*\([^)]*\)/g, '');
 
         // 5. Handle Visual Aliases (full domains)

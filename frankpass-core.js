@@ -78,10 +78,15 @@ const FRANKPASS_CORE = (function () {
 
         let revIdx = byteStream.length - 1;
         let currentStr = passwordChars.join('');
+        const usedPositions = new Set();
 
         requiredSets.forEach(set => {
             if (!currentStr.split('').some(c => set.includes(c))) {
-                const pos = byteStream[revIdx--] % targetLength;
+                let pos = byteStream[revIdx--] % targetLength;
+                while (usedPositions.has(pos) && usedPositions.size < targetLength) {
+                    pos = (pos + 1) % targetLength;
+                }
+                usedPositions.add(pos);
                 const char = set[byteStream[revIdx--] % set.length];
                 passwordChars[pos] = char;
                 currentStr = passwordChars.join('');

@@ -21,6 +21,29 @@
 /disclaimer /legal 301
 /articles /blog 301
 /security-tips /blog 301
+# Regional Country Code 200 Rewrites (SPA routing for country dropdown)
+/in / 200
+/us / 200
+/gb / 200
+/ca / 200
+/au / 200
+/de / 200
+/fr / 200
+/ae / 200
+/sa / 200
+/jp / 200
+/sg / 200
+/nl / 200
+/br / 200
+/za / 200
+/bd / 200
+/pk / 200
+/ng / 200
+/ph / 200
+/id / 200
+/ke / 200
+/es / 200
+/it / 200
 /hn / 200
 
 # Founder Social Links
