@@ -56,7 +56,7 @@ const FRANKPASS_CONFIG = {
     INSTAGRAM:       "https://instagram.com/frankpasshq",
     YOUTUBE:         "https://youtube.com/@frankpasshq",
     FACEBOOK:        "https://facebook.com/frankpasshq",
-    REDDIT:          "https://reddit.com/r/frankpasshq",
+    REDDIT:          "https://www.reddit.com/user/frankpasshq/",
     WHATSAPP:        "https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532",
     MASTODON_BRAND:  "https://fosstodon.org/@frankpasshq",
     /* Founder - Master Manikant (Strict Handle: @mastermanikant everywhere) */
