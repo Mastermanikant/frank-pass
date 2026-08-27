@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="/style.css?v=3.3.2">
+  <link rel="stylesheet" href="/style.css?v=3.3.3">
   <link rel="icon" type="image/svg+xml" href="/icons/icon-192.png">
   
   <style>
@@ -175,6 +175,17 @@
         "Human working memory can hold 7 &plusmn; 2 items. Demanding that a human remember fifty 16-character random strings across dozens of platforms is not a security policy &mdash; it is a neurological impossibility."
       </blockquote>
 
+            <h2>The Mental Math System That Started It All</h2>
+      <p>
+        Whenever a new idea struck, I created a new Gmail ID. As the list grew past 20 accounts, writing down passwords felt unsafe, and memorizing 20 random strings was impossible.
+      </p>
+      <p>
+        I developed a personal mental algorithm: I would take the first 3 characters of the platform (e.g. <code>support</code> &rarr; <code>Sup</code>), calculate the cube or square of the letter count (7<sup>3</sup> = <code>343</code>), and append a private digit sequence with a special symbol. Passwords like <code>Sup343#852108</code> were generated deterministically on a phone calculator or in my head.
+      </p>
+      <p>
+        On that night of 25th December 2025, when a lockout occurred, the core breakthrough struck: <em>"Why do manual arithmetic on a calculator? Can this deterministic mental reasoning be converted into an unbreakable, client-side cryptographic algorithm?"</em>
+      </p>
+
       <h2>The Cloud Vault Trap</h2>
       <p>
         For years, the tech industry has pushed a single solution: <em>"Just use a cloud password manager."</em> But cloud password vaults (like LastPass, which suffered catastrophic database breaches in 2022) create massive central honeypots. You are forced to upload your encrypted master database to their servers. If their servers are breached or their infrastructure goes down, your digital identity is either exposed or inaccessible.
@@ -210,6 +221,6 @@
 
   <div id="site-footer"></div>
   <script src="/frankpass-config.js"></script>
-  <script src="/footer.js?v=3.3.2"></script>
+  <script src="/footer.js?v=3.3.3"></script>
 </body>
 </html>
