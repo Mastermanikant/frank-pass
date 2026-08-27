@@ -1048,8 +1048,8 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .site-footer {
   background: var(--bg-secondary);
   border-top: 1px solid var(--border);
-  padding: 3rem 0 2rem;
-  margin-top: 4rem;
+  padding: 2.5rem 0 2rem;
+  margin-top: 1.75rem;
 }
 .footer-inner {
   max-width: 1280px;
