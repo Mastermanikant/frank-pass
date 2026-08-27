@@ -19,7 +19,7 @@
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
- <link rel="stylesheet" href="/style.css?v=3.3.6">
+ <link rel="stylesheet" href="/style.css?v=3.3.7">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to use FrankPass","description":"Generate a unique, secure password for any website in under 60 seconds - without making an account or storing anything.","step":[{"@type":"HowToStep","name":"Choose your country and platform","text":"Select your country from the dropdown. Then type the name of the website or app you need a password for (e.g. instagram, gmail.com)."},{"@type":"HowToStep","name":"Enter your Secret Key","text":"Type a memorable phrase, lyric, or pattern that only you know. This is your Secret Key - it is NOT a password. It is a cryptographic seed. It never leaves your device."},{"@type":"HowToStep","name":"Generate your password","text":"Click the Generate Password button. FrankPass runs PBKDF2 cryptography entirely in your browser and shows your password instantly."},{"@type":"HowToStep","name":"Copy and use","text":"Copy the generated password and use it on the website. You never need to save it - FrankPass will generate the exact same password next time you enter the same platform name and Secret Key."}, {"@type": "HowToStep", "position": 5, "name": "Install as an App (PWA)", "text": "Click the install button in your browser to save FrankPass as an offline app on your device. It works without internet after installation."}]}</script></head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -140,7 +140,63 @@
 
  </div>
 
- <div style="text-align:center;margin-top:2rem">
+ 
+    <!-- Additional Masterclass Guidelines -->
+    <div style="margin-top:3.5rem">
+      
+      <div class="text-center mb-4">
+        <span style="font-size:0.82rem;font-weight:700;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:0.25rem 0.75rem;border-radius:20px;display:inline-block;margin-bottom:0.5rem">
+          Masterclass &amp; Best Practices
+        </span>
+        <h2 style="font-size:1.8rem;font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0">How to Master Stateless Security</h2>
+        <p style="color:var(--text-muted);font-size:0.95rem;max-width:620px;margin:0 auto">Three essential habits that guarantee your digital identity remains 100% unbreakable forever.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:1.5rem">
+        
+        <!-- Pillar 1: Secret Phrase Choice -->
+        <article class="card-glass" style="padding:1.75rem;border-radius:18px">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem">💡</div>
+          <h3 style="font-size:1.15rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">1. Choose a Natural Sentence</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">
+            Never use a short word or birthday. Instead, pick a natural memorable sentence with 4+ words that only you know:
+          </p>
+          <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:10px;padding:0.75rem;font-size:0.82rem">
+            <div style="color:var(--success);font-weight:600;margin-bottom:0.3rem">&check; Good: <code>i love drinking chai at 7am</code></div>
+            <div style="color:var(--error);font-weight:600">&cross; Bad: <code>password123</code> or <code>manikant@1995</code></div>
+          </div>
+        </article>
+
+        <!-- Pillar 2: Multi-Tier Profiles -->
+        <article class="card-glass" style="padding:1.75rem;border-radius:18px">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem">🗂️</div>
+          <h3 style="font-size:1.15rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">2. Multi-Tier Secret Keys</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">
+            Compartmentalize your risk by using 2-3 different memorable sentences for different life domains:
+          </p>
+          <ul style="font-size:0.84rem;color:var(--text-muted);padding-left:1.2rem;margin:0;line-height:1.6">
+            <li><strong>Tier 1 (Everyday Social):</strong> For Reddit, forums, casual media.</li>
+            <li><strong>Tier 2 (Work &amp; SaaS):</strong> For GitHub, Slack, work emails.</li>
+            <li><strong>Tier 3 (Banking &amp; Primary):</strong> For net banking and recovery Gmail.</li>
+          </ul>
+        </article>
+
+        <!-- Pillar 3: Password Rotation -->
+        <article class="card-glass" style="padding:1.75rem;border-radius:18px">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem">🔄</div>
+          <h3 style="font-size:1.15rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">3. Password Rotation via Counter</h3>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.75rem">
+            When a website forces you to change your password every 90 days, you don't need to change your master secret key:
+          </p>
+          <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:10px;padding:0.75rem;font-size:0.82rem;color:var(--accent-light);line-height:1.5">
+            Simply increment the <strong>Variant Counter</strong> from <code>1</code> to <code>2</code> (or <code>3</code>). The math automatically derives a completely new high-entropy string!
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:3rem">
  <a href="/" class="btn-primary btn-lg" aria-label="Open the FrankPass generator">Open the Generator &rarr;</a>
  </div>
  </div>
@@ -177,7 +233,7 @@
 <script src="/frankpass-config.js?v=3.2.8"></script>
 <script src="/country-data.js"></script>
 <script src="/country-dropdown.js?v=3.2.8"></script>
-<script src="/footer.js?v=3.3.6"></script>
+<script src="/footer.js?v=3.3.7"></script>
 <script>
 /* ── Header scroll ── */
 const header = document.getElementById('site-header');
