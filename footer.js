@@ -1,5 +1,5 @@
 /**
- * footer.js - FrankPass Shared Footer Renderer v3.4 (Clean, Minimal, Modern)
+ * footer.js - FrankPass Shared Footer Renderer v3.4.1 (Clean, Minimal, Modern)
  * Call: place <div id="site-footer"></div> on every page.
  * Reads social links from FRANKPASS_CONFIG.SOCIAL.
  * Always load this script LAST.
@@ -15,7 +15,7 @@
     const cfg   = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
     const soc   = cfg.SOCIAL || {};
     const year  = new Date().getFullYear();
-    const ver   = cfg.SITE_VERSION || '3.3.9';
+    const ver   = cfg.SITE_VERSION || '3.4.1';
 
     /* ── SVG icons ── */
     const ico = {
@@ -28,10 +28,17 @@
       snapchat:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12.004 2c-3.79 0-6.864 2.87-6.864 6.41 0 1.25.43 2.41 1.15 3.34-.14.49-.49 1.12-.98 1.57-.22.2-.18.55.08.69.7.38 1.63.53 2.39.46.42.54.95.99 1.57 1.3-.39.26-.95.54-1.74.83-.5.18-.84.66-.81 1.19.03.54.43.98.97 1.05 1.48.19 3.03.65 3.86 1.66.19.23.51.37.82.37s.63-.14.82-.37c.83-1.01 2.38-1.47 3.86-1.66.54-.07.94-.51.97-1.05.03-.53-.31-1.01-.81-1.19-.79-.29-1.35-.57-1.74-.83.62-.31 1.15-.76 1.57-1.3.76.07 1.69-.08 2.39-.46.26-.14.3-.49.08-.69-.49-.45-.84-1.08-.98-1.57.72-.93 1.15-2.09 1.15-3.34 0-3.54-3.074-6.41-6.864-6.41z"/></svg>`
     };
 
-    /* ── Social row builder ── */
-    function socialLink(href, label, icon) {
+    /* ── Social row builder with hover micro-cards ── */
+    function socialLink(href, label, icon, desc) {
       if (!href || href.includes('[')) return '';
-      return `<a href="${href}" class="footer-social-link" aria-label="${label}" target="_blank" rel="noopener noreferrer">${icon}</a>`;
+      return `
+        <div class="has-hover-card">
+          <a href="${href}" class="footer-social-link" aria-label="${label}" target="_blank" rel="noopener noreferrer">${icon}</a>
+          <div class="hover-card-preview" style="width:200px">
+            <div class="hover-card-title">${label}</div>
+            <p class="hover-card-desc">${desc}</p>
+          </div>
+        </div>`;
     }
 
     const waLink = (soc.WHATSAPP && !soc.WHATSAPP.includes('[')) ? soc.WHATSAPP : 'https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532';
@@ -53,16 +60,18 @@
           </svg>
           <span class="logo-text"><span>Frank</span>Pass</span>
         </a>
-        <p style="margin-top:0.65rem;font-size:0.88rem;color:var(--text-muted);line-height:1.5">Serverless Cryptography. Zero Database. Pure Math.</p>
+        <p style="margin-top:0.75rem;font-size:0.86rem;color:var(--text-muted);line-height:1.6">
+          Stateless, zero-knowledge password generator powered by 1,000,000 PBKDF2-HMAC-SHA512 iterations. Zero cloud databases, zero telemetry, and 100% client-side WebCrypto privacy.
+        </p>
         
         <div class="footer-social" style="margin-top:1.15rem;display:flex;gap:8px;flex-wrap:wrap">
-          ${socialLink('https://x.com/mastermanikant', 'X (Twitter)', ico.x)}
-          ${socialLink('https://github.com/Mastermanikant', 'GitHub', ico.github)}
-          ${socialLink('https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin)}
-          ${socialLink('https://youtube.com/@mastermanikant', 'YouTube', ico.youtube)}
-          ${socialLink(waLink, 'WhatsApp Channel', ico.whatsapp)}
-          ${socialLink('https://instagram.com/mastermanikant', 'Instagram', ico.instagram)}
-          ${socialLink('https://snapchat.com/add/mastermanikant', 'Snapchat', ico.snapchat)}
+          ${socialLink('https://x.com/mastermanikant', 'X (Twitter)', ico.x, 'Real-time engineering insights & cybersecurity updates.')}
+          ${socialLink('https://github.com/Mastermanikant', 'GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
+          ${socialLink('https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin, 'Professional milestones & tech collaborations.')}
+          ${socialLink('https://youtube.com/@mastermanikant', 'YouTube', ico.youtube, 'Product launch videos & software build guides.')}
+          ${socialLink(waLink, 'WhatsApp Channel', ico.whatsapp, 'Instant spam-free security alerts & releases.')}
+          ${socialLink('https://instagram.com/mastermanikant', 'Instagram', ico.instagram, 'Visual system architecture & developer life.')}
+          ${socialLink('https://snapchat.com/add/mastermanikant', 'Snapchat', ico.snapchat, 'Try our custom security AR lens & filters.')}
         </div>
       </div>
 
@@ -71,7 +80,7 @@
         <div class="footer-col-title">Products &amp; Tools</div>
         <a href="/index.html">Password Generator</a>
         <a href="/pro.html">FrankPass Pro</a>
-        <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer">Tools Suite ↗</a>
+        <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer">Developer Tools ↗</a>
         <a href="/install.html">Install Offline App</a>
         <a href="/products.html">All Products Hub</a>
       </div>
@@ -98,28 +107,75 @@
 
     </div>
 
-    <!-- Horizontal Ecosystem Network Bar (Clean Buttons) -->
-    <div style="margin:2.25rem 0 1.5rem 0;padding:1.15rem 1.5rem;background:var(--card-glass-bg);border:1px solid var(--border);border-radius:16px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
-      <div style="display:flex;align-items:center;gap:0.6rem">
-        <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:3px 8px;border-radius:10px">Ecosystem</span>
-        <span style="font-size:0.85rem;color:var(--text-muted);font-weight:500">Our Digital Platforms:</span>
+    <!-- Responsive Ecosystem Network Bar (Clean Brand Names + Hover Micro-Cards) -->
+    <div class="footer-ecosystem-bar">
+      <div class="footer-ecosystem-header">
+        <span style="font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:3px 8px;border-radius:10px">Ecosystem</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600">Our Digital Platforms:</span>
       </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-        <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.8rem;padding:0.45rem 0.95rem;border-radius:8px;border:1px solid var(--border);text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:600">
-          FrankBase.com ↗
-        </a>
-        <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.8rem;padding:0.45rem 0.95rem;border-radius:8px;border:1px solid var(--border);text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:600">
-          tools.frankpass.com ↗
-        </a>
-        <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.8rem;padding:0.45rem 0.95rem;border-radius:8px;border:1px solid var(--border);text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:600">
-          EnglishVidya.com ↗
-        </a>
-        <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.8rem;padding:0.45rem 0.95rem;border-radius:8px;border:1px solid var(--border);text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:600">
-          Digital Store ↗
-        </a>
-        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.8rem;padding:0.45rem 0.95rem;border-radius:8px;border:1px solid var(--border);text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:600">
-          MasterManikant.com ↗
-        </a>
+      
+      <div class="footer-ecosystem-grid">
+        
+        <!-- FrankBase -->
+        <div class="has-hover-card" style="width:100%">
+          <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="ecosystem-card-btn">
+            <span>FrankBase</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="hover-card-preview" style="width:230px">
+            <div class="hover-card-title">FrankBase Hub</div>
+            <p class="hover-card-desc">The parent ecosystem building zero-knowledge privacy tools &amp; web applications.</p>
+          </div>
+        </div>
+
+        <!-- Developer Tools -->
+        <div class="has-hover-card" style="width:100%">
+          <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer" class="ecosystem-card-btn">
+            <span>Developer Tools</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="hover-card-preview" style="width:230px">
+            <div class="hover-card-title">tools.frankpass.com</div>
+            <p class="hover-card-desc">Password strength analyzer, PBKDF2 benchmarks &amp; cryptographic hash validators.</p>
+          </div>
+        </div>
+
+        <!-- EnglishVidya -->
+        <div class="has-hover-card" style="width:100%">
+          <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="ecosystem-card-btn">
+            <span>EnglishVidya</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="hover-card-preview" style="width:230px">
+            <div class="hover-card-title">EnglishVidya.com</div>
+            <p class="hover-card-desc">India's clean, zero-distraction English grammar, linguistics &amp; educational platform.</p>
+          </div>
+        </div>
+
+        <!-- Digital Store -->
+        <div class="has-hover-card" style="width:100%">
+          <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="ecosystem-card-btn">
+            <span>Digital Store</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="hover-card-preview" style="width:230px">
+            <div class="hover-card-title">store.frankbase.com</div>
+            <p class="hover-card-desc">Verified cybersecurity eBooks, password defense masterclasses &amp; digital assets.</p>
+          </div>
+        </div>
+
+        <!-- Master Manikant -->
+        <div class="has-hover-card" style="width:100%">
+          <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="ecosystem-card-btn">
+            <span>Master Manikant</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+          <div class="hover-card-preview" style="width:230px">
+            <div class="hover-card-title">MasterManikant.com</div>
+            <p class="hover-card-desc">Founder's personal portal for mathematical research, memoirs &amp; system architecture.</p>
+          </div>
+        </div>
+
       </div>
     </div>
 
