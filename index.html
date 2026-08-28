@@ -1453,7 +1453,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
 
  const normalizedPlatform = (typeof FrankPassUtils !== 'undefined')
  ? FrankPassUtils.getNormalizedPlatform(platform) : platform.toLowerCase().trim();
- const username = (document.getElementById('username-input').value || '').trim();
+ const username = (document.getElementById('username-input').value || '').trim().toLowerCase();
  const variant = getActiveVariant();
  const length = parseInt(lengthSlider.value, 10) || 16;
  
