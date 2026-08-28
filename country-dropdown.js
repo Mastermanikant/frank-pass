@@ -113,7 +113,7 @@
             triggerFlag.style.display = '';
         }
         if (displayName) {
-            displayName.textContent = country.label;
+            displayName.textContent = country.name;
         }
 
         // Update premium header flag
@@ -210,7 +210,7 @@
                 triggerFlag.src = getFlagUrl(initCountry.code);
                 triggerFlag.style.display = '';
             }
-            if (displayName) displayName.textContent = initCountry.label;
+            if (displayName) displayName.textContent = initCountry.name;
             if (hiddenInput) {
                 hiddenInput.value = initCountry.label;
                 hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
