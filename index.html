@@ -1790,23 +1790,17 @@ document.addEventListener('DOMContentLoaded', () => {
  document.getElementById('username-input').value = saved.username;
  setAccountMode('multi');
  }
+ 
  if (saved.variant) {
- const vStr = String(saved.variant);
- const vNum = parseInt(saved.variant, 10);
- if (!isNaN(vNum) && vNum >= 1 && vNum <= 999 && vStr.length <= 3) {
- document.getElementById('variant-input').value = vNum;
- } else if (vStr.length === 6) {
- const m = vStr.substring(0, 2);
- const y = vStr.substring(2);
- if (monthSelect) monthSelect.value = m;
- if (yearInput) yearInput.value = y;
- if (tabDate) tabDate.click();
- } else {
- document.getElementById('variant-input').value = 1;
- }
- } else {
- document.getElementById('variant-input').value = 1;
- }
+    const vNum = parseInt(saved.variant, 10);
+    if (!isNaN(vNum) && vNum >= 1 && vNum <= 999 && String(saved.variant).length <= 3) {
+      document.getElementById('variant-input').value = vNum;
+    } else {
+      document.getElementById('variant-input').value = 1;
+    }
+  } else {
+    document.getElementById('variant-input').value = 1;
+  }
  if (typeof updateVariantDisplay === 'function') updateVariantDisplay();
  if (saved.length) { lengthSlider.value = saved.length; lengthVal.textContent = saved.length; }
  } catch (_) {}
