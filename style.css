@@ -1622,36 +1622,6 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   flex-shrink: 0 !important;
 }
 
-.account-mode-wrap {
-  margin-bottom: 1.1rem;
-}
-.account-mode-tabs {
-  display: flex;
-  background: rgba(255, 255, 255, 0.04);
-  padding: 3px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  gap: 4px;
-}
-.account-mode-tabs .acc-tab {
-  flex: 1;
-  border: none;
-  background: transparent;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 0.5rem 0.85rem;
-  border-radius: 9px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: center;
-}
-.account-mode-tabs .acc-tab.active {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-  color: #fff;
-  box-shadow: 0 2px 12px rgba(139, 92, 246, 0.45);
-}
-
 /* Strength Meter */
 .secret-strength-container {
   margin-top: 0.5rem;

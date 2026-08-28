@@ -334,19 +334,15 @@
  </div>
  </div>
 
- <!-- Account Mode Segmented Switch -->
- <div class="account-mode-wrap">
- <div class="account-mode-tabs" role="tablist" aria-label="Account Mode">
- <button type="button" id="acc-tab-single" class="acc-tab active" role="tab" aria-selected="true" aria-label="Single Account Mode">Single Account</button>
- <button type="button" id="acc-tab-multi" class="acc-tab" role="tab" aria-selected="false" aria-label="Multiple Accounts Mode">Multiple Accounts</button>
- </div>
- <div id="username-group" style="display:none;margin-top:0.6rem">
- <label class="form-label" for="username-input" style="font-size:0.8rem">Username / Account Email</label>
- <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
- <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
- <span style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;display:block">Generates a unique password for this specific username/profile.</span>
- </div>
- </div>
+ <!-- Username / Account Email (Optional) -->
+  <div class="form-group" id="username-group">
+  <label class="form-label" for="username-input">Username / Account Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
+  <div class="input-wrapper">
+  <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
+  </div>
+  <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
+  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">Generates a unique password for this specific username/profile.</span>
+  </div>
 
  <!-- Platform input -->
  <div class="form-group">
@@ -1612,78 +1608,34 @@ if (maskBtn && outPassword) {
  });
 }
 
-/* ── Account Mode Controller (Single vs Multiple Accounts) ── */
-let currentAccountMode = 'single';
-const accTabSingle = document.getElementById('acc-tab-single');
-const accTabMulti = document.getElementById('acc-tab-multi');
-const usernameGroup = document.getElementById('username-group');
-const usernameInput = document.getElementById('username-input');
-
-function setAccountMode(mode) {
- currentAccountMode = mode;
- if (mode === 'single') {
- if (accTabSingle) {
- accTabSingle.classList.add('active');
- accTabSingle.style.background = 'var(--accent)';
- accTabSingle.style.color = '#fff';
- }
- if (accTabMulti) {
- accTabMulti.classList.remove('active');
- accTabMulti.style.background = 'transparent';
- accTabMulti.style.color = 'var(--text-muted)';
- }
- if (usernameGroup) usernameGroup.style.display = 'none';
- if (usernameInput) usernameInput.value = '';
- } else {
- if (accTabMulti) {
- accTabMulti.classList.add('active');
- accTabMulti.style.background = 'var(--accent)';
- accTabMulti.style.color = '#fff';
- }
- if (accTabSingle) {
- accTabSingle.classList.remove('active');
- accTabSingle.style.background = 'transparent';
- accTabSingle.style.color = 'var(--text-muted)';
- }
- if (usernameGroup) usernameGroup.style.display = 'block';
- if (usernameInput) usernameInput.focus();
- }
+/* ── Username Input Live Hint (Using account: "...") ── */
+const uInput = document.getElementById('username-input');
+const uHint = document.getElementById('username-hint');
+if (uInput && uHint) {
+  uInput.addEventListener('input', () => {
+    const val = uInput.value.trim();
+    if (val) {
+      uHint.textContent = 'Using account: "' + val.toLowerCase() + '"';
+    } else {
+      uHint.textContent = '';
+    }
+  });
 }
-
-if (accTabSingle) accTabSingle.addEventListener('click', () => setAccountMode('single'));
-if (accTabMulti) accTabMulti.addEventListener('click', () => setAccountMode('multi'));
-
-
-
 
 /* ── Secret Key Info Tooltip Toggle (Mobile & Click) ── */
 const infoBtn = document.getElementById('secret-info-btn');
 const infoWrap = document.getElementById('secret-info-wrap');
 if (infoBtn && infoWrap) {
- infoBtn.addEventListener('click', (e) => {
- e.preventDefault();
- e.stopPropagation();
- infoWrap.classList.toggle('open');
- });
- document.addEventListener('click', (e) => {
- if (!infoWrap.contains(e.target)) {
- infoWrap.classList.remove('open');
- }
- });
-}
-
-/* ── Username Input Live Hint (Using account: "...") ── */
-const uInput = document.getElementById('username-input');
-const uHint = document.getElementById('username-hint');
-if (uInput && uHint) {
- uInput.addEventListener('input', () => {
- const val = uInput.value.trim();
- if (val) {
- uHint.textContent = 'Using account: "' + val.toLowerCase() + '"';
- } else {
- uHint.textContent = '';
- }
- });
+  infoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    infoWrap.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (!infoWrap.contains(e.target)) {
+      infoWrap.classList.remove('open');
+    }
+  });
 }
 
 /* ── Secret Key Entropy & Strength Bar Meter ── */
@@ -1722,9 +1674,10 @@ if (clearAllBtn) {
  clearAllBtn.addEventListener('click', () => {
  document.getElementById('platform-input').value = '';
  document.getElementById('secret-key').value = '';
- const uInp = document.getElementById('username-input');
- if (uInp) uInp.value = '';
- setAccountMode('single');
+  const uInp = document.getElementById('username-input');
+  if (uInp) uInp.value = '';
+  const uHintEl = document.getElementById('username-hint');
+  if (uHintEl) uHintEl.textContent = '';
  
  // Reset strength bar meter segments
  ['str-seg-1', 'str-seg-2', 'str-seg-3', 'str-seg-4'].forEach(id => {
@@ -1809,10 +1762,16 @@ document.addEventListener('DOMContentLoaded', () => {
  platformInput.dispatchEvent(new Event('input', { bubbles: true }));
  }
  
- if (saved.username) {
- document.getElementById('username-input').value = saved.username;
- setAccountMode('multi');
- }
+  const urlUsername = params.get('u') || params.get('username') || params.get('account') || '';
+  const usernameToSet = urlUsername || saved.username;
+  if (usernameToSet) {
+    const uInp = document.getElementById('username-input');
+    if (uInp) {
+      uInp.value = usernameToSet;
+      const uHintEl = document.getElementById('username-hint');
+      if (uHintEl) uHintEl.textContent = 'Using account: "' + usernameToSet.toLowerCase() + '"';
+    }
+  }
  
  if (saved.variant) {
     const vNum = parseInt(saved.variant, 10);
