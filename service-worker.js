@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.3.9 (100% Offline-First with Smart Network-First Sync)
-const CACHE_NAME = 'frankpass-v3.3.9';
+// FrankPass Service Worker v3.5.9 (100% Offline-First with Smart Network-First Sync)
+const CACHE_NAME = 'frankpass-v3.5.9';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -25,7 +25,10 @@ const CACHED_URLS = [
     '/country-data.js',
     '/country-dropdown.js',
     '/llms.txt',
+    '/icons/favicon.png',
     '/icons/logo-key-64.webp',
+    '/icons/icon-192.png',
+    '/icons/icon-512.png',
     '/icons/founder-master-manikant-yadav.webp',
     '/manifest.json'
 ];
