@@ -140,9 +140,12 @@
             populatePlatformDatalist(country.code);
         }
 
-        // Update URL
+        // Update URL: Clean root '/' for default India, '/<code>' for other countries
         try {
-            window.history.replaceState({ code: country.code }, '', '/' + country.code);
+            const newPath = (country.code === DEFAULT_CODE || country.code === 'in') ? '/' : '/' + country.code;
+            if (window.location.pathname !== newPath) {
+                window.history.replaceState({ code: country.code }, '', newPath);
+            }
         } catch (e) { /* local file:// - ignore */ }
 
         closeDropdown();
@@ -202,18 +205,27 @@
         if (initCountry) {
             currentCode = initCountry.code;
             
-            // Only update DOM if detected country differs from default India to prevent blinking
-            if (initCountry.code !== 'in') {
-                if (triggerFlag) triggerFlag.src = getFlagUrl(initCountry.code);
-                if (displayName) displayName.textContent = initCountry.label;
-                if (hiddenInput) hiddenInput.value = initCountry.label;
-
-                const headerFlag = document.getElementById('header-flag-img');
-                if (headerFlag) {
-                    headerFlag.src = `/flags/${initCountry.code.toLowerCase()}.png`;
-                    headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${initCountry.code.toLowerCase()}.png`; };
-                }
+            // Unconditionally sync DOM with detected country so URL and UI are 100% matched
+            if (triggerFlag) {
+                triggerFlag.src = getFlagUrl(initCountry.code);
+                triggerFlag.style.display = '';
             }
+            if (displayName) displayName.textContent = initCountry.label;
+            if (hiddenInput) {
+                hiddenInput.value = initCountry.label;
+                hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+
+            const headerFlag = document.getElementById('header-flag-img');
+            if (headerFlag) {
+                headerFlag.src = `/flags/${initCountry.code.toLowerCase()}.png`;
+                headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${initCountry.code.toLowerCase()}.png`; };
+                headerFlag.style.display = '';
+            }
+            const cardLabel = document.getElementById('card-country-label');
+            if (cardLabel) cardLabel.textContent = initCountry.code.toUpperCase();
+            const cardPill = document.getElementById('card-country-pill');
+            if (cardPill) cardPill.title = initCountry.label;
 
             // Load platform list for this country
             if (typeof populatePlatformDatalist === 'function') {
