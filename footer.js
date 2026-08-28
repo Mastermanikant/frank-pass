@@ -53,11 +53,7 @@
       <!-- Col 1: Brand & Socials -->
       <div class="footer-brand">
         <a href="/" class="header-logo" aria-label="FrankPass Home">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
-            <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
-            <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
-            <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
+          <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="28" height="28" class="header-brand-icon" style="vertical-align:middle;margin-right:6px;display:inline-block;" loading="lazy" decoding="async">
           <span class="logo-text"><span>Frank</span>Pass</span>
         </a>
         <p style="margin-top:0.75rem;font-size:0.86rem;color:var(--text-muted);line-height:1.65;max-width:300px">
@@ -65,13 +61,12 @@
         </p>
         
         <div class="footer-social" style="margin-top:1.15rem;display:flex;gap:8px;flex-wrap:wrap;max-width:300px">
-          ${socialLink('https://x.com/mastermanikant', 'X (Twitter)', ico.x, 'Real-time engineering insights & cybersecurity updates.')}
-          ${socialLink('https://github.com/Mastermanikant', 'GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
-          ${socialLink('https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin, 'Professional milestones & tech collaborations.')}
-          ${socialLink('https://youtube.com/@mastermanikant', 'YouTube', ico.youtube, 'Product launch videos & software build guides.')}
+          ${socialLink(soc.X || 'https://x.com/frankpasshq', 'X (Twitter)', ico.x, 'Official product updates & security announcements (@frankpasshq).')}
+          ${socialLink(soc.GITHUB || 'https://github.com/Mastermanikant/frank-pass', 'GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
+          ${socialLink(soc.LINKEDIN || 'https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin, 'Professional milestones & tech collaborations.')}
+          ${socialLink(soc.YOUTUBE || 'https://youtube.com/@frankpasshq', 'YouTube', ico.youtube, 'Official video guides & product walkthroughs (@frankpasshq).')}
           ${socialLink(waLink, 'WhatsApp Channel', ico.whatsapp, 'Instant spam-free security alerts & releases.')}
-          ${socialLink('https://instagram.com/mastermanikant', 'Instagram', ico.instagram, 'Visual system architecture & developer life.')}
-          ${socialLink('https://snapchat.com/add/mastermanikant', 'Snapchat', ico.snapchat, 'Try our custom security AR lens & filters.')}
+          ${socialLink(soc.INSTAGRAM || 'https://instagram.com/frankpasshq', 'Instagram', ico.instagram, 'Official product visuals & feature highlights (@frankpasshq).')}
         </div>
       </div>
 

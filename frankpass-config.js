@@ -56,6 +56,7 @@ const FRANKPASS_CONFIG = {
     INSTAGRAM:       "https://instagram.com/frankpasshq",
     YOUTUBE:         "https://youtube.com/@frankpasshq",
     FACEBOOK:        "https://facebook.com/frankpasshq",
+    GITHUB:          "https://github.com/Mastermanikant/frank-pass",
     REDDIT:          "https://www.reddit.com/user/frankpasshq/",
     WHATSAPP:        "https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532",
     MASTODON_BRAND:  "https://fosstodon.org/@frankpasshq",
@@ -72,7 +73,7 @@ const FRANKPASS_CONFIG = {
   },
 
   /* ── Site Metadata ────────────────────────────────────────────── */
-  SITE_VERSION: "3.3.5",
+  SITE_VERSION: "3.6.0",
 
   /* ── Maintenance Mode ─────────────────────────────────────────── */
   MAINTENANCE_MODE: false,
