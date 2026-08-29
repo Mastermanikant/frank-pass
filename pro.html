@@ -13,32 +13,35 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="robots" content="index, follow">
- <title>FrankPass PRO | Subscription Plans &amp; Browser Extension</title>
- <meta name="description" content="Upgrade to FrankPass Pro. Choose Silver, Gold, or Platinum for the browser extension with auto-fill, multi-profile, and priority support. PPP pricing available.">
+ <title>FrankPass PRO | Zero-Knowledge Browser Extension &amp; Features</title>
+ <meta name="description" content="Upgrade to FrankPass Pro. 1-click password auto-fill, multi-profile vault, phishing protection, and always-on offline mode in your browser toolbar.">
  <link rel="canonical" href="https://frankpass.com/pro.html">
- <meta property="og:title" content="FrankPass PRO | Subscription Plans">
- <meta property="og:description" content="Unlock the FrankPass browser extension with auto-fill, offline mode, and the same zero-knowledge algorithm. Launch sale: 80% off.">
+ <meta property="og:title" content="FrankPass PRO | The Zero-Knowledge Browser Suite">
+ <meta property="og:description" content="1-click password auto-fill, multi-profile management, anti-phishing protection, and 100% offline mathematical cryptography in your browser.">
  <meta property="og:url" content="https://frankpass.com/pro.html">
  <meta property="og:type" content="website">
- <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+ <meta property="og:image" content="https://frankpass.com/icons/og-image.png">
  <meta name="twitter:card" content="summary_large_image">
  <meta name="twitter:site" content="@frankpasshq">
+ <meta name="twitter:creator" content="@mastermanikant">
+ <meta name="twitter:image" content="https://frankpass.com/icons/og-image.png">
  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-  <link rel="icon" href="/icons/favicon.png">
+ <link rel="icon" href="/icons/favicon.png">
  <link rel="manifest" href="/manifest.json">
  <link rel="preconnect" href="https://fonts.googleapis.com">
  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
- <link rel="stylesheet" href="/style.css?v=3.5.9">
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+ <link rel="stylesheet" href="/style.css?v=3.6.0">
+ 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "FrankPass Pro",
     "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Chrome, Firefox, Edge",
+    "operatingSystem": "Chrome, Firefox, Edge, Brave",
     "url": "https://frankpass.com/pro.html",
-    "description": "FrankPass Pro browser extension with auto-fill, multi-profile, biometric lock, and priority support.",
+    "description": "FrankPass Pro browser extension with 1-click auto-fill, multi-profile vault, anti-phishing guard, biometric lock, and offline-first mathematical cryptography.",
     "offers": {
       "@type": "AggregateOffer",
       "lowPrice": "49",
@@ -46,7 +49,11 @@
       "priceCurrency": "INR",
       "offerCount": "3"
     },
-    "author": {"@type": "Person", "name": "Master Manikant Yadav"}
+    "author": {
+      "@type": "Person",
+      "name": "Master Manikant Yadav",
+      "url": "https://mastermanikant.com"
+    }
   }
   </script>
 </head>
@@ -57,7 +64,7 @@
  SALE BANNER - shown only when SALE_MODE is true
  ============================================================ -->
 <div id="sale-banner" class="sale-banner" role="region" aria-label="Launch sale promotion" style="display:none">
- Launch Sale: <strong id="sale-percent-label">80% OFF</strong> - Ends in: <strong class="countdown" id="sale-countdown" aria-live="off">calculating…</strong>
+ Launch Sale: <strong id="sale-percent-label">80% OFF</strong> — Ends in: <strong class="countdown" id="sale-countdown" aria-live="off">calculating…</strong>
  <button class="dismiss-btn" id="dismiss-banner" aria-label="Dismiss sale banner">&times;</button>
 </div>
 
@@ -67,9 +74,9 @@
 <header class="site-header" id="site-header" role="banner">
  <div class="header-inner">
  <a href="/" class="header-logo" aria-label="FrankPass - Home">
-      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon">
-      <span class="logo-text"><span>Frank</span>Pass</span>
-    </a>
+   <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+   <span class="logo-text"><span>Frank</span>Pass</span>
+ </a>
  <div class="header-country custom-country-dropdown">
  <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
  <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
@@ -89,7 +96,7 @@
  <a href="/faq.html" class="nav-link">FAQ</a>
  <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
  <a href="/products.html" class="nav-link">Products</a>
- <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+ <a href="/pro.html" class="btn-pro" aria-current="page">Get Pro &rarr;</a>
  <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
  <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
  </button>
@@ -110,234 +117,348 @@
 <main id="main-content">
 
 <!-- ============================================================
- PRICING HERO
+ PRICING HERO & VALUE PROPOSITION
  ============================================================ -->
-<section class="section" style="text-align:center" aria-labelledby="pricing-heading">
- <div class="container" style="max-width:760px">
- <div style="margin-bottom:1rem;display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(234,179,8,0.1);border:1px solid rgba(234,179,8,0.25);">
-   <img src="/icons/logo-gold-pro-64.webp" onerror="this.src='/icons/logo-gold-pro-64.png'" alt="FrankPass Pro Gold Shield" width="20" height="20" style="display:inline-block;vertical-align:middle;" loading="lazy" decoding="async">
-   <span style="font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#eab308">Gold Standard Cryptography</span>
+<section class="section" style="text-align:center;padding-top:3rem;padding-bottom:2.5rem" aria-labelledby="pricing-heading">
+ <div class="container" style="max-width:820px">
+ 
+ <!-- Golden Shield Badge -->
+ <div style="margin-bottom:1.25rem;display:inline-flex;align-items:center;gap:8px;padding:7px 18px;border-radius:999px;background:rgba(234,179,8,0.12);border:1px solid rgba(234,179,8,0.3);box-shadow:0 0 20px rgba(234,179,8,0.15)">
+   <img src="/icons/logo-gold-pro-64.webp" onerror="this.src='/icons/logo-gold-pro-64.png'" alt="FrankPass Pro Gold Shield" width="22" height="22" style="display:inline-block;vertical-align:middle;" loading="lazy" decoding="async">
+   <span style="font-size:0.84rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#eab308">Gold Standard Cryptography</span>
  </div>
- <h1 id="pricing-heading">FrankPass <span style="color:var(--accent)">PRO.</span></h1>
- <p class="section-desc">Same zero-knowledge algorithm. Now with 1-click auto-fill, multi-profile management, and always-on offline mode - right in your browser toolbar.</p>
- <p style="font-size:0.85rem;color:var(--text-muted);margin-top:0.5rem">Pricing automatically adjusts based on your country.</p>
+ 
+ <h1 id="pricing-heading" style="font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.15;margin-bottom:1.1rem;letter-spacing:-0.03em">
+   FrankPass <span style="color:var(--accent);text-shadow:0 0 30px rgba(139,92,246,0.35)">PRO.</span>
+ </h1>
+ 
+ <p class="section-desc" style="max-width:680px;margin:0 auto 1.5rem;font-size:1.1rem;line-height:1.65;color:var(--text-muted)">
+   The Zero-Knowledge Browser Suite for <strong>Chrome, Firefox, Edge &amp; Brave</strong>. Same unbreakable mathematical algorithm — now with <strong>1-click toolbar auto-fill</strong>, <strong>multi-profile vault management</strong>, and <strong>real-time anti-phishing defense</strong>.
+ </p>
+
+ <!-- Value Pills -->
+ <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+   <span style="font-size:0.8rem;font-weight:600;background:var(--card-glass-bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;color:var(--text-primary);display:inline-flex;align-items:center;gap:6px">⚡ 1-Click Auto-Fill</span>
+   <span style="font-size:0.8rem;font-weight:600;background:var(--card-glass-bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;color:var(--text-primary);display:inline-flex;align-items:center;gap:6px">🛡️ Anti-Phishing Guard</span>
+   <span style="font-size:0.8rem;font-weight:600;background:var(--card-glass-bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;color:var(--text-primary);display:inline-flex;align-items:center;gap:6px">👥 Up to 30 Profiles</span>
+   <span style="font-size:0.8rem;font-weight:600;background:var(--card-glass-bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;color:var(--text-primary);display:inline-flex;align-items:center;gap:6px">🔒 Biometric Unlock</span>
+   <span style="font-size:0.8rem;font-weight:600;background:var(--card-glass-bg);border:1px solid var(--border);border-radius:999px;padding:5px 14px;color:var(--text-primary);display:inline-flex;align-items:center;gap:6px">🛑 Zero Cloud Databases</span>
+ </div>
+ 
+ <p style="font-size:0.85rem;color:var(--text-muted)">All orders fulfilled instantly &amp; securely via <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);text-decoration:underline;font-weight:600">FrankBase Store ↗</a> with local regional pricing.</p>
  </div>
 </section>
 
 <!-- ============================================================
- PRICING CARDS
- Silver | Gold (Popular) | Platinum
- data-price-* attributes updated by PPP script
+ SECTION 1: 5 CORE BENEFITS OF PRO (KYA RAHEGA & KYA LABH HAI)
  ============================================================ -->
-<section class="section-sm" aria-labelledby="plans-heading">
+<section class="section-sm" style="background:var(--bg-secondary);padding-top:3.5rem;padding-bottom:3.5rem" aria-labelledby="benefits-heading">
  <div class="container">
- <h2 id="plans-heading" class="sr-only">Subscription Plans</h2>
+   <div class="text-center mb-4" style="max-width:700px;margin-left:auto;margin-right:auto">
+     <div class="section-label" aria-hidden="true">The Pro Advantage</div>
+     <h2 id="benefits-heading" style="font-size:clamp(1.75rem,3.5vw,2.4rem);margin-bottom:0.75rem">Why Upgrade to FrankPass Pro?</h2>
+     <p class="section-desc">The free website is a great standalone generator. The Pro Extension is built to eliminate daily friction, protect you against phishing, and supercharge your security workflow.</p>
+   </div>
+
+   <div class="grid-2" style="gap:1.5rem">
+     
+     <!-- Benefit 1 -->
+     <article class="card-glass" style="padding:1.85rem;display:flex;gap:1.25rem;align-items:flex-start;border-radius:16px">
+       <div style="width:54px;height:54px;background:rgba(139,92,246,0.18);border:1px solid rgba(139,92,246,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent-light)">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="26" height="26" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><path d="M15 13l2 2-2 2"/></svg>
+       </div>
+       <div>
+         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent-light);margin-bottom:0.25rem">Zero Typing Friction</div>
+         <h3 style="margin-bottom:0.5rem;font-size:1.2rem">1-Click Toolbar Auto-Fill</h3>
+         <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0">
+           <strong>बड़ा लाभ:</strong> रोज़ाना 15+ मिनट की बचत। एक्सटेंशन एक्टिव टैब को खुद डिटेक्ट करता है और 0.1 सेकंड में आपका सटीक पासवर्ड फ़ॉर्म में भर देता है। बार-बार वेबसाइट खोलना, नाम टाइप करना और कॉपी-पेस्ट करना पूरी तरह बंद।
+         </p>
+       </div>
+     </article>
+
+     <!-- Benefit 2 -->
+     <article class="card-glass" style="padding:1.85rem;display:flex;gap:1.25rem;align-items:flex-start;border-radius:16px">
+       <div style="width:54px;height:54px;background:rgba(234,179,8,0.15);border:1px solid rgba(234,179,8,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#eab308">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="26" height="26" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="1.5"/><path d="M12 14v2"/></svg>
+       </div>
+       <div>
+         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#eab308;margin-bottom:0.25rem">Real-time Defense</div>
+         <h3 style="margin-bottom:0.5rem;font-size:1.2rem">Smart Anti-Phishing Shield</h3>
+         <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0">
+           <strong>बड़ा लाभ:</strong> फ़िशिंग और फ़ेक वेबसाइट्स से 100% सुरक्षा। अगर कोई हैकर आपको फ़ेक बैंक या ईमेल लॉगिन लिंक (जैसे <code style="font-size:0.85em;color:#eab308">g00gle.com</code>) भेजता है, तो एक्सटेंशन तुरंत चेतावनी देता है और असली पासवर्ड भरने से मना कर देता है।
+         </p>
+       </div>
+     </article>
+
+     <!-- Benefit 3 -->
+     <article class="card-glass" style="padding:1.85rem;display:flex;gap:1.25rem;align-items:flex-start;border-radius:16px">
+       <div style="width:54px;height:54px;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#60a5fa">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="26" height="26" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+       </div>
+       <div>
+         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#60a5fa;margin-bottom:0.25rem">Complete Segregation</div>
+         <h3 style="margin-bottom:0.5rem;font-size:1.2rem">Multi-Profile Vaults (Up to 30)</h3>
+         <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0">
+           <strong>बड़ा लाभ:</strong> पर्सनल और प्रोफेशनल लाइफ अलग-अलग। Personal, Office, Freelance, Client, और Family अकाउंट्स के लिए अलग-अलग मास्टर कीज़ और सेटिंग्स को एक ही क्लिक में स्विच करें।
+         </p>
+       </div>
+     </article>
+
+     <!-- Benefit 4 -->
+     <article class="card-glass" style="padding:1.85rem;display:flex;gap:1.25rem;align-items:flex-start;border-radius:16px">
+       <div style="width:54px;height:54px;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#34d399">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="26" height="26" aria-hidden="true"><path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5"/><path d="M12 6a6 6 0 0 0-6 6c0 2.21 1.2 4.15 3 5.19"/><circle cx="12" cy="12" r="2"/></svg>
+       </div>
+       <div>
+         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#34d399;margin-bottom:0.25rem">Hardware Security</div>
+         <h3 style="margin-bottom:0.5rem;font-size:1.2rem">Biometric Quick-Unlock</h3>
+         <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0">
+           <strong>बड़ा लाभ:</strong> TouchID / Fingerprint से 0.1 सेकंड में अनलॉक। दिनभर में 50 बार लंबा मास्टर पासवर्ड टाइप करने की ज़रूरत नहीं — आपका हार्डवेयर फ़िंगरप्रिंट या FaceID सुरक्षित रूप से वॉल्ट खोल देता है।
+         </p>
+       </div>
+     </article>
+
+     <!-- Benefit 5 (Full Span Card) -->
+     <article class="card-glass" style="padding:1.85rem;display:flex;gap:1.25rem;align-items:flex-start;border-radius:16px;grid-column:1/-1">
+       <div style="width:54px;height:54px;background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#f87171">
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="26" height="26" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+       </div>
+       <div>
+         <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#f87171;margin-bottom:0.25rem">Mathematical Immunity</div>
+         <h3 style="margin-bottom:0.5rem;font-size:1.2rem">100% Immune to Server Database Breaches (Zero Cloud)</h3>
+         <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0">
+           <strong>बड़ा लाभ:</strong> किसी क्लाउड कंपनी के हैक होने का शून्य खतरा (No LastPass Breaches)। FrankPass Pro आपके कंप्यूटर के CPU पर लोकल क्रिप्टोग्राफिक मैथ (PBKDF2-HMAC-SHA512 विथ 1,000,000 Iterations) से काम करता है। कोई सर्वर नहीं, कोई रिमोट डेटाबेस नहीं — डेटा कभी आपका डिवाइस छोड़ता ही नहीं।
+         </p>
+       </div>
+     </article>
+
+   </div>
+ </div>
+</section>
+
+<!-- ============================================================
+ SECTION 2: FREE WEB VS PRO EXTENSION (COMPARISON MATRIX)
+ ============================================================ -->
+<section class="section" aria-labelledby="matrix-heading">
+ <div class="container" style="max-width:860px">
+   <div class="text-center mb-4">
+     <div class="section-label" aria-hidden="true">Feature Matrix</div>
+     <h2 id="matrix-heading" style="font-size:clamp(1.75rem,3.5vw,2.3rem);margin-bottom:0.5rem">Free Website vs. Pro Extension</h2>
+     <p class="section-desc">100% honest transparency. Compare exactly what you get on the free web app versus the Pro extension.</p>
+   </div>
+
+   <div class="card-glass" style="padding:0;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.15)">
+     <div style="overflow-x:auto">
+       <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.92rem">
+         <thead>
+           <tr style="background:rgba(139,92,246,0.12);border-bottom:1px solid var(--border)">
+             <th style="padding:1.1rem 1.4rem;color:var(--text-primary);font-weight:700">Security &amp; Workflow Feature</th>
+             <th style="padding:1.1rem 1.4rem;color:var(--text-muted);font-weight:600;text-align:center;width:180px">Free Web App</th>
+             <th style="padding:1.1rem 1.4rem;color:var(--accent-light);font-weight:700;text-align:center;width:200px;background:rgba(139,92,246,0.18)">FrankPass PRO</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr style="border-bottom:1px solid var(--border)">
+             <td style="padding:1rem 1.4rem"><strong>Mathematical Algorithm</strong> (PBKDF2-HMAC-SHA512)</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">✓ 1,000,000 Iterations</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">✓ 1,000,000 Iterations</td>
+           </tr>
+           <tr style="border-bottom:1px solid var(--border)">
+             <td style="padding:1rem 1.4rem"><strong>Zero Cloud Database / Zero Logs</strong></td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">✓ 100% Client-Side</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">✓ 100% Client-Side</td>
+           </tr>
+           <tr style="border-bottom:1px solid var(--border)">
+             <td style="padding:1rem 1.4rem"><strong>100% Offline Generation</strong></td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">✓ Fully Offline</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">✓ Fully Offline</td>
+           </tr>
+           <tr style="border-bottom:1px solid var(--border)">
+             <td style="padding:1rem 1.4rem"><strong>1-Click Toolbar Auto-Fill</strong> (Chrome/Firefox/Edge/Brave)</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">✕ Manual Copy-Paste</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--accent-light);font-weight:700;background:rgba(139,92,246,0.06)">⚡ 1-Click Instant</td>
+           </tr>
+           <tr style="border-bottom:1px solid var(--border)">
+             <td style="padding:1rem 1.4rem"><strong>Multi-Profile Vaults</strong> (Work, Personal, Clients)</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">1 Single Vault</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--accent-light);font-weight:700;background:rgba(139,92,246,0.06)">👥 Up to 30 Profiles</td>
+           </tr>
+           <tr style="border-bottom:1px solid var(--border)">
+             <td style="padding:1rem 1.4rem"><strong>Smart Anti-Phishing Domain Guard</strong></td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">✕ Manual URL Check</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#eab308;font-weight:700;background:rgba(139,92,246,0.06)">🛡️ Real-time Detection</td>
+           </tr>
+           <tr style="border-bottom:1px solid var(--border)">
+             <td style="padding:1rem 1.4rem"><strong>Hardware Biometric Unlock</strong> (TouchID/Fingerprint)</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">✕ Manual Typing</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">🔒 0.1s Instant Touch</td>
+           </tr>
+           <tr>
+             <td style="padding:1rem 1.4rem"><strong>Support &amp; Updates</strong></td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">Community FAQ</td>
+             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-primary);font-weight:700;background:rgba(139,92,246,0.06)">Priority WhatsApp &amp; Email</td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </div>
+ </div>
+</section>
+
+<!-- ============================================================
+ SECTION 3: PRICING CARDS & STORE CHECKOUT ROUTING
+ Silver | Gold (Popular) | Platinum
+ ============================================================ -->
+<section class="section-sm" id="pricing-plans" aria-labelledby="plans-heading">
+ <div class="container">
+ <div class="text-center mb-4">
+   <div class="section-label" aria-hidden="true">Flexible Plans</div>
+   <h2 id="plans-heading" style="font-size:clamp(1.75rem,3.5vw,2.3rem);margin-bottom:0.5rem">Select Your Pro License</h2>
+   <p class="section-desc">Zero hidden fees. Transparent regional pricing. Cancel anytime with 1-click.</p>
+ </div>
+
  <p class="swipe-hint" aria-hidden="true">← Swipe to compare plans →</p>
  <div class="scroll-container" role="list" aria-label="Subscription plan options">
 
- <!-- Silver -->
+ <!-- Silver Plan -->
  <article class="scroll-item pricing-card card-glass" role="listitem" aria-label="Silver plan">
- <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Silver</div>
- <div id="sale-orig-silver" style="display:none" class="price-original">
- <span class="price-currency">₹</span><span data-orig-silver></span>/mo
- </div>
- <div class="price-display">
- <span class="price-amount" data-price-silver>₹49</span>
- <span class="price-period">/mo</span>
- </div>
- <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">1 Profile</strong></p>
- <ul class="plan-features" aria-label="Silver plan features">
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Browser extension access
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- 1-click password auto-fill
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Automatic platform detection
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Full offline mode
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Community support
- </li>
- </ul>
- <a id="btn-silver" href="#" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Silver plan">Get Started</a>
+   <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Silver Plan</div>
+   <div id="sale-orig-silver" style="display:none" class="price-original">
+     <span class="price-currency">₹</span><span data-orig-silver></span>/mo
+   </div>
+   <div class="price-display">
+     <span class="price-amount" data-price-silver>₹49</span>
+     <span class="price-period">/mo</span>
+   </div>
+   <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">1 Profile</strong> • Personal Use</p>
+   <ul class="plan-features" aria-label="Silver plan features">
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Full Browser Extension Access</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 1-Click Password Auto-Fill</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Automatic Domain Normalization</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 100% Full Offline Generation</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Standard Email Support</li>
+   </ul>
+   <a id="btn-silver" href="https://store.frankbase.com/products/frankpass-silver" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Silver plan on FrankBase Store">Get Silver &rarr;</a>
  </article>
 
- <!-- Gold - Most Popular -->
+ <!-- Gold Plan - Most Popular (Golden Shield Tier) -->
  <article class="scroll-item pricing-card card-glass popular" role="listitem" aria-label="Gold plan - most popular">
- <div class="popular-badge">★ Most Popular</div>
- <div class="plan-tier-name" style="font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#eab308;margin-top:0.5rem;display:flex;align-items:center;justify-content:center;gap:6px">
-   <img src="/icons/logo-gold-pro-64.webp" onerror="this.src='/icons/logo-gold-pro-64.png'" alt="Gold Tier Shield" width="20" height="20" style="display:inline-block;vertical-align:middle;" loading="lazy" decoding="async">
-   Gold Tier
- </div>
- <div id="sale-orig-gold" style="display:none" class="price-original">
- <span class="price-currency">₹</span><span data-orig-gold></span>/mo
- </div>
- <div class="price-display">
- <span class="price-amount" data-price-gold>₹99</span>
- <span class="price-period">/mo</span>
- </div>
- <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">5 Profiles</strong></p>
- <ul class="plan-features" aria-label="Gold plan features">
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Everything in Silver
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Multi-profile management (5 profiles)
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- 0-sync - zero-knowledge settings backup
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Phishing domain alert system
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Priority support via WhatsApp
- </li>
- </ul>
- <a id="btn-gold" href="#" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Gold plan - most popular">Get Started</a>
+   <div class="popular-badge">★ Most Popular</div>
+   <div class="plan-tier-name" style="font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#eab308;margin-top:0.5rem;display:flex;align-items:center;justify-content:center;gap:6px">
+     <img src="/icons/logo-gold-pro-64.webp" onerror="this.src='/icons/logo-gold-pro-64.png'" alt="Gold Tier Shield" width="20" height="20" style="display:inline-block;vertical-align:middle;" loading="lazy" decoding="async">
+     Gold Tier
+   </div>
+   <div id="sale-orig-gold" style="display:none" class="price-original">
+     <span class="price-currency">₹</span><span data-orig-gold></span>/mo
+   </div>
+   <div class="price-display">
+     <span class="price-amount" data-price-gold>₹99</span>
+     <span class="price-period">/mo</span>
+   </div>
+   <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">5 Profiles</strong> • Power Users</p>
+   <ul class="plan-features" aria-label="Gold plan features">
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <strong>Everything in Silver</strong></li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Multi-Profile Vault (5 Profiles)</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Real-Time Anti-Phishing Alert System</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 0-Sync Zero-Knowledge Backup</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Priority Support via WhatsApp &amp; Email</li>
+   </ul>
+   <a id="btn-gold" href="https://store.frankbase.com/products/frankpass-gold" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Gold plan on FrankBase Store">Get Gold &rarr;</a>
  </article>
 
- <!-- Platinum -->
+ <!-- Platinum Plan -->
  <article class="scroll-item pricing-card card-glass" role="listitem" aria-label="Platinum plan">
- <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Platinum</div>
- <div id="sale-orig-platinum" style="display:none" class="price-original">
- <span class="price-currency">₹</span><span data-orig-platinum></span>/mo
- </div>
- <div class="price-display">
- <span class="price-amount" data-price-platinum>₹499</span>
- <span class="price-period">/mo</span>
- </div>
- <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">30 Profiles</strong></p>
- <ul class="plan-features" aria-label="Platinum plan features">
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Everything in Gold
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- 30-profile multi-account management
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Team license - share with family / colleagues
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Early access to all new features
- </li>
- <li>
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
- Dedicated support channel
- </li>
- </ul>
- <a id="btn-platinum" href="#" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Platinum plan">Get Started</a>
+   <div class="plan-tier-name" style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted)">Platinum Plan</div>
+   <div id="sale-orig-platinum" style="display:none" class="price-original">
+     <span class="price-currency">₹</span><span data-orig-platinum></span>/mo
+   </div>
+   <div class="price-display">
+     <span class="price-amount" data-price-platinum>₹499</span>
+     <span class="price-period">/mo</span>
+   </div>
+   <p style="font-size:0.85rem;color:var(--text-muted);margin:0">Up to <strong style="color:var(--text-primary)">30 Profiles</strong> • Team &amp; Family</p>
+   <ul class="plan-features" aria-label="Platinum plan features">
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> <strong>Everything in Gold</strong></li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 30-Profile Multi-Account Management</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Team &amp; Family License Sharing</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Early Access to all New Engines</li>
+     <li><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Dedicated 1-on-1 Engineering Support</li>
+   </ul>
+   <a id="btn-platinum" href="https://store.frankbase.com/products/frankpass-platinum" class="btn-primary btn-full" target="_blank" rel="noopener noreferrer" aria-label="Get Platinum plan on FrankBase Store">Get Platinum &rarr;</a>
  </article>
 
  </div>
 
-  <!-- Official Store Fulfillment Notice & Founder Privacy Guarantee -->
-  <div class="store-assurance-badge" style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 14px; padding: 1.15rem 1.4rem; max-width: 760px; margin: 1.75rem auto 0; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-    <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.86rem; font-weight: 700; color: var(--accent-light); margin-bottom: 0.35rem;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-      Official Merchant &amp; Privacy Guarantee
-    </div>
-    <p style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.55; margin: 0;">
-      All subscription plans, lifetime licenses, and digital orders are securely fulfilled via our central <strong>FrankBase Store</strong> (<a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light); text-decoration: underline; font-weight: 600;">store.frankbase.com</a>). Standard terms, conditions, and privacy policies of FrankBase Store apply at checkout. Both <strong>FrankPass</strong> and <strong>FrankBase Store</strong> are officially designed, built, and operated by <strong>Master Manikant Yadav</strong> with our strict 100% Zero-Tracking &amp; Privacy-First guarantee.
-    </p>
-  </div>
+ <!-- Official Store Fulfillment Notice & Founder Privacy Guarantee -->
+ <div class="store-assurance-badge" style="background: rgba(139, 92, 246, 0.08); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 14px; padding: 1.25rem 1.5rem; max-width: 760px; margin: 2rem auto 0; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.15)">
+   <div style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.88rem; font-weight: 700; color: var(--accent-light); margin-bottom: 0.4rem">
+     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+     Official Store Fulfillment &amp; Privacy Guarantee
+   </div>
+   <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin: 0">
+     All subscription plans, lifetime licenses, and digital orders are securely fulfilled via our central <strong>FrankBase Store</strong> (<a href="https://store.frankbase.com/software" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light); text-decoration: underline; font-weight: 600">store.frankbase.com/software ↗</a>). Standard terms and strict privacy protections of FrankBase Store apply at checkout. Both <strong>FrankPass</strong> and <strong>FrankBase Store</strong> are officially engineered, operated, and maintained by <strong>Master Manikant Yadav</strong> with our permanent 100% Zero-Tracking &amp; Privacy-First standard.
+   </p>
+ </div>
 
-  <!-- Disclaimer -->
-  <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:1.25rem">
-  All plans are recurring monthly or yearly subscriptions. Pricing shown is for the browser extension. The FrankPass web generator at frankpass.com is and always will be free. Note: Screenshots and screen recording are disabled on Pro apps for your security. You can cancel at any time.
-  </p>
-  </div>
+ <p style="text-align:center;font-size:0.8rem;color:var(--text-muted);margin-top:1.25rem">
+   The FrankPass web generator at <a href="/" style="color:var(--accent-light);text-decoration:underline">frankpass.com</a> is and always will be 100% free for everyone. Pro pricing applies exclusively to the browser extension automation suite. You can cancel at any time.
+ </p>
+ </div>
 </section>
 
 <!-- ============================================================
- AFFILIATE NOTE
+ SECTION 4: PRO FAQ (FREQUENTLY ASKED QUESTIONS)
+ ============================================================ -->
+<section class="section" style="background:var(--bg-secondary)" aria-labelledby="faq-heading">
+ <div class="container" style="max-width:760px">
+   <div class="text-center mb-4">
+     <div class="section-label" aria-hidden="true">Got Questions?</div>
+     <h2 id="faq-heading" style="font-size:clamp(1.75rem,3.5vw,2.2rem);margin-bottom:0.5rem">Frequently Asked Questions</h2>
+     <p class="section-desc">Clear, honest answers about how FrankPass Pro works.</p>
+   </div>
+
+   <div style="display:flex;flex-direction:column;gap:1rem">
+     
+     <div class="card-glass" style="padding:1.4rem;border-radius:12px">
+       <h3 style="font-size:1.05rem;margin-bottom:0.4rem;color:var(--text-primary)">Q: Does FrankPass Pro store my passwords or master secrets on a server?</h3>
+       <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
+         <strong>Never.</strong> FrankPass Pro is 100% deterministic and stateless. Every password is mathematically computed on the fly on your local device's CPU using PBKDF2-HMAC-SHA512. We have zero user accounts and zero password databases.
+       </p>
+     </div>
+
+     <div class="card-glass" style="padding:1.4rem;border-radius:12px">
+       <h3 style="font-size:1.05rem;margin-bottom:0.4rem;color:var(--text-primary)">Q: How do I receive and activate my Pro extension license?</h3>
+       <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
+         Immediately upon checkout on FrankBase Store (<a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);text-decoration:underline">store.frankbase.com</a>), your instant license key is displayed on screen and sent to your email. Simply paste the key into the extension toolbar popup to unlock all Pro features.
+       </p>
+     </div>
+
+     <div class="card-glass" style="padding:1.4rem;border-radius:12px">
+       <h3 style="font-size:1.05rem;margin-bottom:0.4rem;color:var(--text-primary)">Q: Can I use FrankPass Pro completely offline without internet?</h3>
+       <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
+         <strong>Yes!</strong> Once the extension is installed in your browser, it runs 100% offline forever. You can disconnect your Wi-Fi or turn on Airplane Mode, and it will still generate and auto-fill your passwords seamlessly.
+       </p>
+     </div>
+
+     <div class="card-glass" style="padding:1.4rem;border-radius:12px">
+       <h3 style="font-size:1.05rem;margin-bottom:0.4rem;color:var(--text-primary)">Q: Can I use my license on multiple browsers and computers?</h3>
+       <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
+         Yes. Your license allows you to activate FrankPass Pro on all your personal computers across Chrome, Firefox, Edge, and Brave browsers.
+       </p>
+     </div>
+
+   </div>
+ </div>
+</section>
+
+<!-- ============================================================
+ AFFILIATE PARTNER NOTE
  ============================================================ -->
 <section class="section-sm" aria-label="Affiliate program information">
  <div class="container" style="max-width:680px">
- <div class="card-glass" style="padding:1.5rem;text-align:center">
- <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Become a FrankPass Affiliate</h2>
- <p style="font-size:0.88rem">Share FrankPass with your audience and earn a commission on every sale. Contact us via our <a href="/founder-mastermanikant.html">Contact page</a> or email <a href="mailto:connect@mastermanikant.com" style="color:var(--accent-light);font-weight:600">connect@mastermanikant.com</a> to apply. You must represent FrankPass honestly - no inflated claims permitted.</p>
- </div>
- </div>
-</section>
-
-<!-- ============================================================
- EXTENSION FEATURES
- 4 glass cards: Auto-fill, Platform Detection, Offline, 0-Sync
- ============================================================ -->
-<section class="section" style="background:var(--bg-secondary)" aria-labelledby="features-heading">
- <div class="container">
- <div class="text-center mb-4">
- <div class="section-label" aria-hidden="true">Why upgrade to Pro?</div>
- <h2 id="features-heading">The Extension Difference</h2>
- <p class="section-desc">The free website is a great fallback. The Pro extension is the upgrade for your daily workflow.</p>
- </div>
- <div class="grid-2">
- <!-- Auto-fill -->
- <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
- <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><path d="M15 13l2 2-2 2"/></svg>
- </div>
- <div>
- <h3 style="margin-bottom:0.4rem">Instant Auto-fill</h3>
- <p>The extension detects the active website and auto-fills your password in one click. No more typing - no more copy-pasting. Just click the FrankPass icon in your toolbar.</p>
- </div>
- </article>
- <!-- Platform Detection -->
- <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
- <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
- </div>
- <div>
- <h3 style="margin-bottom:0.4rem">Platform Detection</h3>
- <p>The extension reads the current domain and normalizes it automatically using the same FrankPassUtils algorithm as the website - so your passwords are always perfectly consistent.</p>
- <!-- Browser badges - text only, no images required -->
- <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.75rem">
- <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Chrome</span>
- <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Firefox</span>
- <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Edge</span>
- <span style="font-size:0.75rem;background:var(--glass-bg);border:1px solid var(--border);border-radius:999px;padding:0.2rem 0.65rem;color:var(--text-muted)">Brave</span>
- </div>
- </div>
- </article>
- <!-- Offline -->
- <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
- <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><line x1="1" y1="1" x2="23" y2="23"/><path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55M5 12.55a10.94 10.94 0 0 1 5.17-2.39M10.71 5.05A16 16 0 0 1 22.56 9M1.42 9a15.91 15.91 0 0 1 4.7-2.88M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
- </div>
- <div>
- <h3 style="margin-bottom:0.4rem">Always Offline</h3>
- <p>The extension works even when you have no internet connection. The cryptography runs entirely inside the browser - no network request is ever made during password generation.</p>
- </div>
- </article>
- <!-- 0-Sync -->
- <article class="card-glass" style="padding:1.75rem;display:flex;gap:1.25rem;align-items:flex-start">
- <div style="width:52px;height:52px;background:rgba(139,92,246,0.15);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="24" height="24" aria-hidden="true"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
- </div>
- <div>
- <h3 style="margin-bottom:0.4rem">0-Sync</h3>
- <p>Your profile settings (platform names, variant numbers, length preferences) can be exported as an encrypted file and imported on any other device - without sending anything to our servers.</p>
- </div>
- </article>
+ <div class="card-glass" style="padding:1.5rem;text-align:center;border-radius:14px">
+ <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Become a FrankPass Affiliate Partner</h2>
+ <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">Share FrankPass with your audience and earn a commission on every license sale. Contact us via our <a href="/founder-mastermanikant.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600">Contact page</a> or email <a href="mailto:connect@mastermanikant.com" style="color:var(--accent-light);font-weight:600">connect@mastermanikant.com</a> to apply. Transparent, authentic representation only.</p>
  </div>
  </div>
 </section>
@@ -370,11 +491,11 @@
  </a>
 </nav>
 
-<script src="/frankpass-config.js?v=3.2.8"></script>
+<script src="/frankpass-config.js?v=3.6.0"></script>
 <script src="/country-data.js"></script>
-<script src="/country-dropdown.js?v=3.2.8"></script>
-<script src="/frankpass-utils.js?v=3.2.8"></script>
-<script src="/footer.js?v=3.5.9"></script>
+<script src="/country-dropdown.js?v=3.6.0"></script>
+<script src="/frankpass-utils.js?v=3.6.0"></script>
+<script src="/footer.js?v=3.6.0"></script>
 
 <script>
 /* ── Header scroll ── */
@@ -390,69 +511,79 @@ hamburger.addEventListener('click', () => {
  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
 
-/* ── Sale Banner & Countdown ── */
+/* ── Sale Banner & Regional Pricing Display ── */
 function updatePricingDisplay(regionValue) {
- const cfg = FRANKPASS_CONFIG;
+ const cfg = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
  const isIndia = regionValue && regionValue.includes('(IN)');
- const prices = isIndia ? cfg.PRICES.INDIA : cfg.PRICES.GLOBAL;
+ const prices = isIndia ? (cfg.PRICES ? cfg.PRICES.INDIA : {silver:49, gold:99, platinum:499}) : (cfg.PRICES ? cfg.PRICES.GLOBAL : {silver:0.99, gold:1.99, platinum:9.99});
  const currency = isIndia ? '₹' : '$';
+ 
+ const paymentLinks = cfg.PAYMENT_LINKS || {};
+ const saleLinks = paymentLinks.SALE || {};
+ const stdLinks = paymentLinks.STANDARD || {};
  const links = cfg.SALE_MODE
- ? (isIndia ? cfg.PAYMENT_LINKS.SALE.INDIA : cfg.PAYMENT_LINKS.SALE.GLOBAL)
- : (isIndia ? cfg.PAYMENT_LINKS.STANDARD.INDIA : cfg.PAYMENT_LINKS.STANDARD.GLOBAL);
+   ? (isIndia ? (saleLinks.INDIA || {}) : (saleLinks.GLOBAL || {}))
+   : (isIndia ? (stdLinks.INDIA || {}) : (stdLinks.GLOBAL || {}));
 
  document.querySelectorAll('[data-price-silver]').forEach(el => el.textContent = currency + prices.silver);
  document.querySelectorAll('[data-price-gold]').forEach(el => el.textContent = currency + prices.gold);
  document.querySelectorAll('[data-price-platinum]').forEach(el => el.textContent = currency + prices.platinum);
 
- if (document.getElementById('btn-silver')) document.getElementById('btn-silver').href = links.silver;
- if (document.getElementById('btn-gold')) document.getElementById('btn-gold').href = links.gold;
- if (document.getElementById('btn-platinum')) document.getElementById('btn-platinum').href = links.platinum;
+ if (document.getElementById('btn-silver') && links.silver) document.getElementById('btn-silver').href = links.silver;
+ if (document.getElementById('btn-gold') && links.gold) document.getElementById('btn-gold').href = links.gold;
+ if (document.getElementById('btn-platinum') && links.platinum) document.getElementById('btn-platinum').href = links.platinum;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
- const cfg = FRANKPASS_CONFIG;
+ const cfg = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
 
  /* Sale banner */
  if (cfg.SALE_MODE) {
  const banner = document.getElementById('sale-banner');
- banner.style.display = 'block';
- document.getElementById('sale-percent-label').textContent = cfg.DISCOUNT_PERCENT + '% OFF';
+ if (banner) {
+   banner.style.display = 'block';
+   const label = document.getElementById('sale-percent-label');
+   if (label) label.textContent = (cfg.DISCOUNT_PERCENT || 80) + '% OFF';
 
- /* Adjust body top padding for banner */
- document.body.style.paddingTop = 'calc(var(--header-h) + 40px)';
+   document.body.style.paddingTop = 'calc(var(--header-h) + 40px)';
 
- /* Countdown */
- const endDate = new Date(cfg.LAUNCH_SALE_END_DATE).getTime();
- function tick() {
- const diff = endDate - Date.now();
- if (diff <= 0) { document.getElementById('sale-countdown').textContent = 'Ended'; return; }
- const d = Math.floor(diff / 86400000);
- const h = Math.floor((diff % 86400000) / 3600000);
- const m = Math.floor((diff % 3600000) / 60000);
- const s = Math.floor((diff % 60000) / 1000);
- document.getElementById('sale-countdown').textContent =
- (d > 0 ? d + 'd ' : '') + String(h).padStart(2,'0') + 'h ' +
- String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
+   const endDate = new Date(cfg.LAUNCH_SALE_END_DATE || '2026-12-31T23:59:59+05:30').getTime();
+   function tick() {
+     const diff = endDate - Date.now();
+     const countdownEl = document.getElementById('sale-countdown');
+     if (!countdownEl) return;
+     if (diff <= 0) { countdownEl.textContent = 'Ended'; return; }
+     const d = Math.floor(diff / 86400000);
+     const h = Math.floor((diff % 86400000) / 3600000);
+     const m = Math.floor((diff % 3600000) / 60000);
+     const s = Math.floor((diff % 60000) / 1000);
+     countdownEl.textContent =
+       (d > 0 ? d + 'd ' : '') + String(h).padStart(2,'0') + 'h ' +
+       String(m).padStart(2,'0') + 'm ' + String(s).padStart(2,'0') + 's';
+   }
+   tick();
+   setInterval(tick, 1000);
+
+   const dismissBtn = document.getElementById('dismiss-banner');
+   if (dismissBtn) {
+     dismissBtn.addEventListener('click', () => {
+       banner.style.display = 'none';
+       document.body.style.paddingTop = 'var(--header-h)';
+     });
+   }
  }
- tick();
- setInterval(tick, 1000);
-
- document.getElementById('dismiss-banner').addEventListener('click', () => {
- banner.style.display = 'none';
- document.body.style.paddingTop = 'var(--header-h)';
- });
  }
 
  /* Initial pricing load */
  const regionEl = document.getElementById('region');
  updatePricingDisplay(regionEl ? regionEl.value : '');
 
- regionEl.addEventListener('change', () => updatePricingDisplay(regionEl.value));
+ if (regionEl) {
+   regionEl.addEventListener('change', () => updatePricingDisplay(regionEl.value));
+ }
  setTimeout(() => updatePricingDisplay(regionEl ? regionEl.value : ''), 600);
 });
 </script>
 
 </body>
 </html>
-
-
