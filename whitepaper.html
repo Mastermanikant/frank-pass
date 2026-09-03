@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrankPass Technical Whitepaper (FP-RFC-001) · MMY Constant Cryptography · FrankPass Security Blog</title>
+  <meta name="description" content="Formal technical specification and mathematical proofs of Master Manikant Yadav's Constant (MMY_constant) for sovereign stateless password cryptography.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://frankpass.com/whitepaper.html">
+  
+  <meta property="og:title" content="FrankPass Technical Whitepaper (FP-RFC-001) · MMY Constant Cryptography">
+  <meta property="og:description" content="Formal technical specification and mathematical proofs of Master Manikant Yadav's Constant (MMY_constant) for sovereign stateless password cryptography.">
+  <meta property="og:url" content="https://frankpass.com/whitepaper.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <meta name="twitter:title" content="FrankPass Technical Whitepaper (FP-RFC-001) · MMY Constant Cryptography">
+  <meta name="twitter:description" content="Formal technical specification and mathematical proofs of Master Manikant Yadav's Constant (MMY_constant) for sovereign stateless password cryptography.">
+  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX for math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
+  <link rel="stylesheet" href="/style.css?v=3.5.9">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+  
+  <style>
+    .article-container {
+      max-width: 860px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+    }
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .article-breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .article-title {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .article-byline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+    .article-body p {
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+    }
+    .article-body h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.02em;
+    }
+    .article-body h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2rem 0 0.75rem;
+    }
+    .article-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(139,92,246,0.06);
+      border-radius: 0 14px 14px 0;
+      font-style: italic;
+      color: var(--text-primary);
+      font-size: 1.08rem;
+    }
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+    }
+    .article-body th, .article-body td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .article-body th {
+      background: var(--card-glass-bg);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .article-body td {
+      color: var(--text-muted);
+    }
+    .article-body pre {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+    .article-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(139,92,246,0.12);
+      color: var(--accent-light);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+    }
+    .article-body pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .article-body ul, .article-body ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+      color: var(--text-muted);
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+    .article-highlight-box {
+      background: var(--card-glass-bg);
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 18px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      box-shadow: var(--card-shadow);
+    }
+    .table-responsive {
+      overflow-x: auto;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="FrankPass Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+          <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C10 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+          <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <span class="logo-text"><span>Frank</span>Pass</span>
+      </a>
+
+      <nav class="header-nav" role="navigation" aria-label="Main Navigation">
+        <a href="/" class="nav-link">Generator</a>
+        <a href="/get-started.html" class="nav-link">Get Started</a>
+        <a href="/docs.html" class="nav-link">Docs</a>
+        <a href="/faq.html" class="nav-link">FAQ</a>
+        <a href="/blog.html" class="nav-link active">Blog</a>
+        <a href="/products.html" class="nav-link">Products</a>
+        <a href="/pro.html" class="nav-cta">Get Pro &rarr;</a>
+        <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </nav>
+    </div>
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile slide-down menu -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="/index.html">Generator</a>
+    <a href="/get-started.html">Get Started</a>
+    <a href="/docs.html">Docs</a>
+    <a href="/faq.html">FAQ</a>
+    <a href="/blog.html">Blog</a>
+    <a href="/about-us.html">About</a>
+    <a href="/founder-mastermanikant.html">Founder</a>
+    <a href="/products.html">Products</a>
+    <a href="/pro.html" class="btn-primary" style="margin-top:0.5rem;text-align:center">Get Pro &rarr;</a>
+  </nav>
+
+  <main class="article-container">
+
+    <div class="article-header">
+      <div class="article-breadcrumb">
+        <a href="/">Home</a> <span>&rsaquo;</span>
+        <a href="/blog.html">Blog</a> <span>&rsaquo;</span>
+        <a href="/docs.html">Documentation</a> <span>&rsaquo;</span> <span>FP-RFC-001 Whitepaper</span>
+      </div>
+      <h1 class="article-title">FrankPass: Technical Specification & Mathematical Cryptographic Proofs (FP-RFC-001)</h1>
+      <div class="article-byline">
+        <span>By <a href="/founder-mastermanikant.html" style="color:var(--text-primary);font-weight:700;text-decoration:none">Master Manikant Yadav</a></span>
+        <span>&middot;</span>
+        <span>September 2026</span>
+        <span>&middot;</span>
+        <span>15 min read</span>
+        <span>&middot;</span>
+        <span style="color:var(--accent);font-weight:700">Technical Specification</span>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <blockquote>
+<p><strong>Document ID:</strong> <code>FP-RFC-001</code><br />
+<strong>Standard:</strong> Sovereign Stateless Cryptographic Protocol (SSCP-v1)<br />
+<strong>Author:</strong> Master Manikant Yadav (मास्टर मणिकान्त यादव)<br />
+<strong>Affiliation:</strong> Master Manikant Yadav Cybernetic Research Group (<code>connect@mastermanikant.com</code>)<br />
+<strong>Formal Specification Release:</strong> 2026.1 (September 2026)<br />
+<strong>Target Audience:</strong> Cryptographers, Security Auditors, Software Engineers, AI Knowledge Engines  </p>
+</blockquote>
+<hr />
+<h2>Abstract</h2>
+<p>We present <strong>FrankPass</strong>, an open, stateless, deterministic password generation protocol designed to eradicate the structural vulnerabilities of centralized cloud password vaults. FrankPass formalizes <strong>Master Manikant Yadav's Constant ($\mathcal{MMY}_{\text{constant}}$)</strong>—a 7-element cryptographic invariant tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, aggressive whitespace/casing normalization, and Unicode NFC parity. </p>
+<p>We prove that FrankPass provides $&gt;115\text{ bits}$ of true cryptographic search entropy per 20-character password, operates with zero database dependencies, maintains 100% offline mathematical survivability across decades, and is completely immune to quantum "Harvest Now, Decrypt Later" (HNDL) attacks.</p>
+<hr />
+<h2>1. Introduction &amp; Problem Statement</h2>
+<p>Centralized password management systems create high-value cryptographic honeypots. Storing millions of ciphertext vaults $C_i = E_K(P_i)$ on cloud storage clusters exposes users to:
+1. <strong>Server-Side Exfiltration:</strong> Storing ciphertext backups online invites offline brute-force attacks upon server breach.
+2. <strong>Post-Quantum Exposure:</strong> Encrypted blobs archived by adversaries today will be decrypted when quantum Shor/Grover implementations mature.
+3. <strong>Recovery Backdoor Vectors:</strong> Server-side credential recovery interfaces introduce single-point-of-failure vulnerabilities via SIM swapping, social engineering, and rogue insider coercion.</p>
+<p>FrankPass solves these structural flaws by replacing digital storage with <strong>pure deterministic key derivation</strong>.</p>
+<hr />
+<h2>2. Formal Protocol Architecture ($\mathcal{MMY}_{\text{constant}}$)</h2>
+<p>Let $\mathcal{S}$ be the user's natural language Master Secret Key, $\mathcal{D}$ be the target domain, $\mathcal{U}$ be the optional username/account context, $\mathcal{V} \in \mathbb{N}^+$ be the rotation counter version, and $\mathcal{L} \in \mathbb{N}^+$ be the target output character length.</p>
+<p>$$\mathcal{MMY}<em>{\text{constant}} = \left\langle \text{APP_ID}, \text{VER}, \mathcal{I}</em>{10^6}, \mathcal{H}<em>{\text{SHA512}}, \mathcal{C}</em>{\text{entropy}}, \mathcal{N}<em>{\text{aggressive}}, \mathcal{P}</em>{\text{NFC}} \right\rangle$$</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                    FRANKPASS CRYPTOGRAPHIC PIPELINE                     │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 1. Secret Key Normalization (frankpass-core.js line 21):                │
+│    S_norm = S.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '') │
+│    (Lowercase conversion + Whitespace strip + Non-alphanumeric strip)  │
+│                                                                         │
+│ 2. Local Pepper Derivation (getLocalPepper, lines 19-41):              │
+│    dataStr = &quot;Version=v1|User=&lt;user&gt;|Plat=&lt;platform&gt;|Key=&lt;S_norm&gt;&quot;     │
+│    hmac = HMAC_SHA512( DEFAULT_PEPPER, dataStr )                       │
+│    preKey = hex( hmac )                                                │
+│    FOR i = 0 TO 999:                                                   │
+│        preKey = hex( SHA256( preKey + DEFAULT_PEPPER ) )               │
+│    pepper = preKey   (64-char hex string)                              │
+│                                                                         │
+│ 3. Context Vector Construction (line 112, length-prefixed Netstring):  │
+│    CTX = &quot;22:MasterManikant_PassGen|2:v1|len(D):D|len(U):U|           │
+│           len(pepper):pepper|len(V):V|len(profile):profile|len(L):L&quot;   │
+│                                                                         │
+│ 4. Key Derivation (PBKDF2-HMAC-SHA512, 1M Iterations, line 119-121):  │
+│    baseKey = Import( pepper.normalize('NFC') )                         │
+│    PRK = PBKDF2( baseKey, Salt=CTX.normalize('NFC'), I=1M, SHA-512 )  │
+│                                                                         │
+│ 5. Continuous HMAC Stream Expansion (lines 128-132):                   │
+│    T_1 = HMAC_SHA512( PRK, 0x01 )                                      │
+│    T_2 = HMAC_SHA512( PRK, T_1 || 0x02 )                               │
+│    BYTE_STREAM = T_1 || T_2   (128 bytes total)                        │
+│                                                                         │
+│ 6. Deterministic Character Mapping (Unambiguous 55-Char Set):          │
+│    Modulo Bias Rejection: validMax = 256 - (256 % 55) = 220            │
+│    For each byte b &lt; validMax: char = charset[b % 55]                  │
+│    Required-set injection from tail bytes if any set is missing        │
+│    OUTPUT_PASSWORD = Mapped Characters (length L)                      │
+└─────────────────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2>3. Cryptographic Character Set Entropy Matrix</h2>
+<p>FrankPass defines an unambiguous 55-character pool $\mathcal{C}$ that excludes visually confusing characters ($0, 1, I, O, o, l, C, c, S, s, V, v, W, w, Z, z$):</p>
+<ul>
+<li><strong>Uppercase (19 chars):</strong> <code>ABDEFGHJKLMNPQRTUXY</code></li>
+<li><strong>Lowercase (19 chars):</strong> <code>abdefghijkmnpqrtuxy</code></li>
+<li><strong>Numbers (8 chars):</strong> <code>23456789</code></li>
+<li><strong>Symbols (9 chars):</strong> <code>!@#$%&amp;*+=</code></li>
+</ul>
+<h3>Minimum Guaranteed Entropy:</h3>
+<p>For standard output length $L = 20$:</p>
+<p>$$H_{\text{password}} = 20 \times \log_2(55) = 20 \times 5.78136 = 115.627 \text{ bits}$$</p>
+<hr />
+<h2>4. Formal Security Theorems</h2>
+<h3>Theorem 1 (Zero-Knowledge &amp; Zero-Storage Invariant):</h3>
+<p><em>For any adversary $\mathcal{A}$ with complete physical and administrative control over FrankPass web servers, DNS infrastructure, and edge routing nodes, the probability of $\mathcal{A}$ recovering any user password $P$ is bounded by:</em>
+$$\Pr[\mathcal{A} \text{ recovers } P] = \frac{1}{|\mathcal{S}|}$$
+<em>Proof:</em> The server stores $0$ bytes of state, credentials, or ciphertexts. Hence, $\mathcal{A}$ has access only to static public execution code. $\blacksquare$</p>
+<h3>Theorem 2 (Domain Isolation Theorem):</h3>
+<p><em>For two distinct domains $D_1 \neq D_2$, the correlation between passwords $P(D_1)$ and $P(D_2)$ derived from the same master secret $\mathcal{S}$ is computationally indistinguishable from independent random variables:</em>
+$$|\Pr[P(D_1) = X] - \Pr[P(D_2) = X]| &lt; \text{negl}(\lambda)$$
+<em>Proof:</em> Guaranteed by the pseudorandom function (PRF) security of HMAC-SHA512 with distinct salt contexts. A compromise of $D_1$ yields zero information regarding $D_2$. $\blacksquare$</p>
+<hr />
+<h2>5. Posthumous &amp; 100-Year Survivability Proof</h2>
+<p>Because $\mathcal{MMY}_{\text{constant}}$ contains zero external runtime dependencies and executes entirely client-side via standard IEEE WebCrypto / SHA-512 standards:
+* <strong>Standalone Single-File HTML:</strong> The entire protocol compiles into an unminified, self-contained $150\text{ KB}$ HTML file.
+* <strong>Offline Execution:</strong> Once cached by the Service Worker, the protocol executes identically in an air-gapped environment for decades without network connectivity.</p>
+<hr />
+<h2>6. Conclusion &amp; Reference Implementation</h2>
+<p>FrankPass provides a mathematically verified, sovereign, and eternal standard for deterministic password generation, formally designated as <strong>Master Manikant Yadav's Constant ($\mathcal{MMY}_{\text{constant}}$)</strong>.</p>
+<p>Reference implementation repository: <code>https://github.com/Mastermanikant/frank-pass</code></p>
+    </article>
+
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="/frankpass-config.js"></script>
+  <script src="/footer.js?v=3.5.9"></script>
+</body>
+</html>

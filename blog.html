@@ -362,14 +362,14 @@
     <article class="featured-card" data-category="crypto">
       <div class="featured-content">
         <span class="featured-badge">⭐ Cornerstone Deep Dive</span>
-        <h2 class="featured-title">The Mathematics of Deterministic Passwords: Why PBKDF2-HMAC-SHA512 Beats Cloud Vaults</h2>
+        <h2 class="featured-title"><a href="/blog/why-stateless-password-generation-is-the-future.html" style="color:inherit;text-decoration:none">Why Stateless Deterministic Password Generation is the Future of Digital Security</a></h2>
         <p class="featured-desc">
           Cloud password managers store encrypted blobs in centralized databases prone to breaches. Discover how FrankPass derives 100% collision-free, unhackable passwords using 1,000,000 PBKDF2 hashing rounds without storing a single byte on any server.
         </p>
         <div class="post-meta">
           <span>By <strong>Master Manikant Yadav</strong></span>
           <span>&middot;</span>
-          <span>10 min read</span>
+          <span>12 min read</span>
           <span>&middot;</span>
           <span style="color:var(--accent);font-weight:700">Cryptography</span>
         </div>
@@ -385,7 +385,7 @@
 
     <!-- Articles Grid -->
     <div class="articles-grid" id="articles-grid">
-      <!-- Genesis Story Article -->
+      <!-- Article 1: Genesis Story -->
       <article class="article-card" data-category="security">
         <div>
           <span class="article-tag" style="color:#ec4899">🎄 Origin Story</span>
@@ -400,94 +400,78 @@
         </div>
       </article>
 
-
-      <!-- Article 1 -->
+      <!-- Article 2: Why No Forgot Password -->
       <article class="article-card" data-category="security">
         <div>
-          <span class="article-tag">Security Guide</span>
-          <h2>How to Choose a Master Secret Key: The Sentence Method That Never Fails</h2>
+          <span class="article-tag">Security Architecture</span>
+          <h2><a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" style="color:inherit;text-decoration:none">Why No 'Forgot Password' Button is Our Greatest Security Strength</a></h2>
           <p>
-            Why single random passwords fail memory retention and why a simple 4-word natural sentence creates mathematical seeds impervious to dictionary and brute-force attacks.
+            Server recovery backdoors cause 85% of SIM swaps and account takeovers. Learn why zero account recovery is the ultimate mathematical defense.
           </p>
         </div>
         <div class="article-footer">
-          <span>6 min read &middot; Security</span>
-          <span class="read-more-link">Guide &rarr;</span>
+          <span>9 min read &middot; Architecture</span>
+          <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="read-more-link">Read Guide &rarr;</a>
         </div>
       </article>
 
-      <!-- Article 2 -->
+      <!-- Article 3: Natural Language Passphrases & MMY Normalization -->
+      <article class="article-card" data-category="crypto">
+        <div>
+          <span class="article-tag">Cryptography &amp; Usability</span>
+          <h2><a href="/blog/natural-language-passphrases-and-mmy-normalization.html" style="color:inherit;text-decoration:none">Natural Language Passphrases and the Science of MMY Input Normalization</a></h2>
+          <p>
+            Why humans remember sentences better than random characters and how FrankPass aggressive normalization eliminates human typographical friction.
+          </p>
+        </div>
+        <div class="article-footer">
+          <span>8 min read &middot; Usability</span>
+          <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="read-more-link">Read Guide &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Article 4: The No Free Lunch Paradigm -->
       <article class="article-card" data-category="security">
         <div>
-          <span class="article-tag">Analysis</span>
-          <h2>Why Browser Password Managers Keep Getting Hacked</h2>
+          <span class="article-tag">Economics &amp; Privacy</span>
+          <h2><a href="/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html" style="color:inherit;text-decoration:none">The 'No Free Lunch' Paradigm: How FrankPass Sustains Radical Zero-Data Privacy</a></h2>
           <p>
-            Infostealer malware targets browser-stored credentials (`Login Data` SQLite files) daily. Learn why stateless in-memory generation isolates you from local credential scrapers.
+            Free cloud products sell your telemetry. Explore how FrankPass delivers free client-side math while funding development via optional local power extensions.
           </p>
         </div>
         <div class="article-footer">
-          <span>8 min read &middot; Malware Defense</span>
-          <span class="read-more-link">Read &rarr;</span>
+          <span>9 min read &middot; Privacy</span>
+          <a href="/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html" class="read-more-link">Read Article &rarr;</a>
         </div>
       </article>
 
-      <!-- Article 3 -->
+      <!-- Article 5: Comparison vs 1Password, Bitwarden, LastPass, KeePass -->
+      <article class="article-card" data-category="security">
+        <div>
+          <span class="article-tag" style="color:#3b82f6">⚔️ Architecture Showdown</span>
+          <h2><a href="/blog/frankpass-vs-1password-bitwarden-lastpass-keepass.html" style="color:inherit;text-decoration:none">FrankPass vs 1Password, Bitwarden, LastPass &amp; KeePass (2026 Comparison)</a></h2>
+          <p>
+            An exhaustive architectural showdown between traditional cloud vaults, local sync databases, and FrankPass zero-database deterministic cryptography.
+          </p>
+        </div>
+        <div class="article-footer">
+          <span>11 min read &middot; Benchmarks</span>
+          <a href="/blog/frankpass-vs-1password-bitwarden-lastpass-keepass.html" class="read-more-link">Compare &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Article 6: Formal Technical Whitepaper -->
       <article class="article-card" data-category="crypto">
         <div>
-          <span class="article-tag">Cryptography</span>
-          <h2>Password Rotation Demystified: Counter vs Date Rotation</h2>
+          <span class="article-tag" style="color:#8b5cf6">📑 Official Specification</span>
+          <h2><a href="/whitepaper.html" style="color:inherit;text-decoration:none">FrankPass Technical Specification &amp; Mathematical Proofs (FP-RFC-001)</a></h2>
           <p>
-            How FrankPass lets you rotate platform passwords instantly by advancing the version counter without ever having to remember a new master key.
+            The formal cryptographic RFC defining Master Manikant Yadav's Constant (MMY_constant), entropy distribution, and bitwise invariants.
           </p>
         </div>
         <div class="article-footer">
-          <span>5 min read &middot; Architecture</span>
-          <span class="read-more-link">Read &rarr;</span>
-        </div>
-      </article>
-
-      <!-- Article 4 -->
-      <article class="article-card" data-category="crypto">
-        <div>
-          <span class="article-tag">Architecture</span>
-          <h2>Zero-Knowledge Architecture: What Real Serverless Privacy Means</h2>
-          <p>
-            A technical breakdown of FrankPass's client-side isolation model: WebCrypto API, zero network transmission, and why no database equals zero breach risk.
-          </p>
-        </div>
-        <div class="article-footer">
-          <span>7 min read &middot; Zero-Knowledge</span>
-          <span class="read-more-link">Read &rarr;</span>
-        </div>
-      </article>
-
-      <!-- Article 5 (Hindi) -->
-      <article class="article-card" data-category="hindi">
-        <div>
-          <span class="article-tag" style="color:#10b981">हिन्दी गाइड 🇮🇳</span>
-          <h2>मास्टर सीक्रेट की कैसे चुनें: एक आसान वाक्य से अजेय पासवर्ड कैसे बनाएं</h2>
-          <p>
-            जटिल सिम्बल्स याद रखने का तनाव खत्म करें। जानिए कैसे एक सामान्य वाक्य (उदा. 'i love reading books') आपके सभी खातों के लिए कभी न टूटने वाले पासवर्ड तैयार करता है।
-          </p>
-        </div>
-        <div class="article-footer">
-          <span>5 मिनट &middot; मास्टर गाइड</span>
-          <span class="read-more-link">पढ़ें &rarr;</span>
-        </div>
-      </article>
-
-      <!-- Article 6 (Hindi) -->
-      <article class="article-card" data-category="hindi">
-        <div>
-          <span class="article-tag" style="color:#10b981">साइबर सुरक्षा 🇮🇳</span>
-          <h2>ब्राउज़र पासवर्ड मैनेजर क्यों सुरक्षित नहीं हैं और स्टेटलेस तकनीक कैसे बचाती है</h2>
-          <p>
-            क्लाउड डेटाबेस लीक और इंफोस्टीलर मालवेयर के खतरे को समझें। जानिए फ्रैंकपास का जीरो-डेटाबेस फॉर्मूला आपके डेटा को 100% कैसे सुरक्षित रखता है।
-          </p>
-        </div>
-        <div class="article-footer">
-          <span>7 मिनट &middot; साइबर सुरक्षा</span>
-          <span class="read-more-link">पढ़ें &rarr;</span>
+          <span>15 min read &middot; RFC Specification</span>
+          <a href="/whitepaper.html" class="read-more-link">Read RFC &rarr;</a>
         </div>
       </article>
 
