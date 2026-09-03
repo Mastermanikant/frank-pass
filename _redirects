@@ -21,6 +21,15 @@
 /disclaimer /legal 301
 /articles /blog 301
 /security-tips /blog 301
+/whitepaper /whitepaper.html 301
+/rfc /whitepaper.html 301
+/rfc-001 /whitepaper.html 301
+/research-paper /whitepaper.html 301
+/extension /install 301
+/extensions /install 301
+/pro/extension /pro 301
+/blog/why-stateless-is-the-future-of-passwords /blog/why-stateless-password-generation-is-the-future.html 301
+
 # Regional Country Code 200 Rewrites (SPA routing for country dropdown)
 /in / 200
 /us / 200
