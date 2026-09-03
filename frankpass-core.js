@@ -7,10 +7,10 @@
 const FRANKPASS_CORE = (function () {
     const APP_ID = "MasterManikant_PassGen";
     const VERSION = "v1";
-    const UPPERCASE = "ABDEFGHJKLMNPQRTUXYZ"; // removed I, O, C, S, V, W
-    const LOWERCASE = "abdefghijkmnpqrtuxyz"; // removed l, o, c, s, v, w
-    const NUMBERS = "23456789"; // removed 0, 1
-    const SYMBOLS = "@#$%+*="; // simplified: widely accepted across all platforms
+    const UPPERCASE = "ABDEFGHJKLMNPQRTUXY"; // removed I, O, C, S, V, W, Z (19 chars)
+    const LOWERCASE = "abdefghijkmnpqrtuxy"; // removed l, o, c, s, v, w, z (19 chars)
+    const NUMBERS = "23456789"; // removed 0, 1 (8 chars)
+    const SYMBOLS = "!@#$%&*+="; // added !, & (9 chars, total = 55 chars)
     const DEFAULT_PEPPER = "FrankbaseSuperSecretMango2026!";
 
     /**
@@ -18,7 +18,7 @@ const FRANKPASS_CORE = (function () {
      */
     async function getLocalPepper(platform, username, secretKey) {
         const encoder = new TextEncoder();
-        const normalizedSecret = secretKey.toLowerCase().replace(/\s+/g, '');
+        const normalizedSecret = secretKey.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
         const dataStr = `Version=${VERSION}|User=${username.toLowerCase()}|Plat=${platform.toLowerCase()}|Key=${normalizedSecret}`;
 
         // HMAC-SHA512 Simulation using SubtleCrypto
