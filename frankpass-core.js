@@ -7,10 +7,11 @@
 const FRANKPASS_CORE = (function () {
     const APP_ID = "MasterManikant_PassGen";
     const VERSION = "v1";
-    const UPPERCASE = "ABDEFGHJKLMNPQRTUXY"; // removed I, O, C, S, V, W, Z (19 chars)
-    const LOWERCASE = "abdefghijkmnpqrtuxy"; // removed l, o, c, s, v, w, z (19 chars)
-    const NUMBERS = "23456789"; // removed 0, 1 (8 chars)
-    const SYMBOLS = "!@#$%&*+="; // added !, & (9 chars, total = 55 chars)
+    // Golden Base-32 Pool (Exact 32 chars = 2^5, 100% Zero-Confusion Invariant):
+    const UPPERCASE = "ADEFHLMNRT"; // removed ambiguous & identical-glyph letters (10 chars)
+    const LOWERCASE = "defhmt"; // removed ambiguous, mirror & identical-glyph letters (6 chars)
+    const NUMBERS = "2346789"; // removed 0, 1, 5 (7 chars)
+    const SYMBOLS = "@#$%&*+=?"; // removed !, -, _, brackets, quotes; added ? (9 chars, total = 32 chars)
     const DEFAULT_PEPPER = "FrankbaseSuperSecretMango2026!";
 
     /**
