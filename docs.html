@@ -105,6 +105,9 @@
  <h1 id="docs-heading">Security Docs</h1>
  <p style="color:var(--text-muted);font-size:1.05rem;max-width:560px;margin-top:0.5rem">The complete guide to how FrankPass generates passwords - the cryptographic architecture, the security reasoning, and how to use every feature.</p>
 
+ <!-- AI Prompt & Research Component -->
+ <div id="ai-prompt-bar" data-topic="FrankPass Cryptographic Security Architecture &amp; Stateless Theory" data-summary="Complete documentation on how FrankPass generates passwords statelessly via PBKDF2-HMAC-SHA512 with 1,000,000 iterations and Golden Base-32 mapping."></div>
+
  <!-- Mobile accordion TOC -->
  <details class="doc-accordion mt-3" style="display:none" id="mobile-toc">
  <summary aria-label="Documentation table of contents">
@@ -342,6 +345,7 @@
 <script src="/country-data.js"></script>
 <script src="/country-dropdown.js?v=3.2.8"></script>
 <script src="/footer.js?v=3.5.9"></script>
+<script src="/ai-prompt-bar.js?v=3.7.0"></script>
 <script>
 const header = document.getElementById('site-header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
