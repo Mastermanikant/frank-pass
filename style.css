@@ -3213,28 +3213,28 @@ input:-webkit-autofill:active {
   line-height: 1.35;
   margin-bottom: 0.65rem;
 }
-.founder-compact-socials {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-  justify-content: space-between;
+.founder-socials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  margin-top: 6px;
   width: 100%;
 }
-.founder-compact-socials .has-hover-card {
-  flex: 1;
-  min-width: 0;
+.founder-socials-grid .has-hover-card {
+  width: 100%;
 }
-.founder-compact-socials .founder-social-btn {
+.founder-socials-grid .founder-social-btn {
   width: 100%;
   box-sizing: border-box;
-  font-size: 0.74rem;
-  padding: 0.42rem 0.25rem;
+  font-size: 0.72rem;
+  padding: 0.38rem 0.25rem;
   gap: 4px;
   justify-content: center;
+  border-radius: 8px;
 }
 .founder-toggle-btn {
   width: 100%;
-  margin-top: 0.55rem;
+  margin-top: 0.75rem;
   padding: 0.5rem 0.9rem;
   background: rgba(139, 92, 246, 0.08);
   border: 1px dashed rgba(139, 92, 246, 0.35);
