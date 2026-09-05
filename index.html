@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <script>
@@ -117,6 +117,7 @@
  <!-- Desktop navigation -->
  <nav class="header-nav" aria-label="Main navigation">
  <a href="/" class="nav-link active" aria-current="page">Generator</a>
+ <a href="/pin.html" class="nav-link">PIN Generator</a>
  <a href="/get-started.html" class="nav-link">Get Started</a>
  <a href="/docs.html" class="nav-link">Docs</a>
  <a href="/faq.html" class="nav-link">FAQ</a>
@@ -137,6 +138,8 @@
 
 <!-- Mobile slide-down menu -->
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+ <a href="/">Password Generator</a>
+ <a href="/pin.html">PIN Generator</a>
  <a href="/get-started.html">Get Started</a>
  <a href="/docs.html">Docs</a>
  <a href="/faq.html">FAQ</a>
@@ -332,6 +335,12 @@
  <span id="card-country-label">IN</span>
  </div>
  </div>
+ </div>
+
+ <!-- Mode Switcher Tabs -->
+ <div style="display:flex;gap:0.5rem;margin-bottom:1.25rem;">
+   <a href="/" style="flex:1;text-align:center;padding:0.45rem 0.6rem;border-radius:10px;background:rgba(139,92,246,0.22);color:var(--text-primary);font-weight:700;font-size:0.82rem;border:1px solid var(--accent);text-decoration:none;">🔑 Passwords</a>
+   <a href="/pin.html" style="flex:1;text-align:center;padding:0.45rem 0.6rem;border-radius:10px;background:var(--glass-bg);color:var(--text-muted);font-weight:600;font-size:0.82rem;border:1px solid var(--border);text-decoration:none;transition:all var(--transition);">🔢 PINs (ATM / UPI) &rarr;</a>
  </div>
 
  <!-- Username / Account Email (Optional) -->

@@ -58,8 +58,8 @@ const FRANKPASS_CORE = (function () {
             charset = UPPERCASE + LOWERCASE;
             requireUpper = requireLower = true;
         } else if (profile === 'numeric') {
-            charset = NUMBERS;
-            requireNum = true;
+            charset = "0123456789";
+            requireNum = false;
         }
 
         const charsetLen = charset.length;

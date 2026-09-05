@@ -3,6 +3,10 @@
 # Do NOT add self-referential rules (e.g. /get-started /get-started.html) as it causes ERR_TOO_MANY_REDIRECTS.
 
 # Aliases & Short URLs
+/pin-generator /pin 301
+/pingenerator /pin 301
+/atm-pin /pin 301
+/upi-pin /pin 301
 /app /install 301
 /download /install 301
 /pwa /install 301
