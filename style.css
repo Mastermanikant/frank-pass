@@ -3217,11 +3217,24 @@ input:-webkit-autofill:active {
   display: flex;
   gap: 6px;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+.founder-compact-socials .has-hover-card {
+  flex: 1;
+  min-width: 0;
+}
+.founder-compact-socials .founder-social-btn {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.74rem;
+  padding: 0.42rem 0.25rem;
+  gap: 4px;
+  justify-content: center;
 }
 .founder-toggle-btn {
   width: 100%;
-  margin-top: 0.85rem;
+  margin-top: 0.55rem;
   padding: 0.5rem 0.9rem;
   background: rgba(139, 92, 246, 0.08);
   border: 1px dashed rgba(139, 92, 246, 0.35);
