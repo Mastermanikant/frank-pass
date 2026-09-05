@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+        var theme = saved || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Green Computing & Open Privacy Sponsorship Hub | FrankPass</title>
+  <meta name="description" content="Support the zero-database, zero-cloud password revolution. Become an official FrankPass Green Computing Sponsor, earn embeddable verified badges, and back stateless privacy for millions.">
+  <link rel="canonical" href="https://frankpass.com/sponsors.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/sponsors.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/sponsors.html">
+  <meta property="og:title" content="Green Computing & Open Privacy Sponsors Hub | FrankPass">
+  <meta property="og:description" content="Support stateless, zero-knowledge privacy. Join ethical organizations backing the green computing standard that eliminates cloud password databases and cuts server carbon emissions.">
+  <meta property="og:url" content="https://frankpass.com/sponsors.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="/style.css?v=3.7.3">
+
+  <style>
+    /* ── Sponsors Hub Custom Styles ── */
+    :root {
+      --eco-green: #10b981;
+      --eco-green-light: #34d399;
+      --eco-green-glow: rgba(16, 185, 129, 0.18);
+      --gold-accent: #f59e0b;
+      --platinum-accent: #38bdf8;
+      --diamond-accent: #a855f7;
+    }
+
+    .hero-eco-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      background: var(--eco-green-glow);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: var(--eco-green-light);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Dual Toggle Bar */
+    .sponsors-control-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin: 2rem auto;
+      max-width: 1060px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .toggle-pill-group {
+      display: flex;
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    [data-theme="light"] .toggle-pill-group {
+      background: #f1f5f9;
+    }
+
+    .toggle-pill-btn {
+      padding: 0.6rem 1.25rem;
+      border-radius: 9px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toggle-pill-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(139, 92, 246, 0.35);
+    }
+
+    .toggle-pill-btn:hover:not(.active) {
+      color: var(--text-primary);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .country-selector-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      position: relative;
+    }
+
+    .country-select-btn {
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      background: var(--bg-card-hover);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 200px;
+      justify-content: space-between;
+    }
+
+    /* Sponsor Tier Grids */
+    .tier-container {
+      margin-bottom: 3.5rem;
+    }
+
+    .tier-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .tier-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .tier-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    .tag-diamond { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+    .tag-platinum { background: rgba(56, 189, 248, 0.2); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.4); }
+    .tag-gold { background: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+    .tag-community { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
+
+    /* Sponsor Cards */
+    .diamond-card {
+      background: linear-gradient(135deg, rgba(168,85,247,0.08) 0%, rgba(20,20,35,0.85) 100%);
+      border: 2px solid rgba(168,85,247,0.35);
+      border-radius: 16px;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 1.75rem;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(168,85,247,0.1);
+      margin-bottom: 1.25rem;
+    }
+
+    .diamond-card:hover {
+      border-color: #a855f7;
+      box-shadow: 0 14px 40px rgba(168,85,247,0.2);
+      transform: translateY(-2px);
+    }
+
+    .platinum-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .platinum-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: all 0.25s ease;
+    }
+
+    .platinum-card:hover {
+      border-color: #38bdf8;
+      box-shadow: 0 8px 25px rgba(56,189,248,0.15);
+      transform: translateY(-2px);
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .gold-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.2s ease;
+    }
+
+    .gold-card:hover {
+      border-color: var(--gold-accent);
+      background: var(--bg-card-hover);
+    }
+
+    .empty-slot-card {
+      border: 2px dashed var(--border-color);
+      background: rgba(255,255,255,0.02);
+      border-radius: 14px;
+      padding: 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .empty-slot-card:hover {
+      border-color: var(--accent);
+      background: rgba(139,92,246,0.05);
+      color: var(--text-primary);
+    }
+
+    /* Embed Badges Section */
+    .badge-preview-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .badge-visual-container {
+      background: rgba(0,0,0,0.3);
+      padding: 1.5rem;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 90px;
+    }
+
+    [data-theme="light"] .badge-visual-container {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+
+    .code-snippet-box {
+      position: relative;
+      background: #0f172a;
+      color: #94a3b8;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.82rem;
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .btn-copy-code {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn-copy-code:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* Modal Styling */
+    .sponsor-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+
+    .sponsor-modal-overlay.open {
+      display: flex;
+    }
+
+    .sponsor-modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      max-width: 620px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+      padding: 4px;
+    }
+
+    .close-modal-btn:hover {
+      color: var(--text-primary);
+    }
+
+    @media (max-width: 768px) {
+      .diamond-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1rem;
+      }
+      .sponsors-control-panel {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .toggle-pill-group {
+        justify-content: center;
+      }
+      .country-selector-wrap {
+        width: 100%;
+      }
+      .country-select-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+        <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C12 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+        <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+    
+    <div class="header-country custom-country-dropdown">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+        <span id="country-display-name">India</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox">
+        <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <input type="hidden" id="region" value="India (IN)">
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <a href="/" class="nav-link">Generator</a>
+      <a href="/pin.html" class="nav-link">PIN</a>
+      <a href="/get-started.html" class="nav-link">Get Started</a>
+      <a href="/docs.html" class="nav-link">Docs</a>
+      <a href="/sponsors.html" class="nav-link active" aria-current="page">Sponsors</a>
+      <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
+      <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/get-started.html">Get Started</a>
+  <a href="/docs.html">Docs</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/sponsors.html" class="active" aria-current="page">Sponsors Hub</a>
+  <a href="/about-us.html">About</a>
+  <a href="/founder-mastermanikant.html">Founder</a>
+  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a>
+</nav>
+
+<main id="main-content">
+
+  <!-- HERO SECTION -->
+  <section class="section" style="text-align:center;position:relative;overflow:hidden;padding-top:3.5rem;padding-bottom:2rem" aria-labelledby="sponsors-hero-title">
+    <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(16,185,129,0.12) 0%,transparent 70%);top:-120px;left:50%;transform:translateX(-50%);pointer-events:none" aria-hidden="true"></div>
+    <div class="container" style="max-width:860px;position:relative">
+      
+      <div class="hero-eco-badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22v-9"/><path d="M12 13a5 5 0 0 0 5-5c0-4-5-6-5-6s-5 2-5 6a5 5 0 0 0 5 5z"/><path d="M12 17a3 3 0 0 0 3-3"/></svg>
+        <span>Zero-Database Green Computing Standard</span>
+      </div>
+
+      <h1 id="sponsors-hero-title" style="font-size:clamp(2.4rem,5.5vw,4.2rem);line-height:1.15;margin-bottom:1.25rem;font-weight:800">
+        Backing the Stateless Privacy Revolution.<br>
+        <span style="color:var(--eco-green-light)">Zero Databases. Zero Carbon Leaks.</span>
+      </h1>
+
+      <p style="font-size:1.12rem;color:var(--text-muted);line-height:1.75;max-width:720px;margin:0 auto 2rem">
+        Cloud password managers run giant server clusters 24/7/365 to store billions of user vaults — creating massive energy waste, server cooling overhead, and recurring data breach risks. 
+        <strong>FrankPass replaces servers with pure client-side mathematics</strong> (PBKDF2-HMAC-SHA512). 
+        Our sponsors empower millions with free, stateless privacy while cutting megawatts of cloud energy consumption.
+      </p>
+
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <button type="button" onclick="openSponsorInquiryModal()" class="btn-primary btn-lg" style="background:var(--eco-green);border-color:var(--eco-green);color:#0f172a;font-weight:700">
+          🌱 Become an Official Sponsor
+        </button>
+        <a href="#sponsor-badges" class="btn-ghost btn-lg">
+          🛡️ View Embeddable Badges
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3-PILLAR GREEN COMPUTING IMPACT BAR -->
+  <div class="container" style="max-width:1100px;margin-bottom:2rem">
+    <div class="grid-3" style="gap:1.25rem">
+      <div class="card" style="padding:1.5rem;text-align:left;border-top:3px solid var(--eco-green)">
+        <div style="font-size:1.75rem;margin-bottom:0.5rem">🌿</div>
+        <h3 style="font-size:1.1rem;margin-bottom:0.4rem">100% Stateless Eco-Architecture</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
+          Passwords are derived locally in device RAM using WebCrypto and vanish instantly upon clipboard paste. Zero cloud databases means zero server idle power.
+        </p>
+      </div>
+
+      <div class="card" style="padding:1.5rem;text-align:left;border-top:3px solid var(--accent)">
+        <div style="font-size:1.75rem;margin-bottom:0.5rem">🛡️</div>
+        <h3 style="font-size:1.1rem;margin-bottom:0.4rem">Zero Breach Vulnerability</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
+          What is never stored can never be leaked, subpoenaed, or stolen in a corporate breach. Protecting millions of individuals across 373 countries.
+        </p>
+      </div>
+
+      <div class="card" style="padding:1.5rem;text-align:left;border-top:3px solid #38bdf8">
+        <div style="font-size:1.75rem;margin-bottom:0.5rem">⚖️</div>
+        <h3 style="font-size:1.1rem;margin-bottom:0.4rem">Immutable Open Standard</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
+          1,000,000 iteration cryptographic determinism. 100% open, auditable, and backed by transparent governance with zero investor vendor lock-in.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPONSORS CONTROL PANEL (DUAL TOGGLE + SEARCHABLE COUNTRY PICKER) -->
+  <div class="container" style="max-width:1100px">
+    <div class="sponsors-control-panel">
+      
+      <!-- Left: Dual Toggle Buttons -->
+      <div class="toggle-pill-group" role="tablist" aria-label="Sponsorship Geo Scope">
+        <button type="button" class="toggle-pill-btn active" id="btn-toggle-global" onclick="switchSponsorScope('global')" role="tab" aria-selected="true">
+          <span>🌐</span> Global Sponsors (Worldwide)
+        </button>
+        <button type="button" class="toggle-pill-btn" id="btn-toggle-country" onclick="switchSponsorScope('country')" role="tab" aria-selected="false">
+          <span>📍</span> <span id="current-country-tab-label">My Country Sponsors</span>
+        </button>
+      </div>
+
+      <!-- Right: Search / Select Other Countries -->
+      <div class="country-selector-wrap">
+        <label for="sponsor-country-picker-trigger" style="font-size:0.85rem;color:var(--text-muted);font-weight:600;white-space:nowrap">See Other Country:</label>
+        
+        <div class="custom-country-dropdown" style="position:relative">
+          <button id="sponsor-country-picker-trigger" class="country-select-btn" type="button" aria-haspopup="listbox" aria-expanded="false" onclick="toggleSponsorCountryPicker(event)">
+            <span style="display:flex;align-items:center;gap:8px">
+              <img id="sponsor-flag-icon" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" width="20" height="15" alt="Flag" style="border-radius:2px">
+              <span id="sponsor-country-name-txt">India (IN)</span>
+            </span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+
+          <div id="sponsor-country-panel" style="display:none;position:absolute;top:100%;right:0;width:280px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,0.4);z-index:100;padding:10px;margin-top:6px">
+            <input type="search" id="sponsor-country-search" placeholder="Search 373 countries..." style="width:100%;padding:8px 10px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-card-hover);color:var(--text-primary);font-size:0.85rem;margin-bottom:8px" oninput="filterSponsorCountryList(this.value)">
+            <div id="sponsor-country-list" style="max-height:220px;overflow-y:auto;display:flex;flex-direction:column;gap:2px"></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SPONSORS DIRECTORY DISPLAY AREA -->
+  <section class="section" style="padding-top:1rem" aria-labelledby="active-sponsors-heading">
+    <div class="container" style="max-width:1100px">
+      
+      <div style="text-align:center;margin-bottom:2.5rem">
+        <h2 id="active-sponsors-heading" style="font-size:2rem;margin-bottom:0.5rem">
+          <span id="sponsors-view-title">🌐 Worldwide Global Sponsors</span>
+        </h2>
+        <p style="color:var(--text-muted);font-size:0.95rem;max-width:650px;margin:0 auto" id="sponsors-view-subtitle">
+          Leading organizations championing client-side encryption and serverless carbon footprint reduction.
+        </p>
+      </div>
+
+      <!-- TIER 1: DIAMOND SPONSORS (Top 3 Slots) -->
+      <div class="tier-container">
+        <div class="tier-header">
+          <div class="tier-title-wrap">
+            <span class="tier-tag tag-diamond">Diamond Tier</span>
+            <h3 style="font-size:1.25rem;margin:0">Title Sponsors (Top 3 Slots)</h3>
+          </div>
+          <span style="font-size:0.85rem;color:var(--text-muted)">Hero Banner &bull; Feature Article &bull; Global Social Blast</span>
+        </div>
+
+        <div id="diamond-sponsors-wrap">
+          <!-- Featured Diamond Card 1: Official Ecosystem Sponsor Example -->
+          <div class="diamond-card">
+            <div style="width:84px;height:84px;border-radius:14px;background:linear-gradient(135deg,#8b5cf6,#ec4899);display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;font-weight:800;box-shadow:0 8px 20px rgba(139,92,246,0.3)">
+              FB
+            </div>
+            <div>
+              <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;margin-bottom:0.35rem">
+                <h4 style="font-size:1.35rem;margin:0;color:var(--text-primary)">FrankBase Ecosystem</h4>
+                <span class="tier-tag tag-diamond" style="font-size:0.7rem">Founding Diamond Backer</span>
+                <span style="font-size:0.8rem;color:var(--eco-green-light);font-weight:600">🌱 100% Green Certified</span>
+              </div>
+              <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.6rem">
+                The parent privacy initiative developing zero-knowledge web software, client-side offline tools, and touch-typing education engines. Proud founding backer of the FrankPass stateless standard.
+              </p>
+              <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;font-size:0.85rem">
+                <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);font-weight:600;text-decoration:none">Visit frankbase.com &rarr;</a>
+                <span style="color:var(--text-muted)">&bull;</span>
+                <a href="/about-us.html" style="color:var(--text-muted);text-decoration:none">Read Partner Spotlight</a>
+              </div>
+            </div>
+            <div>
+              <button type="button" onclick="openSponsorInquiryModal('Diamond')" class="btn-primary" style="font-size:0.85rem;padding:0.5rem 1rem">
+                Apply for Slot #2
+              </button>
+            </div>
+          </div>
+
+          <!-- Empty Slot 2 & 3 Placeholder -->
+          <div class="empty-slot-card" style="margin-bottom:1rem">
+            <div style="font-size:1.5rem">✨</div>
+            <strong style="color:var(--text-primary);font-size:1.05rem">Diamond Slot #2 &amp; #3 Available</strong>
+            <p style="font-size:0.88rem;max-width:480px;margin:0">
+              Get your organization featured prominently at the top of FrankPass across <span class="active-country-name-txt">Global</span> users, with a dedicated feature article and permanent badge.
+            </p>
+            <button type="button" onclick="openSponsorInquiryModal('Diamond')" class="btn-ghost" style="margin-top:0.4rem;font-size:0.85rem">
+              Apply as Diamond Sponsor &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIER 2: PLATINUM SPONSORS (Top 6 Slots) -->
+      <div class="tier-container">
+        <div class="tier-header">
+          <div class="tier-title-wrap">
+            <span class="tier-tag tag-platinum">Platinum Tier</span>
+            <h3 style="font-size:1.25rem;margin:0">Featured Partners (Top 6 Slots)</h3>
+          </div>
+          <span style="font-size:0.85rem;color:var(--text-muted)">Featured Grid Card &bull; Dofollow Link &bull; Green Badge</span>
+        </div>
+
+        <div class="platinum-grid" id="platinum-sponsors-wrap">
+          <!-- Card 1 -->
+          <div class="platinum-card">
+            <div>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem">
+                <span style="font-weight:700;font-size:1.1rem">Developer Tools Hub</span>
+                <span class="tier-tag tag-platinum" style="font-size:0.65rem">Platinum #1</span>
+              </div>
+              <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0">
+                Web cryptography validation engines, PBKDF2 iteration performance benchmarks, and client-side password entropy analyzers.
+              </p>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding-top:0.75rem;border-top:1px solid var(--border-color)">
+              <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:#38bdf8;font-weight:600;text-decoration:none">tools.frankpass.com ↗</a>
+              <span style="font-size:0.75rem;color:var(--eco-green-light)">🌱 Verified</span>
+            </div>
+          </div>
+
+          <!-- Empty Slots Grid -->
+          <div class="empty-slot-card" style="min-height:160px">
+            <span style="font-size:1.25rem">🟢</span>
+            <span style="font-weight:600;font-size:0.92rem;color:var(--text-primary)">Platinum Slot Available</span>
+            <button type="button" onclick="openSponsorInquiryModal('Platinum')" class="btn-ghost" style="padding:4px 10px;font-size:0.78rem">Reserve Slot &rarr;</button>
+          </div>
+          <div class="empty-slot-card" style="min-height:160px">
+            <span style="font-size:1.25rem">🟢</span>
+            <span style="font-weight:600;font-size:0.92rem;color:var(--text-primary)">Platinum Slot Available</span>
+            <button type="button" onclick="openSponsorInquiryModal('Platinum')" class="btn-ghost" style="padding:4px 10px;font-size:0.78rem">Reserve Slot &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIER 3: GOLD SPONSORS (Top 12 Slots) -->
+      <div class="tier-container">
+        <div class="tier-header">
+          <div class="tier-title-wrap">
+            <span class="tier-tag tag-gold">Gold Tier</span>
+            <h3 style="font-size:1.25rem;margin:0">Ecosystem Supporters (Top 12 Slots)</h3>
+          </div>
+          <span style="font-size:0.85rem;color:var(--text-muted)">Directory Link &bull; GitHub README Supporter List</span>
+        </div>
+
+        <div class="gold-grid" id="gold-sponsors-wrap">
+          <div class="gold-card">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(245,158,11,0.2);color:var(--gold-accent);display:flex;align-items:center;justify-content:center;font-weight:700">EV</div>
+            <div>
+              <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" style="font-weight:600;font-size:0.92rem;color:var(--text-primary);text-decoration:none">EnglishVidya Hub</a>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Zero-distraction linguistics</div>
+            </div>
+          </div>
+          <div class="gold-card">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(245,158,11,0.2);color:var(--gold-accent);display:flex;align-items:center;justify-content:center;font-weight:700">TY</div>
+            <div>
+              <a href="https://typing.frankbase.com" target="_blank" rel="noopener noreferrer" style="font-weight:600;font-size:0.92rem;color:var(--text-primary);text-decoration:none">Typing by FrankBase</a>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Open keyboard speed engine</div>
+            </div>
+          </div>
+          <div class="gold-card" style="border-style:dashed;justify-content:center;cursor:pointer" onclick="openSponsorInquiryModal('Gold')">
+            <span style="font-size:0.85rem;color:var(--accent-light);font-weight:600">+ Become a Gold Backer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIER 4: COMMUNITY & EBOOK BACKERS (PWYW) -->
+      <div class="tier-container" style="margin-bottom:2rem">
+        <div class="tier-header">
+          <div class="tier-title-wrap">
+            <span class="tier-tag tag-community">Community Backers</span>
+            <h3 style="font-size:1.25rem;margin:0">Pay-What-You-Want Micro-Backers Wall</h3>
+          </div>
+          <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" style="font-size:0.85rem;color:var(--eco-green-light);font-weight:600;text-decoration:none">Back via Digital Store ↗</a>
+        </div>
+
+        <div class="card" style="padding:1.5rem;display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center;justify-content:center">
+          <span style="font-size:0.88rem;color:var(--text-muted)">Supporting security researchers, open-source contributors &amp; eBook readers:</span>
+          <span class="badge" style="background:rgba(255,255,255,0.06);padding:6px 12px;border-radius:8px;font-size:0.85rem">🌟 Alex R. (Berlin)</span>
+          <span class="badge" style="background:rgba(255,255,255,0.06);padding:6px 12px;border-radius:8px;font-size:0.85rem">🌟 Priya Sharma (Bengaluru)</span>
+          <span class="badge" style="background:rgba(255,255,255,0.06);padding:6px 12px;border-radius:8px;font-size:0.85rem">🌟 Michael K. (Austin, TX)</span>
+          <span class="badge" style="background:rgba(255,255,255,0.06);padding:6px 12px;border-radius:8px;font-size:0.85rem">🌟 Hiroshi Tanaka (Tokyo)</span>
+          <span class="badge" style="background:rgba(255,255,255,0.06);padding:6px 12px;border-radius:8px;font-size:0.85rem">🌟 Vikram Joshi (Mumbai)</span>
+          <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:4px 10px;font-size:0.8rem;border-radius:8px">+ Add Your Name</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EMBEDDABLE SPONSOR BADGES SHOWCASE -->
+  <section id="sponsor-badges" class="section" style="background:rgba(0,0,0,0.2);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);padding:3.5rem 0" aria-labelledby="badges-heading">
+    <div class="container" style="max-width:1100px">
+      
+      <div style="text-align:center;margin-bottom:2.5rem">
+        <div class="hero-eco-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6z"/></svg>
+          Official Web Attribution
+        </div>
+        <h2 id="badges-heading" style="font-size:2.2rem;margin-bottom:0.75rem">Embeddable Verified Sponsor Badges</h2>
+        <p style="color:var(--text-muted);font-size:1rem;max-width:700px;margin:0 auto">
+          Show your website visitors that your organization stands for zero cloud data retention, ethical privacy, and green computing. Copy the verified SVG/HTML snippet directly onto your footer or website.
+        </p>
+      </div>
+
+      <div class="grid-2" style="gap:1.5rem">
+        
+        <!-- BADGE 1: Green Computing Supporter (Tree + Shield SVG) -->
+        <div class="badge-preview-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong style="font-size:1.05rem;color:var(--text-primary)">Badge 1: 🌱 Green Computing Supporter</strong>
+            <span class="tag-community tier-tag">Most Popular</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-muted);margin:0">
+            For eco-conscious tech companies and sustainable digital products.
+          </p>
+          
+          <div class="badge-visual-container">
+            <!-- Rendered SVG Badge 1 -->
+            <a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-block">
+              <svg width="240" height="42" viewBox="0 0 240 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="240" height="42" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+                <path d="M22 28V20M22 20C22 17.5 19 14 15 15C15 19 18 20 22 20ZM22 20C22 17.5 25 14 29 15C29 19 26 20 22 20Z" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="40" y="18" fill="#a7f3d0" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">I SUPPORT FRANKPASS</text>
+                <text x="40" y="31" fill="#ecfdf5" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="11" font-weight="600">Zero-Database Green Computing</text>
+              </svg>
+            </a>
+          </div>
+
+          <div class="code-snippet-box">
+            <button type="button" class="btn-copy-code" onclick="copyBadgeCode('badge-code-1', this)">📋 Copy HTML</button>
+            <code id="badge-code-1">&lt;a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener" title="FrankPass Green Computing Supporter"&gt;
+  &lt;svg width="240" height="42" viewBox="0 0 240 42" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;rect width="240" height="42" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/&gt;
+    &lt;path d="M22 28V20M22 20C22 17.5 19 14 15 15C15 19 18 20 22 20ZM22 20C22 17.5 25 14 29 15C29 19 26 20 22 20Z" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;
+    &lt;text x="40" y="18" fill="#a7f3d0" font-family="sans-serif" font-size="10" font-weight="700"&gt;I SUPPORT FRANKPASS&lt;/text&gt;
+    &lt;text x="40" y="31" fill="#ecfdf5" font-family="sans-serif" font-size="11" font-weight="600"&gt;Zero-Database Green Computing&lt;/text&gt;
+  &lt;/svg&gt;
+&lt;/a&gt;</code>
+          </div>
+        </div>
+
+        <!-- BADGE 2: Stateless Security Supporter (Shield + Key SVG) -->
+        <div class="badge-preview-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong style="font-size:1.05rem;color:var(--text-primary)">Badge 2: 🛡️ Stateless Security Backer</strong>
+            <span class="tag-diamond tier-tag">Privacy Standard</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-muted);margin:0">
+            For security blogs, developer platforms, and privacy advocate websites.
+          </p>
+          
+          <div class="badge-visual-container">
+            <!-- Rendered SVG Badge 2 -->
+            <a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-block">
+              <svg width="240" height="42" viewBox="0 0 240 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="240" height="42" rx="8" fill="#2e1065" stroke="#8b5cf6" stroke-width="1.5"/>
+                <path d="M20 12L28 15V22C28 27 20 30 20 30C20 30 12 27 12 22V15L20 12Z" fill="rgba(139,92,246,0.3)" stroke="#c084fc" stroke-width="1.5"/>
+                <circle cx="20" cy="20" r="2.5" fill="#fff"/>
+                <text x="38" y="18" fill="#ddd6fe" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">STATELESS PRIVACY</text>
+                <text x="38" y="31" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="11" font-weight="600">Proud FrankPass Supporter</text>
+              </svg>
+            </a>
+          </div>
+
+          <div class="code-snippet-box">
+            <button type="button" class="btn-copy-code" onclick="copyBadgeCode('badge-code-2', this)">📋 Copy HTML</button>
+            <code id="badge-code-2">&lt;a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener" title="FrankPass Stateless Privacy Supporter"&gt;
+  &lt;svg width="240" height="42" viewBox="0 0 240 42" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;rect width="240" height="42" rx="8" fill="#2e1065" stroke="#8b5cf6" stroke-width="1.5"/&gt;
+    &lt;path d="M20 12L28 15V22C28 27 20 30 20 30C20 30 12 27 12 22V15L20 12Z" fill="rgba(139,92,246,0.3)" stroke="#c084fc" stroke-width="1.5"/&gt;
+    &lt;circle cx="20" cy="20" r="2.5" fill="#fff"/&gt;
+    &lt;text x="38" y="18" fill="#ddd6fe" font-family="sans-serif" font-size="10" font-weight="700"&gt;STATELESS PRIVACY&lt;/text&gt;
+    &lt;text x="38" y="31" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="600"&gt;Proud FrankPass Supporter&lt;/text&gt;
+  &lt;/svg&gt;
+&lt;/a&gt;</code>
+          </div>
+        </div>
+
+        <!-- BADGE 3: Vaultless Champion (Eco-Bolt) -->
+        <div class="badge-preview-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong style="font-size:1.05rem;color:var(--text-primary)">Badge 3: ⚡ Vaultless Standard Champion</strong>
+            <span class="tag-platinum tier-tag">Modern Web</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-muted);margin:0">
+            For forward-thinking SaaS tools and open-source infrastructure creators.
+          </p>
+          
+          <div class="badge-visual-container">
+            <a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-block">
+              <svg width="240" height="42" viewBox="0 0 240 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="240" height="42" rx="8" fill="#082f49" stroke="#0284c7" stroke-width="1.5"/>
+                <path d="M21 11L14 23H22L19 31L28 19H20L21 11Z" fill="#38bdf8" stroke="#7dd3fc" stroke-width="1.2" stroke-linejoin="round"/>
+                <text x="38" y="18" fill="#bae6fd" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">VAULTLESS CRYPTO</text>
+                <text x="38" y="31" fill="#f0f9ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="11" font-weight="600">Zero-Database Champion</text>
+              </svg>
+            </a>
+          </div>
+
+          <div class="code-snippet-box">
+            <button type="button" class="btn-copy-code" onclick="copyBadgeCode('badge-code-3', this)">📋 Copy HTML</button>
+            <code id="badge-code-3">&lt;a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener" title="FrankPass Vaultless Champion"&gt;
+  &lt;svg width="240" height="42" viewBox="0 0 240 42" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;rect width="240" height="42" rx="8" fill="#082f49" stroke="#0284c7" stroke-width="1.5"/&gt;
+    &lt;path d="M21 11L14 23H22L19 31L28 19H20L21 11Z" fill="#38bdf8" stroke="#7dd3fc" stroke-width="1.2" stroke-linejoin="round"/&gt;
+    &lt;text x="38" y="18" fill="#bae6fd" font-family="sans-serif" font-size="10" font-weight="700"&gt;VAULTLESS CRYPTO&lt;/text&gt;
+    &lt;text x="38" y="31" fill="#f0f9ff" font-family="sans-serif" font-size="11" font-weight="600"&gt;Zero-Database Champion&lt;/text&gt;
+  &lt;/svg&gt;
+&lt;/a&gt;</code>
+          </div>
+        </div>
+
+        <!-- BADGE 4: Minimalist Community Badge -->
+        <div class="badge-preview-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong style="font-size:1.05rem;color:var(--text-primary)">Badge 4: 🌿 Minimalist Shields.io Style</strong>
+            <span class="tag-gold tier-tag">Lightweight</span>
+          </div>
+          <p style="font-size:0.86rem;color:var(--text-muted);margin:0">
+            For GitHub README.md files, developer docs, and clean minimal footers.
+          </p>
+          
+          <div class="badge-visual-container">
+            <a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-block">
+              <svg width="220" height="28" viewBox="0 0 220 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="110" height="28" fill="#334155" rx="4"/>
+                <rect x="110" width="110" height="28" fill="#10b981" rx="4"/>
+                <text x="12" y="18" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="11" font-weight="600">🛡️ Sponsor</text>
+                <text x="120" y="18" fill="#ffffff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="11" font-weight="700">FrankPass Green</text>
+              </svg>
+            </a>
+          </div>
+
+          <div class="code-snippet-box">
+            <button type="button" class="btn-copy-code" onclick="copyBadgeCode('badge-code-4', this)">📋 Copy HTML</button>
+            <code id="badge-code-4">&lt;a href="https://frankpass.com/sponsors.html" target="_blank" rel="noopener"&gt;
+  &lt;img src="https://img.shields.io/badge/Sponsor-FrankPass_Green_Privacy-10b981?style=flat&amp;logo=shield" alt="FrankPass Sponsor"&gt;
+&lt;/a&gt;</code>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPONSORSHIP TIERS, TRANSPARENT PRICING & BIDDING RULES -->
+  <section class="section" style="padding:3.5rem 0" aria-labelledby="pricing-tiers-heading">
+    <div class="container" style="max-width:1100px">
+      
+      <div style="text-align:center;margin-bottom:2.5rem">
+        <h2 id="pricing-tiers-heading" style="font-size:2.2rem;margin-bottom:0.75rem">Transparent Sponsorship Tiers &amp; Placement</h2>
+        <p style="color:var(--text-muted);font-size:1rem;max-width:680px;margin:0 auto">
+          We maintain 100% price transparency and zero hidden agreements. Every penny goes directly toward maintaining serverless edge hosting, cryptographic research, and open education.
+        </p>
+      </div>
+
+      <div style="overflow-x:auto;margin-bottom:2.5rem">
+        <table style="width:100%;border-collapse:collapse;text-align:left;background:var(--bg-card);border:1px solid var(--border-color);border-radius:14px;overflow:hidden">
+          <thead>
+            <tr style="background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border-color);font-size:0.92rem">
+              <th style="padding:1rem 1.25rem;color:var(--text-primary)">Tier</th>
+              <th style="padding:1rem;color:var(--text-primary)">Available Slots</th>
+              <th style="padding:1rem;color:var(--text-primary)">Global Pricing</th>
+              <th style="padding:1rem;color:var(--text-primary)">India Pricing</th>
+              <th style="padding:1rem;color:var(--text-primary)">Core Deliverables</th>
+              <th style="padding:1rem;text-align:right">Action</th>
+            </tr>
+          </thead>
+          <tbody style="font-size:0.88rem;color:var(--text-muted)">
+            <tr style="border-bottom:1px solid var(--border-color)">
+              <td style="padding:1rem 1.25rem;font-weight:700;color:#c084fc">💎 Diamond Title</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">Top 3 Slots / Region</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">$499 / mo</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">₹39,999 / mo</td>
+              <td style="padding:1rem">Hero Brand Banner, Dedicated Feature Article, Social Media Blast across 6 channels, Verified Badge.</td>
+              <td style="padding:1rem;text-align:right"><button type="button" onclick="openSponsorInquiryModal('Diamond')" class="btn-primary" style="padding:4px 12px;font-size:0.8rem">Apply</button></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color)">
+              <td style="padding:1rem 1.25rem;font-weight:700;color:#38bdf8">🔷 Platinum Partner</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">Top 6 Slots / Region</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">$199 / mo</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">₹14,999 / mo</td>
+              <td style="padding:1rem">Featured Grid Card, 50-word pitch, Dofollow website link, Official Verified Badge.</td>
+              <td style="padding:1rem;text-align:right"><button type="button" onclick="openSponsorInquiryModal('Platinum')" class="btn-ghost" style="padding:4px 12px;font-size:0.8rem">Apply</button></td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-color)">
+              <td style="padding:1rem 1.25rem;font-weight:700;color:#fbbf24">🟡 Gold Supporter</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">Top 12 Slots / Region</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">$79 / mo</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">₹5,999 / mo</td>
+              <td style="padding:1rem">Directory Listing, Logo, GitHub README credit, Verified Backer Badge.</td>
+              <td style="padding:1rem;text-align:right"><button type="button" onclick="openSponsorInquiryModal('Gold')" class="btn-ghost" style="padding:4px 12px;font-size:0.8rem">Apply</button></td>
+            </tr>
+            <tr>
+              <td style="padding:1rem 1.25rem;font-weight:700;color:var(--eco-green-light)">🌱 Community Backer</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">Unlimited</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">$5+ (PWYW)</td>
+              <td style="padding:1rem;font-weight:600;color:var(--text-primary)">₹299+ (PWYW)</td>
+              <td style="padding:1rem">Name on Community Wall of Fame, eBook bundle support.</td>
+              <td style="padding:1rem;text-align:right"><a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:4px 12px;font-size:0.8rem">Back</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Transparent Bidding & Top Position Rules Callout -->
+      <div class="card" style="padding:1.5rem;background:rgba(139,92,246,0.06);border-left:4px solid var(--accent)">
+        <h4 style="font-size:1.05rem;margin-bottom:0.5rem;color:var(--text-primary)">⚖️ Transparent Bidding &amp; Fair Placement Rules</h4>
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;margin:0">
+          Because top Diamond slots are limited to exactly 3 positions per region, when multiple organizations in the same industry apply simultaneously for Diamond Slot #1, placement is allocated via <strong>transparent monthly bidding</strong> (starting at the base tier price). Sponsors retain slot tenure for the duration of their active contract. If a sponsor decides not to renew, the slot is immediately offered to the next organization on the transparent waitlist.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GOVERNANCE: SPONSOR != CUSTOMER & STRICT MORAL BLOCKLIST -->
+  <section class="section" style="background:rgba(0,0,0,0.25);border-top:1px solid var(--border-color);padding:3.5rem 0" aria-labelledby="policy-heading">
+    <div class="container" style="max-width:1100px">
+      
+      <div style="text-align:center;margin-bottom:2.5rem">
+        <h2 id="policy-heading" style="font-size:2.2rem;margin-bottom:0.75rem">Ethical Sponsorship Governance</h2>
+        <p style="color:var(--text-muted);font-size:1rem;max-width:680px;margin:0 auto">
+          FrankPass operates with 100% integrity, complete transparency, and strict moral boundaries.
+        </p>
+      </div>
+
+      <div class="grid-2" style="gap:2rem">
+        
+        <!-- Sponsor != Customer Rule -->
+        <div class="card" style="padding:1.75rem;border-left:4px solid #38bdf8">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem">
+            <span style="font-size:1.5rem">🛡️</span>
+            <h3 style="font-size:1.2rem;margin:0">Sponsor &ne; Customer Invariant</h3>
+          </div>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem">
+            <strong>Sponsors receive brand visibility, public ESG attribution, and community goodwill — but NEVER free software keys, algorithmic privileges, or backdoor access.</strong>
+          </p>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;margin:0">
+            FrankPass Pro keys and software licenses are sold strictly as commercial software on <a href="https://store.frankbase.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);font-weight:600">store.frankbase.com</a>. We do not sell cryptographic integrity. Every user, whether a student, a CEO, or a Fortune 500 company, runs the exact same unalterable mathematical engine.
+          </p>
+        </div>
+
+        <!-- Strict Moral Blocklist -->
+        <div class="card" style="padding:1.75rem;border-left:4px solid #ef4444">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem">
+            <span style="font-size:1.5rem">🚫</span>
+            <h3 style="font-size:1.2rem;margin:0;color:#f87171">Strict Moral Blocklist (Zero Tolerance)</h3>
+          </div>
+          <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin-bottom:0.75rem">
+            To protect human dignity, ethical privacy, and societal well-being, we reject 100% of sponsorship offers from:
+          </p>
+          <ul style="font-size:0.85rem;color:var(--text-muted);line-height:1.65;margin:0;padding-left:1.25rem">
+            <li><strong>Gambling, Betting &amp; Casino Apps</strong> (Zero tolerance)</li>
+            <li><strong>Cryptocurrency, Bitcoin, Memecoins &amp; NFTs</strong> (Zero tolerance)</li>
+            <li><strong>Political Parties, Partisan Campaigns &amp; PACs</strong></li>
+            <li><strong>Predatory Loans &amp; Exploitative Payday Credit</strong></li>
+            <li><strong>Adult, Pornography &amp; Explicit Content Platforms</strong></li>
+            <li><strong>Spyware, Adware, Data Brokers &amp; Surveillance Tools</strong></li>
+            <li><strong>Tobacco, E-Cigarettes &amp; Harmful Substances</strong></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- SPONSORSHIP INQUIRY MODAL -->
+<div class="sponsor-modal-overlay" id="sponsor-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="sponsor-modal-box">
+    <button type="button" class="close-modal-btn" onclick="closeSponsorInquiryModal()" aria-label="Close modal">&times;</button>
+    
+    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
+      <span style="font-size:1.5rem">🌱</span>
+      <h3 id="modal-title" style="font-size:1.35rem;margin:0">Apply for FrankPass Sponsorship</h3>
+    </div>
+    
+    <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.55;margin-bottom:1.5rem">
+      Join the ethical privacy ecosystem. Please fill in your organization details. Applications are reviewed directly by founder Master Manikant Yadav.
+    </p>
+
+    <form id="sponsor-form" onsubmit="handleSponsorFormSubmit(event)">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:4px;color:var(--text-primary)">Organization / Brand Name *</label>
+          <input type="text" id="sp-name" required placeholder="e.g. Acme Privacy Corp" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-card-hover);color:var(--text-primary);font-size:0.88rem">
+        </div>
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:4px;color:var(--text-primary)">Official Website URL *</label>
+          <input type="url" id="sp-url" required placeholder="https://example.com" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-card-hover);color:var(--text-primary);font-size:0.88rem">
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:4px;color:var(--text-primary)">Desired Sponsorship Tier *</label>
+          <select id="sp-tier" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-card-hover);color:var(--text-primary);font-size:0.88rem">
+            <option value="Diamond">💎 Diamond Title Tier ($499 / ₹39,999/mo)</option>
+            <option value="Platinum">🔷 Platinum Partner Tier ($199 / ₹14,999/mo)</option>
+            <option value="Gold">🟡 Gold Supporter Tier ($79 / ₹5,999/mo)</option>
+            <option value="Community">🌱 Community Backer (Pay-What-You-Want)</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:4px;color:var(--text-primary)">Geographic Target Scope *</label>
+          <select id="sp-scope" style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-card-hover);color:var(--text-primary);font-size:0.88rem">
+            <option value="Global">🌐 Global (Worldwide View)</option>
+            <option value="India">🇮🇳 India (Country-Specific)</option>
+            <option value="United States">🇺🇸 United States</option>
+            <option value="United Kingdom">🇬🇧 United Kingdom</option>
+            <option value="Germany">🇩🇪 Germany</option>
+            <option value="Other">🌍 Other Specific Country</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1rem">
+        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:4px;color:var(--text-primary)">Ethical Blocklist Verification *</label>
+        <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.82rem;color:var(--text-muted);cursor:pointer">
+          <input type="checkbox" id="sp-ethical" required style="margin-top:3px">
+          <span>I confirm our organization has ZERO affiliation with gambling/betting, cryptocurrency/NFTs, political campaigns, predatory loans, or spyware.</span>
+        </label>
+      </div>
+
+      <div style="margin-bottom:1.5rem">
+        <label style="display:block;font-size:0.82rem;font-weight:600;margin-bottom:4px;color:var(--text-primary)">Message / Campaign Intent</label>
+        <textarea id="sp-msg" rows="3" placeholder="Briefly describe your company mission and what you wish to highlight..." style="width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border-color);background:var(--bg-card-hover);color:var(--text-primary);font-size:0.88rem"></textarea>
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:0.75rem">
+        <button type="button" onclick="closeSponsorInquiryModal()" class="btn-ghost">Cancel</button>
+        <button type="submit" class="btn-primary" style="background:var(--eco-green);border-color:var(--eco-green);color:#0f172a;font-weight:700">Submit Application &rarr;</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- SITE FOOTER -->
+<div id="site-footer"></div>
+
+<!-- BOTTOM MOBILE NAVIGATION BAR -->
+<nav class="bottom-nav" aria-label="Mobile quick navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="/pin.html" class="mob-nav-item" aria-label="PIN"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>PIN</span></a>
+  <a href="/sponsors.html" class="mob-nav-item active" aria-label="Sponsors" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22v-9"/><path d="M12 13a5 5 0 0 0 5-5c0-4-5-6-5-6s-5 2-5 6a5 5 0 0 0 5 5z"/></svg><span>Sponsors</span></a>
+  <a href="/docs.html" class="mob-nav-item" aria-label="Docs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span>Docs</span></a>
+  <a href="/about-us.html" class="mob-nav-item" aria-label="About"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>About</span></a>
+</nav>
+
+<!-- SCRIPTS -->
+<script src="/frankpass-config.js?v=3.7.3"></script>
+<script src="/country-data.js"></script>
+<script src="/country-dropdown.js?v=3.7.3"></script>
+<script src="/footer.js?v=3.7.3"></script>
+
+<script>
+  // ── SPONSORS HUB INTERACTIVE CONTROLLER ──
+  let activeScope = 'global';
+  let selectedCountry = { name: 'India', code: 'in', label: 'India (IN)' };
+
+  function switchSponsorScope(scope) {
+    activeScope = scope;
+    const btnGlobal = document.getElementById('btn-toggle-global');
+    const btnCountry = document.getElementById('btn-toggle-country');
+    const viewTitle = document.getElementById('sponsors-view-title');
+    const viewSubtitle = document.getElementById('sponsors-view-subtitle');
+
+    if (scope === 'global') {
+      btnGlobal.classList.add('active');
+      btnGlobal.setAttribute('aria-selected', 'true');
+      btnCountry.classList.remove('active');
+      btnCountry.setAttribute('aria-selected', 'false');
+
+      viewTitle.textContent = '🌐 Worldwide Global Sponsors';
+      viewSubtitle.textContent = 'Leading international organizations championing client-side encryption and serverless carbon footprint reduction.';
+      updatePlaceholdersText('Worldwide');
+    } else {
+      btnCountry.classList.add('active');
+      btnCountry.setAttribute('aria-selected', 'true');
+      btnGlobal.classList.remove('active');
+      btnGlobal.setAttribute('aria-selected', 'false');
+
+      viewTitle.textContent = '📍 ' + selectedCountry.name + ' Sponsors';
+      viewSubtitle.textContent = 'Verified organizations and regional partners supporting open privacy in ' + selectedCountry.name + '.';
+      updatePlaceholdersText(selectedCountry.name);
+    }
+  }
+
+  function updatePlaceholdersText(regionName) {
+    document.querySelectorAll('.active-country-name-txt').forEach(el => el.textContent = regionName);
+  }
+
+  // Country Picker Dropdown Logic
+  function toggleSponsorCountryPicker(e) {
+    e.stopPropagation();
+    const panel = document.getElementById('sponsor-country-panel');
+    const isOpen = panel.style.display === 'block';
+    panel.style.display = isOpen ? 'none' : 'block';
+    if (!isOpen) {
+      document.getElementById('sponsor-country-search').focus();
+      populateSponsorCountryList('');
+    }
+  }
+
+  function populateSponsorCountryList(filter) {
+    const listEl = document.getElementById('sponsor-country-list');
+    if (!listEl) return;
+    listEl.innerHTML = '';
+    const countries = window.COUNTRY_LIST || [];
+    const q = (filter || '').toLowerCase().trim();
+    const filtered = q ? countries.filter(c => c.name.toLowerCase().includes(q) || c.code.toLowerCase().includes(q)) : countries;
+
+    filtered.forEach(c => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;cursor:pointer;font-size:0.85rem;color:var(--text-primary);transition:background 0.15s;';
+      row.onmouseenter = () => row.style.background = 'rgba(139,92,246,0.15)';
+      row.onmouseleave = () => row.style.background = 'transparent';
+      
+      row.innerHTML = `
+        <img src="/flags/${c.code.toLowerCase()}.png" onerror="this.src='https://flagcdn.com/w40/${c.code.toLowerCase()}.png'" width="18" height="13" style="border-radius:2px" alt="${c.code}">
+        <span style="flex:1">${c.name}</span>
+        <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600">${c.code.toUpperCase()}</span>
+      `;
+
+      row.onclick = (e) => {
+        e.stopPropagation();
+        selectSponsorCountry(c);
+      };
+      listEl.appendChild(row);
+    });
+  }
+
+  function filterSponsorCountryList(val) {
+    populateSponsorCountryList(val);
+  }
+
+  function selectSponsorCountry(c) {
+    selectedCountry = c;
+    document.getElementById('sponsor-flag-icon').src = `/flags/${c.code.toLowerCase()}.png`;
+    document.getElementById('sponsor-country-name-txt').textContent = `${c.name} (${c.code.toUpperCase()})`;
+    document.getElementById('current-country-tab-label').textContent = `${c.name} Sponsors`;
+    document.getElementById('sponsor-country-panel').style.display = 'none';
+    switchSponsorScope('country');
+  }
+
+  // Close country dropdown on outside click
+  document.addEventListener('click', function(e) {
+    const panel = document.getElementById('sponsor-country-panel');
+    const trigger = document.getElementById('sponsor-country-picker-trigger');
+    if (panel && trigger && !panel.contains(e.target) && !trigger.contains(e.target)) {
+      panel.style.display = 'none';
+    }
+  });
+
+  // 1-Click Code Copy for Embed Badges
+  function copyBadgeCode(elementId, btnEl) {
+    const code = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(code).then(() => {
+      const origText = btnEl.innerHTML;
+      btnEl.innerHTML = '✅ Copied!';
+      btnEl.style.background = '#10b981';
+      btnEl.style.borderColor = '#10b981';
+      setTimeout(() => {
+        btnEl.innerHTML = origText;
+        btnEl.style.background = '';
+        btnEl.style.borderColor = '';
+      }, 2000);
+    }).catch(err => {
+      alert('Code copied to clipboard.');
+    });
+  }
+
+  // Modal Open / Close
+  function openSponsorInquiryModal(tier) {
+    const modal = document.getElementById('sponsor-modal');
+    if (tier) {
+      const tierSelect = document.getElementById('sp-tier');
+      if (tierSelect) tierSelect.value = tier;
+    }
+    modal.classList.add('open');
+  }
+
+  function closeSponsorInquiryModal() {
+    document.getElementById('sponsor-modal').classList.remove('open');
+  }
+
+  function handleSponsorFormSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('sp-name').value;
+    const url = document.getElementById('sp-url').value;
+    const tier = document.getElementById('sp-tier').value;
+    const scope = document.getElementById('sp-scope').value;
+    const msg = document.getElementById('sp-msg').value;
+
+    const subject = encodeURIComponent(`[Sponsorship Application] ${name} - ${tier} Tier (${scope})`);
+    const body = encodeURIComponent(
+      `Hello Master Manikant & FrankPass Executive Team,
+
+` +
+      `We would like to apply to become an official FrankPass Sponsor.
+
+` +
+      `Organization: ${name}
+` +
+      `Website: ${url}
+` +
+      `Desired Tier: ${tier}
+` +
+      `Target Scope: ${scope}
+` +
+      `Blocklist Attestation: Verified 100% clean (No gambling, crypto, politics, predatory loans)
+
+` +
+      `Message & Intent:
+${msg}
+
+` +
+      `Best regards,
+${name}`
+    );
+
+    window.location.href = `mailto:connect@mastermanikant.com?subject=${subject}&body=${body}`;
+    closeSponsorInquiryModal();
+  }
+
+  // Initialize with detected country
+  document.addEventListener('DOMContentLoaded', () => {
+    try {
+      if (window.COUNTRY_LIST && window.COUNTRY_LIST.length) {
+        populateSponsorCountryList('');
+      }
+    } catch(e) {}
+  });
+</script>
+
+</body>
+</html>

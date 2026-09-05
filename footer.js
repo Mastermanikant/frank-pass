@@ -99,6 +99,7 @@
       <div class="footer-col">
         <div class="footer-col-title">Trust &amp; Legal</div>
         <a href="/about-us.html">About FrankPass</a>
+        <a href="/sponsors.html">🌱 Green Sponsors Hub</a>
         <a href="/founder-mastermanikant.html">Master Manikant (Founder)</a>
         <a href="/legal.html#privacy">Privacy Policy</a>
         <a href="/legal.html#terms">Terms of Service</a>

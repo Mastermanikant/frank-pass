@@ -79,6 +79,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://frankpass.com/sponsors.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
     <loc>https://frankpass.com/about-us.html</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
