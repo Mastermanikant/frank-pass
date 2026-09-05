@@ -5,7 +5,7 @@ const CACHED_URLS = [
     '/index.html',
     '/random-password-generator.html',
     '/pin.html',
-    '/generators-comparison.html',
+    '/comparison-between-frankpass-all-generators-deterministic-random-pin.html',
     '/install.html',
     '/pro.html',
     '/docs.html',
