@@ -36,7 +36,7 @@
  <noscript>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
  </noscript>
- <link rel="stylesheet" href="/style.css?v=3.6.7">
+ <link rel="stylesheet" href="/style.css?v=3.6.8">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs Context">
@@ -395,45 +395,60 @@
 
  <!-- Advanced panel (collapsed by default) -->
  <div class="advanced-panel" id="advanced-panel" aria-hidden="true">
- <!-- Variant System -->
- <div class="form-group">
- <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem">
- <label class="form-label" style="margin:0; text-transform: uppercase;" for="variant-input">Password Number <span style="display:none;" id="variant-val"></span></label>
- <!-- Variant Mode Tabs -->
- <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid var(--border)">
- <button type="button" id="variant-tab-counter" class="variant-tab active" aria-label="Permanent Counter Mode" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
- <button type="button" id="variant-tab-date" class="variant-tab" aria-label="Month and Year Rotation Mode" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
- </div>
- </div>
+  <div class="form-group">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem">
+  <div style="display:flex;align-items:center;gap:0.4rem">
+  <label class="form-label" style="margin:0; text-transform: uppercase;" for="variant-input">Password Number / Rotation</label>
+  <!-- Info Guidance Popover Tooltip -->
+  <div class="secret-info-wrap" id="variant-info-wrap">
+  <button type="button" class="secret-info-btn" id="variant-info-btn" aria-label="Rotation Help" title="What is Password Rotation?">
+  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  </button>
+  <div class="secret-info-popover" id="variant-info-popover" role="tooltip" style="min-width:280px">
+  <div class="info-popover-title">🔄 What is Password Rotation?</div>
+  <p class="info-popover-desc">Change this number if a website asks you to update your password, without ever having to change your Master Secret Key.</p>
+  <div class="info-popover-tip">
+  🔢 <strong>Counter (1, 2, 3...):</strong> Default is <code>1</code>. Increase to <code>2</code> or <code>3</code> to get a fresh unique password for that site.<br>
+  📅 <strong>Month/Year:</strong> For corporate/office policies requiring monthly password changes (e.g. <code>10/2026</code>).
+  </div>
+  </div>
+  </div>
+  </div>
+  <!-- Variant Mode Tabs -->
+  <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid var(--border)">
+  <button type="button" id="variant-tab-counter" class="variant-tab active" aria-label="Permanent Counter Mode" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
+  <button type="button" id="variant-tab-date" class="variant-tab" aria-label="Month and Year Rotation Mode" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
+  </div>
+  </div>
 
- <!-- Mode 1: Numeric Counter (1-999) with stepper -->
- <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
- <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">&minus;</button>
- <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
- <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
- </div>
+  <!-- Mode 1: Numeric Counter (1-999) with stepper -->
+  <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
+  <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">&minus;</button>
+  <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
+  <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
+  </div>
 
- <!-- Mode 2: Month & Custom Year Rotation -->
- <div id="variant-date-wrap" style="display:none;gap:0.5rem">
- <select id="variant-month-select" class="form-input" style="flex:1.2;cursor:pointer" aria-label="Rotation Month">
- <option value="01">January</option>
- <option value="02">February</option>
- <option value="03">March</option>
- <option value="04">April</option>
- <option value="05">May</option>
- <option value="06">June</option>
- <option value="07">July</option>
- <option value="08">August</option>
- <option value="09">September</option>
- <option value="10">October</option>
- <option value="11">November</option>
- <option value="12">December</option>
- </select>
- <input id="variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
- </div>
+  <!-- Mode 2: Month & Custom Year Rotation -->
+  <div id="variant-date-wrap" style="display:none;gap:0.5rem">
+  <select id="variant-month-select" class="form-input" style="flex:1.2;cursor:pointer" aria-label="Rotation Month">
+  <option value="01">January</option>
+  <option value="02">February</option>
+  <option value="03">March</option>
+  <option value="04">April</option>
+  <option value="05">May</option>
+  <option value="06">June</option>
+  <option value="07">July</option>
+  <option value="08">August</option>
+  <option value="09">September</option>
+  <option value="10">October</option>
+  <option value="11">November</option>
+  <option value="12">December</option>
+  </select>
+  <input id="variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
+  </div>
 
- <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">Permanent default is Counter 1. Only change if you want to rotate your password without changing your Secret Key.</span>
- </div>
+  <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">💡 Default is 1. Change to 2, 3... only if you want a new password for this site.</span>
+  </div>
 
  <!-- Password Type -->
  <div class="form-group">
@@ -1648,21 +1663,27 @@ if (uInput && uHint) {
   });
 }
 
-/* ── Secret Key Info Tooltip Toggle (Mobile & Click) ── */
-const infoBtn = document.getElementById('secret-info-btn');
-const infoWrap = document.getElementById('secret-info-wrap');
-if (infoBtn && infoWrap) {
-  infoBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    infoWrap.classList.toggle('open');
-  });
-  document.addEventListener('click', (e) => {
-    if (!infoWrap.contains(e.target)) {
-      infoWrap.classList.remove('open');
+/* ── Info Guidance Tooltips Toggle (Mobile & Click Support) ── */
+document.querySelectorAll('.secret-info-wrap').forEach(wrap => {
+  const btn = wrap.querySelector('.secret-info-btn');
+  if (btn) {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      document.querySelectorAll('.secret-info-wrap').forEach(w => {
+        if (w !== wrap) w.classList.remove('open');
+      });
+      wrap.classList.toggle('open');
+    });
+  }
+});
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.secret-info-wrap').forEach(wrap => {
+    if (!wrap.contains(e.target)) {
+      wrap.classList.remove('open');
     }
   });
-}
+});
 
 /* ── Secret Key Entropy & Strength Bar Meter ── */
 const secretKeyEl = document.getElementById('secret-key');
