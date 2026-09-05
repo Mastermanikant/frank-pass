@@ -36,7 +36,7 @@
  <noscript>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
  </noscript>
- <link rel="stylesheet" href="/style.css?v=3.6.4">
+ <link rel="stylesheet" href="/style.css?v=3.6.5">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs Context">
@@ -358,7 +358,7 @@
  <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
  </div>
 
- <!-- Secret key input & Strength Meter -->
+ <!-- Secret key input -->
  <div class="form-group">
  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
  <div style="display:flex;align-items:center;gap:0.4rem">
@@ -378,11 +378,6 @@
  </div>
  </div>
  </div>
- <label class="toggle-switch-right" for="remember-secret" style="display:inline-flex;align-items:center;gap:0.5rem;margin:0 12px 0 0;cursor:pointer" title="Biometric Lock (Touch ID / Face ID / Windows Hello) — 0 bytes stored in cloud">
- <span style="font-size:0.78rem;color:var(--text-muted)">Remember on this device</span>
- <input type="checkbox" id="remember-secret" role="switch" aria-checked="false" style="display:none">
- <span class="toggle-track" aria-hidden="true"></span>
- </label>
  </div>
  <div class="input-wrapper">
  <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. my pet is faithful, my secret phrase..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
@@ -390,16 +385,6 @@
  <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
  </button>
  </div>
- <!-- Dynamic 4-Segment Strength Meter -->
- <div class="secret-strength-container" id="secret-strength-container">
- <div class="strength-bar-segments">
- <div class="strength-segment" id="str-seg-1"></div>
- <div class="strength-segment" id="str-seg-2"></div>
- <div class="strength-segment" id="str-seg-3"></div>
- <div class="strength-segment" id="str-seg-4"></div>
- </div>
- </div>
- <div id="saved-badge" style="display:none;align-items:center;gap:0.35rem;font-size:0.75rem;color:var(--success);font-weight:700;margin:0.5rem 0 0.35rem 0"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="display:inline-block;vertical-align:-1px;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg><span id="saved-badge-text">Encrypted Locally</span></div>
  <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
  </div>
 
