@@ -36,7 +36,7 @@
  <noscript>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
  </noscript>
- <link rel="stylesheet" href="/style.css?v=3.6.6">
+ <link rel="stylesheet" href="/style.css?v=3.6.7">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs Context">
@@ -331,9 +331,9 @@
  </div>
  </div>
 
- <!-- Username / Account Email (Optional) -->
+ <!-- Username / Email (Optional) -->
   <div class="form-group" id="username-group">
-  <label class="form-label" for="username-input">Username / Account Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
+  <label class="form-label" for="username-input">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
   <div class="input-wrapper">
   <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint">
   </div>
@@ -995,7 +995,28 @@ function populatePlatformDatalist(countryCode) {
 window.populatePlatformDatalist = populatePlatformDatalist;
 setTimeout(() => populatePlatformDatalist(), 200); 
 
+let savedPlatformVal = '';
+
 if (platformInput) {
+  platformInput.addEventListener('focus', () => {
+    if (platformInput.value.trim()) {
+      savedPlatformVal = platformInput.value;
+      platformInput.value = '';
+      renderDatalistItems('');
+      if (platformHint) platformHint.textContent = '';
+      if (platformValid) platformValid.classList.remove('visible');
+    }
+  });
+
+  platformInput.addEventListener('blur', () => {
+    // If user clicked outside without entering new text, restore previous platform
+    if (!platformInput.value.trim() && savedPlatformVal) {
+      platformInput.value = savedPlatformVal;
+      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    savedPlatformVal = '';
+  });
+
   platformInput.addEventListener('input', (e) => {
     const raw = e.target.value.trim();
     renderDatalistItems(raw);

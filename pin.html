@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="/style.css?v=3.6.6">
+  <link rel="stylesheet" href="/style.css?v=3.6.7">
   <link rel="icon" href="/icons/favicon.png">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
@@ -250,17 +250,37 @@ toggleSecretBtn.addEventListener('click', () => {
   }
 });
 
-// Platform input hint
+// Platform input hint & auto-blank on focus / restore on blur
 const platformInput = document.getElementById('pin-platform');
 const platformHint = document.getElementById('pin-platform-hint');
-platformInput.addEventListener('input', () => {
-  const val = platformInput.value.trim();
-  if (val && typeof FrankPassUtils !== 'undefined') {
-    platformHint.textContent = FrankPassUtils.getSeedHint(val);
-  } else {
-    platformHint.textContent = '';
-  }
-});
+let savedPinPlatformVal = '';
+
+if (platformInput) {
+  platformInput.addEventListener('focus', () => {
+    if (platformInput.value.trim()) {
+      savedPinPlatformVal = platformInput.value;
+      platformInput.value = '';
+      if (platformHint) platformHint.textContent = '';
+    }
+  });
+
+  platformInput.addEventListener('blur', () => {
+    if (!platformInput.value.trim() && savedPinPlatformVal) {
+      platformInput.value = savedPinPlatformVal;
+      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    savedPinPlatformVal = '';
+  });
+
+  platformInput.addEventListener('input', () => {
+    const val = platformInput.value.trim();
+    if (val && typeof FrankPassUtils !== 'undefined') {
+      platformHint.textContent = FrankPassUtils.getSeedHint(val);
+    } else {
+      platformHint.textContent = '';
+    }
+  });
+}
 
 // Generate PIN Handler
 document.getElementById('pin-generate-btn').addEventListener('click', async () => {
