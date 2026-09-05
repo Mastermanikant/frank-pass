@@ -121,7 +121,7 @@
  <a href="#security-model" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">Security Model</a>
  <a href="#advanced-options" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">Advanced Options</a>
  <a href="#platform-tips" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">Platform Tips</a>
- 
+ <a href="#developer-cli" style="color:var(--text-muted);font-size:0.88rem;padding:0.3rem 0">Developer CLI &amp; Hub</a>
  </nav>
  </details>
  </div>
@@ -144,7 +144,7 @@
  <a href="#security-model" class="docs-toc-link">Security Model</a>
  <a href="#advanced-options" class="docs-toc-link">Advanced Options</a>
  <a href="#platform-tips" class="docs-toc-link">Platform Tips</a>
- 
+ <a href="#developer-cli" class="docs-toc-link">Developer CLI &amp; Hub</a>
  </nav>
  </aside>
 
@@ -304,11 +304,37 @@
  <p>If you manage multiple accounts on the same platform (e.g., two email addresses on Gmail, or two Instagram profiles), use the Username field to distinguish them. Enter something stable - ideally a fixed identifier like the account number or handle - not a changeable email address.</p>
  </article>
 
- <!-- ── Chapter 7: SDK (Coming Soon) ── -->
- <article id="sdk" style="margin-bottom:4rem;opacity:0.6" aria-labelledby="ch7-heading">
- <h2 id="ch7-heading">Chapter 7: SDK <span class="coming-soon-badge" style="vertical-align:middle">Coming Soon</span></h2>
- <p style="color:var(--text-muted)">The FrankPass JavaScript SDK will expose the same PBKDF2 + HMAC-SHA512 engine as a standalone npm package and browser module, so developers can integrate stateless password generation into their own applications. Documentation will appear here at launch.</p>
- <p style="color:var(--text-muted)">Follow <a href="https://x.com/frankpasshq" target="_blank" rel="noopener noreferrer">@frankpasshq</a> for the release announcement.</p>
+ <!-- ── Chapter 7: Developer CLI, Subdomain Intelligence & Open-Source ── -->
+ <article id="developer-cli" style="margin-bottom:4rem" aria-labelledby="ch7-heading">
+ <h2 id="ch7-heading">Chapter 7: Developer CLI, Subdomain Intelligence &amp; Open-Source Hub</h2>
+ <p>FrankPass provides first-class developer tooling, command-line interfaces (CLI), and an open Subdomain Intelligence Registry for automation, CI/CD pipelines, and security research.</p>
+
+ <h3>1. Subdomain Intelligence &amp; Canonical Normalization</h3>
+ <p>FrankPass uses a deterministic 7-step normalization pipeline in <code>frankpass-utils.js</code> to ensure identical passwords across web, extension, and terminal:</p>
+ <ul>
+   <li><strong>Cloud &amp; DevOps:</strong> AWS (<code>console.aws.amazon.com</code> &rarr; <code>aws</code>), Azure (<code>portal.azure.com</code> &rarr; <code>azure</code>), GCP (<code>console.cloud.google.com</code> &rarr; <code>googlecloud</code>), Cloudflare, GitHub, GitLab, Datadog.</li>
+   <li><strong>AI Platforms:</strong> ChatGPT (<code>chatgpt.com</code>, <code>chat.openai.com</code>), Anthropic Claude (<code>claude.ai</code>).</li>
+   <li><strong>Retail &amp; Corporate Banking:</strong> SBI YONO (<code>onlinesbi.sbi</code>, <code>yonobusiness.sbi</code>), HDFC NetBanking (<code>netbanking.hdfcbank.com</code>), ICICI Corporate (<code>cibnext.icicibank.com</code>), Axis, Kotak.</li>
+ </ul>
+
+ <h3>2. Terminal Developer CLI (Node.js &amp; Python)</h3>
+ <p>Generate FrankPass passwords directly from your terminal or shell scripts without opening a browser:</p>
+ <pre style="background:var(--bg-secondary);padding:1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--border);color:var(--text-primary);font-size:0.88rem;line-height:1.5"><code># Node.js CLI:
+node frankpass-cli.js console.aws.amazon.com devops "Galaxy$Rocket#2026" 1 standard 16
+
+# Python Emergency CLI (Zero Dependencies):
+python frankpass_emergency.py aws devops "Galaxy$Rocket#2026" 1 16 standard</code></pre>
+
+ <h3>3. Automated Test Suite &amp; Benchmark</h3>
+ <p>Validate all 50+ platform domain resolutions locally:</p>
+ <pre style="background:var(--bg-secondary);padding:0.75rem 1rem;border-radius:var(--radius-sm);overflow-x:auto;border:1px solid var(--border);color:var(--text-primary);font-size:0.88rem"><code>node scripts/test_query_resolution.js  # 56/56 Tests Passed</code></pre>
+
+ <h3>4. GitHub Community Discussions &amp; RFCs</h3>
+ <p>Contribute new subdomains, suggest architectural improvements, or audit cryptographic entropy on our official GitHub forum:</p>
+ <div style="display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:1rem">
+   <a href="https://github.com/Mastermanikant/frank-pass/discussions" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:0.9rem;padding:0.6rem 1.25rem">💬 Join GitHub Discussions &rarr;</a>
+   <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="font-size:0.9rem;padding:0.6rem 1.25rem">⭐ Star on GitHub</a>
+ </div>
  </article>
 
  </div>
