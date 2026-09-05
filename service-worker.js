@@ -9,6 +9,7 @@ const CACHED_URLS = [
     '/frankpass-vs-cloud-password-vaults.html',
     '/install.html',
     '/pro.html',
+    '/blog.html',
     '/docs.html',
     '/faq.html',
     '/about-us.html',
