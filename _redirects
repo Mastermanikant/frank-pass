@@ -3,6 +3,10 @@
 # Do NOT add self-referential rules (e.g. /get-started /get-started.html) as it causes ERR_TOO_MANY_REDIRECTS.
 
 # Aliases & Short URLs
+/compare /generators-comparison 301
+/difference /generators-comparison 301
+/tools-comparison /generators-comparison 301
+/comparison /generators-comparison 301
 /random /random-password-generator 301
 /rpg /random-password-generator 301
 /random-generator /random-password-generator 301

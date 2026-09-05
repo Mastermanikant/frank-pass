@@ -85,6 +85,7 @@
       <!-- Col 3: Resources & Security -->
       <div class="footer-col">
         <div class="footer-col-title">Resources</div>
+        <a href="/generators-comparison.html">Tools Comparison</a>
         <a href="/get-started.html">Get Started Guide</a>
         <a href="/secret-key-guide.html">Secret Key Guide</a>
         <a href="/docs.html">Documentation</a>
