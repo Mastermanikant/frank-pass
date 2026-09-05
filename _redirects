@@ -14,6 +14,9 @@
 /vs-cloud-vaults /frankpass-vs-cloud-password-vaults 301
 /cloud-vs-stateless /frankpass-vs-cloud-password-vaults 301
 /cloud-vault-vs-stateless /frankpass-vs-cloud-password-vaults 301
+/frankpass-vs-cloud-vaults-hindi /frankpass-vs-cloud-password-vaults-hindi 301
+/vs-cloud-vaults-hindi /frankpass-vs-cloud-password-vaults-hindi 301
+/cloud-vs-stateless-hindi /frankpass-vs-cloud-password-vaults-hindi 301
 /frankpass-vs-bitwarden /frankpass-vs-cloud-password-vaults 301
 /vs-bitwarden /frankpass-vs-cloud-password-vaults 301
 /bitwarden-vs-frankpass /frankpass-vs-cloud-password-vaults 301
