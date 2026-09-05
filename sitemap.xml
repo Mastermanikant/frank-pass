@@ -97,14 +97,26 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://frankpass.com/secret-key-guide.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://frankpass.com/comparison-between-frankpass-all-generators-deterministic-random-pin.html</loc>
+    <lastmod>2026-09-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://frankpass.com/limitations-and-advantages.html</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://frankpass.com/limitations-and-advantages-hindi.html</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
