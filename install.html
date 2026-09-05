@@ -223,6 +223,9 @@
  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
  <span id="main-install-btn-text">Install FrankPass App</span>
  </button>
+ <a href="/frankpass_offline.html" download="frankpass_offline.html" class="btn-ghost" style="font-size:1.05rem;padding:0.9rem 1.75rem;display:inline-flex;align-items:center;gap:0.5rem;border-color:var(--accent)">
+ <span>💾</span> Download Offline HTML (22 KB)
+ </a>
  <a href="/" class="btn-ghost" style="font-size:1.05rem;padding:0.9rem 1.75rem;display:inline-flex;align-items:center;gap:0.5rem">
  Launch Web Generator &rarr;
  </a>
@@ -265,6 +268,7 @@
  <button class="platform-tab-btn" data-tab="tab-ios">🍏 iPhone / iPad (iOS)</button>
  <button class="platform-tab-btn" data-tab="tab-windows">🪟 Windows PC</button>
  <button class="platform-tab-btn" data-tab="tab-mac">🍎 macOS</button>
+ <button class="platform-tab-btn" data-tab="tab-standalone">💾 Air-Gapped HTML</button>
  <button class="platform-tab-btn" data-tab="tab-extension">🧩 Browser Extension</button>
  </div>
  </div>
@@ -383,7 +387,41 @@
  </div>
  </div>
 
- <!-- TAB CONTENT 5: BROWSER EXTENSION (PAID PRO) -->
+  <!-- TAB CONTENT 5: AIR-GAPPED STANDALONE HTML -->
+  <div id="tab-standalone" class="tab-pane" style="max-width:680px;margin:0 auto;display:none">
+  <div class="card-glass" style="padding:2rem">
+  <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:var(--success);padding:0.25rem 0.75rem;border-radius:999px;font-size:0.8rem;font-weight:700;margin-bottom:1rem">
+  🛡️ 100-Year Survival Architecture &middot; Zero Network Required
+  </div>
+  <h3 style="margin-bottom:0.75rem;display:flex;align-items:center;gap:0.6rem">
+  <span>💾</span> Standalone 1-File Air-Gapped HTML Generator
+  </h3>
+  <p style="font-size:0.92rem;color:var(--text-muted);margin-bottom:1.5rem">
+  A single, self-contained 22 KB HTML file with 100% inlined WebCrypto PBKDF2 cryptography, CSS, and UI. No CDN calls, no fonts to download, no server connection. Save it to an encrypted USB drive, Raspberry Pi, or offline cold-storage laptop.
+  </p>
+  <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem">
+  <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;display:flex;align-items:center;justify-content:space-between">
+  <div>
+  <strong style="display:block;font-size:0.95rem;color:var(--text-primary)">Zero External Dependencies</strong>
+  <span style="font-size:0.8rem;color:var(--text-muted)">100% inlined HTML, CSS &amp; WebCrypto JS</span>
+  </div>
+  <span style="font-size:0.82rem;font-weight:700;color:var(--success)">22 KB File</span>
+  </div>
+  <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1rem;display:flex;align-items:center;justify-content:space-between">
+  <div>
+  <strong style="display:block;font-size:0.95rem;color:var(--text-primary)">Air-Gapped &amp; Faraday Cage Safe</strong>
+  <span style="font-size:0.8rem;color:var(--text-muted)">Runs via <code>file:///</code> protocol on any browser with all radios disabled</span>
+  </div>
+  <span style="font-size:0.82rem;font-weight:700;color:var(--success)">Air-Gapped</span>
+  </div>
+  </div>
+  <a href="/frankpass_offline.html" download="frankpass_offline.html" class="btn-primary btn-full" style="text-align:center;padding:0.9rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;font-size:1rem;font-weight:700">
+  <span>💾</span> Download Standalone Offline HTML (22 KB) &rarr;
+  </a>
+  </div>
+  </div>
+
+ <!-- TAB CONTENT 6: BROWSER EXTENSION (PAID PRO) -->
  <div id="tab-extension" class="tab-pane" style="max-width:680px;margin:0 auto;display:none">
  <div class="card-glass" style="padding:2rem">
  <div style="display:inline-flex;align-items:center;gap:0.4rem;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);padding:0.25rem 0.75rem;border-radius:999px;font-size:0.8rem;font-weight:700;margin-bottom:1rem">

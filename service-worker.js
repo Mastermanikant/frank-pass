@@ -8,6 +8,7 @@ const CACHED_URLS = [
     '/comparison-between-frankpass-all-generators-deterministic-random-pin.html',
     '/frankpass-vs-cloud-password-vaults.html',
     '/frankpass-vs-cloud-password-vaults-hindi.html',
+    '/frankpass_offline.html',
     '/install.html',
     '/pro.html',
     '/blog.html',

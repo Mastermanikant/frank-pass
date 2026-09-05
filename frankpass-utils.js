@@ -1,4 +1,4 @@
-﻿/**
+/**
  * FrankPass Utilities
  * Centralized logic for platform normalization, SSO brand aliasing, and UI helpers.
  * Shared between Web and Extension.
@@ -56,9 +56,11 @@ const FrankPassUtils = (function () {
         'tg': 'telegram',
         'ln': 'linkedin',
 
-        // Cloud & DevOps Independent Slugs
+        // Cloud, AI & DevOps Independent Slugs
         'aws': 'aws',
         'azure': 'azure',
+        'gcp': 'googlecloud',
+        'googlecloud': 'googlecloud',
         'oraclecloud': 'oraclecloud',
         'ibmcloud': 'ibmcloud',
         'alibabacloud': 'alibabacloud',
@@ -73,6 +75,20 @@ const FrankPassUtils = (function () {
         'render': 'render',
         'railway': 'railway',
         'flyio': 'flyio',
+        'openai': 'openai',
+        'chatgpt': 'chatgpt',
+        'claude': 'anthropic',
+        'anthropic': 'anthropic',
+        'postman': 'postman',
+        'sentry': 'sentry',
+        'datadog': 'datadog',
+        'grafana': 'grafana',
+        'jira': 'jira',
+        'confluence': 'confluence',
+        'atlassian': 'atlassian',
+        'bitbucket': 'bitbucket',
+        'gitlab': 'gitlab',
+        'github': 'github',
 
         // E-Commerce Merchant & Seller Specific Slugs
         'amazonseller': 'amazonseller',
@@ -221,13 +237,15 @@ const FrankPassUtils = (function () {
 
     // Full Domain & Subdomain Specific Exceptions (100% Comprehensive Industry Registry)
     const VISUAL_ALIASES = {
-        // --- 1. Cloud, DevOps & Infrastructure Platforms ---
+        // --- 1. Cloud, AI, DevOps & Infrastructure Platforms ---
         'aws.amazon.com': 'aws',
         'console.aws.amazon.com': 'aws',
         'signin.aws.amazon.com': 'aws',
         'portal.azure.com': 'azure',
         'dev.azure.com': 'azure',
         'azure.microsoft.com': 'azure',
+        'console.cloud.google.com': 'googlecloud',
+        'cloud.google.com': 'googlecloud',
         'cloud.oracle.com': 'oraclecloud',
         'myservices.oracle.com': 'oraclecloud',
         'cloud.ibm.com': 'ibmcloud',
@@ -247,6 +265,27 @@ const FrankPassUtils = (function () {
         'dashboard.render.com': 'render',
         'railway.app': 'railway',
         'fly.io': 'flyio',
+        'chatgpt.com': 'chatgpt',
+        'chat.openai.com': 'chatgpt',
+        'platform.openai.com': 'openai',
+        'claude.ai': 'anthropic',
+        'console.anthropic.com': 'anthropic',
+        'app.slack.com': 'slack',
+        'slack.com': 'slack',
+        'app.postman.com': 'postman',
+        'identity.getpostman.com': 'postman',
+        'admin.atlassian.com': 'atlassian',
+        'id.atlassian.com': 'atlassian',
+        'jira.atlassian.com': 'jira',
+        'confluence.atlassian.com': 'confluence',
+        'bitbucket.org': 'bitbucket',
+        'gitlab.com': 'gitlab',
+        'github.com': 'github',
+        'gist.github.com': 'github',
+        'app.datadoghq.com': 'datadog',
+        'app.sentry.io': 'sentry',
+        'app.grafana.net': 'grafana',
+        'grafana.net': 'grafana',
 
         // --- 2. Amazon & E-Commerce Sub-Services ---
         'sellercentral.amazon.com': 'amazonseller',
@@ -274,10 +313,14 @@ const FrankPassUtils = (function () {
         'paytmbank.com': 'paytmpaymentsbank',
         'paytmmoney.com': 'paytmmoney',
 
-        // --- 4. Corporate NetBanking & Institutional Finance ---
+        // --- 4. Retail & Corporate NetBanking & Institutional Finance ---
+        'onlinesbi.sbi': 'statebankofindia',
+        'retail.onlinesbi.sbi': 'statebankofindia',
         'corporate.icicibank.com': 'icicicorporate',
         'cibnext.icicibank.com': 'icicicorporate',
+        'infinity.icicibank.com': 'icicibank',
         'icicidirect.com': 'icicidirect',
+        'netbanking.hdfcbank.com': 'hdfcbank',
         'corporatebanking.hdfcbank.com': 'hdfccorporate',
         'hdfcsec.com': 'hdfcsecurities',
         'yonobusiness.sbi': 'sbicorporate',
@@ -286,14 +329,20 @@ const FrankPassUtils = (function () {
         'sbicard.com': 'sbicard',
         'sbismart.com': 'sbisecurities',
         'sbisecurities.in': 'sbisecurities',
+        'netbanking.axisbank.com': 'axisbank',
         'corporate.axisbank.com': 'axiscorporate',
         'corporatebanking.axisbank.com': 'axiscorporate',
         'axisdirect.in': 'axisdirect',
+        'netbanking.kotak.com': 'kotakmahindrabank',
         'corporate.kotak.com': 'kotakcorporate',
         'kotaksecurities.com': 'kotaksecurities',
         'bobibanking.com': 'bobcorporate',
         'pnbcorp.com': 'pnbcorporate',
+        'netpnb.com': 'punjabnationalbank',
+        'canarabank.in': 'canarabank',
+        'netbanking.canarabank.in': 'canarabank',
         'corporate.canarabank.in': 'canaracorporate',
+        'unionbankonline.co.in': 'unionbankofindia',
         'corp.unionbankonline.co.in': 'unionbankcorporate',
 
         // --- 5. Unified Global SSO Ecosystems ---
@@ -316,7 +365,10 @@ const FrankPassUtils = (function () {
         'fb.com': 'facebook',
         'm.facebook.com': 'facebook',
         'web.whatsapp.com': 'whatsapp',
+        'web.telegram.org': 'telegram',
         't.me': 'telegram',
+        'discord.com': 'discord',
+        'app.element.io': 'matrix',
         'bit.ly': 'bitly',
         'amzn.to': 'amazon',
         'amzn.in': 'amazon',
@@ -382,6 +434,22 @@ const FrankPassUtils = (function () {
         'pnbcorporate': 'PNB Corporate NetBanking',
         'canaracorporate': 'Canara Bank Corporate',
         'unionbankcorporate': 'Union Bank Corporate',
+        'googlecloud': 'Google Cloud Platform (GCP Console)',
+        'chatgpt': 'OpenAI ChatGPT',
+        'openai': 'OpenAI Developer Platform',
+        'anthropic': 'Anthropic Claude AI & Console',
+        'slack': 'Slack Workspace',
+        'postman': 'Postman API Platform',
+        'jira': 'Atlassian Jira Software',
+        'confluence': 'Atlassian Confluence',
+        'atlassian': 'Atlassian Cloud Admin',
+        'bitbucket': 'Atlassian Bitbucket',
+        'gitlab': 'GitLab DevOps Platform',
+        'github': 'GitHub Developer Platform',
+        'datadog': 'Datadog Cloud Monitoring',
+        'sentry': 'Sentry Application Performance',
+        'grafana': 'Grafana Cloud Observability',
+        'matrix': 'Matrix / Element Secure Chat',
         'irctcair': 'IRCTC Air Flight Booking',
         'irctctourism': 'IRCTC Tourism Portal'
     };
