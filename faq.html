@@ -96,6 +96,21 @@
  "@type": "Question",
  "name": "Is there a free trial for FrankPass Pro?",
  "acceptedAnswer": { "@type": "Answer", "text": "The web generator at frankpass.com is completely free - forever, with no account required. FrankPass Pro adds the browser extension with auto-fill and multi-profile features. There is no time-limited trial for Pro, but the free web tool is fully functional." }
+ },
+ {
+ "@type": "Question",
+ "name": "Can I use just 1 or 2 words as my Secret Key?",
+ "acceptedAnswer": { "@type": "Answer", "text": "Yes! If you choose a short 1-word or 2-word Secret Key (e.g. peaceful or blue lotus), simply enter your Email or Username in the generator's Username field. Because your email address is globally unique to you, FrankPass's 1,000,000 PBKDF2 iterations will produce a 100% unique password that will never match anyone else's password." }
+ },
+ {
+ "@type": "Question",
+ "name": "If a website suffers a data breach, can hackers find my Secret Key?",
+ "acceptedAnswer": { "@type": "Answer", "text": "No, absolutely not. FrankPass uses 1,000,000 PBKDF2 iterations with HMAC-SHA512. Cryptographic one-way hashing makes it mathematically impossible to reverse a generated password back into your Master Secret Key." }
+ },
+ {
+ "@type": "Question",
+ "name": "Can I use the exact same Secret Key for the FrankPass PIN Generator?",
+ "acceptedAnswer": { "@type": "Answer", "text": "Yes! FrankPass incorporates separate cryptographic context salts for passwords and numeric PINs. Using the same Secret Key for your ATM card or UPI app produces a completely separate 4-digit or 6-digit PIN with zero mathematical overlap." }
  }
  ]
  }
@@ -306,16 +321,51 @@
  </details>
 
  <!-- Q12 - Free trial? -->
- <details class="faq-item" id="faq-12">
- <summary>
- <span>Is there a free trial for FrankPass Pro?</span>
- <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
- </summary>
- <div class="faq-body">
- The web generator at <a href="/">frankpass.com</a> is <strong>completely free - forever</strong>. No account, no trial expiry, no credit card. FrankPass Pro adds the browser extension, which brings 1-click auto-fill, multi-profile management, and automatic platform detection - but the core generator you need for daily use costs nothing. There is no time-limited trial for Pro, but you can fully evaluate FrankPass using the free web tool before purchasing.
- </div>
- </details>
+  <details class="faq-item" id="faq-12">
+  <summary>
+  <span>Is there a free trial for FrankPass Pro?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  The web generator at <a href="/">frankpass.com</a> is <strong>completely free - forever</strong>. No account, no trial expiry, no credit card. FrankPass Pro adds the browser extension, which brings 1-click auto-fill, multi-profile management, and automatic platform detection - but the core generator you need for daily use costs nothing. There is no time-limited trial for Pro, but you can fully evaluate FrankPass using the free web tool before purchasing.
+  </div>
+  </details>
 
+  <!-- Q13 - 1-2 words secret key -->
+  <details class="faq-item" id="faq-13">
+  <summary>
+  <span>Can I use just 1 or 2 words as my Secret Key? Is it secure?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>Yes, absolutely! Just follow this simple rule:</strong> If you choose a short 1-word or 2-word Secret Key (such as <code>blue lotus</code> or <code>peaceful</code>), always enter your <strong>Email or Username</strong> in the generator's Username field. Because your email address is globally unique to you, FrankPass's 1,000,000 PBKDF2 iterations will produce a 100% unique password that will <strong>never collide with or match anyone else's password</strong>.<br><br>
+  <em>💡 Tip:</em> If you prefer leaving the Username field blank, simply choose a <strong>3-5 word natural sentence</strong> (like <code>two hot samosas with green chutney</code>) as your Secret Key. Explore 50+ ideas in our <a href="/secret-key-guide.html" style="color:var(--accent);font-weight:700">Secret Key Guide &rarr;</a>
+  </div>
+  </details>
+
+  <!-- Q14 - Data breach irreversibility -->
+  <details class="faq-item" id="faq-14">
+  <summary>
+  <span>If a website suffers a data breach, can attackers reverse my Secret Key?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>No, mathematically impossible.</strong> FrankPass uses 1,000,000 PBKDF2 iterations with HMAC-SHA512. Cryptographic one-way hashing ensures that even if an attacker obtains your generated password from a compromised website database, they can never reverse it back to determine your Master Secret Key. All your other accounts remain 100% secure.
+  </div>
+  </details>
+
+  <!-- Q15 - PIN Generator shared key -->
+  <details class="faq-item" id="faq-15">
+  <summary>
+  <span>Can I use the exact same Secret Key for the FrankPass PIN Generator?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>Yes!</strong> FrankPass incorporates completely isolated cryptographic context salts for passwords and numeric PINs. Using the same Secret Key on the <a href="/pin.html" style="color:var(--accent);font-weight:700">FrankPass PIN Generator</a> produces an independent 4-digit or 6-digit PIN with zero cryptographic correlation to your alphanumeric passwords.
+  </div>
+  </details>
+
+  </div>
  </div>
 
  <!-- ── Bottom CTA ── -->
