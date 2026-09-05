@@ -6,7 +6,7 @@ const CACHED_URLS = [
     '/random-password-generator.html',
     '/pin.html',
     '/comparison-between-frankpass-all-generators-deterministic-random-pin.html',
-    '/frankpass-vs-bitwarden-1password-cloud-vault-comparison.html',
+    '/frankpass-vs-cloud-password-vaults.html',
     '/install.html',
     '/pro.html',
     '/docs.html',
