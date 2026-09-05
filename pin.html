@@ -1,0 +1,288 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deterministic PIN Generator | 4-Digit &amp; 6-Digit ATM, UPI &amp; mPINs — FrankPass</title>
+  <meta name="description" content="Generate secure, deterministic 4-digit and 6-digit PINs for ATM cards, UPI (GPay, PhonePe, Paytm), and banking mPINs. 100% client-side, zero cloud storage.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://frankpass.com/pin.html">
+  <meta property="og:title" content="Deterministic PIN Generator | 4-Digit &amp; 6-Digit ATM, UPI &amp; mPINs">
+  <meta property="og:description" content="Calculate unhackable, zero-storage 4-digit and 6-digit PINs deterministically with WebCrypto. Zero cloud, 100% offline.">
+  <meta property="og:url" content="https://frankpass.com/pin.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="/style.css?v=3.6.1">
+  <link rel="icon" href="/icons/favicon.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Schema.org SoftwareApplication & HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FrankPass PIN Generator",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web, iOS, Android, Windows, Mac, Linux",
+    "url": "https://frankpass.com/pin.html",
+    "description": "Deterministic, zero-storage 4-digit and 6-digit PIN generator for ATM debit cards, UPI applications, and mobile mPINs.",
+    "author": {
+      "@type": "Person",
+      "name": "Master Manikant Yadav",
+      "url": "https://mastermanikant.com"
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+        <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+        <path d="M16 6 L24 10 L24 16 C24 21 20 25 16 27 C10 25 8 21 8 16 L8 10 Z" fill="#8b5cf6" opacity="0.4"/>
+        <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="logo-text"><span>Frank</span>Pass <span style="font-size:0.75rem;font-weight:700;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:2px 6px;border-radius:6px;border:1px solid rgba(139,92,246,0.3)">PIN</span></span>
+    </a>
+
+    <nav class="header-nav" role="navigation" aria-label="Main Navigation">
+      <a href="/" class="nav-link">Password Generator</a>
+      <a href="/pin.html" class="nav-link active">PIN Generator</a>
+      <a href="/get-started.html" class="nav-link">Get Started</a>
+      <a href="/docs.html" class="nav-link">Docs</a>
+      <a href="/faq.html" class="nav-link">FAQ</a>
+      <a href="/pro.html" class="nav-cta">Get Pro →</a>
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main-content" class="page-container" style="max-width:720px;margin:2.5rem auto 4rem;padding:0 1.25rem">
+  
+  <!-- Hero Heading -->
+  <div style="text-align:center;margin-bottom:2rem">
+    <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.82rem;color:#10b981;font-weight:700;margin-bottom:1rem">
+      ● 100% Client-Side WebCrypto · 0 Bytes in Cloud
+    </div>
+    <h1 style="font-size:clamp(1.85rem, 4vw, 2.5rem);font-weight:800;color:var(--text-primary);letter-spacing:-0.03em;margin-bottom:0.5rem">
+      Deterministic PIN Generator
+    </h1>
+    <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.6;margin:0 auto;max-width:560px">
+      Calculate unbreakable 4-digit and 6-digit numeric PINs for ATM debit cards, UPI (Google Pay, PhonePe, Paytm), and SIM locks on-demand.
+    </p>
+  </div>
+
+  <!-- MAIN PIN GENERATOR CARD -->
+  <div class="card-glass" style="padding:2rem;border-radius:24px;border:1px solid rgba(139,92,246,0.35);background:var(--card-glass-bg);box-shadow:var(--card-shadow)">
+    
+    <!-- Input 1: Bank / Card / App Name -->
+    <div class="form-group" style="margin-bottom:1.25rem">
+      <label class="form-label" for="pin-platform" style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">Bank / Card / App Name</label>
+      <input id="pin-platform" class="form-input" type="text" placeholder="e.g. HDFC ATM Card, GPay UPI, Airtel mPIN..." autocomplete="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 1rem">
+      <span id="pin-platform-hint" style="font-size:0.75rem;color:var(--accent-light);display:block;margin-top:0.35rem"></span>
+    </div>
+
+    <!-- Input 2: Secret Key -->
+    <div class="form-group" style="margin-bottom:1.5rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
+        <label class="form-label" for="pin-secret" style="margin:0;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">Master Secret Key 🔒</label>
+      </div>
+      <div class="input-wrapper" style="position:relative">
+        <input id="pin-secret" class="form-input" type="password" placeholder="e.g. my pet is faithful, my secret phrase..." autocomplete="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 1rem">
+        <button id="pin-toggle-secret" type="button" aria-label="Toggle secret key visibility" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);cursor:pointer">
+          <svg id="pin-eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.35rem;display:block">
+        💡 Use the same Secret Key as your passwords. FrankPass math ensures your PIN is completely separate.
+      </span>
+    </div>
+
+    <!-- PIN Length Selector -->
+    <div class="form-group" style="margin-bottom:1.5rem">
+      <label class="form-label" style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">PIN Length</label>
+      <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.6rem">
+        <button type="button" class="pin-len-btn active" data-len="4" style="padding:0.75rem;border-radius:12px;border:1px solid var(--accent);background:rgba(139,92,246,0.2);color:var(--text-primary);font-weight:700;cursor:pointer">4 Digits (ATM / UPI)</button>
+        <button type="button" class="pin-len-btn" data-len="6" style="padding:0.75rem;border-radius:12px;border:1px solid var(--border);background:var(--glass-bg);color:var(--text-muted);font-weight:700;cursor:pointer">6 Digits (UPI / mPIN)</button>
+        <button type="button" class="pin-len-btn" data-len="8" style="padding:0.75rem;border-radius:12px;border:1px solid var(--border);background:var(--glass-bg);color:var(--text-muted);font-weight:700;cursor:pointer">8 Digits (Ultra PIN)</button>
+      </div>
+    </div>
+
+    <!-- Generate Button -->
+    <button type="button" id="pin-generate-btn" class="btn-primary" style="width:100%;padding:0.9rem;font-size:1.05rem;font-weight:800;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:0.5rem;box-shadow:0 0 20px rgba(139,92,246,0.35);cursor:pointer">
+      ✨ Generate Secure PIN
+    </button>
+
+    <!-- Output Box -->
+    <div id="pin-output-container" style="margin-top:1.5rem;padding:1.5rem;border-radius:16px;background:rgba(0,0,0,0.35);border:1px solid var(--border);text-align:center">
+      <div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem">Calculated Security PIN</div>
+      <div id="pin-display" style="font-family:'JetBrains Mono',monospace;font-size:2.25rem;font-weight:800;letter-spacing:0.35em;color:var(--accent-light);margin-bottom:1rem">
+        ••••
+      </div>
+      <button type="button" id="pin-copy-btn" class="btn-ghost" style="padding:0.6rem 1.5rem;border-radius:10px;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer">
+        📋 Copy PIN
+      </button>
+      <div id="pin-copy-notice" style="font-size:0.75rem;color:#10b981;font-weight:700;margin-top:0.6rem;display:none">
+        ✓ Copied to clipboard!
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Educational Info Cards -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem;margin-top:2.5rem">
+    <div class="card-glass" style="padding:1.25rem;border-radius:16px;border:1px solid var(--border)">
+      <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem">🛡️ How is my PIN calculated?</h3>
+      <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.5;margin:0">
+        FrankPass runs 1,000,000 PBKDF2-HMAC-SHA512 rounds in your device RAM and mathematically maps the bytes into a clean numeric sequence (0-9).
+      </p>
+    </div>
+    <div class="card-glass" style="padding:1.25rem;border-radius:16px;border:1px solid var(--border)">
+      <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem">🧠 Never write your ATM PIN on paper</h3>
+      <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.5;margin:0">
+        With FrankPass, entering your card name and master secret sentence instantly re-creates your exact PIN on any phone or laptop.
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<!-- Unified Footer -->
+<footer id="site-footer" class="site-footer" role="contentinfo" style="margin-top:3rem;padding:3rem 1.5rem 2rem;border-top:1px solid var(--border);background:rgba(10,15,30,0.6)">
+  <div style="max-width:1080px;margin:0 auto;text-align:center;font-size:0.85rem;color:var(--text-muted)">
+    <p style="margin-bottom:0.5rem"><strong>FrankPass</strong> — Zero-Knowledge Deterministic Cryptography by <a href="/founder-mastermanikant.html" style="color:var(--accent-light);font-weight:700">Master Manikant Yadav</a>.</p>
+    <p style="font-size:0.78rem">A password or PIN that was never stored on a server can never be stolen in a data breach.</p>
+  </div>
+</footer>
+
+<script src="/frankpass-core.js?v=3.6.1"></script>
+<script src="/frankpass-utils.js?v=3.6.1"></script>
+<script>
+let currentPinLength = 4;
+let generatedPinRaw = '';
+
+// Theme Toggle
+const themeBtn = document.getElementById('theme-toggle');
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('fp_theme', next); } catch(e) {}
+  });
+}
+
+// Length Buttons Selector
+document.querySelectorAll('.pin-len-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pin-len-btn').forEach(b => {
+      b.classList.remove('active');
+      b.style.borderColor = 'var(--border)';
+      b.style.background = 'var(--glass-bg)';
+      b.style.color = 'var(--text-muted)';
+    });
+    btn.classList.add('active');
+    btn.style.borderColor = 'var(--accent)';
+    btn.style.background = 'rgba(139,92,246,0.2)';
+    btn.style.color = 'var(--text-primary)';
+    currentPinLength = parseInt(btn.dataset.len, 10) || 4;
+    document.getElementById('pin-display').textContent = '•'.repeat(currentPinLength);
+  });
+});
+
+// Eye Toggle for Secret Key
+const secretInput = document.getElementById('pin-secret');
+const toggleSecretBtn = document.getElementById('pin-toggle-secret');
+toggleSecretBtn.addEventListener('click', () => {
+  if (secretInput.type === 'password') {
+    secretInput.type = 'text';
+  } else {
+    secretInput.type = 'password';
+  }
+});
+
+// Platform input hint
+const platformInput = document.getElementById('pin-platform');
+const platformHint = document.getElementById('pin-platform-hint');
+platformInput.addEventListener('input', () => {
+  const val = platformInput.value.trim();
+  if (val && typeof FrankPassUtils !== 'undefined') {
+    platformHint.textContent = FrankPassUtils.getSeedHint(val);
+  } else {
+    platformHint.textContent = '';
+  }
+});
+
+// Generate PIN Handler
+document.getElementById('pin-generate-btn').addEventListener('click', async () => {
+  const plat = platformInput.value.trim();
+  const secret = secretInput.value.trim();
+
+  if (!plat) {
+    alert('Please enter a bank, card or app name.');
+    platformInput.focus();
+    return;
+  }
+  if (!secret) {
+    alert('Please enter your Secret Key.');
+    secretInput.focus();
+    return;
+  }
+
+  const normalizedPlat = typeof FrankPassUtils !== 'undefined' ? FrankPassUtils.getNormalizedPlatform(plat) : plat.toLowerCase().trim();
+  
+  try {
+    const pin = await FRANKPASS_CORE.generatePassword({
+      platform: normalizedPlat,
+      username: '',
+      secretKey: secret,
+      variant: '1',
+      profile: 'numeric',
+      length: currentPinLength
+    });
+
+    generatedPinRaw = pin;
+    document.getElementById('pin-display').textContent = pin.split('').join(' ');
+  } catch (err) {
+    console.error("PIN Generation Error:", err);
+    alert('Failed to generate PIN: ' + err.message);
+  }
+});
+
+// Copy PIN Handler
+document.getElementById('pin-copy-btn').addEventListener('click', () => {
+  if (!generatedPinRaw) {
+    alert('Please generate a PIN first.');
+    return;
+  }
+  navigator.clipboard.writeText(generatedPinRaw).then(() => {
+    const notice = document.getElementById('pin-copy-notice');
+    notice.style.display = 'block';
+    setTimeout(() => { notice.style.display = 'none'; }, 2000);
+  });
+});
+</script>
+</body>
+</html>

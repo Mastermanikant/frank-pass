@@ -54,6 +54,9 @@ const FRANKPASS_CORE = (function () {
         } else if (profile === 'alphanumeric') {
             charset = UPPERCASE + LOWERCASE + NUMBERS;
             requireUpper = requireLower = requireNum = true;
+        } else if (profile === 'letters') {
+            charset = UPPERCASE + LOWERCASE;
+            requireUpper = requireLower = true;
         } else if (profile === 'numeric') {
             charset = NUMBERS;
             requireNum = true;
@@ -98,19 +101,30 @@ const FRANKPASS_CORE = (function () {
     }
 
     return {
-        generate: async function (platform, username, secretKey, variant, profile, length, pepperedString = null) {
+        generate: async function (platformOrObj, username, secretKey, variant, profile, length, pepperedString = null) {
             if (typeof crypto === 'undefined' || !crypto.subtle) {
                 throw new Error('WebCrypto API (crypto.subtle) is not supported or not in a secure context (HTTPS).');
+            }
+
+            let platform = platformOrObj, user = username, key = secretKey, vr = variant, prof = profile, len = length, pepStr = pepperedString;
+            if (typeof platformOrObj === 'object' && platformOrObj !== null) {
+                platform = platformOrObj.platform || '';
+                user = platformOrObj.username || '';
+                key = platformOrObj.secretKey || '';
+                vr = platformOrObj.variant || '1';
+                prof = platformOrObj.profile || 'standard';
+                len = platformOrObj.length || 16;
+                pepStr = platformOrObj.pepper || null;
             }
 
             try {
                 const encoder = new TextEncoder();
 
                 // 1. Use provided pepper or generate locally
-                const pepper = pepperedString || await getLocalPepper(platform, username, secretKey);
+                const pepper = pepStr || await getLocalPepper(platform, user, key);
 
                 // 2. Context Vector
-                const ctxString = `${APP_ID.length}:${APP_ID}|${VERSION.length}:${VERSION}|${platform.length}:${platform}|${username.length}:${username}|${pepper.length}:${pepper}|${variant.toString().length}:${variant}|${profile.length}:${profile}|${length.toString().length}:${length}`;
+                const ctxString = `${APP_ID.length}:${APP_ID}|${VERSION.length}:${VERSION}|${platform.length}:${platform}|${user.length}:${user}|${pepper.length}:${pepper}|${vr.toString().length}:${vr}|${prof.length}:${prof}|${len.toString().length}:${len}`;
                 const seedData = encoder.encode(ctxString.normalize('NFC'));
 
                 // 3. PBKDF2
@@ -133,11 +147,14 @@ const FRANKPASS_CORE = (function () {
                 outputBytes = new Uint8Array([...outputBytes, ...new Uint8Array(sig2)]);
 
                 // 5. Bytes to Chars
-                return bytesToCharacters(outputBytes, profile, length);
+                return bytesToCharacters(outputBytes, prof, len);
             } catch (err) {
                 console.error('FrankPass Core Generation Error:', err);
                 throw err;
             }
+        },
+        generatePassword: async function (platformOrObj, username, secretKey, variant, profile, length, pepperedString = null) {
+            return this.generate(platformOrObj, username, secretKey, variant, profile, length, pepperedString);
         }
     };
 })();

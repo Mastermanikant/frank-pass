@@ -3120,3 +3120,16 @@ html, body {
   border-color: #6d28d9 !important;
   color: #ffffff !important;
 }
+
+/* ============================================================
+   DARK THEME AUTOFILL OVERRIDE (Anti-White Flash)
+   ============================================================ */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px var(--card-glass-bg, #0f172a) inset !important;
+    -webkit-text-fill-color: var(--text-primary, #f8fafc) !important;
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: var(--accent, #00f0ff);
+}

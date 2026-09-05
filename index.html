@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <script>
@@ -377,14 +377,14 @@
  </div>
  </div>
  </div>
- <label class="toggle-switch-right" for="remember-secret" style="display:inline-flex;align-items:center;gap:0.5rem;margin:0 12px 0 0;cursor:pointer" title="Remember Secret Key on this device">
+ <label class="toggle-switch-right" for="remember-secret" style="display:inline-flex;align-items:center;gap:0.5rem;margin:0 12px 0 0;cursor:pointer" title="Biometric Lock (Touch ID / Face ID / Windows Hello) — 0 bytes stored in cloud">
  <span style="font-size:0.78rem;color:var(--text-muted)">Remember on this device</span>
  <input type="checkbox" id="remember-secret" role="switch" aria-checked="false" style="display:none">
  <span class="toggle-track" aria-hidden="true"></span>
  </label>
  </div>
  <div class="input-wrapper">
- <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. i love reading books, my secret code..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
+ <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. my pet is faithful, my secret phrase..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
  <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
  <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
  </button>
@@ -457,25 +457,25 @@
  <div class="form-group">
  <label class="form-label" for="type-select">Characters Type</label>
  <select id="type-select" class="form-input" style="width:100%;appearance:none;cursor:pointer">
- <option value="numeric">Only Number (PIN)</option>
- <option value="alphanumeric">Number &amp; Letters</option>
- <option value="standard" selected>Number, Letters and Symbol</option>
+ <option value="standard" selected>Numbers, Letters and Symbol (Standard Default)</option>
+ <option value="alphanumeric">Numbers &amp; Letters (Alphanumeric)</option>
+ <option value="letters">Only Letters (a-z, A-Z)</option>
  </select>
  </div>
 
  <!-- Length slider -->
  <div class="form-group">
- <label class="form-label" for="length-slider">Password Length: <span id="length-val" style="color:var(--accent);font-weight:700">16</span></label>
- <input id="length-slider" type="range" min="8" max="32" value="16" aria-label="Password length slider">
+ <label class="form-label" for="length-slider">Password Length: <span id="length-val" style="color:var(--accent);font-weight:700">16 (80-bit NIST Entropy)</span></label>
+ <input id="length-slider" type="range" min="8" max="64" value="16" aria-label="Password length slider">
  </div>
 
  <!-- Presets -->
  <div class="form-group">
- <div class="form-label">Preset</div>
+ <div class="form-label">Quick Preset</div>
  <div class="preset-btns" role="group" aria-label="Password preset selector">
- <button class="preset-btn" data-preset="simple" type="button" aria-label="Apply Simple Preset">Simple</button>
- <button class="preset-btn active" data-preset="strong" type="button" aria-label="Apply Strong Preset">Strong</button>
- <button class="preset-btn" data-preset="max" type="button" aria-label="Apply Maximum Preset">Maximum</button>
+ <button class="preset-btn" data-preset="simple" type="button" aria-label="Apply Simple Preset">12 Chars</button>
+ <button class="preset-btn active" data-preset="strong" type="button" aria-label="Apply Strong Preset">16 Chars (NIST)</button>
+ <button class="preset-btn" data-preset="max" type="button" aria-label="Apply Maximum Preset">32 Chars (Max)</button>
  </div>
  </div>
 
@@ -1039,10 +1039,33 @@ advToggle.addEventListener('click', () => {
  advPanel.setAttribute('aria-hidden', String(!isOpen));
 });
 
-/* ── Length slider display ── */
+/* ── Length slider display & Dynamic Entropy Engine ── */
 const lengthSlider = document.getElementById('length-slider');
 const lengthVal = document.getElementById('length-val');
-lengthSlider.addEventListener('input', () => { lengthVal.textContent = lengthSlider.value; });
+
+function updateDynamicEntropy() {
+  if (!lengthSlider || !lengthVal) return;
+  const len = parseInt(lengthSlider.value, 10) || 16;
+  const typeSel = document.getElementById('type-select');
+  const type = typeSel ? typeSel.value : 'standard';
+  
+  let bitsPerChar = 5.0; // Standard 32-char pool = 5 bits
+  if (type === 'alphanumeric') bitsPerChar = 4.5;
+  if (type === 'letters') bitsPerChar = 4.0;
+  
+  const totalBits = Math.round(len * bitsPerChar);
+  let label = 'Strong';
+  if (totalBits >= 128) label = 'Quantum-Resistant';
+  else if (totalBits >= 80) label = 'NIST Military-Grade';
+  else if (totalBits >= 60) label = 'Strong';
+  else label = 'Basic';
+
+  lengthVal.innerHTML = `${len} <span style="font-size:0.75rem;font-weight:600;opacity:0.85;color:var(--accent-light)">(${totalBits}-bit ${label})</span>`;
+}
+
+if (lengthSlider) {
+  lengthSlider.addEventListener('input', updateDynamicEntropy);
+}
 
 /* ── Local AES-GCM Secret Key Vault ── */
 const LocalSecretVault = (function() {
@@ -1426,7 +1449,7 @@ document.querySelectorAll('.preset-btn').forEach(btn => {
  activeProfile = p.profile;
  if (typeSelect) typeSelect.value = p.profile;
  if (lengthSlider) lengthSlider.value = p.length;
- if (lengthVal) lengthVal.textContent = p.length;
+ updateDynamicEntropy();
  });
 });
 
@@ -2075,6 +2098,7 @@ if ('serviceWorker' in navigator) {
 
 </body>
 </html>
+
 
 
 
