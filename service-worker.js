@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.6.8 (100% Offline-First with Smart Network-First Sync)
-const CACHE_NAME = 'frankpass-v3.6.8';
+// FrankPass Service Worker v3.6.9 (100% Offline-First with Smart Network-First Sync)
+const CACHE_NAME = 'frankpass-v3.6.9';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -16,6 +16,7 @@ const CACHED_URLS = [
     '/products.html',
     '/legal.html',
     '/get-started.html',
+    '/secret-key-guide.html',
     '/style.css',
     '/frankpass-config.js',
     '/frankpass-utils.js',

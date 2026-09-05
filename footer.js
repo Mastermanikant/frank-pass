@@ -84,6 +84,7 @@
       <div class="footer-col">
         <div class="footer-col-title">Resources</div>
         <a href="/get-started.html">Get Started Guide</a>
+        <a href="/secret-key-guide.html">Secret Key Guide</a>
         <a href="/docs.html">Documentation</a>
         <a href="/faq.html">Security FAQ</a>
         <a href="/limitations-and-advantages.html">Limitations &amp; Advantages</a>

@@ -69,10 +69,10 @@
  <nav class="header-nav" aria-label="Main navigation">
  <a href="/" class="nav-link">Generator</a>
  <a href="/pin.html" class="nav-link">PIN Generator</a>
+ <a href="/secret-key-guide.html" class="nav-link">Secret Key Guide</a>
  <a href="/get-started.html" class="nav-link">Get Started</a>
  <a href="/docs.html" class="nav-link active" aria-current="page">Docs</a>
  <a href="/faq.html" class="nav-link">FAQ</a>
- <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
  <a href="/products.html" class="nav-link">Products</a>
  <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
  <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
@@ -85,6 +85,8 @@
  </div>
 </header>
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+ <a href="/pin.html">PIN Generator</a>
+ <a href="/secret-key-guide.html">Secret Key Guide</a>
  <a href="/get-started.html">Get Started</a>
  <a href="/docs.html" aria-current="page">Docs</a>
  <a href="/faq.html">FAQ</a>
@@ -217,7 +219,14 @@
  <h3>The Critical Rule</h3>
   <p><strong>Never use a generated password as your Secret Key, and never use your Secret Key as a password on any website.</strong> Your Secret Key is your private mathematical master seed.</p>
   <p>An attacker could only ever derive or calculate your passwords if they simultaneously obtain <strong>both</strong> your private Master Secret Key <strong>and</strong> the exact Password Number (Counter) you selected for that platform. Because both pieces of information reside exclusively in your mind and are never transmitted over the internet or stored on any server, guessing or reversing your password is mathematically impossible. Protect your Secret Key with absolute confidentiality.</p>
- </article>
+
+   <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:12px;padding:1.15rem;margin:1.25rem 0">
+     <div style="font-weight:700;color:var(--text-primary);font-size:0.95rem;margin-bottom:0.35rem">💡 Need Inspiration for a Memorable Secret Key?</div>
+     <p style="font-size:0.88rem;color:var(--text-muted);margin:0;line-height:1.6">
+       Explore our dedicated <a href="/secret-key-guide.html" style="color:var(--accent-light);font-weight:700;text-decoration:none">Master Secret Key &amp; Platform Setup Guide &rarr;</a> featuring 50+ categorized real-world phrase ideas, Good vs. Bad comparisons, and platform configuration rules.
+     </p>
+   </div>
+  </article>
 
  <!-- ── Chapter 4: Security Model ── -->
  <article id="security-model" style="margin-bottom:4rem" aria-labelledby="ch4-heading">
