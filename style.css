@@ -1020,7 +1020,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 .output-password {
   flex: 1;
-  font-family: 'JetBrains Mono', 'SF Mono', 'Fira Code', Consolas, ui-monospace, monospace;
+  font-family: 'Consolas', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Cascadia Code', ui-monospace, monospace;
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
