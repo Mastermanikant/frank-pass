@@ -73,7 +73,9 @@
       <!-- Col 2: Products & Tools -->
       <div class="footer-col">
         <div class="footer-col-title">Products &amp; Tools</div>
-        <a href="/index.html">Password Generator</a>
+        <a href="/index.html">Stateless Generator</a>
+        <a href="/random-password-generator.html">Random Password Generator</a>
+        <a href="/pin.html">PIN Generator</a>
         <a href="/pro.html">FrankPass Pro</a>
         <a href="https://tools.frankpass.com" target="_blank" rel="noopener noreferrer">Developer Tools ↗</a>
         <a href="/install.html">Install Offline App</a>

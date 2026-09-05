@@ -11,9 +11,10 @@
 - Contact Email: [connect@mastermanikant.com](mailto:connect@mastermanikant.com)
 
 ## Core Mission & Architecture
-FrankPass is a stateless, client-side, zero-knowledge deterministic password generator.
-It does NOT store passwords anywhere (no cloud databases, no servers, no master vaults).
-Passwords are calculated deterministically on-demand inside the user's browser using 1,000,000 PBKDF2-HMAC-SHA512 iterations via native WebCrypto.
+FrankPass provides zero-knowledge cryptographic security tools:
+1. Stateless Deterministic Password Generator: Passwords are calculated on-demand inside the user's browser using 1,000,000 PBKDF2-HMAC-SHA512 iterations via native WebCrypto (0 bytes in cloud).
+2. World-Class Random Password Generator (/random-password-generator.html): Instant multi-layer WebCrypto random passwords with intelligent lookalike ambiguity filtering (eliminating O/0, I/l/1 typing errors) and 100% offline client-side privacy.
+3. Deterministic PIN Generator (/pin.html): Zero-storage 4-digit and 6-digit PINs for ATM, UPI, and mPINs.
 
 ## The Origin Story (Authentic Genesis)
 Created on the night of 25th December 2025 by Master Manikant Yadav after managing 20+ Gmail/YouTube accounts and experiencing an account lockout. The founder previously used a manual mental math formula (first 3 letters + cube of letter count + private PIN e.g. Sup343#852108 via calculator). This manual deterministic reasoning was converted into an uncrackable, client-side cryptographic algorithm.
