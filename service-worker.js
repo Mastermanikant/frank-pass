@@ -1,11 +1,12 @@
-// FrankPass Service Worker v3.7.2 (100% Offline-First with Smart Network-First Sync)
-const CACHE_NAME = 'frankpass-v3.7.2';
+// FrankPass Service Worker v3.7.3 (100% Offline-First with Smart Network-First Sync)
+const CACHE_NAME = 'frankpass-v3.7.3';
 const CACHED_URLS = [
     '/',
     '/index.html',
     '/random-password-generator.html',
     '/pin.html',
     '/comparison-between-frankpass-all-generators-deterministic-random-pin.html',
+    '/frankpass-vs-bitwarden-1password-cloud-vault-comparison.html',
     '/install.html',
     '/pro.html',
     '/docs.html',

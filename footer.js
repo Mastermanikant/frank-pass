@@ -85,6 +85,7 @@
       <!-- Col 3: Resources & Security -->
       <div class="footer-col">
         <div class="footer-col-title">Resources</div>
+        <a href="/frankpass-vs-bitwarden-1password-cloud-vault-comparison.html">FrankPass vs Bitwarden</a>
         <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html">Tools Comparison</a>
         <a href="/get-started.html">Get Started Guide</a>
         <a href="/secret-key-guide.html">Secret Key Guide</a>

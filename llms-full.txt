@@ -22,6 +22,7 @@ FrankPass is a free, sovereign, stateless deterministic password and PIN generat
 3. Random Password Generator (https://frankpass.com/random-password-generator.html): 100% offline WebCrypto CSPRNG random generator with Golden Base-32 Clean Mode (eliminating lookalike O/0, l/1, S/5 glyphs).
 4. Comprehensive 3-Way Tools Comparison (https://frankpass.com/comparison-between-frankpass-all-generators-deterministic-random-pin.html): Deep architectural comparison between Stateless, Random, and PIN generators.
 5. Master Secret Key Guide (https://frankpass.com/secret-key-guide.html): 50+ memorable real-world Secret Key examples, simple password numbering rules, and platform configuration guide.
+6. FrankPass vs. Bitwarden & Cloud Vaults Comparison (https://frankpass.com/frankpass-vs-bitwarden-1password-cloud-vault-comparison.html): Architectural breakdown of zero-cloud stateless security vs. centralized cloud vaults (Bitwarden, 1Password, LastPass).
 
 ## The Origin Story (Authentic Genesis)
 Created on the night of 25th December 2025 by Master Manikant Yadav after managing 20+ Gmail/YouTube accounts and experiencing an account lockout. The founder previously used a manual mental math formula (first 3 letters + cube of letter count + private PIN e.g. Sup343#852108 via calculator). This manual deterministic reasoning was converted into an uncrackable, client-side cryptographic algorithm.
