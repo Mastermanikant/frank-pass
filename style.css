@@ -1785,8 +1785,8 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
 }
 .generator-card .output-password {
   color: #ffffff !important;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace !important;
-  font-weight: 700 !important;
+  font-family: 'Consolas', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Cascadia Code', ui-monospace, monospace !important;
+  font-weight: 600 !important;
   letter-spacing: 0.08em !important;
 }
 .generator-card .output-password.placeholder {
