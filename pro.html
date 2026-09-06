@@ -348,14 +348,11 @@
 
       <!-- Duration Selector Tabs -->
       <div style="display:inline-flex;background:var(--card-glass-bg);border:1px solid var(--border);border-radius:999px;padding:4px;margin-top:1.5rem;gap:4px" role="tablist" aria-label="Pricing duration selector">
-        <button type="button" class="duration-tab-btn active" data-duration="1yr" style="border:none;background:var(--accent);color:#fff;padding:8px 20px;border-radius:999px;font-weight:700;font-size:0.88rem;cursor:pointer;transition:var(--transition)">
+        <button type="button" class="duration-tab-btn active" data-duration="1yr" style="border:none;background:var(--accent);color:#fff;padding:8px 24px;border-radius:999px;font-weight:700;font-size:0.92rem;cursor:pointer;transition:var(--transition)">
           1-Year Pass
         </button>
-        <button type="button" class="duration-tab-btn" data-duration="5yr" style="border:none;background:transparent;color:var(--text-muted);padding:8px 20px;border-radius:999px;font-weight:700;font-size:0.88rem;cursor:pointer;transition:var(--transition)">
+        <button type="button" class="duration-tab-btn" data-duration="5yr" style="border:none;background:transparent;color:var(--text-muted);padding:8px 24px;border-radius:999px;font-weight:700;font-size:0.92rem;cursor:pointer;transition:var(--transition)">
           5-Year Pass ⚡ <span style="color:#eab308">40% Off</span>
-        </button>
-        <button type="button" class="duration-tab-btn" data-duration="life" style="border:none;background:transparent;color:var(--text-muted);padding:8px 20px;border-radius:999px;font-weight:700;font-size:0.88rem;cursor:pointer;transition:var(--transition)">
-          Lifetime Pass ♾️ <span style="color:#34d399">No Expiry</span>
         </button>
       </div>
 
@@ -367,14 +364,14 @@
     <!-- Pricing Cards Grid -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.5rem;margin-bottom:3rem">
       
-      <!-- Card 1: 1-PC Pass -->
+      <!-- Card 1: 1-PC Solo Pass -->
       <div class="card-glass pricing-card" style="border-radius:18px;padding:2rem 1.75rem;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--border);position:relative;background:var(--card-glass-bg);box-shadow:var(--card-shadow)">
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
             <span style="font-size:1.6rem">💻</span>
             <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);background:rgba(139,92,246,0.12);padding:4px 10px;border-radius:999px">Personal</span>
           </div>
-          <h3 style="font-size:1.35rem;margin-bottom:0.4rem;color:var(--text-primary)">1-PC Single Pass</h3>
+          <h3 style="font-size:1.35rem;margin-bottom:0.4rem;color:var(--text-primary)">1-PC Solo Pass</h3>
           <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.25rem">Full offline power for your primary laptop or desktop.</p>
           
           <div style="margin-bottom:1.5rem">
@@ -382,19 +379,19 @@
               <span class="price-val" data-plan="1pc" style="font-size:2.5rem;font-weight:800;color:var(--text-primary)">₹200</span>
               <span class="price-period" data-plan="1pc" style="font-size:0.85rem;color:var(--text-muted)">/ 1 year</span>
             </div>
-            <div class="price-sub" data-plan="1pc" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">or $2.50 USD globally</div>
+            <div class="price-sub" data-plan="1pc" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">or $2.50 USD globally (24 Mo with Review)</div>
           </div>
 
           <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:0.6rem;font-size:0.88rem;color:var(--text-muted)">
             <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>1 Physical Computer</strong> (Hardware locked)</li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>Unlimited In-App Profiles</strong> (Personal, Work, etc.)</li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>All Chromes Unlocked</strong> (Chrome, Brave, Edge)</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>2x Double Validity</strong> (24 Mo or 120 Mo)</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>Unlimited In-App Profiles</strong> (Personal, Work)</li>
             <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> 100% Offline Cryptography &amp; Auto-fill</li>
           </ul>
         </div>
 
         <button type="button" class="btn-primary btn-full plan-checkout-btn" data-plan="1pc" style="width:100%;padding:0.85rem;font-weight:700;font-size:0.95rem;text-align:center;cursor:pointer">
-          Get 1-PC Pass &rarr;
+          Get 1-PC Solo Pass &rarr;
         </button>
       </div>
 
@@ -408,58 +405,58 @@
             <span style="font-size:1.6rem">💻💻</span>
             <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#eab308;background:rgba(234,179,8,0.12);padding:4px 10px;border-radius:999px">Laptop + Desktop</span>
           </div>
-          <h3 style="font-size:1.35rem;margin-bottom:0.4rem;color:var(--text-primary)">2-PC Dual Pass</h3>
+          <h3 style="font-size:1.35rem;margin-bottom:0.4rem;color:var(--text-primary)">2-PC Dual Suite</h3>
           <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.25rem">Seamless workflow between your work desk &amp; personal laptop.</p>
           
           <div style="margin-bottom:1.5rem">
             <div style="display:flex;align-items:baseline;gap:6px">
-              <span class="price-val" data-plan="2pc" style="font-size:2.5rem;font-weight:800;color:var(--text-primary)">₹400</span>
-              <span class="price-period" data-plan="2pc" style="font-size:0.85rem;color:var(--text-muted)">/ 1 year</span>
+              <span class="price-val" data-plan="2pc" style="font-size:2.5rem;font-weight:800;color:var(--text-primary)">₹350</span>
+              <span class="price-period" data-plan="2pc" style="font-size:0.85rem;color:var(--text-muted)">/ 1 year (2 PCs)</span>
             </div>
-            <div class="price-sub" data-plan="2pc" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">or $5.00 USD globally</div>
+            <div class="price-sub" data-plan="2pc" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">Just ₹175 / PC per year (or $4.50 USD)</div>
           </div>
 
           <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:0.6rem;font-size:0.88rem;color:var(--text-muted)">
             <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>2 Physical Computers</strong> (Both machines unlocked)</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>2x Double Validity</strong> (24 Mo or 120 Mo)</li>
             <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>Unlimited Profiles on Both PCs</strong></li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>All Chromes Unlocked on Both PCs</strong></li>
             <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> Priority Founder Support Line</li>
           </ul>
         </div>
 
         <button type="button" class="btn-primary btn-full plan-checkout-btn" data-plan="2pc" style="width:100%;padding:0.85rem;font-weight:700;font-size:0.95rem;text-align:center;cursor:pointer">
-          Get 2-PC Dual Pass &rarr;
+          Get 2-PC Dual Suite &rarr;
         </button>
       </div>
 
-      <!-- Card 3: Business 5+ PCs -->
+      <!-- Card 3: 5-PC Family Suite -->
       <div class="card-glass pricing-card" style="border-radius:18px;padding:2rem 1.75rem;display:flex;flex-direction:column;justify-content:space-between;border:1px solid var(--border);position:relative;background:var(--card-glass-bg);box-shadow:var(--card-shadow)">
         <div>
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem">
-            <span style="font-size:1.6rem">🏢</span>
-            <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#38bdf8;background:rgba(56,189,248,0.12);padding:4px 10px;border-radius:999px">Team &amp; B2B</span>
+            <span style="font-size:1.6rem">👨‍👩‍👧</span>
+            <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:#38bdf8;background:rgba(56,189,248,0.12);padding:4px 10px;border-radius:999px">Family &amp; Team</span>
           </div>
-          <h3 style="font-size:1.35rem;margin-bottom:0.4rem;color:var(--text-primary)">Family / Team 5 PCs</h3>
+          <h3 style="font-size:1.35rem;margin-bottom:0.4rem;color:var(--text-primary)">5-PC Family Suite</h3>
           <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.25rem">For family members, CA firms, clinics &amp; office teams.</p>
           
           <div style="margin-bottom:1.5rem">
             <div style="display:flex;align-items:baseline;gap:6px">
-              <span class="price-val" data-plan="b2b" style="font-size:2.5rem;font-weight:800;color:var(--text-primary)">₹1,000</span>
+              <span class="price-val" data-plan="b2b" style="font-size:2.5rem;font-weight:800;color:var(--text-primary)">₹800</span>
               <span class="price-period" data-plan="b2b" style="font-size:0.85rem;color:var(--text-muted)">/ 1 year (5 PCs)</span>
             </div>
-            <div class="price-sub" data-plan="b2b" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">Just ₹200 / PC per year (or $12.50 USD)</div>
+            <div class="price-sub" data-plan="b2b" style="font-size:0.8rem;color:var(--text-muted);margin-top:0.25rem">Just ₹160 / PC per year (or $10.00 USD)</div>
           </div>
 
           <ul style="list-style:none;padding:0;margin:0 0 1.5rem;display:flex;flex-direction:column;gap:0.6rem;font-size:0.88rem;color:var(--text-muted)">
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>5 to 50 Physical Computers</strong> (Volume Packs)</li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>Single Master Company Key</strong> (Easy rollout)</li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>Hardware Reassignment Allowance</strong> (PC replacement)</li>
-            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> Official GST Tax Invoice for 100% Tax Write-off</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>5 Physical Computers</strong> (Exact 5 Machines)</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>2x Double Validity</strong> (24 Mo or 120 Mo)</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> <strong>Single Master Family Key</strong> (Easy rollout)</li>
+            <li style="display:flex;align-items:center;gap:8px"><span style="color:#34d399;font-weight:bold">✓</span> Official Tax Invoice for 100% Tax Write-off</li>
           </ul>
         </div>
 
         <button type="button" class="btn-primary btn-full plan-checkout-btn" data-plan="b2b" style="width:100%;padding:0.85rem;font-weight:700;font-size:0.95rem;text-align:center;cursor:pointer">
-          Get Business Pass &rarr;
+          Get 5-PC Family Suite &rarr;
         </button>
       </div>
 
@@ -723,22 +720,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // PRICING DATA MATRIX (Clean Round Pricing)
+  // FINAL FROZEN PRICING DATA MATRIX (INR & USD)
   const PRICING_DATA = {
     '1yr': {
-      '1pc': { price: '₹200', period: '/ 1 year', sub: 'or $2.50 USD globally' },
-      '2pc': { price: '₹400', period: '/ 1 year', sub: 'or $5.00 USD globally' },
-      'b2b': { price: '₹1,000', period: '/ 1 year (5 PCs)', sub: 'Just ₹200 / PC per year (or $12.50 USD)' }
+      '1pc': { price: '₹200', period: '/ 1 year', sub: 'or $2.50 USD globally (24 Mo with Review)' },
+      '2pc': { price: '₹350', period: '/ 1 year (2 PCs)', sub: 'Just ₹175 / PC per year (or $4.50 USD)' },
+      'b2b': { price: '₹800', period: '/ 1 year (5 PCs)', sub: 'Just ₹160 / PC per year (or $10.00 USD)' }
     },
     '5yr': {
-      '1pc': { price: '₹600', period: '/ 5 years (⚡ 40% Off)', sub: 'or $7.50 USD globally' },
-      '2pc': { price: '₹1,200', period: '/ 5 years (⚡ 40% Off)', sub: 'or $15.00 USD globally' },
-      'b2b': { price: '₹3,000', period: '/ 5 years (5 PCs)', sub: 'Just ₹120 / PC for 5 full years (or $37.50 USD)' }
-    },
-    'life': {
-      '1pc': { price: '₹2,000', period: '/ Lifetime Pass', sub: 'No expiration · Hardware lifetime (or $25.00 USD)' },
-      '2pc': { price: '₹4,000', period: '/ Lifetime Pass', sub: 'Both PCs unlocked forever (or $50.00 USD)' },
-      'b2b': { price: '₹10,000', period: '/ Lifetime Pass (5 PCs)', sub: '5 PCs unlocked forever (or $125.00 USD)' }
+      '1pc': { price: '₹600', period: '/ 5 years (⚡ 40% Off)', sub: 'or $7.50 USD globally (120 Mo with Review)' },
+      '2pc': { price: '₹1,000', period: '/ 5 years (⚡ 40% Off)', sub: 'Just ₹100 / PC for 5 full years (or $12.00 USD)' },
+      'b2b': { price: '₹2,400', period: '/ 5 years (5 PCs)', sub: 'Just ₹96 / PC for 5 full years (or $30.00 USD)' }
     }
   };
 
