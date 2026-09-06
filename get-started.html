@@ -82,6 +82,54 @@
 <main id="main-content">
 <section class="section" style="text-align:center;padding-bottom:2rem" aria-labelledby="gs-heading">
  <div class="container" style="max-width:780px">
+ 
+ <!-- Extension Welcome VIP Banner (Visible when ?ref=extension_install) -->
+ <div id="ext-welcome-banner" style="display:none;margin-bottom:2.5rem;background:linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(139, 92, 246, 0.15) 100%);border:1.5px solid rgba(16, 185, 129, 0.4);border-radius:20px;padding:2rem 1.75rem;box-shadow:0 15px 40px rgba(0,0,0,0.25);text-align:left;">
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:1.25rem;">
+    <div style="display:inline-flex;align-items:center;gap:8px;padding:4px 14px;border-radius:999px;background:rgba(16, 185, 129, 0.2);color:#10b981;font-size:0.82rem;font-weight:800;letter-spacing:0.05em;text-transform:uppercase;">
+      🎉 FrankPass Pro Installed Successfully
+    </div>
+    <span style="font-size:0.8rem;color:var(--text-muted);font-family:monospace;">Version 3.8.5 · 100% Offline</span>
+  </div>
+
+  <h2 style="font-size:clamp(1.4rem, 3vw, 1.85rem);font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0;line-height:1.25;">
+    Complete Your 60-Second Setup
+  </h2>
+  <p style="font-size:0.92rem;color:var(--text-muted);margin:0 0 1.5rem 0;line-height:1.55;">
+    Follow these 2 quick steps to pin your extension and claim your <strong>100% Free 7-Day Diamond Pro Trial</strong> (Zero email, zero phone, no card required).
+  </p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1rem;margin-bottom:1.5rem;">
+    <!-- Step 1: Pin -->
+    <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:14px;padding:1.25rem;">
+      <div style="font-size:1.5rem;margin-bottom:0.5rem;">📌</div>
+      <h3 style="font-size:1rem;font-weight:700;color:var(--text-primary);margin:0 0 0.35rem 0;">1. Pin to Chrome Toolbar</h3>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;margin:0;">
+        Click the <strong>Puzzle Icon (🧩)</strong> at the top right of Chrome &rarr; Click the <strong>Pin Icon (📌)</strong> next to FrankPass Pro.
+      </p>
+    </div>
+
+    <!-- Step 2: Shortcut -->
+    <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:14px;padding:1.25rem;">
+      <div style="font-size:1.5rem;margin-bottom:0.5rem;">⚡</div>
+      <h3 style="font-size:1rem;font-weight:700;color:var(--text-primary);margin:0 0 0.35rem 0;">2. Universal Shortcut</h3>
+      <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;margin:0;">
+        Press <kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:0.85em;color:var(--accent-light);">Ctrl + Shift + L</kbd> (Mac: <kbd style="background:rgba(255,255,255,0.1);padding:2px 6px;border-radius:4px;font-family:monospace;font-size:0.85em;color:var(--accent-light);">Cmd + Shift + L</kbd>) anywhere to open instantly.
+      </p>
+    </div>
+  </div>
+
+  <!-- Action CTAs -->
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+    <a href="https://store.frankbase.com/frankpasspro-extension-trial" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%);padding:0.75rem 1.5rem;border-radius:10px;font-size:0.9rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+      <span>🎁 Claim 7-Day Diamond Trial (3ms) &rarr;</span>
+    </a>
+    <a href="https://store.frankbase.com/checkout/frankpass" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.75rem 1.25rem;border-radius:10px;font-size:0.88rem;border:1px solid var(--border);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-weight:600;">
+      <span>🛒 Upgrade to Pro Pass &rarr;</span>
+    </a>
+  </div>
+ </div>
+
  <div class="section-label" aria-hidden="true">Setup in under 5 minutes</div>
  <h1 id="gs-heading" style="white-space:nowrap;font-size:clamp(1.85rem, 4.5vw, 2.75rem);line-height:1.2;margin:0 0 0.5rem 0">How to Use FrankPass</h1>
  <p class="section-desc mt-2">Just 4 simple steps to generate your stateless passwords.</p>
@@ -270,6 +318,20 @@ hamburger.addEventListener('click', () => {
  hamburger.classList.toggle('open', isOpen);
  hamburger.setAttribute('aria-expanded', String(isOpen));
 });
+
+/* ── Extension Install Welcome Ref Detection ── */
+(function() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('ref') === 'extension_install' || window.location.search.includes('extension_install')) {
+      const banner = document.getElementById('ext-welcome-banner');
+      if (banner) {
+        banner.style.display = 'block';
+        banner.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  } catch(e) {}
+})();
 </script>
 
 </body>
