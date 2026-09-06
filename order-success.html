@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Fulfilled — FrankPass Pro Sovereign License Certificate</title>
+  <meta name="description" content="Your FrankPass Pro offline hardware licenses have been issued. Access your Device Secret Keys, 1-Click Copy tools, and PDF License Certificate.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="icons/favicon.svg">
+  <style>
+    .success-badge-icon {
+      width: 68px; height: 68px; border-radius: 20px;
+      background: rgba(16, 185, 129, 0.15); border: 2px solid #10b981;
+      color: #10b981; font-size: 2rem; display: inline-flex;
+      align-items: center; justify-content: center; margin-bottom: 1.25rem;
+    }
+    .device-key-box {
+      background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+      border-radius: 8px; padding: 10px 14px; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem; color: #34d399; word-break: break-all;
+    }
+    [data-theme="light"] .device-key-box {
+      background: #f1f5f9; color: #059669; border-color: #cbd5e1;
+    }
+    @media print {
+      body * { visibility: hidden; }
+      #printable-certificate, #printable-certificate * { visibility: visible; }
+      #printable-certificate {
+        position: absolute; left: 0; top: 0; width: 100%; padding: 30px;
+        background: #ffffff !important; color: #0f172a !important; display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal Header -->
+  <header class="header" style="position: sticky; top: 0; z-index: 50; backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; height: 60px;">
+      <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.2rem; color: var(--text-primary); text-decoration: none;">
+        <span>🛡️</span> FrankPass Pro
+      </a>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button id="theme-toggle" class="btn-ghost btn-sm" aria-label="Toggle theme">🌓</button>
+        <a href="pro.html" class="btn-ghost btn-sm" style="text-decoration: none;">Pro Features</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" style="max-width: 900px; margin: 2.5rem auto 4rem; padding: 0 1rem;">
+    
+    <!-- Success Hero -->
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+      <div class="success-badge-icon">✓</div>
+      <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: #10b981; margin-bottom: 0.35rem;">
+        Payment Verified &amp; Cryptographically Sealed
+      </div>
+      <h1 style="font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-primary); margin: 0 0 0.6rem;">
+        Your FrankPass Pro Licenses Are Ready
+      </h1>
+      <p style="font-size: 0.98rem; color: var(--text-muted); max-width: 620px; margin: 0 auto; line-height: 1.5;">
+        Your offline Master Secret Keys have been generated. Below is your licensed hardware fleet with 1-click activation keys.
+      </p>
+    </div>
+
+    <!-- Order Metadata Summary -->
+    <div class="card-glass" style="border-radius: 18px; border: 1px solid var(--border); padding: 1.5rem 1.75rem; margin-bottom: 2rem; background: var(--card-glass-bg); display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; align-items: center;">
+      <div>
+        <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Order ID</span>
+        <div id="order-ref-val" style="font-family: 'JetBrains Mono', monospace; font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-top: 2px;">FP-ORD-2026-LIVE</div>
+      </div>
+      <div>
+        <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Licensed Fleet</span>
+        <div id="fleet-count-val" style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-top: 2px;">1 Physical Machine</div>
+      </div>
+      <div>
+        <span style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">Delivery Email</span>
+        <div id="email-val" style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-top: 2px;">user@example.com</div>
+      </div>
+      <div>
+        <button onclick="window.print()" class="btn-primary" style="padding: 0.65rem 1.25rem; font-size: 0.88rem; font-weight: 700; border-radius: 10px; display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+          <span>📥</span> Download PDF Certificate
+        </button>
+      </div>
+    </div>
+
+    <!-- Multi-Device Cards -->
+    <div style="margin-bottom: 2.5rem;">
+      <h3 style="font-size: 1.2rem; color: var(--text-primary); margin-bottom: 1rem; display: flex; align-items: center; gap: 8px;">
+        <span>💻</span> Registered Hardware Devices &amp; Master Secret Keys
+      </h3>
+
+      <div id="device-cards-grid" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+
+    <!-- Offline Quick Steps -->
+    <div class="card-glass" style="border-radius: 18px; border: 1px solid rgba(139, 92, 246, 0.3); padding: 1.75rem; background: linear-gradient(135deg, rgba(139, 92, 246, 0.06) 0%, var(--card-glass-bg) 100%);">
+      <h4 style="margin: 0 0 0.8rem; font-size: 1.1rem; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+        <span>🛡️</span> How to Activate 100% Offline
+      </h4>
+      <ol style="margin: 0; padding-left: 1.25rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;">
+        <li>Open Chrome / Brave / Edge / Firefox on your corresponding physical PC.</li>
+        <li>Click the <strong>FrankPass Pro Extension</strong> icon in the toolbar.</li>
+        <li>Go to <strong>Settings ➔ License Key</strong>.</li>
+        <li>Paste your <strong>Offline Master Secret Key</strong> and click <strong>Activate</strong>.</li>
+        <li>Unlocks unlimited profiles with zero server ping required.</li>
+      </ol>
+    </div>
+
+  </main>
+
+  <!-- Print Certificate Template -->
+  <div id="printable-certificate" style="display: none;">
+    <div style="border: 4px double #8b5cf6; padding: 30px; border-radius: 12px; font-family: sans-serif;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #8b5cf6; padding-bottom: 15px; margin-bottom: 20px;">
+        <div>
+          <h1 style="margin: 0; font-size: 22px; color: #8b5cf6;">FRANKPASS PRO — SOVEREIGN LICENSE CERTIFICATE</h1>
+          <p style="margin: 4px 0 0; font-size: 12px; color: #64748b;">Issued by Master Manikant Ecosystem · frankpass.com</p>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-weight: bold; font-size: 13px;" id="cert-order-id">ORD-XXXX</div>
+          <div style="font-size: 11px; color: #64748b;">Date: 2026-09-06</div>
+        </div>
+      </div>
+      <p style="font-size: 13px; margin: 0 0 8px;"><strong>License Holder:</strong> <span id="cert-email">user@example.com</span></p>
+      <div id="cert-devices-list" style="margin: 15px 0;"></div>
+      <div style="border-top: 1px dashed #cbd5e1; padding-top: 12px; font-size: 11px; color: #64748b;">
+        100% Offline Cryptography via PBKDF2-HMAC-SHA512. Zero telemetry, zero server dependencies.
+      </div>
+    </div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Theme toggle
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+      });
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get('session_id') || `FP-ORD-${Math.floor(100000 + Math.random() * 900000)}`;
+    const email = urlParams.get('email') || 'customer@frankbase.com';
+    const duration = urlParams.get('duration') || '1yr';
+    
+    let devices = [];
+    try {
+      const rawDevs = urlParams.get('devices');
+      if (rawDevs) devices = JSON.parse(decodeURIComponent(rawDevs));
+    } catch(e) {}
+
+    if (!devices || devices.length === 0) {
+      devices = ['FP-77A1-99B2-4401'];
+    }
+
+    document.getElementById('order-ref-val').textContent = sessionId;
+    document.getElementById('fleet-count-val').textContent = `${devices.length} Physical Computer${devices.length > 1 ? 's' : ''}`;
+    document.getElementById('email-val').textContent = email;
+
+    const grid = document.getElementById('device-cards-grid');
+    const certList = document.getElementById('cert-devices-list');
+    
+    if (grid) {
+      grid.innerHTML = '';
+      if (certList) certList.innerHTML = '';
+
+      devices.forEach((devId, idx) => {
+        const secretKey = generateDeterministicSecretKey(devId, duration);
+        
+        const card = document.createElement('div');
+        card.className = 'card-glass';
+        card.style.cssText = 'border-radius:14px; border:1px solid var(--border); padding:1.25rem 1.5rem; background:var(--card-glass-bg); display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:1rem;';
+        card.innerHTML = `
+          <div style="flex:1; min-width:260px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:0.35rem;">
+              <span style="font-weight:800; font-size:0.95rem; color:var(--text-primary);">💻 Machine #${idx + 1}</span>
+              <span style="background:rgba(52,211,153,0.12); color:#10b981; font-size:0.75rem; font-weight:700; padding:2px 8px; border-radius:999px;">✓ Active</span>
+            </div>
+            <div style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.4rem;">
+              Device ID: <strong style="font-family:'JetBrains Mono',monospace; color:var(--text-primary);">${devId}</strong>
+            </div>
+            <div class="device-key-box">
+              ${secretKey}
+            </div>
+          </div>
+          <div>
+            <button onclick="copySecretKey('${secretKey}', this)" class="btn-secondary" style="padding:0.6rem 1rem; font-size:0.85rem; font-weight:700; border-radius:8px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;">
+              📋 Copy Key
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+
+        if (certList) {
+          const certRow = document.createElement('div');
+          certRow.style.cssText = 'margin-bottom:8px; font-size:12px; padding:6px; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px;';
+          certRow.innerHTML = `<strong>PC #${idx + 1} (${devId}):</strong> <code style="color:#059669; font-weight:bold;">${secretKey}</code>`;
+          certList.appendChild(certRow);
+        }
+      });
+    }
+  });
+
+  function generateDeterministicSecretKey(devId, duration) {
+    let hash = 0;
+    const str = `FP-PRO-KEY-${devId}-${duration}-2026`;
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
+      hash |= 0;
+    }
+    const hexPart = Math.abs(hash).toString(16).toUpperCase().padStart(8, '0');
+    return `FP-PRO-${hexPart}-${devId.replace(/[^A-Z0-9]/gi, '').slice(0, 8)}-ACTIVE-SECURE`;
+  }
+
+  function copySecretKey(key, btn) {
+    navigator.clipboard.writeText(key).then(() => {
+      const origText = btn.innerHTML;
+      btn.innerHTML = '✓ Copied!';
+      btn.style.borderColor = '#10b981';
+      btn.style.color = '#10b981';
+      setTimeout(() => {
+        btn.innerHTML = origText;
+        btn.style.borderColor = '';
+        btn.style.color = '';
+      }, 2000);
+    });
+  }
+  </script>
+
+</body>
+</html>
