@@ -590,31 +590,27 @@
   
     <!-- Hero / Breadcrumb -->
     <div class="products-hero-wrap">
-      <div class="products-pill-badge">
-        📦 Ecosystem Products Hub
+      <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem">
+        <div class="products-pill-badge" style="margin-bottom:0">
+          📦 Ecosystem Products Hub
+        </div>
+        <div class="status-chip-green" style="font-size:0.82rem;padding:0.35rem 0.9rem">
+          🚀 Extension Beta Trial Live · Web Store Launch Coming Soon
+        </div>
       </div>
+      
       <h1 class="products-hero-title">
         Our Products &amp; Digital Ecosystem
       </h1>
       <p class="products-hero-desc">
         Explore privacy-first cryptographic utilities from FrankPass alongside educational, developer, and productivity tools crafted under the Master Manikant ecosystem.
       </p>
-    </div>
 
-    <!-- Quick Navigation & Expand / Collapse Controls -->
-    <div class="accordion-toolbar">
-      <div class="quick-jump-links">
-        <span style="font-size:0.8rem;font-weight:700;color:var(--text-muted);margin-right:0.25rem">Quick Jump:</span>
-        <a href="#extensions" class="quick-jump-btn" onclick="expandSpecificSection('sec-extensions')">🧩 Browser Extensions &amp; Pro</a>
-        <a href="#web-tools" class="quick-jump-btn" onclick="expandSpecificSection('sec-web-tools')">🛡️ Core Web Utilities</a>
-        <a href="#ecosystem" class="quick-jump-btn" onclick="expandSpecificSection('sec-ecosystem')">🚀 Sister Platforms</a>
-      </div>
-      <div class="expand-toggle-btns">
-        <button type="button" class="toggle-all-btn" id="btn-expand-all" onclick="toggleAllSections(true)">
-          <span>⊞</span> Expand All
-        </button>
-        <button type="button" class="toggle-all-btn" id="btn-collapse-all" onclick="toggleAllSections(false)">
-          <span>⊟</span> Collapse All
+      <!-- 1-Click Copy AI Prompt Button -->
+      <div style="margin-top:1.5rem;display:flex;justify-content:center">
+        <button type="button" id="copy-ai-btn" onclick="copyEcosystemPromptForAI()" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--card-glass-bg);border:1.5px solid rgba(139,92,246,0.4);padding:0.65rem 1.4rem;border-radius:14px;font-size:0.88rem;font-weight:700;color:var(--text-primary);cursor:pointer;box-shadow:var(--card-shadow);transition:all 0.2s ease">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+          <span id="copy-ai-btn-text">📋 Understand Ecosystem with AI (1-Click Copy Prompt)</span>
         </button>
       </div>
     </div>
@@ -973,6 +969,37 @@
           sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 50);
       }
+    }
+
+    // One-click copy structured ecosystem prompt for AI tools
+    function copyEcosystemPromptForAI() {
+      var promptText = `# Master Manikant Ecosystem & FrankPass Overview\n\n` +
+        `## What is FrankPass?\n` +
+        `FrankPass is a 100% zero-knowledge, stateless cryptographic security platform and password vault developed by Master Manikant Yadav. It uses PBKDF2 (1,000,000 iterations) and WebCrypto HMAC-SHA512 to generate mathematical passwords client-side without storing a single password on any cloud server.\n\n` +
+        `## Core Products Suite:\n` +
+        `1. FrankPass Pro Extension (Chrome, Edge, Brave, Firefox): Auto-fill, mathematical anti-phishing guard, 4-digit quick PIN lock, 100% offline RAM license verification, and zero telemetry.\n` +
+        `2. FrankPass Web App (PWA): Stateless web password generator at https://frankpass.com\n` +
+        `3. Deterministic PIN Generator: 4-digit/6-digit numeric PIN generator for ATM & UPI cards.\n` +
+        `4. Developer CLI Tool: Open-source terminal cryptography.\n` +
+        `5. tools.frankbase.com: Unified digital tools hub (Typing Speed Engine + Privacy Downloader).\n` +
+        `6. FrankBase Store (store.frankbase.com): Sovereign store with 0-tracking policy.\n\n` +
+        `## Philosophy & Truth:\n` +
+        `- 100% Privacy, Zero Database on public website, Zero Spam.\n` +
+        `- Hardware-bound offline licensing tied to silicon Device ID (FP-XXXX-XXXX-XXXX).\n` +
+        `- Free 7-day trial requires 0 personal information (no email/card).\n` +
+        `- Created with 100% integrity by Master Manikant Yadav.`;
+
+      navigator.clipboard.writeText(promptText).then(function() {
+        var btnText = document.getElementById('copy-ai-btn-text');
+        if (btnText) {
+          btnText.textContent = '✅ Copied to Clipboard! Paste into ChatGPT / Claude / Gemini';
+          setTimeout(function() {
+            btnText.textContent = '📋 Understand Ecosystem with AI (1-Click Copy Prompt)';
+          }, 3500);
+        }
+      }).catch(function() {
+        alert('Prompt copied to clipboard!');
+      });
     }
 
     // Auto-expand section if URL contains hash (e.g. #extensions or #web-tools)
