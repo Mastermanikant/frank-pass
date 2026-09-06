@@ -13,7 +13,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Products Hub · FrankPass Security & Ecosystem</title>
-  <meta name="description" content="Explore all products in the FrankPass security ecosystem and sister platforms created by Master Manikant. Zero-knowledge cryptography, developer tools, and digital platforms.">
+  <meta name="description" content="Explore all products in the FrankPass security ecosystem and sister platforms created by Master Manikant. Zero-knowledge cryptography, offline extensions, and digital tools.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://frankpass.com/products.html">
   <meta property="og:title" content="All Products Hub · FrankPass Security &amp; Ecosystem">
@@ -44,17 +44,17 @@
     "numberOfItems": 13,
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "FrankPass Pro & Sovereign Store", "url": "https://frankpass.com/pro.html"},
-      {"@type": "ListItem", "position": 2, "name": "FrankPass Web App (PWA)", "url": "https://frankpass.com/"},
-      {"@type": "ListItem", "position": 3, "name": "Chrome, Edge & Brave Extension", "url": "https://frankpass.com/pro.html"},
-      {"@type": "ListItem", "position": 4, "name": "Firefox Privacy Add-on", "url": "https://frankpass.com/pro.html"},
+      {"@type": "ListItem", "position": 2, "name": "Chrome, Edge & Brave Extension", "url": "https://frankpass.com/pro.html"},
+      {"@type": "ListItem", "position": 3, "name": "Firefox Privacy Add-on", "url": "https://frankpass.com/pro.html"},
+      {"@type": "ListItem", "position": 4, "name": "FrankPass Web App (PWA)", "url": "https://frankpass.com/"},
       {"@type": "ListItem", "position": 5, "name": "Deterministic PIN Generator", "url": "https://frankpass.com/pin.html"},
       {"@type": "ListItem", "position": 6, "name": "Random Password Generator", "url": "https://frankpass.com/random-password-generator.html"},
       {"@type": "ListItem", "position": 7, "name": "Developer CLI Tool", "url": "https://frankpass.com/docs.html"},
       {"@type": "ListItem", "position": 8, "name": "FrankBase.com", "url": "https://frankbase.com"},
       {"@type": "ListItem", "position": 9, "name": "MasterManikant.com", "url": "https://mastermanikant.com"},
       {"@type": "ListItem", "position": 10, "name": "EnglishVidya.com", "url": "https://englishvidya.com"},
-      {"@type": "ListItem", "position": 11, "name": "Tracking Downloader", "url": "https://downloader.frankbase.com"},
-      {"@type": "ListItem", "position": 12, "name": "Typing Speed Engine", "url": "https://typing.frankpass.com"},
+      {"@type": "ListItem", "position": 11, "name": "tools.frankbase.com", "url": "https://tools.frankbase.com"},
+      {"@type": "ListItem", "position": 12, "name": "Typing Speed Engine", "url": "https://tools.frankbase.com/typing"},
       {"@type": "ListItem", "position": 13, "name": "Cyber Security & Encryption eBooks", "url": "https://store.frankbase.com/ebooks"}
     ]
   }
@@ -69,7 +69,7 @@
     }
     .products-hero-wrap {
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.5rem;
     }
     .products-pill-badge {
       display: inline-flex;
@@ -93,51 +93,180 @@
       margin-bottom: 0.85rem;
     }
     .products-hero-desc {
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
-      max-width: 720px;
+      max-width: 740px;
       margin: 0 auto;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
-    .products-section {
-      background: var(--card-glass-bg);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 2.25rem;
-      margin-bottom: 3rem;
-      box-shadow: var(--card-shadow);
-      transition: border-color 0.3s ease;
-    }
-    .products-section.flagship-section {
-      border-color: rgba(139, 92, 246, 0.35);
-      background: linear-gradient(180deg, rgba(139, 92, 246, 0.04) 0%, var(--card-glass-bg) 100%);
-    }
-    .section-header-wrap {
+    /* Interactive Global Accordion Controls */
+    .accordion-toolbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1.25rem;
-      margin-bottom: 1.75rem;
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1.25rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
       gap: 0.75rem;
+      box-shadow: var(--card-shadow);
     }
-    .section-badge-category {
-      font-size: 0.76rem;
+    .quick-jump-links {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .quick-jump-btn {
+      font-size: 0.78rem;
       font-weight: 700;
+      color: var(--text-muted);
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .quick-jump-btn:hover {
+      color: var(--accent-light);
+      border-color: var(--accent-light);
+      background: rgba(139, 92, 246, 0.08);
+    }
+    .expand-toggle-btns {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .toggle-all-btn {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.85rem;
+      border-radius: 10px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+    }
+    .toggle-all-btn:hover {
+      background: rgba(139, 92, 246, 0.12);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: var(--accent-light);
+    }
+
+    /* Accordion Section Wrapper */
+    .accordion-section {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--card-shadow);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
+    .accordion-section.flagship-accordion {
+      border-color: rgba(139, 92, 246, 0.35);
+      background: linear-gradient(180deg, rgba(139, 92, 246, 0.03) 0%, var(--card-glass-bg) 100%);
+    }
+    .accordion-section.expanded {
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+    
+    /* Interactive Accordion Header (Click to Shrink/Expand) */
+    .accordion-header {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 1.85rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      transition: background 0.2s ease;
+      gap: 1rem;
+    }
+    .accordion-header:hover {
+      background: rgba(139, 92, 246, 0.04);
+    }
+    .accordion-title-wrap {
+      flex: 1;
+    }
+    .accordion-category-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 800;
       color: var(--accent-light, #a78bfa);
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+      display: block;
     }
-    .section-heading-title {
-      font-size: 1.45rem;
+    .accordion-heading {
+      font-size: 1.35rem;
       font-weight: 800;
       color: var(--text-primary);
-      margin: 0.25rem 0 0 0;
+      margin: 0;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
-    
+    .accordion-header-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      line-height: 1.4;
+    }
+    .accordion-right-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+    .chevron-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease;
+      flex-shrink: 0;
+    }
+    .accordion-section.expanded .chevron-icon {
+      transform: rotate(180deg);
+      background: rgba(139, 92, 246, 0.15);
+      border-color: rgba(139, 92, 246, 0.4);
+      color: var(--accent-light);
+    }
+
+    /* Accordion Body & Expand Collapse Animation */
+    .accordion-body {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease, padding 0.3s ease;
+      padding: 0 1.85rem;
+    }
+    .accordion-section.expanded .accordion-body {
+      max-height: 3000px;
+      opacity: 1;
+      padding: 0 1.85rem 1.85rem 1.85rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+    }
+
     /* Strict WCAG 2.1 AA Contrast Compliant Status Chips */
     .status-chip-green {
       font-size: 0.8rem;
@@ -172,29 +301,37 @@
     }
 
     /* Grid Layouts */
-    .products-grid {
+    .products-grid-3col {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.35rem;
+      gap: 1.25rem;
+    }
+    .products-grid-2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
     }
     @media (max-width: 960px) {
-      .products-grid {
+      .products-grid-3col,
+      .products-grid-2col {
         grid-template-columns: repeat(2, 1fr);
       }
     }
     @media (max-width: 640px) {
-      .products-grid {
+      .products-grid-3col,
+      .products-grid-2col {
         grid-template-columns: 1fr;
       }
-      .products-section {
-        padding: 1.35rem;
-        border-radius: 18px;
+      .accordion-header {
+        padding: 1.25rem;
+      }
+      .accordion-body {
+        padding: 0 1.25rem 1.25rem 1.25rem !important;
       }
     }
 
     /* Flagship Hero Card */
     .flagship-hero-card {
-      grid-column: 1 / -1;
       background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(245, 158, 11, 0.08) 50%, var(--glass-bg) 100%);
       border: 1.5px solid rgba(139, 92, 246, 0.4);
       border-radius: 20px;
@@ -206,11 +343,11 @@
       gap: 2rem;
       box-shadow: 0 8px 24px rgba(139, 92, 246, 0.1);
       position: relative;
-      overflow: hidden;
+      margin-bottom: 1.5rem;
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .flagship-hero-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: rgba(139, 92, 246, 0.7);
       box-shadow: 0 16px 36px rgba(139, 92, 246, 0.2);
     }
@@ -277,7 +414,7 @@
       background: var(--glass-bg);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 1.6rem;
+      padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -285,53 +422,50 @@
       position: relative;
     }
     .product-item-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       border-color: rgba(139, 92, 246, 0.45);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
     }
 
     /* Squircle Glass Icon Box */
     .product-icon-box {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
       background: rgba(139, 92, 246, 0.1);
       border: 1px solid rgba(139, 92, 246, 0.22);
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.65rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      font-size: 1.5rem;
+      margin-bottom: 0.85rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       transition: transform 0.25s ease, background 0.25s ease;
     }
     .product-item-card:hover .product-icon-box {
-      transform: scale(1.08);
+      transform: scale(1.06);
       background: rgba(139, 92, 246, 0.18);
-    }
-    .flagship-hero-card:hover .product-icon-box {
-      transform: scale(1.08);
     }
 
     .product-card-title {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin: 0 0 0.45rem 0;
+      margin: 0 0 0.4rem 0;
       line-height: 1.35;
     }
     .product-card-desc {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
       line-height: 1.55;
-      margin: 0 0 1.25rem 0;
+      margin: 0 0 1.15rem 0;
     }
     .product-card-cta {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.65rem 1.15rem;
-      font-size: 0.88rem;
+      padding: 0.62rem 1rem;
+      font-size: 0.86rem;
       font-weight: 700;
       border-radius: 12px;
       text-align: center;
@@ -340,7 +474,58 @@
       text-decoration: none;
     }
 
-    /* Assurance Notice Box */
+    /* Transparent Store & 100% Offline Cryptographic Invariant Notice Box */
+    .offline-verification-notice {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+      border: 1.5px solid rgba(16, 185, 129, 0.35);
+      border-radius: 18px;
+      padding: 1.4rem 1.6rem;
+      margin-top: 1.5rem;
+      box-shadow: var(--card-shadow);
+    }
+    .notice-header-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.6rem;
+    }
+    .notice-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 740px) {
+      .notice-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .notice-sub-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1rem 1.15rem;
+    }
+    .notice-sub-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-light, #a78bfa);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .notice-sub-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Bottom Universal Assurance Box */
     .store-assurance-box {
       background: rgba(139, 92, 246, 0.07);
       border: 1px solid rgba(139, 92, 246, 0.25);
@@ -416,19 +601,47 @@
       </p>
     </div>
 
-    <!-- ============================================================
-    CATEGORY 1: ALL PRODUCTS RELATED TO FRANKPASS
-    ============================================================ -->
-    <section class="products-section flagship-section">
-      <div class="section-header-wrap">
-        <div>
-          <span class="section-badge-category">Category 01</span>
-          <h2 class="section-heading-title">🛡️ FrankPass Security &amp; Cryptography Ecosystem</h2>
-        </div>
-        <span class="status-chip-green">● 100% Offline &amp; Open Source</span>
+    <!-- Quick Navigation & Expand / Collapse Controls -->
+    <div class="accordion-toolbar">
+      <div class="quick-jump-links">
+        <span style="font-size:0.8rem;font-weight:700;color:var(--text-muted);margin-right:0.25rem">Quick Jump:</span>
+        <a href="#extensions" class="quick-jump-btn" onclick="expandSpecificSection('sec-extensions')">🧩 Browser Extensions &amp; Pro</a>
+        <a href="#web-tools" class="quick-jump-btn" onclick="expandSpecificSection('sec-web-tools')">🛡️ Core Web Utilities</a>
+        <a href="#ecosystem" class="quick-jump-btn" onclick="expandSpecificSection('sec-ecosystem')">🚀 Sister Platforms</a>
       </div>
+      <div class="expand-toggle-btns">
+        <button type="button" class="toggle-all-btn" id="btn-expand-all" onclick="toggleAllSections(true)">
+          <span>⊞</span> Expand All
+        </button>
+        <button type="button" class="toggle-all-btn" id="btn-collapse-all" onclick="toggleAllSections(false)">
+          <span>⊟</span> Collapse All
+        </button>
+      </div>
+    </div>
 
-      <div class="products-grid">
+    <!-- ============================================================
+    SECTION 1: FRANKPASS BROWSER EXTENSIONS & PRO SUITE (FLAGSHIP)
+    ============================================================ -->
+    <section class="accordion-section flagship-accordion expanded" id="sec-extensions">
+      <button class="accordion-header" type="button" onclick="toggleAccordion('sec-extensions')" aria-expanded="true" aria-controls="body-extensions">
+        <div class="accordion-title-wrap">
+          <span class="accordion-category-eyebrow">Category 01 · Flagship Suite</span>
+          <h2 class="accordion-heading">
+            🧩 FrankPass Browser Extensions &amp; Pro Add-ons
+          </h2>
+          <div class="accordion-header-sub">
+            Manifest V3 browser extensions, 4-digit quick PIN unlock, and offline hardware-bound Pro licenses.
+          </div>
+        </div>
+        <div class="accordion-right-meta">
+          <span class="status-chip-green">● 100% Offline MV3</span>
+          <div class="chevron-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+      </button>
+
+      <div class="accordion-body" id="body-extensions">
         
         <!-- FLAGSHIP HERO CARD: FrankPass Pro & Sovereign Store -->
         <div class="flagship-hero-card">
@@ -436,15 +649,15 @@
             <div class="flagship-gold-badge">👑 FLAGSHIP SECURITY SUITE</div>
             <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem">
               <div class="product-icon-box" style="margin-bottom:0;background:rgba(245,158,11,0.12);border-color:rgba(245,158,11,0.35)">👑</div>
-              <h3 style="font-size:1.4rem;font-weight:800;color:var(--text-primary);margin:0;letter-spacing:-0.02em">FrankPass PRO &amp; Sovereign Store</h3>
+              <h3 style="font-size:1.35rem;font-weight:800;color:var(--text-primary);margin:0;letter-spacing:-0.02em">FrankPass PRO &amp; Sovereign Store</h3>
             </div>
             <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0 0 0.85rem 0">
               Hardware-bound PC passes (1-PC ₹200 / 2-PC ₹400), unlimited domain profiles, 4-digit quick PIN unlock, priority founder desk, and instant automated PDF license delivery via FrankBase Store.
             </p>
             <div class="flagship-perks-list">
               <span class="flagship-perk-item">🔒 Hardware-Bound DevID</span>
-              <span class="flagship-perk-item">⚡ Instant Key Issuance</span>
-              <span class="flagship-perk-item">🛡️ 100% Offline Vault</span>
+              <span class="flagship-perk-item">⚡ Instant Key Delivery</span>
+              <span class="flagship-perk-item">🛡️ 100% Offline Verification</span>
               <span class="flagship-perk-item">🚫 Zero Tracking &amp; Zero Spam</span>
             </div>
           </div>
@@ -456,191 +669,248 @@
           </div>
         </div>
 
-        <!-- FrankPass Web App -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">🌐</div>
-            <h3 class="product-card-title">FrankPass Web App (PWA)</h3>
-            <p class="product-card-desc">
-              Stateless client-side password generator using PBKDF2 &amp; WebCrypto HMAC-SHA512. Works 100% offline without internet.
-            </p>
+        <div class="products-grid-2col">
+          
+          <!-- FrankPass Browser Extension (Chromium) -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">🧩</div>
+              <h3 class="product-card-title">Chrome, Edge &amp; Brave Extension</h3>
+              <p class="product-card-desc">
+                One-click auto-fill, mathematical anti-phishing guard, and 4-digit quick PIN vault directly in your browser toolbar.
+              </p>
+            </div>
+            <a href="/pro.html" class="btn-primary product-card-cta">
+              Explore Pro Extension →
+            </a>
           </div>
-          <a href="/" class="btn-primary product-card-cta">
-            Open Web App →
-          </a>
+
+          <!-- FrankPass Firefox Add-on -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">🦊</div>
+              <h3 class="product-card-title">Firefox Privacy Add-on</h3>
+              <p class="product-card-desc">
+                Optimized for Firefox with zero tracking, Manifest V3 security standards, and 100% offline mathematical vaults.
+              </p>
+            </div>
+            <a href="/pro.html" class="btn-ghost product-card-cta">
+              Get for Firefox →
+            </a>
+          </div>
+
         </div>
 
-        <!-- FrankPass Browser Extension -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">🧩</div>
-            <h3 class="product-card-title">Chrome, Edge &amp; Brave Extension</h3>
-            <p class="product-card-desc">
-              One-click auto-fill, mathematical anti-phishing guard, and 4-digit quick PIN vault directly in your browser toolbar.
-            </p>
+        <!-- Transparent Sovereign Store & 100% Offline License Verification Invariant -->
+        <div class="offline-verification-notice">
+          <div class="notice-header-row">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Sovereign Store Fulfillment &amp; 100% Offline License Verification Invariant
           </div>
-          <a href="/pro.html" class="btn-primary product-card-cta">
-            Explore Pro Extension →
-          </a>
-        </div>
-
-        <!-- FrankPass Firefox Add-on -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">🦊</div>
-            <h3 class="product-card-title">Firefox Privacy Add-on</h3>
-            <p class="product-card-desc">
-              Optimized for Firefox with zero tracking, Manifest V3 security standards, and 100% offline mathematical vaults.
-            </p>
+          <div class="notice-grid">
+            <div class="notice-sub-card">
+              <div class="notice-sub-title">
+                🛒 Sovereign Store Order Fulfillment
+              </div>
+              <p class="notice-sub-text">
+                All browser extension licenses, Pro activations, and automated order fulfillment are securely managed exclusively via <strong>FrankBase Store</strong> (<a href="https://store.frankbase.com/frankpasspro-extension" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);text-decoration:underline;font-weight:700">store.frankbase.com</a>). Due to our strict zero-database policy, <code>frankpass.com</code> stores zero payment data and zero user records.
+              </p>
+            </div>
+            <div class="notice-sub-card">
+              <div class="notice-sub-title">
+                ⚡ 100% Offline Cryptographic Verification
+              </div>
+              <p class="notice-sub-text">
+                Even after purchase, the extension operates <strong>100% offline</strong>. Our smart cryptographic engine verifies your license key completely in browser RAM using your hardware-bound Device ID and pre-existing HMAC hash math. <strong>Zero telemetry, zero server pinging, and zero cloud lookups.</strong>
+              </p>
+            </div>
           </div>
-          <a href="/pro.html" class="btn-ghost product-card-cta">
-            Get for Firefox →
-          </a>
-        </div>
-
-        <!-- Deterministic PIN Generator -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">🔢</div>
-            <h3 class="product-card-title">Deterministic PIN Generator</h3>
-            <p class="product-card-desc">
-              Stateless 4-digit and 6-digit numeric PINs for ATM debit cards, UPI (GPay, PhonePe), and SIM locks.
-            </p>
-          </div>
-          <a href="/pin.html" class="btn-ghost product-card-cta">
-            Open PIN Generator →
-          </a>
-        </div>
-
-        <!-- FrankPass Random Password Generator -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">🎲</div>
-            <h3 class="product-card-title">Random Password Generator</h3>
-            <p class="product-card-desc">
-              Instant multi-layer WebCrypto random passwords with zero-ambiguity character filtering (no O/0, I/l/1 confusion).
-            </p>
-          </div>
-          <a href="/random-password-generator.html" class="btn-ghost product-card-cta">
-            Generate Random →
-          </a>
-        </div>
-
-        <!-- FrankPass Developer CLI -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">💻</div>
-            <h3 class="product-card-title">Developer CLI Tool</h3>
-            <p class="product-card-desc">
-              Command-line interface for terminal users, DevOps pipelines, and automated server secret derivations.
-            </p>
-          </div>
-          <a href="/docs.html" class="btn-ghost product-card-cta">
-            View CLI Docs →
-          </a>
         </div>
 
       </div>
     </section>
 
     <!-- ============================================================
-    CATEGORY 2: BROADER ECOSYSTEM & SISTER PLATFORMS
+    SECTION 2: FRANKPASS CORE STATELESS WEB UTILITIES
     ============================================================ -->
-    <section class="products-section">
-      <div class="section-header-wrap">
-        <div>
-          <span class="section-badge-category">Category 02</span>
-          <h2 class="section-heading-title">🚀 Broader Ecosystem &amp; Sister Platforms</h2>
+    <section class="accordion-section" id="sec-web-tools">
+      <button class="accordion-header" type="button" onclick="toggleAccordion('sec-web-tools')" aria-expanded="false" aria-controls="body-web-tools">
+        <div class="accordion-title-wrap">
+          <span class="accordion-category-eyebrow">Category 02 · Web Cryptography</span>
+          <h2 class="accordion-heading">
+            🛡️ frankpass.com Core Stateless Web System
+          </h2>
+          <div class="accordion-header-sub">
+            Stateless Web App (PWA), Deterministic PIN generator, Random password engine, and Developer CLI.
+          </div>
         </div>
-        <span class="status-chip-purple">Master Manikant Digital Ecosystem</span>
+        <div class="accordion-right-meta">
+          <span class="status-chip-green">● 100% Free &amp; Open Source</span>
+          <div class="chevron-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+      </button>
+
+      <div class="accordion-body" id="body-web-tools">
+        <div class="products-grid-3col">
+          
+          <!-- FrankPass Web App -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">🌐</div>
+              <h3 class="product-card-title">FrankPass Web App (PWA)</h3>
+              <p class="product-card-desc">
+                Stateless client-side password generator using PBKDF2 &amp; WebCrypto HMAC-SHA512. Works 100% offline without internet.
+              </p>
+            </div>
+            <a href="/" class="btn-primary product-card-cta">
+              Open Web App →
+            </a>
+          </div>
+
+          <!-- Deterministic PIN Generator -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">🔢</div>
+              <h3 class="product-card-title">Deterministic PIN Generator</h3>
+              <p class="product-card-desc">
+                Stateless 4-digit and 6-digit numeric PINs for ATM debit cards, UPI (GPay, PhonePe), and SIM locks.
+              </p>
+            </div>
+            <a href="/pin.html" class="btn-ghost product-card-cta">
+              Open PIN Generator →
+            </a>
+          </div>
+
+          <!-- FrankPass Random Password Generator -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">🎲</div>
+              <h3 class="product-card-title">Random Password Generator</h3>
+              <p class="product-card-desc">
+                Instant multi-layer WebCrypto random passwords with zero-ambiguity character filtering (no O/0, I/l/1 confusion).
+              </p>
+            </div>
+            <a href="/random-password-generator.html" class="btn-ghost product-card-cta">
+              Generate Random →
+            </a>
+          </div>
+
+          <!-- FrankPass Developer CLI -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">💻</div>
+              <h3 class="product-card-title">Developer CLI Tool</h3>
+              <p class="product-card-desc">
+                Command-line interface for terminal users, DevOps pipelines, and automated server secret derivations.
+              </p>
+            </div>
+            <a href="/docs.html" class="btn-ghost product-card-cta">
+              View CLI Docs →
+            </a>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-      <div class="products-grid">
-        
-        <!-- FrankBase -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">💎</div>
-            <h3 class="product-card-title">FrankBase.com</h3>
-            <p class="product-card-desc">
-              Comprehensive educational, digital tools, and knowledge platform empowering learners and developers worldwide.
-            </p>
+    <!-- ============================================================
+    SECTION 3: SISTER PLATFORMS & MASTER MANIKANT ECOSYSTEM
+    ============================================================ -->
+    <section class="accordion-section" id="sec-ecosystem">
+      <button class="accordion-header" type="button" onclick="toggleAccordion('sec-ecosystem')" aria-expanded="false" aria-controls="body-ecosystem">
+        <div class="accordion-title-wrap">
+          <span class="accordion-category-eyebrow">Category 03 · Broader Ecosystem</span>
+          <h2 class="accordion-heading">
+            🚀 Sister Platforms &amp; Master Manikant Ecosystem
+          </h2>
+          <div class="accordion-header-sub">
+            Knowledge platforms, founder thought leadership, bilingual competitive education, and digital utilities.
           </div>
-          <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
-            Visit FrankBase.com ↗
-          </a>
         </div>
-
-        <!-- MasterManikant.com -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">👔</div>
-            <h3 class="product-card-title">MasterManikant.com</h3>
-            <p class="product-card-desc">
-              Founder desk, visionary articles, research, and personal thought leadership on software, security, and education.
-            </p>
+        <div class="accordion-right-meta">
+          <span class="status-chip-purple">Master Manikant Ecosystem</span>
+          <div class="chevron-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
           </div>
-          <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
-            Visit Founder Desk ↗
-          </a>
         </div>
+      </button>
 
-        <!-- EnglishVidya -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">📚</div>
-            <h3 class="product-card-title">EnglishVidya.com</h3>
-            <p class="product-card-desc">
-              High-density, bilingual competitive exam preparation, English grammar mastery, and interactive quizzes.
-            </p>
+      <div class="accordion-body" id="body-ecosystem">
+        <div class="products-grid-3col">
+          
+          <!-- FrankBase -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">💎</div>
+              <h3 class="product-card-title">FrankBase.com</h3>
+              <p class="product-card-desc">
+                Comprehensive educational, digital tools, and knowledge platform empowering learners and developers worldwide.
+              </p>
+            </div>
+            <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
+              Visit FrankBase.com ↗
+            </a>
           </div>
-          <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
-            Learn on EnglishVidya ↗
-          </a>
-        </div>
 
-        <!-- Tracking Downloader -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">⚡</div>
-            <h3 class="product-card-title">Tracking Downloader</h3>
-            <p class="product-card-desc">
-              Privacy-first media and file downloader that strips out tracking pixels, ad redirects, and surveillance cookies.
-            </p>
+          <!-- MasterManikant.com -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">👔</div>
+              <h3 class="product-card-title">MasterManikant.com</h3>
+              <p class="product-card-desc">
+                Founder desk, visionary articles, research, and personal thought leadership on software, security, and education.
+              </p>
+            </div>
+            <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
+              Visit Founder Desk ↗
+            </a>
           </div>
-          <a href="https://downloader.frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
-            Open Media Downloader ↗
-          </a>
-        </div>
 
-        <!-- Typing Speed Engine -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">⌨️</div>
-            <h3 class="product-card-title">Typing Speed Engine</h3>
-            <p class="product-card-desc">
-              Real-time WPM, precision accuracy calculation, and competitive typing test engine with zero latency.
-            </p>
+          <!-- EnglishVidya -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">📚</div>
+              <h3 class="product-card-title">EnglishVidya.com</h3>
+              <p class="product-card-desc">
+                High-density, bilingual competitive exam preparation, English grammar mastery, and interactive quizzes.
+              </p>
+            </div>
+            <a href="https://englishvidya.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
+              Learn on EnglishVidya ↗
+            </a>
           </div>
-          <a href="https://typing.frankpass.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
-            Launch Typing Test ↗
-          </a>
-        </div>
 
-        <!-- Cyber Security & Encryption eBooks -->
-        <div class="product-item-card">
-          <div>
-            <div class="product-icon-box">📖</div>
-            <h3 class="product-card-title">Cyber Security &amp; Encryption eBooks</h3>
-            <p class="product-card-desc">
-              Comprehensive guides on digital privacy, mathematical cryptography, offline vaults, and personal threat modeling.
-            </p>
+          <!-- Universal Digital Tools: tools.frankbase.com -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">⚡</div>
+              <h3 class="product-card-title">tools.frankbase.com</h3>
+              <p class="product-card-desc">
+                Unified suite of privacy utilities, 0ms latency typing test engine, and tracking-stripped media downloader.
+              </p>
+            </div>
+            <a href="https://tools.frankbase.com" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
+              Explore Tools Portal ↗
+            </a>
           </div>
-          <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
-            Explore eBook Store ↗
-          </a>
-        </div>
 
+          <!-- Cyber Security & Encryption eBooks -->
+          <div class="product-item-card">
+            <div>
+              <div class="product-icon-box">📖</div>
+              <h3 class="product-card-title">Cyber Security &amp; Encryption eBooks</h3>
+              <p class="product-card-desc">
+                Comprehensive masterclasses on digital privacy, mathematical cryptography, offline vaults, and personal threat defense.
+              </p>
+            </div>
+            <a href="https://store.frankbase.com/ebooks" target="_blank" rel="noopener noreferrer" class="btn-ghost product-card-cta">
+              Explore eBook Store ↗
+            </a>
+          </div>
+
+        </div>
       </div>
     </section>
 
@@ -661,5 +931,61 @@
 
   <script src="/frankpass-config.js?v=3.7.3"></script>
   <script src="/footer.js?v=3.7.3"></script>
+
+  <!-- Interactive Accordion Logic -->
+  <script>
+    function toggleAccordion(sectionId) {
+      var sec = document.getElementById(sectionId);
+      if (!sec) return;
+      var isExpanded = sec.classList.contains('expanded');
+      var btn = sec.querySelector('.accordion-header');
+      
+      if (isExpanded) {
+        sec.classList.remove('expanded');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      } else {
+        sec.classList.add('expanded');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+    function toggleAllSections(expand) {
+      var sections = document.querySelectorAll('.accordion-section');
+      sections.forEach(function(sec) {
+        var btn = sec.querySelector('.accordion-header');
+        if (expand) {
+          sec.classList.add('expanded');
+          if (btn) btn.setAttribute('aria-expanded', 'true');
+        } else {
+          sec.classList.remove('expanded');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    function expandSpecificSection(sectionId) {
+      var sec = document.getElementById(sectionId);
+      if (sec) {
+        sec.classList.add('expanded');
+        var btn = sec.querySelector('.accordion-header');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+        setTimeout(function() {
+          sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
+    }
+
+    // Auto-expand section if URL contains hash (e.g. #extensions or #web-tools)
+    document.addEventListener('DOMContentLoaded', function() {
+      var hash = window.location.hash;
+      if (hash === '#extensions' || hash === '#pro') {
+        expandSpecificSection('sec-extensions');
+      } else if (hash === '#web-tools' || hash === '#generator') {
+        expandSpecificSection('sec-web-tools');
+      } else if (hash === '#ecosystem' || hash === '#sister') {
+        expandSpecificSection('sec-ecosystem');
+      }
+    });
+  </script>
 </body>
 </html>
