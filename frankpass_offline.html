@@ -540,19 +540,86 @@ const FRANKPASS_CORE = (function () {
     };
 })();
 
-/* ─── 2. Embedded Normalization & Aliases ─── */
+/* ─── 2. Embedded Normalization & Aliases (v3.8.5 — Zero-Omission) ─── */
 const GLOBAL_ALIASES = {
-    'gmail': 'google', 'gdrive': 'google', 'goog': 'google',
-    'outlook': 'microsoft', 'hotmail': 'microsoft', 'live': 'microsoft', 'office': 'microsoft',
-    'appleid': 'apple', 'icloud': 'apple',
-    'fb': 'facebook', 'meta': 'facebook', 'tw': 'twitter', 'ig': 'instagram', 'yt': 'youtube', 'wa': 'whatsapp',
-    'aws': 'aws', 'azure': 'azure', 'gcp': 'googlecloud', 'sbi': 'statebankofindia', 'hdfc': 'hdfcbank', 'icici': 'icicibank'
+    // Google Ecosystem (100% Unified)
+    'google': 'google', 'gmail': 'google', 'googlemail': 'google',
+    'gdrive': 'google', 'googledrive': 'google', 'gphotos': 'google',
+    'gdocs': 'google', 'gpay': 'google', 'googlepay': 'google',
+    'gemini': 'google', 'googleaccount': 'google', 'goog': 'google',
+    'yt': 'google', 'youtube': 'google', 'youtubemusic': 'google',
+    'youtubestudio': 'google', 'ytstudio': 'google',
+    // Microsoft Ecosystem (Unified)
+    'ms': 'microsoft', 'microsoft': 'microsoft', 'outlook': 'microsoft',
+    'live': 'microsoft', 'hotmail': 'microsoft', 'msn': 'microsoft',
+    'office365': 'microsoft', 'office': 'microsoft', 'onedrive': 'microsoft',
+    'xbox': 'microsoft', 'skype': 'microsoft', 'bing': 'microsoft',
+    // Apple Ecosystem (Unified)
+    'apple': 'apple', 'appleid': 'apple', 'icloud': 'apple',
+    'itunes': 'apple', 'appstore': 'apple',
+    // Adobe Ecosystem (Unified)
+    'adobe': 'adobe', 'creativecloud': 'adobe', 'behance': 'adobe',
+    // Social Media
+    'fb': 'facebook', 'meta': 'facebook', 'facebook': 'facebook',
+    'tw': 'twitter', 'twitter': 'twitter', 'x': 'twitter',
+    'ig': 'instagram', 'insta': 'instagram', 'instagram': 'instagram',
+    'wa': 'whatsapp', 'whatsapp': 'whatsapp',
+    'amzn': 'amazon', 'amazon': 'amazon', 'primevideo': 'amazon', 'audible': 'amazon',
+    // Cloud / DevOps (Isolated)
+    'aws': 'aws', 'azure': 'azure', 'gcp': 'googlecloud',
+    'cloudflare': 'cloudflare', 'cf': 'cloudflare',
+    'github': 'github', 'gitlab': 'gitlab',
+    // Amazon multi-tier
+    'amazonseller': 'amazonseller', 'amazonkdp': 'amazonkdp', 'kdp': 'amazonkdp',
+    'amazonassociates': 'amazonassociates', 'amazonads': 'amazonads',
+    // Indian Banking (Isolated)
+    'sbi': 'statebankofindia', 'onlinesbi': 'statebankofindia', 'yono': 'statebankofindia',
+    'yonobusiness': 'sbicorporate', 'sbicorporate': 'sbicorporate', 'sbicard': 'sbicard',
+    'hdfc': 'hdfcbank', 'icici': 'icicibank', 'axis': 'axisbank',
+    // Govt (India)
+    'itr': 'incometax', 'incometax': 'incometax',
+    'gst': 'gstportal', 'gstportal': 'gstportal',
+    'epfo': 'epfo', 'uan': 'epfo'
 };
 
 const VISUAL_ALIASES = {
-    'aws.amazon.com': 'aws', 'portal.azure.com': 'azure', 'cloud.google.com': 'googlecloud',
-    'github.com': 'github', 'gitlab.com': 'gitlab', 'chatgpt.com': 'chatgpt', 'claude.ai': 'anthropic',
-    'onlinesbi.sbi': 'statebankofindia', 'netbanking.hdfcbank.com': 'hdfcbank'
+    // AWS (isolated from Amazon retail)
+    'aws.amazon.com': 'aws', 'console.aws.amazon.com': 'aws', 'signin.aws.amazon.com': 'aws', 'repost.aws': 'aws',
+    // Azure (isolated from Microsoft consumer)
+    'portal.azure.com': 'azure', 'dev.azure.com': 'azure',
+    // Google Cloud (separate from consumer Google)
+    'console.cloud.google.com': 'googlecloud', 'cloud.google.com': 'googlecloud',
+    // Google + YouTube 100% Unified Fleet
+    'google.com': 'google', 'gmail.com': 'google', 'googlemail.com': 'google',
+    'mail.google.com': 'google', 'accounts.google.com': 'google',
+    'drive.google.com': 'google', 'docs.google.com': 'google',
+    'youtube.com': 'google', 'youtu.be': 'google', 'm.youtube.com': 'google',
+    'studio.youtube.com': 'google', 'music.youtube.com': 'google',
+    'tv.youtube.com': 'google', 'kids.youtube.com': 'google',
+    'artists.youtube.com': 'google', 'artists.youtube': 'google',
+    'creator.youtube.com': 'google', 'blog.google': 'google', 'safety.google': 'google',
+    // Microsoft Consumer Fleet
+    'outlook.com': 'microsoft', 'hotmail.com': 'microsoft', 'live.com': 'microsoft',
+    'login.live.com': 'microsoft', 'office.com': 'microsoft', 'xbox.com': 'microsoft',
+    // Apple Fleet
+    'apple.com': 'apple', 'icloud.com': 'apple', 'appleid.apple.com': 'apple',
+    // Amazon multi-tier
+    'sellercentral.amazon.com': 'amazonseller', 'sellercentral.amazon.in': 'amazonseller',
+    'kdp.amazon.com': 'amazonkdp', 'author.amazon.com': 'amazonkdp',
+    'affiliate-program.amazon.in': 'amazonassociates',
+    'primevideo.com': 'amazon', 'audible.com': 'amazon', 'audible.in': 'amazon',
+    // Indian Banking (Isolated)
+    'onlinesbi.sbi': 'statebankofindia', 'retail.onlinesbi.sbi': 'statebankofindia',
+    'yonobusiness.sbi': 'sbicorporate', 'corp.onlinesbi.sbi': 'sbicorporate',
+    'sbicard.com': 'sbicard', 'netbanking.hdfcbank.com': 'hdfcbank',
+    'icicidirect.com': 'icicidirect',
+    // DevOps
+    'github.com': 'github', 'gitlab.com': 'gitlab',
+    'chatgpt.com': 'chatgpt', 'chat.openai.com': 'chatgpt', 'claude.ai': 'anthropic',
+    'dash.cloudflare.com': 'cloudflare', 'cloudflare.com': 'cloudflare',
+    // Govt
+    'incometax.gov.in': 'incometax', 'gst.gov.in': 'gstportal',
+    'epfindia.gov.in': 'epfo', 'unifiedportal-mem.epfindia.gov.in': 'epfo'
 };
 
 function normalizePlatform(raw) {
@@ -560,6 +627,11 @@ function normalizePlatform(raw) {
     let p = raw.toLowerCase().trim().replace(/^(https?:\/\/)?/, '').split('?')[0].split('#')[0];
     if (p.includes('/')) p = p.split('/')[0];
     if (p.includes('@')) p = p.split('@')[1];
+    // Brand TLD detection (.google, .youtube, .apple, .aws, .amazon)
+    if (p.endsWith('.google') || p.endsWith('.youtube')) return 'google';
+    if (p.endsWith('.apple')) return 'apple';
+    if (p.endsWith('.aws')) return 'aws';
+    if (p.endsWith('.amazon')) return 'amazon';
     if (VISUAL_ALIASES[p]) return VISUAL_ALIASES[p];
     p = p.replace(/^(www\.|m\.|app\.|login\.)/, '');
     if (VISUAL_ALIASES[p]) return VISUAL_ALIASES[p];
