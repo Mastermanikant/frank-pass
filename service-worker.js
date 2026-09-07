@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.7.4 (100% Offline-First with Smart Network-First Sync)
-const CACHE_NAME = 'frankpass-v3.7.4';
+// FrankPass Service Worker v3.8.5 (Universal SSO & Brand TLD Normalization Engine)
+const CACHE_NAME = 'frankpass-v3.8.5';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -40,6 +40,7 @@ const CACHED_URLS = [
     '/icons/icon-192.png',
     '/icons/icon-512.png',
     '/icons/founder-master-manikant-yadav.webp',
+    '/global_auth_registry.json',
     '/manifest.json'
 ];
 
