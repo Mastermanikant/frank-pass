@@ -1,4 +1,4 @@
-/**
+﻿/**
  * FrankPass Utilities
  * Centralized logic for platform normalization, SSO brand aliasing, and UI helpers.
  * Shared between Web and Extension.
@@ -8,57 +8,117 @@ const FrankPassUtils = (function () {
     
     // Global Aliases: mapping input & sibling brands to canonical Single Sign-On (SSO) slug
     const GLOBAL_ALIASES = {
-        // Google Ecosystem (Unified Google Account SSO)
+        // Google Ecosystem (100% Unified Google Account SSO)
+        'google': 'google',
         'gmail': 'google',
         'googlemail': 'google',
         'gdrive': 'google',
+        'googledrive': 'google',
+        'gphotos': 'google',
+        'gdocs': 'google',
+        'gpay': 'google',
+        'googlepay': 'google',
+        'gemini': 'google',
         'googleaccount': 'google',
         'goog': 'google',
+        'yt': 'google',
+        'youtube': 'google',
+        'youtubemusic': 'google',
+        'youtubestudio': 'google',
+        'ytstudio': 'google',
 
         // Microsoft Ecosystem (Unified Microsoft Account SSO)
         'ms': 'microsoft',
+        'microsoft': 'microsoft',
         'outlook': 'microsoft',
         'live': 'microsoft',
         'hotmail': 'microsoft',
         'msn': 'microsoft',
         'office365': 'microsoft',
         'office': 'microsoft',
+        'microsoft365': 'microsoft',
+        'onedrive': 'microsoft',
         'xbox': 'microsoft',
+        'skype': 'microsoft',
+        'bing': 'microsoft',
+        'copilot': 'microsoft',
 
         // Apple Ecosystem (Unified Apple ID / iCloud SSO)
+        'apple': 'apple',
         'appleid': 'apple',
         'icloud': 'apple',
         'itunes': 'apple',
         'appstore': 'apple',
+        'applemusic': 'apple',
+        'appletv': 'apple',
+
+        // Adobe Ecosystem (Unified Adobe ID SSO)
+        'adobe': 'adobe',
+        'creativecloud': 'adobe',
+        'behance': 'adobe',
+        'photoshop': 'adobe',
+        'adobefonts': 'adobe',
+        'adobestock': 'adobe',
+        'lightroom': 'adobe',
+
+        // Yahoo Ecosystem
+        'yahoo': 'yahoo',
+        'ymail': 'yahoo',
+        'yahoomail': 'yahoo',
+        'yahoofinance': 'yahoo',
 
         // Meta / Social Ecosystem
         'fb': 'facebook',
         'meta': 'facebook',
+        'facebook': 'facebook',
+        'messenger': 'facebook',
         'x': 'twitter',
         'tw': 'twitter',
         'twtr': 'twitter',
+        'twitter': 'twitter',
         'ig': 'instagram',
         'insta': 'instagram',
-        'yt': 'youtube',
+        'instagram': 'instagram',
+        'threads': 'instagram',
         'wa': 'whatsapp',
+        'whatsapp': 'whatsapp',
         'amzn': 'amazon',
+        'amazon': 'amazon',
+        'primevideo': 'amazon',
+        'audible': 'amazon',
         'snap': 'snapchat',
+        'snapchat': 'snapchat',
         'pin': 'pinterest',
-        'gpay': 'googlepay',
+        'pinterest': 'pinterest',
         'gh': 'github',
+        'github': 'github',
         'pp': 'paypal',
+        'paypal': 'paypal',
         'tt': 'tiktok',
+        'tiktok': 'tiktok',
         'nf': 'netflix',
+        'netflix': 'netflix',
         'tv': 'twitch',
+        'twitch': 'twitch',
         'st': 'steam',
+        'steam': 'steam',
         'dc': 'discord',
+        'discord': 'discord',
         'rd': 'reddit',
+        'reddit': 'reddit',
         'tg': 'telegram',
+        'telegram': 'telegram',
         'ln': 'linkedin',
+        'linkedin': 'linkedin',
+        'spotify': 'spotify',
 
         // Cloud, AI & DevOps Independent Slugs
         'aws': 'aws',
+        'amazonwebservices': 'aws',
+        'awsconsole': 'aws',
         'azure': 'azure',
+        'microsoftazure': 'azure',
+        'azureportal': 'azure',
         'gcp': 'googlecloud',
         'googlecloud': 'googlecloud',
         'oraclecloud': 'oraclecloud',
@@ -68,6 +128,9 @@ const FrankPassUtils = (function () {
         'hetzner': 'hetzner',
         'linode': 'linode',
         'cloudflare': 'cloudflare',
+        'cf': 'cloudflare',
+        'cloudflareworkers': 'cloudflare',
+        'cloudflarepages': 'cloudflare',
         'vercel': 'vercel',
         'netlify': 'netlify',
         'supabase': 'supabase',
@@ -79,6 +142,8 @@ const FrankPassUtils = (function () {
         'chatgpt': 'chatgpt',
         'claude': 'anthropic',
         'anthropic': 'anthropic',
+        'perplexity': 'perplexity',
+        'huggingface': 'huggingface',
         'postman': 'postman',
         'sentry': 'sentry',
         'datadog': 'datadog',
@@ -88,13 +153,18 @@ const FrankPassUtils = (function () {
         'atlassian': 'atlassian',
         'bitbucket': 'bitbucket',
         'gitlab': 'gitlab',
-        'github': 'github',
+        'hostinger': 'hostinger',
 
         // E-Commerce Merchant & Seller Specific Slugs
         'amazonseller': 'amazonseller',
+        'amazonsellercentral': 'amazonseller',
         'amazonkdp': 'amazonkdp',
+        'kdp': 'amazonkdp',
+        'amazonauthor': 'amazonkdp',
         'amazonassociates': 'amazonassociates',
+        'amazonaffiliate': 'amazonassociates',
         'amazonmerch': 'amazonmerch',
+        'amazonads': 'amazonads',
         'flipkartseller': 'flipkartseller',
         'shopifyadmin': 'shopifyadmin',
         'swiggypartner': 'swiggypartner',
@@ -108,6 +178,7 @@ const FrankPassUtils = (function () {
         'yonosbi': 'statebankofindia',
         'yonobusiness': 'sbicorporate',
         'sbicorporate': 'sbicorporate',
+        'sbicorp': 'sbicorporate',
         'sbicard': 'sbicard',
         'sbismart': 'sbisecurities',
         'sbisecurities': 'sbisecurities',
@@ -241,6 +312,8 @@ const FrankPassUtils = (function () {
         'aws.amazon.com': 'aws',
         'console.aws.amazon.com': 'aws',
         'signin.aws.amazon.com': 'aws',
+        'repost.aws': 'aws',
+        'builder.aws': 'aws',
         'portal.azure.com': 'azure',
         'dev.azure.com': 'azure',
         'azure.microsoft.com': 'azure',
@@ -258,6 +331,10 @@ const FrankPassUtils = (function () {
         'robot.hetzner.com': 'hetzner',
         'cloud.linode.com': 'linode',
         'dash.cloudflare.com': 'cloudflare',
+        'cloudflare.com': 'cloudflare',
+        'one.dash.cloudflare.com': 'cloudflare',
+        'workers.cloudflare.com': 'cloudflare',
+        'pages.cloudflare.com': 'cloudflare',
         'dashboard.vercel.com': 'vercel',
         'app.netlify.com': 'netlify',
         'app.supabase.com': 'supabase',
@@ -292,10 +369,10 @@ const FrankPassUtils = (function () {
         'sellercentral.amazon.in': 'amazonseller',
         'sellercentral-europe.amazon.com': 'amazonseller',
         'kdp.amazon.com': 'amazonkdp',
+        'author.amazon.com': 'amazonkdp',
         'affiliate-program.amazon.com': 'amazonassociates',
         'affiliate-program.amazon.in': 'amazonassociates',
         'merch.amazon.com': 'amazonmerch',
-        'author.amazon.com': 'amazonauthor',
         'advertising.amazon.com': 'amazonads',
         'seller.flipkart.com': 'flipkartseller',
         'admin.shopify.com': 'shopifyadmin',
@@ -323,6 +400,7 @@ const FrankPassUtils = (function () {
         'netbanking.hdfcbank.com': 'hdfcbank',
         'corporatebanking.hdfcbank.com': 'hdfccorporate',
         'hdfcsec.com': 'hdfcsecurities',
+        'mycards.hdfcbank.com': 'hdfcmycards',
         'yonobusiness.sbi': 'sbicorporate',
         'corp.onlinesbi.sbi': 'sbicorporate',
         'corp.onlinesbi.com': 'sbicorporate',
@@ -345,38 +423,126 @@ const FrankPassUtils = (function () {
         'unionbankonline.co.in': 'unionbankofindia',
         'corp.unionbankonline.co.in': 'unionbankcorporate',
 
-        // --- 5. Unified Global SSO Ecosystems ---
+        // --- 5. Unified Global SSO Ecosystems (Google, MS, Apple, Adobe, Meta) ---
+        // Google & YouTube 100% Unified Fleet
+        'google.com': 'google',
+        'google.co.in': 'google',
         'gmail.com': 'google',
         'googlemail.com': 'google',
         'mail.google.com': 'google',
         'accounts.google.com': 'google',
+        'myaccount.google.com': 'google',
         'drive.google.com': 'google',
+        'docs.google.com': 'google',
+        'sheets.google.com': 'google',
+        'slides.google.com': 'google',
+        'forms.google.com': 'google',
+        'keep.google.com': 'google',
         'photos.google.com': 'google',
         'play.google.com': 'google',
-        'youtube.com': 'youtube',
-        'youtu.be': 'youtube',
+        'meet.google.com': 'google',
+        'chat.google.com': 'google',
+        'calendar.google.com': 'google',
+        'contacts.google.com': 'google',
+        'gemini.google.com': 'google',
+        'colab.research.google.com': 'google',
+        'firebase.google.com': 'google',
+        'console.firebase.google.com': 'google',
+        'pay.google.com': 'google',
+        'one.google.com': 'google',
+        'blog.google': 'google',
+        'about.google': 'google',
+        'safety.google': 'google',
+        'store.google': 'google',
+        'workspace.google': 'google',
+        'g.co': 'google',
+        'goo.gl': 'google',
+        'youtube.com': 'google',
+        'youtu.be': 'google',
+        'm.youtube.com': 'google',
+        'studio.youtube.com': 'google',
+        'music.youtube.com': 'google',
+        'tv.youtube.com': 'google',
+        'kids.youtube.com': 'google',
+        'artists.youtube.com': 'google',
+        'creator.youtube.com': 'google',
+        'artists.youtube': 'google',
+        'music.youtube': 'google',
+
+        // Microsoft Consumer Fleet
+        'microsoft.com': 'microsoft',
         'outlook.com': 'microsoft',
+        'outlook.live.com': 'microsoft',
         'hotmail.com': 'microsoft',
         'live.com': 'microsoft',
+        'msn.com': 'microsoft',
         'login.live.com': 'microsoft',
         'login.microsoftonline.com': 'microsoft',
+        'office.com': 'microsoft',
+        'office365.com': 'microsoft',
+        'microsoft365.com': 'microsoft',
+        'onedrive.live.com': 'microsoft',
+        'onedrive.com': 'microsoft',
+        'xbox.com': 'microsoft',
+        'skype.com': 'microsoft',
+        'bing.com': 'microsoft',
+        'copilot.microsoft.com': 'microsoft',
+
+        // Apple Fleet
+        'apple.com': 'apple',
         'icloud.com': 'apple',
         'appleid.apple.com': 'apple',
+        'account.apple.com': 'apple',
+        'itunes.apple.com': 'apple',
+        'appstore.com': 'apple',
+        'music.apple.com': 'apple',
+        'tv.apple.com': 'apple',
+        'developer.apple.com': 'apple',
+        'appstoreconnect.apple.com': 'apple',
+        'findmy.apple.com': 'apple',
+
+        // Adobe Fleet
+        'adobe.com': 'adobe',
+        'account.adobe.com': 'adobe',
+        'creativecloud.adobe.com': 'adobe',
+        'behance.net': 'adobe',
+        'fonts.adobe.com': 'adobe',
+        'stock.adobe.com': 'adobe',
+        'firefly.adobe.com': 'adobe',
+        'lightroom.adobe.com': 'adobe',
+
+        // Social Media & Messaging
         'fb.com': 'facebook',
+        'facebook.com': 'facebook',
         'm.facebook.com': 'facebook',
+        'messenger.com': 'facebook',
+        'instagram.com': 'instagram',
+        'ig.me': 'instagram',
+        'threads.net': 'instagram',
         'web.whatsapp.com': 'whatsapp',
+        'whatsapp.com': 'whatsapp',
+        'wa.me': 'whatsapp',
         'web.telegram.org': 'telegram',
+        'telegram.org': 'telegram',
         't.me': 'telegram',
         'discord.com': 'discord',
+        'discord.gg': 'discord',
+        'spotify.com': 'spotify',
+        'open.spotify.com': 'spotify',
+        'artists.spotify.com': 'spotify',
         'app.element.io': 'matrix',
         'bit.ly': 'bitly',
         'amzn.to': 'amazon',
         'amzn.in': 'amazon',
+        'primevideo.com': 'amazon',
+        'audible.com': 'amazon',
+        'audible.in': 'amazon',
 
         // --- 6. Indian & Global Public / Regulatory Services ---
         'incometax.gov.in': 'incometax',
         'incometaxindiaefiling.gov.in': 'incometax',
         'gst.gov.in': 'gstportal',
+        'services.gst.gov.in': 'gstportal',
         'epfindia.gov.in': 'epfo',
         'unifiedportal-mem.epfindia.gov.in': 'epfo',
         'parivahan.gov.in': 'parivahansewa',
@@ -387,6 +553,7 @@ const FrankPassUtils = (function () {
         'kite.zerodha.com': 'zerodha',
         'groww.in': 'groww',
         'upstox.com': 'upstox',
+        'pro.upstox.com': 'upstox',
         'irctc.co.in': 'irctc',
         'air.irctc.co.in': 'irctcair',
         'irctctourism.com': 'irctctourism',
@@ -398,19 +565,24 @@ const FrankPassUtils = (function () {
 
     // Human-friendly ecosystem labels & hints
     const ECOSYSTEM_LABELS = {
-        'google': 'Google Account SSO',
-        'microsoft': 'Microsoft Account SSO',
-        'apple': 'Apple ID / iCloud',
-        'facebook': 'Meta / Facebook',
-        'aws': 'Amazon Web Services (AWS Cloud)',
-        'azure': 'Microsoft Azure Cloud',
+        'google': 'Google Account SSO (Unified Gmail, YouTube, Drive & Docs)',
+        'microsoft': 'Microsoft Account SSO (Unified Outlook, Office 365 & Xbox)',
+        'apple': 'Apple ID / iCloud Unified Account',
+        'adobe': 'Adobe Creative Cloud ID',
+        'facebook': 'Meta / Facebook Platform',
+        'instagram': 'Instagram & Threads Media Account',
+        'amazon': 'Amazon Retail Shopping & Prime Video',
+        'aws': 'Amazon Web Services (AWS Cloud Infrastructure)',
+        'azure': 'Microsoft Azure Cloud & Entra ID',
         'oraclecloud': 'Oracle Cloud Infrastructure',
         'ibmcloud': 'IBM Cloud Platform',
         'alibabacloud': 'Alibaba Cloud',
-        'amazonseller': 'Amazon Seller Central',
+        'cloudflare': 'Cloudflare Global Edge Platform',
+        'amazonseller': 'Amazon Seller Central Hub',
         'amazonkdp': 'Amazon Kindle Direct Publishing',
         'amazonassociates': 'Amazon Associates / Affiliate',
         'amazonmerch': 'Merch by Amazon',
+        'amazonads': 'Amazon Advertising Platform',
         'flipkartseller': 'Flipkart Seller Hub',
         'shopifyadmin': 'Shopify Store Admin',
         'swiggypartner': 'Swiggy Partner Portal',
@@ -419,15 +591,21 @@ const FrankPassUtils = (function () {
         'jiopaymentsbank': 'Jio Payments Bank',
         'paytmpaymentsbank': 'Paytm Payments Bank',
         'paytmmoney': 'Paytm Money (Stocks & MF)',
+        'icicibank': 'ICICI Bank Retail NetBanking',
         'icicicorporate': 'ICICI Bank Corporate NetBanking',
         'icicidirect': 'ICICI Direct Investments',
+        'hdfcbank': 'HDFC Bank Retail NetBanking',
         'hdfccorporate': 'HDFC Bank Corporate Banking',
         'hdfcsecurities': 'HDFC Securities',
-        'sbicorporate': 'SBI YONO Business / Corporate',
+        'hdfcmycards': 'HDFC MyCards Portal',
+        'statebankofindia': 'State Bank of India Retail NetBanking',
+        'sbicorporate': 'SBI YONO Business / Corporate Banking',
         'sbicard': 'SBI Credit Card Portal',
-        'sbisecurities': 'SBI Securities',
+        'sbisecurities': 'SBI Securities / Demat',
+        'axisbank': 'Axis Bank Retail NetBanking',
         'axiscorporate': 'Axis Bank Corporate NetBanking',
-        'axisdirect': 'Axis Direct',
+        'axisdirect': 'Axis Direct Investments',
+        'kotakmahindrabank': 'Kotak Mahindra Retail NetBanking',
         'kotakcorporate': 'Kotak Corporate Banking',
         'kotaksecurities': 'Kotak Securities',
         'bobcorporate': 'Bank of Baroda Corporate',
@@ -450,6 +628,10 @@ const FrankPassUtils = (function () {
         'sentry': 'Sentry Application Performance',
         'grafana': 'Grafana Cloud Observability',
         'matrix': 'Matrix / Element Secure Chat',
+        'incometax': 'Income Tax Department e-Filing Portal',
+        'gstportal': 'GST Portal India',
+        'epfo': 'EPFO Member Portal (UAN)',
+        'parivahansewa': 'Parivahan Sewa (DL & RC)',
         'irctcair': 'IRCTC Air Flight Booking',
         'irctctourism': 'IRCTC Tourism Portal'
     };
@@ -475,28 +657,42 @@ const FrankPassUtils = (function () {
             platform = platform.split('@')[1];
         }
 
-        // 3. Priority Check: Direct match in Visual / Subdomain Exception Registry (e.g. "aws.amazon.com", "portal.azure.com")
+        // 3. Check Brand TLDs (e.g. artists.youtube, blog.google, repost.aws, support.apple)
+        if (platform.endsWith('.google') || platform.endsWith('.youtube')) {
+            return 'google';
+        }
+        if (platform.endsWith('.apple')) {
+            return 'apple';
+        }
+        if (platform.endsWith('.aws')) {
+            return 'aws';
+        }
+        if (platform.endsWith('.amazon')) {
+            return 'amazon';
+        }
+
+        // 4. Priority Check: Direct match in Visual / Subdomain Exception Registry
         if (VISUAL_ALIASES[platform]) {
             return VISUAL_ALIASES[platform];
         }
 
-        // 4. Strip common generic subdomain noise
+        // 5. Strip common generic subdomain noise
         const strippedPlatform = platform.replace(/^(www\.|m\.|app\.|login\.|secure\.|auth\.|account\.)/, '');
         if (VISUAL_ALIASES[strippedPlatform]) {
             return VISUAL_ALIASES[strippedPlatform];
         }
         platform = strippedPlatform;
         
-        // 5. Strip parenthetical and trailing hyphen acronym suffixes
+        // 6. Strip parenthetical and trailing hyphen acronym suffixes
         platform = platform.replace(/\s+[-–—]\s+[a-z0-9\s]+$/, '');
         platform = platform.replace(/\s*\([^)]*\)/g, '');
 
-        // 6. Check again if cleaned string matches an alias
+        // 7. Check again if cleaned string matches an alias
         if (VISUAL_ALIASES[platform]) {
             return VISUAL_ALIASES[platform];
         }
 
-        // 7. Robust Domain Extraction (handles .co.uk, .com.au, .co.in, .gov.in etc)
+        // 8. Robust Domain Extraction (handles .co.uk, .com.au, .co.in, .gov.in etc)
         let domainParts = platform.split('.');
         if (domainParts.length > 2 && (domainParts[domainParts.length - 2].length <= 3)) {
             // e.g., amazon.co.uk -> amazon, incometax.gov.in -> incometax
@@ -508,10 +704,10 @@ const FrankPassUtils = (function () {
             platform = domainParts[0];
         }
         
-        // 8. Sanitize (only letters and numbers)
+        // 9. Sanitize (only letters and numbers)
         platform = platform.replace(/[^a-z0-9]/g, '');
 
-        // 9. Apply Global Aliases (e.g., sbi -> statebankofindia, itr -> incometax, aws -> aws)
+        // 10. Apply Global Aliases (e.g., yt -> google, sbi -> statebankofindia, aws -> aws)
         return GLOBAL_ALIASES[platform] || platform;
     }
 
@@ -539,10 +735,10 @@ const FrankPassUtils = (function () {
         
         const label = ECOSYSTEM_LABELS[normalized];
         if (label) {
-            return `Using as: "${normalized}" (${label})`;
+            return 'Using as: "' + normalized + '" (' + label + ')';
         }
         
-        return `Using as: "${normalized}"`;
+        return 'Using as: "' + normalized + '"';
     }
 
     return {

@@ -1,0 +1,260 @@
+﻿{
+  "": "https://frankpass.com/schemas/auth-registry.v2.json",
+  "version": "2.0.0",
+  "last_updated": "2026-09-07",
+  "architect": "Master Manikant Yadav",
+  "brand_tlds": {
+    "google": "google",
+    "youtube": "google",
+    "apple": "apple",
+    "amazon": "amazon",
+    "aws": "aws"
+  },
+  "ecosystems": [
+    {
+      "id": "google_ecosystem",
+      "canonical_slug": "google",
+      "category": "Single_SSO",
+      "display_name": "Google Account SSO (Unified)",
+      "auth_url": "https://accounts.google.com",
+      "description": "Unified identity across Gmail, YouTube, Google Drive, Photos, Play Store, and Workspace.",
+      "domains": [
+        "google.com", "google.co.in", "google.co.uk", "google.de", "google.fr", "google.co.jp",
+        "gmail.com", "googlemail.com", "mail.google.com", "accounts.google.com", "myaccount.google.com",
+        "youtube.com", "youtu.be", "m.youtube.com", "studio.youtube.com", "music.youtube.com", "tv.youtube.com", "kids.youtube.com", "artists.youtube", "creator.youtube.com",
+        "drive.google.com", "docs.google.com", "sheets.google.com", "slides.google.com", "forms.google.com", "keep.google.com",
+        "photos.google.com", "play.google.com", "news.google.com", "podcasts.google.com", "earth.google.com", "fonts.google.com",
+        "meet.google.com", "chat.google.com", "calendar.google.com", "contacts.google.com", "voice.google.com",
+        "gemini.google.com", "colab.research.google.com", "ai.google.dev", "firebase.google.com", "console.firebase.google.com",
+        "analytics.google.com", "ads.google.com", "search.google.com", "pay.google.com", "one.google.com",
+        "blog.google", "about.google", "safety.google", "store.google", "workspace.google", "g.co", "goo.gl"
+      ],
+      "aliases": ["google", "gmail", "googlemail", "yt", "youtube", "gdrive", "googledrive", "gphotos", "gdocs", "gpay", "googlepay", "gemini", "googleaccount", "goog"]
+    },
+    {
+      "id": "cloudflare_ecosystem",
+      "canonical_slug": "cloudflare",
+      "category": "Single_SSO",
+      "display_name": "Cloudflare Global Edge Platform",
+      "auth_url": "https://dash.cloudflare.com/login",
+      "description": "Single dashboard account managing DNS, Workers, Pages, Zero Trust, SSL and WAF.",
+      "domains": [
+        "cloudflare.com", "dash.cloudflare.com", "api.cloudflare.com",
+        "pages.cloudflare.com", "pages.dev", "workers.cloudflare.com", "workers.dev",
+        "one.dash.cloudflare.com", "radar.cloudflare.com", "community.cloudflare.com"
+      ],
+      "aliases": ["cloudflare", "cf", "cloudflareworkers", "cloudflarepages", "cloudflarezerotrust"]
+    },
+    {
+      "id": "microsoft_consumer",
+      "canonical_slug": "microsoft",
+      "category": "Single_SSO",
+      "display_name": "Microsoft Account SSO",
+      "auth_url": "https://login.live.com",
+      "description": "Unified personal Microsoft identity for Outlook, OneDrive, Office 365, Skype and Xbox.",
+      "domains": [
+        "microsoft.com", "account.microsoft.com", "login.live.com", "login.microsoftonline.com",
+        "outlook.com", "outlook.live.com", "hotmail.com", "live.com", "msn.com",
+        "office.com", "office365.com", "microsoft365.com", "onedrive.live.com", "onedrive.com", "onenote.com",
+        "xbox.com", "skype.com", "bing.com", "copilot.microsoft.com", "to-do.microsoft.com"
+      ],
+      "aliases": ["microsoft", "ms", "outlook", "hotmail", "live", "msn", "office", "office365", "onedrive", "xbox", "skype", "bing", "copilot"]
+    },
+    {
+      "id": "apple_ecosystem",
+      "canonical_slug": "apple",
+      "category": "Single_SSO",
+      "display_name": "Apple ID / iCloud Account",
+      "auth_url": "https://appleid.apple.com",
+      "description": "Single Apple account for iCloud, App Store, Apple Music, Apple TV and Developer services.",
+      "domains": [
+        "apple.com", "appleid.apple.com", "account.apple.com", "icloud.com",
+        "itunes.apple.com", "appstore.com", "music.apple.com", "tv.apple.com", "books.apple.com", "podcasts.apple.com",
+        "developer.apple.com", "appstoreconnect.apple.com", "findmy.apple.com", "discussions.apple.com"
+      ],
+      "aliases": ["apple", "appleid", "icloud", "itunes", "appstore", "applemusic", "appletv"]
+    },
+    {
+      "id": "adobe_ecosystem",
+      "canonical_slug": "adobe",
+      "category": "Single_SSO",
+      "display_name": "Adobe Creative Cloud ID",
+      "auth_url": "https://account.adobe.com",
+      "description": "Unified identity across Creative Cloud, Photoshop, Behance, Adobe Fonts and Stock.",
+      "domains": [
+        "adobe.com", "account.adobe.com", "creativecloud.adobe.com", "behance.net",
+        "fonts.adobe.com", "stock.adobe.com", "firefly.adobe.com", "lightroom.adobe.com"
+      ],
+      "aliases": ["adobe", "creativecloud", "behance", "photoshop", "adobefonts", "adobestock"]
+    },
+    {
+      "id": "amazon_retail",
+      "canonical_slug": "amazon",
+      "category": "Split_Consumer",
+      "display_name": "Amazon Consumer Shopping & Media",
+      "auth_url": "https://amazon.com",
+      "description": "Amazon retail account across global storefronts (.com, .in, .co.uk), Prime Video and Audible.",
+      "domains": [
+        "amazon.com", "amazon.in", "amazon.co.uk", "amazon.de", "amazon.ca", "amazon.fr", "amazon.co.jp", "amzn.to", "amzn.in",
+        "primevideo.com", "music.amazon.com", "audible.com", "audible.in", "read.amazon.com", "alexa.amazon.com"
+      ],
+      "aliases": ["amazon", "amzn", "primevideo", "audible"]
+    },
+    {
+      "id": "aws_cloud",
+      "canonical_slug": "aws",
+      "category": "Split_Infrastructure",
+      "display_name": "Amazon Web Services (AWS Cloud)",
+      "auth_url": "https://signin.aws.amazon.com",
+      "description": "Completely isolated cloud infrastructure account with IAM users, root login and AWS Builder ID.",
+      "domains": [
+        "aws.amazon.com", "console.aws.amazon.com", "signin.aws.amazon.com", "repost.aws", "docs.aws.amazon.com"
+      ],
+      "aliases": ["aws", "amazonwebservices", "awsconsole"]
+    },
+    {
+      "id": "amazon_kdp",
+      "canonical_slug": "amazonkdp",
+      "category": "Split_Publishing",
+      "display_name": "Amazon Kindle Direct Publishing",
+      "auth_url": "https://kdp.amazon.com",
+      "description": "Amazon KDP Author and Book Publishing portal.",
+      "domains": [
+        "kdp.amazon.com", "author.amazon.com"
+      ],
+      "aliases": ["amazonkdp", "kdp", "amazonauthor"]
+    },
+    {
+      "id": "amazon_seller",
+      "canonical_slug": "amazonseller",
+      "category": "Split_Merchant",
+      "display_name": "Amazon Seller Central Hub",
+      "auth_url": "https://sellercentral.amazon.com",
+      "description": "Merchant inventory, pricing and fulfillment management portal.",
+      "domains": [
+        "sellercentral.amazon.com", "sellercentral.amazon.in", "sellercentral-europe.amazon.com"
+      ],
+      "aliases": ["amazonseller", "amazonsellercentral"]
+    },
+    {
+      "id": "azure_cloud",
+      "canonical_slug": "azure",
+      "category": "Split_Enterprise",
+      "display_name": "Microsoft Azure & Entra ID",
+      "auth_url": "https://portal.azure.com",
+      "description": "Enterprise cloud directory and infrastructure portal.",
+      "domains": [
+        "portal.azure.com", "dev.azure.com", "azure.microsoft.com"
+      ],
+      "aliases": ["azure", "microsoftazure", "azureportal"]
+    },
+    {
+      "id": "facebook_meta",
+      "canonical_slug": "facebook",
+      "category": "Social_Network",
+      "display_name": "Meta / Facebook Platform",
+      "auth_url": "https://facebook.com",
+      "description": "Facebook identity and Messenger platform.",
+      "domains": [
+        "facebook.com", "fb.com", "m.facebook.com", "messenger.com", "business.facebook.com"
+      ],
+      "aliases": ["fb", "facebook", "meta", "messenger"]
+    },
+    {
+      "id": "instagram_platform",
+      "canonical_slug": "instagram",
+      "category": "Social_Media",
+      "display_name": "Instagram & Threads",
+      "auth_url": "https://instagram.com",
+      "description": "Instagram visual media profile and Threads.",
+      "domains": [
+        "instagram.com", "ig.me", "threads.net"
+      ],
+      "aliases": ["ig", "insta", "instagram", "threads"]
+    },
+    {
+      "id": "sbi_retail",
+      "canonical_slug": "statebankofindia",
+      "category": "Isolated_Retail_Banking",
+      "display_name": "State Bank of India Retail NetBanking",
+      "auth_url": "https://onlinesbi.sbi",
+      "description": "SBI Personal Retail Internet Banking portal.",
+      "domains": [
+        "onlinesbi.sbi", "retail.onlinesbi.sbi", "onlinesbi.com"
+      ],
+      "aliases": ["sbi", "onlinesbi", "yono", "yonosbi", "statebankofindia"]
+    },
+    {
+      "id": "sbi_corporate",
+      "canonical_slug": "sbicorporate",
+      "category": "Isolated_Corporate_Banking",
+      "display_name": "SBI Corporate / YONO Business",
+      "auth_url": "https://yonobusiness.sbi",
+      "description": "SBI Corporate netbanking with Corporate ID, User ID and separate passwords.",
+      "domains": [
+        "yonobusiness.sbi", "corp.onlinesbi.sbi", "corp.onlinesbi.com"
+      ],
+      "aliases": ["yonobusiness", "sbicorporate", "sbicorp"]
+    },
+    {
+      "id": "sbi_card",
+      "canonical_slug": "sbicard",
+      "category": "Isolated_Credit_Card",
+      "display_name": "SBI Credit Card Portal",
+      "auth_url": "https://sbicard.com",
+      "description": "Standalone SBI Cards and Payment Services portal.",
+      "domains": ["sbicard.com"],
+      "aliases": ["sbicard"]
+    },
+    {
+      "id": "sbi_securities",
+      "canonical_slug": "sbisecurities",
+      "category": "Isolated_Stock_Broking",
+      "display_name": "SBI Smart / Securities Demat",
+      "auth_url": "https://sbisecurities.in",
+      "description": "SBI Cap Securities Demat and Trading portal.",
+      "domains": ["sbismart.com", "sbisecurities.in"],
+      "aliases": ["sbismart", "sbisecurities"]
+    },
+    {
+      "id": "income_tax_india",
+      "canonical_slug": "incometax",
+      "category": "Isolated_Govt_Tax",
+      "display_name": "Income Tax e-Filing Portal India",
+      "auth_url": "https://incometax.gov.in",
+      "description": "Indian Income Tax Department e-filing portal (PAN based).",
+      "domains": ["incometax.gov.in", "incometaxindiaefiling.gov.in"],
+      "aliases": ["incometax", "itr", "incometaxefiling"]
+    },
+    {
+      "id": "gst_portal_india",
+      "canonical_slug": "gstportal",
+      "category": "Isolated_Govt_Tax",
+      "display_name": "GST Portal India (Goods & Services Tax)",
+      "auth_url": "https://gst.gov.in",
+      "description": "Indian GST compliance and return filing portal.",
+      "domains": ["gst.gov.in", "services.gst.gov.in"],
+      "aliases": ["gst", "gstportal", "gstn"]
+    },
+    {
+      "id": "epfo_india",
+      "canonical_slug": "epfo",
+      "category": "Isolated_Govt_Social_Security",
+      "display_name": "EPFO Member e-Sewa (UAN Portal)",
+      "auth_url": "https://unifiedportal-mem.epfindia.gov.in",
+      "description": "Employees' Provident Fund Organisation Member Portal.",
+      "domains": ["epfindia.gov.in", "unifiedportal-mem.epfindia.gov.in"],
+      "aliases": ["epfo", "uan", "epfouan"]
+    },
+    {
+      "id": "parivahan_sewa",
+      "canonical_slug": "parivahansewa",
+      "category": "Isolated_Govt_Transport",
+      "display_name": "Parivahan Sewa (Sarathi & Vahan)",
+      "auth_url": "https://parivahan.gov.in",
+      "description": "Ministry of Road Transport and Highways (Driving Licence & Vehicle RC).",
+      "domains": ["parivahan.gov.in", "sarathi.parivahan.gov.in", "vahan.parivahan.gov.in"],
+      "aliases": ["parivahan", "sarathi", "vahan", "parivahansewa"]
+    }
+  ]
+}
