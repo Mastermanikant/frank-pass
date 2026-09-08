@@ -265,89 +265,132 @@
 </section>
 
 <!-- ============================================================
- SECTION 2: FREE WEB VS PRO EXTENSION
+<!-- ============================================================
+ SECTION 2: 3-WAY COMPARISON (WEB/PWA vs FREE EXTENSION vs PRO EXTENSION)
  ============================================================ -->
 <section class="section" aria-labelledby="matrix-heading">
- <div class="container" style="max-width:860px">
-   <div class="text-center mb-4">
-     <div class="section-label" aria-hidden="true">Feature Matrix</div>
-     <h2 id="matrix-heading" style="font-size:clamp(1.75rem,3.5vw,2.3rem);margin-bottom:0.5rem">Free Website vs. Pro Extension</h2>
-     <p class="section-desc">100% honest transparency. Compare what you get on the free web app versus the Pro extension.</p>
-   </div>
+  <div class="container" style="max-width:960px">
+    <div class="text-center mb-4">
+      <div class="section-label" aria-hidden="true">Architectural Comparison</div>
+      <h2 id="matrix-heading" style="font-size:clamp(1.75rem,3.5vw,2.3rem);margin-bottom:0.5rem">Free Web App &amp; PWA vs. Free Extension vs. Pro Extension</h2>
+      <p class="section-desc">100% honest transparency. Compare what you get across the free web generator, the free browser extension, and the Pro extension.</p>
+    </div>
 
-   <div class="card-glass" style="padding:0;border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.15)">
-     <div style="overflow-x:auto">
-       <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.92rem">
-         <thead>
-           <tr style="background:rgba(139,92,246,0.12);border-bottom:1px solid var(--border)">
-             <th style="padding:1.1rem 1.4rem;color:var(--text-primary);font-weight:700">Security &amp; Workflow Feature</th>
-             <th style="padding:1.1rem 1.4rem;color:var(--text-muted);font-weight:600;text-align:center;width:180px">Free Web App</th>
-             <th style="padding:1.1rem 1.4rem;color:var(--accent-light);font-weight:700;text-align:center;width:200px;background:rgba(139,92,246,0.18)">FrankPass PRO</th>
-           </tr>
-         </thead>
-         <tbody>
-           <tr style="border-bottom:1px solid var(--border)">
-             <td style="padding:1rem 1.4rem"><strong>Mathematical Algorithm</strong> (PBKDF2-HMAC-SHA512)</td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">✓ 1,000,000 Iterations</td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">✓ 1,000,000 Iterations</td>
-           </tr>
-           <tr style="border-bottom:1px solid var(--border)">
-             <td style="padding:1rem 1.4rem"><strong>Zero Cloud Database / Zero Logs</strong></td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">✓ 100% Client-Side</td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">✓ 100% Client-Side</td>
-           </tr>
-           <tr style="border-bottom:1px solid var(--border)">
-             <td style="padding:1rem 1.4rem"><strong>100% Offline Generation</strong></td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">✓ Fully Offline</td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">✓ Fully Offline</td>
-           </tr>
-           <tr style="border-bottom:1px solid var(--border)">
-             <td style="padding:1rem 1.4rem">
-               <strong>Browser Extension &amp; 1-Click Auto-Fill</strong> (Chrome, Firefox, Edge, Brave)
-               <div style="font-size:0.78rem;color:var(--text-muted);margin-top:3px">Automatic active domain detection &amp; 1-click autofill into login fields</div>
-             </td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">
-               ✓ 100% Free Forever<br><span style="font-size:0.78rem;color:var(--text-muted);font-weight:400">(Instant Guest Mode Auto-Fill)</span>
-             </td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:var(--accent-light);font-weight:700;background:rgba(139,92,246,0.06)">
-               ⚡ 1-Click Auto-Fill Included
-             </td>
-           </tr>
-           <tr style="border-bottom:1px solid var(--border)">
-             <td style="padding:1rem 1.4rem">
-               <strong>Multi-Profile Vaults</strong> (Work, Personal, Clients)
-               <div style="font-size:0.78rem;color:var(--text-muted);margin-top:3px">Save distinct Secret Keys encrypted locally on this machine</div>
-             </td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">
-               ✕ Stateless (Enter Key in RAM)
-             </td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:var(--accent-light);font-weight:700;background:rgba(139,92,246,0.06)">
-               👥 Unlimited Local Profiles
-             </td>
-           </tr>
-           <tr style="border-bottom:1px solid var(--border)">
-             <td style="padding:1rem 1.4rem"><strong>Anti-Phishing Domain Isolation</strong></td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700">✓ Automatic Domain Detection</td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#eab308;font-weight:700;background:rgba(139,92,246,0.06)">🛡️ Automatic Active URL Input</td>
-           </tr>
-           <tr style="border-bottom:1px solid var(--border)">
-             <td style="padding:1rem 1.4rem">
-               <strong>4-Digit Quick PIN Lock &amp; Offline Recovery</strong>
-               <div style="font-size:0.78rem;color:var(--text-muted);margin-top:3px">Unlock saved profiles in 1 second with PIN without re-typing secret key</div>
-             </td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">✕ Retype Full Key Each Session</td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">🔒 Instant 4-Digit PIN + 20 Qs Reset</td>
-           </tr>
-           <tr>
-             <td style="padding:1rem 1.4rem"><strong>Support &amp; Direct Communication</strong></td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-muted)">Documentation &amp; FAQ</td>
-             <td style="padding:1rem 1.4rem;text-align:center;color:var(--text-primary);font-weight:700;background:rgba(139,92,246,0.06)">Priority WhatsApp &amp; Founder Desk</td>
-           </tr>
-         </tbody>
-       </table>
-     </div>
-   </div>
- </div>
+    <div class="card-glass" style="padding:0;border-radius:18px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,0.15)">
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;text-align:left;font-size:0.92rem">
+          <thead>
+            <tr style="background:rgba(139,92,246,0.12);border-bottom:1px solid var(--border)">
+              <th style="padding:1.1rem 1.4rem;color:var(--text-primary);font-weight:700">Security &amp; Workflow Feature</th>
+              <th style="padding:1.1rem 1.2rem;color:#10b981;font-weight:700;text-align:center;width:170px">🌐 Free Web &amp; PWA</th>
+              <th style="padding:1.1rem 1.2rem;color:var(--accent-light);font-weight:700;text-align:center;width:180px">⚡ Free Extension</th>
+              <th style="padding:1.1rem 1.2rem;color:#eab308;font-weight:700;text-align:center;width:210px;background:rgba(139,92,246,0.18)">🛡️ FrankPass PRO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>Mathematical Algorithm</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">PBKDF2-HMAC-SHA512 Key Derivation</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ 1,000,000 Rounds</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ 1,000,000 Rounds</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700;background:rgba(139,92,246,0.06)">✓ 1,000,000 Rounds</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>Zero Cloud Databases / Zero Logs</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Zero bytes stored in the cloud</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ 100% Client-Side</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ 100% Client-Side</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700;background:rgba(139,92,246,0.06)">✓ 100% Client-Side</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>100% Offline Generation &amp; Privacy</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Zero ads, zero trackers, works in Airplane Mode</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ Fully Offline</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ Fully Offline</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700;background:rgba(139,92,246,0.06)">✓ Fully Offline</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>ATM &amp; UPI PIN Recalculation</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Deterministic 4/6/8-digit banking PIN generator</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ Dedicated (/pin.html)</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ In Toolbar Popup</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700;background:rgba(139,92,246,0.06)">✓ In Toolbar Popup</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>1-Click Toolbar Auto-Fill</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Detects active tab and fills password in 0.1s</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-muted)">✕ Manual Copy-Paste</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ Free Guest Auto-Fill</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--accent-light);font-weight:700;background:rgba(139,92,246,0.06)">⚡ 1-Click Multi-Profile Auto-Fill</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>Multi-Profile Vaults</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Save distinct Secret Keys encrypted locally (Work, Personal, Clients)</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-muted)">✕ Stateless (Enter in RAM)</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-muted)">✕ Single Session (RAM Only)</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#eab308;font-weight:700;background:rgba(139,92,246,0.06)">👥 Unlimited Local Profiles</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>4-Digit Quick PIN Lock</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Unlock local profiles in 0.1s without re-typing long master passphrases</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-muted)">✕ Retype Full Key</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-muted)">✕ Retype Full Key</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">🔒 Instant 4-Digit PIN Unlock</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>Anti-Phishing Domain Isolation</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Fake clone domains receive completely different passwords</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ Manual Domain Input</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">✓ Active URL Isolation</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#eab308;font-weight:700;background:rgba(139,92,246,0.06)">🛡️ Strict Domain Verification Guard</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:1rem 1.4rem">
+                <strong>Offline Security Questions Recovery</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Reset PIN offline without server intervention</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-muted)">✕ No Stored State</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-muted)">✕ No Stored State</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#34d399;font-weight:700;background:rgba(139,92,246,0.06)">✓ 20 Customizable Offline Qs</td>
+            </tr>
+            <tr>
+              <td style="padding:1rem 1.4rem">
+                <strong>Pricing &amp; License</strong>
+                <div style="font-size:0.78rem;color:var(--text-muted);margin-top:2px">Zero recurring cloud subscription fees</div>
+              </td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">100% Free Forever ($0)</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">100% Free Forever ($0)</td>
+              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-primary);font-weight:800;background:rgba(139,92,246,0.06)">
+                ₹200 / $2.50 (1-Yr)<br>
+                <span style="font-size:0.78rem;color:#eab308;font-weight:700">₹600 / $7.50 (5-Yr)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Mobile Apps Future Note -->
+      <div style="background:rgba(139,92,246,0.06);border-top:1px solid var(--border);padding:1.1rem 1.4rem;text-align:center;font-size:0.88rem;color:var(--text-muted);">
+        <strong style="color:var(--text-primary);">📱 Note on Sovereign Mobile Apps:</strong> Native Android and iOS apps are currently in active engineering. Upon public release, mobile apps will offer both 100% Free and Pro offline biometric tiers.
+      </div>
+    </div>
+  </div>
 </section>
 
 <!<!-- ============================================================
@@ -510,18 +553,6 @@
       </div>
 
     </div>
- </div>
-</section>
-
-<!-- ============================================================
- AFFILIATE PARTNER NOTE
- ============================================================ -->
-<section class="section-sm" aria-label="Affiliate program information">
- <div class="container" style="max-width:680px">
- <div class="card-glass" style="padding:1.5rem;text-align:center;border-radius:14px">
- <h2 style="font-size:1.1rem;margin-bottom:0.5rem">Become a FrankPass Affiliate Partner</h2>
- <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">Share FrankPass with your audience and earn a commission on every license sale. Contact us via our <a href="/founder-mastermanikant.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600">Contact page</a> or email <a href="mailto:connect@mastermanikant.com" style="color:var(--accent-light);font-weight:600">connect@mastermanikant.com</a> to apply. Transparent, authentic representation only.</p>
- </div>
  </div>
 </section>
 

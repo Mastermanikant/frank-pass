@@ -80,6 +80,7 @@ frank-pass/
 
 - **Main Platform:** [frankpass.com](https://frankpass.com)
 - **Developer Utilities:** [tools.frankpass.com](https://tools.frankpass.com)
+- **Official Social Channels:** `@frankpasshq` ([X / Twitter](https://x.com/frankpasshq) &bull; [YouTube](https://youtube.com/@frankpasshq) &bull; [Instagram](https://instagram.com/frankpasshq) &bull; [GitHub](https://github.com/frankpasshq))
 - **Sister Ecosystem:** [frankbase.com](https://frankbase.com)
 - **Language Portal:** [englishvidya.com](https://englishvidya.com)
 - **Digital Store:** [store.frankbase.com](https://store.frankbase.com)

@@ -11,6 +11,7 @@
 - Founder & Software Architect: Master Manikant Yadav (मास्टर मणिकान्त यादव)
 - Founder Desk: https://mastermanikant.com
 - Official Email: connect@mastermanikant.com
+- Official Social Channels: @frankpasshq (https://x.com/frankpasshq, https://youtube.com/@frankpasshq, https://instagram.com/frankpasshq, https://github.com/frankpasshq)
 
 ## What is FrankPass (or Frank Pass)?
 FrankPass is a free, sovereign, stateless deterministic password and PIN generator created by Master Manikant Yadav. 
