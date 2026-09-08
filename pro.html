@@ -798,14 +798,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (resData.success && resData.checkout_url) {
           window.location.href = resData.checkout_url;
         } else {
-          // Fallback to order-success preview
-          const fallbackUrl = `order-success.html?session_id=FP-ORD-${Date.now()}&email=${encodeURIComponent(email)}&duration=${encodeURIComponent(calcDuration)}&devices=${encodeURIComponent(JSON.stringify(deviceIds))}`;
-          window.location.href = fallbackUrl;
+          // Direct Store Checkout Bridge
+          const primaryDev = (deviceIds && deviceIds[0]) ? deviceIds[0] : '';
+          const storeUrl = `https://store.frankbase.com/checkout/frankpass?plan=${encodeURIComponent(calcDuration)}&devid=${encodeURIComponent(primaryDev)}&email=${encodeURIComponent(email)}`;
+          window.location.href = storeUrl;
         }
       } catch (err) {
-        console.warn('Checkout bridge fallback:', err);
-        const fallbackUrl = `order-success.html?session_id=FP-ORD-${Date.now()}&email=${encodeURIComponent(email)}&duration=${encodeURIComponent(calcDuration)}&devices=${encodeURIComponent(JSON.stringify(deviceIds))}`;
-        window.location.href = fallbackUrl;
+        console.warn('Checkout bridge redirecting to store:', err);
+        const primaryDev = (deviceIds && deviceIds[0]) ? deviceIds[0] : '';
+        const storeUrl = `https://store.frankbase.com/checkout/frankpass?plan=${encodeURIComponent(calcDuration)}&devid=${encodeURIComponent(primaryDev)}&email=${encodeURIComponent(email)}`;
+        window.location.href = storeUrl;
       }
     });
   }
