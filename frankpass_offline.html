@@ -350,9 +350,10 @@
         <span class="hint">Never leaves this tab</span>
       </label>
       <div class="input-with-action">
-        <input type="password" id="key-input" class="form-control" placeholder="Enter your personal memorable key" required autocomplete="off">
+        <input type="password" id="key-input" class="form-control" placeholder="Enter your personal memorable key" required autocomplete="off" oninput="validateSecretKey(this.value)">
         <button type="button" class="btn-inline" onclick="toggleKeyVisibility()" title="Toggle visibility">👁️</button>
       </div>
+      <div id="key-warning" style="display:none;font-size:0.75rem;color:#f59e0b;margin-top:0.35rem;line-height:1.4;" role="alert">⚠️ Please use English letters (a-z) and numbers (0-9). Symbols and non-Latin scripts are omitted automatically for universal consistency.</div>
     </div>
 
     <div class="grid-2">
@@ -540,111 +541,298 @@ const FRANKPASS_CORE = (function () {
     };
 })();
 
-/* ─── 2. Embedded Normalization & Aliases (v3.8.5 — Zero-Omission) ─── */
+/* ─── 2. Embedded Normalization & Aliases (100% Parity with frankpass-utils.js) ─── */
 const GLOBAL_ALIASES = {
-    // Google Ecosystem (100% Unified)
+    // Google Ecosystem (100% Unified Google Account SSO)
     'google': 'google', 'gmail': 'google', 'googlemail': 'google',
     'gdrive': 'google', 'googledrive': 'google', 'gphotos': 'google',
     'gdocs': 'google', 'gpay': 'google', 'googlepay': 'google',
     'gemini': 'google', 'googleaccount': 'google', 'goog': 'google',
     'yt': 'google', 'youtube': 'google', 'youtubemusic': 'google',
     'youtubestudio': 'google', 'ytstudio': 'google',
-    // Microsoft Ecosystem (Unified)
+
+    // Microsoft Ecosystem (Unified Microsoft Account SSO)
     'ms': 'microsoft', 'microsoft': 'microsoft', 'outlook': 'microsoft',
     'live': 'microsoft', 'hotmail': 'microsoft', 'msn': 'microsoft',
-    'office365': 'microsoft', 'office': 'microsoft', 'onedrive': 'microsoft',
-    'xbox': 'microsoft', 'skype': 'microsoft', 'bing': 'microsoft',
-    // Apple Ecosystem (Unified)
+    'office365': 'microsoft', 'office': 'microsoft', 'microsoft365': 'microsoft',
+    'onedrive': 'microsoft', 'xbox': 'microsoft', 'skype': 'microsoft',
+    'bing': 'microsoft', 'copilot': 'microsoft',
+
+    // Apple Ecosystem (Unified Apple ID / iCloud SSO)
     'apple': 'apple', 'appleid': 'apple', 'icloud': 'apple',
-    'itunes': 'apple', 'appstore': 'apple',
-    // Adobe Ecosystem (Unified)
+    'itunes': 'apple', 'appstore': 'apple', 'applemusic': 'apple',
+    'appletv': 'apple',
+
+    // Adobe Ecosystem (Unified Adobe ID SSO)
     'adobe': 'adobe', 'creativecloud': 'adobe', 'behance': 'adobe',
-    // Social Media
+    'photoshop': 'adobe', 'adobefonts': 'adobe', 'adobestock': 'adobe',
+    'lightroom': 'adobe',
+
+    // Yahoo Ecosystem
+    'yahoo': 'yahoo', 'ymail': 'yahoo', 'yahoomail': 'yahoo', 'yahoofinance': 'yahoo',
+
+    // Meta / Social Ecosystem
     'fb': 'facebook', 'meta': 'facebook', 'facebook': 'facebook',
-    'tw': 'twitter', 'twitter': 'twitter', 'x': 'twitter',
-    'ig': 'instagram', 'insta': 'instagram', 'instagram': 'instagram',
-    'wa': 'whatsapp', 'whatsapp': 'whatsapp',
-    'amzn': 'amazon', 'amazon': 'amazon', 'primevideo': 'amazon', 'audible': 'amazon',
-    // Cloud / DevOps (Isolated)
-    'aws': 'aws', 'azure': 'azure', 'gcp': 'googlecloud',
-    'cloudflare': 'cloudflare', 'cf': 'cloudflare',
-    'github': 'github', 'gitlab': 'gitlab',
-    // Amazon multi-tier
-    'amazonseller': 'amazonseller', 'amazonkdp': 'amazonkdp', 'kdp': 'amazonkdp',
-    'amazonassociates': 'amazonassociates', 'amazonads': 'amazonads',
-    // Indian Banking (Isolated)
-    'sbi': 'statebankofindia', 'onlinesbi': 'statebankofindia', 'yono': 'statebankofindia',
-    'yonobusiness': 'sbicorporate', 'sbicorporate': 'sbicorporate', 'sbicard': 'sbicard',
-    'hdfc': 'hdfcbank', 'icici': 'icicibank', 'axis': 'axisbank',
-    // Govt (India)
-    'itr': 'incometax', 'incometax': 'incometax',
-    'gst': 'gstportal', 'gstportal': 'gstportal',
-    'epfo': 'epfo', 'uan': 'epfo'
+    'messenger': 'facebook', 'x': 'twitter', 'tw': 'twitter',
+    'twtr': 'twitter', 'twitter': 'twitter', 'ig': 'instagram',
+    'insta': 'instagram', 'instagram': 'instagram', 'threads': 'instagram',
+    'wa': 'whatsapp', 'whatsapp': 'whatsapp', 'amzn': 'amazon',
+    'amazon': 'amazon', 'primevideo': 'amazon', 'audible': 'amazon',
+    'snap': 'snapchat', 'snapchat': 'snapchat', 'pin': 'pinterest',
+    'pinterest': 'pinterest', 'gh': 'github', 'github': 'github',
+    'pp': 'paypal', 'paypal': 'paypal', 'tt': 'tiktok',
+    'tiktok': 'tiktok', 'nf': 'netflix', 'netflix': 'netflix',
+    'tv': 'twitch', 'twitch': 'twitch', 'st': 'steam',
+    'steam': 'steam', 'dc': 'discord', 'discord': 'discord',
+    'rd': 'reddit', 'reddit': 'reddit', 'tg': 'telegram',
+    'telegram': 'telegram', 'ln': 'linkedin', 'linkedin': 'linkedin',
+    'spotify': 'spotify',
+
+    // Cloud, AI & DevOps Independent Slugs
+    'aws': 'aws', 'amazonwebservices': 'aws', 'awsconsole': 'aws',
+    'azure': 'azure', 'microsoftazure': 'azure', 'azureportal': 'azure',
+    'gcp': 'googlecloud', 'googlecloud': 'googlecloud',
+    'oraclecloud': 'oraclecloud', 'ibmcloud': 'ibmcloud',
+    'alibabacloud': 'alibabacloud', 'digitalocean': 'digitalocean',
+    'hetzner': 'hetzner', 'linode': 'linode', 'cloudflare': 'cloudflare',
+    'cf': 'cloudflare', 'cloudflareworkers': 'cloudflare',
+    'cloudflarepages': 'cloudflare', 'vercel': 'vercel',
+    'netlify': 'netlify', 'supabase': 'supabase',
+    'mongodbatlas': 'mongodbatlas', 'render': 'render',
+    'railway': 'railway', 'flyio': 'flyio', 'openai': 'openai',
+    'chatgpt': 'chatgpt', 'claude': 'anthropic', 'anthropic': 'anthropic',
+    'perplexity': 'perplexity', 'huggingface': 'huggingface',
+    'postman': 'postman', 'sentry': 'sentry', 'datadog': 'datadog',
+    'grafana': 'grafana', 'jira': 'jira', 'confluence': 'confluence',
+    'atlassian': 'atlassian', 'bitbucket': 'bitbucket',
+    'gitlab': 'gitlab', 'hostinger': 'hostinger',
+
+    // E-Commerce Merchant & Seller Specific Slugs
+    'amazonseller': 'amazonseller', 'amazonsellercentral': 'amazonseller',
+    'amazonkdp': 'amazonkdp', 'kdp': 'amazonkdp', 'amazonauthor': 'amazonkdp',
+    'amazonassociates': 'amazonassociates', 'amazonaffiliate': 'amazonassociates',
+    'amazonmerch': 'amazonmerch', 'amazonads': 'amazonads',
+    'flipkartseller': 'flipkartseller', 'shopifyadmin': 'shopifyadmin',
+    'swiggypartner': 'swiggypartner', 'zomatomerchant': 'zomatomerchant',
+
+    // Indian Financial, Tax, Investment & Govt Aliases
+    'boi': 'bankofindia', 'sbi': 'statebankofindia', 'onlinesbi': 'statebankofindia',
+    'yono': 'statebankofindia', 'yonosbi': 'statebankofindia',
+    'yonobusiness': 'sbicorporate', 'sbicorporate': 'sbicorporate',
+    'sbicorp': 'sbicorporate', 'sbicard': 'sbicard',
+    'sbismart': 'sbisecurities', 'sbisecurities': 'sbisecurities',
+    'pnb': 'punjabnationalbank', 'pnbone': 'punjabnationalbank',
+    'pnbcorp': 'pnbcorporate', 'pnbcorporate': 'pnbcorporate',
+    'hdfc': 'hdfcbank', 'hdfcnetbanking': 'hdfcbank',
+    'hdfccorporate': 'hdfccorporate', 'hdfcsec': 'hdfcsecurities',
+    'hdfcsecurities': 'hdfcsecurities', 'icici': 'icicibank',
+    'imobile': 'icicibank', 'icicicorporate': 'icicicorporate',
+    'icicidirect': 'icicidirect', 'axis': 'axisbank',
+    'axisnetbanking': 'axisbank', 'axiscorporate': 'axiscorporate',
+    'axisdirect': 'axisdirect', 'kotak': 'kotakmahindrabank',
+    'kotak811': 'kotakmahindrabank', 'kotakcorporate': 'kotakcorporate',
+    'kotaksecurities': 'kotaksecurities', 'bob': 'bankofbaroda',
+    'bobworld': 'bankofbaroda', 'bobcorporate': 'bobcorporate',
+    'canara': 'canarabank', 'canaracorporate': 'canaracorporate',
+    'unionbank': 'unionbankofindia', 'unionbankcorporate': 'unionbankcorporate',
+    'idfc': 'idfcfirstbank', 'idfcfirst': 'idfcfirstbank',
+    'rbl': 'rblbank', 'federal': 'federalbank', 'indusind': 'indusindbank',
+    'zerodha': 'zerodha', 'kite': 'zerodha', 'coin': 'zerodha',
+    'groww': 'groww', 'upstox': 'upstox', 'angelone': 'angelone',
+    'dhan': 'dhan', 'cams': 'camsonline', 'camsonline': 'camsonline',
+    'kfin': 'kfintech', 'kfintech': 'kfintech', 'cdsl': 'cdsl',
+    'nsdl': 'nsdl', 'mfcentral': 'mfcentral', 'itr': 'incometax',
+    'incometax': 'incometax', 'incometaxefiling': 'incometax',
+    'gst': 'gstportal', 'gstportal': 'gstportal', 'gstn': 'gstportal',
+    'epfo': 'epfo', 'uan': 'epfo', 'epfouan': 'epfo',
+    'parivahan': 'parivahansewa', 'sarathi': 'parivahansewa',
+    'vahan': 'parivahansewa', 'passport': 'passportseva',
+    'passportseva': 'passportseva', 'digilocker': 'digilocker',
+    'digiyatra': 'digiyatra', 'fastag': 'fastag', 'cowin': 'cowinportal',
+    'abha': 'abhaportal', 'nps': 'npstrust', 'enps': 'npstrust',
+    'umang': 'umang', 'jio': 'jio', 'myjio': 'jio', 'jiocinema': 'jiocinema',
+    'jiosaavn': 'jiosaavn', 'jiopay': 'jiopaymentsbank',
+    'jiopaymentsbank': 'jiopaymentsbank', 'airtel': 'airtel',
+    'airtelthanks': 'airtel', 'airtelmoney': 'airtelpaymentsbank',
+    'airtelpaymentsbank': 'airtelpaymentsbank', 'paytm': 'paytm',
+    'paytmmoney': 'paytmmoney', 'paytmbank': 'paytmpaymentsbank',
+    'paytmpaymentsbank': 'paytmpaymentsbank', 'vi': 'vodafoneidea',
+    'bsnl': 'bsnl', 'irctc': 'irctc', 'irctcair': 'irctcair',
+    'irctctourism': 'irctctourism', 'indane': 'indane',
+    'indanegas': 'indane', 'bharatgas': 'bharatgas', 'hpgas': 'hpgas',
+    'uppcl': 'uppcl', 'mahavitaran': 'msedcl', 'msedcl': 'msedcl',
+    'tatapower': 'tatapower', 'tataneu': 'tataneu', 'tatacliq': 'tatacliq',
+    'adanielectricity': 'adanielectricity', 'bses': 'bses', 'bescom': 'bescom',
+
+    // Global Govt & Public Services Aliases
+    'irs': 'internalrevenueservice', 'ssa': 'socialsecurityadministration',
+    'dmv': 'dmvportal', 'uscis': 'uscis', 'logingov': 'logingov',
+    'idme': 'idme', 'usps': 'usps', 'govuk': 'govuk', 'hmrc': 'hmrc',
+    'dvla': 'dvla', 'nhs': 'nhs', 'cra': 'canadarevenueagency',
+    'servicecanada': 'servicecanada', 'mygov': 'mygovau',
+    'ato': 'australiantaxoffice', 'singpass': 'singpass',
+    'uaepass': 'uaepass', 'absher': 'absher', 'nafath': 'nafath'
 };
 
 const VISUAL_ALIASES = {
-    // AWS (isolated from Amazon retail)
-    'aws.amazon.com': 'aws', 'console.aws.amazon.com': 'aws', 'signin.aws.amazon.com': 'aws', 'repost.aws': 'aws',
-    // Azure (isolated from Microsoft consumer)
-    'portal.azure.com': 'azure', 'dev.azure.com': 'azure',
-    // Google Cloud (separate from consumer Google)
-    'console.cloud.google.com': 'googlecloud', 'cloud.google.com': 'googlecloud',
-    // Google + YouTube 100% Unified Fleet
-    'google.com': 'google', 'gmail.com': 'google', 'googlemail.com': 'google',
-    'mail.google.com': 'google', 'accounts.google.com': 'google',
-    'drive.google.com': 'google', 'docs.google.com': 'google',
-    'youtube.com': 'google', 'youtu.be': 'google', 'm.youtube.com': 'google',
-    'studio.youtube.com': 'google', 'music.youtube.com': 'google',
-    'tv.youtube.com': 'google', 'kids.youtube.com': 'google',
-    'artists.youtube.com': 'google', 'artists.youtube': 'google',
-    'creator.youtube.com': 'google', 'blog.google': 'google', 'safety.google': 'google',
+    // Cloud, AI & Infrastructure
+    'aws.amazon.com': 'aws', 'console.aws.amazon.com': 'aws', 'signin.aws.amazon.com': 'aws',
+    'repost.aws': 'aws', 'builder.aws': 'aws', 'portal.azure.com': 'azure',
+    'dev.azure.com': 'azure', 'azure.microsoft.com': 'azure', 'console.cloud.google.com': 'googlecloud',
+    'cloud.google.com': 'googlecloud', 'cloud.oracle.com': 'oraclecloud', 'myservices.oracle.com': 'oraclecloud',
+    'cloud.ibm.com': 'ibmcloud', 'iam.cloud.ibm.com': 'ibmcloud', 'intl.alibabacloud.com': 'alibabacloud',
+    'account.alibabacloud.com': 'alibabacloud', 'console.digitalocean.com': 'digitalocean',
+    'cloud.digitalocean.com': 'digitalocean', 'console.hetzner.cloud': 'hetzner', 'robot.hetzner.com': 'hetzner',
+    'cloud.linode.com': 'linode', 'dash.cloudflare.com': 'cloudflare', 'cloudflare.com': 'cloudflare',
+    'one.dash.cloudflare.com': 'cloudflare', 'workers.cloudflare.com': 'cloudflare', 'pages.cloudflare.com': 'cloudflare',
+    'dashboard.vercel.com': 'vercel', 'app.netlify.com': 'netlify', 'app.supabase.com': 'supabase',
+    'cloud.mongodb.com': 'mongodbatlas', 'dashboard.render.com': 'render', 'railway.app': 'railway',
+    'fly.io': 'flyio', 'chatgpt.com': 'chatgpt', 'chat.openai.com': 'chatgpt',
+    'platform.openai.com': 'openai', 'claude.ai': 'anthropic', 'console.anthropic.com': 'anthropic',
+    'app.slack.com': 'slack', 'slack.com': 'slack', 'app.postman.com': 'postman',
+    'identity.getpostman.com': 'postman', 'admin.atlassian.com': 'atlassian', 'id.atlassian.com': 'atlassian',
+    'jira.atlassian.com': 'jira', 'confluence.atlassian.com': 'confluence', 'bitbucket.org': 'bitbucket',
+    'gitlab.com': 'gitlab', 'github.com': 'github', 'gist.github.com': 'github',
+    'app.datadoghq.com': 'datadog', 'app.sentry.io': 'sentry', 'app.grafana.net': 'grafana',
+    'grafana.net': 'grafana',
+
+    // Amazon & E-Commerce Sub-Services
+    'sellercentral.amazon.com': 'amazonseller', 'sellercentral.amazon.in': 'amazonseller',
+    'sellercentral-europe.amazon.com': 'amazonseller', 'kdp.amazon.com': 'amazonkdp',
+    'author.amazon.com': 'amazonkdp', 'affiliate-program.amazon.com': 'amazonassociates',
+    'affiliate-program.amazon.in': 'amazonassociates', 'merch.amazon.com': 'amazonmerch',
+    'advertising.amazon.com': 'amazonads', 'seller.flipkart.com': 'flipkartseller',
+    'admin.shopify.com': 'shopifyadmin', 'partners.shopify.com': 'shopifyadmin',
+    'partner.swiggy.com': 'swiggypartner', 'merchant.zomato.com': 'zomatomerchant',
+
+    // Telecom & Fintech Payments Banks
+    'payments.airtel.in': 'airtelpaymentsbank', 'pay.airtel.in': 'airtelpaymentsbank',
+    'airtelbank.com': 'airtelpaymentsbank', 'airtelpaymentsbank.in': 'airtelpaymentsbank',
+    'jiopay.com': 'jiopaymentsbank', 'jiopaymentsbank.com': 'jiopaymentsbank',
+    'paytmbank.com': 'paytmpaymentsbank', 'paytmmoney.com': 'paytmmoney',
+
+    // Retail & Corporate NetBanking & Institutional Finance
+    'onlinesbi.sbi': 'statebankofindia', 'retail.onlinesbi.sbi': 'statebankofindia',
+    'corporate.icicibank.com': 'icicicorporate', 'cibnext.icicibank.com': 'icicicorporate',
+    'infinity.icicibank.com': 'icicibank', 'icicidirect.com': 'icicidirect',
+    'netbanking.hdfcbank.com': 'hdfcbank', 'corporatebanking.hdfcbank.com': 'hdfccorporate',
+    'hdfcsec.com': 'hdfcsecurities', 'mycards.hdfcbank.com': 'hdfcmycards',
+    'yonobusiness.sbi': 'sbicorporate', 'corp.onlinesbi.sbi': 'sbicorporate',
+    'corp.onlinesbi.com': 'sbicorporate', 'sbicard.com': 'sbicard',
+    'sbismart.com': 'sbisecurities', 'sbisecurities.in': 'sbisecurities',
+    'netbanking.axisbank.com': 'axisbank', 'corporate.axisbank.com': 'axiscorporate',
+    'corporatebanking.axisbank.com': 'axiscorporate', 'axisdirect.in': 'axisdirect',
+    'netbanking.kotak.com': 'kotakmahindrabank', 'corporate.kotak.com': 'kotakcorporate',
+    'kotaksecurities.com': 'kotaksecurities', 'bobibanking.com': 'bobcorporate',
+    'pnbcorp.com': 'pnbcorporate', 'netpnb.com': 'punjabnationalbank',
+    'canarabank.in': 'canarabank', 'netbanking.canarabank.in': 'canarabank',
+    'corporate.canarabank.in': 'canaracorporate', 'unionbankonline.co.in': 'unionbankofindia',
+    'corp.unionbankonline.co.in': 'unionbankcorporate',
+
+    // Unified Global SSO Ecosystems (Google, MS, Apple, Adobe, Meta)
+    'google.com': 'google', 'google.co.in': 'google', 'gmail.com': 'google',
+    'googlemail.com': 'google', 'mail.google.com': 'google', 'accounts.google.com': 'google',
+    'myaccount.google.com': 'google', 'drive.google.com': 'google', 'docs.google.com': 'google',
+    'sheets.google.com': 'google', 'slides.google.com': 'google', 'forms.google.com': 'google',
+    'keep.google.com': 'google', 'photos.google.com': 'google', 'play.google.com': 'google',
+    'meet.google.com': 'google', 'chat.google.com': 'google', 'calendar.google.com': 'google',
+    'contacts.google.com': 'google', 'gemini.google.com': 'google', 'colab.research.google.com': 'google',
+    'firebase.google.com': 'google', 'console.firebase.google.com': 'google', 'pay.google.com': 'google',
+    'one.google.com': 'google', 'blog.google': 'google', 'about.google': 'google',
+    'safety.google.com': 'google', 'store.google.com': 'google', 'workspace.google.com': 'google',
+    'g.co': 'google', 'goo.gl': 'google', 'youtube.com': 'google', 'youtu.be': 'google',
+    'm.youtube.com': 'google', 'studio.youtube.com': 'google', 'music.youtube.com': 'google',
+    'tv.youtube.com': 'google', 'kids.youtube.com': 'google', 'artists.youtube.com': 'google',
+    'creator.youtube.com': 'google', 'artists.youtube': 'google', 'music.youtube': 'google',
+
     // Microsoft Consumer Fleet
-    'outlook.com': 'microsoft', 'hotmail.com': 'microsoft', 'live.com': 'microsoft',
-    'login.live.com': 'microsoft', 'office.com': 'microsoft', 'xbox.com': 'microsoft',
+    'microsoft.com': 'microsoft', 'outlook.com': 'microsoft', 'outlook.live.com': 'microsoft',
+    'hotmail.com': 'microsoft', 'live.com': 'microsoft', 'msn.com': 'microsoft',
+    'login.live.com': 'microsoft', 'login.microsoftonline.com': 'microsoft', 'office.com': 'microsoft',
+    'office365.com': 'microsoft', 'microsoft365.com': 'microsoft', 'onedrive.live.com': 'microsoft',
+    'onedrive.com': 'microsoft', 'xbox.com': 'microsoft', 'skype.com': 'microsoft',
+    'bing.com': 'microsoft', 'copilot.microsoft.com': 'microsoft',
+
     // Apple Fleet
     'apple.com': 'apple', 'icloud.com': 'apple', 'appleid.apple.com': 'apple',
-    // Amazon multi-tier
-    'sellercentral.amazon.com': 'amazonseller', 'sellercentral.amazon.in': 'amazonseller',
-    'kdp.amazon.com': 'amazonkdp', 'author.amazon.com': 'amazonkdp',
-    'affiliate-program.amazon.in': 'amazonassociates',
-    'primevideo.com': 'amazon', 'audible.com': 'amazon', 'audible.in': 'amazon',
-    // Indian Banking (Isolated)
-    'onlinesbi.sbi': 'statebankofindia', 'retail.onlinesbi.sbi': 'statebankofindia',
-    'yonobusiness.sbi': 'sbicorporate', 'corp.onlinesbi.sbi': 'sbicorporate',
-    'sbicard.com': 'sbicard', 'netbanking.hdfcbank.com': 'hdfcbank',
-    'icicidirect.com': 'icicidirect',
-    // DevOps
-    'github.com': 'github', 'gitlab.com': 'gitlab',
-    'chatgpt.com': 'chatgpt', 'chat.openai.com': 'chatgpt', 'claude.ai': 'anthropic',
-    'dash.cloudflare.com': 'cloudflare', 'cloudflare.com': 'cloudflare',
-    // Govt
-    'incometax.gov.in': 'incometax', 'gst.gov.in': 'gstportal',
-    'epfindia.gov.in': 'epfo', 'unifiedportal-mem.epfindia.gov.in': 'epfo'
+    'account.apple.com': 'apple', 'itunes.apple.com': 'apple', 'appstore.com': 'apple',
+    'music.apple.com': 'apple', 'tv.apple.com': 'apple', 'developer.apple.com': 'apple',
+    'appstoreconnect.apple.com': 'apple', 'findmy.apple.com': 'apple',
+
+    // Adobe Fleet
+    'adobe.com': 'adobe', 'account.adobe.com': 'adobe', 'creativecloud.adobe.com': 'adobe',
+    'behance.net': 'adobe', 'fonts.adobe.com': 'adobe', 'stock.adobe.com': 'adobe',
+    'firefly.adobe.com': 'adobe', 'lightroom.adobe.com': 'adobe',
+
+    // Social Media & Messaging
+    'fb.com': 'facebook', 'facebook.com': 'facebook', 'm.facebook.com': 'facebook',
+    'messenger.com': 'facebook', 'instagram.com': 'instagram', 'ig.me': 'instagram',
+    'threads.net': 'instagram', 'web.whatsapp.com': 'whatsapp', 'whatsapp.com': 'whatsapp',
+    'wa.me': 'whatsapp', 'web.telegram.org': 'telegram', 'telegram.org': 'telegram',
+    't.me': 'telegram', 'discord.com': 'discord', 'discord.gg': 'discord',
+    'spotify.com': 'spotify', 'open.spotify.com': 'spotify', 'artists.spotify.com': 'spotify',
+    'app.element.io': 'matrix', 'bit.ly': 'bitly', 'amzn.to': 'amazon',
+    'amzn.in': 'amazon', 'primevideo.com': 'amazon', 'audible.com': 'amazon',
+    'audible.in': 'amazon',
+
+    // Indian & Global Public / Regulatory Services
+    'incometax.gov.in': 'incometax', 'incometaxindiaefiling.gov.in': 'incometax',
+    'gst.gov.in': 'gstportal', 'services.gst.gov.in': 'gstportal',
+    'epfindia.gov.in': 'epfo', 'unifiedportal-mem.epfindia.gov.in': 'epfo',
+    'parivahan.gov.in': 'parivahansewa', 'sarathi.parivahan.gov.in': 'parivahansewa',
+    'vahan.parivahan.gov.in': 'parivahansewa', 'passportindia.gov.in': 'passportseva',
+    'digilocker.gov.in': 'digilocker', 'kite.zerodha.com': 'zerodha',
+    'groww.in': 'groww', 'upstox.com': 'upstox', 'pro.upstox.com': 'upstox',
+    'irctc.co.in': 'irctc', 'air.irctc.co.in': 'irctcair',
+    'irctctourism.com': 'irctctourism', 'irs.gov': 'internalrevenueservice',
+    'ssa.gov': 'socialsecurityadministration', 'gov.uk': 'govuk',
+    'canada.ca': 'canadarevenueagency'
 };
 
 function normalizePlatform(raw) {
     if (!raw) return '';
-    let p = raw.toLowerCase().trim().replace(/^(https?:\/\/)?/, '').split('?')[0].split('#')[0];
-    if (p.includes('/')) p = p.split('/')[0];
-    if (p.includes('@')) p = p.split('@')[1];
-    // Brand TLD detection (.google, .youtube, .apple, .aws, .amazon)
-    if (p.endsWith('.google') || p.endsWith('.youtube')) return 'google';
-    if (p.endsWith('.apple')) return 'apple';
-    if (p.endsWith('.aws')) return 'aws';
-    if (p.endsWith('.amazon')) return 'amazon';
-    if (VISUAL_ALIASES[p]) return VISUAL_ALIASES[p];
-    p = p.replace(/^(www\.|m\.|app\.|login\.)/, '');
-    if (VISUAL_ALIASES[p]) return VISUAL_ALIASES[p];
-    let parts = p.split('.');
-    if (parts.length > 2 && parts[parts.length - 2].length <= 3) {
-        p = parts[parts.length - 3];
-    } else if (parts.length >= 2) {
-        p = parts[parts.length - 2];
-    } else {
-        p = parts[0];
+    let platform = raw.toLowerCase().trim();
+    platform = platform.replace(/^(https?:\/\/)?/, '').split('?')[0].split('#')[0];
+    if (platform.includes('/') && (raw.startsWith('http') || /^[a-z0-9.-]+\.[a-z]{2,}\//i.test(platform))) {
+        platform = platform.split('/')[0];
     }
-    p = p.replace(/[^a-z0-9]/g, '');
-    return GLOBAL_ALIASES[p] || p;
+    if (platform.includes('@')) {
+        platform = platform.split('@')[1];
+    }
+    if (platform.endsWith('.google') || platform.endsWith('.youtube')) return 'google';
+    if (platform.endsWith('.apple')) return 'apple';
+    if (platform.endsWith('.aws')) return 'aws';
+    if (platform.endsWith('.amazon')) return 'amazon';
+    if (VISUAL_ALIASES[platform]) return VISUAL_ALIASES[platform];
+
+    const stripped = platform.replace(/^(www\.|m\.|app\.|login\.|secure\.|auth\.|account\.)/, '');
+    if (VISUAL_ALIASES[stripped]) return VISUAL_ALIASES[stripped];
+    platform = stripped;
+
+    platform = platform.replace(/\s+[-–—]\s+[a-z0-9\s]+$/, '');
+    platform = platform.replace(/\s*\([^)]*\)/g, '');
+    if (VISUAL_ALIASES[platform]) return VISUAL_ALIASES[platform];
+
+    let parts = platform.split('.');
+    if (parts.length > 2 && parts[parts.length - 2].length <= 3) {
+        platform = parts[parts.length - 3];
+    } else if (parts.length >= 2) {
+        platform = parts[parts.length - 2];
+    } else {
+        platform = parts[0];
+    }
+    platform = platform.replace(/[^a-z0-9]/g, '');
+    return GLOBAL_ALIASES[platform] || platform;
+}
+
+function validateSecretKey(val) {
+    const warn = document.getElementById('key-warning');
+    if (!warn) return;
+    if (/[^a-zA-Z0-9\s]/.test(val || '')) {
+        warn.style.display = 'block';
+    } else {
+        warn.style.display = 'none';
+    }
 }
 
 /* ─── 3. UI State Management ─── */
@@ -702,7 +890,7 @@ async function handleGenerate(e) {
         renderPassword();
         showToast('Password derived in device RAM!');
     } catch (err) {
-        alert('Generation failed: ' + err.message);
+        showToast('Generation failed: ' + err.message);
     } finally {
         btn.innerHTML = '<span>⚡</span> Generate Cryptographic Password';
         btn.disabled = false;

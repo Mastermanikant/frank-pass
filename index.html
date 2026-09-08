@@ -390,6 +390,7 @@
  <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
  </button>
  </div>
+ <div id="secret-warning" style="display:none;font-size:0.75rem;color:#f59e0b;margin-top:0.35rem;line-height:1.4;" role="alert">⚠️ Please use English letters (a-z) and numbers (0-9). Symbols and non-Latin scripts are omitted automatically for universal consistency.</div>
  <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
  </div>
 
@@ -943,6 +944,17 @@ function updatePasswordStatus() {
 
 /* ── Secret key visibility controller (Unified Biometric + Blind Policy) ── */
 const secretInput = document.getElementById('secret-key');
+const secretWarningEl = document.getElementById('secret-warning');
+if (secretInput) {
+  secretInput.addEventListener('input', () => {
+    const val = secretInput.value || '';
+    if (/[^a-zA-Z0-9\s]/.test(val)) {
+      if (secretWarningEl) secretWarningEl.style.display = 'block';
+    } else {
+      if (secretWarningEl) secretWarningEl.style.display = 'none';
+    }
+  });
+}
 
 /* ── Platform hint & Autocomplete ── */
 const platformInput = document.getElementById('platform-input');

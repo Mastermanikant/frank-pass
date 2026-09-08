@@ -99,3 +99,43 @@ self.addEventListener('fetch', (event) => {
             })
     );
 });
+
+// Push Notifications Listener (For Product Launches, Security Tools & Articles)
+self.addEventListener('push', (event) => {
+    let data = { title: 'FrankPass Update', body: 'New security tool or update available.', url: '/' };
+    if (event.data) {
+        try {
+            data = event.data.json();
+        } catch (e) {
+            data.body = event.data.text();
+        }
+    }
+    const options = {
+        body: data.body,
+        icon: '/icons/icon-192.png',
+        badge: '/icons/favicon.png',
+        data: { url: data.url || '/' },
+        vibrate: [100, 50, 100]
+    };
+    event.waitUntil(
+        self.registration.showNotification(data.title || 'FrankPass Update', options)
+    );
+});
+
+// Notification Click Handler
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    const targetUrl = (event.notification.data && event.notification.data.url) ? event.notification.data.url : '/';
+    event.waitUntil(
+        clients.matchAll({ type: 'window', includeUncontrolled: true }).then((windowClients) => {
+            for (let client of windowClients) {
+                if (client.url === targetUrl && 'focus' in client) {
+                    return client.focus();
+                }
+            }
+            if (clients.openWindow) {
+                return clients.openWindow(targetUrl);
+            }
+        })
+    );
+});
