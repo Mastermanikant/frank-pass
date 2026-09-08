@@ -1,4 +1,4 @@
-﻿/**
+/**
  * FrankPass Utilities
  * Centralized logic for platform normalization, SSO brand aliasing, and UI helpers.
  * Shared between Web and Extension.
