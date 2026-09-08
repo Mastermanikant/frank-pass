@@ -68,6 +68,13 @@
           ${socialLink(waLink, 'WhatsApp Channel', ico.whatsapp, 'Instant spam-free security alerts & releases.')}
           ${socialLink(soc.INSTAGRAM || 'https://instagram.com/frankpasshq', 'Instagram', ico.instagram, 'Official product visuals & feature highlights (@frankpasshq).')}
         </div>
+
+        <div style="margin-top:1rem">
+          <button type="button" id="footer-push-btn" class="footer-push-toggle-btn" onclick="togglePushNotifications()" aria-label="Toggle Push Notifications" style="display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:var(--text-primary);padding:6px 12px;border-radius:8px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.2s">
+            <span id="footer-push-icon">🔔</span>
+            <span id="footer-push-label">Enable Updates Notification</span>
+          </button>
+        </div>
       </div>
 
       <!-- Col 2: Products & Tools -->
@@ -304,11 +311,67 @@
     });
   }
 
+  /* ── Universal Web Push Notification Controller ── */
+  window.togglePushNotifications = async function() {
+    if (!('Notification' in window)) {
+      if (typeof showToast === 'function') showToast('Notifications are not supported by your browser.', 'error');
+      else alert('Notifications are not supported by your browser.');
+      return;
+    }
+    if (Notification.permission === 'granted') {
+      const isMuted = localStorage.getItem('fp_push_muted') === 'true';
+      if (!isMuted) {
+        localStorage.setItem('fp_push_muted', 'true');
+        syncPushUI(false);
+        if (typeof showToast === 'function') showToast('🔕 Notifications muted.');
+      } else {
+        localStorage.removeItem('fp_push_muted');
+        syncPushUI(true);
+        if (typeof showToast === 'function') showToast('🔔 Notifications active!', 'success');
+      }
+    } else {
+      try {
+        const perm = await Notification.requestPermission();
+        if (perm === 'granted') {
+          localStorage.removeItem('fp_push_muted');
+          syncPushUI(true);
+          if (typeof showToast === 'function') showToast('🔔 Notifications enabled for new security tools & articles!', 'success');
+        } else {
+          syncPushUI(false);
+          if (typeof showToast === 'function') showToast('Notification permission denied or blocked.', 'info');
+        }
+      } catch (e) {
+        syncPushUI(false);
+      }
+    }
+  };
+
+  function syncPushUI(active) {
+    const btn = document.getElementById('footer-push-btn');
+    const icon = document.getElementById('footer-push-icon');
+    const label = document.getElementById('footer-push-label');
+    if (!btn || !label || !icon) return;
+    if (active) {
+      icon.textContent = '🔔';
+      label.textContent = 'Notifications Active';
+      btn.style.borderColor = 'var(--success, #10b981)';
+      btn.style.background = 'rgba(16, 185, 129, 0.12)';
+    } else {
+      icon.textContent = '🔕';
+      label.textContent = 'Enable Updates Notification';
+      btn.style.borderColor = 'rgba(139,92,246,0.3)';
+      btn.style.background = 'rgba(139,92,246,0.12)';
+    }
+  }
+
   function initFooter() {
     initTheme();
     setupMobileMenu();
     buildFooter();
     setupVersionPopover();
+    if (typeof Notification !== 'undefined' && Notification.permission === 'granted' && localStorage.getItem('fp_push_muted') !== 'true') {
+      syncPushUI(true);
+    }
   }
 
   if (document.readyState === 'loading') {
