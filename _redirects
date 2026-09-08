@@ -3,6 +3,9 @@
 # Do NOT add self-referential rules (e.g. /get-started /get-started.html) as it causes ERR_TOO_MANY_REDIRECTS.
 
 # Aliases & Short URLs
+# Competitor slug redirect (Temporary 302)
+/blog/frankpass-vs-1password-bitwarden-lastpass-keepass /blog/frankpass-vs-traditional-cloud-password-vaults 302
+/blog/frankpass-vs-1password-bitwarden-lastpass-keepass.html /blog/frankpass-vs-traditional-cloud-password-vaults 302
 /compare /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /difference /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /tools-comparison /comparison-between-frankpass-all-generators-deterministic-random-pin 301
