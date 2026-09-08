@@ -3,16 +3,12 @@
 # Do NOT add self-referential rules (e.g. /get-started /get-started.html) as it causes ERR_TOO_MANY_REDIRECTS.
 
 # Aliases & Short URLs
-# Competitor slug redirect (Temporary 302)
-/blog/frankpass-vs-1password-bitwarden-lastpass-keepass /blog/frankpass-vs-traditional-cloud-password-vaults 302
-/blog/frankpass-vs-1password-bitwarden-lastpass-keepass.html /blog/frankpass-vs-traditional-cloud-password-vaults 302
 /compare /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /difference /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /tools-comparison /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /comparison /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /generators-comparison /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /comparison-between-frankpass-all-generator-determinastic-random-pin /comparison-between-frankpass-all-generators-deterministic-random-pin 301
-/frankpass-vs-bitwarden-1password-cloud-vault-comparison /frankpass-vs-cloud-password-vaults 301
 /frankpass-vs-cloud-vaults /frankpass-vs-cloud-password-vaults 301
 /vs-cloud-vaults /frankpass-vs-cloud-password-vaults 301
 /cloud-vs-stateless /frankpass-vs-cloud-password-vaults 301
@@ -20,10 +16,6 @@
 /frankpass-vs-cloud-vaults-hindi /frankpass-vs-cloud-password-vaults-hindi 301
 /vs-cloud-vaults-hindi /frankpass-vs-cloud-password-vaults-hindi 301
 /cloud-vs-stateless-hindi /frankpass-vs-cloud-password-vaults-hindi 301
-/frankpass-vs-bitwarden /frankpass-vs-cloud-password-vaults 301
-/vs-bitwarden /frankpass-vs-cloud-password-vaults 301
-/bitwarden-vs-frankpass /frankpass-vs-cloud-password-vaults 301
-/vs-1password /frankpass-vs-cloud-password-vaults 301
 /random /random-password-generator 301
 /rpg /random-password-generator 301
 /random-generator /random-password-generator 301
