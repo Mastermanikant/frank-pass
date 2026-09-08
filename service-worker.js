@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.8.5 (Universal SSO & Brand TLD Normalization Engine)
-const CACHE_NAME = 'frankpass-v3.8.5';
+// FrankPass Service Worker v3.8.7 (Universal SSO & Brand TLD Normalization Engine)
+const CACHE_NAME = 'frankpass-v3.8.7';
 const CACHED_URLS = [
     '/',
     '/index.html',
