@@ -44,7 +44,7 @@
     const waLink = (soc.WHATSAPP && !soc.WHATSAPP.includes('[')) ? soc.WHATSAPP : 'https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532';
 
     el.innerHTML = `
-<footer class="site-footer" role="contentinfo">
+<footer class="site-footer" role="contentinfo" data-nosnippet>
   <div class="footer-inner">
 
     <!-- 4-Column Minimal Grid -->
