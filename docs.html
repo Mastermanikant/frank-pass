@@ -34,7 +34,7 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "FrankPass Security Documentation — Stateless Cryptographic Architecture",
+  "headline": "FrankPass Security Documentation - Stateless Cryptographic Architecture",
   "description": "Complete documentation for FrankPass - the stateless, deterministic password generator. Learn the cryptographic architecture, security model, and advanced options.",
   "author": {"@type": "Person", "name": "Master Manikant Yadav", "url": "https://mastermanikant.com"},
   "publisher": {"@type": "Organization", "name": "FrankPass", "url": "https://frankpass.com"},
@@ -262,7 +262,7 @@
  <p style="color:var(--text-muted);margin-bottom:1.5rem">A complete reference for every option in the generator's advanced panel.</p>
 
  <h3>Username Field</h3>
-  <p><strong>Leave this field blank by default.</strong> The Username field is an optional input that alters the cryptographic derivation vector. If you fill in a username on one login (e.g. <code>user@example.com</code>) and leave it blank or type something else on the next, FrankPass will produce completely different passwords &mdash; locking you out and forcing you to use the website's <em>"Forgot Password"</em> recovery process.</p>
+  <p><strong>Leave this field blank by default.</strong> The Username field is an optional input that alters the cryptographic derivation vector. If you fill in a username on one login (e.g. <code>user@example.com</code>) and leave it blank or type something else on the next, FrankPass will produce completely different passwords - locking you out and forcing you to use the website's <em>"Forgot Password"</em> recovery process.</p>
   <p>The <strong>only valid use case</strong> for the Username field is managing multiple distinct accounts on the exact same domain (for example, differentiating between your personal profile <code>@john_dev</code> and your business profile <code>@agency_hq</code> on Instagram).</p>
 
   <h3>Password Number (Rotation Counter 1 to 999)</h3>
@@ -270,7 +270,7 @@
   <p>If a website enforces a mandatory password expiration policy, or if an external service suffers a corporate data breach, you can increment your Password Number (from 1 to 2, 3, or any integer up to 999). This immediately derives a brand-new, mathematically orthogonal password for that website without requiring you to change your Master Secret Key.</p>
 
   <h3>Password Length &amp; Default Recommendation</h3>
-  <p>The length slider controls how many characters the generated password contains, from a minimum of 8 to a maximum of 32. Longer passwords inherently possess exponentially higher entropy. By default, FrankPass is preset to <strong>16 characters</strong> &mdash; delivering $>95$ bits of cryptographic entropy that would require billions of years to brute-force with modern computing clusters.</p>
+  <p>The length slider controls how many characters the generated password contains, from a minimum of 8 to a maximum of 32. Longer passwords inherently possess exponentially higher entropy. By default, FrankPass is preset to <strong>16 characters</strong> - delivering $>95$ bits of cryptographic entropy that would require billions of years to brute-force with modern computing clusters.</p>
   <p><strong>Expert Advice:</strong> We strongly advise sticking with the default 16-character length for 99.9% of your accounts. This ensures you never have to remember custom length settings across different devices. Only adjust the length slider if a legacy platform enforces an inflexible maximum character limit (e.g., legacy banking portals limited to 12 characters).</p>
 
   <h3>Characters Type &amp; Profile Presets</h3>

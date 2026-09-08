@@ -684,7 +684,7 @@ const FrankPassUtils = (function () {
         platform = strippedPlatform;
         
         // 6. Strip parenthetical and trailing hyphen acronym suffixes
-        platform = platform.replace(/\s+[-–—]\s+[a-z0-9\s]+$/, '');
+        platform = platform.replace(/\s+[-–-]\s+[a-z0-9\s]+$/, '');
         platform = platform.replace(/\s*\([^)]*\)/g, '');
 
         // 7. Check again if cleaned string matches an alias

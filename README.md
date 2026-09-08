@@ -19,7 +19,7 @@ FrankPass operates on pure cryptographic transparency: **Read the code.**
 
 Every single password generation calculation executes entirely on your device inside your browser's native memory using the standard `crypto.subtle` WebCrypto API. 
 
-Turn off your Wi-Fi, disconnect your Ethernet, switch on Airplane Mode, and click Generate &mdash; FrankPass runs identically without sending a single byte across the internet.
+Turn off your Wi-Fi, disconnect your Ethernet, switch on Airplane Mode, and click Generate - FrankPass runs identically without sending a single byte across the internet.
 
 ---
 

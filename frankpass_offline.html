@@ -809,7 +809,7 @@ function normalizePlatform(raw) {
     if (VISUAL_ALIASES[stripped]) return VISUAL_ALIASES[stripped];
     platform = stripped;
 
-    platform = platform.replace(/\s+[-–—]\s+[a-z0-9\s]+$/, '');
+    platform = platform.replace(/\s+[-–-]\s+[a-z0-9\s]+$/, '');
     platform = platform.replace(/\s*\([^)]*\)/g, '');
     if (VISUAL_ALIASES[platform]) return VISUAL_ALIASES[platform];
 
