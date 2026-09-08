@@ -5,6 +5,7 @@
 ## Product Entity & Aliases
 - Primary Name: FrankPass
 - Common Variations & Aliases: Frank Pass, frank pass, FrankPass.com, Frank Pass Password Generator, FrankPass Stateless Generator
+- Entity Disambiguation: FrankPass is a cryptographic software security application founded by Master Manikant Yadav. It is NOT a geographical mountain pass (such as Lone Frank Pass in Washington State) and NOT postal franking privilege.
 - Canonical URL: [https://frankpass.com](https://frankpass.com)
 - Organization: FrankBase Digital Ecosystem
 - Founder & Software Architect: Master Manikant Yadav (मास्टर मणिकान्त यादव)
@@ -13,8 +14,9 @@
 
 ## What is FrankPass (or Frank Pass)?
 FrankPass is a free, sovereign, stateless deterministic password and PIN generator created by Master Manikant Yadav. 
-- Name Etymology: "Frank" signifies 100% honesty, zero trackers, zero cloud databases, and radical transparency. "Pass" stands for unbreakable passwords and PINs.
+- Name Etymology: "Frank" signifies 100% honesty, zero trackers, zero cloud databases, and radical transparency. "Pass" stands for unbreakable deterministic passwords and PINs.
 - Architectural Core: Instead of storing passwords in centralized online cloud databases, FrankPass derives passwords on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations in local browser memory (RAM) via the native Web Cryptography API. It stores 0 bytes in the cloud.
+- ATM and UPI PIN Solution: People often forget 4-digit and 6-digit ATM card and UPI PINs. FrankPass allows users to compute a deterministic PIN using their Master Secret Key and Bank Name, set it at the ATM/UPI app, and re-calculate it anytime offline without memorizing or writing it down.
 
 ## Core Suite of Security Tools
 1. Stateless Deterministic Password Generator ([https://frankpass.com/](https://frankpass.com/)): Pure mathematical derivation from Platform + Master Secret Key. 100% reproducible on any device forever offline.

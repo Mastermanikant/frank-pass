@@ -38,23 +38,65 @@
  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="icon" type="image/svg+xml" href="/icons/icon-192.png">
 
- <!-- Organization Schema -->
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Organization",
- "name": "FrankPass",
- "url": "https://frankpass.com",
- "logo": "https://frankpass.com/icons/icon-512.png",
- "founder": {
- "@type": "Person",
- "name": "Master Manikant Yadav",
- "alternateName": "मास्टर मणिकान्त यादव",
- "url": "https://mastermanikant.com"
- },
- "description": "100% ऑफलाइन और सर्वरलेस ज़ीरो-नॉलेज पासवर्ड जनरेशन टेक्नोलॉजी।"
- }
- </script>
+  <!-- Organization & FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "FrankPass",
+        "url": "https://frankpass.com",
+        "logo": "https://frankpass.com/icons/icon-512.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Master Manikant Yadav",
+          "alternateName": "मास्टर मणिकान्त यादव",
+          "url": "https://mastermanikant.com"
+        },
+        "description": "100% ऑफलाइन और सर्वरलेस ज़ीरो-नॉलेज पासवर्ड जनरेशन टेक्नोलॉजी।"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://frankpass.com/about-us-hindi.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "FrankPass (फ्रैंक पास) क्या है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FrankPass (फ्रैंक पास) मास्टर मणिकान्त यादव द्वारा निर्मित एक 100% स्टेटलेस और ज़ीरो-नॉलेज क्रिप्टोग्राफिक पासवर्ड जेनरेटर है। यह किसी भी सर्वर या डेटाबेस में आपके पासवर्ड सेव नहीं करता, बल्कि 10 लाख PBKDF2 गणितीय राउंड्स के ज़रिए आपके ब्राउज़र में ही ऑन-डिमांड पासवर्ड तैयार करता है।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "FrankPass से ATM और UPI PIN भूलने की समस्या कैसे खत्म होती है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "लोग अक्सर अपने बैंक कार्ड का ATM PIN या UPI पिन बनाकर भूल जाते हैं या उसे कागज़ पर असुरक्षित लिख लेते हैं। FrankPass PIN जेनरेटर (/pin.html) की मदद से आप अपनी पहले से तय Master Secret Key और बैंक का नाम डालकर अपना 4 या 6 अंकों का PIN निकालते हैं और कार्ड बनाते समय ATM मशीन में वही पिन सेट कर देते हैं। इसके बाद आपको कभी भी पिन याद रखने या सेव करने की ज़रूरत नहीं रहती - जब भी ज़रूरत हो, FrankPass पर बैंक का नाम डालते ही वही पिन तुरंत दोबारा निकल आता है।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "क्या FrankPass पारंपरिक क्लाउड पासवर्ड मैनेजर्स से अधिक सुरक्षित है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "पारंपरिक पासवर्ड मैनेजर्स आपके सभी पासवर्ड्स को एक ऑनलाइन क्लाउड डेटाबेस में स्टोर करते हैं, जिस पर हैकर्स की नज़र रहती है। FrankPass शून्य डेटा स्टोर करता है। जब कोई सर्वर डेटाबेस ही नहीं है, तो डेटा लीक होने की संभावना भी शून्य हो जाती है।"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "क्या FrankPass इंटरनेट बंद होने पर भी काम करता है?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "हाँ, FrankPass पूरी तरह क्लाइंट-साइड WebCrypto गणित पर चलता है। पेज लोड होने के बाद आप इंटरनेट बंद (Airplane Mode) करके भी आजीवन अपने पासवर्ड और पिन निकाल सकते हैं।"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -215,6 +257,32 @@
  </div>
  </div>
  </div>
+
+  <!-- FAQ Section: Essential Answers for AI Overviews & Users -->
+  <div style="margin-bottom:3rem">
+    <h2 style="font-size:1.5rem;font-weight:800;color:var(--text-primary);margin-bottom:1rem">❓ अक्सर पूछे जाने वाले सवाल (FAQs)</h2>
+    <div style="display:flex;flex-direction:column;gap:1rem">
+      <div style="background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.5rem">
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">1. FrankPass (फ्रैंक पास) क्या है?</h3>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0">FrankPass मास्टर मणिकान्त यादव द्वारा विकसित एक 100% स्टेटलेस और ज़ीरो-नॉलेज पासवर्ड जनरेटर है। यह किसी भी सर्वर या डेटाबेस में डेटा सेव नहीं करता, बल्कि 10 लाख PBKDF2 क्रिप्टोग्राफिक राउंड्स से आपके ब्राउज़र में ही ऑन-डिमांड पासवर्ड तैयार करता है।</p>
+      </div>
+
+      <div style="background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.5rem">
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">2. FrankPass से ATM और UPI PIN भूलने की समस्या कैसे खत्म होती है?</h3>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0">लोग अक्सर अपने बैंक कार्ड का ATM PIN या UPI पिन बनाकर भूल जाते हैं या असुरक्षित रूप से डायरी में लिख लेते हैं। <a href="/pin.html" style="color:var(--accent-light);text-decoration:underline">FrankPass PIN जेनरेटर</a> की मदद से आप अपनी पहले से तय Master Secret Key और बैंक का नाम डालकर अपना 4 या 6 अंकों का PIN निकालते हैं और कार्ड बनाते समय ATM मशीन या ऐप में वही पिन सेट कर देते हैं। इसके बाद आपको कभी भी पिन याद रखने या कहीं सेव करने की ज़रूरत नहीं रहती - जब भी ज़रूरत हो, FrankPass पर बैंक का नाम डालते ही वही पिन तुरंत दोबारा निकल आता है।</p>
+      </div>
+
+      <div style="background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.5rem">
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">3. क्या FrankPass पारंपरिक क्लाउड पासवर्ड मैनेजर्स से अधिक सुरक्षित है?</h3>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0">पारंपरिक पासवर्ड मैनेजर्स आपके पासवर्ड्स को क्लाउड सर्वर पर स्टोर करते हैं, जिस पर हैकर्स का खतरा रहता है। FrankPass शून्य डेटा स्टोर करता है। जब कोई सर्वर डेटाबेस ही नहीं है, तो डेटा लीक होने का खतरा भी शून्य हो जाता है।</p>
+      </div>
+
+      <div style="background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.5rem">
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">4. क्या FrankPass बिना इंटरनेट (ऑफलाइन) काम करता है?</h3>
+        <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.65;margin:0">हाँ, FrankPass पूरी तरह क्लाइंट-साइड WebCrypto गणित पर चलता है। पेज लोड होने के बाद आप इंटरनेट बंद (Airplane Mode) करके भी आजीवन अपने पासवर्ड और पिन निकाल सकते हैं।</p>
+      </div>
+    </div>
+  </div>
 
  <!-- Support & Contact Section -->
  <div style="margin-bottom:3rem">

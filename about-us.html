@@ -34,23 +34,60 @@
  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap">
  <link rel="stylesheet" href="/style.css?v=3.7.3">
 
- <!-- Person schema for founder -->
- <script type="application/ld+json">
- {
- "@context": "https://schema.org",
- "@type": "Person",
- "name": "Master Manikant Yadav",
- "jobTitle": "Founder & Developer, FrankPass",
- "url": "https://mastermanikant.com",
- "image": "https://frankpass.com/icons/founder-master-manikant-yadav.png",
- "sameAs": [
- "https://x.com/MasterManikant",
- "https://linkedin.com/in/mastermanikant",
- "https://instagram.com/mastermanikant",
- "https://mastodon.social/@mastermanikant"
- ]
- }
- </script>
+  <!-- Unified Schema: Person, Organization & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "name": "Master Manikant Yadav",
+        "jobTitle": "Founder & Software Architect, FrankPass",
+        "url": "https://mastermanikant.com",
+        "image": "https://frankpass.com/icons/founder-master-manikant-yadav.webp",
+        "sameAs": [
+          "https://x.com/MasterManikant",
+          "https://linkedin.com/in/mastermanikant",
+          "https://instagram.com/mastermanikant",
+          "https://github.com/Mastermanikant"
+        ]
+      },
+      {
+        "@type": "Organization",
+        "name": "FrankPass",
+        "url": "https://frankpass.com",
+        "logo": "https://frankpass.com/icons/icon-512.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Master Manikant Yadav"
+        },
+        "description": "100% offline and serverless zero-knowledge password and PIN generation architecture."
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://frankpass.com/about-us.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is FrankPass (Frank Pass)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FrankPass (Frank Pass) is a free, stateless, and deterministic password and PIN generator created by Master Manikant Yadav. Instead of storing passwords in a cloud vault, it derives unique passwords on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations in local browser memory. It stores zero data on servers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does FrankPass solve the problem of forgotten ATM and UPI PINs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "People often create ATM and UPI PINs and later forget them. With the FrankPass PIN Generator (/pin.html), you use your existing Master Secret Key and Bank Name (e.g. 'SBI ATM' or 'PhonePe') to calculate your numeric PIN, and set that exact PIN on your card or banking app. You never need to remember or save the PIN anywhere - whenever you need it, simply re-calculate it on FrankPass instantly with pure offline math."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>

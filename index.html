@@ -47,45 +47,142 @@
  <link rel="alternate" hreflang="hi" href="https://frankpass.com/about-us-hindi">
  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/">
 
-  <!-- Schema.org: SoftwareApplication & Agentic Actions -->
+  <!-- Schema.org: Unified Graph (SoftwareApplication, WebSite Sitelinks, Navigation & FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "FrankPass",
-    "alternateName": [
-      "Frank Pass",
-      "FrankPass.com",
-      "Frank Pass Password Generator",
-      "FrankPass Stateless Generator",
-      "Frank Pass Security"
-    ],
-    "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Any - Web, PWA, Chrome, Firefox, Edge, Safari, iOS, Android, Windows, Mac, Linux",
-    "url": "https://frankpass.com",
-    "description": "FrankPass (also known as Frank Pass) is a stateless, deterministic password and PIN generator engineered by Master Manikant Yadav. Zero cloud, zero storage, zero accounts. It calculates unique unhackable passwords using 1,000,000 PBKDF2-HMAC-SHA512 rounds via native WebCrypto in local browser memory.",
-    "softwareVersion": "3.8.7",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-    "potentialAction": {
-      "@type": "CreateAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://frankpass.com/?platform={platform}&username={username}",
-        "actionPlatform": [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform"
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://frankpass.com/#software",
+        "name": "FrankPass",
+        "alternateName": [
+          "Frank Pass",
+          "FrankPass.com",
+          "Frank Pass Password Generator",
+          "FrankPass Stateless Generator",
+          "Frank Pass Security"
+        ],
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Any - Web, PWA, Chrome, Firefox, Edge, Safari, iOS, Android, Windows, Mac, Linux",
+        "url": "https://frankpass.com",
+        "image": "https://frankpass.com/icons/icon-512.png",
+        "description": "FrankPass (also known as Frank Pass) is a stateless, deterministic cryptographic password and PIN generator created by Master Manikant Yadav. Zero cloud, zero storage, zero accounts. It derives unique, unhackable passwords and numeric PINs on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations in local browser memory.",
+        "softwareVersion": "3.8.7",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": {
+          "@type": "Person",
+          "name": "Master Manikant Yadav",
+          "url": "https://mastermanikant.com"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://frankpass.com/#website",
+        "url": "https://frankpass.com/",
+        "name": "FrankPass",
+        "description": "Stateless and deterministic password generator with zero cloud storage.",
+        "publisher": {
+          "@type": "Person",
+          "name": "Master Manikant Yadav"
+        }
+      },
+      {
+        "@type": "ItemList",
+        "@id": "https://frankpass.com/#sitelinks",
+        "name": "FrankPass Key Security Tools and Hubs",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "position": 1,
+            "name": "PIN Generator",
+            "description": "Generate deterministic 4-digit and 6-digit ATM, UPI, and banking PINs.",
+            "url": "https://frankpass.com/pin.html"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 2,
+            "name": "Random Password Generator",
+            "description": "Generate strong, clean CSPRNG random passwords with zero cloud storage.",
+            "url": "https://frankpass.com/random-password-generator.html"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 3,
+            "name": "Secret Key Guide",
+            "description": "Master Secret Key rules and 50+ memorable real-world examples.",
+            "url": "https://frankpass.com/secret-key-guide.html"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "About Us and Founder",
+            "description": "Learn about FrankPass zero-knowledge architecture and founder Master Manikant Yadav.",
+            "url": "https://frankpass.com/about-us.html"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
+            "name": "Security FAQ",
+            "description": "Frequently asked questions about offline math, privacy, and cryptography.",
+            "url": "https://frankpass.com/faq.html"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 6,
+            "name": "Install Offline App",
+            "description": "Install FrankPass standalone PWA on Android, iPhone, Windows, Mac, or Linux.",
+            "url": "https://frankpass.com/install.html"
+          }
         ]
       },
-      "result": {
-        "@type": "Thing",
-        "name": "DeterministicPassword"
+      {
+        "@type": "FAQPage",
+        "@id": "https://frankpass.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is FrankPass (Frank Pass)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FrankPass (Frank Pass) is a free, 100% stateless and zero-knowledge cryptographic password and PIN generator created by Master Manikant Yadav. It derives unique passwords on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations entirely in your local browser memory, with zero cloud databases, zero servers, and zero telemetry."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does FrankPass solve the problem of forgotten ATM and UPI PINs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Many people create 4-digit or 6-digit ATM and UPI PINs and later forget them, or write them down insecurely. With the FrankPass PIN Generator (/pin.html), you use your existing Master Secret Key and Bank Name (such as SBI ATM or PhonePe) to calculate your numeric PIN. You set that exact calculated PIN when creating your card or UPI PIN at the ATM machine or banking app. Later, you never need to remember or save the PIN anywhere - whenever you need it, simply re-calculate it on FrankPass instantly with pure offline math."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does FrankPass generate passwords without storing them in a cloud database?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FrankPass uses deterministic mathematics. By running your Master Secret Key and Website Name through 1,000,000 cryptographic PBKDF2 iterations, it produces the exact same strong password every time. Because passwords are mathematically calculated on-demand rather than stored in a database, there is no server database to breach."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does FrankPass work completely offline without internet?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Once the page is loaded or installed as a PWA, FrankPass works 100% offline in airplane mode. All cryptography runs client-side inside your browser via native WebCrypto API. Zero data leaves your device."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What should I do if a website forces a password change?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FrankPass includes a Variant Counter. If a website requires a new password, simply increment the Variant from 1 to 2. This creates an entirely new mathematical password for that specific site without changing your Master Secret Key."
+            }
+          }
+        ]
       }
-    },
-    "author": {
-      "@type": "Person",
-      "name": "Master Manikant Yadav",
-      "url": "https://mastermanikant.com"
-    }
+    ]
   }
   </script>
 </head>
