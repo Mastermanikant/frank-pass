@@ -827,13 +827,13 @@ function normalizePlatform(raw) {
 }
 
 function validateSecretKey(val) {
-    const warn = document.getElementById('key-warning');
-    if (!warn) return;
-    if (/[^a-zA-Z0-9\s]/.test(val || '')) {
-        warn.style.display = 'block';
-    } else {
-        warn.style.display = 'none';
+    const inp = document.getElementById('key-input');
+    if (inp && val) {
+        const clean = val.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (val !== clean) inp.value = clean;
     }
+    const warn = document.getElementById('key-warning');
+    if (warn) warn.style.display = 'none';
 }
 
 /* ─── 3. UI State Management ─── */

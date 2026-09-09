@@ -302,15 +302,13 @@ function showToast(msg) {
   }, 2500);
 }
 
-// Live Secret Warning check
-const pinSecretWarning = document.getElementById('pin-secret-warning');
+// Live Secret Key WYSIWYG Auto-Clean ([a-z0-9] only)
 if (secretInput) {
   secretInput.addEventListener('input', () => {
-    const val = secretInput.value || '';
-    if (/[^a-zA-Z0-9\s]/.test(val)) {
-      if (pinSecretWarning) pinSecretWarning.style.display = 'block';
-    } else {
-      if (pinSecretWarning) pinSecretWarning.style.display = 'none';
+    const raw = secretInput.value || '';
+    const clean = raw.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (raw !== clean) {
+      secretInput.value = clean;
     }
   });
 }

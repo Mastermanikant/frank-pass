@@ -1785,11 +1785,17 @@ document.addEventListener('click', (e) => {
   });
 });
 
-/* ── Secret Key Entropy & Strength Bar Meter ── */
+/* ── Secret Key Entropy & Live WYSIWYG Sanitizer ([a-z0-9] Only) ── */
 const secretKeyEl = document.getElementById('secret-key');
 if (secretKeyEl) {
  secretKeyEl.addEventListener('input', () => {
- const val = secretKeyEl.value;
+ // Live Auto-Clean: strip spaces, emojis, symbols, convert uppercase to lowercase immediately
+ const rawVal = secretKeyEl.value;
+ const cleanVal = rawVal.toLowerCase().replace(/[^a-z0-9]/g, '');
+ if (rawVal !== cleanVal) {
+   secretKeyEl.value = cleanVal;
+ }
+ 
  const s1 = document.getElementById('str-seg-1');
  const s2 = document.getElementById('str-seg-2');
  const s3 = document.getElementById('str-seg-3');
@@ -1797,13 +1803,13 @@ if (secretKeyEl) {
  if (!s1 || !s2 || !s3 || !s4) return;
  
  [s1, s2, s3, s4].forEach(s => { s.className = 'strength-segment'; });
- if (!val) return;
+ if (!cleanVal) return;
  
  let score = 0;
- if (val.length >= 6) score++;
- if (val.length >= 10) score++;
- if (/[A-Z]/.test(val) && /[a-z]/.test(val)) score++;
- if (/[0-9]/.test(val) || /[^A-Za-z0-9]/.test(val)) score++;
+ if (cleanVal.length >= 4) score++;
+ if (cleanVal.length >= 8) score++;
+ if (cleanVal.length >= 12) score++;
+ if (cleanVal.length >= 16) score++;
  
  const colors = ['weak', 'fair', 'good', 'strong'];
  const levelClass = colors[score - 1] || 'weak';
