@@ -244,7 +244,7 @@ const PLATFORM_TEST_SUITE = [
     { name: 'Weird Gov Subdomain 2', url: 'https://auth.portal.karnataka.gov.in', expectedSlug: 'karnataka' },
     { name: 'Weird Bank Subdomain 1', url: 'https://secure.pay.randombank.bank.in', expectedSlug: 'randombank' },
     { name: 'Weird App Subdomain', url: 'https://admin.signin.awesomeapp.app', expectedSlug: 'awesomeapp' },
-    { name: 'Weird Corp Bank Subdomain', url: 'https://cib.corp.mycitybank.bank.in', expectedSlug: 'mycitybank' }
+    { name: 'Weird Corp Bank Subdomain', url: 'https://cib.corp.mycitybank.bank.in', expectedSlug: 'mycitybankcorporate' }
 ];
 
 async function runMassiveAudit() {
