@@ -444,16 +444,36 @@
 
  <!-- Platform input -->
  <div class="form-group">
- <label class="form-label" for="platform-input">Site / Platform</label>
- <div class="input-wrapper">
- <input id="platform-input" name="platform" class="form-input" type="text" placeholder="e.g. gmail.com, instagram, github" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
- <datalist id="platform-list"></datalist>
- <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
- </div>
- </div>
- <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
- </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
+  <div style="display:flex;align-items:center;gap:0.4rem">
+  <label class="form-label" for="platform-input" style="margin:0">Site / Platform</label>
+  <!-- Info Guidance Popover Tooltip -->
+  <div class="secret-info-wrap" id="platform-info-wrap">
+  <button type="button" class="secret-info-btn" id="platform-info-btn" aria-label="Site or Platform Help" title="How to enter platform?">
+  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+  </button>
+  <div class="secret-info-popover" id="platform-info-popover" role="tooltip" style="min-width:300px">
+  <div class="info-popover-title">🌐 Site or Platform Guidance</div>
+  <p class="info-popover-desc">If in doubt, simply <strong>paste the full website URL</strong> from your browser or <strong>type the app name</strong>. FrankPass automatically normalizes it into the exact deterministic platform seed.</p>
+  <div class="info-popover-tip">
+  ✨ <strong>Full Website URLs:</strong> <code>https://mail.google.com/</code> &rarr; <code>google</code><br>
+  ✨ <strong>Multi-part Banking:</strong> <code>https://yonoretail.sbi.bank.in</code> &rarr; <code>statebankofindia</code><br>
+  ✨ <strong>Subdomain Isolation:</strong> <code>aws.amazon.com</code> &rarr; <code>aws</code>, <code>amazon.in</code> &rarr; <code>amazon</code>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="input-wrapper">
+  <input id="platform-input" name="platform" class="form-input" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
+  <datalist id="platform-list"></datalist>
+  <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  </div>
+  <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
+  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Confused?</strong> Paste the full website URL or type the app name — FrankPass handles the normalization automatically.</span>
+  </div>
 
  <!-- Secret key input -->
  <div class="form-group">
