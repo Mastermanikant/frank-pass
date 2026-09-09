@@ -177,7 +177,10 @@ const FrankPassUtils = (function () {
         'yono': 'statebankofindia',
         'yonosbi': 'statebankofindia',
         'yonobusiness': 'sbicorporate',
+        'sbiyonobusiness': 'sbicorporate',
+        'yonobusinesssbi': 'sbicorporate',
         'sbicorporate': 'sbicorporate',
+        'sbicorporatebanking': 'sbicorporate',
         'sbicorp': 'sbicorporate',
         'sbicard': 'sbicard',
         'sbismart': 'sbisecurities',
@@ -391,37 +394,80 @@ const FrankPassUtils = (function () {
         'paytmmoney.com': 'paytmmoney',
 
         // --- 4. Retail & Corporate NetBanking & Institutional Finance ---
-        'onlinesbi.sbi': 'statebankofindia',
+        'yonobusiness.sbi.bank.in': 'sbicorporate',
+        'yonobusiness.sbi': 'sbicorporate',
+        'corp.onlinesbi.sbi': 'sbicorporate',
+        'corp.onlinesbi.bank.in': 'sbicorporate',
+        'corp.onlinesbi.com': 'sbicorporate',
         'retail.onlinesbi.sbi': 'statebankofindia',
-        'corporate.icicibank.com': 'icicicorporate',
-        'cibnext.icicibank.com': 'icicicorporate',
-        'infinity.icicibank.com': 'icicibank',
-        'icicidirect.com': 'icicidirect',
+        'retail.onlinesbi.bank.in': 'statebankofindia',
+        'onlinesbi.sbi': 'statebankofindia',
+        'onlinesbi.bank.in': 'statebankofindia',
+        'onlinesbi.com': 'statebankofindia',
+        'sbi.bank.in': 'statebankofindia',
+        'sbi.co.in': 'statebankofindia',
+        'sbicard.com': 'sbicard',
+        'sbicard.sbi': 'sbicard',
+        'sbismart.com': 'sbisecurities',
+        'sbisecurities.in': 'sbisecurities',
+        'hdfc.bank.in': 'hdfcbank',
+        'hdfcbank.bank.in': 'hdfcbank',
+        'netbanking.hdfcbank.bank.in': 'hdfcbank',
+        'corporatebanking.hdfcbank.bank.in': 'hdfccorporate',
         'netbanking.hdfcbank.com': 'hdfcbank',
         'corporatebanking.hdfcbank.com': 'hdfccorporate',
         'hdfcsec.com': 'hdfcsecurities',
         'mycards.hdfcbank.com': 'hdfcmycards',
-        'yonobusiness.sbi': 'sbicorporate',
-        'corp.onlinesbi.sbi': 'sbicorporate',
-        'corp.onlinesbi.com': 'sbicorporate',
-        'sbicard.com': 'sbicard',
-        'sbismart.com': 'sbisecurities',
-        'sbisecurities.in': 'sbisecurities',
+        'icici.bank.in': 'icicibank',
+        'icicibank.bank.in': 'icicibank',
+        'corporate.icicibank.com': 'icicicorporate',
+        'corporate.icicibank.bank.in': 'icicicorporate',
+        'cibnext.icicibank.com': 'icicicorporate',
+        'infinity.icicibank.com': 'icicibank',
+        'icicidirect.com': 'icicidirect',
+        'axis.bank.in': 'axisbank',
+        'axisbank.bank.in': 'axisbank',
         'netbanking.axisbank.com': 'axisbank',
         'corporate.axisbank.com': 'axiscorporate',
+        'corporate.axisbank.bank.in': 'axiscorporate',
         'corporatebanking.axisbank.com': 'axiscorporate',
         'axisdirect.in': 'axisdirect',
+        'kotak.bank.in': 'kotakmahindrabank',
+        'kotakbank.bank.in': 'kotakmahindrabank',
         'netbanking.kotak.com': 'kotakmahindrabank',
         'corporate.kotak.com': 'kotakcorporate',
+        'corporate.kotak.bank.in': 'kotakcorporate',
         'kotaksecurities.com': 'kotaksecurities',
         'bobibanking.com': 'bobcorporate',
+        'bob.bank.in': 'bankofbaroda',
+        'bankofbaroda.bank.in': 'bankofbaroda',
+        'pnb.bank.in': 'punjabnationalbank',
+        'pnbindia.bank.in': 'punjabnationalbank',
+        'pnbcorp.bank.in': 'pnbcorporate',
         'pnbcorp.com': 'pnbcorporate',
         'netpnb.com': 'punjabnationalbank',
+        'canara.bank.in': 'canarabank',
+        'canarabank.bank.in': 'canarabank',
         'canarabank.in': 'canarabank',
         'netbanking.canarabank.in': 'canarabank',
         'corporate.canarabank.in': 'canaracorporate',
+        'corporate.canarabank.bank.in': 'canaracorporate',
+        'unionbank.bank.in': 'unionbankofindia',
+        'unionbankofindia.bank.in': 'unionbankofindia',
         'unionbankonline.co.in': 'unionbankofindia',
         'corp.unionbankonline.co.in': 'unionbankcorporate',
+        'corp.unionbank.bank.in': 'unionbankcorporate',
+        'idfcfirst.bank.in': 'idfcfirstbank',
+        'idfcfirstbank.bank.in': 'idfcfirstbank',
+        'indusind.bank.in': 'indusindbank',
+        'federalbank.bank.in': 'federalbank',
+        'rblbank.bank.in': 'rblbank',
+        'boi.bank.in': 'bankofindia',
+        'bankofindia.bank.in': 'bankofindia',
+        'centralbank.bank.in': 'centralbankofindia',
+        'iob.bank.in': 'indianoverseasbank',
+        'uco.bank.in': 'ucobank',
+        'rbi.org.in': 'rbi',
 
         // --- 5. Unified Global SSO Ecosystems (Google, MS, Apple, Adobe, Meta) ---
         // Google & YouTube 100% Unified Fleet
@@ -636,6 +682,28 @@ const FrankPassUtils = (function () {
         'irctctourism': 'IRCTC Tourism Portal'
     };
 
+    // Known multi-part Second Level Domains (SLDs / Public Suffixes)
+    const MULTI_PART_SLDS = new Set([
+        // India
+        'bank.in', 'ernet.in', 'res.in', 'nic.in', 'gov.in', 'co.in', 'ac.in', 'edu.in', 'net.in', 'org.in', 'gen.in', 'firm.in', 'ind.in', 'mil.in',
+        // UK
+        'gov.uk', 'co.uk', 'org.uk', 'ac.uk', 'net.uk', 'police.uk', 'judiciary.uk', 'nhs.uk',
+        // Australia
+        'com.au', 'net.au', 'org.au', 'edu.au', 'gov.au',
+        // New Zealand
+        'govt.nz', 'co.nz', 'ac.nz', 'org.nz', 'net.nz',
+        // Canada
+        'gc.ca',
+        // Brazil
+        'com.br', 'gov.br', 'edu.br', 'org.br',
+        // Japan
+        'co.jp', 'ne.jp', 'or.jp', 'go.jp', 'ac.jp',
+        // South Africa
+        'co.za', 'gov.za',
+        // Middle East & Singapore
+        'gov.ae', 'co.ae', 'gov.sg', 'edu.sg', 'com.sg', 'gov.sa'
+    ]);
+
     /**
      * Normalizes a raw input string into a standard FrankPass platform slug.
      * Guaranteed to be identical across Web and Extension.
@@ -657,7 +725,13 @@ const FrankPassUtils = (function () {
             platform = platform.split('@')[1];
         }
 
-        // 3. Check Brand TLDs (e.g. artists.youtube, blog.google, repost.aws, support.apple)
+        // 3. Check Brand TLDs (e.g. .sbi, .google, .youtube, .apple, .aws, .amazon)
+        if (platform.endsWith('.sbi')) {
+            if (platform.includes('yonobusiness') || platform.includes('corp')) return 'sbicorporate';
+            if (platform.includes('card')) return 'sbicard';
+            if (platform.includes('securities') || platform.includes('smart')) return 'sbisecurities';
+            return 'statebankofindia';
+        }
         if (platform.endsWith('.google') || platform.endsWith('.youtube')) {
             return 'google';
         }
@@ -692,14 +766,51 @@ const FrankPassUtils = (function () {
             return VISUAL_ALIASES[platform];
         }
 
-        // 8. Robust Domain Extraction (handles .co.uk, .com.au, .co.in, .gov.in etc)
+        // 8. Robust Domain & Subdomain Extraction (handles .bank.in, .co.uk, .com.au, .co.in, .gov.in etc)
         let domainParts = platform.split('.');
-        if (domainParts.length > 2 && (domainParts[domainParts.length - 2].length <= 3)) {
-            // e.g., amazon.co.uk -> amazon, incometax.gov.in -> incometax
-            platform = domainParts[domainParts.length - 3];
-        } else if (domainParts.length >= 2) {
-            // e.g., google.com -> google, gmail.com -> gmail
-            platform = domainParts[domainParts.length - 2];
+        if (domainParts.length >= 3) {
+            const lastTwo = domainParts.slice(-2).join('.');
+            if (MULTI_PART_SLDS.has(lastTwo) || (domainParts[domainParts.length - 2].length <= 3 && domainParts[domainParts.length - 1].length <= 3)) {
+                // Suffix is 2-level (e.g. bank.in, co.in, gov.in)
+                const baseDomain = domainParts[domainParts.length - 3];
+                const subdomains = domainParts.slice(0, domainParts.length - 3).join('.');
+                
+                // Segment Intelligence for Banking / Corporate Subdomains
+                if (subdomains.includes('yonobusiness') || subdomains.includes('corporate') || subdomains.includes('corp') || subdomains.includes('cib')) {
+                    if (baseDomain === 'sbi') platform = 'sbicorporate';
+                    else if (baseDomain === 'hdfc' || baseDomain === 'hdfcbank') platform = 'hdfccorporate';
+                    else if (baseDomain === 'icici' || baseDomain === 'icicibank') platform = 'icicicorporate';
+                    else if (baseDomain === 'axis' || baseDomain === 'axisbank') platform = 'axiscorporate';
+                    else if (baseDomain === 'kotak') platform = 'kotakcorporate';
+                    else if (baseDomain === 'bob' || baseDomain === 'bankofbaroda') platform = 'bobcorporate';
+                    else if (baseDomain === 'pnb') platform = 'pnbcorporate';
+                    else if (baseDomain === 'canara' || baseDomain === 'canarabank') platform = 'canaracorporate';
+                    else if (baseDomain === 'unionbank') platform = 'unionbankcorporate';
+                    else platform = baseDomain + 'corporate';
+                } else {
+                    platform = baseDomain;
+                }
+            } else {
+                // Standard 1-level TLD (e.g. .com, .net, .org, .sbi)
+                const baseDomain = domainParts[domainParts.length - 2];
+                const subdomains = domainParts.slice(0, domainParts.length - 2).join('.');
+                if (subdomains.includes('yonobusiness') || subdomains.includes('corporate') || subdomains.includes('corp') || subdomains.includes('cib')) {
+                    if (baseDomain === 'sbi') platform = 'sbicorporate';
+                    else if (baseDomain === 'hdfc' || baseDomain === 'hdfcbank') platform = 'hdfccorporate';
+                    else if (baseDomain === 'icici' || baseDomain === 'icicibank') platform = 'icicicorporate';
+                    else if (baseDomain === 'axis' || baseDomain === 'axisbank') platform = 'axiscorporate';
+                    else if (baseDomain === 'kotak') platform = 'kotakcorporate';
+                    else if (baseDomain === 'bob' || baseDomain === 'bankofbaroda') platform = 'bobcorporate';
+                    else if (baseDomain === 'pnb') platform = 'pnbcorporate';
+                    else if (baseDomain === 'canara' || baseDomain === 'canarabank') platform = 'canaracorporate';
+                    else if (baseDomain === 'unionbank') platform = 'unionbankcorporate';
+                    else platform = baseDomain + 'corporate';
+                } else {
+                    platform = baseDomain;
+                }
+            }
+        } else if (domainParts.length === 2) {
+            platform = domainParts[0];
         } else {
             platform = domainParts[0];
         }

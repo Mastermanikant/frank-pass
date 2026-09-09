@@ -1438,6 +1438,7 @@ window.regionalPlatforms = {
     "Starling Bank",
     "Starling Business",
     "State Bank of India (SBI)",
+    "SBI YONO Business",
     "Statuspage (Atlassian)",
     "Stax Payments",
     "Steam (Valve)",
@@ -14017,6 +14018,8 @@ window.regionalPlatforms = {
     "Yes Mobile",
     "YONO Lite SBI",
     "YONO SBI",
+    "SBI YONO Business",
+    "YONO Business SBI",
     "Yuva Naukri MP Portal",
     "Zoho Corporation (Full Suite)",
     "Zoho Zia AI (India-built LLM layer)"

@@ -13,6 +13,7 @@ const queries = [
     'ITR', 'incometax', 'incometax.gov.in', 'GST', 'epfo', 'uan', 'parivahan', 'vahan', 'sarathi',
     'passport', 'digilocker', 'digiyatra', 'fastag', 'cowin', 'abha', 'nps', 'umang',
     'SBI', 'yono', 'sbicard', 'HDFC', 'ICICI', 'Axis', 'Kotak', 'Kotak811', 'BOB', 'bobworld',
+    'yonobusiness', 'https://yonobusiness.sbi.bank.in/yonobusinesslogin', 'https://retail.onlinesbi.sbi/retail/login.htm', 'https://sbi.bank.in',
     'UPPCL', 'MSEDCL', 'BSES', 'BESCOM', 'Indane', 'Bharat Gas', 'HP Gas',
     'IRS', 'irs.gov', 'SSA', 'USCIS', 'Login.gov', 'ID.me', 'USPS', 'GOV.UK', 'HMRC', 'DVLA', 'CRA', 'myGov', 'Singpass', 'UAE PASS', 'Absher'
 ];
