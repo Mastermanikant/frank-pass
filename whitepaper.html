@@ -273,8 +273,8 @@
 </blockquote>
 <hr />
 <h2>Abstract</h2>
-<p>We present <strong>FrankPass</strong>, an open, stateless, deterministic password generation protocol designed to eradicate the structural vulnerabilities of centralized cloud password vaults. FrankPass formalizes <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>-a 7-element cryptographic invariant tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, aggressive whitespace/casing normalization, and Unicode NFC parity. </p>
-<p>We prove that FrankPass provides $&gt;115\text{ bits}$ of true cryptographic search entropy per 20-character password, operates with zero database dependencies, maintains 100% offline mathematical survivability across decades, and is completely immune to quantum "Harvest Now, Decrypt Later" (HNDL) attacks.</p>
+<p>We present <strong>FrankPass</strong>, an open, stateless, deterministic password generation protocol designed to eradicate the structural vulnerabilities of centralized cloud password vaults. FrankPass formalizes <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong> - a 7-element cryptographic invariant tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, aggressive whitespace/casing normalization, and Unicode NFC parity.</p>
+<p>We prove that FrankPass provides <strong>over 115 bits</strong> of true cryptographic search entropy per 20-character password, operates with zero database dependencies, maintains 100% offline mathematical survivability across decades, and is completely immune to quantum "Harvest Now, Decrypt Later" (HNDL) attacks.</p>
 <hr />
 <h2>1. Introduction &amp; Problem Statement</h2>
 <p>Centralized password management systems create high-value cryptographic honeypots. Storing millions of ciphertext vaults <em>C<sub>i</sub></em> = <em>E<sub>K</sub></em>(<em>P<sub>i</sub></em>) on cloud storage clusters exposes users to:
@@ -285,7 +285,9 @@
 <hr />
 <h2>2. Formal Protocol Architecture (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</h2>
 <p>Let <em>S</em> be the user's natural language Master Secret Key, <em>D</em> be the target domain, <em>U</em> be the optional username/account context, <em>V</em> &isin; &Nopf;<sup>+</sup> be the rotation counter version, and <em>L</em> &isin; &Nopf;<sup>+</sup> be the target output character length.</p>
-<p>$$\mathcal{MMY}<em>{\text{constant}} = \left\langle \text{APP_ID}, \text{VER}, \mathcal{I}</em>{10^6}, \mathcal{H}<em>{\text{SHA512}}, \mathcal{C}</em>{\text{entropy}}, \mathcal{N}<em>{\text{aggressive}}, \mathcal{P}</em>{\text{NFC}} \right\rangle$$</p>
+<div class="math-formula-box" style="font-size:1.05rem;word-break:break-word;">
+  &Mscr;&Mscr;&Yscr;<sub>constant</sub> = &lang; APP_ID, VER, &Iscr;<sub>10<sup>6</sup></sub>, &Hscr;<sub>SHA512</sub>, &Cscr;<sub>entropy</sub>, &Nscr;<sub>aggressive</sub>, &Pscr;<sub>NFC</sub> &rang;
+</div>
 <pre><code>┌─────────────────────────────────────────────────────────────────────────┐
 │                    FRANKPASS CRYPTOGRAPHIC PIPELINE                     │
 ├─────────────────────────────────────────────────────────────────────────┤
