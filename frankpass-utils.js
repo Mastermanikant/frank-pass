@@ -704,6 +704,13 @@ const FrankPassUtils = (function () {
         'gov.ae', 'co.ae', 'gov.sg', 'edu.sg', 'com.sg', 'gov.sa'
     ]);
 
+    // Generic stopword sanity guard - prevents ever returning a noise keyword as a platform
+    const GENERIC_STOPWORDS = new Set([
+        'bank', 'gov', 'nic', 'co', 'com', 'org', 'net', 'edu', 'ac', 'res', 'gen', 'firm', 'ind', 'mil',
+        'portal', 'online', 'web', 'login', 'secure', 'auth', 'app', 'account', 'signin', 'signup',
+        'admin', 'dashboard', 'corp', 'corporate', 'retail', 'cib'
+    ]);
+
     /**
      * Normalizes a raw input string into a standard FrankPass platform slug.
      * Guaranteed to be identical across Web and Extension.
@@ -815,10 +822,21 @@ const FrankPassUtils = (function () {
             platform = domainParts[0];
         }
         
-        // 9. Sanitize (only letters and numbers)
+        // 9. Stopword Sanity Guard: If extracted platform is a generic stopword, search leftward in domainParts for the real brand
+        if (GENERIC_STOPWORDS.has(platform) && domainParts.length > 2) {
+            for (let i = domainParts.length - 3; i >= 0; i--) {
+                const candidate = domainParts[i].replace(/[^a-z0-9]/g, '');
+                if (candidate && !GENERIC_STOPWORDS.has(candidate)) {
+                    platform = candidate;
+                    break;
+                }
+            }
+        }
+        
+        // 10. Sanitize (only letters and numbers)
         platform = platform.replace(/[^a-z0-9]/g, '');
 
-        // 10. Apply Global Aliases (e.g., yt -> google, sbi -> statebankofindia, aws -> aws)
+        // 11. Apply Global Aliases (e.g., yt -> google, sbi -> statebankofindia, aws -> aws)
         return GLOBAL_ALIASES[platform] || platform;
     }
 
