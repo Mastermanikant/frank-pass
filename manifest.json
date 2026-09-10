@@ -2,7 +2,7 @@
   "id": "/frankpass/",
   "name": "FrankPass App",
   "short_name": "FrankPass",
-  "description": "Deterministic, stateless, unbreakable password generator.",
+  "description": "Deterministic, stateless, high-entropy cryptographic password generator.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

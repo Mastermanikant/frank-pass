@@ -650,18 +650,43 @@
  </button>
  </div>
   <!-- Clipboard Auto-Clear Timer Bar -->
-  <div id="clipboard-clear-bar" style="display:none;margin-top:0.6rem;padding:0.55rem 0.9rem;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;font-size:0.8rem;color:var(--text-muted);display:none;align-items:center;gap:0.5rem;flex-wrap:wrap" role="status" aria-live="polite">
-    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    <span>Clipboard auto-clears in <strong id="clipboard-countdown">30</strong>s &nbsp;·&nbsp; <span style="color:#10b981;font-size:0.75rem">🔒 We never read your clipboard — this site is 100% offline</span></span>
-    <button id="cancel-clear-btn" type="button" style="margin-left:auto;font-size:0.75rem;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline" aria-label="Cancel clipboard auto-clear">Cancel</button>
+  <div id="clipboard-clear-bar" style="display:none;margin-top:0.6rem;padding:0.6rem 0.9rem;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;font-size:0.82rem;color:var(--text-muted);align-items:center;gap:0.5rem;flex-wrap:wrap" role="status" aria-live="polite">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>Clipboard auto-wipes in <strong id="clipboard-countdown" style="color:var(--text-primary);font-size:0.95rem">30</strong>s</span>
+    <button id="clear-now-btn" type="button" style="padding:0.2rem 0.6rem;background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:6px;font-size:0.75rem;font-weight:700;cursor:pointer" aria-label="Wipe clipboard immediately">Wipe Now</button>
+    <div style="margin-left:auto;display:flex;align-items:center;gap:0.4rem">
+      <select id="clipboard-duration-select" aria-label="Clipboard timer duration" style="padding:0.2rem 0.4rem;background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;cursor:pointer">
+        <option value="15">15s</option>
+        <option value="30" selected>30s</option>
+        <option value="60">60s</option>
+      </select>
+      <button id="cancel-clear-btn" type="button" style="font-size:0.75rem;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0.2rem;text-decoration:underline" aria-label="Cancel clipboard timer">Cancel</button>
+    </div>
   </div>
-  <!-- Clipboard Permission Banner (shown once if permission denied) -->
-  <div id="clipboard-perm-banner" style="display:none;margin-top:0.6rem;padding:0.7rem 1rem;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:12px;font-size:0.82rem;color:var(--text-muted);line-height:1.5" role="dialog" aria-labelledby="perm-banner-title">
-    <p id="perm-banner-title" style="font-weight:700;color:var(--text-primary);margin:0 0 0.35rem">🛡️ Auto-Clear Clipboard After 30 Seconds?</p>
-    <p style="margin:0 0 0.6rem">Your password will be automatically erased from clipboard after 30s. <strong>We never read your clipboard</strong> — this website is 100% static &amp; works fully offline. We only write to it, never read.</p>
-    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
-      <button id="perm-allow-btn" type="button" style="padding:0.4rem 0.9rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.8rem;font-weight:700;cursor:pointer">✅ Yes, Auto-Clear</button>
-      <button id="perm-deny-btn" type="button" style="padding:0.4rem 0.9rem;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer">No Thanks</button>
+
+  <!-- Clipboard Permission & Security Benefit Banner -->
+  <div id="clipboard-perm-banner" style="display:none;margin-top:0.75rem;padding:1rem 1.15rem;background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.3);border-radius:14px;font-size:0.84rem;color:var(--text-muted);line-height:1.55;box-shadow:0 8px 24px rgba(0,0,0,0.15)" role="dialog" aria-labelledby="perm-banner-title">
+    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
+      <span style="font-size:1.1rem">🛡️</span>
+      <h3 id="perm-banner-title" style="font-weight:800;font-size:0.95rem;color:var(--text-primary);margin:0">Enable Automatic Clipboard Security?</h3>
+    </div>
+    
+    <!-- Security Benefit Explanation -->
+    <p style="margin:0 0 0.6rem;color:var(--text-muted)">
+      <strong>Why this matters:</strong> When you copy a password, it stays stored in your device's shared clipboard memory. Background apps, other browser tabs, or clipboard-logging malware could silently read it. Auto-Clear automatically erases your copied password after you paste it, leaving zero residual traces.
+    </p>
+    
+    <div style="background:rgba(16,185,129,0.08);border-left:3px solid #10b981;padding:0.5rem 0.75rem;border-radius:0 8px 8px 0;margin-bottom:0.85rem;font-size:0.8rem;color:var(--text-primary)">
+      🔒 <strong>100% Privacy Guarantee:</strong> FrankPass is 100% client-side and offline. We <strong>NEVER read your clipboard</strong>. We only overwrite it with empty text when the countdown finishes.
+    </div>
+
+    <!-- Duration Choice Buttons -->
+    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center">
+      <span style="font-size:0.78rem;font-weight:700;color:var(--text-primary);margin-right:0.25rem">Auto-wipe in:</span>
+      <button type="button" class="btn-perm-choice" data-seconds="15" style="padding:0.35rem 0.75rem;background:rgba(139,92,246,0.12);color:var(--accent-light);border:1px solid rgba(139,92,246,0.3);border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer">⚡ 15s</button>
+      <button type="button" class="btn-perm-choice" data-seconds="30" style="padding:0.35rem 0.75rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer">🛡️ 30s (Recommended)</button>
+      <button type="button" class="btn-perm-choice" data-seconds="60" style="padding:0.35rem 0.75rem;background:rgba(139,92,246,0.12);color:var(--accent-light);border:1px solid rgba(139,92,246,0.3);border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer">⏱️ 60s</button>
+      <button id="perm-deny-btn" type="button" style="margin-left:auto;padding:0.35rem 0.75rem;background:transparent;color:var(--text-muted);border:1px solid var(--border);border-radius:8px;font-size:0.78rem;cursor:pointer">No Thanks</button>
     </div>
   </div>
  </div>
@@ -1077,14 +1102,19 @@ function updatePasswordStatus() {
 /* ── Clipboard Auto-Clear System ── */
 let clipboardClearTimer = null;
 let clipboardCountdownInterval = null;
-const CLIPBOARD_CLEAR_SECONDS = 30;
 
-// Get user preference from localStorage
+// Get user preferences from localStorage
 function getClipboardAutoClearPref() {
   try { return localStorage.getItem('fp_clipboard_autoclear'); } catch(e) { return null; }
 }
 function setClipboardAutoClearPref(val) {
   try { localStorage.setItem('fp_clipboard_autoclear', val); } catch(e) {}
+}
+function getClipboardDuration() {
+  try { return parseInt(localStorage.getItem('fp_clipboard_duration'), 10) || 30; } catch(e) { return 30; }
+}
+function setClipboardDuration(sec) {
+  try { localStorage.setItem('fp_clipboard_duration', String(sec)); } catch(e) {}
 }
 
 // Stop any running timer
@@ -1097,58 +1127,91 @@ function cancelClipboardClear() {
   if (bar) bar.style.display = 'none';
 }
 
-// Start the 30-second countdown and auto-clear
+// Instantly wipe clipboard
+function wipeClipboardImmediately() {
+  cancelClipboardClear();
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText('').catch(() => {});
+  }
+  showToast('🛡️ Clipboard wiped clean.', 'success');
+}
+
+// Start countdown and auto-clear with selected duration
 function startClipboardClearTimer() {
   cancelClipboardClear();
   const bar = document.getElementById('clipboard-clear-bar');
   const countdown = document.getElementById('clipboard-countdown');
+  const durationSelect = document.getElementById('clipboard-duration-select');
   if (!bar || !countdown) return;
+
+  const totalSeconds = getClipboardDuration();
+  if (durationSelect) durationSelect.value = String(totalSeconds);
+
   bar.style.display = 'flex';
-  let seconds = CLIPBOARD_CLEAR_SECONDS;
+  let seconds = totalSeconds;
   countdown.textContent = seconds;
+
   clipboardCountdownInterval = setInterval(() => {
     seconds--;
     if (countdown) countdown.textContent = seconds;
     if (seconds <= 0) {
       clearInterval(clipboardCountdownInterval);
-      // Clear clipboard
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText('').catch(() => {});
       }
       bar.style.display = 'none';
-      showToast('🛡️ Clipboard cleared for your security.', 'success');
+      showToast('🛡️ Clipboard wiped automatically for your security.', 'success');
     }
   }, 1000);
 }
 
-// Show permission banner (only once)
+// Show permission banner (only once when pref is unset)
 function showClipboardPermBanner() {
   const banner = document.getElementById('clipboard-perm-banner');
   if (banner) banner.style.display = 'block';
 }
 
-// Setup permission banner buttons
+// Setup permission banner and duration change buttons
 document.addEventListener('DOMContentLoaded', () => {
-  const allowBtn = document.getElementById('perm-allow-btn');
+  const banner = document.getElementById('clipboard-perm-banner');
   const denyBtn = document.getElementById('perm-deny-btn');
   const cancelBtn = document.getElementById('cancel-clear-btn');
-  const banner = document.getElementById('clipboard-perm-banner');
+  const clearNowBtn = document.getElementById('clear-now-btn');
+  const durationSelect = document.getElementById('clipboard-duration-select');
 
-  if (allowBtn) {
-    allowBtn.addEventListener('click', () => {
+  // Multi-duration choice buttons inside banner
+  document.querySelectorAll('.btn-perm-choice').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sec = parseInt(btn.dataset.seconds, 10) || 30;
+      setClipboardDuration(sec);
       setClipboardAutoClearPref('yes');
       if (banner) banner.style.display = 'none';
       startClipboardClearTimer();
     });
-  }
+  });
+
   if (denyBtn) {
     denyBtn.addEventListener('click', () => {
       setClipboardAutoClearPref('no');
       if (banner) banner.style.display = 'none';
     });
   }
+
   if (cancelBtn) {
     cancelBtn.addEventListener('click', cancelClipboardClear);
+  }
+
+  if (clearNowBtn) {
+    clearNowBtn.addEventListener('click', wipeClipboardImmediately);
+  }
+
+  if (durationSelect) {
+    durationSelect.value = String(getClipboardDuration());
+    durationSelect.addEventListener('change', () => {
+      const newSec = parseInt(durationSelect.value, 10) || 30;
+      setClipboardDuration(newSec);
+      startClipboardClearTimer();
+    });
   }
 });
 
@@ -1158,10 +1221,8 @@ function handleClipboardAutoClear() {
   if (pref === 'yes') {
     startClipboardClearTimer();
   } else if (pref === null) {
-    // First time — show banner to ask
     showClipboardPermBanner();
   }
-  // pref === 'no' → do nothing
 }
 
 
@@ -2005,13 +2066,14 @@ if (clearAllBtn) {
 /* ── Copy button ── */
 document.getElementById('copy-btn').addEventListener('click', async () => {
  const password = document.getElementById('output-password').textContent;
- if (!password || password === '••••••••••••' || password === '••••••••••••') return;
+ if (!password || password === '••••••••••••') return;
  try {
  await navigator.clipboard.writeText(password);
  const copyBtn = document.getElementById('copy-btn');
  copyBtn.classList.add('copied');
  document.getElementById('copy-icon').innerHTML = '<polyline points="20 6 9 17 4 12"/>';
  showToast('⚡ Password copied! Press Ctrl+V anywhere', 'success');
+ handleClipboardAutoClear();
  setTimeout(() => {
  copyBtn.classList.remove('copied');
  document.getElementById('copy-icon').innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>';
