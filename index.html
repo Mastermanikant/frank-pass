@@ -649,6 +649,21 @@
  <span>Copy</span>
  </button>
  </div>
+  <!-- Clipboard Auto-Clear Timer Bar -->
+  <div id="clipboard-clear-bar" style="display:none;margin-top:0.6rem;padding:0.55rem 0.9rem;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;font-size:0.8rem;color:var(--text-muted);display:none;align-items:center;gap:0.5rem;flex-wrap:wrap" role="status" aria-live="polite">
+    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>Clipboard auto-clears in <strong id="clipboard-countdown">30</strong>s &nbsp;·&nbsp; <span style="color:#10b981;font-size:0.75rem">🔒 We never read your clipboard — this site is 100% offline</span></span>
+    <button id="cancel-clear-btn" type="button" style="margin-left:auto;font-size:0.75rem;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline" aria-label="Cancel clipboard auto-clear">Cancel</button>
+  </div>
+  <!-- Clipboard Permission Banner (shown once if permission denied) -->
+  <div id="clipboard-perm-banner" style="display:none;margin-top:0.6rem;padding:0.7rem 1rem;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.2);border-radius:12px;font-size:0.82rem;color:var(--text-muted);line-height:1.5" role="dialog" aria-labelledby="perm-banner-title">
+    <p id="perm-banner-title" style="font-weight:700;color:var(--text-primary);margin:0 0 0.35rem">🛡️ Auto-Clear Clipboard After 30 Seconds?</p>
+    <p style="margin:0 0 0.6rem">Your password will be automatically erased from clipboard after 30s. <strong>We never read your clipboard</strong> — this website is 100% static &amp; works fully offline. We only write to it, never read.</p>
+    <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+      <button id="perm-allow-btn" type="button" style="padding:0.4rem 0.9rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.8rem;font-weight:700;cursor:pointer">✅ Yes, Auto-Clear</button>
+      <button id="perm-deny-btn" type="button" style="padding:0.4rem 0.9rem;background:rgba(239,68,68,0.1);color:#ef4444;border:1px solid rgba(239,68,68,0.2);border-radius:8px;font-size:0.8rem;font-weight:600;cursor:pointer">No Thanks</button>
+    </div>
+  </div>
  </div>
  
  <!-- Micro Trust Badge -->
@@ -1058,6 +1073,97 @@ function updatePasswordStatus() {
  const label = document.getElementById('clear-timer-label');
  if (label) label.textContent = 'Ready to copy';
 }
+
+/* ── Clipboard Auto-Clear System ── */
+let clipboardClearTimer = null;
+let clipboardCountdownInterval = null;
+const CLIPBOARD_CLEAR_SECONDS = 30;
+
+// Get user preference from localStorage
+function getClipboardAutoClearPref() {
+  try { return localStorage.getItem('fp_clipboard_autoclear'); } catch(e) { return null; }
+}
+function setClipboardAutoClearPref(val) {
+  try { localStorage.setItem('fp_clipboard_autoclear', val); } catch(e) {}
+}
+
+// Stop any running timer
+function cancelClipboardClear() {
+  clearTimeout(clipboardClearTimer);
+  clearInterval(clipboardCountdownInterval);
+  clipboardClearTimer = null;
+  clipboardCountdownInterval = null;
+  const bar = document.getElementById('clipboard-clear-bar');
+  if (bar) bar.style.display = 'none';
+}
+
+// Start the 30-second countdown and auto-clear
+function startClipboardClearTimer() {
+  cancelClipboardClear();
+  const bar = document.getElementById('clipboard-clear-bar');
+  const countdown = document.getElementById('clipboard-countdown');
+  if (!bar || !countdown) return;
+  bar.style.display = 'flex';
+  let seconds = CLIPBOARD_CLEAR_SECONDS;
+  countdown.textContent = seconds;
+  clipboardCountdownInterval = setInterval(() => {
+    seconds--;
+    if (countdown) countdown.textContent = seconds;
+    if (seconds <= 0) {
+      clearInterval(clipboardCountdownInterval);
+      // Clear clipboard
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText('').catch(() => {});
+      }
+      bar.style.display = 'none';
+      showToast('🛡️ Clipboard cleared for your security.', 'success');
+    }
+  }, 1000);
+}
+
+// Show permission banner (only once)
+function showClipboardPermBanner() {
+  const banner = document.getElementById('clipboard-perm-banner');
+  if (banner) banner.style.display = 'block';
+}
+
+// Setup permission banner buttons
+document.addEventListener('DOMContentLoaded', () => {
+  const allowBtn = document.getElementById('perm-allow-btn');
+  const denyBtn = document.getElementById('perm-deny-btn');
+  const cancelBtn = document.getElementById('cancel-clear-btn');
+  const banner = document.getElementById('clipboard-perm-banner');
+
+  if (allowBtn) {
+    allowBtn.addEventListener('click', () => {
+      setClipboardAutoClearPref('yes');
+      if (banner) banner.style.display = 'none';
+      startClipboardClearTimer();
+    });
+  }
+  if (denyBtn) {
+    denyBtn.addEventListener('click', () => {
+      setClipboardAutoClearPref('no');
+      if (banner) banner.style.display = 'none';
+    });
+  }
+  if (cancelBtn) {
+    cancelBtn.addEventListener('click', cancelClipboardClear);
+  }
+});
+
+// Called after each successful copy
+function handleClipboardAutoClear() {
+  const pref = getClipboardAutoClearPref();
+  if (pref === 'yes') {
+    startClipboardClearTimer();
+  } else if (pref === null) {
+    // First time — show banner to ask
+    showClipboardPermBanner();
+  }
+  // pref === 'no' → do nothing
+}
+
 
 /* ── Secret key visibility controller (Unified Biometric + Blind Policy) ── */
 const secretInput = document.getElementById('secret-key');
@@ -1658,6 +1764,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  }
  triggerCopyUI();
  showToast('⚡ Password generated & auto-copied!', 'success');
+ handleClipboardAutoClear();
  } catch (_) {
  try {
  const textArea = document.createElement('textarea');
@@ -1672,6 +1779,7 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  if(successful) {
  triggerCopyUI();
  showToast('⚡ Password generated & auto-copied!', 'success');
+ handleClipboardAutoClear();
  } else {
  showToast('⚡ Password generated! Please click Copy to use.', 'success');
  }
