@@ -24,8 +24,10 @@ const FRANKPASS_CORE = (function () {
      */
     async function getLocalPepper(platform, username, secretKey) {
         const encoder = new TextEncoder();
-        const normalizedSecret = secretKey.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
-        const dataStr = `Version=${VERSION}|User=${username.toLowerCase()}|Plat=${platform.toLowerCase()}|Key=${normalizedSecret}`;
+        const normalizedSecret = (secretKey || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+        const normalizedUser = (username || '').toLowerCase().replace(/\s+/g, '');
+        const normalizedPlat = (platform || '').toLowerCase().replace(/\s+/g, '');
+        const dataStr = `Version=${VERSION}|User=${normalizedUser}|Plat=${normalizedPlat}|Key=${normalizedSecret}`;
 
         // HMAC-SHA512 Simulation using SubtleCrypto
         const keyMaterial = await crypto.subtle.importKey(
@@ -121,6 +123,9 @@ const FRANKPASS_CORE = (function () {
                 len = platformOrObj.length || 16;
                 pepStr = platformOrObj.pepper || null;
             }
+
+            platform = (platform || '').toString().toLowerCase().replace(/\s+/g, '');
+            user = (user || '').toString().toLowerCase().replace(/\s+/g, '');
 
             try {
                 const encoder = new TextEncoder();

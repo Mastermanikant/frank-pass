@@ -1938,17 +1938,52 @@ if (maskBtn && outPassword) {
  });
 }
 
-/* ── Username Input Live Hint (Using account: "...") ── */
+/* ── Username Input Live Normalization (Instant Lowercase + Zero Spaces) ── */
 const uInput = document.getElementById('username-input');
 const uHint = document.getElementById('username-hint');
-if (uInput && uHint) {
-  uInput.addEventListener('input', () => {
-    const val = uInput.value.trim();
-    if (val) {
-      uHint.textContent = 'Using account: "' + val.toLowerCase() + '"';
-    } else {
-      uHint.textContent = '';
+if (uInput) {
+  // 1. Block space keypress directly
+  uInput.addEventListener('keydown', (e) => {
+    if (e.key === ' ' || e.code === 'Space') {
+      e.preventDefault();
+      showToast('Spaces are not allowed in Username / Email', 'info');
     }
+  });
+
+  // 2. Real-time sanitization: instant lowercase + strip any spaces (typing & pasting)
+  uInput.addEventListener('input', function () {
+    const start = this.selectionStart;
+    const end = this.selectionEnd;
+    const original = this.value;
+    const sanitized = original.toLowerCase().replace(/\s+/g, '');
+
+    if (original !== sanitized) {
+      this.value = sanitized;
+      const diff = original.length - sanitized.length;
+      const newPos = Math.max(0, (start || 0) - diff);
+      if (typeof this.setSelectionRange === 'function') {
+        this.setSelectionRange(newPos, newPos);
+      }
+    }
+
+    if (uHint) {
+      uHint.textContent = sanitized ? 'Using account: "' + sanitized + '"' : '';
+    }
+  });
+
+  // 3. Paste event sanitization
+  uInput.addEventListener('paste', function (e) {
+    e.preventDefault();
+    const pastedText = (e.clipboardData || window.clipboardData)?.getData('text') || '';
+    const cleanText = pastedText.toLowerCase().replace(/\s+/g, '');
+    const start = this.selectionStart || 0;
+    const end = this.selectionEnd || 0;
+    this.value = this.value.substring(0, start) + cleanText + this.value.substring(end);
+    const newPos = start + cleanText.length;
+    if (typeof this.setSelectionRange === 'function') {
+      this.setSelectionRange(newPos, newPos);
+    }
+    this.dispatchEvent(new Event('input'));
   });
 }
 
