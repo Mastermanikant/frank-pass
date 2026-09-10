@@ -513,6 +513,9 @@ pre code {
   transition: border-color var(--transition), box-shadow var(--transition), background var(--transition), color var(--transition);
   outline: none;
 }
+#username-input, #platform-input {
+  text-transform: lowercase;
+}
 .form-input::placeholder { color: var(--text-muted); opacity: 0.6; }
 .form-input:focus {
   outline: none;
