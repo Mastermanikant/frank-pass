@@ -117,7 +117,7 @@
     <!-- Input 1: Bank / Card / App Name -->
     <div class="form-group" style="margin-bottom:1.25rem">
       <label class="form-label" for="pin-platform" style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">Bank / Card / App Name</label>
-      <input id="pin-platform" class="form-input" type="text" placeholder="e.g. HDFC ATM Card, GPay UPI, Airtel mPIN..." autocomplete="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 1rem">
+      <input id="pin-platform" class="form-input" type="text" placeholder="e.g. HDFC ATM Card, GPay UPI, Airtel mPIN..." autocomplete="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 1rem;text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
       <span id="pin-platform-hint" style="font-size:0.75rem;color:var(--accent-light);display:block;margin-top:0.35rem"></span>
     </div>
 
