@@ -12,7 +12,12 @@ const FRANKPASS_CORE = (function () {
     const LOWERCASE = "defhmt"; // removed ambiguous, mirror & identical-glyph letters (6 chars)
     const NUMBERS = "2346789"; // removed 0, 1, 5 (7 chars)
     const SYMBOLS = "@#$%&*+=?"; // removed !, -, _, brackets, quotes; added ? (9 chars, total = 32 chars)
-    const DEFAULT_PEPPER = "FrankbaseSuperSecretMango2026!";
+    // PUBLIC APPLICATION CONSTANT — This is NOT a cryptographic secret.
+    // It is a public domain separator (app-level salt) used to bind derivation
+    // to the FrankPass application identity. Security depends entirely on the
+    // user's Secret Key strength — NOT on this constant being hidden.
+    // Architecture: User Secret Key + FRANKPASS_DOMAIN_SALT + Platform + Username → KDF → Password
+    const FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!";
 
     /**
      * Internal: Local pepper generation (Fallback for when API is unreachable)
@@ -25,7 +30,7 @@ const FRANKPASS_CORE = (function () {
         // HMAC-SHA512 Simulation using SubtleCrypto
         const keyMaterial = await crypto.subtle.importKey(
             'raw',
-            encoder.encode(DEFAULT_PEPPER),
+            encoder.encode(FRANKPASS_DOMAIN_SALT),
             { name: 'HMAC', hash: 'SHA-512' },
             false,
             ['sign']
@@ -35,7 +40,7 @@ const FRANKPASS_CORE = (function () {
 
         // 1000 rounds of SHA-256 (Micro-load simulation)
         for (let i = 0; i < 1000; i++) {
-            const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(preKey + DEFAULT_PEPPER));
+            const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(preKey + FRANKPASS_DOMAIN_SALT));
             preKey = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
         }
         return preKey;
