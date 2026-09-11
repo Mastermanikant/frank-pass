@@ -819,6 +819,23 @@ const FrankPassUtils = (function () {
             return 'amazon';
         }
 
+        // Specific Amazon sub-ecosystem detection (AWS, Seller Central, KDP, Associates, Ads)
+        if (platform.includes('.aws.amazon.') || platform === 'aws.amazon.com' || platform.endsWith('.aws.amazon.com') || platform.includes('.signin.aws.amazon.')) {
+            return 'aws';
+        }
+        if (platform.includes('.sellercentral.amazon.') || platform.startsWith('sellercentral.amazon.')) {
+            return 'amazonseller';
+        }
+        if (platform.includes('kdp.amazon.')) {
+            return 'amazonkdp';
+        }
+        if (platform.includes('associates.amazon.') || platform.includes('affiliate-program.amazon.')) {
+            return 'amazonassociates';
+        }
+        if (platform.includes('advertising.amazon.')) {
+            return 'amazonads';
+        }
+
         // 4. Priority Check: Direct match in Visual / Subdomain Exception Registry
         if (VISUAL_ALIASES[platform]) {
             return VISUAL_ALIASES[platform];
