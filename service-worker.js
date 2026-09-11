@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.9.2 (Universal Space-Invariant Normalization Engine)
-const CACHE_NAME = 'frankpass-v3.9.2';
+// FrankPass Service Worker v3.9.3 (Cyber Defense & Dual-Action Extension Release)
+const CACHE_NAME = 'frankpass-v3.9.3';
 const CACHED_URLS = [
     '/',
     '/index.html',
