@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.9.3 (Cyber Defense & Dual-Action Extension Release)
-const CACHE_NAME = 'frankpass-v3.9.3';
+// FrankPass Service Worker v3.9.6 (Universal Header & E-E-A-T Architecture Release)
+const CACHE_NAME = 'frankpass-v3.9.6';
 const CACHED_URLS = [
     '/',
     '/index.html',
