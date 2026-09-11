@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="./style.css?v=3.9.8">
+  <link rel="stylesheet" href="./style.css?v=3.9.9">
   <link rel="icon" href="./icons/favicon.png">
 
   <style>
@@ -228,17 +228,31 @@
       transform: translateX(4px);
     }
 
+    /* Primary Dropdown Menu */
+    #dropdown-resources .nav-dropdown-menu {
+      left: auto;
+      right: -30px;
+      min-width: 250px;
+      max-width: 260px;
+    }
+
+    #dropdown-resources .nav-dropdown-menu::before {
+      left: 0;
+      right: 0;
+    }
+
     /* Flyout Panel (Secondary Sub-Sub Menu) */
     .flyout-menu {
       position: absolute;
       top: -6px;
       left: calc(100% + 6px);
-      min-width: 320px;
+      min-width: 275px;
+      max-width: 290px;
       background: var(--bg-primary, #0c0f17);
       border: 1px solid var(--border, rgba(139, 92, 246, 0.25));
       border-radius: 16px;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
-      padding: 0.6rem;
+      padding: 0.55rem;
       display: flex;
       flex-direction: column;
       gap: 3px;
@@ -260,6 +274,32 @@
       left: -20px;
       width: 24px;
       background: transparent;
+    }
+
+    /* Smart Auto-Flip Left (when right screen boundary is close) */
+    .has-flyout.flyout-flip-left .flyout-menu,
+    .has-flyout .flyout-menu.flyout-left {
+      left: auto !important;
+      right: calc(100% + 6px) !important;
+      transform: translateX(10px) !important;
+    }
+
+    .has-flyout.flyout-flip-left:hover > .flyout-menu,
+    .has-flyout.flyout-flip-left.is-active > .flyout-menu,
+    .has-flyout:hover > .flyout-menu.flyout-left,
+    .has-flyout.is-active > .flyout-menu.flyout-left {
+      transform: translateX(0) !important;
+    }
+
+    .has-flyout.flyout-flip-left .flyout-menu::before,
+    .has-flyout .flyout-menu.flyout-left::before {
+      left: auto !important;
+      right: -24px !important;
+      width: 28px !important;
+    }
+
+    .has-flyout.flyout-flip-left .flyout-chevron {
+      transform: rotate(180deg) !important;
     }
 
     /* Flyout Header Banner */
@@ -298,6 +338,155 @@
         transform: translateX(0);
         pointer-events: auto;
       }
+    }
+
+    /* ── Enhanced Mobile Drawer & Accordion Architecture ── */
+    .mobile-menu {
+      position: fixed;
+      top: var(--header-h, 68px);
+      left: 0;
+      right: 0;
+      max-height: calc(100vh - var(--header-h, 68px));
+      max-height: calc(100dvh - var(--header-h, 68px));
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      background: var(--bg-primary, #0a0a12);
+      border-bottom: 1px solid var(--border, rgba(139, 92, 246, 0.25));
+      z-index: 9999;
+      padding: 1.25rem 1.25rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      transform: translateY(-115%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(24px);
+    }
+
+    .mobile-menu.open,
+    .mobile-menu.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-section-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-light, #a78bfa);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 0.6rem 0 0.2rem;
+      padding: 0 0.25rem;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.75rem 0.85rem;
+      border-radius: 10px;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background 0.18s, color 0.18s;
+    }
+
+    .mobile-nav-link:hover,
+    .mobile-nav-link:active {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-light, #a78bfa);
+    }
+
+    .mobile-accordion {
+      border: 1px solid var(--border, rgba(139, 92, 246, 0.2));
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .mobile-accordion.is-expanded {
+      border-color: var(--accent, #8b5cf6);
+      background: rgba(139, 92, 246, 0.06);
+    }
+
+    .mobile-acc-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0.85rem;
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .acc-chevron {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: transform 0.22s ease;
+    }
+
+    .mobile-accordion.is-expanded .acc-chevron {
+      transform: rotate(180deg);
+      color: var(--accent-light, #a78bfa);
+    }
+
+    .mobile-acc-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.28s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 0 0.65rem;
+    }
+
+    .mobile-accordion.is-expanded .mobile-acc-panel {
+      max-height: 420px;
+      padding: 0.3rem 0.65rem 0.75rem;
+    }
+
+    .mobile-acc-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 0.65rem;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .mobile-acc-item:hover,
+    .mobile-acc-item:active {
+      color: var(--text-primary);
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    /* Mobile Simulator Card in Main Body */
+    .mobile-sim-wrapper {
+      max-width: 400px;
+      margin: 2.5rem auto;
+      border: 3px solid var(--border);
+      border-radius: 36px;
+      background: var(--bg-primary);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      padding: 1.5rem 1rem;
     }
 
     /* Sandbox Banner & Switcher */
@@ -611,24 +800,75 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer (Clean & Grouped) -->
+  <!-- Mobile Drawer (Clean, Grouped & Categorized Accordions) -->
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-    <div style="font-size:0.75rem;font-weight:700;color:var(--text-accent);text-transform:uppercase;margin:0.5rem 0 0.2rem;letter-spacing:0.05em;">Generators</div>
-    <a href="/">&bull; Stateless Generator</a>
-    <a href="/random-password-generator.html">&bull; Random Generator</a>
-    <a href="/pin.html">&bull; PIN Generator</a>
+    <div class="mobile-section-label">⚡ Generators</div>
+    <a href="/" class="mobile-nav-link"><span>⚡</span> Stateless Generator</a>
+    <a href="/random-password-generator.html" class="mobile-nav-link"><span>🎲</span> Random Generator</a>
+    <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> PIN Generator</a>
+    <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="mobile-nav-link"><span>⚖️</span> Compare All Tools</a>
     
-    <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Resources & Guides</div>
-    <a href="/secret-key-guide.html">&bull; Secret Key Guide</a>
-    <a href="/frankpass-vs-cloud-password-vaults.html">&bull; How FrankPass Works</a>
-    <a href="/blog.html">&bull; Security Blog</a>
-    <a href="/faq.html">&bull; Security FAQ</a>
+    <div class="mobile-section-label">📚 Resources &amp; Guides</div>
     
-    <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Company</div>
-    <a href="/products.html">&bull; Products Hub</a>
-    <a href="/founder-mastermanikant.html">&bull; Founder</a>
+    <!-- Mobile Accordion 1 -->
+    <div class="mobile-accordion">
+      <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+        <span>📚 Core Guides &amp; Specs</span>
+        <span class="acc-chevron">▾</span>
+      </button>
+      <div class="mobile-acc-panel">
+        <a href="/secret-key-guide.html" class="mobile-acc-item">🔑 Secret Key Guide</a>
+        <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">⚙️ How FrankPass Works</a>
+        <a href="/faq.html" class="mobile-acc-item">❓ Security FAQ</a>
+        <a href="/whitepaper.html" class="mobile-acc-item">📄 Cryptographic Specs</a>
+        <a href="/limitations-and-advantages.html" class="mobile-acc-item">⚖️ Limitations &amp; Advantages</a>
+      </div>
+    </div>
+
+    <!-- Mobile Accordion 2 -->
+    <div class="mobile-accordion">
+      <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+        <span>🛡️ Cyber Threat Defense</span>
+        <span class="acc-chevron">▾</span>
+      </button>
+      <div class="mobile-acc-panel">
+        <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="mobile-acc-item">👁️ Invisible Vault Architecture</a>
+        <a href="/blog/frankpass-vs-traditional-cloud-password-vaults.html" class="mobile-acc-item">☁️ Cloud Vault Vulnerabilities</a>
+        <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="mobile-acc-item">🚫 No 'Forgot Password' Strength</a>
+      </div>
+    </div>
+
+    <!-- Mobile Accordion 3 -->
+    <div class="mobile-accordion">
+      <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+        <span>🔬 Password Science &amp; Math</span>
+        <span class="acc-chevron">▾</span>
+      </button>
+      <div class="mobile-acc-panel">
+        <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="mobile-acc-item">🧮 What Makes Passwords Strong</a>
+        <a href="/blog/why-stateless-password-generation-is-the-future.html" class="mobile-acc-item">⚡ Stateless Generation Future</a>
+        <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="mobile-acc-item">📝 Passphrases &amp; Normalization</a>
+      </div>
+    </div>
+
+    <!-- Mobile Accordion 4 -->
+    <div class="mobile-accordion">
+      <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+        <span>💡 Founder Story &amp; Vision</span>
+        <span class="acc-chevron">▾</span>
+      </button>
+      <div class="mobile-acc-panel">
+        <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="mobile-acc-item">🎯 Why I Built FrankPass</a>
+        <a href="/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html" class="mobile-acc-item">⚖️ The No-Free-Lunch Paradigm</a>
+        <a href="/blog.html" class="mobile-acc-item" style="color:var(--accent-light);font-weight:700;">📖 All Blog Articles Hub &rarr;</a>
+      </div>
+    </div>
+
+    <div class="mobile-section-label">🏢 Ecosystem</div>
+    <a href="/products.html" class="mobile-nav-link"><span>🌐</span> Products Hub</a>
+    <a href="/founder-mastermanikant.html" class="mobile-nav-link"><span>👨‍💻</span> Founder (Master Manikant Yadav)</a>
     
-    <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);">Get Pro 👑 &rarr;</a>
+    <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
   </nav>
 
   <!-- ============================================================
@@ -746,16 +986,16 @@
     <!-- Verified Checklist of Resolved Problems -->
     <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.75rem;margin-bottom:3rem;">
       <h3 style="font-size:1.15rem;margin-bottom:1rem;color:var(--text-primary);">
-        ✅ आपके सभी प्रश्नों एवं नए Cascade Sub-Menu का समाधान
+        ✅ आपके सभी प्रश्नों, साइड कट-ऑफ फिक्स एवं मोबाइल मेन्यू का 100% समाधान
       </h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.88rem;color:var(--text-muted);">
+        <div>✔️ <strong>डेस्कटॉप साइड कट-ऑफ फिक्स:</strong> स्मार्ट बाउंड्री डिटेक्शन सक्रिय - स्क्रीन एज के पास फ्लाईआउट ऑटो-फ्लिप होकर बाईं तरफ सुरक्षित खुलता है (0% कट-ऑफ)।</div>
+        <div>✔️ <strong>मोबाइल मेन्यू (Drawer + Accordions):</strong> हैमबर्गर बटन पर स्मूथ स्लाइड ड्रॉवर और चारों कैटेगरीज़ टच-फ्रेंडली अकार्डियन के रूप में।</div>
         <div>✔️ <strong>रियल FrankPass लोगो:</strong> 3D Key Icon (`logo-key-64.webp`)।</div>
         <div>✔️ <strong>कंट्री फ्लैग सिलेक्टर:</strong> `India 🇮🇳 ▾` सुरक्षित।</div>
         <div>✔️ <strong>Generators ▾ ड्रॉपडाउन:</strong> 1-लाइन क्लीन बिना क्लटर।</div>
         <div>✔️ <strong>Resources ▾ Cascade Flyout:</strong> होवर पर केवल 4 Sub-headers दिखेंगे।</div>
-        <div>✔️ <strong>Sub-sub Flyout Menus:</strong> Sub-header पर कर्सर ले जाने पर दाईं ओर आर्टिकल्स खुलेंगे।</div>
         <div>✔️ <strong>Hover Bridge &amp; 220ms Timer:</strong> तिरछे माउस मूवमेंट पर मेन्यू बंद नहीं होगा।</div>
-        <div>✔️ <strong>Direct Get Pro 👑 बटन:</strong> बिना किसी डुप्लीकेट ड्रॉपडाउन के डायरेक्ट CTA।</div>
         <div>✔️ <strong>E-E-A-T कार्ड &amp; भाषा टॉगल:</strong> इमेज 3 जैसा अवतार, बैज और फाउंडर प्रोफाइल।</div>
       </div>
     </div>
@@ -787,10 +1027,28 @@
     const mobileMenu = document.getElementById('mobile-menu');
     if (hamburger && mobileMenu) {
       hamburger.addEventListener('click', () => {
-        const isOpen = mobileMenu.classList.toggle('is-open');
+        const isOpen = mobileMenu.classList.toggle('open');
+        mobileMenu.classList.toggle('is-open', isOpen);
         hamburger.setAttribute('aria-expanded', isOpen);
       });
     }
+
+    // ── Mobile Menu Accordion Toggle Logic ──
+    const mobileAccordions = document.querySelectorAll('.mobile-accordion');
+    mobileAccordions.forEach(acc => {
+      const trigger = acc.querySelector('.mobile-acc-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          const isExpanded = acc.classList.contains('is-expanded');
+          mobileAccordions.forEach(a => {
+            if (a !== acc) a.classList.remove('is-expanded');
+          });
+          acc.classList.toggle('is-expanded', !isExpanded);
+          trigger.setAttribute('aria-expanded', !isExpanded);
+        });
+      }
+    });
 
     // ── Smooth Hover Intent & Grace Timer for Top-Level Dropdowns ──
     const dropdowns = document.querySelectorAll('.nav-dropdown');
@@ -827,6 +1085,21 @@
       }
     });
 
+    // ── Smart Viewport Collision Detection for Flyouts ──
+    function checkFlyoutBoundary(container) {
+      const flyout = container.querySelector('.flyout-menu');
+      if (!flyout) return;
+
+      container.classList.remove('flyout-flip-left');
+      const rect = flyout.getBoundingClientRect();
+      const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+      // If flyout right edge exceeds screen width minus safety margin, flip to LEFT
+      if (rect.right > viewportWidth - 14) {
+        container.classList.add('flyout-flip-left');
+      }
+    }
+
     // ── Cascade Flyout Sub-menu Hover Intent & Grace Timer ──
     const flyoutContainers = document.querySelectorAll('.has-flyout');
     flyoutContainers.forEach(container => {
@@ -838,6 +1111,7 @@
           if (c !== container) c.classList.remove('is-active');
         });
         container.classList.add('is-active');
+        checkFlyoutBoundary(container);
       });
 
       container.addEventListener('mouseleave', () => {

@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.9.8 (Cascade Sub-Menu Dropdown Release)
-const CACHE_NAME = 'frankpass-v3.9.8';
+// FrankPass Service Worker v3.9.9 (Auto-Flip Boundary Guard & Mobile Accordion Release)
+const CACHE_NAME = 'frankpass-v3.9.9';
 const CACHED_URLS = [
     '/',
     '/index.html',
