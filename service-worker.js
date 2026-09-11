@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.9.9 (Auto-Flip Boundary Guard & Mobile Accordion Release)
-const CACHE_NAME = 'frankpass-v3.9.9';
+// FrankPass Service Worker v4.0.0 (Clean Minimal Flyout Release)
+const CACHE_NAME = 'frankpass-v4.0.0';
 const CACHED_URLS = [
     '/',
     '/index.html',
