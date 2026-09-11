@@ -1,8 +1,10 @@
-// FrankPass Service Worker v4.0.1 (Clean 1-Line Minimal Flyout Release)
-const CACHE_NAME = 'frankpass-v4.0.1';
+// FrankPass Service Worker v4.1.0 (Master Library & Directory Release)
+const CACHE_NAME = 'frankpass-v4.1.0';
 const CACHED_URLS = [
     '/',
     '/index.html',
+    '/library.html',
+    '/library-hindi.html',
     '/random-password-generator.html',
     '/pin.html',
     '/comparison-between-frankpass-all-generators-deterministic-random-pin.html',

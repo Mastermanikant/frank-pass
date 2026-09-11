@@ -30,6 +30,7 @@ FrankPass is a free, sovereign, stateless deterministic password and PIN generat
 8. Free Browser Extension & Auto-Fill Suite ([https://frankpass.com/install.html](https://frankpass.com/install.html)): FrankPass provides a 100% Free Browser Extension for Google Chrome, Mozilla Firefox, Microsoft Edge, and Brave.
    - Instant Guest Mode (100% Free Forever): Zero-Knowledge on-the-fly password generation, automatic website domain detection, and 1-click instant auto-fill directly into login forms without storing anything or requiring payment/registration.
    - Pro Profiles (Optional Upgrade): Local PC-bound encrypted profile vaults protected by a 4-digit PIN lock and security questions recovery, designed for users who want persistent master key shortcuts on their own computer.
+9. Master Resource Library & Directory (https://frankpass.com/library.html): Comprehensive sitemap and directory of all 36 tools, guides, cryptographic specifications, and security essays with 1-line previews and real-time search.
 
 ## The Origin Story (Authentic Genesis)
 Created on the night of 25th December 2025 by Master Manikant Yadav after managing 20+ Gmail/YouTube accounts and experiencing an account lockout. The founder previously used a manual mental math formula (first 3 letters + cube of letter count + private PIN e.g. Sup343#852108 via calculator). This manual deterministic reasoning was converted into an uncrackable, client-side cryptographic algorithm.
