@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
@@ -196,10 +196,10 @@ async function generateKey(){
         const parts=deviceId.split('-');
         const dev1=parts[1],dev2=parts[2],dev3=parts[3];
         const tokenDevId=`FP-${dev1}-${dev2}-${dev3}`;
-        const dataToSign=`${tokenDevId}|PC1|E261130|${MASTER_OFFLINE_SALT}`;
+        const dataToSign=`${tokenDevId}|${TRIAL_TIER_CODE}|${TRIAL_EXPIRY_CODE}|${MASTER_OFFLINE_SALT}`;
         const hash=await sha256(dataToSign);
         const sig=hash.substring(0,8).toUpperCase();
-        const key=`FRANK-PC1-E261130-${dev1}-${dev2}-${dev3}-${sig}`;
+        const key=`FRANK-${TRIAL_TIER_CODE}-${TRIAL_EXPIRY_CODE}-${dev1}-${dev2}-${dev3}-${sig}`;
         document.getElementById('generated-key-code').textContent=key;
         document.getElementById('generated-key-box').style.display='block';
     }catch(e){
