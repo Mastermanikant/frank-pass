@@ -1184,6 +1184,37 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .mob-nav-item.active { color: var(--accent); }
 .mob-nav-item.active svg { filter: drop-shadow(0 0 6px rgba(139,92,246,0.6)); }
 
+/* ── 22B. MOBILE PRO STICKY ACTION BAR (MAHARANA PHARMACY PATTERN) ── */
+.mobile-pro-sticky-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(10, 10, 18, 0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border);
+  padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 0px)) 16px;
+  z-index: 2005;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 768px) {
+  body.is-pro-page .mobile-bottom-nav {
+    display: none !important;
+  }
+  body.is-pro-page .mobile-pro-sticky-bar {
+    display: flex !important;
+  }
+  body.is-pro-page {
+    padding-bottom: 78px !important;
+  }
+}
+
 /* ── 23. STEP CARDS ──────────────────────────────────────── */
 .step-card {
   padding: 1.5rem;
