@@ -93,7 +93,7 @@
         <div id="generated-key-box">
             <p style="font-size:.75rem;color:#8b949e;margin:0 0 6px">✅ Your Device-Locked Beta Key:</p>
             <div id="generated-key-code"></div>
-            <p class="key-note">Valid until 30 Nov 2026 · Locked to your device</p>
+            <p class="key-note">Shows "PRO TRIAL" badge in extension · Expires on set date · 1 device only</p>
             <button class="copy-btn purple" onclick="copyGeneratedKey(this)" style="margin-top:10px">📋 Copy Key</button>
         </div>
         <ul class="how-steps">
@@ -146,8 +146,16 @@
 </div><!-- end beta-main-content -->
 
 <script>
-const BETA_EXPIRY = new Date('2026-11-30T23:59:59Z');
+const BETA_EXPIRY = new Date('2026-11-30T23:59:59Z'); // Page visibility expiry
 const MASTER_OFFLINE_SALT = 'FrankPassOfflineDeviceLockSalt2026!';
+    // =====================================================================
+    // WEBSITE-CONTROLLED TRIAL EXPIRY — Change this date to extend/change trial
+    // Format: EYYMMDD (E261130 = 30 Nov 2026, E270201 = 01 Feb 2027)
+    // This controls ALL new keys generated — old issued keys keep their own date
+    // =====================================================================
+    const TRIAL_EXPIRY_CODE = 'E261130';          // <-- Change here to update expiry
+    const TRIAL_EXPIRY_DATE = new Date('2026-11-30T23:59:59Z'); // Keep in sync with above
+    const TRIAL_TIER_CODE   = 'TRIAL';             // Shows "PRO TRIAL" badge in extension
 
 // Check expiry
 if(new Date() > BETA_EXPIRY){
