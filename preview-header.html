@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+        var theme = saved || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch(e) {}
+    })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FrankPass Universal Header & E-E-A-T Architecture Sandbox</title>
+  <meta name="description" content="Interactive sandbox testing page for the new unified FrankPass header, dropdown menus, bilingual language switchers, and E-E-A-T writer cards.">
+  <meta name="robots" content="noindex, nofollow">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/style.css?v=3.9.5">
+  <link rel="icon" href="/icons/favicon.png">
+
+  <style>
+    /* ── Live Sandbox Dropdown & Header Styles ── */
+    .nav-dropdown {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .nav-dropdown-trigger {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: color var(--transition), background var(--transition);
+    }
+
+    .nav-dropdown-trigger:hover,
+    .nav-dropdown:hover .nav-dropdown-trigger,
+    .nav-dropdown.is-open .nav-dropdown-trigger {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .dropdown-chevron {
+      font-size: 0.72rem;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-dropdown:hover .dropdown-chevron,
+    .nav-dropdown.is-open .dropdown-chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      min-width: 320px;
+      background: var(--bg-primary, #0c0f17);
+      border: 1px solid var(--border, rgba(139, 92, 246, 0.25));
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      padding: 0.6rem;
+      display: none;
+      flex-direction: column;
+      gap: 3px;
+      z-index: 1000;
+      backdrop-filter: blur(16px);
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    /* Desktop Hover or Active Dropdown */
+    @media (min-width: 992px) {
+      .nav-dropdown:hover .nav-dropdown-menu,
+      .nav-dropdown.is-open .nav-dropdown-menu {
+        display: flex;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 0.7rem 0.85rem;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.18s ease;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(139, 92, 246, 0.12);
+    }
+
+    .dropdown-icon {
+      font-size: 1.25rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .dropdown-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dropdown-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .dropdown-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-top: 2px;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: var(--border, rgba(255, 255, 255, 0.08));
+      margin: 0.4rem 0;
+    }
+
+    /* Sandbox Banner & Switcher */
+    .sandbox-banner {
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(16, 185, 129, 0.12) 100%);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin: 2rem auto 2.5rem;
+      max-width: 960px;
+    }
+
+    .sandbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 960px;
+      margin: 0 auto 3rem;
+    }
+
+    @media (max-width: 860px) {
+      .sandbox-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .demo-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: var(--card-shadow);
+    }
+
+    .lang-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.3);
+      color: var(--text-primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .lang-pill:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       1. UNIVERSAL UNIFIED HEADER
+       ============================================================ -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+      
+      <!-- Official Brand Logo (Unified 3D Key Icon) -->
+      <a href="/" class="header-logo" aria-label="FrankPass Home">
+        <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+        <span class="logo-text"><span>Frank</span>Pass</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="header-nav" role="navigation" aria-label="Main navigation">
+        
+        <!-- Home Button -->
+        <a href="/" class="nav-link active">Home</a>
+
+        <!-- Generators Dropdown -->
+        <div class="nav-dropdown" id="dropdown-generators">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
+            Generators <span class="dropdown-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger">
+            <a href="/" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">⚡</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Stateless Password Generator</span>
+                <span class="dropdown-desc">1,000,000 PBKDF2 iterations, pure offline math</span>
+              </div>
+            </a>
+            <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🎲</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Random Password Generator</span>
+                <span class="dropdown-desc">Offline CSPRNG client entropy generator</span>
+              </div>
+            </a>
+            <a href="/pin.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🔢</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">PIN Generator</span>
+                <span class="dropdown-desc">Deterministic 4-6 digit ATM & UPI bank PINs</span>
+              </div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🔑</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Secret Key Master Guide</span>
+                <span class="dropdown-desc">Episodic memory & master phrase techniques</span>
+              </div>
+            </a>
+            <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">⚖️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Tools Comparison Matrix</span>
+                <span class="dropdown-desc">Side-by-side mathematical audit across all generators</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Pro Dropdown -->
+        <div class="nav-dropdown" id="dropdown-pro">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="pro-trigger">
+            <span style="color:#f59e0b;">👑</span> Pro <span class="dropdown-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown-menu" role="menu" aria-labelledby="pro-trigger">
+            <a href="/pro.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🛡️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">FrankPass Pro Overview</span>
+                <span class="dropdown-desc">Lifetime sovereignty & air-gapped security</span>
+              </div>
+            </a>
+            <a href="/pro.html#features" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">💼</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Feature Comparison</span>
+                <span class="dropdown-desc">Free vs Pro side-by-side breakdown</span>
+              </div>
+            </a>
+            <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">👁️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Invisible Vault Architecture</span>
+                <span class="dropdown-desc">Zero-clipboard stealth autofill security</span>
+              </div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="/pro.html#pricing" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">🚀</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title" style="color:var(--accent-light);">Get Lifetime Pro License</span>
+                <span class="dropdown-desc">Instant digital checkout via Dodo Payments</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Resources -->
+        <a href="/blog.html" class="nav-link">Blog</a>
+        <a href="/docs.html" class="nav-link">Docs</a>
+        <a href="/faq.html" class="nav-link">FAQ</a>
+
+        <!-- Founder Link -->
+        <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
+
+        <!-- CTA & Theme Toggle -->
+        <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+        
+        <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+          <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="/">🏠 Home</a>
+    <div style="font-size:0.75rem;font-weight:700;color:var(--text-accent);text-transform:uppercase;margin:0.5rem 0 0.2rem;letter-spacing:0.05em;">Generators</div>
+    <a href="/">&bull; Stateless Generator</a>
+    <a href="/random-password-generator.html">&bull; Random Generator</a>
+    <a href="/pin.html">&bull; PIN Generator</a>
+    <a href="/secret-key-guide.html">&bull; Secret Key Guide</a>
+    
+    <div style="font-size:0.75rem;font-weight:700;color:#f59e0b;text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Pro Edition</div>
+    <a href="/pro.html">&bull; Pro Overview</a>
+    <a href="/pro.html#features">&bull; Feature Comparison</a>
+    
+    <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Resources</div>
+    <a href="/blog.html">&bull; Security Blog</a>
+    <a href="/docs.html">&bull; Docs</a>
+    <a href="/faq.html">&bull; FAQ</a>
+    <a href="/founder-mastermanikant.html">&bull; Founder</a>
+    
+    <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;">Get Pro &rarr;</a>
+  </nav>
+
+  <!-- ============================================================
+       2. INTERACTIVE SANDBOX TESTING ARENA
+       ============================================================ -->
+  <main style="max-width:980px;margin:2rem auto;padding:0 1.5rem;">
+    
+    <!-- Hero Alert Banner -->
+    <div class="sandbox-banner">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem;">
+        <span style="background:#10b981;color:#fff;font-size:0.75rem;font-weight:800;padding:2px 10px;border-radius:999px;">LIVE PREVIEW SANDBOX</span>
+        <span style="color:var(--text-muted);font-size:0.85rem;">Zero Risk &bull; Production Files 100% Untouched</span>
+      </div>
+      <h1 style="font-size:1.85rem;margin-bottom:0.5rem;color:var(--text-primary);">
+        FrankPass Universal Header & E-E-A-T Writer Card Sandbox
+      </h1>
+      <p style="font-size:0.95rem;color:var(--text-muted);margin-bottom:0;">
+        इस पेज पर आप ऊपर दिए गए नए हेडर (Home + Generators ▾ + Pro ▾), Day/Night थीम टॉगल, और नीचे दोनों ब्लॉग्स के लिए इमेज 3 जैसे E-E-A-T राइटर कार्ड को लाइव टेस्ट कर सकते हैं।
+      </p>
+    </div>
+
+    <!-- Live Demonstration Grid (English vs Hindi) -->
+    <div class="sandbox-grid">
+
+      <!-- DEMO 1: ENGLISH BLOG POST CARD -->
+      <div class="demo-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+          <span style="font-size:0.76rem;font-weight:700;color:var(--accent-light);background:rgba(139,92,246,0.12);padding:3px 10px;border-radius:12px;">English Article Demo</span>
+          <!-- Language Switcher to Hindi -->
+          <a href="#hindi-card" class="lang-pill" title="यह लेख हिंदी में पढ़ें">
+            🇮🇳 हिंदी में पढ़ें &rarr;
+          </a>
+        </div>
+
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.6rem;">
+          Home &rsaquo; Blog &rsaquo; <span>Password Strength Science</span>
+        </div>
+
+        <h2 style="font-size:1.35rem;line-height:1.3;margin-bottom:1rem;color:var(--text-primary);">
+          What Makes a Password Truly Strong and Safe in 2026?
+        </h2>
+
+        <!-- Image 3 Exact Writer Card -->
+        <div class="writer-card" style="display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap;">
+          <img src="/icons/founder-master-manikant-yadav.webp" onerror="this.src='/icons/founder-master-manikant-yadav.png'" alt="Master Manikant Yadav" width="46" height="46" style="width:46px;height:46px;border-radius:12px;border:1px solid var(--border);object-fit:cover;flex-shrink:0;" loading="lazy">
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <a href="/founder-mastermanikant.html" style="font-size:0.96rem;font-weight:700;color:var(--text-primary);text-decoration:none;">
+                Master Manikant Yadav
+              </a>
+              <div style="display:inline-flex;align-items:center;gap:6px;">
+                <span style="font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);">
+                  🛡️ FrankPass
+                </span>
+                <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" style="font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-muted);text-decoration:none;">
+                  🌐 FrankBase &nearr;
+                </a>
+              </div>
+            </div>
+            <span style="font-size:0.78rem;color:var(--text-muted);">Founder &amp; Cryptographic Architect, FrankPass &amp; FrankBase Ecosystem</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.86rem;color:var(--text-muted);margin-top:1rem;line-height:1.6;">
+          Every day, millions of internet users click a "Generate Random Password" button... In this comprehensive breakdown, we explore the mathematics of entropy (H).
+        </p>
+      </div>
+
+      <!-- DEMO 2: HINDI BLOG POST CARD -->
+      <div class="demo-card" id="hindi-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+          <span style="font-size:0.76rem;font-weight:700;color:#10b981;background:rgba(16,185,129,0.12);padding:3px 10px;border-radius:12px;">हिंदी आर्टिकल डेमो</span>
+          <!-- Language Switcher to English -->
+          <a href="#english-card" class="lang-pill" title="Read this article in English">
+            🌐 Read in English &rarr;
+          </a>
+        </div>
+
+        <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:0.6rem;">
+          होम &rsaquo; ब्लॉग &rsaquo; <span>साइबर सुरक्षा विश्लेषण</span>
+        </div>
+
+        <h2 style="font-size:1.3rem;line-height:1.35;margin-bottom:1rem;color:var(--text-primary);">
+          पारंपरिक पासवर्ड मैनेजर कहाँ फेल होते हैं: अदृश्य वॉल्ट रूम आर्किटेक्चर
+        </h2>
+
+        <!-- Matching Hindi E-E-A-T Writer Card -->
+        <div class="writer-card" style="display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap;">
+          <img src="/icons/founder-master-manikant-yadav.webp" onerror="this.src='/icons/founder-master-manikant-yadav.png'" alt="मास्टर मणिकान्त यादव" width="46" height="46" style="width:46px;height:46px;border-radius:12px;border:1px solid var(--border);object-fit:cover;flex-shrink:0;" loading="lazy">
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <a href="/founder-mastermanikant-hindi.html" style="font-size:0.96rem;font-weight:700;color:var(--text-primary);text-decoration:none;">
+                मास्टर मणिकान्त यादव
+              </a>
+              <div style="display:inline-flex;align-items:center;gap:6px;">
+                <span style="font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);">
+                  🛡️ FrankPass
+                </span>
+                <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" style="font-size:0.7rem;font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--text-muted);text-decoration:none;">
+                  🌐 FrankBase &nearr;
+                </a>
+              </div>
+            </div>
+            <span style="font-size:0.78rem;color:var(--text-muted);">संस्थापक एवं सॉफ्टवेयर आर्किटेक्ट, FrankPass व FrankBase इकोसिस्टम</span>
+          </div>
+        </div>
+
+        <p style="font-size:0.86rem;color:var(--text-muted);margin-top:1rem;line-height:1.6;">
+          दुनिया भर की कम्पनियाँ अरबों डॉलर खर्च करके भ्रम बेचती हैं... जानिए कीलॉगर्स और क्लिपबोर्ड स्नूपिंग से बचने का एकमात्र गणितीय समाधान।
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Verified Checklist of Resolved Problems -->
+    <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.75rem;margin-bottom:3rem;">
+      <h3 style="font-size:1.15rem;margin-bottom:1rem;color:var(--text-primary);">
+        ✅ आपके सभी सवालों का 100% समाधान चेकलिस्ट
+      </h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.88rem;color:var(--text-muted);">
+        <div>✔️ <strong>रियल FrankPass लोगो:</strong> हर जगह 3D Key Icon (`logo-key-64.webp`)।</div>
+        <div>✔️ <strong>नया "Home" बटन:</strong> हेडर के पहले स्थान पर स्पष्ट लिंक।</div>
+        <div>✔️ <strong>Generators ▾ ड्रॉपडाउन:</strong> 5 टूल्स का ग्रुपेड मेन्यू (होवर व क्लिक)।</div>
+        <div>✔️ <strong>Pro ▾ ड्रॉपडाउन:</strong> 4 प्रो फीचर्स व Dodo Payments चेकआउट लिंक।</div>
+        <div>✔️ <strong>E-E-A-T राइटर कार्ड:</strong> इमेज 3 जैसा अवतार, बैज और फाउंडर लिंक।</div>
+        <div>✔️ <strong>द्विभाषी बटन:</strong> "Read in English" और "हिंदी में पढ़ें" पिल लिंक्स।</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Global Footer Container -->
+  <div id="site-footer"></div>
+
+  <!-- Shared Scripts -->
+  <script src="/footer.js"></script>
+
+  <script>
+    // Theme Toggle Logic
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = cur === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('fp_theme', next);
+      });
+    }
+
+    // Mobile Menu Toggle Logic
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (hamburger && mobileMenu) {
+      hamburger.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('is-open');
+        hamburger.setAttribute('aria-expanded', isOpen);
+      });
+    }
+
+    // Dropdown Click Support for Mobile/Touch
+    const dropdownTriggers = document.querySelectorAll('.nav-dropdown-trigger');
+    dropdownTriggers.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const parent = btn.parentElement;
+        const isOpen = parent.classList.contains('is-open');
+        document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('is-open'));
+        if (!isOpen) parent.classList.add('is-open');
+      });
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('is-open'));
+    });
+  </script>
+
+</body>
+</html>
