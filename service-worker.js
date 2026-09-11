@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.9.6 (Universal Header & E-E-A-T Architecture Release)
-const CACHE_NAME = 'frankpass-v3.9.6';
+// FrankPass Service Worker v3.9.7 (Country Selector & Clean Dropdown Release)
+const CACHE_NAME = 'frankpass-v3.9.7';
 const CACHED_URLS = [
     '/',
     '/index.html',

@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="./style.css?v=3.9.6">
+  <link rel="stylesheet" href="./style.css?v=3.9.7">
   <link rel="icon" href="./icons/favicon.png">
 
   <style>
@@ -220,89 +220,101 @@
         <span class="logo-text"><span>Frank</span>Pass</span>
       </a>
 
+      <!-- Country Dropdown (Flag Selector Preserved from Main Site) -->
+      <div class="header-country custom-country-dropdown" aria-label="Select your country">
+        <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+          <img id="country-flag-img" src="./flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+          <span id="country-display-name">India</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+          <input id="country-search-input" type="search" placeholder="Search country…" autocomplete="off" aria-label="Search for a country">
+          <div id="country-list-scroll"></div>
+        </div>
+      </div>
+      <input type="hidden" id="region" value="India (IN)">
+
       <!-- Desktop Nav (Ultra-Clean & Minimal) -->
       <nav class="header-nav" role="navigation" aria-label="Main navigation">
         
-        <!-- 1. Generators Dropdown (Pure Generation Tools) -->
+        <!-- 1. Generators Dropdown (Clean, Compact, Zero Small Text Clutter) -->
         <div class="nav-dropdown" id="dropdown-generators">
           <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
             Generators <span class="dropdown-chevron">▾</span>
           </button>
-          <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger">
+          <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger" style="min-width:230px;">
             <a href="/" class="dropdown-item" role="menuitem">
               <span class="dropdown-icon">⚡</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Stateless Password Generator</span>
-                <span class="dropdown-desc">1,000,000 PBKDF2 iterations, zero cloud storage</span>
-              </div>
+              <span class="dropdown-title">Stateless Generator</span>
             </a>
             <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
               <span class="dropdown-icon">🎲</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Random Password Generator</span>
-                <span class="dropdown-desc">Offline CSPRNG client entropy generator</span>
-              </div>
+              <span class="dropdown-title">Random Generator</span>
             </a>
             <a href="/pin.html" class="dropdown-item" role="menuitem">
               <span class="dropdown-icon">🔢</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">PIN Generator</span>
-                <span class="dropdown-desc">Deterministic 4-6 digit ATM & UPI bank PINs</span>
-              </div>
+              <span class="dropdown-title">PIN Generator</span>
             </a>
             <div class="dropdown-divider"></div>
             <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="dropdown-item" role="menuitem">
               <span class="dropdown-icon">⚖️</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Compare All Generators</span>
-                <span class="dropdown-desc">Side-by-side mathematical audit</span>
-              </div>
+              <span class="dropdown-title">Compare All Tools</span>
             </a>
           </div>
         </div>
 
-        <!-- 2. Resources Dropdown (Guide + How It Works + Blog + FAQ + Whitepaper) -->
+        <!-- 2. Resources Dropdown (Clean 2-Column Categorized Panel) -->
         <div class="nav-dropdown" id="dropdown-resources">
           <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
             Resources <span class="dropdown-chevron">▾</span>
           </button>
-          <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:340px;">
-            <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">🔑</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Secret Key Master Guide</span>
-                <span class="dropdown-desc">How to craft & remember your master key</span>
+          <div class="nav-dropdown-menu categorized-menu" role="menu" aria-labelledby="res-trigger" style="min-width:520px;display:flex;flex-direction:row;gap:1.25rem;padding:1rem;">
+            
+            <!-- Category 1: Core Guides & Explanations -->
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.06em;padding:0.2rem 0.5rem;margin-bottom:4px;">
+                📚 Core Guides &amp; Tools
               </div>
-            </a>
-            <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">⚙️</span>
-              <div class="dropdown-text">
+              <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔑</span>
+                <span class="dropdown-title">Secret Key Guide</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚙️</span>
                 <span class="dropdown-title">How FrankPass Works</span>
-                <span class="dropdown-desc">Stateless Math vs Cloud Password Vaults</span>
+              </a>
+              <a href="/faq.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">❓</span>
+                <span class="dropdown-title">Security FAQ</span>
+              </a>
+              <a href="/docs.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">📄</span>
+                <span class="dropdown-title">Cryptographic Specs</span>
+              </a>
+            </div>
+
+            <!-- Category 2: Security Research & Articles -->
+            <div style="flex:1.1;display:flex;flex-direction:column;gap:3px;border-left:1px solid var(--border);padding-left:1.25rem;">
+              <div style="font-size:0.75rem;font-weight:800;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.06em;padding:0.2rem 0.5rem;margin-bottom:4px;">
+                🛡️ Research &amp; Articles
               </div>
-            </a>
-            <a href="/blog.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">📖</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Security Blog & Research</span>
-                <span class="dropdown-desc">Keyloggers, Invisible Vault & password science</span>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="/faq.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">❓</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Security FAQ & Trust</span>
-                <span class="dropdown-desc">Offline guarantees & common questions</span>
-              </div>
-            </a>
-            <a href="/docs.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">📄</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Documentation & Whitepaper</span>
-                <span class="dropdown-desc">PBKDF2-HMAC-SHA512 cryptographic spec</span>
-              </div>
-            </a>
+              <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">👁️</span>
+                <span class="dropdown-title">Invisible Vault Architecture</span>
+              </a>
+              <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔬</span>
+                <span class="dropdown-title">Password Science 2026</span>
+              </a>
+              <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">💡</span>
+                <span class="dropdown-title">Why I Built FrankPass</span>
+              </a>
+              <div class="dropdown-divider" style="margin:4px 0;"></div>
+              <a href="/blog.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
+                <span>📖 View All Blog Articles &rarr;</span>
+              </a>
+            </div>
           </div>
         </div>
 
@@ -483,6 +495,8 @@
   <div id="site-footer"></div>
 
   <!-- Shared Scripts -->
+  <script src="./country-data.js"></script>
+  <script src="./country-dropdown.js"></script>
   <script src="./footer.js"></script>
 
   <script>
