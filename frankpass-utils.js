@@ -945,12 +945,6 @@ const FrankPassUtils = (function () {
     function getSeedHint(raw) {
         const normalized = getNormalizedPlatform(raw);
         if (!normalized) return '';
-        
-        const label = ECOSYSTEM_LABELS[normalized];
-        if (label) {
-            return 'Using as: "' + normalized + '" (' + label + ')';
-        }
-        
         return 'Using as: "' + normalized + '"';
     }
 
