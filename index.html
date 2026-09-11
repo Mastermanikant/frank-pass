@@ -854,28 +854,33 @@
  </button>
  </div>
 
- <!-- Output box -->
- <div class="output-box" role="region" aria-label="Generated password output" aria-live="polite">
- <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
- ••••••••••••
- </div>
- <div class="output-actions">
- <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password">
- <svg id="mask-eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
- <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
- <circle cx="12" cy="12" r="3"></circle>
- </svg>
- </button>
- <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
- <svg class="copy-icon" id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
- <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
- </svg>
- <span>Copy</span>
- </button>
- </div>
- </div>
+  <!-- ============================================================
+       PASSWORD OUTPUT CONTAINER (DO NOT NEST BANNERS INSIDE)
+       ============================================================ -->
+  <div class="output-box" role="region" aria-label="Generated password output" aria-live="polite">
+  <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
+  ••••••••••••
+  </div>
+  <div class="output-actions">
+  <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password">
+  <svg id="mask-eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+  <circle cx="12" cy="12" r="3"></circle>
+  </svg>
+  </button>
+  <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
+  <svg class="copy-icon" id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
+  <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+  </svg>
+  <span>Copy</span>
+  </button>
+  </div>
+  </div>
+  <!-- ==================== END PASSWORD OUTPUT CONTAINER ==================== -->
 
-  <!-- Clipboard Auto-Clear Timer Bar -->
+  <!-- ============================================================
+       CLIPBOARD SECURITY, COUNTDOWN TIMER & PERMISSION BANNER
+       ============================================================ -->
   <div id="clipboard-clear-bar" style="display:none;margin-top:0.6rem;padding:0.6rem 0.9rem;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;font-size:0.82rem;color:var(--text-muted);align-items:center;gap:0.5rem;flex-wrap:wrap" role="status" aria-live="polite">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span>Clipboard auto-wipes in <strong id="clipboard-countdown" style="color:var(--text-primary);font-size:0.95rem">30</strong>s</span>
@@ -915,6 +920,7 @@
       <button id="perm-deny-btn" type="button" style="margin-left:auto;padding:0.35rem 0.75rem;background:transparent;color:var(--text-muted);border:1px solid var(--border);border-radius:8px;font-size:0.78rem;cursor:pointer">No Thanks</button>
     </div>
   </div>
+  <!-- ==================== END CLIPBOARD CONTROLS ==================== -->
  
  <!-- Micro Trust Badge -->
  <div class="gen-micro-footer">
