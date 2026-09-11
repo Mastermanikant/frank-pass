@@ -42,6 +42,19 @@
 /articles /blog 301
 /security-tips /blog 301
 
+# Library & Master Directory Redirects
+/links /library 301
+/links.html /library 301
+/links-hindi /library-hindi 301
+/links-hindi.html /library-hindi 301
+/directory /library 301
+/directory-hindi /library-hindi 301
+/sitemap-links /library 301
+
+# Duplicate Blog Post Consolidation to Canonical Root
+/blog/frankpass-vs-traditional-cloud-password-vaults /frankpass-vs-cloud-password-vaults 301
+/blog/frankpass-vs-traditional-cloud-password-vaults.html /frankpass-vs-cloud-password-vaults 301
+
 # Regional Country Code 200 Rewrites (SPA routing for country dropdown)
 /in / 200
 /us / 200

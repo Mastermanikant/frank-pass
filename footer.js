@@ -100,6 +100,7 @@
         <a href="/faq.html">Security FAQ</a>
         <a href="/limitations-and-advantages.html">Limitations &amp; Advantages</a>
         <a href="/blog.html">Security Blog</a>
+        <a href="/library.html" style="color:var(--accent-light);font-weight:600">🏛️ Master Library &amp; Directory</a>
       </div>
 
       <!-- Col 4: Trust & Founder -->

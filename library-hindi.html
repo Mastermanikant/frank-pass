@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>फ्रैंकपास लाइब्रेरी - टूल्स, गाइड्स, डॉक्स एवं आर्टिकल्स की संपूर्ण डायरेक्टरी</title>
+  <meta name="description" content="फ्रैंकपास का मास्टर साइटमैप एवं रिसोर्स डायरेक्टरी। सभी पासवर्ड जेनरेटर्स, ऑनबोर्डिंग गाइड्स, क्रिप्टोग्राफिक स्पेक्स और साइबर सुरक्षा आर्टिकल्स की 1-लाइन स्पष्ट जानकारी।">
+  <link rel="canonical" href="https://frankpass.com/library-hindi.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/library.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/library-hindi.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/library.html">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="फ्रैंकपास लाइब्रेरी - टूल्स एवं रिसोर्स की संपूर्ण डायरेक्टरी">
+  <meta property="og:description" content="फ्रैंकपास के सभी टूल्स, यूजर गाइड्स, टेक्निकल डॉक्स और साइबर सुरक्षा आर्टिकल्स की 1-लाइन स्पष्ट जानकारी वाला मास्टर इंडेक्स।">
+  <meta property="og:url" content="https://frankpass.com/library-hindi.html">
+  <meta property="og:site_name" content="FrankPass">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <meta name="twitter:title" content="फ्रैंकपास लाइब्रेरी - संपूर्ण डायरेक्टरी">
+  <meta name="twitter:description" content="फ्रैंकपास के प्रत्येक टूल और गाइड की पारदर्शी 1-लाइन सूची।">
+  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <!-- Favicons & Icons -->
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Typography & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/style.css?v=3.8.9">
+
+  <!-- Schema.org CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "फ्रैंकपास रिसोर्स लाइब्रेरी एवं मास्टर डायरेक्टरी",
+    "description": "फ्रैंकपास के सभी स्टेटलेस पासवर्ड जेनरेटर्स, क्रिप्टोग्राफिक पेपर्स, ऑनबोर्डिंग गाइड्स और साइबर सुरक्षा आर्टिकल्स की संपूर्ण सूची।",
+    "url": "https://frankpass.com/library-hindi.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FrankPass",
+      "founder": {
+        "@type": "Person",
+        "name": "मास्टर मणिकान्त यादव",
+        "url": "https://mastermanikant.com"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    .library-hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .library-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(139, 92, 246, 0.14);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      color: var(--accent-light);
+      padding: 0.35rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .library-search-wrapper {
+      max-width: 640px;
+      margin: 2rem auto 1.5rem;
+      position: relative;
+    }
+    .library-search-input {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3rem;
+      background: var(--card-glass-bg);
+      border: 1px solid var(--card-glass-border);
+      border-radius: var(--radius-lg);
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+    }
+    .library-search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+    }
+    .library-search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .filter-tab {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+    .filter-tab:hover, .filter-tab.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .library-section {
+      margin-bottom: 3.5rem;
+    }
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-header-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-count-badge {
+      font-size: 0.75rem;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .resource-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--card-glass-border);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+    .resource-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+    }
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+    .card-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(139, 92, 246, 0.12);
+      color: var(--accent-light);
+      font-size: 1.25rem;
+    }
+    .card-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .badge-tool     { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-guide    { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-security { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-blog     { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .badge-trust    { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+      font-family: var(--font-heading);
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+    .card-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+    .card-audience {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .no-results-box {
+      display: none;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">मुख्य सामग्री पर जाएं</a>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass - Home">
+      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="32" height="32" class="header-brand-icon">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <div class="header-country custom-country-dropdown">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+        <span id="country-display-name">India</span>
+        <svg class="country-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="country-menu" id="country-menu" role="listbox" aria-label="देश चुनें">
+        <div class="country-search-box">
+          <input type="text" id="country-search-input" placeholder="देश खोजें..." autocomplete="off" aria-label="देश फ़िल्टर करें">
+        </div>
+        <div class="country-list" id="country-list"></div>
+      </div>
+    </div>
+
+    <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+      <a href="/" class="nav-link">होम</a>
+      <a href="/get-started.html" class="nav-link">शुरुआत करें</a>
+      <a href="/docs.html" class="nav-link">डॉक्स</a>
+      <a href="/library-hindi.html" class="nav-link" aria-current="page" style="color:var(--accent-light);font-weight:700">लाइब्रेरी</a>
+      <a href="/faq.html" class="nav-link">FAQ</a>
+      <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="दिन व रात का मोड बदलें" title="थीम बदलें">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="मेनू खोलें" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu drawer -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/">होम (स्टेटलेस जेनरेटर)</a>
+  <a href="/get-started.html">शुरुआत गाइड</a>
+  <a href="/library-hindi.html" aria-current="page" style="font-weight:700;color:var(--accent-light)">मास्टर लाइब्रेरी</a>
+  <a href="/docs.html">तकनीकी डॉक्स</a>
+  <a href="/faq.html">FAQ सवाल-जवाब</a>
+  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a>
+</nav>
+
+<main id="main-content">
+
+  <!-- Top Language Switcher Bar -->
+  <div class="container" style="max-width:1100px;margin:1rem auto 0;padding:0 1.5rem;display:flex;justify-content:flex-end">
+    <a href="/library.html" class="btn-ghost" style="padding:0.4rem 0.95rem;font-size:0.82rem;border-radius:8px;font-weight:600;display:inline-flex;align-items:center;gap:6px">
+      🌐 Read in English &rarr;
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="library-hero">
+    <div class="library-badge">
+      <span>🏛️</span> इकोसिस्टम डायरेक्टरी एवं मास्टर साइटमैप
+    </div>
+    <h1 style="margin-bottom:1rem">फ्रैंकपास <span style="color:var(--accent)">लाइब्रेरी</span></h1>
+    <p style="font-size:1.12rem;color:var(--text-muted);line-height:1.7;max-width:760px;margin:0 auto">
+      फ्रैंकपास के प्रत्येक जेनरेटर टूल, यूजर गाइड, क्रिप्टोग्राफिक स्पेसिफिकेशन और सुरक्षा आर्टिकल का संपूर्ण और पारदर्शी मास्टर इंडेक्स। जानिए हर पेज पर क्या मिलेगा केवल 1 पंक्ति में।
+    </p>
+
+    <!-- Search input -->
+    <div class="library-search-wrapper">
+      <svg class="library-search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="library-search" class="library-search-input" placeholder="संसाधन खोजें (जैसे पिन, डॉक्स, सीक्रेट की, ऑफलाइन, तुलना)..." autocomplete="off" aria-label="फ्रैंकपास संसाधन खोजें">
+    </div>
+
+    <!-- Category filter pills -->
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all" type="button">सभी संसाधन</button>
+      <button class="filter-tab" data-filter="tool" type="button">🛠️ जनरेटर्स व टूल्स</button>
+      <button class="filter-tab" data-filter="guide" type="button">📖 शुरुआत व गाइड्स</button>
+      <button class="filter-tab" data-filter="security" type="button">🛡️ सुरक्षा व डॉक्स</button>
+      <button class="filter-tab" data-filter="blog" type="button">📰 ब्लॉग व निबंध</button>
+      <button class="filter-tab" data-filter="trust" type="button">🏛️ ट्रस्ट व लीगल</button>
+    </div>
+  </section>
+
+  <!-- Content Container -->
+  <div class="container" style="max-width:1180px;margin:0 auto;padding:0 1.5rem 4rem">
+
+    <!-- CATEGORY 1: GENERATORS & TOOLS -->
+    <section class="library-section" data-category-group="tool">
+      <div class="section-header-row">
+        <h2 class="section-header-title">🛠️ कोर टूल्स एवं जनरेटर्स</h2>
+        <span class="section-count-badge">4 टूल्स</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 1. Stateless Generator -->
+        <a href="/" class="resource-card" data-category="tool" data-keywords="स्टेटलेस पासवर्ड जेनरेटर stateless generator pbkdf2 math zero storage">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚡</div>
+              <span class="card-badge badge-tool">मुख्य ऐप</span>
+            </div>
+            <h3 class="card-title">स्टेटलेस पासवर्ड जेनरेटर</h3>
+            <p class="card-desc">गणित आधारित डिटरमिनिस्टिक इंजन जो ब्राउज़र मेमोरी में 10 लाख PBKDF2 राउंड्स चलाता है। कभी किसी डेटाबेस या सर्वर पर स्टोर नहीं होता।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: सभी यूज़र्स</span>
+            <span>टूल खोलें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 2. Random Password Generator -->
+        <a href="/random-password-generator.html" class="resource-card" data-category="tool" data-keywords="रैंडम पासवर्ड जेनरेटर csprng random offline passphrase throwaway">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🎲</div>
+              <span class="card-badge badge-tool">ऑफलाइन टूल</span>
+            </div>
+            <h3 class="card-title">ऑफलाइन रैंडम जेनरेटर</h3>
+            <p class="card-desc">क्रिप्टोग्राफिक रूप से सुरक्षित (CSPRNG) इंजन जो बिना किसी इनपुट के तत्काल वन-टाइम पासवर्ड और मजबूत पासफ्रेज बनाता है।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: त्वरित पासवर्ड</span>
+            <span>टूल खोलें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 3. Secure PIN Generator -->
+        <a href="/pin.html" class="resource-card" data-category="tool" data-keywords="पिन जेनरेटर secure pin generator atm upi banking 4-digit 6-digit">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔢</div>
+              <span class="card-badge badge-tool">बैंकिंग व एटीएम</span>
+            </div>
+            <h3 class="card-title">सुरक्षित पिन जेनरेटर</h3>
+            <p class="card-desc">एटीएम और यूपीआई के लिए 4 से 12 अंकों का बैंक-ग्रेड स्टेटलेस पिन जेनरेटर, जो बिना याद रखे केवल गणित से दोबारा मिल जाता है।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: दैनिक बैंकिंग</span>
+            <span>टूल खोलें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 4. Tools Comparison Matrix -->
+        <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="resource-card" data-category="tool" data-keywords="तुलना compare comparison difference matrix choose generator">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📊</div>
+              <span class="card-badge badge-tool">तुलना मैट्रिक्स</span>
+            </div>
+            <h3 class="card-title">जेनरेटर्स तुलना मैट्रिक्स</h3>
+            <p class="card-desc">स्टेटलेस, रैंडम और पिन जेनरेटर की विस्तृत तुलनात्मक तालिका ताकि आप जान सकें कि कौन सा टूल किस परिस्थिति के लिए सही है।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: टूल चयन</span>
+            <span>तुलना देखें &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 2: GUIDES & ONBOARDING -->
+    <section class="library-section" data-category-group="guide">
+      <div class="section-header-row">
+        <h2 class="section-header-title">📖 शुरुआत एवं यूजर गाइड्स</h2>
+        <span class="section-count-badge">4 गाइड्स</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 5. Get Started -->
+        <a href="/get-started.html" class="resource-card" data-category="guide" data-keywords="शुरुआत get started quickstart onboarding checklist 2-minute tutorial">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🚀</div>
+              <span class="card-badge badge-guide">ऑनबोर्डिंग</span>
+            </div>
+            <h3 class="card-title">2-मिनट क्विक स्टार्ट गाइड</h3>
+            <p class="card-desc">नए उपयोगकर्ताओं के लिए 3-स्टेप आसान चेकलिस्ट। 2 मिनट में अपनी पहली मास्टर की चुनना और पासवर्ड बनाना सीखें।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: नए यूज़र्स (Day 0)</span>
+            <span>गाइड पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 6. Secret Key Guide -->
+        <a href="/secret-key-guide.html" class="resource-card" data-category="guide" data-keywords="सीक्रेट की secret key guide master passphrase memorable tips strategy">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔑</div>
+              <span class="card-badge badge-guide">सुरक्षा रणनीति</span>
+            </div>
+            <h3 class="card-title">सीक्रेट की मास्टर गाइड</h3>
+            <p class="card-desc">कभी न भूलने वाली अटूट मास्टर की (Passphrase) चुनने और उसे याद रखने की आसान व सुरक्षित रणनीतियां।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: दैनिक यूज़र्स</span>
+            <span>गाइड पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 7. Install & PWA -->
+        <a href="/install.html" class="resource-card" data-category="guide" data-keywords="ऐप इंस्टॉल install app pwa offline android ios windows mac desktop">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📲</div>
+              <span class="card-badge badge-guide">ऐप्स व ऑफलाइन</span>
+            </div>
+            <h3 class="card-title">ऑफलाइन ऐप व PWA सेटअप</h3>
+            <p class="card-desc">एंड्रॉयड, आईफोन (iOS), विंडोज व मैक पर फ्रैंकपास को बिना इंटरनेट एयरप्लेन मोड में 100% ऑफलाइन चलाने की गाइड।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: सभी डिवाइसेस</span>
+            <span>इंस्टॉल गाइड &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 8. FAQ -->
+        <a href="/faq.html" class="resource-card" data-category="guide" data-keywords="सवाल जवाब faq frequently asked questions help zero knowledge security">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">❓</div>
+              <span class="card-badge badge-guide">सहायता केंद्र</span>
+            </div>
+            <h3 class="card-title">सुरक्षा व सामान्य FAQ</h3>
+            <p class="card-desc">सुरक्षा, जीरो-नॉलेज, सीक्रेट की बैकअप, पासवर्ड सिंक और ऑफलाइन उपयोग से जुड़े 20+ सबसे महत्वपूर्ण सवालों के जवाब।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: सामान्य शंकाएं</span>
+            <span>उत्तर देखें &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 3: SECURITY & SPECS -->
+    <section class="library-section" data-category-group="security">
+      <div class="section-header-row">
+        <h2 class="section-header-title">🛡️ सुरक्षा, गणित एवं आर्किटेक्चर</h2>
+        <span class="section-count-badge">5 दस्तावेज</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 9. Comparison vs Cloud Vaults (Hindi Twin Link!) -->
+        <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="resource-card" data-category="security" data-keywords="क्लाउड वॉल्ट तुलना vs cloud vaults comparison bitwarden 1password honeypot">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚔️</div>
+              <span class="card-badge badge-security">आर्किटेक्चरल सत्य</span>
+            </div>
+            <h3 class="card-title">फ्रैंकपास बनाम क्लाउड वॉल्ट्स</h3>
+            <p class="card-desc">क्लाउड सर्वर पर पासवर्ड स्टोर करने के खतरे और फ्रैंकपास के 10 लाख PBKDF2 राउंड्स की शून्य-स्टोरेज सुरक्षा की गहरी तुलना।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: सुरक्षा विश्लेषक</span>
+            <span>तुलना पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 10. Honest Limitations & Advantages (Hindi Twin Link!) -->
+        <a href="/limitations-and-advantages-hindi.html" class="resource-card" data-category="security" data-keywords="सीमाएं फायदे limitations advantages pros cons trade-offs sovereign">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚖️</div>
+              <span class="card-badge badge-security">पूर्ण पारदर्शिता</span>
+            </div>
+            <h3 class="card-title">ईमानदार सीमाएं एवं फायदे</h3>
+            <p class="card-desc">फ्रैंकपास की वास्तविक तकनीकी सीमाएं (कमियां) और इसके बेजोड़ फायदे, बिना किसी मार्केटिंग बढ़ावे के 100% निष्पक्ष विश्लेषण।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: ईमानदार समीक्षा</span>
+            <span>विश्लेषण देखें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 11. Developer Documentation -->
+        <a href="/docs.html" class="resource-card" data-category="security" data-keywords="डेवलपर डॉक्स docs documentation developer api pbkdf2 hmac sha512 webcrypto">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚙️</div>
+              <span class="card-badge badge-security">इंजीनियरिंग मैनुअल</span>
+            </div>
+            <h3 class="card-title">डेवलपर तकनीकी डॉक्यूमेंटेशन</h3>
+            <p class="card-desc">10 लाख PBKDF2 राउंड्स, सॉल्ट स्ट्रक्चर, वेब क्रिप्टोग्राफी API प्रिमिटिव्स और कोड एकीकरण का संपूर्ण तकनीकी मैनुअल।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: डेवलपर्स व इंजीनियर्स</span>
+            <span>स्पेसिफिकेशन पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 12. Mathematical Whitepaper -->
+        <a href="/whitepaper.html" class="resource-card" data-category="security" data-keywords="व्हाइटपेपर शोधपत्र whitepaper rfc proof math mmy constant entropy nist">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔬</div>
+              <span class="card-badge badge-security">RFC-001 शोधपत्र</span>
+            </div>
+            <h3 class="card-title">क्रिप्टोग्राफिक व्हाइटपेपर (RFC-001)</h3>
+            <p class="card-desc">मास्टर मणिकान्त यादव के कॉन्सटेंट (MMY_constant) और ब्रूट-फोर्स सुरक्षा का औपचारिक गणितीय प्रमाण एवं शोधपत्र।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: गणितज्ञ व ऑडिटर्स</span>
+            <span>व्हाइटपेपर पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 13. Threat Defense: Invisible Vault (Hindi Twin Link!) -->
+        <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault-hindi.html" class="resource-card" data-category="security" data-keywords="कीलॉगर्स क्लिपबोर्ड invisible vault keyloggers clipboard threat defense malware">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🛡️</div>
+              <span class="card-badge badge-security">थ्रेट डिफेंस</span>
+            </div>
+            <h3 class="card-title">अदृश्य वॉल्ट: कीलॉगर्स से सुरक्षा</h3>
+            <p class="card-desc">कीलॉगर्स और क्लिपबोर्ड स्नूपर्स से सुरक्षा का गहरा तकनीकी विश्लेषण और स्टेटलेस गणित कैसे मैलवेयर हमलों को बेअसर करता है।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: साइबर सुरक्षा प्रेमी</span>
+            <span>विश्लेषण पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 4: BLOG & ESSAYS -->
+    <section class="library-section" data-category-group="blog">
+      <div class="section-header-row">
+        <h2 class="section-header-title">📰 ब्लॉग एवं सुरक्षा निबंध</h2>
+        <span class="section-count-badge">7 आर्टिकल्स</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 14. Origin Story -->
+        <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="resource-card" data-category="blog" data-keywords="दिसंबर 25 origin story why i built frankpass master manikant yadav founder">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">✍️</div>
+              <span class="card-badge badge-blog">स्थापना की कहानी</span>
+            </div>
+            <h3 class="card-title">मैंने फ्रैंकपास क्यों बनाया: 25 दिसंबर की कहानी</h3>
+            <p class="card-desc">संस्थापक मास्टर मणिकान्त यादव द्वारा क्लाउड वॉल्ट्स की कमजोरियों और संप्रभु स्टेटलेस टूल्स के निर्माण की व्यक्तिगत यात्रा।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: विजन व कहानी</span>
+            <span>आर्टिकल पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 15. Why No Forgot Password -->
+        <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="resource-card" data-category="blog" data-keywords="फॉरगॉट पासवर्ड why no forgot password backdoor identity theft security">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔒</div>
+              <span class="card-badge badge-blog">आर्किटेक्चर निबंध</span>
+            </div>
+            <h3 class="card-title">बिना 'फॉरगॉट पासवर्ड' ही सबसे बड़ी ताकत क्यों</h3>
+            <p class="card-desc">पासवर्ड रिकवरी बटन न होना ही फ्रैंकपास की सबसे बड़ी अभेद्य सुरक्षा क्यों है, जो 90% आइडेंटिटी चोरी को हमेशा के लिए मिटा देता है।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: सुरक्षा दर्शन</span>
+            <span>आर्टिकल पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 16. Future of Stateless (Hindi Twin Link!) -->
+        <a href="/blog/why-stateless-password-generation-is-the-future-hindi.html" class="resource-card" data-category="blog" data-keywords="स्टेटलेस भविष्य why stateless future deterministic zero database paradigm">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔮</div>
+              <span class="card-badge badge-blog">इंडस्ट्री विजन</span>
+            </div>
+            <h3 class="card-title">स्टेटलेस जनरेशन ही साइबर सुरक्षा का भविष्य क्यों है</h3>
+            <p class="card-desc">सर्वर डेटाबेस पर निर्भरता से क्लाइंट-साइड गणितीय संप्रभुता की ओर वैश्विक बदलाव का गहरा आर्किटेक्चरल विश्लेषण।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: तकनीकी भविष्यवादी</span>
+            <span>आर्टिकल पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 17. Password Science & Entropy -->
+        <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="resource-card" data-category="blog" data-keywords="पासवर्ड मजबूती strong password entropy shannon brute force dictionary science">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🧠</div>
+              <span class="card-badge badge-blog">पासवर्ड विज्ञान</span>
+            </div>
+            <h3 class="card-title">पासवर्ड वास्तव में मजबूत और सुरक्षित कैसे बनता है</h3>
+            <p class="card-desc">शैनन एंट्रॉपी गणना और गणितीय प्रमाण कि पासवर्ड की लंबाई हमेशा जटिल स्पेशल कैरेक्टर्स से कहीं ज्यादा शक्तिशाली होती है।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: सुरक्षा सिद्धांत</span>
+            <span>आर्टिकल पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 18. Natural Language & MMY Normalization -->
+        <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="resource-card" data-category="blog" data-keywords="नॉर्मलाइजेशन natural language passphrases mmy normalization unicode nfc">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📝</div>
+              <span class="card-badge badge-blog">भाषा व गणित</span>
+            </div>
+            <h3 class="card-title">प्राकृतिक भाषा और MMY नॉर्मलाइजेशन</h3>
+            <p class="card-desc">यूनिकोड NFC नॉर्मलाइजेशन और केसिंग एल्गोरिदम कैसे मानवीय टाइपिंग त्रुटियों को गणितीय रूप से संतुलित करते हैं।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: गणित व UX</span>
+            <span>आर्टिकल पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 19. The No Free Lunch Paradigm -->
+        <a href="/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html" class="resource-card" data-category="blog" data-keywords="फ्रीमियम नो फ्री लंच no free lunch paradigm ethics freemium zero ads privacy">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🌱</div>
+              <span class="card-badge badge-blog">नैतिक व्यापार दर्शन</span>
+            </div>
+            <h3 class="card-title">'नो फ्री लंच' सिद्धांत एवं पारदर्शी फ्रीमियम</h3>
+            <p class="card-desc">मुख्य टूल हमेशा के लिए मुफ्त और ट्रैकर-मुक्त क्यों है, और प्रो लाइसेंसिंग कैसे स्वतंत्र सॉफ्टवेयर विकास को बनाए रखती है।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: बिजनेस मॉडल</span>
+            <span>आर्टिकल पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 20. Complete Blog Archive -->
+        <a href="/blog.html" class="resource-card" data-category="blog" data-keywords="ब्लॉग संग्रह blog index archive articles editorial news security insights">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📚</div>
+              <span class="card-badge badge-blog">ब्लॉग संग्रह</span>
+            </div>
+            <h3 class="card-title">फ्रैंकपास सुरक्षा ब्लॉग संग्रह</h3>
+            <p class="card-desc">सभी प्रकाशित साइबर सुरक्षा अपडेट्स, तकनीकी विश्लेषणों और शोध लेखों का कालक्रमानुसार संपादकीय संग्रह।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: पाठक व सब्सक्राइबर्स</span>
+            <span>ब्लॉग ब्राउज़ करें &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 5: TRUST, FOUNDER & LEGAL -->
+    <section class="library-section" data-category-group="trust">
+      <div class="section-header-row">
+        <h2 class="section-header-title">🏛️ इकोसिस्टम, ट्रस्ट एवं नीतियां</h2>
+        <span class="section-count-badge">6 पेजेस</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 21. Founder Profile (Hindi Twin Link!) -->
+        <a href="/founder-mastermanikant-hindi.html" class="resource-card" data-category="trust" data-keywords="फाउंडर संस्थापक founder master manikant yadav profile biography vision connect">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">👤</div>
+              <span class="card-badge badge-trust">संस्थापक</span>
+            </div>
+            <h3 class="card-title">संस्थापक: मास्टर मणिकान्त यादव</h3>
+            <p class="card-desc">संस्थापक मास्टर मणिकान्त यादव का परिचय, डिजिटल संप्रभुता का विजन, ओपन-सोर्स सिद्धांत और संपर्क सूत्र।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: जन विश्वास</span>
+            <span>प्रोफाइल देखें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 22. About Us (Hindi Twin Link!) -->
+        <a href="/about-us-hindi.html" class="resource-card" data-category="trust" data-keywords="कंपनी मिशन about us mission frankbase company values privacy human right">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🏢</div>
+              <span class="card-badge badge-trust">कंपनी विजन</span>
+            </div>
+            <h3 class="card-title">फ्रैंकपास एवं फ्रैंकबेस के बारे में</h3>
+            <p class="card-desc">हमारा मिशन: निजता (प्राइवेसी) हर मनुष्य का बुनियादी अधिकार है। फ्रैंकबेस सॉफ्टवेयर नेटवर्क के मुख्य मूल्य और उद्देश्य।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: मिशन व विजन</span>
+            <span>हमारे बारे में पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 23. FrankPass Pro -->
+        <a href="/pro.html" class="resource-card" data-category="trust" data-keywords="प्रो एडिशन pro lifetime browser extension autofill features plans pricing">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⭐</div>
+              <span class="card-badge badge-trust">प्रो एडिशन</span>
+            </div>
+            <h3 class="card-title">फ्रैंकपास प्रो एडिशन</h3>
+            <p class="card-desc">पावर उपयोगकर्ताओं के लिए 1-क्लिक ब्राउज़र ऑटो-फिल एक्सटेंशन, मल्टी-प्रोफाइल मैनेजमेंट और लाइफटाइम प्रो विकल्प।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: पावर यूज़र्स</span>
+            <span>प्रो फीचर्स देखें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 24. Ecosystem Products -->
+        <a href="/products.html" class="resource-card" data-category="trust" data-keywords="प्रोडक्ट्स products ecosystem apps software frankbase web tools directory">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🌐</div>
+              <span class="card-badge badge-trust">इकोसिस्टम</span>
+            </div>
+            <h3 class="card-title">सभी इकोसिस्टम प्रोडक्ट्स</h3>
+            <p class="card-desc">फ्रैंकबेस नेटवर्क द्वारा निर्मित सभी स्टैंडअलोन वेब एप्लिकेशन्स, क्रिप्टोग्राफिक मॉड्यूल्स और डिजिटल टूल्स की सूची।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: उत्पाद हब</span>
+            <span>सभी टूल्स देखें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 25. Sponsors Hub -->
+        <a href="/sponsors.html" class="resource-card" data-category="trust" data-keywords="स्पॉन्सर्स समर्थक sponsors green cloud community open source support backers">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🌱</div>
+              <span class="card-badge badge-trust">कम्युनिटी</span>
+            </div>
+            <h3 class="card-title">समर्थक एवं ग्रीन स्पॉन्सर्स</h3>
+            <p class="card-desc">ओपन-सोर्स कम्युनिटी और फ्रैंकपास के शून्य-कार्बन पर्यावरण-अनुकूल क्लाउड इंफ्रास्ट्रक्चर के समर्थक सदस्य।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: समुदाय सहयोग</span>
+            <span>स्पॉन्सर्स देखें &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 26. Legal & Privacy -->
+        <a href="/legal.html" class="resource-card" data-category="trust" data-keywords="लीगल प्राइवेसी कानूनी legal privacy terms policy gdpr no logs compliance">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚖️</div>
+              <span class="card-badge badge-trust">कानूनी नीतियां</span>
+            </div>
+            <h3 class="card-title">कानूनी नीतियां एवं प्राइवेसी पॉलिसी</h3>
+            <p class="card-desc">शून्य-टेलीमेट्री कानूनी गारंटी, सख्त नो-लॉग्स पॉलिसी, जीडीपीआर अनुपालन और उपयोगकर्ता डेटा संप्रभुता के नियम।</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">उपयोगकर्ता: कानूनी अनुपालन</span>
+            <span>नीतियां पढ़ें &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Zero results message -->
+    <div id="no-results" class="no-results-box">
+      <div style="font-size:3rem;margin-bottom:1rem">🔍</div>
+      <h3 style="font-size:1.3rem;color:var(--text-primary);margin-bottom:0.5rem">कोई परिणाम नहीं मिला</h3>
+      <p>कृपया किसी अन्य कीवर्ड जैसे "पिन", "डॉक्स", "ऑफलाइन", "सीक्रेट की" या "व्हाइटपेपर" से खोजें।</p>
+      <button type="button" onclick="resetSearch()" class="btn-ghost" style="margin-top:1rem;padding:0.45rem 1rem">फ़िल्टर हटाएं</button>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="होम"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>होम</span></a>
+  <a href="/get-started.html" class="mob-nav-item" aria-label="शुरुआत"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg><span>शुरुआत</span></a>
+  <a href="/library-hindi.html" class="mob-nav-item active" aria-label="लाइब्रेरी" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>लाइब्रेरी</span></a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="Get Pro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Pro</span></a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
+</nav>
+
+<!-- Scripts -->
+<script src="/frankpass-config.js?v=3.8.9"></script>
+<script src="/country-data.js?v=3.8.9"></script>
+<script src="/country-dropdown.js?v=3.8.9"></script>
+<script src="/footer.js?v=3.8.9"></script>
+
+<script>
+  // Header scroll & Hamburger
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Real-time Search & Filter Functionality
+  const searchInput = document.getElementById('library-search');
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const resourceCards = document.querySelectorAll('.resource-card');
+  const sections = document.querySelectorAll('.library-section');
+  const noResults = document.getElementById('no-results');
+
+  let currentCategory = 'all';
+
+  function filterResources() {
+    const query = (searchInput.value || '').toLowerCase().trim();
+    let visibleCount = 0;
+
+    sections.forEach(section => {
+      let sectionHasVisible = false;
+      const cards = section.querySelectorAll('.resource-card');
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const text = card.textContent.toLowerCase();
+
+        const matchesCat = (currentCategory === 'all' || category === currentCategory);
+        const matchesQuery = (!query || text.includes(query) || keywords.includes(query));
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          sectionHasVisible = true;
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      section.style.display = sectionHasVisible ? 'block' : 'none';
+    });
+
+    noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', filterResources);
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentCategory = tab.getAttribute('data-filter');
+      filterResources();
+    });
+  });
+
+  function resetSearch() {
+    searchInput.value = '';
+    currentCategory = 'all';
+    filterTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-filter') === 'all'));
+    filterResources();
+  }
+</script>
+
+</body>
+</html>

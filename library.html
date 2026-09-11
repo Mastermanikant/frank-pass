@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>FrankPass Library - Complete Directory of Tools, Guides, Docs &amp; Articles</title>
+  <meta name="description" content="Master sitemap and resource library for FrankPass. Explore every password generator, onboarding guide, cryptographic specification, and security essay with honest 1-line previews.">
+  <link rel="canonical" href="https://frankpass.com/library.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/library.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/library-hindi.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/library.html">
+  
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FrankPass Library - Complete Resource &amp; Tools Directory">
+  <meta property="og:description" content="Explore every generator, guide, technical document, and cybersecurity essay in the FrankPass ecosystem with clear 1-line summaries.">
+  <meta property="og:url" content="https://frankpass.com/library.html">
+  <meta property="og:site_name" content="FrankPass">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <meta name="twitter:title" content="FrankPass Library - Complete Resource Directory">
+  <meta name="twitter:description" content="The transparent directory of every tool, guide, doc, and article across FrankPass.">
+  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <!-- Favicons & Icons -->
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Typography & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="/style.css?v=3.8.9">
+
+  <!-- Schema.org CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "FrankPass Resource Library & Master Directory",
+    "description": "Comprehensive directory of all stateless generators, cryptographic documents, user guides, and cybersecurity articles across FrankPass.",
+    "url": "https://frankpass.com/library.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "FrankPass",
+      "founder": {
+        "@type": "Person",
+        "name": "Master Manikant Yadav",
+        "url": "https://mastermanikant.com"
+      }
+    }
+  }
+  </script>
+
+  <style>
+    .library-hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .library-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(139, 92, 246, 0.14);
+      border: 1px solid rgba(139, 92, 246, 0.35);
+      color: var(--accent-light);
+      padding: 0.35rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .library-search-wrapper {
+      max-width: 640px;
+      margin: 2rem auto 1.5rem;
+      position: relative;
+    }
+    .library-search-input {
+      width: 100%;
+      padding: 1rem 1.25rem 1rem 3rem;
+      background: var(--card-glass-bg);
+      border: 1px solid var(--card-glass-border);
+      border-radius: var(--radius-lg);
+      color: var(--text-primary);
+      font-size: 1rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+    }
+    .library-search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+    }
+    .library-search-icon {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+    .filter-tab {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      user-select: none;
+    }
+    .filter-tab:hover, .filter-tab.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .library-section {
+      margin-bottom: 3.5rem;
+    }
+    .section-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-header-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .section-count-badge {
+      font-size: 0.75rem;
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+    .resource-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--card-glass-border);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+    .resource-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15);
+    }
+    .card-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.85rem;
+    }
+    .card-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(139, 92, 246, 0.12);
+      color: var(--accent-light);
+      font-size: 1.25rem;
+    }
+    .card-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 6px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .badge-tool     { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-guide    { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+    .badge-security { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .badge-blog     { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .badge-trust    { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+    
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+      font-family: var(--font-heading);
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      flex-grow: 1;
+    }
+    .card-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+    .card-audience {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .no-results-box {
+      display: none;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass - Home">
+      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="32" height="32" class="header-brand-icon">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <div class="header-country custom-country-dropdown">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;">
+        <span id="country-display-name">India</span>
+        <svg class="country-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div class="country-menu" id="country-menu" role="listbox" aria-label="Select Country">
+        <div class="country-search-box">
+          <input type="text" id="country-search-input" placeholder="Search country..." autocomplete="off" aria-label="Filter countries">
+        </div>
+        <div class="country-list" id="country-list"></div>
+      </div>
+    </div>
+
+    <nav class="nav-links" id="nav-links" aria-label="Primary navigation">
+      <a href="/" class="nav-link">Home</a>
+      <a href="/get-started.html" class="nav-link">Get Started</a>
+      <a href="/docs.html" class="nav-link">Docs</a>
+      <a href="/library.html" class="nav-link" aria-current="page" style="color:var(--accent-light);font-weight:700">Library</a>
+      <a href="/faq.html" class="nav-link">FAQ</a>
+      <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile menu drawer -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/">Home (Stateless Generator)</a>
+  <a href="/get-started.html">Get Started Guide</a>
+  <a href="/library.html" aria-current="page" style="font-weight:700;color:var(--accent-light)">Master Library</a>
+  <a href="/docs.html">Docs &amp; Architecture</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/pro.html" class="btn-primary">Get Pro &rarr;</a>
+</nav>
+
+<main id="main-content">
+
+  <!-- Top Language Switcher Bar -->
+  <div class="container" style="max-width:1100px;margin:1rem auto 0;padding:0 1.5rem;display:flex;justify-content:flex-end">
+    <a href="/library-hindi.html" class="btn-ghost" style="padding:0.4rem 0.95rem;font-size:0.82rem;border-radius:8px;font-weight:600;display:inline-flex;align-items:center;gap:6px">
+      🇮🇳 हिंदी में देखें &rarr;
+    </a>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="library-hero">
+    <div class="library-badge">
+      <span>🏛️</span> Ecosystem Directory &amp; Sitemap
+    </div>
+    <h1 style="margin-bottom:1rem">FrankPass <span style="color:var(--accent)">Library</span></h1>
+    <p style="font-size:1.12rem;color:var(--text-muted);line-height:1.7;max-width:760px;margin:0 auto">
+      A transparent, structured directory of every generator, practical guide, cryptographic specification, and cybersecurity essay across FrankPass. Find exactly what you need with honest one-line previews.
+    </p>
+
+    <!-- Search input -->
+    <div class="library-search-wrapper">
+      <svg class="library-search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="library-search" class="library-search-input" placeholder="Search resources (e.g. PIN, Docs, Secret Key, Offline, Whitepaper)..." autocomplete="off" aria-label="Filter FrankPass resources">
+    </div>
+
+    <!-- Category filter pills -->
+    <div class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all" type="button">All Resources</button>
+      <button class="filter-tab" data-filter="tool" type="button">🛠️ Generators</button>
+      <button class="filter-tab" data-filter="guide" type="button">📖 Guides</button>
+      <button class="filter-tab" data-filter="security" type="button">🛡️ Security &amp; Specs</button>
+      <button class="filter-tab" data-filter="blog" type="button">📰 Essays &amp; Blog</button>
+      <button class="filter-tab" data-filter="trust" type="button">🏛️ Trust &amp; Legal</button>
+    </div>
+  </section>
+
+  <!-- Content Container -->
+  <div class="container" style="max-width:1180px;margin:0 auto;padding:0 1.5rem 4rem">
+
+    <!-- CATEGORY 1: GENERATORS & TOOLS -->
+    <section class="library-section" data-category-group="tool">
+      <div class="section-header-row">
+        <h2 class="section-header-title">🛠️ Core Generators &amp; Tools</h2>
+        <span class="section-count-badge">4 Tools</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 1. Stateless Generator -->
+        <a href="/" class="resource-card" data-category="tool" data-keywords="stateless generator pbkdf2 zero storage master key math">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚡</div>
+              <span class="card-badge badge-tool">Core App</span>
+            </div>
+            <h3 class="card-title">Stateless Password Generator</h3>
+            <p class="card-desc">Deterministic password engine that executes 1,000,000 PBKDF2 rounds in browser memory. Never writes to any database or server.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: All Users</span>
+            <span>Open Tool &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 2. Random Password Generator -->
+        <a href="/random-password-generator.html" class="resource-card" data-category="tool" data-keywords="random password generator csprng passphrase throwaway offline">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🎲</div>
+              <span class="card-badge badge-tool">Offline Tool</span>
+            </div>
+            <h3 class="card-title">Offline Random Generator</h3>
+            <p class="card-desc">Cryptographically secure (CSPRNG) generator for 1-time throwaway passwords and natural passphrases with zero inputs required.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Quick Credentials</span>
+            <span>Open Tool &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 3. Secure PIN Generator -->
+        <a href="/pin.html" class="resource-card" data-category="tool" data-keywords="pin generator atm upi banking 4-digit 6-digit stateless math">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔢</div>
+              <span class="card-badge badge-tool">Banking &amp; ATM</span>
+            </div>
+            <h3 class="card-title">Secure PIN Generator</h3>
+            <p class="card-desc">Stateless 4 to 12 digit banking and ATM PIN generator calculated mathematically from your Secret Key so you never forget it.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Daily Banking</span>
+            <span>Open Tool &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 4. Tools Comparison Matrix -->
+        <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="resource-card" data-category="tool" data-keywords="compare comparison difference matrix choose generator stateless vs random">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📊</div>
+              <span class="card-badge badge-tool">Decision Matrix</span>
+            </div>
+            <h3 class="card-title">Generator Comparison Matrix</h3>
+            <p class="card-desc">Side-by-side architectural decision matrix between Stateless, Pure Random, and PIN generators to help you pick the right tool.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Product Selection</span>
+            <span>View Comparison &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 2: GUIDES & ONBOARDING -->
+    <section class="library-section" data-category-group="guide">
+      <div class="section-header-row">
+        <h2 class="section-header-title">📖 Practical Guides &amp; Onboarding</h2>
+        <span class="section-count-badge">4 Guides</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 5. Get Started -->
+        <a href="/get-started.html" class="resource-card" data-category="guide" data-keywords="get started quickstart onboarding checklist 2-minute 3 steps tutorial">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🚀</div>
+              <span class="card-badge badge-guide">Onboarding</span>
+            </div>
+            <h3 class="card-title">2-Minute Quick Start Guide</h3>
+            <p class="card-desc">Actionable Day-0 onboarding checklist. Learn how to choose a master key and generate your first password in 3 easy steps.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Beginners (Day 0)</span>
+            <span>Read Guide &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 6. Secret Key Guide -->
+        <a href="/secret-key-guide.html" class="resource-card" data-category="guide" data-keywords="secret key guide master passphrase memorable secure tips strategy">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔑</div>
+              <span class="card-badge badge-guide">Best Practices</span>
+            </div>
+            <h3 class="card-title">Secret Key Strategy Guide</h3>
+            <p class="card-desc">Practical tips for creating unbreakable, memorable secret passphrases that you will never forget in real life.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Daily Users</span>
+            <span>Read Guide &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 7. Install & PWA -->
+        <a href="/install.html" class="resource-card" data-category="guide" data-keywords="install app pwa offline android ios windows mac desktop chrome extension">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📲</div>
+              <span class="card-badge badge-guide">Apps &amp; Offline</span>
+            </div>
+            <h3 class="card-title">Install Offline Apps &amp; PWA</h3>
+            <p class="card-desc">Step-by-step device walkthroughs for Android, iPhone (iOS), Windows, and Mac to run FrankPass 100% offline in Airplane Mode.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Multi-device</span>
+            <span>Install Guide &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 8. FAQ -->
+        <a href="/faq.html" class="resource-card" data-category="guide" data-keywords="faq frequently asked questions help support forgotten key zero knowledge security">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">❓</div>
+              <span class="card-badge badge-guide">Help Hub</span>
+            </div>
+            <h3 class="card-title">Security &amp; General FAQ</h3>
+            <p class="card-desc">Exhaustive answers to 20+ crucial questions regarding zero-database cryptography, password sync, forgotten keys, and privacy.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Common Questions</span>
+            <span>Browse Answers &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 3: SECURITY & SPECS -->
+    <section class="library-section" data-category-group="security">
+      <div class="section-header-row">
+        <h2 class="section-header-title">🛡️ Security, Mathematics &amp; Architecture</h2>
+        <span class="section-count-badge">5 Documents</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 9. Comparison vs Cloud Vaults -->
+        <a href="/frankpass-vs-cloud-password-vaults.html" class="resource-card" data-category="security" data-keywords="vs cloud vaults comparison bitwarden 1password lastpass honeypot breach database">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚔️</div>
+              <span class="card-badge badge-security">Architectural Truth</span>
+            </div>
+            <h3 class="card-title">FrankPass vs. Cloud Password Vaults</h3>
+            <p class="card-desc">Deep technical comparison showing why centralized cloud vaults create honeypots, and how stateless zero-storage math eliminates database breaches.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Security Evaluators</span>
+            <span>Read Comparison &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 10. Honest Limitations & Advantages -->
+        <a href="/limitations-and-advantages.html" class="resource-card" data-category="security" data-keywords="limitations advantages pros cons honest trade-offs transparency sovereign">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚖️</div>
+              <span class="card-badge badge-security">Transparency</span>
+            </div>
+            <h3 class="card-title">Honest Limitations &amp; Advantages</h3>
+            <p class="card-desc">Unfiltered disclosure of FrankPass trade-offs, advantages, and boundaries so you can decide with 100% clarity if it fits your threat model.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Honest Review</span>
+            <span>Inspect Trade-offs &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 11. Developer Documentation -->
+        <a href="/docs.html" class="resource-card" data-category="security" data-keywords="docs documentation developer api pbkdf2 hmac sha512 webcrypto cli sdk code">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚙️</div>
+              <span class="card-badge badge-security">Engineering Spec</span>
+            </div>
+            <h3 class="card-title">Developer Documentation</h3>
+            <p class="card-desc">Technical breakdown of the 1,000,000 PBKDF2 iteration engine, salt structure, Web Cryptography API primitives, and CLI implementation.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Developers &amp; Engineers</span>
+            <span>Read Specs &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 12. Mathematical Whitepaper -->
+        <a href="/whitepaper.html" class="resource-card" data-category="security" data-keywords="whitepaper rfc proof math mmy constant entropy nist sp 800-132 research paper">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔬</div>
+              <span class="card-badge badge-security">RFC-001 Paper</span>
+            </div>
+            <h3 class="card-title">Cryptographic Whitepaper (RFC-001)</h3>
+            <p class="card-desc">Formal technical paper defining Master Manikant Yadav's Constant (MMY_constant) with rigorous mathematical entropy and brute-force resistance proofs.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Cryptographers &amp; Auditors</span>
+            <span>Read Whitepaper &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 13. Threat Defense: Invisible Vault -->
+        <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="resource-card" data-category="security" data-keywords="keyloggers clipboard invisible vault threat defense memory snoopers malware">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🛡️</div>
+              <span class="card-badge badge-security">Threat Analysis</span>
+            </div>
+            <h3 class="card-title">The Invisible Vault: Threat Defense</h3>
+            <p class="card-desc">Rigorous threat analysis examining how traditional password managers leak credentials to keyloggers and clipboard malware, and how sovereign math resists them.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Cybersecurity Enthusiasts</span>
+            <span>Read Analysis &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 4: BLOG & ESSAYS -->
+    <section class="library-section" data-category-group="blog">
+      <div class="section-header-row">
+        <h2 class="section-header-title">📰 Blog &amp; Deep Security Essays</h2>
+        <span class="section-count-badge">7 Articles</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 14. Origin Story -->
+        <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="resource-card" data-category="blog" data-keywords="december 25 story why i built frankpass master manikant yadav founder origin personal">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">✍️</div>
+              <span class="card-badge badge-blog">Founding Story</span>
+            </div>
+            <h3 class="card-title">Why I Built FrankPass: The Dec 25 Story</h3>
+            <p class="card-desc">The personal founding essay by Master Manikant Yadav on why cloud vault vulnerabilities led him to engineer a zero-database sovereign alternative.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Vision &amp; Story</span>
+            <span>Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 15. Why No Forgot Password -->
+        <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="resource-card" data-category="blog" data-keywords="why no forgot password recovery backdoor identity theft greatest strength security">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔒</div>
+              <span class="card-badge badge-blog">Architecture Essay</span>
+            </div>
+            <h3 class="card-title">Why No 'Forgot Password' Is Our Greatest Strength</h3>
+            <p class="card-desc">Explaining why omitting password recovery mechanisms eliminates 90% of identity takeover vectors and guarantees mathematical sovereignty.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Philosophy</span>
+            <span>Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 16. Future of Stateless -->
+        <a href="/blog/why-stateless-password-generation-is-the-future.html" class="resource-card" data-category="blog" data-keywords="why stateless future deterministic cryptography zero database paradigm shift">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🔮</div>
+              <span class="card-badge badge-blog">Industry Vision</span>
+            </div>
+            <h3 class="card-title">Why Stateless Password Generation Is the Future</h3>
+            <p class="card-desc">An architectural overview of the generational paradigm shift from vulnerable cloud databases toward client-side mathematical sovereignty.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Tech Futurists</span>
+            <span>Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 17. Password Science & Entropy -->
+        <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="resource-card" data-category="blog" data-keywords="strong password entropy shannon brute force dictionary attacks length science">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🧠</div>
+              <span class="card-badge badge-blog">Password Science</span>
+            </div>
+            <h3 class="card-title">What Makes a Password Truly Strong &amp; Safe</h3>
+            <p class="card-desc">Shannon entropy calculations, dictionary attack resilience, and the mathematical proof of why password length vastly outperforms complex symbols.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Security Fundamentals</span>
+            <span>Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 18. Natural Language & MMY Normalization -->
+        <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="resource-card" data-category="blog" data-keywords="natural language passphrases mmy normalization unicode nfc diacritics typing errors">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📝</div>
+              <span class="card-badge badge-blog">Linguistics &amp; Math</span>
+            </div>
+            <h3 class="card-title">Natural Language Passphrases &amp; MMY Normalization</h3>
+            <p class="card-desc">How Unicode NFC normalization and casing heuristics prevent human memory slip-ups without sacrificing raw cryptographic entropy.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Deep Math &amp; UX</span>
+            <span>Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 19. The No Free Lunch Paradigm -->
+        <a href="/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html" class="resource-card" data-category="blog" data-keywords="no free lunch paradigm business model ethics freemium zero ads privacy">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🌱</div>
+              <span class="card-badge badge-blog">Ethical Business</span>
+            </div>
+            <h3 class="card-title">The 'No Free Lunch' Paradigm &amp; Ethical Freemium</h3>
+            <p class="card-desc">Why the core generator is permanently free with zero trackers, and how transparent Pro licensing sustains independent software development.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Business Ethics</span>
+            <span>Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 20. Complete Blog Archive -->
+        <a href="/blog.html" class="resource-card" data-category="blog" data-keywords="blog index archive articles editorial news security insights feed">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">📚</div>
+              <span class="card-badge badge-blog">Blog Feed</span>
+            </div>
+            <h3 class="card-title">FrankPass Security Blog Archive</h3>
+            <p class="card-desc">The chronological timeline and editorial index of all published security updates, deep dives, and cryptographic research posts.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Readers &amp; Subscribers</span>
+            <span>Browse Blog Feed &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CATEGORY 5: TRUST, FOUNDER & LEGAL -->
+    <section class="library-section" data-category-group="trust">
+      <div class="section-header-row">
+        <h2 class="section-header-title">🏛️ Ecosystem, Trust &amp; Governance</h2>
+        <span class="section-count-badge">6 Pages</span>
+      </div>
+      <div class="library-grid">
+
+        <!-- 21. Founder Profile -->
+        <a href="/founder-mastermanikant.html" class="resource-card" data-category="trust" data-keywords="founder master manikant yadav profile biography vision connect contact">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">👤</div>
+              <span class="card-badge badge-trust">Founder</span>
+            </div>
+            <h3 class="card-title">Founder: Master Manikant Yadav</h3>
+            <p class="card-desc">Biography, engineering philosophy, open-source principles, and official contact channel for founder Master Manikant Yadav.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Public Trust</span>
+            <span>View Profile &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 22. About Us -->
+        <a href="/about-us.html" class="resource-card" data-category="trust" data-keywords="about us mission frankbase company values privacy human right">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🏢</div>
+              <span class="card-badge badge-trust">Company</span>
+            </div>
+            <h3 class="card-title">About FrankPass &amp; FrankBase</h3>
+            <p class="card-desc">Our mission: privacy is a fundamental human right. Explore the core principles and vision driving the FrankBase software ecosystem.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Mission &amp; Values</span>
+            <span>Read About Us &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 23. FrankPass Pro -->
+        <a href="/pro.html" class="resource-card" data-category="trust" data-keywords="pro lifetime browser extension autofill features plans pricing">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⭐</div>
+              <span class="card-badge badge-trust">Pro Edition</span>
+            </div>
+            <h3 class="card-title">FrankPass Pro Edition</h3>
+            <p class="card-desc">1-click browser autofill extension, multi-profile management, and lifetime access options tailored for power users.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Power Users</span>
+            <span>Explore Pro &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 24. Ecosystem Products -->
+        <a href="/products.html" class="resource-card" data-category="trust" data-keywords="products ecosystem apps software frankbase web tools directory">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🌐</div>
+              <span class="card-badge badge-trust">Ecosystem</span>
+            </div>
+            <h3 class="card-title">All Products &amp; Ecosystem</h3>
+            <p class="card-desc">Overview of all standalone web applications, cryptographic modules, and digital tools developed by the FrankBase network.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Ecosystem Hub</span>
+            <span>View All Products &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 25. Sponsors Hub -->
+        <a href="/sponsors.html" class="resource-card" data-category="trust" data-keywords="sponsors green cloud community open source support backers">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🌱</div>
+              <span class="card-badge badge-trust">Community</span>
+            </div>
+            <h3 class="card-title">Sponsors &amp; Green Supporters</h3>
+            <p class="card-desc">Community backers and transparent sponsors supporting FrankPass zero-carbon cloud infrastructure and independent development.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Community Support</span>
+            <span>View Sponsors &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 26. Legal & Privacy -->
+        <a href="/legal.html" class="resource-card" data-category="trust" data-keywords="legal privacy terms policy gdpr no logs compliance zero telemetry">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">⚖️</div>
+              <span class="card-badge badge-trust">Governance</span>
+            </div>
+            <h3 class="card-title">Legal, Terms &amp; Privacy Policy</h3>
+            <p class="card-desc">Zero-telemetry legal binding, strict no-logs policy, GDPR compliance, and verifiable terms of sovereign user privacy.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Compliance</span>
+            <span>View Legal Terms &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Zero results message -->
+    <div id="no-results" class="no-results-box">
+      <div style="font-size:3rem;margin-bottom:1rem">🔍</div>
+      <h3 style="font-size:1.3rem;color:var(--text-primary);margin-bottom:0.5rem">No matching resources found</h3>
+      <p>Try searching for a different keyword like "PIN", "Docs", "Install", or "Whitepaper".</p>
+      <button type="button" onclick="resetSearch()" class="btn-ghost" style="margin-top:1rem;padding:0.45rem 1rem">Clear Search Filter</button>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- Shared Footer -->
+<div id="site-footer"></div>
+
+<!-- Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="/get-started.html" class="mob-nav-item" aria-label="Get Started"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg><span>Start</span></a>
+  <a href="/library.html" class="mob-nav-item active" aria-label="Library" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Library</span></a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="Get Pro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Pro</span></a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
+</nav>
+
+<!-- Scripts -->
+<script src="/frankpass-config.js?v=3.8.9"></script>
+<script src="/country-data.js?v=3.8.9"></script>
+<script src="/country-dropdown.js?v=3.8.9"></script>
+<script src="/footer.js?v=3.8.9"></script>
+
+<script>
+  // Header scroll & Hamburger
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Real-time Search & Filter Functionality
+  const searchInput = document.getElementById('library-search');
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const resourceCards = document.querySelectorAll('.resource-card');
+  const sections = document.querySelectorAll('.library-section');
+  const noResults = document.getElementById('no-results');
+
+  let currentCategory = 'all';
+
+  function filterResources() {
+    const query = (searchInput.value || '').toLowerCase().trim();
+    let visibleCount = 0;
+
+    sections.forEach(section => {
+      let sectionHasVisible = false;
+      const cards = section.querySelectorAll('.resource-card');
+
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const text = card.textContent.toLowerCase();
+
+        const matchesCat = (currentCategory === 'all' || category === currentCategory);
+        const matchesQuery = (!query || text.includes(query) || keywords.includes(query));
+
+        if (matchesCat && matchesQuery) {
+          card.style.display = 'flex';
+          sectionHasVisible = true;
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      section.style.display = sectionHasVisible ? 'block' : 'none';
+    });
+
+    noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', filterResources);
+
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentCategory = tab.getAttribute('data-filter');
+      filterResources();
+    });
+  });
+
+  function resetSearch() {
+    searchInput.value = '';
+    currentCategory = 'all';
+    filterTabs.forEach(t => t.classList.toggle('active', t.getAttribute('data-filter') === 'all'));
+    filterResources();
+  }
+</script>
+
+</body>
+</html>
