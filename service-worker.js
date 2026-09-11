@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.0.0 (Clean Minimal Flyout Release)
-const CACHE_NAME = 'frankpass-v4.0.0';
+// FrankPass Service Worker v4.0.1 (Clean 1-Line Minimal Flyout Release)
+const CACHE_NAME = 'frankpass-v4.0.1';
 const CACHED_URLS = [
     '/',
     '/index.html',

@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="./style.css?v=4.0.0">
+  <link rel="stylesheet" href="./style.css?v=4.0.1">
   <link rel="icon" href="./icons/favicon.png">
 
   <style>
@@ -123,9 +123,9 @@
 
     .dropdown-item {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 0.7rem 0.85rem;
+      align-items: center;
+      gap: 10px;
+      padding: 0.65rem 0.85rem;
       border-radius: 10px;
       text-decoration: none;
       transition: background 0.18s ease;
@@ -136,28 +136,24 @@
     }
 
     .dropdown-icon {
-      font-size: 1.25rem;
-      line-height: 1.2;
+      font-size: 1.15rem;
+      line-height: 1;
       flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .dropdown-text {
-      display: flex;
-      flex-direction: column;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .dropdown-title {
       font-size: 0.88rem;
-      font-weight: 700;
+      font-weight: 600;
       color: var(--text-primary);
+      white-space: nowrap;
+      transition: color 0.18s ease;
     }
 
-    .dropdown-desc {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      line-height: 1.35;
-      margin-top: 2px;
+    .dropdown-item:hover .dropdown-title {
+      color: var(--accent-light, #a78bfa);
     }
 
     .dropdown-divider {
@@ -246,16 +242,16 @@
       position: absolute;
       top: -6px;
       left: calc(100% + 6px);
-      min-width: 275px;
-      max-width: 290px;
+      min-width: 250px;
+      max-width: 275px;
       background: var(--bg-primary, #0c0f17);
       border: 1px solid var(--border, rgba(139, 92, 246, 0.25));
-      border-radius: 16px;
+      border-radius: 14px;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
-      padding: 0.55rem;
+      padding: 0.5rem;
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
       z-index: 1005;
       backdrop-filter: blur(18px);
       opacity: 0;
@@ -591,38 +587,23 @@
               <div class="flyout-menu" role="menu">
                 <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">🔑</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Secret Key Guide</span>
-                    <span class="dropdown-desc">How to choose &amp; protect your master key</span>
-                  </div>
+                  <span class="dropdown-title">Secret Key Guide</span>
                 </a>
                 <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">⚙️</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">How FrankPass Works</span>
-                    <span class="dropdown-desc">Deterministic mathematical engine explained</span>
-                  </div>
+                  <span class="dropdown-title">How FrankPass Works</span>
                 </a>
                 <a href="/faq.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">❓</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Security FAQ</span>
-                    <span class="dropdown-desc">Frequently asked offline privacy questions</span>
-                  </div>
+                  <span class="dropdown-title">Security FAQ</span>
                 </a>
                 <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">📄</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Cryptographic Specs</span>
-                    <span class="dropdown-desc">PBKDF2-SHA256 &amp; NIST SP 800-132 specs</span>
-                  </div>
+                  <span class="dropdown-title">Cryptographic Specs</span>
                 </a>
                 <a href="/limitations-and-advantages.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">⚖️</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Limitations &amp; Advantages</span>
-                    <span class="dropdown-desc">Honest security trade-offs &amp; guarantees</span>
-                  </div>
+                  <span class="dropdown-title">Limitations &amp; Advantages</span>
                 </a>
               </div>
             </div>
@@ -639,24 +620,15 @@
               <div class="flyout-menu" role="menu">
                 <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">👁️</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Invisible Vault Architecture</span>
-                    <span class="dropdown-desc">Defeating keyloggers &amp; clipboard sniffers</span>
-                  </div>
+                  <span class="dropdown-title">Invisible Vault Architecture</span>
                 </a>
                 <a href="/blog/frankpass-vs-traditional-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">☁️</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
-                    <span class="dropdown-desc">Why central server sync creates single point of failure</span>
-                  </div>
+                  <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
                 </a>
                 <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">🚫</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">No 'Forgot Password' Strength</span>
-                    <span class="dropdown-desc">Why eliminating backdoors keeps you safe</span>
-                  </div>
+                  <span class="dropdown-title">No 'Forgot Password' Strength</span>
                 </a>
               </div>
             </div>
@@ -673,24 +645,15 @@
               <div class="flyout-menu" role="menu">
                 <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">🧮</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">What Makes Passwords Strong</span>
-                    <span class="dropdown-desc">Entropy, brute-force math &amp; search space</span>
-                  </div>
+                  <span class="dropdown-title">What Makes Passwords Strong</span>
                 </a>
                 <a href="/blog/why-stateless-password-generation-is-the-future.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">⚡</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Stateless Generation Future</span>
-                    <span class="dropdown-desc">Zero storage vs traditional credential sync</span>
-                  </div>
+                  <span class="dropdown-title">Stateless Generation Future</span>
                 </a>
                 <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">📝</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Passphrases &amp; Normalization</span>
-                    <span class="dropdown-desc">Diceware entropy with MMY normalization</span>
-                  </div>
+                  <span class="dropdown-title">Passphrases &amp; Normalization</span>
                 </a>
               </div>
             </div>
@@ -707,25 +670,16 @@
               <div class="flyout-menu" role="menu">
                 <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">🎯</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">Why I Built FrankPass</span>
-                    <span class="dropdown-desc">The December 25 journey &amp; founding ethos</span>
-                  </div>
+                  <span class="dropdown-title">Why I Built FrankPass</span>
                 </a>
                 <a href="/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html" class="dropdown-item" role="menuitem">
                   <span class="dropdown-icon">⚖️</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title">The No-Free-Lunch Paradigm</span>
-                    <span class="dropdown-desc">Ethical software design &amp; privacy trade-offs</span>
-                  </div>
+                  <span class="dropdown-title">The No-Free-Lunch Paradigm</span>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a href="/blog.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
                   <span class="dropdown-icon">📖</span>
-                  <div class="dropdown-text">
-                    <span class="dropdown-title" style="color:var(--accent-light);">All Blog Articles Hub &rarr;</span>
-                    <span class="dropdown-desc">Explore the complete security archive</span>
-                  </div>
+                  <span class="dropdown-title" style="color:var(--accent-light);">All Blog Articles Hub &rarr;</span>
                 </a>
               </div>
             </div>
