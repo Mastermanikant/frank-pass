@@ -53,7 +53,9 @@
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- STICKY HEADER -->
+<!-- ============================================================
+     SECTION 1: STICKY HEADER & DESKTOP NAVIGATION
+     ============================================================ -->
 <header class="site-header" id="site-header" role="banner">
   <div class="header-inner">
     
@@ -259,7 +261,9 @@
   </div>
 </header>
 
-<!-- Mobile Navigation Drawer -->
+<!-- ============================================================
+     SECTION 2: MOBILE NAVIGATION DRAWER
+     ============================================================ -->
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
   <div class="mobile-section-label">⚡ Generators</div>
   <a href="/" class="mobile-nav-link"><span>⚡</span> Stateless Generator</a>
@@ -331,6 +335,9 @@
   <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
 </nav>
 
+<!-- ============================================================
+     SECTION 3: PAGE MAIN CONTAINER & HERO HEADER
+     ============================================================ -->
 <main id="main-content" class="page-container" style="max-width:540px;margin:2rem auto 4rem;padding:0 1rem">
   
   <!-- Hero Heading -->
@@ -346,7 +353,9 @@
     </p>
   </div>
 
-  <!-- MAIN PIN GENERATOR CARD -->
+  <!-- ============================================================
+       SECTION 4: MAIN PIN GENERATOR CARD (INPUT CONTROLS)
+       ============================================================ -->
   <div class="card-glass" style="padding:1.75rem;border-radius:24px;border:1px solid rgba(139,92,246,0.35);background:var(--card-glass-bg);box-shadow:var(--card-shadow)">
     
     <!-- Input 1: Bank / Card / App Name -->
@@ -388,7 +397,9 @@
       ✨ Generate Secure PIN
     </button>
 
-    <!-- Output Box -->
+    <!-- ============================================================
+         SECTION 5: OUTPUT BOX (CALCULATED PIN & CLIPBOARD ACTION)
+         ============================================================ -->
     <div id="pin-output-container" style="margin-top:1.5rem;padding:1.5rem;border-radius:16px;background:rgba(0,0,0,0.35);border:1px solid var(--border);text-align:center">
       <div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem">Calculated Security PIN</div>
       <div id="pin-display" style="font-family:'Consolas','SF Mono','Segoe UI Mono','Roboto Mono','Cascadia Code',ui-monospace,monospace;font-size:2.25rem;font-weight:700;letter-spacing:0.35em;color:var(--accent-light);margin-bottom:1rem">
@@ -404,7 +415,9 @@
 
   </div>
 
-  <!-- Educational Info Cards -->
+  <!-- ============================================================
+       SECTION 6: EDUCATIONAL INFO CARDS & KNOWLEDGE BASE
+       ============================================================ -->
   <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem;margin-top:2.5rem">
     <div class="card-glass" style="padding:1.25rem;border-radius:16px;border:1px solid var(--border)">
       <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem">🛡️ How is my PIN calculated?</h3>
@@ -422,13 +435,9 @@
 
 </main>
 
-<!-- Unified Footer -->
-<footer id="site-footer" class="site-footer" role="contentinfo" style="margin-top:3rem;padding:3rem 1.5rem 2rem;border-top:1px solid var(--border);background:rgba(10,15,30,0.6)">
-  <div style="max-width:1080px;margin:0 auto;text-align:center;font-size:0.85rem;color:var(--text-muted)">
-    <p style="margin-bottom:0.5rem"><strong>FrankPass</strong> - Zero-Knowledge Deterministic Cryptography by <a href="/founder-mastermanikant.html" style="color:var(--accent-light);font-weight:700">Master Manikant Yadav</a>.</p>
-    <p style="font-size:0.78rem">A password or PIN that was never stored on a server can never be stolen in a data breach.</p>
-  </div>
-</footer>
+<!-- ============================================================
+     SECTION 7: CLIENT LOGIC SCRIPTS & CRYPTOGRAPHIC DERIVATION
+     ============================================================ -->
 
 <script src="/frankpass-core.js?v=3.8.9"></script>
 <script src="/frankpass-utils.js?v=3.8.9"></script>
@@ -596,6 +605,10 @@ document.getElementById('pin-copy-btn').addEventListener('click', () => {
   });
 });
 </script>
+
+<!-- ============================================================
+     SECTION 8: UNIVERSAL SHARED FOOTER & CONTROLLERS
+     ============================================================ -->
 <div id="site-footer"></div>
 <script src="/footer.js?v=3.8.9"></script>
 </body>
