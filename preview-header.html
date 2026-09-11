@@ -206,13 +206,10 @@
         <span class="logo-text"><span>Frank</span>Pass</span>
       </a>
 
-      <!-- Desktop Nav -->
+      <!-- Desktop Nav (Ultra-Clean & Minimal) -->
       <nav class="header-nav" role="navigation" aria-label="Main navigation">
         
-        <!-- Home Button -->
-        <a href="/" class="nav-link active">Home</a>
-
-        <!-- Generators Dropdown -->
+        <!-- 1. Generators Dropdown (Pure Generation Tools) -->
         <div class="nav-dropdown" id="dropdown-generators">
           <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
             Generators <span class="dropdown-chevron">▾</span>
@@ -222,7 +219,7 @@
               <span class="dropdown-icon">⚡</span>
               <div class="dropdown-text">
                 <span class="dropdown-title">Stateless Password Generator</span>
-                <span class="dropdown-desc">1,000,000 PBKDF2 iterations, pure offline math</span>
+                <span class="dropdown-desc">1,000,000 PBKDF2 iterations, zero cloud storage</span>
               </div>
             </a>
             <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
@@ -240,72 +237,73 @@
               </div>
             </a>
             <div class="dropdown-divider"></div>
+            <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">⚖️</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Compare All Generators</span>
+                <span class="dropdown-desc">Side-by-side mathematical audit</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Resources Dropdown (Guide + How It Works + Blog + FAQ + Whitepaper) -->
+        <div class="nav-dropdown" id="dropdown-resources">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
+            Resources <span class="dropdown-chevron">▾</span>
+          </button>
+          <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:340px;">
             <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
               <span class="dropdown-icon">🔑</span>
               <div class="dropdown-text">
                 <span class="dropdown-title">Secret Key Master Guide</span>
-                <span class="dropdown-desc">Episodic memory & master phrase techniques</span>
+                <span class="dropdown-desc">How to craft & remember your master key</span>
               </div>
             </a>
-            <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">⚖️</span>
+            <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">⚙️</span>
               <div class="dropdown-text">
-                <span class="dropdown-title">Tools Comparison Matrix</span>
-                <span class="dropdown-desc">Side-by-side mathematical audit across all generators</span>
+                <span class="dropdown-title">How FrankPass Works</span>
+                <span class="dropdown-desc">Stateless Math vs Cloud Password Vaults</span>
               </div>
             </a>
-          </div>
-        </div>
-
-        <!-- Pro Dropdown -->
-        <div class="nav-dropdown" id="dropdown-pro">
-          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="pro-trigger">
-            <span style="color:#f59e0b;">👑</span> Pro <span class="dropdown-chevron">▾</span>
-          </button>
-          <div class="nav-dropdown-menu" role="menu" aria-labelledby="pro-trigger">
-            <a href="/pro.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">🛡️</span>
+            <a href="/blog.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">📖</span>
               <div class="dropdown-text">
-                <span class="dropdown-title">FrankPass Pro Overview</span>
-                <span class="dropdown-desc">Lifetime sovereignty & air-gapped security</span>
-              </div>
-            </a>
-            <a href="/pro.html#features" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">💼</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Feature Comparison</span>
-                <span class="dropdown-desc">Free vs Pro side-by-side breakdown</span>
-              </div>
-            </a>
-            <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">👁️</span>
-              <div class="dropdown-text">
-                <span class="dropdown-title">Invisible Vault Architecture</span>
-                <span class="dropdown-desc">Zero-clipboard stealth autofill security</span>
+                <span class="dropdown-title">Security Blog & Research</span>
+                <span class="dropdown-desc">Keyloggers, Invisible Vault & password science</span>
               </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="/pro.html#pricing" class="dropdown-item" role="menuitem">
-              <span class="dropdown-icon">🚀</span>
+            <a href="/faq.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">❓</span>
               <div class="dropdown-text">
-                <span class="dropdown-title" style="color:var(--accent-light);">Get Lifetime Pro License</span>
-                <span class="dropdown-desc">Instant digital checkout via Dodo Payments</span>
+                <span class="dropdown-title">Security FAQ & Trust</span>
+                <span class="dropdown-desc">Offline guarantees & common questions</span>
+              </div>
+            </a>
+            <a href="/docs.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-icon">📄</span>
+              <div class="dropdown-text">
+                <span class="dropdown-title">Documentation & Whitepaper</span>
+                <span class="dropdown-desc">PBKDF2-HMAC-SHA512 cryptographic spec</span>
               </div>
             </a>
           </div>
         </div>
 
-        <!-- Resources -->
-        <a href="/blog.html" class="nav-link">Blog</a>
-        <a href="/docs.html" class="nav-link">Docs</a>
-        <a href="/faq.html" class="nav-link">FAQ</a>
+        <!-- 3. All Products / Ecosystem Hub -->
+        <a href="/products.html" class="nav-link">Products</a>
 
-        <!-- Founder Link -->
+        <!-- 4. Founder Link -->
         <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
 
-        <!-- CTA & Theme Toggle -->
-        <a href="/pro.html" class="btn-pro">Get Pro &rarr;</a>
+        <!-- 5. Direct High-Impact Pro CTA -->
+        <a href="/pro.html" class="btn-pro" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s;">
+          <span>Get Pro</span> <span style="font-size:0.85rem;">👑</span> &rarr;
+        </a>
         
+        <!-- 6. Theme Toggle -->
         <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
           <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         </button>
@@ -318,26 +316,24 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Drawer (Clean & Grouped) -->
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-    <a href="/">🏠 Home</a>
     <div style="font-size:0.75rem;font-weight:700;color:var(--text-accent);text-transform:uppercase;margin:0.5rem 0 0.2rem;letter-spacing:0.05em;">Generators</div>
     <a href="/">&bull; Stateless Generator</a>
     <a href="/random-password-generator.html">&bull; Random Generator</a>
     <a href="/pin.html">&bull; PIN Generator</a>
+    
+    <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Resources & Guides</div>
     <a href="/secret-key-guide.html">&bull; Secret Key Guide</a>
-    
-    <div style="font-size:0.75rem;font-weight:700;color:#f59e0b;text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Pro Edition</div>
-    <a href="/pro.html">&bull; Pro Overview</a>
-    <a href="/pro.html#features">&bull; Feature Comparison</a>
-    
-    <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Resources</div>
+    <a href="/frankpass-vs-cloud-password-vaults.html">&bull; How FrankPass Works</a>
     <a href="/blog.html">&bull; Security Blog</a>
-    <a href="/docs.html">&bull; Docs</a>
-    <a href="/faq.html">&bull; FAQ</a>
+    <a href="/faq.html">&bull; Security FAQ</a>
+    
+    <div style="font-size:0.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;margin:0.8rem 0 0.2rem;letter-spacing:0.05em;">Company</div>
+    <a href="/products.html">&bull; Products Hub</a>
     <a href="/founder-mastermanikant.html">&bull; Founder</a>
     
-    <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;">Get Pro &rarr;</a>
+    <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);">Get Pro 👑 &rarr;</a>
   </nav>
 
   <!-- ============================================================
