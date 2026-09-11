@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="./style.css?v=3.9.7">
+  <link rel="stylesheet" href="./style.css?v=3.9.8">
   <link rel="icon" href="./icons/favicon.png">
 
   <style>
@@ -108,6 +108,19 @@
       }
     }
 
+    /* ── Light Mode Token Overrides for Dropdowns & Cards ── */
+    [data-theme="light"] {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --bg-tertiary: #f1f5f9;
+      --header-bg: rgba(255, 255, 255, 0.92);
+      --card-glass-bg: rgba(255, 255, 255, 0.95);
+      --card-glass-border: rgba(139, 92, 246, 0.25);
+      --text-primary: #0f172a;
+      --text-muted: #334155;
+      --border: rgba(139, 92, 246, 0.25);
+    }
+
     .dropdown-item {
       display: flex;
       align-items: flex-start;
@@ -151,6 +164,140 @@
       height: 1px;
       background: var(--border, rgba(255, 255, 255, 0.08));
       margin: 0.4rem 0;
+    }
+
+    /* ── Cascade Flyout Sub-Menu Architecture ── */
+    .has-flyout {
+      position: relative;
+      border-radius: 10px;
+    }
+
+    .flyout-header-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.72rem 0.85rem;
+      border-radius: 10px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.18s ease;
+      color: var(--text-primary);
+    }
+
+    .flyout-header-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flyout-cat-icon {
+      font-size: 1.15rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .flyout-cat-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+
+    .flyout-chevron {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: transform 0.2s ease, color 0.2s ease;
+      line-height: 1;
+      margin-left: 12px;
+    }
+
+    .has-flyout:hover .flyout-header-item,
+    .has-flyout.is-active .flyout-header-item {
+      background: rgba(139, 92, 246, 0.15);
+    }
+
+    .has-flyout:hover .flyout-cat-title,
+    .has-flyout.is-active .flyout-cat-title {
+      color: var(--accent-light, #a78bfa);
+    }
+
+    .has-flyout:hover .flyout-chevron,
+    .has-flyout.is-active .flyout-chevron {
+      color: var(--accent-light, #a78bfa);
+      transform: translateX(4px);
+    }
+
+    /* Flyout Panel (Secondary Sub-Sub Menu) */
+    .flyout-menu {
+      position: absolute;
+      top: -6px;
+      left: calc(100% + 6px);
+      min-width: 320px;
+      background: var(--bg-primary, #0c0f17);
+      border: 1px solid var(--border, rgba(139, 92, 246, 0.25));
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+      padding: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      z-index: 1005;
+      backdrop-filter: blur(18px);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-10px);
+      pointer-events: none;
+      transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    }
+
+    /* Invisible hover corridor bridge (prevents cursor drop-off during diagonal navigation) */
+    .flyout-menu::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      bottom: -12px;
+      left: -20px;
+      width: 24px;
+      background: transparent;
+    }
+
+    /* Flyout Header Banner */
+    .flyout-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.35rem 0.6rem 0.5rem;
+      border-bottom: 1px solid var(--border, rgba(255, 255, 255, 0.08));
+      margin-bottom: 4px;
+    }
+
+    .flyout-badge {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #fff;
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .flyout-subheading {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* Desktop Hover Trigger for Flyouts */
+    @media (min-width: 992px) {
+      .has-flyout:hover > .flyout-menu,
+      .has-flyout.is-active > .flyout-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
     }
 
     /* Sandbox Banner & Switcher */
@@ -263,58 +410,180 @@
           </div>
         </div>
 
-        <!-- 2. Resources Dropdown (Clean 2-Column Categorized Panel) -->
+        <!-- 2. Resources Dropdown (Cascade Flyout Sub-menu Architecture) -->
         <div class="nav-dropdown" id="dropdown-resources">
           <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
             Resources <span class="dropdown-chevron">▾</span>
           </button>
-          <div class="nav-dropdown-menu categorized-menu" role="menu" aria-labelledby="res-trigger" style="min-width:520px;display:flex;flex-direction:row;gap:1.25rem;padding:1rem;">
+          <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
             
-            <!-- Category 1: Core Guides & Explanations -->
-            <div style="flex:1;display:flex;flex-direction:column;gap:3px;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.06em;padding:0.2rem 0.5rem;margin-bottom:4px;">
-                📚 Core Guides &amp; Tools
+            <!-- Category 1: Core Guides & Specs -->
+            <div class="has-flyout" id="flyout-core-guides">
+              <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="flyout-header-content">
+                  <span class="flyout-cat-icon">📚</span>
+                  <span class="flyout-cat-title">Core Guides &amp; Specs</span>
+                </div>
+                <span class="flyout-chevron">›</span>
               </div>
-              <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔑</span>
-                <span class="dropdown-title">Secret Key Guide</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚙️</span>
-                <span class="dropdown-title">How FrankPass Works</span>
-              </a>
-              <a href="/faq.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">❓</span>
-                <span class="dropdown-title">Security FAQ</span>
-              </a>
-              <a href="/docs.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📄</span>
-                <span class="dropdown-title">Cryptographic Specs</span>
-              </a>
+              <div class="flyout-menu" role="menu">
+                <div class="flyout-banner">
+                  <span class="flyout-badge">Architecture</span>
+                  <span class="flyout-subheading">Core Documentation</span>
+                </div>
+                <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">🔑</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Secret Key Guide</span>
+                    <span class="dropdown-desc">How to choose &amp; protect your master key</span>
+                  </div>
+                </a>
+                <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">⚙️</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">How FrankPass Works</span>
+                    <span class="dropdown-desc">Deterministic mathematical engine explained</span>
+                  </div>
+                </a>
+                <a href="/faq.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">❓</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Security FAQ</span>
+                    <span class="dropdown-desc">Frequently asked offline privacy questions</span>
+                  </div>
+                </a>
+                <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">📄</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Cryptographic Specs</span>
+                    <span class="dropdown-desc">PBKDF2-SHA256 &amp; NIST SP 800-132 specs</span>
+                  </div>
+                </a>
+                <a href="/limitations-and-advantages.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">⚖️</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Limitations &amp; Advantages</span>
+                    <span class="dropdown-desc">Honest security trade-offs &amp; guarantees</span>
+                  </div>
+                </a>
+              </div>
             </div>
 
-            <!-- Category 2: Security Research & Articles -->
-            <div style="flex:1.1;display:flex;flex-direction:column;gap:3px;border-left:1px solid var(--border);padding-left:1.25rem;">
-              <div style="font-size:0.75rem;font-weight:800;color:var(--text-accent);text-transform:uppercase;letter-spacing:0.06em;padding:0.2rem 0.5rem;margin-bottom:4px;">
-                🛡️ Research &amp; Articles
+            <!-- Category 2: Cyber Threat Defense -->
+            <div class="has-flyout" id="flyout-threat-defense">
+              <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="flyout-header-content">
+                  <span class="flyout-cat-icon">🛡️</span>
+                  <span class="flyout-cat-title">Cyber Threat Defense</span>
+                </div>
+                <span class="flyout-chevron">›</span>
               </div>
-              <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">👁️</span>
-                <span class="dropdown-title">Invisible Vault Architecture</span>
-              </a>
-              <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔬</span>
-                <span class="dropdown-title">Password Science 2026</span>
-              </a>
-              <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">💡</span>
-                <span class="dropdown-title">Why I Built FrankPass</span>
-              </a>
-              <div class="dropdown-divider" style="margin:4px 0;"></div>
-              <a href="/blog.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
-                <span>📖 View All Blog Articles &rarr;</span>
-              </a>
+              <div class="flyout-menu" role="menu">
+                <div class="flyout-banner">
+                  <span class="flyout-badge">Security Research</span>
+                  <span class="flyout-subheading">Threat Vector Analysis</span>
+                </div>
+                <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">👁️</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Invisible Vault Architecture</span>
+                    <span class="dropdown-desc">Defeating keyloggers &amp; clipboard sniffers</span>
+                  </div>
+                </a>
+                <a href="/blog/frankpass-vs-traditional-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">☁️</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
+                    <span class="dropdown-desc">Why central server sync creates single point of failure</span>
+                  </div>
+                </a>
+                <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">🚫</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">No 'Forgot Password' Strength</span>
+                    <span class="dropdown-desc">Why eliminating backdoors keeps you safe</span>
+                  </div>
+                </a>
+              </div>
             </div>
+
+            <!-- Category 3: Password Science & Math -->
+            <div class="has-flyout" id="flyout-science-math">
+              <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="flyout-header-content">
+                  <span class="flyout-cat-icon">🔬</span>
+                  <span class="flyout-cat-title">Password Science &amp; Math</span>
+                </div>
+                <span class="flyout-chevron">›</span>
+              </div>
+              <div class="flyout-menu" role="menu">
+                <div class="flyout-banner">
+                  <span class="flyout-badge">Entropy &amp; Math</span>
+                  <span class="flyout-subheading">Cryptographic Principles</span>
+                </div>
+                <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">🧮</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">What Makes Passwords Strong</span>
+                    <span class="dropdown-desc">Entropy, brute-force math &amp; search space</span>
+                  </div>
+                </a>
+                <a href="/blog/why-stateless-password-generation-is-the-future.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">⚡</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Stateless Generation Future</span>
+                    <span class="dropdown-desc">Zero storage vs traditional credential sync</span>
+                  </div>
+                </a>
+                <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">📝</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Passphrases &amp; Normalization</span>
+                    <span class="dropdown-desc">Diceware entropy with MMY normalization</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Category 4: Founder Story & Vision -->
+            <div class="has-flyout" id="flyout-founder-story">
+              <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+                <div class="flyout-header-content">
+                  <span class="flyout-cat-icon">💡</span>
+                  <span class="flyout-cat-title">Founder Story &amp; Vision</span>
+                </div>
+                <span class="flyout-chevron">›</span>
+              </div>
+              <div class="flyout-menu" role="menu">
+                <div class="flyout-banner">
+                  <span class="flyout-badge">Origin &amp; Mission</span>
+                  <span class="flyout-subheading">Vision by Master Manikant Yadav</span>
+                </div>
+                <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">🎯</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">Why I Built FrankPass</span>
+                    <span class="dropdown-desc">The December 25 journey &amp; founding ethos</span>
+                  </div>
+                </a>
+                <a href="/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html" class="dropdown-item" role="menuitem">
+                  <span class="dropdown-icon">⚖️</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title">The No-Free-Lunch Paradigm</span>
+                    <span class="dropdown-desc">Ethical software design &amp; privacy trade-offs</span>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="/blog.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
+                  <span class="dropdown-icon">📖</span>
+                  <div class="dropdown-text">
+                    <span class="dropdown-title" style="color:var(--accent-light);">All Blog Articles Hub &rarr;</span>
+                    <span class="dropdown-desc">Explore the complete security archive</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -477,15 +746,17 @@
     <!-- Verified Checklist of Resolved Problems -->
     <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.75rem;margin-bottom:3rem;">
       <h3 style="font-size:1.15rem;margin-bottom:1rem;color:var(--text-primary);">
-        ✅ आपके सभी सवालों का 100% समाधान चेकलिस्ट
+        ✅ आपके सभी प्रश्नों एवं नए Cascade Sub-Menu का समाधान
       </h3>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:0.88rem;color:var(--text-muted);">
-        <div>✔️ <strong>रियल FrankPass लोगो:</strong> हर जगह 3D Key Icon (`logo-key-64.webp`)।</div>
-        <div>✔️ <strong>नया "Home" बटन:</strong> हेडर के पहले स्थान पर स्पष्ट लिंक।</div>
-        <div>✔️ <strong>Generators ▾ ड्रॉपडाउन:</strong> 5 टूल्स का ग्रुपेड मेन्यू (होवर व क्लिक)।</div>
-        <div>✔️ <strong>Pro ▾ ड्रॉपडाउन:</strong> 4 प्रो फीचर्स व Dodo Payments चेकआउट लिंक।</div>
-        <div>✔️ <strong>E-E-A-T राइटर कार्ड:</strong> इमेज 3 जैसा अवतार, बैज और फाउंडर लिंक।</div>
-        <div>✔️ <strong>द्विभाषी बटन:</strong> "Read in English" और "हिंदी में पढ़ें" पिल लिंक्स।</div>
+        <div>✔️ <strong>रियल FrankPass लोगो:</strong> 3D Key Icon (`logo-key-64.webp`)।</div>
+        <div>✔️ <strong>कंट्री फ्लैग सिलेक्टर:</strong> `India 🇮🇳 ▾` सुरक्षित।</div>
+        <div>✔️ <strong>Generators ▾ ड्रॉपडाउन:</strong> 1-लाइन क्लीन बिना क्लटर।</div>
+        <div>✔️ <strong>Resources ▾ Cascade Flyout:</strong> होवर पर केवल 4 Sub-headers दिखेंगे।</div>
+        <div>✔️ <strong>Sub-sub Flyout Menus:</strong> Sub-header पर कर्सर ले जाने पर दाईं ओर आर्टिकल्स खुलेंगे।</div>
+        <div>✔️ <strong>Hover Bridge &amp; 220ms Timer:</strong> तिरछे माउस मूवमेंट पर मेन्यू बंद नहीं होगा।</div>
+        <div>✔️ <strong>Direct Get Pro 👑 बटन:</strong> बिना किसी डुप्लीकेट ड्रॉपडाउन के डायरेक्ट CTA।</div>
+        <div>✔️ <strong>E-E-A-T कार्ड &amp; भाषा टॉगल:</strong> इमेज 3 जैसा अवतार, बैज और फाउंडर प्रोफाइल।</div>
       </div>
     </div>
 
@@ -521,7 +792,7 @@
       });
     }
 
-    // ── Smooth Hover Intent & Grace Timer for Dropdowns ──
+    // ── Smooth Hover Intent & Grace Timer for Top-Level Dropdowns ──
     const dropdowns = document.querySelectorAll('.nav-dropdown');
     dropdowns.forEach(dropdown => {
       let closeTimer = null;
@@ -539,6 +810,8 @@
       dropdown.addEventListener('mouseleave', () => {
         closeTimer = setTimeout(() => {
           dropdown.classList.remove('is-open');
+          // Also close any active flyout inside
+          dropdown.querySelectorAll('.has-flyout').forEach(f => f.classList.remove('is-active'));
         }, 280);
       });
 
@@ -554,9 +827,43 @@
       }
     });
 
+    // ── Cascade Flyout Sub-menu Hover Intent & Grace Timer ──
+    const flyoutContainers = document.querySelectorAll('.has-flyout');
+    flyoutContainers.forEach(container => {
+      let flyoutTimer = null;
+      
+      container.addEventListener('mouseenter', () => {
+        if (flyoutTimer) clearTimeout(flyoutTimer);
+        flyoutContainers.forEach(c => {
+          if (c !== container) c.classList.remove('is-active');
+        });
+        container.classList.add('is-active');
+      });
+
+      container.addEventListener('mouseleave', () => {
+        flyoutTimer = setTimeout(() => {
+          container.classList.remove('is-active');
+        }, 220); // 220ms grace period for diagonal mouse tracking
+      });
+
+      // Mobile / Touch toggle support for flyouts
+      const headerItem = container.querySelector('.flyout-header-item');
+      if (headerItem) {
+        headerItem.addEventListener('click', (e) => {
+          if (window.innerWidth < 992) {
+            e.stopPropagation();
+            const isActive = container.classList.contains('is-active');
+            flyoutContainers.forEach(c => c.classList.remove('is-active'));
+            if (!isActive) container.classList.add('is-active');
+          }
+        });
+      }
+    });
+
     // Close when clicking anywhere outside
     document.addEventListener('click', () => {
       dropdowns.forEach(d => d.classList.remove('is-open'));
+      flyoutContainers.forEach(c => c.classList.remove('is-active'));
     });
   </script>
 

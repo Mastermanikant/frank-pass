@@ -1,5 +1,5 @@
-// FrankPass Service Worker v3.9.7 (Country Selector & Clean Dropdown Release)
-const CACHE_NAME = 'frankpass-v3.9.7';
+// FrankPass Service Worker v3.9.8 (Cascade Sub-Menu Dropdown Release)
+const CACHE_NAME = 'frankpass-v3.9.8';
 const CACHED_URLS = [
     '/',
     '/index.html',
