@@ -12,10 +12,10 @@ const FRANKPASS_CORE = (function () {
     const LOWERCASE = "defhmt"; // removed ambiguous, mirror & identical-glyph letters (6 chars)
     const NUMBERS = "2346789"; // removed 0, 1, 5 (7 chars)
     const SYMBOLS = "@#$%&*+=?"; // removed !, -, _, brackets, quotes; added ? (9 chars, total = 32 chars)
-    // PUBLIC APPLICATION CONSTANT — This is NOT a cryptographic secret.
+    // PUBLIC APPLICATION CONSTANT - This is NOT a cryptographic secret.
     // It is a public domain separator (app-level salt) used to bind derivation
     // to the FrankPass application identity. Security depends entirely on the
-    // user's Secret Key strength — NOT on this constant being hidden.
+    // user's Secret Key strength - NOT on this constant being hidden.
     // Architecture: User Secret Key + FRANKPASS_DOMAIN_SALT + Platform + Username → KDF → Password
     const FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!";
 

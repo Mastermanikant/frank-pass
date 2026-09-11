@@ -1,131 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <script>
-  (function() {
-    try {
-      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
-      var theme = saved || 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-    } catch(e) {}
-  })();
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The 25th December Genesis: Why I Quit Cloud Password Managers and Built Serverless Math - FrankPass</title>
-  <meta name="description" content="The true origin story of FrankPass. How getting locked out of 20+ Gmail accounts on Christmas night 2025 led Master Manikant Yadav to invent deterministic serverless password cryptography.">
-  <meta name="robots" content="noindex, follow">
-  <link rel="canonical" href="https://frankpass.com/blog/why-i-built-frankpass-the-december-25-story">
-  
-  <meta property="og:title" content="The 25th December Genesis: Why I Built FrankPass">
-  <meta property="og:description" content="How getting locked out of 20+ Gmail accounts on Christmas night 2025 led to deterministic serverless password cryptography.">
-  <meta property="og:url" content="https://frankpass.com/blog/why-i-built-frankpass-the-december-25-story">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+const fs = require('fs');
+const path = require('path');
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="/style.css?v=3.8.9">
-  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-  <link rel="icon" href="/icons/favicon.png">
-  
-  <style>
-    .math-formula-box {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      text-align: center;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 0.03em;
-      margin: 1.5rem 0;
-      font-family: 'JetBrains Mono', monospace, sans-serif;
-    }
-    .math-inline {
-      font-family: 'JetBrains Mono', monospace, sans-serif;
-      font-weight: 600;
-      color: var(--accent-light);
-    }
-    .article-container {
-      max-width: 820px;
-      margin: 2.5rem auto;
-      padding: 0 1.5rem;
-    }
-    .article-header {
-      margin-bottom: 2.5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2rem;
-    }
-    .article-breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 1.25rem;
-    }
-    .article-breadcrumb a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .article-title {
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
-    }
-    .article-byline {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-    .article-body {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text-primary);
-    }
-    .article-body p {
-      margin-bottom: 1.5rem;
-      color: var(--text-muted);
-    }
-    .article-body h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      margin: 2.5rem 0 1rem;
-      letter-spacing: -0.02em;
-    }
-    .article-body blockquote {
-      border-left: 3px solid var(--accent);
-      padding: 1rem 1.5rem;
-      margin: 2rem 0;
-      background: rgba(139,92,246,0.06);
-      border-radius: 0 14px 14px 0;
-      font-style: italic;
-      color: var(--text-primary);
-      font-size: 1.1rem;
-    }
-    .article-highlight-box {
-      background: var(--card-glass-bg);
-      border: 1px solid rgba(139,92,246,0.3);
-      border-radius: 18px;
-      padding: 1.75rem;
-      margin: 2rem 0;
-      box-shadow: var(--card-shadow);
-    }
-  </style>
-</head>
-<body>  <!-- Site Header -->
-  <header class="site-header" id="site-header" role="banner">
+const targetFiles = [
+  'index.html',
+  'pin.html',
+  'random-password-generator.html',
+  'comparison-between-frankpass-all-generators-deterministic-random-pin.html',
+  'get-started.html',
+  'secret-key-guide.html',
+  'install.html',
+  'docs.html',
+  'whitepaper.html',
+  'frankpass-vs-cloud-password-vaults.html',
+  'frankpass-vs-cloud-password-vaults-hindi.html',
+  'limitations-and-advantages.html',
+  'limitations-and-advantages-hindi.html',
+  'faq.html',
+  'about-us.html',
+  'about-us-hindi.html',
+  'founder-mastermanikant.html',
+  'founder-mastermanikant-hindi.html',
+  'products.html',
+  'pro.html',
+  'sponsors.html',
+  'legal.html',
+  'library.html',
+  'library-hindi.html',
+  'blog.html',
+  'blog/why-i-built-frankpass-the-december-25-story.html',
+  'blog/why-no-forgot-password-button-is-our-greatest-strength.html',
+  'blog/why-stateless-password-generation-is-the-future.html',
+  'blog/why-stateless-password-generation-is-the-future-hindi.html',
+  'blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html',
+  'blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault-hindi.html',
+  'blog/what-makes-a-password-truly-strong-and-safe.html',
+  'blog/the-no-free-lunch-paradigm-and-empowering-freemium.html',
+  'blog/natural-language-passphrases-and-mmy-normalization.html'
+];
+
+const unifiedHeaderHTML = `<header class="site-header" id="site-header" role="banner">
   <div class="header-inner">
     
     <!-- Official Brand Logo -->
@@ -400,87 +313,37 @@
   <a href="/founder-mastermanikant.html" class="mobile-nav-link"><span>👨‍💻</span> Founder (Master Manikant Yadav)</a>
   
   <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
-</nav>
+</nav>`;
 
-  <main class="article-container">
+const headerPattern = /<header\s+class=["']site-header["'][\s\S]*?<\/header>\s*(?:<!--[\s\S]*?-->\s*)?(?:<nav\s+class=["']mobile-menu["'][\s\S]*?<\/nav>)?/i;
 
-    <div class="article-header">
-      <div class="article-breadcrumb">
-        <a href="/">Home</a> <span>&rsaquo;</span>
-        <a href="/blog.html">Blog</a> <span>&rsaquo;</span>
-        <span>Genesis Story</span>
-      </div>
-      <h1 class="article-title">The 25th December Genesis: Why I Quit Cloud Password Managers and Built Serverless Math</h1>
-      <div class="article-byline">
-        <span>By <a href="/founder-mastermanikant.html" style="color:var(--text-primary);font-weight:700;text-decoration:none">Master Manikant Yadav</a></span>
-        <span>&middot;</span>
-        <span>25 December 2025</span>
-        <span>&middot;</span>
-        <span>7 min read</span>
-        <span>&middot;</span>
-        <span style="color:var(--accent);font-weight:700">Origin Story</span>
-      </div>
-    </div>
+let updatedCount = 0;
 
-    <article class="article-body">
-      <p>
-        On the late night of <strong>25th December 2025 (Christmas Night)</strong>, I found myself trapped in an excruciating digital nightmare. Managing more than 20 separate Google and YouTube channels across several education and technology projects, I urgently needed to access an old, critical email account.
-      </p>
+targetFiles.forEach(fileRel => {
+  const filePath = path.join(__dirname, '..', fileRel);
+  if (!fs.existsSync(filePath)) {
+    console.error('File not found:', fileRel);
+    return;
+  }
 
-      <p>
-        I stared at the login screen. The password had been a 16-character random jumble created two years prior. I tried every permutation I could imagine. Then came the dreaded recovery flow: SMS OTP delays, security questions whose answers felt ambiguous after years, and automated account lockout timers. I was completely locked out of my own digital life.
-      </p>
+  let content = fs.readFileSync(filePath, 'utf8');
+  if (!headerPattern.test(content)) {
+    console.warn('Pattern did not match for:', fileRel);
+    return;
+  }
 
-      <blockquote>
-        "Human working memory can hold 7 &plusmn; 2 items. Demanding that a human remember fifty 16-character random strings across dozens of platforms is not a security policy - it is a neurological impossibility."
-      </blockquote>
+  content = content.replace(headerPattern, unifiedHeaderHTML);
 
-            <h2>The Mental Math System That Started It All</h2>
-      <p>
-        Whenever a new idea struck, I created a new Gmail ID. As the list grew past 20 accounts, writing down passwords felt unsafe, and memorizing 20 random strings was impossible.
-      </p>
-      <p>
-        I developed a personal mental algorithm: I would take the first 3 characters of the platform (e.g. <code>support</code> &rarr; <code>Sup</code>), calculate the cube or square of the letter count (7<sup>3</sup> = <code>343</code>), and append a private digit sequence with a special symbol. Passwords like <code>Sup343#852108</code> were generated deterministically on a phone calculator or in my head.
-      </p>
-      <p>
-        On that night of 25th December 2025, when a lockout occurred, the core breakthrough struck: <em>"Why do manual arithmetic on a calculator? Can this deterministic mental reasoning be converted into an unbreakable, client-side cryptographic algorithm?"</em>
-      </p>
+  // Ensure footer.js is included if not present
+  if (!content.includes('footer.js')) {
+    content = content.replace('</body>', '<div id="site-footer"></div>\n<script src="/footer.js?v=3.8.9"></script>\n</body>');
+  } else if (!content.includes('id="site-footer"')) {
+    content = content.replace('<script src="/footer.js', '<div id="site-footer"></div>\n<script src="/footer.js');
+  }
 
-      <h2>The Cloud Vault Trap</h2>
-      <p>
-        For years, the tech industry has pushed a single solution: <em>"Just use a cloud password manager."</em> But traditional cloud password vaults (which have repeatedly suffered catastrophic database breaches) create massive central honeypots. You are forced to upload your encrypted master database to their servers. If their servers are breached or their infrastructure goes down, your digital identity is either exposed or inaccessible.
-      </p>
+  fs.writeFileSync(filePath, content, 'utf8');
+  console.log(`[UPDATED] ${fileRel}`);
+  updatedCount++;
+});
 
-      <div class="article-highlight-box">
-        <h3 style="font-size:1.15rem;font-weight:700;color:var(--text-primary);margin-bottom:0.5rem">💡 The 2:00 AM Breakthrough</h3>
-        <p style="margin:0;font-size:0.95rem;color:var(--text-muted)">
-          Sitting in the quiet of that Christmas night, the core question crystallized: <strong>What if we never store passwords anywhere?</strong> What if passwords weren't static data blobs sitting in a database waiting to be hacked, but mathematical outcomes calculated on-demand?
-        </p>
-      </div>
-
-      <h2>The Birth of Stateless Deterministic Cryptography</h2>
-      <p>
-        Humans are terrible at memorizing random strings, but exceptional at remembering meaningful natural phrases (like <code>i love reading books</code>). 
-      </p>
-      <p>
-        By feeding a single memorable <strong>Master Secret Key</strong> together with a <strong>Platform Identifier</strong> (e.g. <code>gmail.com</code>) into 1,000,000 iterations of <code>PBKDF2-HMAC-SHA512</code>, the browser derives the exact same 16-character, high-entropy password in less than a second - completely offline, with zero server involvement.
-      </p>
-
-      <h2>Our Permanent Promise</h2>
-      <p>
-        FrankPass was built on that night of 25th December to ensure that no developer, creator, or everyday user ever gets locked out of their accounts again, and no one has to trust a third-party server with their credentials.
-      </p>
-      <ul>
-        <li style="margin-bottom:0.5rem"><strong>Zero Cloud Database:</strong> Not a single byte of your passwords is ever saved.</li>
-        <li style="margin-bottom:0.5rem"><strong>Deterministic Forever:</strong> The mathematical derivation formula is permanently immutable.</li>
-        <li style="margin-bottom:0.5rem"><strong>Free &amp; Offline:</strong> The web generator works without internet anywhere in the world.</li>
-      </ul>
-    </article>
-
-  </main>
-
-  <div id="site-footer"></div>
-  <script src="/frankpass-config.js?v=3.8.9"></script>
-  <script src="/footer.js?v=3.8.9"></script>
-</body>
-</html>
+console.log(`\nSuccessfully updated ${updatedCount} / ${targetFiles.length} files with Unified Header & Mobile Drawer.`);

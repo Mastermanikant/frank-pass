@@ -265,6 +265,111 @@
     }
   }
 
+  // Universal Header Navigation & Cascade Flyout Controller
+  function setupHeaderNav() {
+    const header = document.getElementById('site-header');
+    if (header && !header._hasScrollListener) {
+      header._hasScrollListener = true;
+      window.addEventListener('scroll', function() {
+        header.classList.toggle('scrolled', window.scrollY > 10);
+      }, { passive: true });
+    }
+
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach(function(dropdown) {
+      let closeTimer = null;
+      dropdown.addEventListener('mouseenter', function() {
+        if (closeTimer) clearTimeout(closeTimer);
+        dropdowns.forEach(function(d) {
+          if (d !== dropdown) d.classList.remove('is-open');
+        });
+        dropdown.classList.add('is-open');
+      });
+
+      dropdown.addEventListener('mouseleave', function() {
+        closeTimer = setTimeout(function() {
+          dropdown.classList.remove('is-open');
+          dropdown.querySelectorAll('.has-flyout').forEach(function(f) { f.classList.remove('is-active'); });
+        }, 280);
+      });
+
+      const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+      if (trigger && !trigger._hasClickListener) {
+        trigger._hasClickListener = true;
+        trigger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const isOpen = dropdown.classList.contains('is-open');
+          dropdowns.forEach(function(d) { d.classList.remove('is-open'); });
+          if (!isOpen) dropdown.classList.add('is-open');
+        });
+      }
+    });
+
+    function checkFlyoutBoundary(container) {
+      const flyout = container.querySelector('.flyout-menu');
+      if (!flyout) return;
+      container.classList.remove('flyout-flip-left');
+      const rect = flyout.getBoundingClientRect();
+      const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+      if (rect.right > viewportWidth - 14) {
+        container.classList.add('flyout-flip-left');
+      }
+    }
+
+    const flyoutContainers = document.querySelectorAll('.has-flyout');
+    flyoutContainers.forEach(function(container) {
+      let flyoutTimer = null;
+      container.addEventListener('mouseenter', function() {
+        if (flyoutTimer) clearTimeout(flyoutTimer);
+        flyoutContainers.forEach(function(c) {
+          if (c !== container) c.classList.remove('is-active');
+        });
+        container.classList.add('is-active');
+        checkFlyoutBoundary(container);
+      });
+
+      container.addEventListener('mouseleave', function() {
+        flyoutTimer = setTimeout(function() {
+          container.classList.remove('is-active');
+        }, 220);
+      });
+
+      const headerItem = container.querySelector('.flyout-header-item');
+      if (headerItem && !headerItem._hasClickListener) {
+        headerItem._hasClickListener = true;
+        headerItem.addEventListener('click', function(e) {
+          if (window.innerWidth < 992) {
+            e.stopPropagation();
+            const isActive = container.classList.contains('is-active');
+            flyoutContainers.forEach(function(c) { c.classList.remove('is-active'); });
+            if (!isActive) container.classList.add('is-active');
+          }
+        });
+      }
+    });
+
+    const accTriggers = document.querySelectorAll('.mobile-acc-trigger');
+    accTriggers.forEach(function(btn) {
+      if (!btn._hasAccListener) {
+        btn._hasAccListener = true;
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const card = btn.closest('.mobile-accordion');
+          if (!card) return;
+          const wasOpen = card.classList.contains('is-open');
+          document.querySelectorAll('.mobile-accordion').forEach(function(c) { c.classList.remove('is-open'); });
+          if (!wasOpen) card.classList.add('is-open');
+        });
+      }
+    });
+
+    document.addEventListener('click', function() {
+      dropdowns.forEach(function(d) { d.classList.remove('is-open'); });
+      flyoutContainers.forEach(function(c) { c.classList.remove('is-active'); });
+    });
+  }
+
   
   /* ── Universal Day/Night Theme Controller ── */
   const sunIco = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>';
@@ -365,9 +470,24 @@
     }
   }
 
+  function ensureCountryDropdown() {
+    if (document.getElementById('country-trigger') && typeof COUNTRY_DATA === 'undefined') {
+      const s1 = document.createElement('script');
+      s1.src = '/country-data.js?v=3.8.9';
+      s1.onload = function() {
+        const s2 = document.createElement('script');
+        s2.src = '/country-dropdown.js?v=3.8.9';
+        document.body.appendChild(s2);
+      };
+      document.body.appendChild(s1);
+    }
+  }
+
   function initFooter() {
     initTheme();
     setupMobileMenu();
+    setupHeaderNav();
+    ensureCountryDropdown();
     buildFooter();
     setupVersionPopover();
     if (typeof Notification !== 'undefined' && Notification.permission === 'granted' && localStorage.getItem('fp_push_muted') !== 'true') {
