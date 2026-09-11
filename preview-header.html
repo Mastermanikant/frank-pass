@@ -66,7 +66,7 @@
 
     .nav-dropdown-menu {
       position: absolute;
-      top: calc(100% + 8px);
+      top: calc(100% + 6px);
       left: 0;
       min-width: 320px;
       background: var(--bg-primary, #0c0f17);
@@ -74,23 +74,37 @@
       border-radius: 16px;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
       padding: 0.6rem;
-      display: none;
+      display: flex;
       flex-direction: column;
       gap: 3px;
       z-index: 1000;
       backdrop-filter: blur(16px);
       opacity: 0;
+      visibility: hidden;
       transform: translateY(-8px);
-      transition: opacity 0.22s ease, transform 0.22s ease;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
     }
 
-    /* Desktop Hover or Active Dropdown */
+    /* Invisible hover bridge to eliminate gap */
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -14px;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: transparent;
+    }
+
+    /* Desktop Hover or is-open State */
     @media (min-width: 992px) {
       .nav-dropdown:hover .nav-dropdown-menu,
       .nav-dropdown.is-open .nav-dropdown-menu {
-        display: flex;
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
+        pointer-events: auto;
       }
     }
 
@@ -493,20 +507,42 @@
       });
     }
 
-    // Dropdown Click Support for Mobile/Touch
-    const dropdownTriggers = document.querySelectorAll('.nav-dropdown-trigger');
-    dropdownTriggers.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const parent = btn.parentElement;
-        const isOpen = parent.classList.contains('is-open');
-        document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('is-open'));
-        if (!isOpen) parent.classList.add('is-open');
+    // ── Smooth Hover Intent & Grace Timer for Dropdowns ──
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    dropdowns.forEach(dropdown => {
+      let closeTimer = null;
+
+      // When mouse enters trigger or menu, cancel any closing timer and show menu immediately
+      dropdown.addEventListener('mouseenter', () => {
+        if (closeTimer) clearTimeout(closeTimer);
+        dropdowns.forEach(d => {
+          if (d !== dropdown) d.classList.remove('is-open');
+        });
+        dropdown.classList.add('is-open');
       });
+
+      // When mouse leaves, give a generous 280ms grace period so mouse can easily navigate down
+      dropdown.addEventListener('mouseleave', () => {
+        closeTimer = setTimeout(() => {
+          dropdown.classList.remove('is-open');
+        }, 280);
+      });
+
+      // Mobile / Touch Click Toggle
+      const trigger = dropdown.querySelector('.nav-dropdown-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = dropdown.classList.contains('is-open');
+          dropdowns.forEach(d => d.classList.remove('is-open'));
+          if (!isOpen) dropdown.classList.add('is-open');
+        });
+      }
     });
 
+    // Close when clicking anywhere outside
     document.addEventListener('click', () => {
-      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('is-open'));
+      dropdowns.forEach(d => d.classList.remove('is-open'));
     });
   </script>
 
