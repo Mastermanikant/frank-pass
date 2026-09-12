@@ -16,7 +16,7 @@ const FRANKPASS_CORE = (function () {
     // It is a public domain separator (app-level salt) used to bind derivation
     // to the FrankPass application identity. Security depends entirely on the
     // user's Secret Key strength - NOT on this constant being hidden.
-    // Architecture: User Secret Key + FRANKPASS_DOMAIN_SALT + Platform + Username → KDF → Password
+    // Architecture: User Secret Key + FRANKPASS_DOMAIN_SALT + Platform + Username -> KDF -> Password
     const FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!";
 
     /**
@@ -88,19 +88,25 @@ const FRANKPASS_CORE = (function () {
         if (requireSym) requiredSets.push(SYMBOLS);
 
         let revIdx = byteStream.length - 1;
-        let currentStr = passwordChars.join('');
         const usedPositions = new Set();
 
         requiredSets.forEach(set => {
-            if (!currentStr.split('').some(c => set.includes(c))) {
+            const hasSetChar = passwordChars.some((c, idx) => set.includes(c) && !usedPositions.has(idx));
+            if (hasSetChar) {
+                const foundIdx = passwordChars.findIndex((c, idx) => set.includes(c) && !usedPositions.has(idx));
+                if (foundIdx !== -1) {
+                    usedPositions.add(foundIdx);
+                }
+            } else {
                 let pos = byteStream[revIdx--] % targetLength;
-                while (usedPositions.has(pos) && usedPositions.size < targetLength) {
+                let attempts = 0;
+                while (usedPositions.has(pos) && attempts < targetLength) {
                     pos = (pos + 1) % targetLength;
+                    attempts++;
                 }
                 usedPositions.add(pos);
                 const char = set[byteStream[revIdx--] % set.length];
                 passwordChars[pos] = char;
-                currentStr = passwordChars.join('');
             }
         });
 
