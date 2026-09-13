@@ -1191,6 +1191,16 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   .site-footer {
     padding-bottom: calc(var(--mobile-nav-h, 64px) + 2rem);
   }
+  .card-glass {
+    padding: 1.25rem 1rem !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .btn-primary, .btn-secondary, .btn-ghost, .btn-sm, .btn-lg {
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+  }
   .footer-bottom {
     flex-direction: column;
     text-align: center;

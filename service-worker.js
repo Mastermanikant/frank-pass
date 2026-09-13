@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.1.1 (Mobile Responsive UI & Stacking Polish)
-const CACHE_NAME = 'frankpass-v4.1.1';
+// FrankPass Service Worker v4.1.2 (Ultra-Compact Mobile Viewport & Button Overflow Fix)
+const CACHE_NAME = 'frankpass-v4.1.2';
 const CACHED_URLS = [
     '/',
     '/index.html',
