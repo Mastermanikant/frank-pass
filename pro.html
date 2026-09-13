@@ -608,9 +608,9 @@
               </td>
               <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">100% Free Forever ($0)</td>
               <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">100% Free Forever ($0)</td>
-              <td style="padding:1rem 1.2rem;text-align:center;color:var(--text-primary);font-weight:800;background:rgba(139,92,246,0.06)">
-                ₹200 / $2.50 (1-Yr)<br>
-                <span style="font-size:0.78rem;color:#eab308;font-weight:700">₹600 / $7.50 (5-Yr)</span>
+              <td style="padding:1rem 1.2rem;text-align:center;background:rgba(139,92,246,0.06)">
+                <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);font-weight:800;text-decoration:underline;font-size:0.9rem">View on Sovereign Store ↗</a>
+                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">Hardware-Bound Lifetime Pass</div>
               </td>
             </tr>
           </tbody>
@@ -759,7 +759,7 @@
       <div class="card-glass" style="padding:1.4rem;border-radius:12px">
         <h3 style="font-size:1.05rem;margin-bottom:0.4rem;color:var(--text-primary)">Q: What does 'Physical PC Motherboard Lifetime' mean?</h3>
         <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin:0">
-          All FrankPass Pro plans are valid for as long as that physical computer's motherboard remains operational (whether it runs for 10, 20, or 50+ years). Reinstalling Windows/macOS, formatting your SSD, or updating Chrome does <strong>not</strong> alter your Device ID. If a motherboard burns out, loyal buyers receive our locked rate (₹200/yr or ₹600/5-yr) for exactly 1 replacement PC.
+          All FrankPass Pro plans are valid for as long as that physical computer's motherboard remains operational (whether it runs for 10, 20, or 50+ years). Reinstalling Windows/macOS, formatting your SSD, or updating Chrome does <strong>not</strong> alter your Device ID. If a motherboard burns out, loyal buyers receive our locked rate on Sovereign Store for exactly 1 replacement PC.
         </p>
       </div>
 
@@ -818,16 +818,16 @@
 
 <!-- MAHARANA PHARMACY PATTERN: FRANKPASS PRO MOBILE STICKY ACTION BAR -->
 <div class="mobile-pro-sticky-bar" aria-label="Purchase Actions">
-  <div style="display:flex; flex-direction:column; min-width:70px;">
-    <div style="font-size:0.72rem; color:var(--text-muted); text-decoration:line-through; line-height:1;">₹400</div>
-    <div style="font-size:1.15rem; font-weight:800; color:var(--text-primary); line-height:1.1;">₹200<span style="font-size:0.72rem; font-weight:600; color:var(--text-muted);">/yr</span></div>
+  <div style="display:flex; flex-direction:column; min-width:85px;">
+    <div style="font-size:0.85rem; font-weight:800; color:var(--text-primary); line-height:1.1;">FrankPass <span style="color:var(--accent-light);">PRO</span></div>
+    <div style="font-size:0.7rem; font-weight:600; color:var(--text-muted); line-height:1;">Offline License</div>
   </div>
   <div style="display:flex; flex:1; gap:8px;">
     <a href="/" class="btn-ghost" style="flex:1; padding:0.65rem 0.5rem; font-size:0.82rem; font-weight:700; border-radius:10px; border:1px solid var(--border); color:var(--text-primary); text-decoration:none; display:flex; align-items:center; justify-content:center; white-space:nowrap; background:var(--card-glass-bg);">
       🌐 Free Web
     </a>
-    <a href="https://store.frankbase.com/checkout/frankpass" target="_blank" rel="noopener noreferrer" class="btn-primary" style="flex:1.4; padding:0.65rem 0.75rem; font-size:0.88rem; font-weight:800; border-radius:10px; text-decoration:none; display:flex; align-items:center; justify-content:center; white-space:nowrap; background:linear-gradient(135deg,#8b5cf6,#7c3aed); color:#ffffff; box-shadow:0 4px 14px rgba(139,92,246,0.4);">
-      ⚡ Get Pro ➔
+    <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="flex:1.4; padding:0.65rem 0.75rem; font-size:0.88rem; font-weight:800; border-radius:10px; text-decoration:none; display:flex; align-items:center; justify-content:center; white-space:nowrap; background:linear-gradient(135deg,#8b5cf6,#7c3aed); color:#ffffff; box-shadow:0 4px 14px rgba(139,92,246,0.4);">
+      ⚡ Store Plans ➔
     </a>
   </div>
 </div>
@@ -866,233 +866,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
- PRO PAGE DYNAMIC PRICING, PRIVACY BRIDGE & CLAIM CONTROLLER
+ PRO PAGE SOVEREIGN STORE BRIDGE CONTROLLER
  ============================================================ */
-  // ============================================================
-  // DYNAMIC MULTI-PC HARDWARE CALCULATOR ENGINE (RULE 57)
-  // ============================================================
-  const DYNAMIC_PRICING = {
-    '1yr': { inr: 200, usd: 2.50, label: '1 Year', months_base: 12, months_bonus: 24 },
-    '3yr': { inr: 450, usd: 5.50, label: '3 Years (⚡ 25% Off)', months_base: 36, months_bonus: 72 },
-    '5yr': { inr: 600, usd: 7.50, label: '5 Years (⚡ 40% Off)', months_base: 60, months_bonus: 120 },
-    '10yr': { inr: 900, usd: 11.00, label: '10 Years (⚡ 55% Off)', months_base: 120, months_bonus: 240 }
-  };
+document.addEventListener('DOMContentLoaded', () => {
+  const bridgeModal = document.getElementById('privacy-bridge-modal');
+  const bridgeCloseBtn = document.getElementById('bridge-close-btn');
 
-  let calcDuration = '1yr';
-  let isDoubleValidityActive = false;
-
-  const pcSlotsList = document.getElementById('dynamic-pc-slots-list');
-  const addSlotBtn = document.getElementById('add-pc-slot-btn');
-  const slotPriceLabel = document.getElementById('add-slot-price-label');
-  const pcCountBadge = document.getElementById('calc-pc-count-badge');
-  const baseSubtotalEl = document.getElementById('calc-base-subtotal');
-  const discountValEl = document.getElementById('calc-discount-val');
-  const totalInrEl = document.getElementById('calc-total-inr');
-  const totalUsdEl = document.getElementById('calc-total-usd');
-  const licenseSummaryEl = document.getElementById('calc-license-summary');
-  const summaryDurationEl = document.getElementById('calc-summary-duration');
-  const summaryQtyEl = document.getElementById('calc-summary-qty');
-  const couponInput = document.getElementById('calc-coupon-input');
-  const applyCouponBtn = document.getElementById('apply-coupon-btn');
-  const doubleValidityPill = document.getElementById('double-validity-active-pill');
-  const proceedBtn = document.getElementById('calc-proceed-btn');
-  const emailInput = document.getElementById('calc-customer-email');
-  const primaryDevInput = document.getElementById('pc-slot-1-input');
-
-  if (devId && primaryDevInput) {
-    primaryDevInput.value = devId;
-  }
-  if (couponParam && couponInput) {
-    couponInput.value = couponParam;
-    checkCouponCode(couponParam);
-  }
-
-  function getVolumeDiscountRate(n) {
-    if (n <= 1) return 0;
-    if (n === 2) return 0.125; // 12.5%
-    if (n <= 5) return 0.20;  // 20%
-    if (n <= 10) return 0.25; // 25%
-    return 0.30;
-  }
-
-  function recalculateHardwarePricing() {
-    const inputs = document.querySelectorAll('.pc-device-input');
-    const pcCount = Math.max(1, inputs.length);
-    const cfg = DYNAMIC_PRICING[calcDuration] || DYNAMIC_PRICING['1yr'];
-    const discRate = getVolumeDiscountRate(pcCount);
-
-    const rawSubtotalINR = pcCount * cfg.inr;
-    const rawDiscountINR = rawSubtotalINR * discRate;
-    const totalINR = Math.round(rawSubtotalINR - rawDiscountINR);
-
-    const rawSubtotalUSD = pcCount * cfg.usd;
-    const rawDiscountUSD = rawSubtotalUSD * discRate;
-    const totalUSD = (rawSubtotalUSD - rawDiscountUSD).toFixed(2);
-
-    if (summaryDurationEl) summaryDurationEl.textContent = cfg.label;
-    if (summaryQtyEl) summaryQtyEl.textContent = `${pcCount} PC${pcCount > 1 ? 's' : ''}`;
-    if (pcCountBadge) pcCountBadge.textContent = `${pcCount} Machine${pcCount > 1 ? 's' : ''} Selected`;
-    if (baseSubtotalEl) baseSubtotalEl.textContent = `₹${rawSubtotalINR}`;
-    
-    if (discountValEl) {
-      if (discRate > 0) {
-        discountValEl.textContent = `-₹${Math.round(rawDiscountINR)} (${Math.round(discRate * 100)}% volume discount)`;
-        discountValEl.style.color = '#10b981';
-      } else {
-        discountValEl.textContent = `-₹0 (0% off)`;
-        discountValEl.style.color = 'var(--text-muted)';
-      }
-    }
-
-    if (totalInrEl) totalInrEl.textContent = `₹${totalINR}`;
-    if (totalUsdEl) totalUsdEl.textContent = `or $${totalUSD} USD globally`;
-
-    const months = isDoubleValidityActive ? cfg.months_bonus : cfg.months_base;
-    if (licenseSummaryEl) {
-      licenseSummaryEl.textContent = `${months} Months Offline License for ${pcCount} Physical PC${pcCount > 1 ? 's' : ''}`;
-    }
-
-    // Update next slot price hint
-    const nextN = pcCount + 1;
-    const nextDisc = getVolumeDiscountRate(nextN);
-    const perPcNextINR = Math.round(cfg.inr * (1 - nextDisc));
-    if (slotPriceLabel) {
-      slotPriceLabel.textContent = `(+₹${perPcNextINR}/PC)`;
-    }
-  }
-
-  function checkCouponCode(code) {
-    if (!code) {
-      isDoubleValidityActive = false;
-      if (doubleValidityPill) doubleValidityPill.style.display = 'none';
-      recalculateHardwarePricing();
-      return;
-    }
-    const clean = code.trim().toUpperCase();
-    if (clean.includes('REVIEW') || clean.includes('DOUBLE') || clean.includes('LOYAL') || clean.startsWith('REPLACE-') || clean.startsWith('OTC-')) {
-      isDoubleValidityActive = true;
-      if (doubleValidityPill) doubleValidityPill.style.display = 'flex';
-    } else {
-      isDoubleValidityActive = false;
-      if (doubleValidityPill) doubleValidityPill.style.display = 'none';
-    }
-    recalculateHardwarePricing();
-  }
-
-  if (applyCouponBtn && couponInput) {
-    applyCouponBtn.addEventListener('click', () => {
-      checkCouponCode(couponInput.value);
+  if (bridgeCloseBtn && bridgeModal) {
+    bridgeCloseBtn.addEventListener('click', () => {
+      bridgeModal.style.display = 'none';
     });
   }
-
-  // Duration Tabs Switcher for Dynamic Calculator
-  const calcDurationBtns = document.querySelectorAll('.calc-duration-btn');
-  calcDurationBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      calcDurationBtns.forEach(b => {
-        b.classList.remove('active');
-        b.style.background = 'transparent';
-        b.style.color = 'var(--text-muted)';
-      });
-      btn.classList.add('active');
-      btn.style.background = 'var(--accent)';
-      btn.style.color = '#ffffff';
-
-      calcDuration = btn.dataset.duration;
-      recalculateHardwarePricing();
-    });
-  });
-
-  // Dynamic Add PC Slot
-  if (addSlotBtn && pcSlotsList) {
-    addSlotBtn.addEventListener('click', () => {
-      const currentSlots = document.querySelectorAll('.pc-slot-row').length;
-      const nextIdx = currentSlots + 1;
-
-      const newRow = document.createElement('div');
-      newRow.className = 'pc-slot-row';
-      newRow.style.cssText = 'display:flex;gap:10px;align-items:center;animation:fadeIn 0.2s ease-in-out;';
-      newRow.innerHTML = `
-        <span style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:700;color:var(--text-muted);width:55px;flex-shrink:0">PC ${nextIdx}:</span>
-        <input type="text" class="pc-device-input" placeholder="FP-XXXX-XXXX-XXXX (Enter Machine ID)" style="flex:1;padding:0.75rem 1rem;border-radius:10px;border:1px solid var(--border);background:rgba(0,0,0,0.25);color:var(--text-primary);font-family:'JetBrains Mono',monospace;font-size:0.88rem">
-        <button type="button" class="btn-ghost remove-slot-btn" style="padding:6px 12px;color:#ef4444;border-color:rgba(239,68,68,0.3);border-radius:8px;font-size:0.8rem;cursor:pointer">✕ Remove</button>
-      `;
-
-      pcSlotsList.appendChild(newRow);
-
-      const removeBtn = newRow.querySelector('.remove-slot-btn');
-      removeBtn.addEventListener('click', () => {
-        newRow.remove();
-        // Re-index remaining rows
-        const rows = document.querySelectorAll('.pc-slot-row');
-        rows.forEach((r, idx) => {
-          if (idx > 0) {
-            const span = r.querySelector('span');
-            if (span) span.textContent = `PC ${idx + 1}:`;
-          }
-        });
-        recalculateHardwarePricing();
-      });
-
-      recalculateHardwarePricing();
-    });
-  }
-
-  // Dynamic Checkout Trigger
-  if (proceedBtn) {
-    proceedBtn.addEventListener('click', async () => {
-      const email = emailInput ? emailInput.value.trim() : '';
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid delivery email address for license certificate dispatch.');
-        if (emailInput) emailInput.focus();
-        return;
-      }
-
-      const inputs = document.querySelectorAll('.pc-device-input');
-      const deviceIds = [];
-      inputs.forEach((inp, idx) => {
-        let val = inp.value.trim();
-        if (!val) val = idx === 0 && devId ? devId : `FP-PC-${idx + 1}-${Math.random().toString(36).substr(2, 6).toUpperCase()}`;
-        deviceIds.push(val);
-      });
-
-      const coupon = couponInput ? couponInput.value.trim() : '';
-      const origText = proceedBtn.innerHTML;
-      proceedBtn.innerHTML = '<span>⏳</span> Initializing Secure Checkout...';
-      proceedBtn.disabled = true;
-
-      try {
-        const response = await fetch('https://store.frankbase.com/api/create-checkout-session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            plan_duration: calcDuration,
-            device_ids: deviceIds,
-            customer_email: email,
-            coupon_code: coupon
-          })
-        });
-
-        const resData = await response.json();
-        if (resData.success && resData.checkout_url) {
-          window.location.href = resData.checkout_url;
-        } else {
-          // Direct Store Checkout Bridge
-          const primaryDev = (deviceIds && deviceIds[0]) ? deviceIds[0] : '';
-          const storeUrl = `https://store.frankbase.com/checkout/frankpass?plan=${encodeURIComponent(calcDuration)}&devid=${encodeURIComponent(primaryDev)}&email=${encodeURIComponent(email)}`;
-          window.location.href = storeUrl;
-        }
-      } catch (err) {
-        console.warn('Checkout bridge redirecting to store:', err);
-        const primaryDev = (deviceIds && deviceIds[0]) ? deviceIds[0] : '';
-        const storeUrl = `https://store.frankbase.com/checkout/frankpass?plan=${encodeURIComponent(calcDuration)}&devid=${encodeURIComponent(primaryDev)}&email=${encodeURIComponent(email)}`;
-        window.location.href = storeUrl;
-      }
-    });
-  }
-
-  // Initial Calculation Run
-  recalculateHardwarePricing();
+});
 </script>
 
 </body>

@@ -36,7 +36,7 @@ The FrankPass Browser Extension is available for Google Chrome, Mozilla Firefox,
 - Multi-Profile Encrypted Vaults: Save multiple Master Secret Keys on your local machine (Personal, Work, Clients) encrypted with AES-256-GCM.
 - 4-Digit Quick PIN Lock: Unlock your local profiles in 0.1 seconds using a 4-digit PIN instead of re-typing long master passphrases each time.
 - Offline Security Questions Recovery: Reset PIN offline using 20 customizable security questions with zero server reliance.
-- Sovereign Store Pricing: ₹200 / $2.50 (1-Year), ₹600 / $7.50 (5-Year).
+- Sovereign Store Fulfillment: All optional Pro upgrades, device tier configurations, localized country currency pricing, and automated delivery are managed exclusively via Sovereign Store (https://store.frankbase.com/software/frankpass/).
 
 ## 4. Complete Tool Suite Directory
 1. Stateless Deterministic Generator (https://frankpass.com/): Mathematical derivation from Platform + Master Secret Key.
