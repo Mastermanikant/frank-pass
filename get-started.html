@@ -41,47 +41,6 @@
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
       margin-bottom: 1rem;
     }
-    .accordion-card:hover { border-color: rgba(139,92,246,0.45); box-shadow: 0 8px 32px rgba(139,92,246,0.12); }
-    .accordion-card.active { border-color: rgba(139,92,246,0.55); box-shadow: 0 12px 40px rgba(139,92,246,0.18); }
-    .accordion-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 1.5rem; cursor: pointer; user-select: none; gap: 1rem;
-    }
-    .accordion-header:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 18px 18px 0 0; }
-    .accordion-header-left { display: flex; align-items: center; gap: 0.875rem; flex: 1; min-width: 0; }
-    .accordion-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0; }
-    .acc-icon-web    { background: rgba(139,92,246,0.15); }
-    .acc-icon-ext    { background: rgba(16,185,129,0.15); }
-    .acc-icon-plans  { background: rgba(234,179,8,0.15); }
-    .acc-icon-android{ background: rgba(61,220,131,0.15); }
-    .acc-icon-ios    { background: rgba(59,130,246,0.15); }
-    .accordion-title-group { min-width: 0; }
-    .accordion-title { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem 0; line-height: 1.3; }
-    .accordion-subtitle { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.4; }
-    .accordion-badges { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-    .badge { font-size: 0.68rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
-    .badge-free    { background: rgba(100,116,139,0.2); color: #94a3b8; border: 1px solid rgba(100,116,139,0.3); }
-    .badge-pro     { background: rgba(234,179,8,0.18); color: #fbbf24; border: 1px solid rgba(234,179,8,0.35); }
-    .badge-soon    { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
-    .accordion-chevron { width: 20px; height: 20px; color: var(--text-muted); transition: transform 0.25s ease; flex-shrink: 0; }
-    .accordion-card.active .accordion-chevron { transform: rotate(180deg); }
-    .accordion-body { display: none; padding: 0 1.5rem 1.5rem; border-top: 1px solid var(--border); }
-    .accordion-card.active .accordion-body { display: block; }
-    .step-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.75rem; }
-    .step-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
-    .step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--glass-bg); border: 1px solid var(--border); color: var(--accent-light); font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
-    .step-list strong { color: var(--text-primary); }
-    .info-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; }
-    .info-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
-    .info-list .icon-dot { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
-    .compare-table { width: 100%; border-collapse: collapse; margin: 1rem 0 0; font-size: 0.83rem; }
-    .compare-table th { text-align: left; color: var(--text-muted); font-weight: 600; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--border); }
-    .compare-table th:not(:first-child) { text-align: center; }
-    .compare-table td { padding: 0.5rem 0.6rem; color: var(--text-muted); border-bottom: 1px solid rgba(139,92,246,0.08); vertical-align: middle; }
-    .compare-table td:not(:first-child) { text-align: center; font-size: 1rem; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table td.feat-name { color: var(--text-primary); font-weight: 500; }
-    .check-yes { color: #10b981; } .check-no { color: #475569; } .check-pro { color: #fbbf24; }
     .coming-soon-card { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; text-align: center; }
     .coming-soon-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
     .coming-soon-title { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.5rem 0; }
@@ -117,7 +76,89 @@
     [data-theme="light"] .ext-step-card, [data-theme="light"] .coming-soon-card { background: #f8f9ff; }
     [data-theme="light"] .compare-table td, [data-theme="light"] .compare-table th { color: #334155; }
     [data-theme="light"] .compare-table td.feat-name { color: #0f172a; }
+
+    /* Accordion styles */
+    .accordion-card:hover { border-color: rgba(139,92,246,0.45); box-shadow: 0 8px 32px rgba(139,92,246,0.12); }
+    .accordion-card.active { border-color: rgba(139,92,246,0.55); box-shadow: 0 12px 40px rgba(139,92,246,0.18); }
+    .accordion-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 1.5rem; cursor: pointer; user-select: none; gap: 1rem;
+    }
+    .accordion-header:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 18px 18px 0 0; }
+    .accordion-header-left { display: flex; align-items: center; gap: 0.875rem; flex: 1; min-width: 0; }
+    .accordion-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.35rem; flex-shrink: 0; }
+    .acc-icon-web    { background: rgba(139,92,246,0.15); }
+    .acc-icon-ext    { background: rgba(16,185,129,0.15); }
+    .acc-icon-plans  { background: rgba(234,179,8,0.15); }
+    .acc-icon-android{ background: rgba(61,220,131,0.15); }
+    .acc-icon-ios    { background: rgba(59,130,246,0.15); }
+    .accordion-title-group { min-width: 0; flex: 1; }
+    .accordion-title { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin: 0 0 0.15rem 0; line-height: 1.3; }
+    .accordion-subtitle { font-size: 0.78rem; color: var(--text-muted); margin: 0; line-height: 1.4; }
+    .accordion-badges { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+    .badge { font-size: 0.68rem; font-weight: 700; padding: 3px 9px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap; }
+    .badge-free    { background: rgba(100,116,139,0.2); color: #94a3b8; border: 1px solid rgba(100,116,139,0.3); }
+    .badge-pro     { background: rgba(234,179,8,0.18); color: #fbbf24; border: 1px solid rgba(234,179,8,0.35); }
+    .badge-soon    { background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.3); }
+    .accordion-chevron { width: 20px; height: 20px; color: var(--text-muted); transition: transform 0.25s ease; flex-shrink: 0; }
+    .accordion-card.active .accordion-chevron { transform: rotate(180deg); }
+    .accordion-body { display: none; padding: 0 1.5rem 1.5rem; border-top: 1px solid var(--border); }
+    .accordion-card.active .accordion-body { display: block; }
+    .step-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.75rem; }
+    .step-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; color: var(--text-muted); line-height: 1.55; }
+    .step-num { width: 22px; height: 22px; border-radius: 50%; background: var(--glass-bg); border: 1px solid var(--border); color: var(--accent-light); font-size: 0.72rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .step-list strong { color: var(--text-primary); }
+    .info-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; }
+    .info-list li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.55; }
+    .info-list .icon-dot { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+    .compare-table { width: 100%; border-collapse: collapse; margin: 1rem 0 0; font-size: 0.83rem; }
+    .compare-table th { text-align: left; color: var(--text-muted); font-weight: 600; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--border); }
+    .compare-table th:not(:first-child) { text-align: center; }
+    .compare-table td { padding: 0.5rem 0.6rem; color: var(--text-muted); border-bottom: 1px solid rgba(139,92,246,0.08); vertical-align: middle; }
+    .compare-table td:not(:first-child) { text-align: center; font-size: 1rem; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td.feat-name { color: var(--text-primary); font-weight: 500; }
+    .check-yes { color: #10b981; } .check-no { color: #475569; } .check-pro { color: #fbbf24; }
+    @media (max-width: 640px) {
+      .accordion-header {
+        padding: 1rem 0.85rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        position: relative;
+      }
+      .accordion-header-left {
+        width: 100%;
+        padding-right: 28px;
+        gap: 0.65rem;
+      }
+      .accordion-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.15rem;
+        border-radius: 10px;
+      }
+      .accordion-title {
+        font-size: 0.95rem;
+        line-height: 1.35;
+      }
+      .accordion-subtitle {
+        font-size: 0.75rem;
+      }
+      .accordion-badges {
+        margin-left: calc(36px + 0.65rem);
+        margin-top: -0.2rem;
+      }
+      .accordion-chevron {
+        position: absolute;
+        right: 0.85rem;
+        top: 1.15rem;
+      }
+      .accordion-body {
+        padding: 0 0.85rem 1.25rem;
+      }
+    }
   </style>
+</head>
 <body>
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
