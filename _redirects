@@ -39,12 +39,26 @@
 /privacy /legal 301
 /terms /legal 301
 /disclaimer /legal 301
-/articles /blog 301
-/security-tips /blog 301
+/articles /library 301
+/security-tips /library 301
+/blog /library 301
+/blog.html /library 301
 /beta /install 301
 /beta.html /install 301
 /preview-header / 301
 /preview-header.html / 301
+
+# Master Pillars & Short URL Aliases
+/stateless /why-stateless-password-generation-is-the-future 301
+/stateless-hindi /why-stateless-password-generation-is-the-future-hindi 301
+/invisible-vault /where-password-managers-fail-and-invisible-vault 301
+/invisible-vault-hindi /where-password-managers-fail-and-invisible-vault-hindi 301
+/entropy /what-makes-a-password-strong-and-passphrase-guide 301
+/passphrase /what-makes-a-password-strong-and-passphrase-guide 301
+/atm-security /atm-upi-pin-security-guide 301
+/atm-security-hindi /atm-upi-pin-security-guide-hindi 301
+/pin-security /atm-upi-pin-security-guide 301
+/pin-security-hindi /atm-upi-pin-security-guide-hindi 301
 
 # Library & Master Directory Redirects
 /links /library 301
@@ -55,11 +69,28 @@
 /directory-hindi /library-hindi 301
 /sitemap-links /library 301
 
-# Duplicate Blog Post Consolidation to Canonical Root
+# Blog Directory Liquidation & Canonical Root Migration
+/blog/why-stateless-password-generation-is-the-future /why-stateless-password-generation-is-the-future 301
+/blog/why-stateless-password-generation-is-the-future.html /why-stateless-password-generation-is-the-future 301
+/blog/why-stateless-password-generation-is-the-future-hindi /why-stateless-password-generation-is-the-future-hindi 301
+/blog/why-stateless-password-generation-is-the-future-hindi.html /why-stateless-password-generation-is-the-future-hindi 301
+/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault /where-password-managers-fail-and-invisible-vault 301
+/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html /where-password-managers-fail-and-invisible-vault 301
+/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault-hindi /where-password-managers-fail-and-invisible-vault-hindi 301
+/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault-hindi.html /where-password-managers-fail-and-invisible-vault-hindi 301
+/blog/what-makes-a-password-truly-strong-and-safe /what-makes-a-password-strong-and-passphrase-guide 301
+/blog/what-makes-a-password-truly-strong-and-safe.html /what-makes-a-password-strong-and-passphrase-guide 301
+/blog/natural-language-passphrases-and-mmy-normalization /what-makes-a-password-strong-and-passphrase-guide 301
+/blog/natural-language-passphrases-and-mmy-normalization.html /what-makes-a-password-strong-and-passphrase-guide 301
+/blog/why-no-forgot-password-button-is-our-greatest-strength /why-stateless-password-generation-is-the-future 301
+/blog/why-no-forgot-password-button-is-our-greatest-strength.html /why-stateless-password-generation-is-the-future 301
+/blog/why-i-built-frankpass-the-december-25-story /founder-mastermanikant 301
+/blog/why-i-built-frankpass-the-december-25-story.html /founder-mastermanikant 301
 /blog/frankpass-vs-traditional-cloud-password-vaults /frankpass-vs-cloud-password-vaults 301
 /blog/frankpass-vs-traditional-cloud-password-vaults.html /frankpass-vs-cloud-password-vaults 301
 /blog/the-no-free-lunch-paradigm-and-empowering-freemium /how-frankpass-is-free-without-selling-data 301
 /blog/the-no-free-lunch-paradigm-and-empowering-freemium.html /how-frankpass-is-free-without-selling-data 301
+/blog/* /library 301
 /business-model /how-frankpass-is-free-without-selling-data 301
 /how-we-make-money /how-frankpass-is-free-without-selling-data 301
 /economics /how-frankpass-is-free-without-selling-data 301

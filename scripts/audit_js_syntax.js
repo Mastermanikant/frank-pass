@@ -1,4 +1,4 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 const vm = require('vm');
 
@@ -38,8 +38,7 @@ function checkStandaloneJS(filePath) {
 
 const dir = path.join(__dirname, '..');
 const htmlFiles = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
-const blogFiles = fs.readdirSync(path.join(dir, 'blog')).filter(f => f.endsWith('.html')).map(f => path.join('blog', f));
-const allHtml = [...htmlFiles, ...blogFiles];
+const allHtml = htmlFiles;
 
 let totalErrors = 0;
 allHtml.forEach(f => {

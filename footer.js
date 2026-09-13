@@ -96,10 +96,9 @@
         <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html">Tools Comparison</a>
         <a href="/get-started.html">Get Started Guide</a>
         <a href="/secret-key-guide.html">Secret Key Guide</a>
-        <a href="/docs.html">Documentation</a>
         <a href="/faq.html">Security FAQ</a>
         <a href="/limitations-and-advantages.html">Limitations &amp; Advantages</a>
-        <a href="/blog.html">Security Blog</a>
+        <a href="/why-stateless-password-generation-is-the-future.html">Stateless Architecture</a>
         <a href="/library.html" style="color:var(--accent-light);font-weight:600">🏛️ Master Library &amp; Directory</a>
       </div>
 

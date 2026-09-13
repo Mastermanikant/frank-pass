@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <script>
@@ -262,6 +262,7 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- HEADER -->
+<!-- STICKY HEADER -->
 <header class="site-header" id="site-header" role="banner">
   <div class="header-inner">
     
@@ -339,6 +340,10 @@
                 <span class="dropdown-icon">⚙️</span>
                 <span class="dropdown-title">How FrankPass Works</span>
               </a>
+              <a href="/why-stateless-password-generation-is-the-future.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚡</span>
+                <span class="dropdown-title">Stateless Architecture</span>
+              </a>
               <a href="/faq.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">❓</span>
                 <span class="dropdown-title">Security FAQ</span>
@@ -364,68 +369,50 @@
               <span class="flyout-chevron">›</span>
             </div>
             <div class="flyout-menu" role="menu">
-              <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="dropdown-item" role="menuitem">
+              <a href="/where-password-managers-fail-and-invisible-vault.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">👁️</span>
-                <span class="dropdown-title">Invisible Vault Architecture</span>
+                <span class="dropdown-title">Invisible Vault Defense</span>
               </a>
               <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">☁️</span>
                 <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
               </a>
-              <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🚫</span>
-                <span class="dropdown-title">No 'Forgot Password' Strength</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 3: Password Science & Math -->
-          <div class="has-flyout" id="flyout-science-math">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">🔬</span>
-                <span class="flyout-cat-title">Password Science &amp; Math</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="dropdown-item" role="menuitem">
+              <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">🧮</span>
-                <span class="dropdown-title">What Makes Passwords Strong</span>
+                <span class="dropdown-title">Password Science &amp; Math</span>
               </a>
-              <a href="/blog/why-stateless-password-generation-is-the-future.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚡</span>
-                <span class="dropdown-title">Stateless Generation Future</span>
-              </a>
-              <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📝</span>
-                <span class="dropdown-title">Passphrases &amp; Normalization</span>
+              <a href="/atm-upi-pin-security-guide.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔢</span>
+                <span class="dropdown-title">ATM &amp; UPI PIN Security</span>
               </a>
             </div>
           </div>
 
-          <!-- Category 4: Founder Story & Vision -->
-          <div class="has-flyout" id="flyout-founder-story">
+          <!-- Category 3: Trust & Founder -->
+          <div class="has-flyout" id="flyout-trust-founder">
             <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
               <div class="flyout-header-content">
                 <span class="flyout-cat-icon">💡</span>
-                <span class="flyout-cat-title">Founder Story &amp; Vision</span>
+                <span class="flyout-cat-title">Trust &amp; Economics</span>
               </div>
               <span class="flyout-chevron">›</span>
             </div>
             <div class="flyout-menu" role="menu">
-              <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="dropdown-item" role="menuitem">
+              <a href="/about-us.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🏢</span>
+                <span class="dropdown-title">About FrankPass</span>
+              </a>
+              <a href="/founder-mastermanikant.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">🎯</span>
-                <span class="dropdown-title">Why I Built FrankPass</span>
+                <span class="dropdown-title">Founder Master Manikant</span>
               </a>
               <a href="/how-frankpass-is-free-without-selling-data.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">⚖️</span>
-                <span class="dropdown-title">The No-Free-Lunch Paradigm</span>
+                <span class="dropdown-title">Zero-Server Economics</span>
               </a>
-              <div class="dropdown-divider"></div>
-              <a href="/blog.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
-                <span class="dropdown-icon">📖</span>
-                <span class="dropdown-title" style="color:var(--accent-light);">All Blog Articles Hub &rarr;</span>
+              <a href="/sponsors.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🌱</span>
+                <span class="dropdown-title">Green Sponsors Hub</span>
               </a>
             </div>
           </div>
@@ -460,10 +447,13 @@
 
     </nav>
 
-    <!-- Hamburger Button for Mobile View -->
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span><span></span><span></span>
+    <!-- Mobile Hamburger Toggle Button -->
+    <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
+
   </div>
 </header>
 
@@ -486,6 +476,7 @@
     <div class="mobile-acc-panel">
       <a href="/secret-key-guide.html" class="mobile-acc-item">🔑 Secret Key Guide</a>
       <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">⚙️ How FrankPass Works</a>
+      <a href="/why-stateless-password-generation-is-the-future.html" class="mobile-acc-item">⚡ Stateless Architecture</a>
       <a href="/faq.html" class="mobile-acc-item">❓ Security FAQ</a>
       <a href="/whitepaper.html" class="mobile-acc-item">📄 Cryptographic Specs</a>
       <a href="/limitations-and-advantages.html" class="mobile-acc-item">⚖️ Limitations &amp; Advantages</a>
@@ -499,35 +490,24 @@
       <span class="acc-chevron">▾</span>
     </button>
     <div class="mobile-acc-panel">
-      <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="mobile-acc-item">👁️ Invisible Vault Architecture</a>
+      <a href="/where-password-managers-fail-and-invisible-vault.html" class="mobile-acc-item">👁️ Invisible Vault Defense</a>
       <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">☁️ Cloud Vault Vulnerabilities</a>
-      <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="mobile-acc-item">🚫 No 'Forgot Password' Strength</a>
+      <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="mobile-acc-item">🧮 Password Science &amp; Math</a>
+      <a href="/atm-upi-pin-security-guide.html" class="mobile-acc-item">🔢 ATM &amp; UPI PIN Security</a>
     </div>
   </div>
 
   <!-- Mobile Accordion 3 -->
   <div class="mobile-accordion">
     <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>🔬 Password Science &amp; Math</span>
+      <span>💡 Trust &amp; Economics</span>
       <span class="acc-chevron">▾</span>
     </button>
     <div class="mobile-acc-panel">
-      <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="mobile-acc-item">🧮 What Makes Passwords Strong</a>
-      <a href="/blog/why-stateless-password-generation-is-the-future.html" class="mobile-acc-item">⚡ Stateless Generation Future</a>
-      <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="mobile-acc-item">📝 Passphrases &amp; Normalization</a>
-    </div>
-  </div>
-
-  <!-- Mobile Accordion 4 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>💡 Founder Story &amp; Vision</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="mobile-acc-item">🎯 Why I Built FrankPass</a>
-      <a href="/how-frankpass-is-free-without-selling-data.html" class="mobile-acc-item">⚖️ How FrankPass is Free</a>
-      <a href="/blog.html" class="mobile-acc-item" style="color:var(--accent-light);font-weight:700;">📖 All Blog Articles Hub &rarr;</a>
+      <a href="/about-us.html" class="mobile-acc-item">🏢 About FrankPass</a>
+      <a href="/founder-mastermanikant.html" class="mobile-acc-item">🎯 Founder Master Manikant</a>
+      <a href="/how-frankpass-is-free-without-selling-data.html" class="mobile-acc-item">⚖️ Zero-Server Economics</a>
+      <a href="/sponsors.html" class="mobile-acc-item">🌱 Green Sponsors Hub</a>
     </div>
   </div>
 
@@ -570,7 +550,7 @@
       <button class="filter-tab" data-filter="tool" type="button">🛠️ Generators</button>
       <button class="filter-tab" data-filter="guide" type="button">📖 Guides</button>
       <button class="filter-tab" data-filter="security" type="button">🛡️ Security &amp; Specs</button>
-      <button class="filter-tab" data-filter="blog" type="button">📰 Essays &amp; Blog</button>
+      <button class="filter-tab" data-filter="blog" type="button">📰 Master Guides</button>
       <button class="filter-tab" data-filter="trust" type="button">🏛️ Trust &amp; Legal</button>
     </div>
   </section>
@@ -801,7 +781,7 @@
         </a>
 
         <!-- 13. Threat Defense: Invisible Vault -->
-        <a href="/blog/where-password-managers-fail-keyloggers-clipboard-and-the-invisible-vault.html" class="resource-card" data-category="security" data-keywords="keyloggers clipboard invisible vault threat defense memory snoopers malware">
+        <a href="/where-password-managers-fail-and-invisible-vault.html" class="resource-card" data-category="security" data-keywords="keyloggers clipboard invisible vault threat defense memory snoopers malware">
           <div>
             <div class="card-top-row">
               <div class="card-icon-box">🛡️</div>
@@ -819,16 +799,16 @@
       </div>
     </section>
 
-    <!-- CATEGORY 4: BLOG & ESSAYS -->
+    <!-- CATEGORY 4: ARCHITECTURAL RESEARCH & MASTER GUIDES -->
     <section class="library-section" data-category-group="blog">
       <div class="section-header-row">
-        <h2 class="section-header-title">📰 Blog &amp; Deep Security Essays</h2>
-        <span class="section-count-badge">7 Articles</span>
+        <h2 class="section-header-title">📰 Architectural Research &amp; Master Guides</h2>
+        <span class="section-count-badge">7 Master Guides</span>
       </div>
       <div class="library-grid">
 
         <!-- 14. Origin Story -->
-        <a href="/blog/why-i-built-frankpass-the-december-25-story.html" class="resource-card" data-category="blog" data-keywords="december 25 story why i built frankpass master manikant yadav founder origin personal">
+        <a href="/founder-mastermanikant.html" class="resource-card" data-category="blog" data-keywords="december 25 story why i built frankpass master manikant yadav founder origin personal">
           <div>
             <div class="card-top-row">
               <div class="card-icon-box">✍️</div>
@@ -843,28 +823,12 @@
           </div>
         </a>
 
-        <!-- 15. Why No Forgot Password -->
-        <a href="/blog/why-no-forgot-password-button-is-our-greatest-strength.html" class="resource-card" data-category="blog" data-keywords="why no forgot password recovery backdoor identity theft greatest strength security">
+        <!-- 15. Stateless Password Architecture -->
+        <a href="/why-stateless-password-generation-is-the-future.html" class="resource-card" data-category="blog" data-keywords="why stateless future deterministic cryptography zero database paradigm shift 1m pbkdf2">
           <div>
             <div class="card-top-row">
-              <div class="card-icon-box">🔒</div>
-              <span class="card-badge badge-blog">Architecture Essay</span>
-            </div>
-            <h3 class="card-title">Why No 'Forgot Password' Is Our Greatest Strength</h3>
-            <p class="card-desc">Explaining why omitting password recovery mechanisms eliminates 90% of identity takeover vectors and guarantees mathematical sovereignty.</p>
-          </div>
-          <div class="card-footer-row">
-            <span class="card-audience">Audience: Philosophy</span>
-            <span>Read Article &rarr;</span>
-          </div>
-        </a>
-
-        <!-- 16. Future of Stateless -->
-        <a href="/blog/why-stateless-password-generation-is-the-future.html" class="resource-card" data-category="blog" data-keywords="why stateless future deterministic cryptography zero database paradigm shift">
-          <div>
-            <div class="card-top-row">
-              <div class="card-icon-box">🔮</div>
-              <span class="card-badge badge-blog">Industry Vision</span>
+              <div class="card-icon-box">⚡</div>
+              <span class="card-badge badge-blog">Stateless Architecture</span>
             </div>
             <h3 class="card-title">Why Stateless Password Generation Is the Future</h3>
             <p class="card-desc">An architectural overview of the generational paradigm shift from vulnerable cloud databases toward client-side mathematical sovereignty.</p>
@@ -875,15 +839,31 @@
           </div>
         </a>
 
-        <!-- 17. Password Science & Entropy -->
-        <a href="/blog/what-makes-a-password-truly-strong-and-safe.html" class="resource-card" data-category="blog" data-keywords="strong password entropy shannon brute force dictionary attacks length science">
+        <!-- 16. Invisible Vault Defense -->
+        <a href="/where-password-managers-fail-and-invisible-vault.html" class="resource-card" data-category="blog" data-keywords="where password managers fail keyloggers clipboard snoopers invisible vault timelock">
           <div>
             <div class="card-top-row">
-              <div class="card-icon-box">🧠</div>
+              <div class="card-icon-box">👁️</div>
+              <span class="card-badge badge-blog">Threat Defense</span>
+            </div>
+            <h3 class="card-title">Where Password Managers Fail &amp; The Invisible Vault</h3>
+            <p class="card-desc">How endpoint keyloggers and clipboard snooping malware bypass traditional vaults, and how FrankPass RAM isolation eliminates clipboard exposure.</p>
+          </div>
+          <div class="card-footer-row">
+            <span class="card-audience">Audience: Threat Modeling</span>
+            <span>Read Article &rarr;</span>
+          </div>
+        </a>
+
+        <!-- 17. Password Science & Entropy -->
+        <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="resource-card" data-category="blog" data-keywords="strong password entropy shannon brute force dictionary attacks length science passphrases">
+          <div>
+            <div class="card-top-row">
+              <div class="card-icon-box">🧮</div>
               <span class="card-badge badge-blog">Password Science</span>
             </div>
             <h3 class="card-title">What Makes a Password Truly Strong &amp; Safe</h3>
-            <p class="card-desc">Shannon entropy calculations, dictionary attack resilience, and the mathematical proof of why password length vastly outperforms complex symbols.</p>
+            <p class="card-desc">Shannon entropy calculations, dictionary attack resilience, XKCD passphrases, and mathematical proof of why length outperforms complex symbols.</p>
           </div>
           <div class="card-footer-row">
             <span class="card-audience">Audience: Security Fundamentals</span>
@@ -891,18 +871,18 @@
           </div>
         </a>
 
-        <!-- 18. Natural Language & MMY Normalization -->
-        <a href="/blog/natural-language-passphrases-and-mmy-normalization.html" class="resource-card" data-category="blog" data-keywords="natural language passphrases mmy normalization unicode nfc diacritics typing errors">
+        <!-- 18. ATM & UPI PIN Security Guide -->
+        <a href="/atm-upi-pin-security-guide.html" class="resource-card" data-category="blog" data-keywords="atm upi pin security guide banking mpin deterministic modulo utility debit card">
           <div>
             <div class="card-top-row">
-              <div class="card-icon-box">📝</div>
-              <span class="card-badge badge-blog">Linguistics &amp; Math</span>
+              <div class="card-icon-box">🔢</div>
+              <span class="card-badge badge-blog">Banking Defense</span>
             </div>
-            <h3 class="card-title">Natural Language Passphrases &amp; MMY Normalization</h3>
-            <p class="card-desc">How Unicode NFC normalization and casing heuristics prevent human memory slip-ups without sacrificing raw cryptographic entropy.</p>
+            <h3 class="card-title">ATM &amp; UPI PIN Security Guide</h3>
+            <p class="card-desc">How deterministic modulo arithmetic solves the universal forgotten banking PIN problem for debit cards and mobile UPI apps offline.</p>
           </div>
           <div class="card-footer-row">
-            <span class="card-audience">Audience: Deep Math &amp; UX</span>
+            <span class="card-audience">Audience: Daily Banking</span>
             <span>Read Article &rarr;</span>
           </div>
         </a>
@@ -912,9 +892,9 @@
           <div>
             <div class="card-top-row">
               <div class="card-icon-box">🌱</div>
-              <span class="card-badge badge-blog">Ethical Business</span>
+              <span class="card-badge badge-blog">Ethical Economics</span>
             </div>
-            <h3 class="card-title">The 'No Free Lunch' Paradigm &amp; Ethical Freemium</h3>
+            <h3 class="card-title">How FrankPass is Free Without Selling Your Data</h3>
             <p class="card-desc">Why the core generator is permanently free with zero trackers, and how transparent Pro licensing sustains independent software development.</p>
           </div>
           <div class="card-footer-row">
@@ -923,19 +903,19 @@
           </div>
         </a>
 
-        <!-- 20. Complete Blog Archive -->
-        <a href="/blog.html" class="resource-card" data-category="blog" data-keywords="blog index archive articles editorial news security insights feed">
+        <!-- 20. FrankPass vs Cloud Password Vaults -->
+        <a href="/frankpass-vs-cloud-password-vaults.html" class="resource-card" data-category="blog" data-keywords="frankpass vs cloud vaults comparison 1password bitwarden lastpass honeypot">
           <div>
             <div class="card-top-row">
-              <div class="card-icon-box">📚</div>
-              <span class="card-badge badge-blog">Blog Feed</span>
+              <div class="card-icon-box">☁️</div>
+              <span class="card-badge badge-blog">Deep Comparison</span>
             </div>
-            <h3 class="card-title">FrankPass Security Blog Archive</h3>
-            <p class="card-desc">The chronological timeline and editorial index of all published security updates, deep dives, and cryptographic research posts.</p>
+            <h3 class="card-title">FrankPass vs Traditional Cloud Password Vaults</h3>
+            <p class="card-desc">Comprehensive 2026 side-by-side comparison between cloud database storage models and zero-cloud stateless deterministic cryptography.</p>
           </div>
           <div class="card-footer-row">
-            <span class="card-audience">Audience: Readers &amp; Subscribers</span>
-            <span>Browse Blog Feed &rarr;</span>
+            <span class="card-audience">Audience: Architects &amp; CISOs</span>
+            <span>Read Article &rarr;</span>
           </div>
         </a>
 
