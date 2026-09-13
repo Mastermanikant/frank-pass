@@ -41,6 +41,10 @@
 /disclaimer /legal 301
 /articles /blog 301
 /security-tips /blog 301
+/beta /install 301
+/beta.html /install 301
+/preview-header / 301
+/preview-header.html / 301
 
 # Library & Master Directory Redirects
 /links /library 301
