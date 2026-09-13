@@ -508,12 +508,12 @@
     <div class="container" style="max-width:860px">
       <div id="accordion-grid">
 
-        <!-- ══════════════════════════════════════════════════
-             CARD 1  -  How to Use frankpass.com (Web App)
-        ══════════════════════════════════════════════════ -->
-        <div class="accordion-card" id="acc-web">
+        <!-- ============================================================
+             CARD 1 - How to Use frankpass.com (Web App)
+        ============================================================ -->
+        <div class="accordion-card active" id="acc-web">
           <div class="accordion-header" role="button" tabindex="0"
-               aria-expanded="false" aria-controls="acc-web-body"
+               aria-expanded="true" aria-controls="acc-web-body"
                onclick="toggleAcc('acc-web')" onkeydown="kbAcc(event,'acc-web')">
             <div class="accordion-header-left">
               <div class="accordion-icon acc-icon-web">🌐</div>
@@ -539,7 +539,7 @@
 
             <div class="trial-highlight" style="border-color:rgba(139,92,246,0.3);background:rgba(139,92,246,0.07)">
               <span class="trial-hl-icon">💡</span>
-              <span><strong>Why Stateless Math?</strong> Traditional password managers store an encrypted database in the cloud that can be leaked. FrankPass uses pure client-side mathematical derivation  -  there is zero database to hack.</span>
+              <span><strong>Why Stateless Math?</strong> Traditional password managers store an encrypted database in the cloud that can be leaked. FrankPass uses pure client-side mathematical derivation - there is zero database to hack.</span>
             </div>
 
             <!-- Video Tutorial Placeholder -->
@@ -555,9 +555,9 @@
           </div>
         </div>
 
-        <!-- ══════════════════════════════════════════════════
-             CARD 2  -  How to Use FrankPass Pro Extension
-        ══════════════════════════════════════════════════ -->
+        <!-- ============================================================
+             CARD 2 - How to Use FrankPass Browser Extension
+        ============================================================ -->
         <div class="accordion-card" id="acc-ext">
           <div class="accordion-header" role="button" tabindex="0"
                aria-expanded="false" aria-controls="acc-ext-body"
@@ -565,71 +565,72 @@
             <div class="accordion-header-left">
               <div class="accordion-icon acc-icon-ext">🧩</div>
               <div class="accordion-title-group">
-                <h2 class="accordion-title">How to Use FrankPass Pro Extension</h2>
-                <p class="accordion-subtitle">1-Click Autofill · Anti-Phishing Guard · Chrome &amp; Firefox</p>
+                <h2 class="accordion-title">How to Use FrankPass Browser Extension</h2>
+                <p class="accordion-subtitle">100% Free Auto-Fill · Domain Detection · Optional Pro Profiles</p>
               </div>
             </div>
             <div class="accordion-badges">
-              <span class="badge badge-pro">Pro</span>
-              <span class="badge badge-free">Free Trial</span>
+              <span class="badge badge-free">Free Forever</span>
+              <span class="badge badge-pro">Pro Option</span>
             </div>
             <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
           </div>
           <div class="accordion-body" id="acc-ext-body" role="region" aria-labelledby="acc-ext">
             <ul class="step-list">
               <li><span class="step-num">1</span><span>Install the extension from <a href="/install.html">frankpass.com/install</a>.</span></li>
-              <li><span class="step-num">2</span><span>Click the browser <strong>Puzzle Icon (🧩)</strong> &rarr; Pin 📌 FrankPass Pro to your active toolbar.</span></li>
+              <li><span class="step-num">2</span><span>Click the browser <strong>Puzzle Icon (🧩)</strong> &rarr; Pin 📌 FrankPass to your active toolbar.</span></li>
               <li><span class="step-num">3</span><span>Whenever you reach a login page, press <kbd class="fp-kbd">Ctrl + Shift + L</kbd> (Mac: <kbd class="fp-kbd">⌘ + Shift + L</kbd>) or click the FrankPass icon.</span></li>
-              <li><span class="step-num">4</span><span>The extension automatically detects the domain name, sets the platform, and lets you enter your Secret Key or unlock with a quick 4-Digit PIN.</span></li>
+              <li><span class="step-num">4</span><span>The extension automatically detects the domain name and derives your password in RAM. <strong>Instant Guest Mode is 100% Free forever</strong>; Pro adds 4-Digit PIN unlock and local saved profiles.</span></li>
               <li><span class="step-num">5</span><span>Click <strong>Auto-Fill</strong> to populate login fields instantly with zero clipboard exposure.</span></li>
             </ul>
 
             <div class="trial-highlight">
               <span class="trial-hl-icon">🎁</span>
-              <span><strong>Free 7-Day Diamond Pro Trial:</strong> Experience 100% of Pro features with zero payment, zero email, and zero credit card required.</span>
+              <span><strong>100% Free Auto-Fill:</strong> Guest Mode auto-fill is free forever with zero sign-up. Optional 7-Day Pro Trial is available to test multi-profile PIN unlock.</span>
             </div>
 
             <!-- Features Comparison Table -->
-            <table class="compare-table" aria-label="Free Web vs Pro Extension Comparison">
+            <table class="compare-table" aria-label="Free Web vs Free Extension vs Pro Extension Comparison">
               <thead>
                 <tr>
                   <th>Capability / Feature</th>
-                  <th>Web Generator</th>
-                  <th style="color:#fbbf24">Pro Extension</th>
+                  <th>Free Web</th>
+                  <th style="color:#10b981">Free Extension</th>
+                  <th style="color:#fbbf24">Pro Profiles</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td class="feat-name">PBKDF2 Deterministic Generation</td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td></tr>
-                <tr><td class="feat-name">100% Offline &amp; Zero Cloud Vault</td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td></tr>
-                <tr><td class="feat-name">4–8 Digit PIN Generator</td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td></tr>
-                <tr><td class="feat-name">1-Click Automated Field Autofill</td><td><span class="check-no">✕ No (Manual)</span></td><td><span class="check-pro">★ Yes (Instant)</span></td></tr>
-                <tr><td class="feat-name">Universal Shortcut (<kbd class="fp-kbd">Ctrl+Shift+L</kbd>)</td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
-                <tr><td class="feat-name">Anti-Phishing Fake Domain Detection</td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
-                <tr><td class="feat-name">Multi-Profile Vault (Work, Personal, Banking)</td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
-                <tr><td class="feat-name">Quick 4-Digit PIN Extension Lock</td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
-                <tr><td class="feat-name">Offline Security Question Recovery Seed</td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
+                <tr><td class="feat-name">PBKDF2 Deterministic Generation</td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td></tr>
+                <tr><td class="feat-name">100% Offline &amp; Zero Cloud Vault</td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td></tr>
+                <tr><td class="feat-name">4-8 Digit Banking PIN Generator</td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-yes">✓ Yes</span></td></tr>
+                <tr><td class="feat-name">1-Click Automated Field Autofill</td><td><span class="check-no">✕ No (Manual)</span></td><td><span class="check-yes">✓ Yes (Guest)</span></td><td><span class="check-pro">★ Yes (Multi-Profile)</span></td></tr>
+                <tr><td class="feat-name">Universal Shortcut (<kbd class="fp-kbd">Ctrl+Shift+L</kbd>)</td><td><span class="check-no">✕ No</span></td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-pro">★ Yes</span></td></tr>
+                <tr><td class="feat-name">Anti-Phishing Fake Domain Detection</td><td><span class="check-no">✕ No</span></td><td><span class="check-yes">✓ Yes</span></td><td><span class="check-pro">★ Yes</span></td></tr>
+                <tr><td class="feat-name">Multi-Profile Vault (Work, Personal)</td><td><span class="check-no">✕ No</span></td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
+                <tr><td class="feat-name">Quick 4-Digit PIN Extension Lock</td><td><span class="check-no">✕ No</span></td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
+                <tr><td class="feat-name">Offline Security Question Recovery</td><td><span class="check-no">✕ No</span></td><td><span class="check-no">✕ No</span></td><td><span class="check-pro">★ Yes</span></td></tr>
               </tbody>
             </table>
 
             <!-- Video Tutorial Placeholder -->
             <div class="video-placeholder" style="margin-top:1.25rem">
               <div class="vp-icon">🎬</div>
-              <p><strong>Pro Extension Demo Video:</strong> Autofill and Anti-Phishing tutorial video will be added here.</p>
+              <p><strong>Extension Demo Video:</strong> Autofill and Anti-Phishing tutorial video will be added here.</p>
             </div>
 
             <div class="acc-cta-row">
-              <a href="https://store.frankbase.com/frankpasspro-extension-trial" target="_blank" rel="noopener noreferrer" class="acc-btn-primary" style="background:linear-gradient(135deg,#10b981 0%,#059669 100%)">
-                🎁 Claim Free 7-Day Diamond Trial &rarr;
+              <a href="/install.html" class="acc-btn-primary">
+                🧩 Install Free Extension &rarr;
               </a>
               <a href="/pro.html" class="acc-btn-ghost">Explore Pro Suite</a>
-              <a href="/install.html" class="acc-btn-ghost">Install Guide</a>
+              <a href="https://store.frankbase.com/frankpasspro-extension-trial" target="_blank" rel="noopener noreferrer" class="acc-btn-ghost" style="color:#fbbf24;border-color:rgba(234,179,8,0.4)">🎁 Free 7-Day Pro Trial</a>
             </div>
           </div>
         </div>
 
-        <!-- ══════════════════════════════════════════════════
-             CARD 3  -  Free vs Pro & Free Trial Benefits
-        ══════════════════════════════════════════════════ -->
+        <!-- ============================================================
+             CARD 3 - Free vs Pro & Free Trial Benefits
+        ============================================================ -->
         <div class="accordion-card" id="acc-plans">
           <div class="accordion-header" role="button" tabindex="0"
                aria-expanded="false" aria-controls="acc-plans-body"
@@ -677,9 +678,9 @@
           </div>
         </div>
 
-        <!-- ══════════════════════════════════════════════════
-             CARD 4  -  Android App (Features & Coming Soon)
-        ══════════════════════════════════════════════════ -->
+        <!-- ============================================================
+             CARD 4 - Android App (Features & Coming Soon)
+        ============================================================ -->
         <div class="accordion-card" id="acc-android">
           <div class="accordion-header" role="button" tabindex="0"
                aria-expanded="false" aria-controls="acc-android-body"
