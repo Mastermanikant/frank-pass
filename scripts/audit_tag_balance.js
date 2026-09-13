@@ -1,9 +1,10 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 
 const dir = path.join(__dirname, '..');
 const files = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
-const blogFiles = fs.readdirSync(path.join(dir, 'blog')).filter(f => f.endsWith('.html')).map(f => path.join('blog', f));
+const blogDir = path.join(dir, 'blog');
+const blogFiles = fs.existsSync(blogDir) ? fs.readdirSync(blogDir).filter(f => f.endsWith('.html')).map(f => path.join('blog', f)) : [];
 const allFiles = [...files, ...blogFiles];
 
 let filesWithMismatch = 0;
