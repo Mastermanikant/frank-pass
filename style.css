@@ -3217,6 +3217,18 @@ html, body {
 [data-theme="light"] .hover-card-desc {
   color: #475569 !important;
 }
+[data-theme="light"] .version-popover {
+  background: #ffffff !important;
+  border-color: rgba(109, 40, 217, 0.25) !important;
+  color: #0f172a !important;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12), 0 0 20px rgba(109, 40, 217, 0.08) !important;
+}
+[data-theme="light"] .version-popover-title {
+  color: #6d28d9 !important;
+}
+[data-theme="light"] .version-popover-text {
+  color: #475569 !important;
+}
 [data-theme="light"] .output-box {
   background: #f8fafc !important;
   border-color: #cbd5e1 !important;
