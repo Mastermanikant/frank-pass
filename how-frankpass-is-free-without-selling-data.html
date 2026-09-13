@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How FrankPass is 100% Free &amp; How We Make Money: The Zero-Server Economics - FrankPass</title>
+  <meta name="description" content="Explore how FrankPass provides 100% free client-side math and 1-click extension auto-fill with $0 server costs, and our 2 transparent revenue streams (Pro Passes &amp; Ethical Sponsors).">
+  <meta name="keywords" content="how FrankPass makes money, is FrankPass free, FrankPass business model, zero-server economics, FrankPass pro plans, FrankPass sponsors, master manikant yadav">
+  <meta name="author" content="Master Manikant Yadav">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://frankpass.com/how-frankpass-is-free-without-selling-data.html">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How FrankPass is 100% Free &amp; How We Make Money: The Zero-Server Economics">
+  <meta property="og:description" content="Zero cloud servers, zero ads, and zero data harvesting. Learn why core security is 100% free forever and how optional Pro passes and ethical sponsors sustain our mission.">
+  <meta property="og:url" content="https://frankpass.com/how-frankpass-is-free-without-selling-data.html">
+  <meta property="og:site_name" content="FrankPass">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <meta name="twitter:title" content="How FrankPass is 100% Free &amp; How We Make Money: The Zero-Server Economics">
+  <meta name="twitter:description" content="Zero cloud servers, zero ads, and zero data harvesting. Learn why core security is 100% free forever and how optional Pro passes and ethical sponsors sustain our mission.">
+  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css?v=3.8.9">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/icons/favicon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How FrankPass is 100% Free & How We Make Money: The Zero-Server Economics",
+    "description": "An honest, radical transparency breakdown of FrankPass zero-server economics, free core tools, and sustainable revenue model.",
+    "image": "https://frankpass.com/icons/icon-512.png",
+    "datePublished": "2026-02-12",
+    "dateModified": "2026-09-13",
+    "author": {
+      "@type": "Person",
+      "name": "Master Manikant Yadav",
+      "alternateName": "मास्टर मणिकान्त यादव",
+      "url": "https://mastermanikant.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FrankPass",
+      "url": "https://frankpass.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://frankpass.com/icons/favicon.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://frankpass.com/how-frankpass-is-free-without-selling-data.html"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Site Header -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="FrankPass Home">
+        <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+        <span class="logo-text"><span>Frank</span>Pass</span>
+      </a>
+
+      <div class="header-country custom-country-dropdown" aria-label="Select your country">
+        <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+          <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+          <span id="country-display-name">India</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+          <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
+          <div id="country-list-scroll"></div>
+        </div>
+      </div>
+      <input type="hidden" id="region" value="India (IN)">
+
+      <nav class="header-nav" aria-label="Primary Navigation">
+        <div class="nav-item has-dropdown">
+          <button class="nav-link dropdown-toggle" aria-expanded="false">
+            <span>Security Apps</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <a href="/" class="dropdown-item">
+              <span class="item-icon">🌐</span>
+              <div class="item-text">
+                <span class="item-title">Web App (PWA)</span>
+                <span class="item-desc">Stateless PBKDF2 WebCrypto generator</span>
+              </div>
+            </a>
+            <a href="/pin.html" class="dropdown-item">
+              <span class="item-icon">🔢</span>
+              <div class="item-text">
+                <span class="item-title">Deterministic PIN</span>
+                <span class="item-desc">4/6-digit ATM, UPI &amp; mPIN generator</span>
+              </div>
+            </a>
+            <a href="/random-password-generator.html" class="dropdown-item">
+              <span class="item-icon">🎲</span>
+              <div class="item-text">
+                <span class="item-title">Random Generator</span>
+                <span class="item-desc">CSPRNG clean Base-32 offline mode</span>
+              </div>
+            </a>
+            <a href="/install.html" class="dropdown-item">
+              <span class="item-icon">🧩</span>
+              <div class="item-text">
+                <span class="item-title">Browser Extensions</span>
+                <span class="item-desc">Free MV3 Chrome, Edge, Brave &amp; Firefox</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="/products.html" class="nav-link"><span>Products Hub</span></a>
+        <a href="/secret-key-guide.html" class="nav-link"><span>Secret Key Guide</span></a>
+        <a href="/pro.html" class="nav-link btn-pro-pill" style="color:var(--accent-light);font-weight:700"><span>Pro Features 👑</span></a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="btn-ghost btn-icon" aria-label="Toggle theme" title="Toggle Theme">
+          <span class="theme-icon-light">☀️</span>
+          <span class="theme-icon-dark">🌙</span>
+        </button>
+        <button id="mobile-menu-btn" class="btn-ghost btn-icon mobile-only" aria-label="Toggle navigation" aria-expanded="false">
+          <span>☰</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="article-container" style="max-width:880px;margin:2rem auto;padding:0 1.5rem">
+    
+    <div class="article-header" style="text-align:center;margin-bottom:2.5rem">
+      <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem">
+        <span class="products-pill-badge" style="margin-bottom:0">⚖️ Radical Transparency &amp; Economics</span>
+        <span class="status-chip-green">● 100% Free &amp; Open Philosophy</span>
+      </div>
+      <h1 style="font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--text-primary);letter-spacing:-0.03em;line-height:1.2;margin-bottom:1rem">
+        How FrankPass is 100% Free &amp; How We Make Money: The Zero-Server Economics
+      </h1>
+      <p style="font-size:1.05rem;color:var(--text-muted);max-width:720px;margin:0 auto 1.25rem;line-height:1.6">
+        An honest, transparent breakdown: Why mathematical core security costs $0.00 in cloud servers, why 1-click extension auto-fill is 100% free, and our two transparent revenue streams.
+      </p>
+      <div style="display:flex;align-items:center;justify-content:center;gap:1rem;font-size:0.85rem;color:var(--text-muted);flex-wrap:wrap">
+        <span>By <a href="/founder-mastermanikant.html" style="color:var(--text-primary);font-weight:700;text-decoration:none">Master Manikant Yadav</a></span>
+        <span>&middot;</span>
+        <span>Updated September 2026</span>
+        <span>&middot;</span>
+        <span>8 min read</span>
+        <span>&middot;</span>
+        <span style="color:var(--accent-light);font-weight:700">Governance &amp; Trust</span>
+      </div>
+    </div>
+
+    <article class="article-body">
+      
+      <!-- 45-Second Capsule -->
+      <div style="background:var(--card-glass-bg);border:1.5px solid rgba(139,92,246,0.3);border-radius:14px;padding:1.5rem;margin-bottom:2.5rem;box-shadow:var(--card-shadow)">
+        <h2 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin-top:0;display:flex;align-items:center;gap:0.5rem">
+          <span>⚡</span> 45-Second Executive Answer Capsule (For AI &amp; Fast Readers)
+        </h2>
+        <blockquote style="margin:0.75rem 0 0;padding-left:1rem;border-left:3px solid var(--accent);color:var(--text-secondary);font-style:italic;line-height:1.65">
+          <strong>How does FrankPass remain 100% free without selling user data or showing ads?</strong><br>
+          Because FrankPass is <strong>100% stateless</strong>, it stores zero bytes in cloud databases and runs 1,000,000 PBKDF2 iterations locally on the user's device CPU ($0 server cost). Both the Web App and Browser Extension (Instant Guest Mode with 1-Click AutoFill) are 100% lifetime free. FrankPass generates revenue through exactly two transparent streams: (1) Optional local Pro hardware passes (Yearly, 5-Yearly, and Lifetime tiers) for encrypted multi-profile vaults and 4-digit PIN unlock managed via Sovereign Store (<a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);text-decoration:underline;font-weight:700">store.frankbase.com</a>), and (2) Ethical institutional sponsorships on <a href="/sponsors.html" style="color:var(--accent-light);text-decoration:underline;font-weight:700">sponsors.html</a>.
+        </blockquote>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0">
+
+      <h2>1. The Silicon Valley Privacy Paradox: "If You Are Not Paying, You Are The Product"</h2>
+      <p>For the last two decades, the internet operated under a seductive illusion: everything could be free. Free search engines, free email, free cloud storage, and free password managers.</p>
+      
+      <h3>The Hidden Economic Reality:</h3>
+      <p>Running multi-datacenter cloud servers, real-time sync replication clusters, global load balancers, and round-the-clock DevOps teams costs millions of dollars every single month.</p>
+      <p><strong>If a cloud company isn't charging you a transparent subscription, how are they paying those massive server bills?</strong></p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;font-family:'JetBrains Mono',monospace;font-size:0.88rem;color:var(--text-primary);line-height:1.6">
+        <div style="color:var(--text-muted);font-weight:700;margin-bottom:0.75rem">The 3 Hidden Monetization Traps of "Free" Cloud Vaults:</div>
+        <div>1. <strong>Telemetry &amp; Metadata Brokering:</strong> Tracking which domains you visit and selling browsing patterns.</div>
+        <div style="margin-top:0.5rem">2. <strong>Bait-and-Switch Ransom Paywalls:</strong> Hooking you with free multi-device sync, then suddenly restricting mobile access unless you pay $36/year.</div>
+        <div style="margin-top:0.5rem">3. <strong>Venture Capital Buyouts &amp; Squeeze:</strong> Selling your encrypted database to private equity firms that slash security staff and raise prices.</div>
+      </div>
+
+      <p>When leading cloud vault companies announced abrupt mobile-only restrictions or suffered catastrophic cloud backups leaks, millions of users realized that centralized cloud convenience comes with dangerous strings attached.</p>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0">
+
+      <h2>2. The Exception to the Rule: The Empowering "Public Utility" Freemium Model</h2>
+      <p>Does this mean that every free software on the internet is secretly selling your data? <strong>No.</strong></p>
+      <p>There is a magnificent, highly ethical benchmark in modern technology: <strong>The Cloudflare Paradigm.</strong></p>
+      
+      <h3>The Cloudflare Benchmark:</h3>
+      <ul>
+        <li>Cloudflare provides <strong>100% free DNS (1.1.1.1), DDoS protection, and SSL certificates</strong> to millions of websites worldwide.</li>
+        <li>Why do they provide it for free? Because making the global internet faster, encrypted, and resilient benefits the entire human civilization.</li>
+        <li>How do they monetize? Through transparent enterprise security, advanced edge compute, and pro developer tools. <strong>They never sell user data or inject ads.</strong></li>
+      </ul>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0">
+
+      <h2>3. The FrankPass Architecture: Security as a Human Right ($0 Server Cost)</h2>
+      <p>FrankPass was engineered by founder <strong>Master Manikant Yadav</strong> on the exact same philosophical foundation as Cloudflare:</p>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin:1.5rem 0;font-family:'JetBrains Mono',monospace;font-size:0.84rem;color:var(--text-primary);line-height:1.55;overflow-x:auto">
+┌─────────────────────────────────────────────────────────────────────────┐
+│                 FRANKPASS ETHICAL DUAL-TIER ARCHITECTURE                │
+├──────────────────────────────────────────┬──────────────────────────────┤
+│ 🟢 1. Core Security &amp; Free Extension     │ 💎 2. Pro Multi-Profile Pass │
+├──────────────────────────────────────────┼──────────────────────────────┤
+│ • 100% FREE FOREVER (Web, PWA &amp; Browser) │ • Hardware-Bound Local Pass  │
+│ • Zero Ads, Zero Tracking, Zero Data     │   (Exclusively on Store)     │
+│ • 1-Click AutoFill (Guest Mode)          │ • Multi-Profile Encrypted    │
+│ • 1,000,000 PBKDF2 WebCrypto Math        │ • 4-Digit Quick PIN Unlock   │
+│ • Works 100% Offline (Zero Cloud Sync)   │ • 20 Offline Question Reset  │
+│ • No Account, No Email, No Sign-up       │ • Priority Founder Help Desk │
+└──────────────────────────────────────────┴──────────────────────────────┘
+      </div>
+
+      <h3>Why Core Security &amp; Extension AutoFill Are 100% Free:</h3>
+      <p>Because FrankPass is <strong>100% stateless</strong>, it requires zero database servers and zero cloud storage. A user generating 1,000 passwords costs FrankPass <strong>$0.00</strong> in server compute because the PBKDF2-HMAC-SHA512 derivation runs purely on the user's own device CPU.</p>
+      <p>Therefore, charging users to generate passwords or use 1-click auto-fill in browser extensions would be fundamentally dishonest. Core security is a human right, and both the Web App and Browser Extension (Instant Guest Mode) will remain 100% free forever on <a href="https://frankpass.com">frankpass.com</a>.</p>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0">
+
+      <h2>4. How FrankPass Makes Money: Our Two Transparent Revenue Streams</h2>
+      <p>To remain 100% self-funded, fiercely independent, and free from venture capital interference, FrankPass operates on exactly <strong>two transparent revenue pillars</strong>:</p>
+
+      <div class="products-grid-2col" style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.75rem 0">
+        
+        <!-- Pillar 1 -->
+        <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="font-size:1.75rem;margin-bottom:0.5rem">👑</div>
+            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0">Pillar 1: Optional Pro Hardware Passes</h3>
+            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin:0 0 1rem 0">
+              For professionals, freelancers, and power users who manage dozens of client profiles and want persistent local encryption with 4-digit PIN quick unlocks.
+            </p>
+            <ul style="font-size:0.85rem;color:var(--text-secondary);padding-left:1.2rem;line-height:1.6;margin:0">
+              <li><strong>Yearly (1-Year Pass)</strong> · Flexible micro-tier</li>
+              <li><strong>5-Yearly (5-Year Pass)</strong> · Best value long-term</li>
+              <li><strong>Lifetime License</strong> · Permanent sovereignty</li>
+            </ul>
+          </div>
+          <div style="margin-top:1.25rem">
+            <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:block;text-align:center;padding:0.65rem 1rem;font-size:0.85rem;font-weight:700;text-decoration:none">
+              View on Sovereign Store ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;justify-content:space-between">
+          <div>
+            <div style="font-size:1.75rem;margin-bottom:0.5rem">🤝</div>
+            <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0">Pillar 2: Ethical Institutional Sponsorships</h3>
+            <p style="font-size:0.9rem;color:var(--text-muted);line-height:1.6;margin:0 0 1rem 0">
+              Privacy-advocating institutions, open-source foundations, and security organizations can sponsor our cryptographic infrastructure.
+            </p>
+            <ul style="font-size:0.85rem;color:var(--text-secondary);padding-left:1.2rem;line-height:1.6;margin:0">
+              <li><strong>100% Zero-Tracking:</strong> Zero telemetry shared</li>
+              <li><strong>Zero User Ads:</strong> No trackers or ad scripts</li>
+              <li><strong>Public Audit:</strong> Transparent sponsor attribution</li>
+            </ul>
+          </div>
+          <div style="margin-top:1.25rem">
+            <a href="/sponsors.html" class="btn-ghost" style="display:block;text-align:center;padding:0.65rem 1rem;font-size:0.85rem;font-weight:700;text-decoration:none">
+              Explore Sponsorship Hub →
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0">
+
+      <h2>5. The FrankPass Non-Negotiable Invariants (What We Will NEVER Do)</h2>
+      <p>Founder Master Manikant Yadav has locked four non-negotiable governance invariants across the entire digital ecosystem:</p>
+      
+      <ol style="line-height:1.75;padding-left:1.25rem;color:var(--text-secondary)">
+        <li><strong style="color:var(--text-primary)">We will NEVER sell or monetize user data:</strong> Because we operate with a strict zero-database policy, there is literally zero data to sell, leak, or subpoena.</li>
+        <li><strong style="color:var(--text-primary)">We will NEVER display third-party behavioral ads:</strong> No Google Ads, no tracking pixels, and no surveillance SDKs.</li>
+        <li><strong style="color:var(--text-primary)">We will NEVER lock your passwords behind ransom paywalls:</strong> All passwords and PINs generated on FrankPass are pure client-side mathematical derivations. You can recalculate them forever on any device offline.</li>
+        <li><strong style="color:var(--text-primary)">We will NEVER surrender independence to venture capital:</strong> FrankPass is 100% bootstrapped and sovereign. We answer only to our users and truth.</li>
+      </ol>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0">
+
+      <h2>6. Transparency Comparison: FrankPass vs The Subscription Industry</h2>
+      <div class="table-responsive" style="margin:1.75rem 0;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem;text-align:left">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border);color:var(--text-primary)">
+              <th style="padding:0.85rem 1rem">Solution</th>
+              <th style="padding:0.85rem 1rem">Pricing Model</th>
+              <th style="padding:0.85rem 1rem">Data on Cloud Servers</th>
+              <th style="padding:0.85rem 1rem">Ad / Tracking Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:0.85rem 1rem"><strong>Traditional Cloud Vaults</strong></td>
+              <td style="padding:0.85rem 1rem">$36 to $60 every year (Recurring)</td>
+              <td style="padding:0.85rem 1rem;color:#ef4444">Full Encrypted Cloud Vault</td>
+              <td style="padding:0.85rem 1rem">Medium to High (Cloud Telemetry)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:0.85rem 1rem"><strong>"Free" Ad-Supported Vaults</strong></td>
+              <td style="padding:0.85rem 1rem">"Free" (Monetized via Data)</td>
+              <td style="padding:0.85rem 1rem;color:#ef4444">Centralized Cloud Database</td>
+              <td style="padding:0.85rem 1rem;color:#ef4444">High (Behavioral Brokering)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(16,185,129,0.06)">
+              <td style="padding:0.85rem 1rem;color:var(--accent-light);font-weight:700">FrankPass Web, PWA &amp; Free Extension</td>
+              <td style="padding:0.85rem 1rem;font-weight:700;color:#10b981">$0.00 (100% FREE FOREVER)</td>
+              <td style="padding:0.85rem 1rem;font-weight:700;color:#10b981">ZERO BYTES</td>
+              <td style="padding:0.85rem 1rem;font-weight:700;color:#10b981">ZERO (Stateless Math)</td>
+            </tr>
+            <tr style="background:rgba(139,92,246,0.06)">
+              <td style="padding:0.85rem 1rem;color:var(--accent-light);font-weight:700">FrankPass Pro Local Passes</td>
+              <td style="padding:0.85rem 1rem;font-weight:700">Yearly / 5-Yr / Lifetime (<a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-light);text-decoration:underline">Store</a>)</td>
+              <td style="padding:0.85rem 1rem;font-weight:700;color:#10b981">ZERO BYTES (100% Offline RAM)</td>
+              <td style="padding:0.85rem 1rem;font-weight:700;color:#10b981">ZERO (Stateless Math)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr style="border:0;border-top:1px solid var(--border);margin:2.5rem 0">
+
+      <h2>7. Conclusion: Ethical Technology Built for the Next 50 Years</h2>
+      <p>FrankPass proves that high-security software does not require exploitative recurring subscription extortion ($60/year) or shady surveillance monetization.</p>
+      
+      <p><strong>We stand for Honest, Sovereign, Mathematical Security:</strong></p>
+      <ul>
+        <li>Core deterministic mathematical derivation &amp; 1-click extension auto-fill: <strong>100% Free Forever.</strong></li>
+        <li>Multi-profile local convenience: <strong>Affordable micro-pass on Sovereign Store.</strong></li>
+        <li>User tracking, telemetry, and cloud surveillance: <strong>Absolute Zero.</strong></li>
+      </ul>
+
+      <div style="margin-top:2.5rem;text-align:center">
+        <a href="/" class="btn-primary" style="display:inline-block;padding:0.85rem 2rem;font-size:1rem;font-weight:700;text-decoration:none">
+          ⚡ Try Stateless Password Generator (100% Free) →
+        </a>
+      </div>
+
+    </article>
+  </main>
+
+  <div id="site-footer"></div>
+  <script src="/frankpass-config.js?v=3.8.9"></script>
+  <script src="/footer.js?v=3.8.9"></script>
+</body>
+</html>

@@ -58,6 +58,13 @@
 # Duplicate Blog Post Consolidation to Canonical Root
 /blog/frankpass-vs-traditional-cloud-password-vaults /frankpass-vs-cloud-password-vaults 301
 /blog/frankpass-vs-traditional-cloud-password-vaults.html /frankpass-vs-cloud-password-vaults 301
+/blog/the-no-free-lunch-paradigm-and-empowering-freemium /how-frankpass-is-free-without-selling-data 301
+/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html /how-frankpass-is-free-without-selling-data 301
+/business-model /how-frankpass-is-free-without-selling-data 301
+/how-we-make-money /how-frankpass-is-free-without-selling-data 301
+/economics /how-frankpass-is-free-without-selling-data 301
+/monetization /how-frankpass-is-free-without-selling-data 301
+/zero-server-economics /how-frankpass-is-free-without-selling-data 301
 
 # Regional Country Code 200 Rewrites (SPA routing for country dropdown)
 /in / 200

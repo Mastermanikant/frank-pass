@@ -157,10 +157,10 @@
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://frankpass.com/blog/the-no-free-lunch-paradigm-and-empowering-freemium.html</loc>
+    <loc>https://frankpass.com/how-frankpass-is-free-without-selling-data.html</loc>
     <lastmod>2026-09-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://frankpass.com/blog/why-i-built-frankpass-the-december-25-story.html</loc>
