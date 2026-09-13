@@ -201,8 +201,12 @@
     </div>
 
     <!-- Footer Bottom Copyright Bar -->
-    <div class="footer-bottom" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;font-size:0.82rem;color:var(--text-muted)">
-      <span>&copy; <span id="fp-copy-year">${year}</span> FrankPass &middot; Engineered by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" style="color:var(--text-primary);font-weight:600;text-decoration:none">Master Manikant Yadav</a> &middot; 
+    <div class="footer-bottom">
+      <div class="footer-bottom-copy">
+        <span class="footer-copy-text">&copy; <span id="fp-copy-year">${year}</span> FrankPass</span>
+        <span class="footer-copy-sep">&middot;</span>
+        <span class="footer-author-wrap">Engineered by <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" class="footer-founder-link">Master Manikant Yadav</a></span>
+        <span class="footer-copy-sep">&middot;</span>
         <span class="footer-version-badge-wrap" id="fp-version-wrap">
           <button type="button" class="footer-version-btn" id="fp-version-btn" aria-label="Version and Immutable Algorithm Guarantee">
             v${ver}<span class="version-dot"></span>
@@ -212,11 +216,11 @@
             <span class="version-popover-text">The core password derivation formula (PBKDF2-HMAC-SHA512 at 1M rounds) is <strong>permanently frozen and immutable</strong>. It will NEVER change in future updates. The same platform and secret key will always generate the exact same password, forever. Version updates only reflect UI speed, PWA caching, and theme improvements.</span>
           </span>
         </span>
-      </span>
-      <div class="footer-legal-links" style="display:flex;gap:1rem">
-        <a href="/legal.html#privacy" style="color:var(--text-muted);text-decoration:none">Privacy Policy</a>
-        <a href="/legal.html#terms" style="color:var(--text-muted);text-decoration:none">Terms of Service</a>
-        <a href="/legal.html" style="color:var(--text-muted);text-decoration:none">Legal Hub</a>
+      </div>
+      <div class="footer-legal-links">
+        <a href="/legal.html#privacy">Privacy Policy</a>
+        <a href="/legal.html#terms">Terms of Service</a>
+        <a href="/legal.html">Legal Hub</a>
       </div>
     </div>
 
