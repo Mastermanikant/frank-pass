@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.2.0 (Sovereign Master Pillars & Clean Cache Alignment)
-const CACHE_NAME = 'frankpass-v4.2.0';
+// FrankPass Service Worker v4.2.1 (Mobile Autocomplete Contrast Fix & Sovereign Cache)
+const CACHE_NAME = 'frankpass-v4.2.1';
 const CACHED_URLS = [
     '/',
     '/index.html',
