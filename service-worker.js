@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.2.1 (Mobile Autocomplete Contrast Fix & Sovereign Cache)
-const CACHE_NAME = 'frankpass-v4.2.1';
+// FrankPass Service Worker v4.2.2 (Hybrid Keyboard Strip & Quick Scroll Chips)
+const CACHE_NAME = 'frankpass-v4.2.2';
 const CACHED_URLS = [
     '/',
     '/index.html',

@@ -3833,3 +3833,37 @@ input:-webkit-autofill:active {
   border-color: rgba(0, 0, 0, 0.06);
 }
 
+
+/* Quick Platforms Horizontal Scroll Bar */
+.quick-platforms-bar {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding: 0.35rem 0 0.15rem 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+.quick-platforms-bar::-webkit-scrollbar {
+  display: none;
+}
+.quick-platform-chip {
+  flex-shrink: 0;
+  font-size: 0.76rem;
+  font-weight: 500;
+  padding: 0.22rem 0.65rem;
+  border-radius: 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--border);
+  color: var(--text-accent);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition);
+}
+.quick-platform-chip:hover,
+.quick-platform-chip:active {
+  background: var(--accent);
+  color: #ffffff;
+  border-color: var(--accent-light);
+  transform: translateY(-1px);
+}
