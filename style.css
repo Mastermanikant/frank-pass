@@ -924,39 +924,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   outline: none;
 }
 #country-list-scroll { max-height: 260px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--accent) transparent; }
-/* Platform custom dropdown - mobile-safe dark theme */
-.platform-suggestions {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-top: none;
-  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-  max-height: 220px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-}
-.platform-suggestions.open { display: block; }
-.platform-suggestion-item {
-  padding: 0.6rem 1rem;
-  font-size: 0.88rem;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition: background var(--transition);
-  border-bottom: 1px solid rgba(139,92,246,0.08);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.platform-suggestion-item:last-child { border-bottom: none; }
-.platform-suggestion-item:hover,
-.platform-suggestion-item.active { background: var(--glass-bg); color: var(--accent-light); }
+
 .country-option {
   display: flex;
   align-items: center;
@@ -1997,7 +1965,8 @@ select {
   cursor: pointer !important;
 }
 
-select option {
+select option,
+datalist option {
   background-color: #121324 !important;
   color: #f8fafc !important;
   padding: 0.65rem !important;
@@ -2005,7 +1974,8 @@ select option {
 }
 
 [data-theme="light"] select.form-input,
-[data-theme="light"] select option {
+[data-theme="light"] select option,
+[data-theme="light"] datalist option {
   background-color: #ffffff !important;
   color: #0f172a !important;
   border-color: #cbd5e1 !important;
@@ -3831,39 +3801,4 @@ input:-webkit-autofill:active {
 [data-theme="light"] .mobile-nav-link {
   background: rgba(0, 0, 0, 0.02);
   border-color: rgba(0, 0, 0, 0.06);
-}
-
-
-/* Quick Platforms Horizontal Scroll Bar */
-.quick-platforms-bar {
-  display: flex;
-  gap: 0.45rem;
-  overflow-x: auto;
-  padding: 0.35rem 0 0.15rem 0;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-}
-.quick-platforms-bar::-webkit-scrollbar {
-  display: none;
-}
-.quick-platform-chip {
-  flex-shrink: 0;
-  font-size: 0.76rem;
-  font-weight: 500;
-  padding: 0.22rem 0.65rem;
-  border-radius: 20px;
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
-  color: var(--text-accent);
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all var(--transition);
-}
-.quick-platform-chip:hover,
-.quick-platform-chip:active {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent-light);
-  transform: translateY(-1px);
 }

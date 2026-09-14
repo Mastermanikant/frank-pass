@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.2.2 (Hybrid Keyboard Strip & Quick Scroll Chips)
-const CACHE_NAME = 'frankpass-v4.2.2';
+// FrankPass Service Worker v4.2.3 (Clean Native Datalist Keyboard Strip)
+const CACHE_NAME = 'frankpass-v4.2.3';
 const CACHED_URLS = [
     '/',
     '/index.html',

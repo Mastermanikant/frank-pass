@@ -669,14 +669,12 @@
   </div>
   </div>
   <div class="input-wrapper">
-  <input id="platform-input" name="platform" class="form-input" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-autocomplete="list" aria-expanded="false" aria-describedby="platform-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
+  <input id="platform-input" name="platform" class="form-input" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
   <datalist id="platform-list"></datalist>
-  <div id="platform-suggestions" class="platform-suggestions" role="listbox" aria-label="Platform suggestions"></div>
   <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
   </div>
-  <div id="quick-platforms-bar" class="quick-platforms-bar" aria-label="Popular platform quick select"></div>
   <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
   <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Confused?</strong> Paste the full website URL or type the app name  -  FrankPass handles the normalization automatically.</span>
   </div>
@@ -1453,14 +1451,11 @@ if (secretInput) {
   });
 }
 
-/* ── Platform hint & Hybrid Autocomplete (Keyboard Strip + Custom Dropdown + Quick Chips) ── */
+/* ── Platform hint & Autocomplete ── */
 const platformInput = document.getElementById('platform-input');
 const platformHint = document.getElementById('platform-hint');
 const platformValid = document.getElementById('platform-valid-icon');
-const platformSuggestions = document.getElementById('platform-suggestions');
-const quickPlatformsBar = document.getElementById('quick-platforms-bar');
 let currentPlatformCache = [];
-let activeSuggestionIndex = -1;
 
 function updatePlatformCache(countryCode) {
   if (!window.regionalPlatforms) return;
@@ -1487,118 +1482,59 @@ function updatePlatformCache(countryCode) {
   });
 }
 
-function renderQuickChips() {
-  if (!quickPlatformsBar) return;
-  quickPlatformsBar.innerHTML = '';
-  const topList = currentPlatformCache.slice(0, 20);
-  const frag = document.createDocumentFragment();
-  topList.forEach(p => {
-    const chip = document.createElement('button');
-    chip.type = 'button';
-    chip.className = 'quick-platform-chip';
-    chip.textContent = p;
-    chip.addEventListener('click', (e) => {
-      e.preventDefault();
-      selectPlatformSuggestion(p);
-    });
-    frag.appendChild(chip);
-  });
-  quickPlatformsBar.appendChild(frag);
-}
-
-function closePlatformSuggestions() {
-  if (platformSuggestions) {
-    platformSuggestions.classList.remove('open');
-    platformSuggestions.innerHTML = '';
-  }
-  if (platformInput) {
-    platformInput.setAttribute('aria-expanded', 'false');
-    platformInput.removeAttribute('aria-activedescendant');
-  }
-  activeSuggestionIndex = -1;
-}
-
-function selectPlatformSuggestion(value) {
-  if (!platformInput) return;
-  platformInput.value = value.toLowerCase().replace(/\s+/g, '');
-  closePlatformSuggestions();
-  platformInput.dispatchEvent(new Event('input', { bubbles: true }));
-  platformInput.focus();
-}
-
-function renderPlatformSuggestions(filterQuery) {
-  const datalist = document.getElementById('platform-list');
+function renderDatalistItems(filterQuery) {
+  const list = document.getElementById('platform-list');
+  if (!list) return;
+  list.innerHTML = '';
   const q = (filterQuery || '').toLowerCase().trim();
   const matched = q 
     ? currentPlatformCache.filter(p => p.toLowerCase().includes(q)).slice(0, 30)
     : currentPlatformCache.slice(0, 30);
 
-  // 1. Native datalist for mobile keyboard horizontal strip with explicit labels & values
-  if (datalist) {
-    datalist.innerHTML = '';
-    const dlFrag = document.createDocumentFragment();
-    matched.forEach(p => {
-      const opt = document.createElement('option');
-      opt.value = p;
-      opt.label = p;
-      opt.textContent = p;
-      dlFrag.appendChild(opt);
-    });
-    datalist.appendChild(dlFrag);
-  }
-
-  // 2. Custom accessible dropdown popup when typing
-  if (platformSuggestions) {
-    if (matched.length === 0 || !q) {
-      closePlatformSuggestions();
-      return;
-    }
-
-    platformSuggestions.innerHTML = '';
-    activeSuggestionIndex = -1;
-    const fragment = document.createDocumentFragment();
-
-    matched.forEach((p, idx) => {
-      const item = document.createElement('div');
-      item.className = 'platform-suggestion-item';
-      item.setAttribute('role', 'option');
-      item.setAttribute('id', 'platform-opt-' + idx);
-      item.textContent = p;
-
-      item.addEventListener('pointerdown', (e) => {
-        e.preventDefault();
-        selectPlatformSuggestion(p);
-      });
-
-      fragment.appendChild(item);
-    });
-
-    platformSuggestions.appendChild(fragment);
-    platformSuggestions.classList.add('open');
-    if (platformInput) {
-      platformInput.setAttribute('aria-expanded', 'true');
-    }
-  }
+  const fragment = document.createDocumentFragment();
+  matched.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    opt.label = p;
+    opt.textContent = p;
+    fragment.appendChild(opt);
+  });
+  list.appendChild(fragment);
 }
 
 function populatePlatformDatalist(countryCode) {
   updatePlatformCache(countryCode);
-  renderQuickChips();
-  renderPlatformSuggestions(platformInput ? platformInput.value : '');
+  const currentQuery = platformInput ? platformInput.value : '';
+  renderDatalistItems(currentQuery);
 }
 window.populatePlatformDatalist = populatePlatformDatalist;
 setTimeout(() => populatePlatformDatalist(), 200); 
 
+let savedPlatformVal = '';
+
 if (platformInput) {
   platformInput.addEventListener('focus', () => {
     if (platformInput.value.trim()) {
-      renderPlatformSuggestions(platformInput.value);
+      savedPlatformVal = platformInput.value;
+      platformInput.value = '';
+      renderDatalistItems('');
+      if (platformHint) platformHint.textContent = '';
+      if (platformValid) platformValid.classList.remove('visible');
     }
+  });
+
+  platformInput.addEventListener('blur', () => {
+    // If user clicked outside without entering new text, restore previous platform
+    if (!platformInput.value.trim() && savedPlatformVal) {
+      platformInput.value = savedPlatformVal;
+      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    savedPlatformVal = '';
   });
 
   platformInput.addEventListener('input', (e) => {
     const raw = e.target.value.trim();
-    renderPlatformSuggestions(raw);
+    renderDatalistItems(raw);
 
     if (typeof FrankPassUtils === 'undefined') return;
     const hint = raw ? FrankPassUtils.getSeedHint(raw) : '';
@@ -1609,52 +1545,7 @@ if (platformInput) {
     const inDB = FrankPassUtils.getPrettyNameFromDB(normalized, window.regionalPlatforms);
     if (platformValid) platformValid.classList.toggle('visible', !!inDB);
   });
-
-  platformInput.addEventListener('keydown', (e) => {
-    if (!platformSuggestions || !platformSuggestions.classList.contains('open')) return;
-    const items = platformSuggestions.querySelectorAll('.platform-suggestion-item');
-    if (items.length === 0) return;
-
-    if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      activeSuggestionIndex = (activeSuggestionIndex + 1) % items.length;
-      updateActiveSuggestion(items);
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      activeSuggestionIndex = (activeSuggestionIndex - 1 + items.length) % items.length;
-      updateActiveSuggestion(items);
-    } else if (e.key === 'Enter') {
-      if (activeSuggestionIndex >= 0 && activeSuggestionIndex < items.length) {
-        e.preventDefault();
-        selectPlatformSuggestion(items[activeSuggestionIndex].textContent);
-      }
-    } else if (e.key === 'Escape') {
-      closePlatformSuggestions();
-    }
-  });
-}
-
-function updateActiveSuggestion(items) {
-  items.forEach((it, idx) => {
-    if (idx === activeSuggestionIndex) {
-      it.classList.add('active');
-      it.scrollIntoView({ block: 'nearest' });
-      if (platformInput) {
-        platformInput.setAttribute('aria-activedescendant', it.id);
-      }
-    } else {
-      it.classList.remove('active');
-    }
-  });
-}
-
-// Close suggestions on outside click/tap
-document.addEventListener('pointerdown', (e) => {
-  if (platformInput && !platformInput.contains(e.target) && 
-      platformSuggestions && !platformSuggestions.contains(e.target)) {
-    closePlatformSuggestions();
-  }
-}); 
+} 
 
 /* ── Advanced options toggle ── */
 const advToggle = document.getElementById('advanced-toggle');
