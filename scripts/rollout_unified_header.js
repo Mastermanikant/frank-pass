@@ -336,7 +336,7 @@ targetFiles.forEach(fileRel => {
 
   // Ensure footer.js is included if not present
   if (!content.includes('footer.js')) {
-    content = content.replace('</body>', '<div id="site-footer"></div>\n<script src="/footer.js?v=3.8.9"></script>\n</body>');
+    content = content.replace('</body>', '<div id="site-footer"></div>\n<script src="/footer.js?v=3.9.5"></script>\n</body>');
   } else if (!content.includes('id="site-footer"')) {
     content = content.replace('<script src="/footer.js', '<div id="site-footer"></div>\n<script src="/footer.js');
   }

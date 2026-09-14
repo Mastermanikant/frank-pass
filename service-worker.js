@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.2.4 (Clean Datalist & Top Platforms Sync)
-const CACHE_NAME = 'frankpass-v4.2.4';
+// FrankPass Service Worker v4.2.5 (Instant Mobile Cache Purge & Fresh Assets)
+const CACHE_NAME = 'frankpass-v4.2.5';
 const CACHED_URLS = [
     '/',
     '/index.html',
