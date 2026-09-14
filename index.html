@@ -2469,10 +2469,18 @@ function shareLink(platform, e) {
      ============================================================ -->
 <script>
 if ('serviceWorker' in navigator) {
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) {
+      refreshing = true;
+      window.location.reload();
+    }
+  });
+
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
       .then(reg => {
-        // Service worker registered successfully
+        reg.update();
       })
       .catch(err => {
         console.warn('ServiceWorker registration error:', err);
