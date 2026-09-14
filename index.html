@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <script>
@@ -669,8 +669,8 @@
   </div>
   </div>
   <div class="input-wrapper">
-  <input id="platform-input" name="platform" class="form-input" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
-  <datalist id="platform-list"></datalist>
+  <input id="platform-input" name="platform" class="form-input" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" aria-autocomplete="list" aria-expanded="false" aria-describedby="platform-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
+  <div id="platform-suggestions" class="platform-suggestions" role="listbox" aria-label="Platform suggestions"></div>
   <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
@@ -1451,11 +1451,13 @@ if (secretInput) {
   });
 }
 
-/* ── Platform hint & Autocomplete ── */
+/* ── Platform hint & Custom Autocomplete Dropdown ── */
 const platformInput = document.getElementById('platform-input');
 const platformHint = document.getElementById('platform-hint');
 const platformValid = document.getElementById('platform-valid-icon');
+const platformSuggestions = document.getElementById('platform-suggestions');
 let currentPlatformCache = [];
+let activeSuggestionIndex = -1;
 
 function updatePlatformCache(countryCode) {
   if (!window.regionalPlatforms) return;
@@ -1482,57 +1484,82 @@ function updatePlatformCache(countryCode) {
   });
 }
 
-function renderDatalistItems(filterQuery) {
-  const list = document.getElementById('platform-list');
-  if (!list) return;
-  list.innerHTML = '';
+function closePlatformSuggestions() {
+  if (platformSuggestions) {
+    platformSuggestions.classList.remove('open');
+    platformSuggestions.innerHTML = '';
+  }
+  if (platformInput) {
+    platformInput.setAttribute('aria-expanded', 'false');
+    platformInput.removeAttribute('aria-activedescendant');
+  }
+  activeSuggestionIndex = -1;
+}
+
+function selectPlatformSuggestion(value) {
+  if (!platformInput) return;
+  platformInput.value = value.toLowerCase().replace(/\s+/g, '');
+  closePlatformSuggestions();
+  platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+  platformInput.focus();
+}
+
+function renderPlatformSuggestions(filterQuery) {
+  if (!platformSuggestions) return;
   const q = (filterQuery || '').toLowerCase().trim();
   const matched = q 
     ? currentPlatformCache.filter(p => p.toLowerCase().includes(q)).slice(0, 25)
     : currentPlatformCache.slice(0, 25);
 
+  if (matched.length === 0) {
+    closePlatformSuggestions();
+    return;
+  }
+
+  platformSuggestions.innerHTML = '';
+  activeSuggestionIndex = -1;
   const fragment = document.createDocumentFragment();
-  matched.forEach(p => {
-    const opt = document.createElement('option');
-    opt.value = p;
-    fragment.appendChild(opt);
+
+  matched.forEach((p, idx) => {
+    const item = document.createElement('div');
+    item.className = 'platform-suggestion-item';
+    item.setAttribute('role', 'option');
+    item.setAttribute('id', 'platform-opt-' + idx);
+    item.textContent = p;
+
+    // Use pointerdown to select before blur fires on mobile or desktop
+    item.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      selectPlatformSuggestion(p);
+    });
+
+    fragment.appendChild(item);
   });
-  list.appendChild(fragment);
+
+  platformSuggestions.appendChild(fragment);
+  platformSuggestions.classList.add('open');
+  if (platformInput) {
+    platformInput.setAttribute('aria-expanded', 'true');
+  }
 }
 
 function populatePlatformDatalist(countryCode) {
   updatePlatformCache(countryCode);
-  const currentQuery = platformInput ? platformInput.value : '';
-  renderDatalistItems(currentQuery);
+  if (platformInput && document.activeElement === platformInput) {
+    renderPlatformSuggestions(platformInput.value);
+  }
 }
 window.populatePlatformDatalist = populatePlatformDatalist;
 setTimeout(() => populatePlatformDatalist(), 200); 
 
-let savedPlatformVal = '';
-
 if (platformInput) {
   platformInput.addEventListener('focus', () => {
-    if (platformInput.value.trim()) {
-      savedPlatformVal = platformInput.value;
-      platformInput.value = '';
-      renderDatalistItems('');
-      if (platformHint) platformHint.textContent = '';
-      if (platformValid) platformValid.classList.remove('visible');
-    }
-  });
-
-  platformInput.addEventListener('blur', () => {
-    // If user clicked outside without entering new text, restore previous platform
-    if (!platformInput.value.trim() && savedPlatformVal) {
-      platformInput.value = savedPlatformVal;
-      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
-    }
-    savedPlatformVal = '';
+    renderPlatformSuggestions(platformInput.value);
   });
 
   platformInput.addEventListener('input', (e) => {
     const raw = e.target.value.trim();
-    renderDatalistItems(raw);
+    renderPlatformSuggestions(raw);
 
     if (typeof FrankPassUtils === 'undefined') return;
     const hint = raw ? FrankPassUtils.getSeedHint(raw) : '';
@@ -1543,7 +1570,52 @@ if (platformInput) {
     const inDB = FrankPassUtils.getPrettyNameFromDB(normalized, window.regionalPlatforms);
     if (platformValid) platformValid.classList.toggle('visible', !!inDB);
   });
-} 
+
+  platformInput.addEventListener('keydown', (e) => {
+    if (!platformSuggestions || !platformSuggestions.classList.contains('open')) return;
+    const items = platformSuggestions.querySelectorAll('.platform-suggestion-item');
+    if (items.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      activeSuggestionIndex = (activeSuggestionIndex + 1) % items.length;
+      updateActiveSuggestion(items);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      activeSuggestionIndex = (activeSuggestionIndex - 1 + items.length) % items.length;
+      updateActiveSuggestion(items);
+    } else if (e.key === 'Enter') {
+      if (activeSuggestionIndex >= 0 && activeSuggestionIndex < items.length) {
+        e.preventDefault();
+        selectPlatformSuggestion(items[activeSuggestionIndex].textContent);
+      }
+    } else if (e.key === 'Escape') {
+      closePlatformSuggestions();
+    }
+  });
+}
+
+function updateActiveSuggestion(items) {
+  items.forEach((it, idx) => {
+    if (idx === activeSuggestionIndex) {
+      it.classList.add('active');
+      it.scrollIntoView({ block: 'nearest' });
+      if (platformInput) {
+        platformInput.setAttribute('aria-activedescendant', it.id);
+      }
+    } else {
+      it.classList.remove('active');
+    }
+  });
+}
+
+// Close suggestions on outside click/tap
+document.addEventListener('pointerdown', (e) => {
+  if (platformInput && !platformInput.contains(e.target) && 
+      platformSuggestions && !platformSuggestions.contains(e.target)) {
+    closePlatformSuggestions();
+  }
+}); 
 
 /* ── Advanced options toggle ── */
 const advToggle = document.getElementById('advanced-toggle');
