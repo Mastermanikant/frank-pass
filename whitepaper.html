@@ -12,28 +12,48 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FrankPass Technical Whitepaper (FP-RFC-001) - MMY Constant Cryptography - FrankPass Security Blog</title>
-  <meta name="description" content="Formal technical specification and mathematical proofs of Master Manikant Yadav's Constant (MMY_constant) for sovereign stateless password cryptography.">
+  <title>FrankPass Technical Specification & Master Manikant Yadav's Constant (MMY_constant)</title>
+  <meta name="description" content="Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant).">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://frankpass.com/whitepaper.html">
   
-  <meta property="og:title" content="FrankPass Technical Whitepaper (FP-RFC-001) - MMY Constant Cryptography">
-  <meta property="og:description" content="Formal technical specification and mathematical proofs of Master Manikant Yadav's Constant (MMY_constant) for sovereign stateless password cryptography.">
+  <meta property="og:title" content="FrankPass Technical Specification & Master Manikant Yadav's Constant (MMY_constant)">
+  <meta property="og:description" content="Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant).">
   <meta property="og:url" content="https://frankpass.com/whitepaper.html">
   <meta property="og:type" content="article">
   <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@frankpasshq">
-  <meta name="twitter:title" content="FrankPass Technical Whitepaper (FP-RFC-001) - MMY Constant Cryptography">
-  <meta name="twitter:description" content="Formal technical specification and mathematical proofs of Master Manikant Yadav's Constant (MMY_constant) for sovereign stateless password cryptography.">
+  <meta name="twitter:title" content="FrankPass Technical Specification & Master Manikant Yadav's Constant (MMY_constant)">
+  <meta name="twitter:description" content="Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant).">
   <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   
-  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "FrankPass: A Client-Side Stateless Key Derivation Architecture & Master Manikant Yadav's Cryptographic Constant (MMY_constant)",
+    "description": "Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant).",
+    "author": {
+      "@type": "Person",
+      "name": "Master Manikant Yadav",
+      "url": "https://mastermanikant.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FrankPass",
+      "url": "https://frankpass.com"
+    },
+    "datePublished": "2026-09-01",
+    "inLanguage": "en",
+    "mainEntityOfPage": "https://frankpass.com/whitepaper.html"
+  }
+  </script>
 
   <link rel="stylesheet" href="/style.css?v=4.2.7">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
@@ -46,10 +66,10 @@
       border-radius: 12px;
       padding: 1.25rem 1.5rem;
       text-align: center;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--accent);
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       margin: 1.5rem 0;
       font-family: 'JetBrains Mono', monospace, sans-serif;
     }
@@ -81,11 +101,11 @@
       text-decoration: none;
     }
     .article-title {
-      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-size: clamp(1.85rem, 4.5vw, 2.5rem);
       font-weight: 800;
       color: var(--text-primary);
-      line-height: 1.2;
-      letter-spacing: -0.03em;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
       margin-bottom: 1.25rem;
     }
     .article-byline {
@@ -106,27 +126,27 @@
       color: var(--text-muted);
     }
     .article-body h2 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       font-weight: 800;
       color: var(--text-primary);
       margin: 2.5rem 0 1rem;
       letter-spacing: -0.02em;
     }
     .article-body h3 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: var(--text-primary);
       margin: 2rem 0 0.75rem;
     }
     .article-body blockquote {
       border-left: 3px solid var(--accent);
-      padding: 1rem 1.5rem;
+      padding: 1.25rem 1.5rem;
       margin: 2rem 0;
       background: rgba(139,92,246,0.06);
       border-radius: 0 14px 14px 0;
-      font-style: italic;
       color: var(--text-primary);
-      font-size: 1.08rem;
+      font-size: 0.98rem;
+      line-height: 1.7;
     }
     .article-body table {
       width: 100%;
@@ -182,21 +202,44 @@
     .article-highlight-box {
       background: var(--card-glass-bg);
       border: 1px solid rgba(139,92,246,0.3);
-      border-radius: 18px;
-      padding: 1.75rem;
+      border-radius: 16px;
+      padding: 1.5rem;
       margin: 2rem 0;
-      box-shadow: var(--card-shadow);
     }
-    .table-responsive {
-      overflow-x: auto;
+    .download-pdf-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(124,58,237,0.06));
+      border: 1px solid rgba(139,92,246,0.35);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
       margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .download-pdf-banner .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.6rem 1.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: opacity 0.2s;
+    }
+    .download-pdf-banner .btn-pdf:hover {
+      opacity: 0.92;
     }
   </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Site Header -->
-  <!-- STICKY HEADER -->
+<!-- STICKY HEADER -->
 <header class="site-header" id="site-header" role="banner">
   <div class="header-inner">
     
@@ -452,133 +495,375 @@
   
   <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
 </nav>
-
   <main class="article-container">
 
     <div class="article-header">
       <div class="article-breadcrumb">
         <a href="/">Home</a> <span>&rsaquo;</span>
-        <a href="/library.html">Blog</a> <span>&rsaquo;</span>
-        <a href="/docs.html">Documentation</a> <span>&rsaquo;</span> <span>FP-RFC-001 Whitepaper</span>
+        <a href="/library.html">Library</a> <span>&rsaquo;</span>
+        <a href="/docs.html">Documentation</a> <span>&rsaquo;</span> <span>Cryptographic Specification</span>
       </div>
-      <h1 class="article-title">FrankPass: Technical Specification & Mathematical Cryptographic Proofs (FP-RFC-001)</h1>
+      <h1 class="article-title">FrankPass: A Client-Side Stateless Key Derivation Architecture &amp; Master Manikant Yadav's Cryptographic Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</h1>
       <div class="article-byline">
-        <span>By <a href="/founder-mastermanikant.html" style="color:var(--text-primary);font-weight:700;text-decoration:none">Master Manikant Yadav</a></span>
+        <span>By <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">Master Manikant Yadav (मास्टर मणिकान्त यादव)</a></span>
         <span>&middot;</span>
-        <span>September 2026</span>
+        <span>Published September 2026</span>
         <span>&middot;</span>
         <span>15 min read</span>
         <span>&middot;</span>
-        <span style="color:var(--accent);font-weight:700">Technical Specification</span>
+        <span style="color:var(--accent);font-weight:700">Applied Cryptography Specification</span>
       </div>
 
       <!-- AI Prompt & Research Component -->
-      <div id="ai-prompt-bar" data-topic="FrankPass Technical Whitepaper (FP-RFC-001) &amp; MMY Constant Cryptography" data-summary="Formal technical specification and mathematical proofs of Master Manikant Yadav's Constant (MMY_constant) for sovereign stateless password cryptography."></div>
+      <div id="ai-prompt-bar" data-topic="FrankPass Technical Specification &amp; Master Manikant Yadav's Constant (MMY_constant)" data-summary="Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant)."></div>
+    </div>
+
+    <!-- Downloadable PDF Banner -->
+    <div class="download-pdf-banner">
+      <div>
+        <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem;">Official Academic Research Specification</strong>
+        <span style="color:var(--text-muted);font-size:0.88rem;">Download the formal 2-column archival paper with mathematical proofs and pseudocode.</span>
+      </div>
+      <a href="https://mastermanikant.com/research/frankpass-cryptographic-specification.pdf" target="_blank" rel="noopener" class="btn-pdf">
+        <span>📥 Download Official PDF</span>
+      </a>
     </div>
 
     <article class="article-body">
       <blockquote>
-<p><strong>Document ID:</strong> <code>FP-RFC-001</code><br />
-<strong>Standard:</strong> Sovereign Stateless Cryptographic Protocol (SSCP-v1)<br />
-<strong>Author:</strong> Master Manikant Yadav (मास्टर मणिकान्त यादव)<br />
-<strong>Affiliation:</strong> Master Manikant Yadav Cybernetic Research Group (<code>connect@mastermanikant.com</code>)<br />
-<strong>Formal Specification Release:</strong> 2026.1 (September 2026)<br />
-<strong>Target Audience:</strong> Cryptographers, Security Auditors, Software Engineers, AI Knowledge Engines  </p>
-</blockquote>
-<hr />
-<h2>Abstract</h2>
-<p>We present <strong>FrankPass</strong>, an open, stateless, deterministic password generation protocol designed to eradicate the structural vulnerabilities of centralized cloud password vaults. FrankPass formalizes <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong> - a 7-element cryptographic invariant tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, aggressive whitespace/casing normalization, and Unicode NFC parity.</p>
-<p>We prove that FrankPass provides <strong>over 115 bits</strong> of true cryptographic search entropy per 20-character password, operates with zero database dependencies, maintains 100% offline mathematical survivability across decades, and is completely immune to quantum "Harvest Now, Decrypt Later" (HNDL) attacks.</p>
-<hr />
-<h2>1. Introduction &amp; Problem Statement</h2>
-<p>Centralized password management systems create high-value cryptographic honeypots. Storing millions of ciphertext vaults <em>C<sub>i</sub></em> = <em>E<sub>K</sub></em>(<em>P<sub>i</sub></em>) on cloud storage clusters exposes users to:
-1. <strong>Server-Side Exfiltration:</strong> Storing ciphertext backups online invites offline brute-force attacks upon server breach.
-2. <strong>Post-Quantum Exposure:</strong> Encrypted blobs archived by adversaries today will be decrypted when quantum Shor/Grover implementations mature.
-3. <strong>Recovery Backdoor Vectors:</strong> Server-side credential recovery interfaces introduce single-point-of-failure vulnerabilities via SIM swapping, social engineering, and rogue insider coercion.</p>
-<p>FrankPass solves these structural flaws by replacing digital storage with <strong>pure deterministic key derivation</strong>.</p>
-<hr />
-<h2>2. Formal Protocol Architecture (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</h2>
-<p>Let <em>S</em> be the user's natural language Master Secret Key, <em>D</em> be the target domain, <em>U</em> be the optional username/account context, <em>V</em> &isin; &Nopf;<sup>+</sup> be the rotation counter version, and <em>L</em> &isin; &Nopf;<sup>+</sup> be the target output character length.</p>
-<div class="math-formula-box" style="font-size:1.05rem;word-break:break-word;">
-  &Mscr;&Mscr;&Yscr;<sub>constant</sub> = &lang; APP_ID, VER, &Iscr;<sub>10<sup>6</sup></sub>, &Hscr;<sub>SHA512</sub>, &Cscr;<sub>entropy</sub>, &Nscr;<sub>aggressive</sub>, &Pscr;<sub>NFC</sub> &rang;
-</div>
-<pre><code>┌─────────────────────────────────────────────────────────────────────────┐
-│                    FRANKPASS CRYPTOGRAPHIC PIPELINE                     │
+        <p>
+          <strong>Document Title:</strong> FrankPass: Client-Side Stateless Key Derivation Specification<br>
+          <strong>Architectural Invariant:</strong> Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)<br>
+          <strong>Author:</strong> Master Manikant Yadav (मास्टर मणिकान्त यादव)<br>
+          <strong>Official Contact:</strong> <code>connect@mastermanikant.com</code><br>
+          <strong>Primary Discipline:</strong> Applied Cryptography, Key Derivation Functions (KDF), Human-Computer Interaction (HCI)<br>
+          <strong>Reference Repository:</strong> <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener" style="color:var(--accent-light);">github.com/Mastermanikant/frank-pass</a>
+        </p>
+      </blockquote>
+
+      <hr>
+
+      <h2>Abstract</h2>
+      <p>Centralized cloud password vaults introduce single points of catastrophic failure: ciphertext databases stored online invite offline brute-force attacks upon server breach, while cloud recovery backdoors create social engineering vectors. FrankPass presents an open, client-side, deterministic password derivation architecture that eliminates digital password storage entirely.</p>
+      <p>FrankPass formalizes <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>: a 7-parameter immutable architectural tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, aggressive natural language whitespace/casing normalization, Unicode NFC parity, and a zero-modulo-bias Golden Base-32 character mapping pool ($2^5 = 32$).</p>
+      <p>This specification documents the mathematical properties, entropy formulations ($80.000$ to $100.000$ bits of true search entropy), threat modeling, and lifetime determinism invariants that allow users to generate identical, unguessable credentials across decades without transmitting a single byte over the network.</p>
+
+      <hr>
+
+      <h2>1. Background &amp; Problem Statement</h2>
+      <p>Traditional password management systems rely on encrypted server vaults: $C_i = E_K(P_i)$, where ciphertexts $C_i$ are stored on cloud infrastructure. This architecture suffers from three structural vulnerabilities:</p>
+      <ol>
+        <li><strong>Server-Side Exfiltration Risk:</strong> Storing encrypted vaults on remote servers creates high-value honeypots. A server breach permits adversaries to download ciphertext backups and run multi-GPU offline brute-force attacks indefinitely.</li>
+        <li><strong>Credential Recovery Backdoors:</strong> Server-side account recovery interfaces (SMS OTP, email reset links) bypass master encryption keys, causing the majority of SIM swap and account takeover attacks.</li>
+        <li><strong>Vendor Lock-in &amp; Server Availability:</strong> If the vault provider experiences service outages, changes pricing models, or terminates operations, users risk losing access to their credentials.</li>
+      </ol>
+      <p>FrankPass solves these structural flaws by replacing vault storage with <strong>pure deterministic client-side mathematical key derivation</strong>.</p>
+
+      <hr>
+
+      <h2>2. Stateless Architecture &amp; The Determinism Invariant</h2>
+      <p>In a stateless password architecture, passwords are never stored in databases, memory cookies, or cloud blobs. Instead, passwords are generated on demand as a pure deterministic function of four user inputs and one permanent architectural tuple:</p>
+
+      <div class="math-formula-box">
+        Password = f(MasterSecret, Platform, Username, Version, &Mscr;&Mscr;&Yscr;<sub>constant</sub>)
+      </div>
+
+      <div class="article-highlight-box">
+        <h3 style="margin-top:0;color:var(--accent-light);">The Necessity of Immutability (Why &Mscr;&Mscr;&Yscr;<sub>constant</sub> is Frozen)</h3>
+        <p style="margin-bottom:0.75rem;"><strong>Honest Architectural Clarification:</strong> Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>) is not a physical constant of nature (such as Planck's constant $h$ or the gravitational constant $G$). Rather, it is a <strong>formally locked architectural and cryptographic invariant</strong> established by Master Manikant Yadav.</p>
+        <p style="margin-bottom:0;">In a stateless key derivation system, if any internal parameter (such as iteration count, hash algorithm, context vector structure, or character mapping table) were to change in future software releases, the deterministic output would alter completely. Users would be forced to reset all their account passwords across the internet. Freezing this parameter tuple permanently guarantees that a credential derived today will generate byte-for-byte identically 10, 20, or 50 years from now on any standards-compliant computing device.</p>
+      </div>
+
+      <hr>
+
+      <h2>3. Formal Definition of &Mscr;&Mscr;&Yscr;<sub>constant</sub></h2>
+      <p>Let $\mathcal{S}$ be the user's natural language Master Secret Key, $\mathcal{D}$ be the target domain/platform, $\mathcal{U}$ be the optional username/account identifier, $\mathcal{V} \in \mathbb{N}^+$ be the rotation counter version, and $\mathcal{L} \in \mathbb{N}^+$ be the target output password length.</p>
+      <p>Master Manikant Yadav's Constant is defined as the 7-element immutable tuple:</p>
+
+      <div class="math-formula-box" style="font-size:1.05rem;word-break:break-word;">
+        &Mscr;&Mscr;&Yscr;<sub>constant</sub> = &lang; APP_ID, VER, &Iscr;<sub>10<sup>6</sup></sub>, &Hscr;<sub>SHA512</sub>, &Cscr;<sub>entropy</sub>, &Nscr;<sub>aggressive</sub>, &Pscr;<sub>NFC</sub> &rang;
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tuple Element</th>
+            <th>Formal Value</th>
+            <th>Cryptographic / System Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>APP_ID</code></td>
+            <td><code>"MasterManikant_PassGen"</code></td>
+            <td>Canonical application domain separator, preventing cross-application rainbow table attacks.</td>
+          </tr>
+          <tr>
+            <td><code>VER</code></td>
+            <td><code>"v1"</code></td>
+            <td>Core protocol specification version tag.</td>
+          </tr>
+          <tr>
+            <td>$\mathcal{I}_{10^6}$</td>
+            <td>$1,000,000\text{ rounds}$</td>
+            <td>PBKDF2 iteration work factor, imposing massive computational cost against GPU/ASIC brute-force search.</td>
+          </tr>
+          <tr>
+            <td>$\mathcal{H}_{\text{SHA512}}$</td>
+            <td><code>HMAC-SHA512</code></td>
+            <td>512-bit pseudorandom function used for key derivation and continuous byte-stream expansion.</td>
+          </tr>
+          <tr>
+            <td>$\mathcal{C}_{\text{entropy}}$</td>
+            <td>Golden Base-32 Alphabet</td>
+            <td>Ambiguity-free 32-character pool ($2^5 = 32$) mathematically eliminating visual glyph confusion and modulo bias.</td>
+          </tr>
+          <tr>
+            <td>$\mathcal{N}_{\text{aggressive}}$</td>
+            <td>MMY Normalization</td>
+            <td>Aggressive input sanitization (lowercase conversion, whitespace removal, punctuation stripping) to neutralize device typing friction.</td>
+          </tr>
+          <tr>
+            <td>$\mathcal{P}_{\text{NFC}}$</td>
+            <td>Unicode Standard NFC</td>
+            <td>Canonical decomposition followed by canonical composition, preventing multi-byte visual spoofing across platforms.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>4. Cryptographic Derivation Pipeline</h2>
+      <p>The FrankPass derivation engine executes entirely client-side via the W3C WebCrypto API (<code>crypto.subtle</code>). The exact 6-step derivation pipeline is formalized below:</p>
+
+      <pre><code>┌─────────────────────────────────────────────────────────────────────────┐
+│              FRANKPASS CRYPTOGRAPHIC DERIVATION PIPELINE                │
 ├─────────────────────────────────────────────────────────────────────────┤
-│ 1. Secret Key Normalization (frankpass-core.js line 21):                │
+│ 1. Secret Key Normalization (frankpass-core.js):                        │
 │    S_norm = S.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '') │
-│    (Lowercase conversion + Whitespace strip + Non-alphanumeric strip)  │
+│    U_norm = U.toLowerCase().replace(/\s+/g, '')                         │
+│    D_norm = D.toLowerCase().replace(/\s+/g, '')                         │
 │                                                                         │
-│ 2. Local Pepper Derivation (getLocalPepper, lines 19-41):              │
-│    dataStr = &quot;Version=v1|User=&lt;user&gt;|Plat=&lt;platform&gt;|Key=&lt;S_norm&gt;&quot;     │
+│ 2. Local Pepper Derivation (getSubtlePepper):                           │
+│    dataStr = "Version=v1|User=" + U_norm + "|Plat=" + D_norm + "|Key=" + S_norm
 │    hmac = HMAC_SHA512( DEFAULT_PEPPER, dataStr )                       │
 │    preKey = hex( hmac )                                                │
 │    FOR i = 0 TO 999:                                                   │
 │        preKey = hex( SHA256( preKey + DEFAULT_PEPPER ) )               │
-│    pepper = preKey   (64-char hex string)                              │
+│    pepper = preKey   (64-character hexadecimal string)                  │
 │                                                                         │
-│ 3. Context Vector Construction (line 112, length-prefixed Netstring):  │
-│    CTX = &quot;22:MasterManikant_PassGen|2:v1|len(D):D|len(U):U|           │
-│           len(pepper):pepper|len(V):V|len(profile):profile|len(L):L&quot;   │
+│ 3. Context Vector Construction (Length-prefixed Netstring encoding):   │
+│    CTX = "22:MasterManikant_PassGen|2:v1|len(D):D_norm|len(U):U_norm|   │
+│           len(pepper):pepper|len(V):V|len(profile):profile|len(L):L"    │
+│    seedData = UTF8_Encode( CTX.normalize('NFC') )                       │
 │                                                                         │
-│ 4. Key Derivation (PBKDF2-HMAC-SHA512, 1M Iterations, line 119-121):  │
-│    baseKey = Import( pepper.normalize('NFC') )                         │
-│    PRK = PBKDF2( baseKey, Salt=CTX.normalize('NFC'), I=1M, SHA-512 )  │
+│ 4. Primary Key Derivation (PBKDF2-HMAC-SHA512, 1M Iterations):          │
+│    baseKey = ImportKey( raw, UTF8_Encode( pepper.normalize('NFC') ) )  │
+│    PRK = PBKDF2( baseKey, Salt=seedData, Iterations=1,000,000, SHA-512 )│
 │                                                                         │
-│ 5. Continuous HMAC Stream Expansion (lines 128-132):                   │
-│    T_1 = HMAC_SHA512( PRK, 0x01 )                                      │
-│    T_2 = HMAC_SHA512( PRK, T_1 || 0x02 )                               │
-│    BYTE_STREAM = T_1 || T_2   (128 bytes total)                        │
+│ 5. Continuous HMAC Stream Expansion (HKDF-style expansion):             │
+│    prkKey = ImportKey( raw, PRK, HMAC-SHA512 )                          │
+│    T_1 = HMAC_SHA512( prkKey, 0x01 )                                    │
+│    T_2 = HMAC_SHA512( prkKey, T_1 || 0x02 )                             │
+│    BYTE_STREAM = T_1 || T_2   (128 pseudorandom bytes total)            │
 │                                                                         │
-│ 6. Deterministic Character Mapping (Golden Base-32 Character Set):      │
-│    Modulo Bias Rejection: validMax = 256 - (256 % 32) = 256 (Zero Loss) │
-│    For each byte b &lt; validMax: char = charset[b % 32]                  │
-│    Required-set injection from tail bytes if any set is missing        │
-│    OUTPUT_PASSWORD = Mapped Characters (length L)                      │
-└─────────────────────────────────────────────────────────────────────────┘
-</code></pre>
-<hr />
-<h2>3. Cryptographic Character Set Entropy Matrix</h2>
-<p>FrankPass defines an unambiguous Golden Base-32 pool <em>C</em> ($2^5 = 32$ characters) that mathematically eliminates all visually confusing, mirror-image, and scale-ambiguous characters:</p>
-<ul>
-<li><strong>Uppercase (10 chars):</strong> <code>ADEFHLMNRT</code></li>
-<li><strong>Lowercase (6 chars):</strong> <code>defhmt</code></li>
-<li><strong>Numbers (7 chars):</strong> <code>2346789</code></li>
-<li><strong>Symbols (9 chars):</strong> <code>@#$%&amp;*+=?</code></li>
-</ul>
-<h3>Minimum Guaranteed Entropy:</h3>
-<p>For standard output length <em>L</em> = 16 (NIST SP 800-63B Military Benchmark):</p>
-<div class="math-formula-box"><em>H</em><sub>password</sub> = 16 &times; log<sub>2</sub>(32) = 16 &times; 5.00000 = <strong>80.000 bits</strong></div>
-<p>For extended output length <em>L</em> = 20:</p>
-<div class="math-formula-box"><em>H</em><sub>password</sub> = 20 &times; log<sub>2</sub>(32) = 20 &times; 5.00000 = <strong>100.000 bits</strong></div>
-<hr />
-<h2>4. Formal Security Theorems</h2>
-<h3>Theorem 1 (Zero-Knowledge &amp; Zero-Storage Invariant):</h3>
-<p><em>For any adversary <em>A</em> with complete physical and administrative control over FrankPass web servers, DNS infrastructure, and edge routing nodes, the probability of <em>A</em> recovering any user password $P$ is bounded by:</em>
-<div class="math-formula-box">Pr[<em>A</em> recovers <em>P</em>] = 1 / |<em>S</em>|</div>
-<em>Proof:</em> The server stores 0 bytes of state, credentials, or ciphertexts. Hence, <em>A</em> has access only to static public execution code. &#9632;</p>
-<h3>Theorem 2 (Domain Isolation Theorem):</h3>
-<p><em>For two distinct domains <em>D</em><sub>1</sub> &ne; <em>D</em><sub>2</sub>, the correlation between passwords <em>P</em>(<em>D</em><sub>1</sub>) and <em>P</em>(<em>D</em><sub>2</sub>) derived from the same master secret <em>S</em> is computationally indistinguishable from independent random variables:</em>
-<div class="math-formula-box">|Pr[<em>P</em>(<em>D</em><sub>1</sub>) = <em>X</em>] - Pr[<em>P</em>(<em>D</em><sub>2</sub>) = <em>X</em>]| &lt; negl(&lambda;)</div>
-<em>Proof:</em> Guaranteed by the pseudorandom function (PRF) security of HMAC-SHA512 with distinct salt contexts. A compromise of $D_1$ yields zero information regarding $D_2$. &#9632;</p>
-<hr />
-<h2>5. Posthumous &amp; 100-Year Survivability Proof</h2>
-<p>Because &Mscr;&Mscr;&Yscr;<sub>constant</sub> contains zero external runtime dependencies and executes entirely client-side via standard IEEE WebCrypto / SHA-512 standards:
-* <strong>Standalone Single-File HTML:</strong> The entire protocol compiles into an unminified, self-contained 150 KB HTML file.
-* <strong>Offline Execution:</strong> Once cached by the Service Worker, the protocol executes identically in an air-gapped environment for decades without network connectivity.</p>
-<hr />
-<h2>6. Conclusion &amp; Reference Implementation</h2>
-<p>FrankPass provides a mathematically verified, sovereign, and eternal standard for deterministic password generation, formally designated as <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>.</p>
-<p>Reference implementation repository: <code>https://github.com/Mastermanikant/frank-pass</code></p>
+│ 6. Modulo Bias-Free Base-32 Character Mapping:                          │
+│    validMax = 256 - (256 % 32) = 256 (Mathematically 0.000% loss)       │
+│    For each byte b: char = charset[b % 32]                              │
+│    Enforce mandatory set presence (Upper, Lower, Number, Symbol)        │
+│    OUTPUT_PASSWORD = Validated Mapped Characters (length L)             │
+└─────────────────────────────────────────────────────────────────────────┘</code></pre>
+
+      <hr>
+
+      <h2>5. Golden Base-32 Pool &amp; Mathematical Proof of Zero Modulo Bias</h2>
+      <p>Traditional random generators that map byte arrays ($0$ to $255$) to arbitrary character pool sizes (e.g. 55, 62, or 94 characters) suffer from <strong>Modulo Bias</strong> unless unaligned bytes are systematically rejected and discarded.</p>
+      <p>FrankPass solves this problem mathematically by utilizing an exact <strong>Golden Base-32 Character Pool</strong> ($\mathcal{C}$, where $|\mathcal{C}| = 32 = 2^5$):</p>
+
+      <ul>
+        <li><strong>Uppercase Alphabet (10 chars):</strong> <code>ADEFHLMNRT</code> (Removed ambiguous glyphs: B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z)</li>
+        <li><strong>Lowercase Alphabet (6 chars):</strong> <code>defhmt</code> (Removed lookalike and mirror glyphs: a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z)</li>
+        <li><strong>Numeric Digits (7 chars):</strong> <code>2346789</code> (Removed 0, 1, 5 to eliminate confusion with O, I, l, S)</li>
+        <li><strong>Special Symbols (9 chars):</strong> <code>@#$%&amp;*+=?</code> (Removed quotes, brackets, hyphens, underscores)</li>
+      </ul>
+
+      <div class="math-formula-box">
+        |\mathcal{C}| = 10 + 6 + 7 + 9 = 32 = 2^5\text{ characters}
+      </div>
+
+      <h3>Mathematical Proof of Zero Modulo Bias:</h3>
+      <p>Let $B \in \{0, 1, \dots, 255\}$ be a uniformly distributed pseudorandom byte generated by HMAC-SHA512. The maximum aligned boundary $\text{validMax}$ is calculated as:</p>
+
+      <div class="math-formula-box">
+        \text{validMax} = 256 - (256 \pmod{32}) = 256 - 0 = 256
+      </div>
+
+      <p>Because $256$ is an exact integer multiple of $32$ ($2^8 / 2^5 = 2^3 = 8$ exact full cycles):</p>
+      <div class="math-formula-box">
+        \forall c \in \mathcal{C}, \quad \Pr[\text{byteToChar}(B) = c] = \frac{8}{256} = \frac{1}{32} = 0.03125000\dots
+      </div>
+      <p>Every character in the pool receives exactly equal probability of selection. Modulo bias loss is mathematically <strong>0.000% (Zero Loss)</strong>. No derived pseudorandom entropy is wasted or discarded.</p>
+
+      <hr>
+
+      <h2>6. Cryptographic Search Entropy Formulations</h2>
+      <p>Because each character in the Golden Base-32 pool carries exactly $5$ bits of information entropy ($\log_2(32) = 5.00000\text{ bits}$), the search space complexity for generated passwords is strictly linear with length:</p>
+
+      <div class="math-formula-box">
+        H_{\text{password}} = L \times \log_2(32) = 5 \cdot L\text{ bits}
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Password Length ($L$)</th>
+            <th>Search Space Combinations</th>
+            <th>True Search Entropy</th>
+            <th>Time to Exhaust ($10^9\text{ guesses/sec}$)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>12 characters</strong></td>
+            <td>$32^{12} = 2^{60} \approx 1.15 \times 10^{18}$</td>
+            <td><strong>60.000 bits</strong></td>
+            <td>$36.5\text{ years}$</td>
+          </tr>
+          <tr>
+            <td><strong>16 characters (Standard)</strong></td>
+            <td>$32^{16} = 2^{80} \approx 1.20 \times 10^{24}$</td>
+            <td><strong>80.000 bits</strong></td>
+            <td>$1.9 \times 10^{13}\text{ years}$ (Exceeds Universe Age)</td>
+          </tr>
+          <tr>
+            <td><strong>20 characters (Extended)</strong></td>
+            <td>$32^{20} = 2^{100} \approx 1.26 \times 10^{30}$</td>
+            <td><strong>100.000 bits</strong></td>
+            <td>$2.0 \times 10^{19}\text{ years}$ (Cryptographically Eternal)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>7. Usable Security &amp; The Science of Input Normalization</h2>
+      <p>In deterministic key derivation systems, human typing variability is the primary operational failure point. When entering a master secret on mobile devices, modern virtual keyboards introduce automatic transformations:</p>
+      <ul>
+        <li>Automatic capitalization of the first letter (e.g. <code>MySecret</code> vs <code>mysecret</code>).</li>
+        <li>Automatic insertion of smart punctuation or directional quotes.</li>
+        <li>Trailing whitespace added during auto-complete suggestions.</li>
+      </ul>
+      <p>In un-normalized systems, a single accidental space alters the entire derived password, causing authentication failures. FrankPass incorporates <strong>MMY Aggressive Input Normalization ($\mathcal{N}_{\text{aggressive}}$)</strong> and <strong>Unicode NFC Composition ($\mathcal{P}_{\text{NFC}}$)</strong> before derivation:</p>
+
+      <pre><code>// Exact Canonical Normalization Implementation:
+const normalizedSecret = (secretKey || '')
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[^a-z0-9]/g, '');</code></pre>
+
+      <p>This guarantees that variations such as <code>"Master Secret 2026! "</code>, <code>"mastersecret2026"</code>, and <code>"master secret 2026"</code> always map to the exact same canonical byte array, eliminating cross-device human error while preserving high entropy.</p>
+
+      <hr>
+
+      <h2>8. Threat Model &amp; Security Properties</h2>
+
+      <h3>1. Server Compromise &amp; Zero-Storage Immunity:</h3>
+      <p>Because FrankPass servers store zero credentials, zero master keys, and zero ciphertext blobs ($0\text{ bytes stored}$), a total compromise of the hosting infrastructure, edge CDNs, or DNS routers yields zero actionable data to an adversary.</p>
+
+      <h3>2. Cryptographic Domain Separation:</h3>
+      <p>By injecting the domain name into length-prefixed netstrings and salting the HMAC-SHA512 PRF, outputs across different platforms ($D_1 \neq D_2$) are computationally indistinguishable from independent random variables. A data breach at Service A gives an attacker zero mathematical leverage to predict credentials for Service B.</p>
+
+      <h3>3. Air-Gapped &amp; 100% Offline Survivability:</h3>
+      <p>FrankPass contains zero runtime network dependencies. Once cached by the Service Worker or saved as a standalone single-file HTML document ($150\text{ KB}$), the engine executes client-side on completely air-gapped computers without internet connectivity.</p>
+
+      <hr>
+
+      <h2>9. Lifetime Governance &amp; GitHub Immutable Code Invariant</h2>
+      <p>To provide users with lifelong mathematical assurance, Master Manikant Yadav has established the <strong>FrankPass Core Invariant Governance Rule</strong>:</p>
+      <ul>
+        <li>The core cryptographic pipeline defined in <code>frankpass-core.js</code> and governed by &Mscr;&Mscr;&Yscr;<sub>constant</sub> is permanently frozen.</li>
+        <li>No future software update, pull request, or dependency change in the open-source repository is permitted to alter the mathematical derivation logic.</li>
+        <li>All future feature enhancements (e.g., UI themes, extension integrations, autofill scripts) must interface strictly as external consumers of this frozen core.</li>
+      </ul>
+
+      <hr>
+
+      <h2>10. Conclusion &amp; Reference Implementation</h2>
+      <p>FrankPass establishes that password security does not require centralized cloud database vaults. By formalizing <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>, client-side WebCrypto key derivation, and ambiguity-free Base-32 entropy mapping, FrankPass delivers an open, permanent, and sovereign standard for personal digital authentication.</p>
+
+      <p>
+        <strong>Official Reference Implementation:</strong><br>
+        Open-source repository: <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener" style="color:var(--accent-light);">https://github.com/Mastermanikant/frank-pass</a><br>
+        Author Research Hub: <a href="https://mastermanikant.com/research/" target="_blank" rel="noopener" style="color:var(--accent-light);">https://mastermanikant.com/research/</a>
+      </p>
+
     </article>
 
   </main>
+<div id="site-footer"></div>
 
-  <div id="site-footer"></div>
-  <script src="/frankpass-config.js?v=4.2.7"></script>
-  <script src="/footer.js?v=4.2.7"></script>
-  <script src="/ai-prompt-bar.js?v=4.2.7"></script>
+<!-- Toast notification for copy -->
+<div id="copy-toast" role="alert" aria-live="assertive">Secret Key Copied to Clipboard! 📋</div>
+
+<!-- Mobile bottom navigation -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="/pin.html" class="mob-nav-item" aria-label="PIN"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>PIN</span></a>
+  <a href="/secret-key-guide.html" class="mob-nav-item active" aria-label="Guide" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Guide</span></a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="Pro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Pro</span></a>
+</nav>
+
+<!-- Scripts -->
+<script src="/frankpass-config.js?v=4.2.7"></script>
+<script src="/country-data.js?v=4.2.7"></script>
+<script src="/country-dropdown.js?v=4.2.7"></script>
+<script src="/footer.js?v=4.2.7"></script>
+<script src="/ai-prompt-bar.js?v=4.2.7"></script>
+<script>
+/* ── Header scroll shadow ── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+/* ── Mobile menu toggle ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
+/* ── Copy to clipboard handler with toast ── */
+const toast = document.getElementById('copy-toast');
+let toastTimer = null;
+
+function showToast(msg) {
+  if (!toast) return;
+  toast.textContent = msg || 'Copied to Clipboard! 📋';
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.classList.remove('show');
+  }, 2500);
+}
+
+document.querySelectorAll('.btn-copy-example').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const text = btn.getAttribute('data-copy');
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      showToast(`Copied: "${text.substring(0, 24)}..." 📋`);
+    }).catch(() => {
+      showToast('Key copied! 📋');
+    });
+  });
+});
+</script>
+
 </body>
 </html>
-
 
