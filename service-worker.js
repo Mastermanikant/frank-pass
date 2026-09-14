@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.2.3 (Clean Native Datalist Keyboard Strip)
-const CACHE_NAME = 'frankpass-v4.2.3';
+// FrankPass Service Worker v4.2.4 (Clean Datalist & Top Platforms Sync)
+const CACHE_NAME = 'frankpass-v4.2.4';
 const CACHED_URLS = [
     '/',
     '/index.html',

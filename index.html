@@ -1495,8 +1495,6 @@ function renderDatalistItems(filterQuery) {
   matched.forEach(p => {
     const opt = document.createElement('option');
     opt.value = p;
-    opt.label = p;
-    opt.textContent = p;
     fragment.appendChild(opt);
   });
   list.appendChild(fragment);

@@ -1965,8 +1965,7 @@ select {
   cursor: pointer !important;
 }
 
-select option,
-datalist option {
+select option {
   background-color: #121324 !important;
   color: #f8fafc !important;
   padding: 0.65rem !important;
@@ -1974,8 +1973,7 @@ datalist option {
 }
 
 [data-theme="light"] select.form-input,
-[data-theme="light"] select option,
-[data-theme="light"] datalist option {
+[data-theme="light"] select option {
   background-color: #ffffff !important;
   color: #0f172a !important;
   border-color: #cbd5e1 !important;
