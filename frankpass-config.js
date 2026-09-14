@@ -1,4 +1,4 @@
-﻿/**
+/**
  * frankpass-config.js - FrankPass Master Configuration
  * Owner-controlled. All other files read from this object.
  * Load this FIRST before any other script.
@@ -73,7 +73,7 @@ const FRANKPASS_CONFIG = {
   },
 
   /* ── Site Metadata ────────────────────────────────────────────── */
-  SITE_VERSION: "3.8.9",
+  SITE_VERSION: "3.9.5",
 
   /* ── Maintenance Mode ─────────────────────────────────────────── */
   MAINTENANCE_MODE: false,
