@@ -829,7 +829,7 @@ const normalizedSecret = (secretKey || '')
           <tr>
             <td><strong>Credential Phishing &amp; Homographs</strong></td>
             <td>Strict Domain Binding</td>
-            <td>Generates a completely different, useless dummy password bound exclusively to the attacker's fake domain (e.g. Cyrillic homographs or cloned URLs). The victim's real account password and Master Secret remain 100% unexposed and secure.</td>
+            <td>FrankPass operates 100% offline with zero external threat intelligence. However, because passwords are mathematically derived from the domain string, spoofed or clone domains (e.g. <code>g00gle.com</code>) automatically derive an entirely different password, ensuring real credentials remain unexposed.</td>
           </tr>
           <tr>
             <td><strong>Mobile Keystroke Capture</strong></td>
