@@ -231,7 +231,7 @@
       }
     },
     "datePublished": "2026-09-15",
-    "dateModified": "2026-09-15",
+    "dateModified": "2026-09-16",
     "mainEntityOfPage": "https://frankpass.com/whitepaper-hindi.html"
   }
   </script>
@@ -514,7 +514,7 @@
       <div class="article-byline">
         <span>लेखक: <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">मास्टर मणिकान्त यादव (Master Manikant Yadav)</a></span>
         <span>&middot;</span>
-        <span>प्रकाशन: 15 सितम्बर 2026 (शाम 05:20 IST)</span>
+        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (रात 01:30 IST)</span>
         <span>&middot;</span>
         <span>15 मिनट पठन</span>
         <span>&middot;</span>
@@ -699,7 +699,7 @@
             <th>पूल में शामिल कैरेक्टर (Used)</th>
             <th>संख्या</th>
             <th>हटाए गए भ्रामक कैरेक्टर (Excluded)</th>
-            <th>हटाने का वैज्ञानिक कारण (Reason)</th>
+            <th>हटाने का वैज्ञानिक कारण (भ्रामक जोड़े / Confusion Pairs)</th>
           </tr>
         </thead>
         <tbody>
@@ -708,28 +708,36 @@
             <td><code>ADEFHLMNRT</code></td>
             <td>10</td>
             <td><code>B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z</code></td>
-            <td>8/B, C/G/O/0/Q, I/1/l, S/5, U/V/W जैसे भ्रामक आकारों को खत्म करने हेतु</td>
+            <td>
+              <code>B-8</code>, <code>O-0-Q</code>, <code>I-1-l</code>, <code>S-5</code>, <code>C-c</code>, <code>K-k</code>, <code>P-p</code>, <code>X-x</code>, <code>Z-z</code>, <code>U-V-W</code>, <code>G-6</code>, <code>J-1</code>, <code>Y-v</code> जैसे दृश्य भ्रमों को समाप्त करने हेतु
+            </td>
           </tr>
           <tr>
             <td><strong>छोटे अक्षर (Lowercase)</strong></td>
             <td><code>defhmt</code></td>
             <td>6</td>
             <td><code>a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z</code></td>
-            <td>l/1/I, o/0, s/5, c/o, u/v, b/d/p/q के दृश्य भ्रम व मोबाइल टाइपिंग गलतियों से बचाव</td>
+            <td>
+              <code>l-1-I</code>, <code>o-0-O</code>, <code>s-5-S</code>, <code>b-d-p-q</code> (दर्पण/समान आकार), <code>c-o</code>, <code>u-v-w</code>, <code>n-m-h</code>, <code>a-o</code> के टाइपिंग भ्रम से बचाव
+            </td>
           </tr>
           <tr>
             <td><strong>अंक (Digits)</strong></td>
             <td><code>2346789</code></td>
             <td>7</td>
             <td><code>0, 1, 5</code></td>
-            <td>0 (O के साथ), 1 (I व l के साथ), 5 (S के साथ) के भ्रम को 100% रोकने हेतु</td>
+            <td>
+              <code>0</code> (O-0-o), <code>1</code> (I-l-1), <code>5</code> (S-s-5) के भ्रम को 100% रोकने हेतु
+            </td>
           </tr>
           <tr>
             <td><strong>विशेष प्रतीक (Symbols)</strong></td>
             <td><code>@#$%&*+=?</code></td>
             <td>9</td>
             <td><code>' " ` ( ) { } [ ] &lt; &gt; / \ | ~ ^ : ; , . - _</code></td>
-            <td>स्मार्ट कोट्स, ब्रैकेट, शेल एस्केपिंग व मोबाइल कीबोर्ड मिसक्लिक से बचाव</td>
+            <td>
+              <code>' " `</code> (कोट्स बग्स), <code>( ) [ ] { }</code> (ब्रैकेट पेयर्स), <code>- _</code> (डैश-अंडरस्कोर), <code>/ \ |</code> (स्लैश), <code>: ; , .</code> (विराम चिह्न) से बचाव
+            </td>
           </tr>
         </tbody>
         <tfoot>

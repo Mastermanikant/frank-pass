@@ -52,7 +52,8 @@
       "name": "FrankPass",
       "url": "https://frankpass.com"
     },
-    "datePublished": "2026-09-01",
+    "datePublished": "2026-09-15",
+    "dateModified": "2026-09-16",
     "inLanguage": "en",
     "mainEntityOfPage": "https://frankpass.com/whitepaper.html"
   }
@@ -516,7 +517,7 @@
       <div class="article-byline">
         <span>By <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">Master Manikant Yadav (मास्टर मणिकान्त यादव)</a></span>
         <span>&middot;</span>
-        <span>Published September 15, 2026 (05:20 PM IST)</span>
+        <span>Published September 15, 2026 &middot; Updated September 16, 2026 (01:30 AM IST)</span>
         <span>&middot;</span>
         <span>15 min read</span>
         <span>&middot;</span>
@@ -696,7 +697,7 @@
             <th>Included in Pool (Used)</th>
             <th>Count</th>
             <th>Excluded Ambiguous Glyphs (Removed)</th>
-            <th>Reason for Exclusion</th>
+            <th>Reason for Exclusion (Confusion Pairs)</th>
           </tr>
         </thead>
         <tbody>
@@ -705,28 +706,36 @@
             <td><code>ADEFHLMNRT</code></td>
             <td>10</td>
             <td><code>B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z</code></td>
-            <td>Eliminates visual confusion with 8/B, C/G/O/0/Q, I/1/l, S/5, U/V/W</td>
+            <td>
+              Eliminates visual confusion: <code>B-8</code>, <code>O-0-Q</code>, <code>I-1-l</code>, <code>S-5</code>, <code>C-c</code>, <code>K-k</code>, <code>P-p</code>, <code>X-x</code>, <code>Z-z</code>, <code>U-V-W</code>, <code>G-6</code>, <code>J-1</code>, <code>Y-v</code>
+            </td>
           </tr>
           <tr>
             <td><strong>Lowercase Alphabet</strong></td>
             <td><code>defhmt</code></td>
             <td>6</td>
             <td><code>a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z</code></td>
-            <td>Purges mirror glyphs and lookalikes (l/1/I, o/0, s/5, c/o, u/v, b/d/p/q)</td>
+            <td>
+              Purges mirror and lookalike typos: <code>l-1-I</code>, <code>o-0-O</code>, <code>s-5-S</code>, <code>b-d-p-q</code> (mirror glyphs), <code>c-o</code>, <code>u-v-w</code>, <code>n-m-h</code>, <code>a-o</code>
+            </td>
           </tr>
           <tr>
             <td><strong>Numeric Digits</strong></td>
             <td><code>2346789</code></td>
             <td>7</td>
             <td><code>0, 1, 5</code></td>
-            <td>Eliminates 0 (vs O), 1 (vs I, l), 5 (vs S)</td>
+            <td>
+              Strictly prevents number ambiguity: <code>0</code> (vs O-0-o), <code>1</code> (vs I-l-1), <code>5</code> (vs S-s-5)
+            </td>
           </tr>
           <tr>
             <td><strong>Special Symbols</strong></td>
             <td><code>@#$%&*+=?</code></td>
             <td>9</td>
             <td><code>' " ` ( ) { } [ ] &lt; &gt; / \ | ~ ^ : ; , . - _</code></td>
-            <td>Prevents smart quotes, bracket mismatched pairs, and mobile keyboard typos</td>
+            <td>
+              Prevents typos and syntax bugs: <code>' " `</code> (quotes bugs), <code>( ) [ ] { }</code> (bracket pairs), <code>- _</code> (dash-underscore), <code>/ \ |</code> (slash), <code>: ; , .</code> (punctuations)
+            </td>
           </tr>
         </tbody>
         <tfoot>
