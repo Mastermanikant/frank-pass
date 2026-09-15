@@ -692,12 +692,54 @@
       
       <p>फ्रैंकपास एक सटीक <strong>गोल्डन बेस-32 कैरेक्टर पूल</strong> (&Cscr;, जहाँ |&Cscr;| = 32 = 2<sup>5</sup>) का उपयोग करके इस समस्या को गणितीय रूप से हल करता है:</p>
 
-      <ul>
-        <li><strong>बड़े अक्षर (Uppercase - 10 कैरेक्टर):</strong> <code>ADEFHLMNRT</code> (भ्रामक दिखने वाले अक्षर हटाए गए: B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z)</li>
-        <li><strong>छोटे अक्षर (Lowercase - 6 कैरेक्टर):</strong> <code>defhmt</code> (एक जैसे दिखने वाले अक्षर हटाए गए: a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z)</li>
-        <li><strong>अंक (Digits - 7 कैरेक्टर):</strong> <code>2346789</code> (0, 1, 5 हटाए गए ताकि O, I, l, S के साथ भ्रम न हो)</li>
-        <li><strong>विशेष प्रतीक (Symbols - 9 कैरेक्टर):</strong> <code>@#$%&amp;*+=?</code> (कोट्स, ब्रैकेट, हाइफ़न, अंडरस्कोर हटाए गए)</li>
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>कैटेगरी</th>
+            <th>पूल में शामिल कैरेक्टर (Used)</th>
+            <th>संख्या</th>
+            <th>हटाए गए भ्रामक कैरेक्टर (Excluded)</th>
+            <th>हटाने का वैज्ञानिक कारण (Reason)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>बड़े अक्षर (Uppercase)</strong></td>
+            <td><code>ADEFHLMNRT</code></td>
+            <td>10</td>
+            <td><code>B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z</code></td>
+            <td>8/B, C/G/O/0/Q, I/1/l, S/5, U/V/W जैसे भ्रामक आकारों को खत्म करने हेतु</td>
+          </tr>
+          <tr>
+            <td><strong>छोटे अक्षर (Lowercase)</strong></td>
+            <td><code>defhmt</code></td>
+            <td>6</td>
+            <td><code>a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z</code></td>
+            <td>l/1/I, o/0, s/5, c/o, u/v, b/d/p/q के दृश्य भ्रम व मोबाइल टाइपिंग गलतियों से बचाव</td>
+          </tr>
+          <tr>
+            <td><strong>अंक (Digits)</strong></td>
+            <td><code>2346789</code></td>
+            <td>7</td>
+            <td><code>0, 1, 5</code></td>
+            <td>0 (O के साथ), 1 (I व l के साथ), 5 (S के साथ) के भ्रम को 100% रोकने हेतु</td>
+          </tr>
+          <tr>
+            <td><strong>विशेष प्रतीक (Symbols)</strong></td>
+            <td><code>@#$%&*+=?</code></td>
+            <td>9</td>
+            <td><code>' " ` ( ) { } [ ] &lt; &gt; / \ | ~ ^ : ; , . - _</code></td>
+            <td>स्मार्ट कोट्स, ब्रैकेट, शेल एस्केपिंग व मोबाइल कीबोर्ड मिसक्लिक से बचाव</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr style="font-weight:700;background:var(--card-glass-bg);">
+            <td colspan="2"><strong>कुल गोल्डन बेस-32 कैरेक्टर पूल (|&Cscr;|)</strong></td>
+            <td><strong>32</strong></td>
+            <td colspan="2"><strong>सटीक 2<sup>5</sup> = 32 (शून्य मॉड्यूलो बायस व प्रति कैरेक्टर 5-बिट एन्ट्रापी)</strong></td>
+          </tr>
+        </tfoot>
+      </table>
 
       <div class="math-formula-box">
         |&Cscr;| = 10 + 6 + 7 + 9 = 32 = 2<sup>5</sup> कैरेक्टर

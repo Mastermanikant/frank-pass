@@ -689,12 +689,54 @@
       <p>Traditional random generators that map byte arrays (0 to 255) to arbitrary character pool sizes (e.g. 55, 62, or 94 characters) suffer from <strong>Modulo Bias</strong> unless unaligned bytes are systematically rejected and discarded.</p>
       <p>FrankPass solves this problem mathematically by utilizing an exact <strong>Golden Base-32 Character Pool</strong> (&Cscr;, where |&Cscr;| = 32 = 2<sup>5</sup>):</p>
 
-      <ul>
-        <li><strong>Uppercase Alphabet (10 chars):</strong> <code>ADEFHLMNRT</code> (Removed ambiguous glyphs: B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z)</li>
-        <li><strong>Lowercase Alphabet (6 chars):</strong> <code>defhmt</code> (Removed lookalike and mirror glyphs: a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z)</li>
-        <li><strong>Numeric Digits (7 chars):</strong> <code>2346789</code> (Removed 0, 1, 5 to eliminate confusion with O, I, l, S)</li>
-        <li><strong>Special Symbols (9 chars):</strong> <code>@#$%&amp;*+=?</code> (Removed quotes, brackets, hyphens, underscores)</li>
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Character Set</th>
+            <th>Included in Pool (Used)</th>
+            <th>Count</th>
+            <th>Excluded Ambiguous Glyphs (Removed)</th>
+            <th>Reason for Exclusion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Uppercase Alphabet</strong></td>
+            <td><code>ADEFHLMNRT</code></td>
+            <td>10</td>
+            <td><code>B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z</code></td>
+            <td>Eliminates visual confusion with 8/B, C/G/O/0/Q, I/1/l, S/5, U/V/W</td>
+          </tr>
+          <tr>
+            <td><strong>Lowercase Alphabet</strong></td>
+            <td><code>defhmt</code></td>
+            <td>6</td>
+            <td><code>a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z</code></td>
+            <td>Purges mirror glyphs and lookalikes (l/1/I, o/0, s/5, c/o, u/v, b/d/p/q)</td>
+          </tr>
+          <tr>
+            <td><strong>Numeric Digits</strong></td>
+            <td><code>2346789</code></td>
+            <td>7</td>
+            <td><code>0, 1, 5</code></td>
+            <td>Eliminates 0 (vs O), 1 (vs I, l), 5 (vs S)</td>
+          </tr>
+          <tr>
+            <td><strong>Special Symbols</strong></td>
+            <td><code>@#$%&*+=?</code></td>
+            <td>9</td>
+            <td><code>' " ` ( ) { } [ ] &lt; &gt; / \ | ~ ^ : ; , . - _</code></td>
+            <td>Prevents smart quotes, bracket mismatched pairs, and mobile keyboard typos</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr style="font-weight:700;background:var(--card-glass-bg);">
+            <td colspan="2"><strong>Total Golden Base-32 Pool (|&Cscr;|)</strong></td>
+            <td><strong>32</strong></td>
+            <td colspan="2"><strong>Exact 2<sup>5</sup> = 32 (0.000% Modulo Bias & 5.000 Bits Entropy per Char)</strong></td>
+          </tr>
+        </tfoot>
+      </table>
 
       <div class="math-formula-box">
         |&Cscr;| = 10 + 6 + 7 + 9 = 32 = 2<sup>5</sup> characters
