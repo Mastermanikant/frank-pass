@@ -33,6 +33,183 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css?v=4.2.8">
 
+  <style>
+    .math-formula-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      margin: 1.5rem 0;
+      font-family: 'JetBrains Mono', monospace, sans-serif;
+    }
+    .math-inline {
+      font-family: 'JetBrains Mono', monospace, sans-serif;
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+    .article-container {
+      max-width: 860px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+    }
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .article-breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .article-title {
+      font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .article-byline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+    .article-body p {
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+    }
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.02em;
+    }
+    .article-body h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2rem 0 0.75rem;
+    }
+    .article-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(139,92,246,0.06);
+      border-radius: 0 14px 14px 0;
+      color: var(--text-primary);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+    }
+    .article-body th, .article-body td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .article-body th {
+      background: var(--card-glass-bg);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .article-body td {
+      color: var(--text-muted);
+    }
+    .article-body pre {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+    .article-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(139,92,246,0.12);
+      color: var(--accent-light);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+    }
+    .article-body pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .article-body ul, .article-body ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+      color: var(--text-muted);
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+    .article-highlight-box {
+      background: var(--card-glass-bg);
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .download-pdf-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(124,58,237,0.06));
+      border: 1px solid rgba(139,92,246,0.35);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .download-pdf-banner .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.6rem 1.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: opacity 0.2s;
+    }
+    .download-pdf-banner .btn-pdf:hover {
+      opacity: 0.92;
+    }
+  </style>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
