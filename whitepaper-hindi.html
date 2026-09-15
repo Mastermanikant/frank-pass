@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>फ्रैंकपास तकनीकी विनिर्देश एवं मास्टर मणिकान्त यादव का क्रिप्टोग्राफिक स्थिरांक (MMY_constant)</title>
+  <meta name="description" content="फ्रैंकपास क्लाइंट-साइड स्टेटलेस पासवर्ड व्युत्पत्ति एवं मास्टर मणिकान्त यादव के स्थिरांक (MMY_constant) का औपचारिक तकनीकी आर्किटेक्चर व क्रिप्टोग्राफिक विनिर्देश।">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://frankpass.com/whitepaper-hindi.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/whitepaper.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/whitepaper-hindi.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/whitepaper.html">
+  
+  <meta property="og:title" content="फ्रैंकपास तकनीकी विनिर्देश एवं मास्टर मणिकान्त यादव का स्थिरांक (MMY_constant)">
+  <meta property="og:description" content="फ्रैंकपास क्लाइंट-साइड स्टेटलेस पासवर्ड व्युत्पत्ति एवं मास्टर मणिकान्त यादव के स्थिरांक (MMY_constant) का औपचारिक तकनीकी विनिर्देश।">
+  <meta property="og:url" content="https://frankpass.com/whitepaper-hindi.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <meta name="twitter:title" content="फ्रैंकपास तकनीकी विनिर्देश एवं मास्टर मणिकान्त यादव का स्थिरांक (MMY_constant)">
+  <meta name="twitter:description" content="फ्रैंकपास क्लाइंट-साइड स्टेटलेस पासवर्ड व्युत्पत्ति एवं मास्टर मणिकान्त यादव के स्थिरांक (MMY_constant) का औपचारिक तकनीकी विनिर्देश।">
+  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "फ्रैंकपास: क्लाइंट-साइड स्टेटलेस की व्युत्पत्ति आर्किटेक्चर एवं मास्टर मणिकान्त यादव का क्रिप्टोग्राफिक स्थिरांक (MMY_constant)",
+    "description": "फ्रैंकपास क्लाइंट-साइड स्टेटलेस पासवर्ड व्युत्पत्ति एवं मास्टर मणिकान्त यादव के स्थिरांक (MMY_constant) का औपचारिक तकनीकी विनिर्देश।",
+    "author": {
+      "@type": "Person",
+      "name": "मास्टर मणिकान्त यादव",
+      "url": "https://mastermanikant.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "FrankPass",
+      "url": "https://frankpass.com"
+    },
+    "datePublished": "2026-09-01",
+    "inLanguage": "hi",
+    "mainEntityOfPage": "https://frankpass.com/whitepaper-hindi.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="/style.css?v=4.2.8">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+  
+  <style>
+    .math-formula-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      margin: 1.5rem 0;
+      font-family: 'JetBrains Mono', monospace, sans-serif;
+    }
+    .math-inline {
+      font-family: 'JetBrains Mono', monospace, sans-serif;
+      font-weight: 600;
+      color: var(--accent-light);
+    }
+    .article-container {
+      max-width: 860px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+    }
+    .article-header {
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2rem;
+    }
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .article-breadcrumb a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .article-title {
+      font-size: clamp(1.85rem, 4.5vw, 2.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+    .article-byline {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+    .article-body p {
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+    }
+    .article-body h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.02em;
+    }
+    .article-body h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 2rem 0 0.75rem;
+    }
+    .article-body blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(139,92,246,0.06);
+      border-radius: 0 14px 14px 0;
+      color: var(--text-primary);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      font-size: 0.92rem;
+    }
+    .article-body th, .article-body td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .article-body th {
+      background: var(--card-glass-bg);
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+    .article-body td {
+      color: var(--text-muted);
+    }
+    .article-body pre {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.75rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88rem;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+    .article-body code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9em;
+      background: rgba(139,92,246,0.12);
+      color: var(--accent-light);
+      padding: 0.2rem 0.4rem;
+      border-radius: 6px;
+    }
+    .article-body pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .article-body ul, .article-body ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+      color: var(--text-muted);
+    }
+    .article-body li {
+      margin-bottom: 0.5rem;
+    }
+    .article-highlight-box {
+      background: var(--card-glass-bg);
+      border: 1px solid rgba(139,92,246,0.3);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+    .download-pdf-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(124,58,237,0.06));
+      border: 1px solid rgba(139,92,246,0.35);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+    .download-pdf-banner .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.6rem 1.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: opacity 0.2s;
+    }
+    .download-pdf-banner .btn-pdf:hover {
+      opacity: 0.92;
+    }
+  </style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">मुख्य सामग्री पर जाएं</a>
+
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    
+    <!-- Official Brand Logo -->
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <!-- Country Dropdown -->
+    <div class="header-country custom-country-dropdown" aria-label="Select your country">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+        <span id="country-display-name">India</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+        <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <input type="hidden" id="region" value="India (IN)">
+
+    <!-- Desktop Nav -->
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      
+      <!-- 1. Generators Dropdown -->
+      <div class="nav-dropdown" id="dropdown-generators">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
+          जनरेटर्स <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger" style="min-width:230px;">
+          <a href="/" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚡</span>
+            <span class="dropdown-title">स्टेटलेस जनरेटर</span>
+          </a>
+          <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🎲</span>
+            <span class="dropdown-title">रैंडम जनरेटर</span>
+          </a>
+          <a href="/pin.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🔢</span>
+            <span class="dropdown-title">पिन जनरेटर</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚖️</span>
+            <span class="dropdown-title">सभी टूल्स की तुलना</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Resources Dropdown -->
+      <div class="nav-dropdown" id="dropdown-resources">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
+          संसाधन <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
+          
+          <!-- Category 1: Core Guides & Specs -->
+          <div class="has-flyout" id="flyout-core-guides">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">📚</span>
+                <span class="flyout-cat-title">मुख्य गाइड्स व विनिर्देश</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/secret-key-guide-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔑</span>
+                <span class="dropdown-title">सीक्रेट की गाइड</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚙️</span>
+                <span class="dropdown-title">फ्रैंकपास कैसे काम करता है</span>
+              </a>
+              <a href="/why-stateless-password-generation-is-the-future-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚡</span>
+                <span class="dropdown-title">स्टेटलेस आर्किटेक्चर</span>
+              </a>
+              <a href="/faq.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">❓</span>
+                <span class="dropdown-title">सुरक्षा FAQ</span>
+              </a>
+              <a href="/whitepaper-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">📄</span>
+                <span class="dropdown-title">क्रिप्टोग्राफिक विनिर्देश</span>
+              </a>
+              <a href="/limitations-and-advantages-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚖️</span>
+                <span class="dropdown-title">सीमाएं व लाभ</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Category 2: Cyber Threat Defense -->
+          <div class="has-flyout" id="flyout-threat-defense">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">🛡️</span>
+                <span class="flyout-cat-title">साइबर सुरक्षा व थ्रेट डिफेंस</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">👁️</span>
+                <span class="dropdown-title">अदृश्य वॉल्ट डिफेंस</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">☁️</span>
+                <span class="dropdown-title">क्लाउड वॉल्ट्स की कमियां</span>
+              </a>
+              <a href="/what-makes-a-password-strong-and-passphrase-guide-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🧮</span>
+                <span class="dropdown-title">पासवर्ड विज्ञान व गणित</span>
+              </a>
+              <a href="/atm-upi-pin-security-guide-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔢</span>
+                <span class="dropdown-title">ATM व UPI पिन सुरक्षा</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Category 3: Trust & Founder -->
+          <div class="has-flyout" id="flyout-trust-founder">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">💡</span>
+                <span class="flyout-cat-title">विश्वास व अर्थनीति</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/about-us-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🏢</span>
+                <span class="dropdown-title">फ्रैंकपास के बारे में</span>
+              </a>
+              <a href="/founder-mastermanikant-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🎯</span>
+                <span class="dropdown-title">संस्थापक मास्टर मणिकान्त</span>
+              </a>
+              <a href="/how-frankpass-is-free-without-selling-data-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚖️</span>
+                <span class="dropdown-title">शून्य सर्वर अर्थनीति</span>
+              </a>
+              <a href="/sponsors.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🌱</span>
+                <span class="dropdown-title">ग्रीन स्पॉन्सर हब</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+          <a href="/library-hindi.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
+            <span class="dropdown-icon">🏛️</span>
+            <span class="dropdown-title" style="color:var(--accent-light);">मास्टर लाइब्रेरी डायरेक्टरी &rarr;</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- 3. All Products / Ecosystem Hub -->
+      <a href="/products.html" class="nav-link">प्रॉडक्ट्स</a>
+
+      <!-- 4. Master Library Link -->
+      <a href="/library-hindi.html" class="nav-link" style="color:var(--accent-light);font-weight:600;">लाइब्रेरी</a>
+
+      <!-- 5. Founder Link -->
+      <a href="/founder-mastermanikant-hindi.html" class="nav-link">संस्थापक</a>
+
+      <!-- 6. Direct High-Impact Pro CTA -->
+      <a href="/pro.html" class="btn-pro" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s;">
+        <span>Get Pro</span> <span style="font-size:0.85rem;">👑</span> &rarr;
+      </a>
+      
+      <!-- 7. Theme Toggle -->
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
+    </nav>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <div class="mobile-section-label">⚡ जनरेटर्स</div>
+  <a href="/" class="mobile-nav-link"><span>⚡</span> स्टेटलेस जनरेटर</a>
+  <a href="/random-password-generator.html" class="mobile-nav-link"><span>🎲</span> रैंडम जनरेटर</a>
+  <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> पिन जनरेटर</a>
+  <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html" class="mobile-nav-link"><span>⚖️</span> सभी टूल्स की तुलना</a>
+  
+  <div class="mobile-section-label">📚 संसाधन व गाइड्स</div>
+  
+  <!-- Mobile Accordion 1 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>📚 मुख्य गाइड्स व विनिर्देश</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/secret-key-guide-hindi.html" class="mobile-acc-item">🔑 सीक्रेट की गाइड</a>
+      <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="mobile-acc-item">⚙️ फ्रैंकपास कैसे काम करता है</a>
+      <a href="/why-stateless-password-generation-is-the-future-hindi.html" class="mobile-acc-item">⚡ स्टेटलेस आर्किटेक्चर</a>
+      <a href="/faq.html" class="mobile-acc-item">❓ सुरक्षा FAQ</a>
+      <a href="/whitepaper-hindi.html" class="mobile-acc-item">📄 क्रिप्टोग्राफिक विनिर्देश</a>
+      <a href="/limitations-and-advantages-hindi.html" class="mobile-acc-item">⚖️ सीमाएं व लाभ</a>
+    </div>
+  </div>
+
+  <!-- Mobile Accordion 2 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>🛡️ साइबर सुरक्षा व थ्रेट डिफेंस</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="mobile-acc-item">👁️ अदृश्य वॉल्ट डिफेंस</a>
+      <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="mobile-acc-item">☁️ क्लाउड वॉल्ट्स की कमियां</a>
+      <a href="/what-makes-a-password-strong-and-passphrase-guide-hindi.html" class="mobile-acc-item">🧮 पासवर्ड विज्ञान व गणित</a>
+      <a href="/atm-upi-pin-security-guide-hindi.html" class="mobile-acc-item">🔢 ATM व UPI पिन सुरक्षा</a>
+    </div>
+  </div>
+
+  <!-- Mobile Accordion 3 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>💡 विश्वास व अर्थनीति</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/about-us-hindi.html" class="mobile-acc-item">🏢 फ्रैंकपास के बारे में</a>
+      <a href="/founder-mastermanikant-hindi.html" class="mobile-acc-item">🎯 संस्थापक मास्टर मणिकान्त</a>
+      <a href="/how-frankpass-is-free-without-selling-data-hindi.html" class="mobile-acc-item">⚖️ शून्य सर्वर अर्थनीति</a>
+      <a href="/sponsors.html" class="mobile-acc-item">🌱 ग्रीन स्पॉन्सर हब</a>
+    </div>
+  </div>
+
+  <div class="mobile-section-label">🏢 इकोसिस्टम व डायरेक्टरी</div>
+  <a href="/library-hindi.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> मास्टर लाइब्रेरी डायरेक्टरी</a>
+  <a href="/products.html" class="mobile-nav-link"><span>🌐</span> प्रॉडक्ट्स हब</a>
+  <a href="/founder-mastermanikant-hindi.html" class="mobile-nav-link"><span>👨‍💻</span> संस्थापक (मास्टर मणिकान्त यादव)</a>
+  
+  <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
+</nav>
+
+  <main class="article-container">
+
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <a href="/whitepaper.html" class="btn-ghost" style="padding:0.4rem 0.95rem;font-size:0.82rem;border-radius:8px;font-weight:600;display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:1px solid var(--border);">
+        🌐 Read in English &rarr;
+      </a>
+    </div>
+
+    <div class="article-header">
+      <div class="article-breadcrumb">
+        <a href="/">होम</a> <span>&rsaquo;</span>
+        <a href="/library-hindi.html">लाइब्रेरी</a> <span>&rsaquo;</span>
+        <a href="/docs.html">दस्तावेज़</a> <span>&rsaquo;</span> <span>क्रिप्टोग्राफिक विनिर्देश</span>
+      </div>
+      <h1 class="article-title">फ्रैंकपास: क्लाइंट-साइड स्टेटलेस की व्युत्पत्ति आर्किटेक्चर एवं मास्टर मणिकान्त यादव का क्रिप्टोग्राफिक स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</h1>
+      <div class="article-byline">
+        <span>लेखक: <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">मास्टर मणिकान्त यादव (Master Manikant Yadav)</a></span>
+        <span>&middot;</span>
+        <span>प्रकाशन: सितम्बर 2026</span>
+        <span>&middot;</span>
+        <span>15 मिनट पठन</span>
+        <span>&middot;</span>
+        <span style="color:var(--accent);font-weight:700">अनुप्रयुक्त क्रिप्टोग्राफी विनिर्देश</span>
+      </div>
+
+      <!-- AI Prompt & Research Component -->
+      <div id="ai-prompt-bar" data-topic="FrankPass Technical Specification &amp; Master Manikant Yadav's Constant (MMY_constant)" data-summary="Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant)."></div>
+    </div>
+
+    <!-- Downloadable PDF Banner -->
+    <div class="download-pdf-banner">
+      <div>
+        <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem;">ओपन-सोर्स संदर्भ कार्यान्वयन (GitHub)</strong>
+        <span style="color:var(--text-muted);font-size:0.88rem;">फ्रैंकपास का सम्पूर्ण क्रिप्टोग्राफिक सोर्स कोड GitHub पर उपलब्ध है। कोड पढ़ें, सत्यापित करें, और स्वतंत्र रूप से ऑडिट करें।</span>
+      </div>
+      <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener" class="btn-pdf">
+        <span>📂 GitHub पर देखें</span>
+      </a>
+    </div>
+
+    <article class="article-body">
+      <blockquote>
+        <p>
+          <strong>दस्तावेज़ शीर्षक:</strong> फ्रैंकपास: क्लाइंट-साइड स्टेटलेस की व्युत्पत्ति विनिर्देश<br>
+          <strong>आर्किटेक्चरल इनवेरिएंट:</strong> मास्टर मणिकान्त यादव का स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)<br>
+          <strong>लेखक व सिस्टम आर्किटेक्ट:</strong> मास्टर मणिकान्त यादव (Master Manikant Yadav)<br>
+          <strong>आधिकारिक संपर्क:</strong> <code>connect@mastermanikant.com</code><br>
+          <strong>मुख्य विषय:</strong> अनुप्रयुक्त क्रिप्टोग्राफी (Applied Cryptography), की व्युत्पत्ति फलन (KDF), मानव-कंप्यूटर इंटरैक्शन (HCI)<br>
+          <strong>रेफरेंस कोड रिपॉजिटरी:</strong> <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener" style="color:var(--accent-light);">github.com/Mastermanikant/frank-pass</a>
+        </p>
+      </blockquote>
+
+      <hr>
+
+      <h2>सार (Abstract)</h2>
+      <p>केंद्रीकृत क्लाउड पासवर्ड वॉल्ट्स विफलता के एकल बिंदु (Single Point of Failure) उत्पन्न करते हैं: ऑनलाइन स्टोर किए गए एन्क्रिप्टेड साइफरटेक्स्ट डेटाबेस सर्वर ब्रीच होने पर ऑफलाइन ब्रूट-फोर्स हमलों को आमंत्रित करते हैं, जबकि क्लाउड रिकवरी बैकडोर्स सोशल इंजीनियरिंग के खतरे पैदा करते हैं। फ्रैंकपास एक ओपन, क्लाइंट-साइड, डिटरमिनिस्टिक पासवर्ड व्युत्पत्ति आर्किटेक्चर प्रस्तुत करता है जो डिजिटल पासवर्ड स्टोरेज को पूरी तरह समाप्त कर देता है।</p>
+      <p>फ्रैंकपास <strong>मास्टर मणिकान्त यादव के स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong> को औपचारिक रूप से परिभाषित करता है: यह 7-पैरामीटर का एक अपरिवर्तनीय आर्किटेक्चरल टुपल है जो PBKDF2 के 10,00,000 राउंड्स, HMAC-SHA512 सतत स्ट्रीम विस्तार, व्यापक इनपुट सामान्यीकरण (स्पेस/केस/विराम चिह्न स्वचालित सफाई), यूनिकोड NFC समानता, और शून्य-मॉड्यूलो-बायस गोल्डन बेस-32 कैरेक्टर पूल (2<sup>5</sup> = 32) को संयोजित करता है।</p>
+      <p>यह विनिर्देश गणितीय गुणों, एन्ट्रापी सूत्रों (80 से 100 बिट्स शुद्ध खोज एन्ट्रापी), थ्रेट मॉडलिंग और आजीवन डिटरमिनिज्म नियमों का दस्तावेजीकरण करता है, जिससे यूजर्स नेटवर्क पर 1 बाइट भी भेजे बिना दशकों तक समान और अभेद्य क्रेडेंशियल्स उत्पन्न कर सकते हैं।</p>
+
+      <hr>
+
+      <h2>1. पृष्ठभूमि एवं समस्या का विवरण (Background &amp; Problem Statement)</h2>
+      <p>पारंपरिक पासवर्ड मैनेजर एन्क्रिप्टेड सर्वर वॉल्ट्स पर निर्भर होते हैं: <span class="math-inline">C<sub>i</sub> = E<sub>K</sub>(P<sub>i</sub>)</span>, जहां साइफरटेक्स्ट <span class="math-inline">C<sub>i</sub></span> को क्लाउड इंफ्रास्ट्रक्चर पर स्टोर किया जाता है। यह आर्किटेक्चर 3 मूलभूत संरचनात्मक कमजोरियों से ग्रस्त है:</p>
+      <ol>
+        <li><strong>सर्वर-साइड डेटा चोरी का जोखिम:</strong> रिमोट सर्वर पर एन्क्रिप्टेड वॉल्ट्स स्टोर करने से विशाल हनीपॉट बनते हैं। सर्वर हैक होने पर हमलावर साइफरटेक्स्ट बैकअप डाउनलोड करके मल्टी-GPU पर अनिश्चितकाल तक ऑफलाइन ब्रूट-फोर्स हमला कर सकता है।</li>
+        <li><strong>क्रेडेंशियल रिकवरी बैकडोर्स:</strong> सर्वर-साइड अकाउंट रिकवरी इंटरफेस (SMS OTP, ईमेल रीसेट लिंक) मास्टर एन्क्रिप्शन की को बाईपास कर देते हैं, जिससे अधिकांश सिम-स्वैप और अकाउंट टेकओवर होते हैं।</li>
+        <li><strong>वेंडर पर निर्भरता व सर्वर अनुपलब्धता:</strong> यदि वॉल्ट प्रदाता की सेवा बंद हो जाए, कीमतें बदल जाएं या कंपनी बंद हो जाए, तो यूजर अपने क्रेडेंशियल्स का एक्सेस खोने के जोखिम में आ जाता है।</li>
+      </ol>
+      <p>फ्रैंकपास वॉल्ट स्टोरेज को <strong>शुद्ध डिटरमिनिस्टिक क्लाइंट-साइड गणितीय की व्युत्पत्ति</strong> से बदलकर इन संरचनात्मक कमियों को जड़ से समाप्त करता है।</p>
+
+      <hr>
+
+      <h2>2. स्टेटलेस आर्किटेक्चर एवं डिटरमिनिज्म स्थिरांक (Determinism Invariant)</h2>
+      <p>स्टेटलेस पासवर्ड आर्किटेक्चर में पासवर्ड कभी भी डेटाबेस, मेमोरी कुकीज या क्लाउड ब्लॉब्स में स्टोर नहीं किए जाते। इसके बजाय, पासवर्ड यूजर के 4 इनपुट्स और 1 स्थायी आर्किटेक्चरल टुपल के शुद्ध डिटरमिनिस्टिक गणितीय फलन द्वारा ऑन-डिमांड उत्पन्न होते हैं:</p>
+
+      <div class="math-formula-box">
+        Password = f(MasterSecret, Platform, Username, Version, &Mscr;&Mscr;&Yscr;<sub>constant</sub>)
+      </div>
+
+      <div class="article-highlight-box">
+        <h3 style="margin-top:0;color:var(--accent-light);">अपरिवर्तनीयता की अनिवार्यता (&Mscr;&Mscr;&Yscr;<sub>constant</sub> को क्यों लॉक किया गया है)</h3>
+        <p style="margin-bottom:0.75rem;"><strong>ईमानदार आर्किटेक्चरल स्पष्टीकरण:</strong> मास्टर मणिकान्त यादव का स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>) प्रकृति का कोई भौतिक नियम (जैसे प्लैंक स्थिरांक या गुरुत्वाकर्षण स्थिरांक) नहीं है। बल्कि, यह मास्टर मणिकान्त यादव द्वारा स्थापित एक <strong>औपचारिक रूप से लॉक किया गया आर्किटेक्चरल व क्रिप्टोग्राफिक स्थिरांक (Invariant)</strong> है।</p>
+        <p style="margin-bottom:0;">एक स्टेटलेस की व्युत्पत्ति प्रणाली में, यदि भविष्य में किसी सॉफ्टवेयर अपडेट में आंतरिक पैरामीटर (जैसे पुनरावृत्ति गणना, हैश एल्गोरिदम, संदर्भ वेक्टर संरचना, या कैरेक्टर मैपिंग तालिका) बदल जाए, तो डिटरमिनिस्टिक आउटपुट पूरी तरह बदल जाएगा। परिणामस्वरूप यूजर्स को इंटरनेट पर अपने सभी अकाउंट्स के पासवर्ड रीसेट करने पड़ेंगे। इस पैरामीटर टुपल को हमेशा के लिए लॉक करना यह गारंटी देता है कि आज बनाया गया क्रेडेंशियल 10, 20 या 50 साल बाद भी किसी भी मानक कंप्यूटर पर बाइट-टू-बाइट समान रूप से उत्पन्न होगा।</p>
+      </div>
+
+      <hr>
+
+      <h2>3. &Mscr;&Mscr;&Yscr;<sub>constant</sub> की औपचारिक परिभाषा</h2>
+      <p>मान लीजिए <em>&Sscr;</em> यूजर की मास्टर सीक्रेट की है, <em>&Dscr;</em> लक्षित डोमेन/प्लेटफॉर्म है, <em>&Uscr;</em> वैकल्पिक यूजरनेम/अकाउंट पहचानकर्ता है, <em>&Vscr;</em> &isin; &#x2115;<sup>+</sup> रोटेशन काउंटर वर्जन है, और <em>&Lscr;</em> &isin; &#x2115;<sup>+</sup> लक्षित आउटपुट पासवर्ड की लंबाई है।</p>
+      <p>मास्टर मणिकान्त यादव का स्थिरांक 7-तत्वों के अपरिवर्तनीय टुपल के रूप में परिभाषित है:</p>
+
+      <div class="math-formula-box" style="font-size:1.05rem;word-break:break-word;">
+        &Mscr;&Mscr;&Yscr;<sub>constant</sub> = &lang; APP_ID, VER, &Iscr;<sub>10<sup>6</sup></sub>, &Hscr;<sub>SHA512</sub>, &Cscr;<sub>entropy</sub>, &Nscr;<sub>aggressive</sub>, &Pscr;<sub>NFC</sub> &rang;
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>टुपल घटक</th>
+            <th>औपचारिक मान</th>
+            <th>क्रिप्टोग्राफिक व सिस्टम उद्देश्य</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>APP_ID</code></td>
+            <td><code>"MasterManikant_PassGen"</code></td>
+            <td>कैनोनिकल एप्लिकेशन डोमेन सेपरेटर, जो क्रॉस-एप्लिकेशन रेनबो टेबल हमलों को रोकता है।</td>
+          </tr>
+          <tr>
+            <td><code>VER</code></td>
+            <td><code>"v1"</code></td>
+            <td>कोर प्रोटोकॉल विनिर्देश वर्जन टैग।</td>
+          </tr>
+          <tr>
+            <td>&Iscr;<sub>10<sup>6</sup></sub></td>
+            <td>10,00,000 राउंड्स</td>
+            <td>PBKDF2 कार्य कारक (Work Factor), जो GPU/ASIC ब्रूट-फोर्स खोज पर भारी कम्प्यूटेशनल लागत लगाता है।</td>
+          </tr>
+          <tr>
+            <td>&Hscr;<sub>SHA512</sub></td>
+            <td><code>HMAC-SHA512</code></td>
+            <td>512-बिट स्यूडोरैंडम फलन (PRF), जिसका उपयोग की व्युत्पत्ति और सतत स्ट्रीम विस्तार के लिए होता है।</td>
+          </tr>
+          <tr>
+            <td>&Cscr;<sub>entropy</sub></td>
+            <td>Golden Base-32 Alphabet</td>
+            <td>भ्रम-मुक्त 32-कैरेक्टर पूल (2<sup>5</sup> = 32), जो दृश्य ग्लिफ़ भ्रम और मॉड्यूलो बायस को गणितीय रूप से समाप्त करता है।</td>
+          </tr>
+          <tr>
+            <td>&Nscr;<sub>norm</sub></td>
+            <td>MMY Normalization</td>
+            <td>व्यापक इनपुट सामान्यीकरण (लोअरकेस, स्पेस-निष्कासन, विराम चिह्न-निष्कासन) जो टाइपिंग की मानवीय भिन्नताओं को स्वचालित रूप से बेअसर करता है।</td>
+          </tr>
+          <tr>
+            <td>&Pscr;<sub>NFC</sub></td>
+            <td>Unicode Standard NFC</td>
+            <td>कैनोनिकल अपघटन और संरचना, जो विभिन्न ऑपरेटिंग सिस्टमों पर मल्टी-बाइट विसंगतियों को रोकती है।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>4. क्रिप्टोग्राफिक व्युत्पत्ति पाइपलाइन (6-चरण प्रवाह)</h2>
+      <p>फ्रैंकपास व्युत्पत्ति इंजन W3C WebCrypto API (<code>crypto.subtle</code>) के माध्यम से पूरी तरह क्लाइंट-साइड निष्पादित होता है। सटीक 6-चरणीय पाइपलाइन नीचे दी गई है:</p>
+
+      <pre><code>┌─────────────────────────────────────────────────────────────────────────┐
+│                 FRANKPASS CRYPTOGRAPHIC DERIVATION PIPELINE             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ 1. Secret Key Normalization (frankpass-core.js):                        │
+│    S_norm = S.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '') │
+│    U_norm = U.toLowerCase().replace(/\s+/g, '')                         │
+│    D_norm = D.toLowerCase().replace(/\s+/g, '')                         │
+│                                                                         │
+│ 2. Local Pepper Derivation (getSubtlePepper):                           │
+│    dataStr = "Version=v1|User=" + U_norm + "|Plat=" + D_norm + "|Key=" + S_norm
+│    hmac = HMAC_SHA512( DEFAULT_PEPPER, dataStr )                       │
+│    preKey = hex( hmac )                                                │
+│    FOR i = 0 TO 999:                                                   │
+│        preKey = hex( SHA256( preKey + DEFAULT_PEPPER ) )               │
+│    pepper = preKey   (64-character hexadecimal string)                  │
+│                                                                         │
+│ 3. Context Vector Construction (Length-prefixed Netstring encoding):   │
+│    CTX = "22:MasterManikant_PassGen|2:v1|len(D):D_norm|len(U):U_norm|   │
+│           len(pepper):pepper|len(V):V|len(profile):profile|len(L):L"    │
+│    seedData = UTF8_Encode( CTX.normalize('NFC') )                       │
+│                                                                         │
+│ 4. Primary Key Derivation (PBKDF2-HMAC-SHA512, 1M Iterations):          │
+│    baseKey = ImportKey( raw, UTF8_Encode( pepper.normalize('NFC') ) )  │
+│    PRK = PBKDF2( baseKey, Salt=seedData, Iterations=1,000,000, SHA-512 )│
+│                                                                         │
+│ 5. Continuous HMAC Stream Expansion (HKDF-style expansion):             │
+│    prkKey = ImportKey( raw, PRK, HMAC-SHA512 )                          │
+│    T_1 = HMAC_SHA512( prkKey, 0x01 )                                    │
+│    T_2 = HMAC_SHA512( prkKey, T_1 || 0x02 )                             │
+│    BYTE_STREAM = T_1 || T_2   (128 pseudorandom bytes total)            │
+│                                                                         │
+│ 6. Modulo Bias-Free Base-32 Character Mapping:                          │
+│    validMax = 256 - (256 % 32) = 256 (गणितीय रूप से 0.000% हानि)         │
+│    For each byte b: char = charset[b % 32]                              │
+│    Enforce mandatory set presence (Upper, Lower, Number, Symbol)        │
+│    OUTPUT_PASSWORD = Validated Mapped Characters (length L)             │
+└─────────────────────────────────────────────────────────────────────────┘</code></pre>
+
+      <hr>
+
+      <h2>5. गोल्डन बेस-32 पूल एवं शून्य मॉड्यूलो बायस का गणितीय प्रमाण</h2>
+      <p>पारंपरिक रैंडम जनरेटर जो बाइट एरे (0 से 255) को मनमाने कैरेक्टर पूल साइज़ (जैसे 55, 62 या 94) पर मैप करते हैं, वे <strong>मॉड्यूलो बायस (Modulo Bias)</strong> से ग्रस्त होते हैं, जब तक कि अतिरिक्त बाइट्स को व्यवस्थित रूप से रिजेक्ट न किया जाए।</p>
+      <p>फ्रैंकपास एक सटीक <strong>गोल्डन बेस-32 कैरेक्टर पूल</strong> (&Cscr;, जहाँ |&Cscr;| = 32 = 2<sup>5</sup>) का उपयोग करके इस समस्या को गणितीय रूप से हल करता है:</p>
+
+      <ul>
+        <li><strong>बड़े अक्षर (Uppercase - 10 कैरेक्टर):</strong> <code>ADEFHLMNRT</code> (भ्रामक अक्षर हटाए गए: B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z)</li>
+        <li><strong>छोटे अक्षर (Lowercase - 6 कैरेक्टर):</strong> <code>defhmt</code> (एक जैसे दिखने वाले अक्षर हटाए गए: a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z)</li>
+        <li><strong>अंक (Digits - 7 कैरेक्टर):</strong> <code>2346789</code> (0, 1, 5 हटाए गए ताकि O, I, l, S के साथ भ्रम न हो)</li>
+        <li><strong>विशेष प्रतीक (Symbols - 9 कैरेक्टर):</strong> <code>@#$%&amp;*+=?</code> (कोट्स, ब्रैकेट, हाइफ़न, अंडरस्कोर हटाए गए)</li>
+      </ul>
+
+      <div class="math-formula-box">
+        |&Cscr;| = 10 + 6 + 7 + 9 = 32 = 2<sup>5</sup> कैरेक्टर
+      </div>
+
+      <h3>शून्य मॉड्यूलो बायस का गणितीय प्रमाण:</h3>
+      <p>मान लीजिए B &isin; {0, 1, ..., 255} HMAC-SHA512 द्वारा उत्पन्न एक समान वितरित स्यूडोरैंडम बाइट है। अधिकतम संरेखित सीमा validMax इस प्रकार ज्ञात होती है:</p>
+
+      <div class="math-formula-box">
+        validMax = 256 - (256 mod 32) = 256 - 0 = 256
+      </div>
+
+      <p>चूँकि 256 संख्या 32 का पूर्ण पूर्णांक गुणज है (2<sup>8</sup> / 2<sup>5</sup> = 2<sup>3</sup> = 8 सटीक पूर्ण चक्र):</p>
+      <div class="math-formula-box">
+        &forall; c &isin; &Cscr;, &nbsp; P(byteToChar(B) = c) = 8 / 256 = 1 / 32 = 0.03125 (3.125%)
+      </div>
+      <p>पूल के प्रत्येक कैरेक्टर को चुने जाने की संभावना बिल्कुल समान (1/32) होती है। मॉड्यूलो बायस हानि गणितीय रूप से <strong>0.000% (Zero Loss)</strong> है। कोई भी व्युत्पन्न एन्ट्रापी बर्बाद नहीं होती।</p>
+
+      <hr>
+
+            <h2>6. क्रिप्टोग्राफिक खोज एन्ट्रापी सूत्र</h2>
+      <p>चूँकि गोल्डन बेस-32 पूल का प्रत्येक कैरेक्टर ठीक 5 बिट्स की सूचना एन्ट्रापी रखता है (log<sub>2</sub>(32) = 5.000 bits), उत्पन्न पासवर्ड की सर्च स्पेस जटिलता लंबाई के साथ रैखिक रूप से बढ़ती है:</p>
+
+      <div class="math-formula-box">
+        H<sub>password</sub> = L &times; log<sub>2</sub>(32) = 5 &times; L bits
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>पासवर्ड लंबाई (L)</th>
+            <th>सर्च स्पेस कॉम्बिनेशन</th>
+            <th>आउटपुट खोज एन्ट्रापी</th>
+            <th>समाप्त करने का समय (10<sup>9</sup> अनुमान/सेकंड)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>12 कैरेक्टर</strong></td>
+            <td>32<sup>12</sup> = 2<sup>60</sup> &approx; 1.15 &times; 10<sup>18</sup></td>
+            <td><strong>60.000 bits</strong></td>
+            <td>36.5 वर्ष</td>
+          </tr>
+          <tr>
+            <td><strong>16 कैरेक्टर (मानक)</strong></td>
+            <td>32<sup>16</sup> = 2<sup>80</sup> &approx; 1.20 &times; 10<sup>24</sup></td>
+            <td><strong>80.000 bits</strong></td>
+            <td>1.9 &times; 10<sup>13</sup> वर्ष (ब्रह्मांड की आयु से अधिक)</td>
+          </tr>
+          <tr>
+            <td><strong>20 कैरेक्टर (विस्तारित)</strong></td>
+            <td>32<sup>20</sup> = 2<sup>100</sup> &approx; 1.26 &times; 10<sup>30</sup></td>
+            <td><strong>100.000 bits</strong></td>
+            <td>2.0 &times; 10<sup>19</sup> वर्ष (गणना की दृष्टि से अभेद्य)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="article-highlight-box">
+        <h3 style="margin-top:0;color:var(--accent-light);">महत्वपूर्ण अंतर: मास्टर सीक्रेट एन्ट्रापी बनाम आउटपुट सर्च स्पेस</h3>
+        <p style="margin-bottom:0.75rem;">अनुप्रयुक्त क्रिप्टोग्राफी का मूलभूत नियम है कि कुंजी व्युत्पत्ति फ़ंक्शन (Key Derivation Function - KDF) शून्य में से एन्ट्रापी (Entropy) उत्पन्न नहीं कर सकता। किसी लक्षित हमले में वास्तविक सुरक्षा सीमा का सूत्र है:</p>
+
+        <div class="math-formula-box" style="margin:0.75rem 0;font-size:1rem;">
+          Effective Security = min(H<sub>passphrase</sub>, KDF Bit Security)
+        </div>
+
+        <p style="margin-bottom:0.75rem;">यद्यपि 16 अक्षरों का आउटपुट (80-बिट सर्च स्पेस) कोलिजन (टकराव) को रोकता है, लेकिन सर्वर ब्रीच से पासवर्ड लीक होने पर हमलावर इनपुट पासफ्रेज पर ब्रूट-फोर्स हमला करेगा। 10,00,000 राउंड्स का PBKDF2-HMAC-SHA512 अटैकर को भारी धीमा करता है, लेकिन वास्तविक सुरक्षा यूजर के सीक्रेट की एन्ट्रापी पर निर्भर होती है।</p>
+        <p style="margin-bottom:0;"><strong>आर्किटेक्चरल अनुशंसा:</strong> यूजर्स को 5 से 6 शब्दों का रैंडम पासफ्रेज (जैसे <code>"correct horse battery staple 2026"</code>) उपयोग करना चाहिए, जो 60 से 80+ बिट्स की वास्तविक भाषाई एन्ट्रापी प्रदान करता है।</p>
+      </div>
+
+      <h3>KDF चयन का वैज्ञानिक कारण (PBKDF2 बनाम Argon2id):</h3>
+      <p>10,00,000 राउंड्स के साथ PBKDF2-HMAC-SHA512 का चयन W3C WebCrypto API (<code>crypto.subtle</code>) के माध्यम से <strong>सार्वभौमिक, शून्य-निर्भरता नेटिव निष्पादन</strong> के लिए किया गया है। यद्यपि Argon2id या scrypt मेमोरी-हार्ड सुरक्षा देते हैं, लेकिन उनके लिए भारी WebAssembly (WASM) बाइनरीज की आवश्यकता होती है जो मोबाइल उपकरणों पर मेमोरी क्रैश का जोखिम पैदा करती हैं। PBKDF2 बिना किसी बाहरी लाइब्रेरी के 0ms लेटेंसी के साथ सभी ब्राउज़रों में 100% नेटिव चलता है।</p>
+
+      <hr>
+
+      <h2>7. उपयोगिता सुरक्षा एवं इनपुट सामान्यीकरण (Normalization) का विज्ञान</h2>
+      <p>डिटरमिनिस्टिक की व्युत्पत्ति प्रणालियों में, मानवीय टाइपिंग भिन्नता विफलता का प्राथमिक कारण बनती है। मोबाइल कीबोर्ड स्वचालित रूप से ये बदलाव करते हैं:</p>
+      <ul>
+        <li>पहला अक्षर स्वतः बड़ा करना (जैसे <code>MySecret</code> बनाम <code>mysecret</code>)।</li>
+        <li>स्मार्ट कोट्स या स्वचालित विराम चिह्न डालना।</li>
+        <li>ऑटो-कम्प्लीट सुझावों के दौरान अंत में स्पेस जोड़ना।</li>
+      </ul>
+      <p>सामान्यीकरण के बिना एक भी अनपेक्षित स्पेस पूरे पासवर्ड को बदल देता है। फ्रैंकपास व्युत्पत्ति से पूर्व <strong>MMY व्यापक इनपुट सामान्यीकरण (&Nscr;<sub>norm</sub>)</strong> और <strong>यूनिकोड NFC कंपोज़िशन (&Pscr;<sub>NFC</sub>)</strong> लागू करता है:</p>
+
+      <pre><code>// Exact Canonical Normalization Implementation:
+const normalizedSecret = (secretKey || '')
+    .toLowerCase()
+    .replace(/\s+/g, '')
+    .replace(/[^a-z0-9]/g, '');</code></pre>
+
+      <p>यह सुनिश्चित करता है कि <code>"Master Secret 2026! "</code>, <code>"mastersecret2026"</code>, और <code>"master secret 2026"</code> हमेशा समान कैनोनिकल बाइट एरे में मैप हों, जिससे मानवीय टाइपिंग त्रुटि शून्य हो जाती है।</p>
+
+      <div class="article-highlight-box">
+        <h3 style="margin-top:0;color:var(--accent-light);">सामान्यीकरण का क्रिप्टोग्राफिक ट्रेड-ऑफ</h3>
+        <p style="margin-bottom:0.75rem;"><strong>ईमानदार तकनीकी प्रकटीकरण:</strong> सामान्यीकरण मास्टर सीक्रेट के प्रभावी कैरेक्टर सेट को केवल 36 अल्फ़ान्यूमेरिक अक्षरों (<code>[a-z0-9]</code>, ~5.17 बिट प्रति अक्षर) तक सीमित कर देता है। बड़े अक्षरों, विराम चिह्नों या स्पेस द्वारा जोड़ी गई जटिलता सामान्यीकरण के दौरान हटा दी जाती है।</p>
+        <p style="margin-bottom:0;">इसलिए यूजर्स को जटिल सिंबल रिप्लेसमेंट (जैसे <code>P@$$w0rd!</code>) पर निर्भर रहने के बजाय <strong>पासफ्रेज की लंबाई और शब्दों की संख्या</strong> से सुरक्षा बढ़ानी चाहिए (जैसे <code>mango river copper guitar 2026</code> अत्यंत प्रभावी है)।</p>
+      </div>
+
+      <hr>
+
+      <h2>8. थ्रेट मॉडल एवं एंडपॉइंट सुरक्षा मैट्रिक्स (Threat Model)</h2>
+
+      <h3>1. सर्वर ब्रीच से पूर्ण मुक्ति (Zero-Storage Immunity):</h3>
+      <p>चूँकि फ्रैंकपास सर्वर्स पर 0 क्रेडेंशियल्स, 0 मास्टर कीज़, और 0 साइफरटेक्स्ट ब्लॉब्स (0 बाइट स्टोरेज) स्टोर होते हैं, इसलिए होस्टिंग सर्वर या CDN के पूरी तरह हैक होने पर भी हमलावर को 0 बाइट डेटा मिलता है। डेटा-एट-रेस्ट चोरी का खतरा पूरी तरह समाप्त हो जाता है।</p>
+
+      <h3>2. क्रिप्टोग्राफिक डोमेन पृथक्करण (Domain Separation):</h3>
+      <p>डोमेन नाम को लेंग्थ-प्रीफिक्स्ड नेटस्ट्रिंग्स में इंजेक्ट करने और HMAC-SHA512 PRF को साल्ट करने से अलग-अलग प्लेटफॉर्म्स (D<sub>1</sub> &ne; D<sub>2</sub>) के आउटपुट स्वतंत्र रैंडम वेरिएबल्स के समान होते हैं। सर्विस A के डेटा लीक होने से सर्विस B के पासवर्ड का अनुमान लगाना गणितीय रूप से असंभव है।</p>
+
+      <h3>3. एयर-गैप्ड एवं 100% ऑफलाइन कार्यक्षमता:</h3>
+      <p>फ्रैंकपास में रनटाइम पर नेटवर्क की शून्य निर्भरता है। सर्विस वर्कर द्वारा कैश होने या सिंगल-फाइल HTML (150 KB) के रूप में डाउनलोड होने के बाद, यह बिना इंटरनेट वाले एयर-गैप्ड कंप्यूटर पर पूरी तरह निष्पादित होता है।</p>
+
+      <h3>4. एंडपॉइंट थ्रेट मैट्रिक्स एवं अवशिष्ट सीमाएं:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>थ्रेट वेक्टर</th>
+            <th>निवारण उपाय (Mitigated By)</th>
+            <th>अवशिष्ट अटैक सरफेस / सीमाएं</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>क्लिपबोर्ड स्नूपिंग</strong></td>
+            <td>एक्सटेंशन डायरेक्ट DOM ऑटो-फिल / एंड्रॉइड ऑटो-फिल सर्विस</td>
+            <td>ऑपरेटिंग सिस्टम क्लिपबोर्ड लिसनर्स को बायपास करता है, लेकिन <code>&lt;all_urls&gt;</code> परमिशन वाले दुर्भावनापूर्ण एक्सटेंशन से सुरक्षा नहीं दे सकता।</td>
+          </tr>
+          <tr>
+            <td><strong>मेमोरी स्क्रैपिंग</strong></td>
+            <td>क्षणिक रैम गणना व बेस्ट-एफर्ट जीरोइज़ेशन</td>
+            <td>जावास्क्रिप्ट का गारबेज कलेक्टर मेमोरी स्वीप से पहले रैम से तुरंत बाइट्स मिटाने की 100% भौतिक गारंटी नहीं देता।</td>
+          </tr>
+          <tr>
+            <td><strong>फ़िशिंग व होमोग्राफ हमले</strong></td>
+            <td>सख्त डोमेन बाइंडिंग (Strict Domain Binding)</td>
+            <td>नकली या क्लोन वेबसाइट (जैसे सिरिलिक प्यूनिकोड या फ़िशिंग डोमेन) पर फ्रैंकपास केवल उस नकली डोमेन के लिए एक बेकार डमी पासवर्ड बनाता है। हमलावर को असली पासवर्ड या मास्टर सीक्रेट का 0% एक्सेस मिलता है और असली अकाउंट 100% सुरक्षित रहता है।</td>
+          </tr>
+          <tr>
+            <td><strong>मोबाइल कीस्ट्रोक कैप्चर</strong></td>
+            <td>आधिकारिक एंड्रॉइड ऑटो-फिल सर्विस</td>
+            <td>क्लिपबोर्ड स्पाईवेयर से बचाता है, लेकिन ओएस-स्तरीय एक्सेसिबिलिटी मैलवेयर या संदिग्ध थर्ड-पार्टी कीबोर्ड्स से सुरक्षा यूजर की जिम्मेदारी है।</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5. "स्टेटलेस विरोधाभास" एवं मेटाडेटा प्रबंधन:</h3>
+      <p>पूर्णतः स्टेटलेस प्रणाली में यूजर को डोमेन, यूजरनेम और वर्जन काउंटर (V) याद रखना पड़ता है। जब कॉर्पोरेट नियमों के तहत त्रैमासिक पासवर्ड बदलना हो (V=1 से V=2), तो एक साधारण ऑफलाइन गैर-संवेदनशील इंडेक्स फाइल (जैसे <code>github.com: v2</code> या फ्रैंकपास प्रो लोकल प्रोफाइल) रखना एक व्यावहारिक आवश्यकता है। यह फ्रैंकपास को <strong>"स्टेटलेस क्रेडेंशियल पेलोड + वैकल्पिक लोकल मेटाडेटा"</strong> के रूप में स्थापित करता है।</p>
+
+      <hr>
+
+      <h2>9. आधिकारिक क्रिप्टोग्राफिक टेस्ट वेक्टर्स (Official Test Vectors)</h2>
+      <p>स्वतंत्र सत्यापन और विभिन्न प्रोग्रामिंग भाषाओं में कार्यान्वयन की पुष्टि के लिए <code>frankpass-core.js</code> (v1, स्टैंडर्ड 16-कैरेक्टर प्रोफाइल) के आधिकारिक टेस्ट वेक्टर्स नीचे दिए गए हैं:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>टेस्ट वेक्टर</th>
+            <th>मास्टर सीक्रेट (रॉ इनपुट)</th>
+            <th>प्लेटफ़ॉर्म</th>
+            <th>यूज़रनेम</th>
+            <th>वर्जन</th>
+            <th>कैनोनिकल आउटपुट पासवर्ड</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>वेक्टर #1</strong></td>
+            <td><code>mastersecret2026</code></td>
+            <td><code>google.com</code></td>
+            <td><code>user@example.com</code></td>
+            <td><code>1</code></td>
+            <td><code>d=FD9H+@Nd+H%*fe</code></td>
+          </tr>
+          <tr>
+            <td><strong>वेक्टर #2</strong></td>
+            <td><code>Correct Horse Battery Staple 2026!</code></td>
+            <td><code>github.com</code></td>
+            <td><code>developer</code></td>
+            <td><code>1</code></td>
+            <td><code>3TLDMfAN6Am%D@#?</code></td>
+          </tr>
+          <tr>
+            <td><strong>वेक्टर #3 (रोटेशन)</strong></td>
+            <td><code>Correct Horse Battery Staple 2026!</code></td>
+            <td><code>github.com</code></td>
+            <td><code>developer</code></td>
+            <td><code>2</code></td>
+            <td><code>N%+#Afh%7#N3M9HD</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>10. आजीवन गवर्नेंस एवं गिटहब अपरिवर्तनीय कोड नियम</h2>
+      <p>यूजर्स को आजीवन गणितीय स्थिरता का आश्वासन देने के लिए, मास्टर मणिकान्त यादव ने <strong>फ्रैंकपास कोर इनवेरिएंट गवर्नेंस नियम</strong> स्थापित किया है:</p>
+      <ul>
+        <li><code>frankpass-core.js</code> में परिभाषित और &Mscr;&Mscr;&Yscr;<sub>constant</sub> द्वारा शासित क्रिप्टोग्राफिक पाइपलाइन स्थायी रूप से फ्रोजन है।</li>
+        <li>ओपन-सोर्स रिपॉजिटरी में भविष्य का कोई भी सॉफ्टवेयर अपडेट, पुल रिक्वेस्ट या लाइब्रेरी अपग्रेड इस गणितीय व्युत्पत्ति तर्क को बदलने के लिए अधिकृत नहीं है।</li>
+        <li>भविष्य के सभी संवर्द्धन (जैसे UI थीम्स, एक्सटेंशन, ऑटोफिल स्क्रिप्ट्स) इस फ्रोजन कोर के बाहरी उपभोक्ता के रूप में कार्य करेंगे।</li>
+      </ul>
+
+      <hr>
+
+      <h2>11. निष्कर्ष एवं संदर्भ कार्यान्वयन</h2>
+      <p>फ्रैंकपास यह प्रमाणित करता है कि व्यक्तिगत पासवर्ड सुरक्षा के लिए केंद्रीकृत क्लाउड डेटाबेस वॉल्ट्स की आवश्यकता नहीं है। <strong>मास्टर मणिकान्त यादव के स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>, क्लाइंट-साइड WebCrypto की व्युत्पत्ति, और भ्रम-मुक्त बेस-32 एन्ट्रापी मैपिंग द्वारा फ्रैंकपास क्लाउड वॉल्ट अटैक सरफेस को समाप्त कर डेटाबेस स्टोरेज को डिटरमिनिस्टिक गणितीय पुनरुत्पादन से प्रतिस्थापित करता है।</p>
+
+      <p>
+        <strong>आधिकारिक संदर्भ कार्यान्वयन:</strong><br>
+        ओपन-सोर्स रिपॉजिटरी: <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener" style="color:var(--accent-light);">https://github.com/Mastermanikant/frank-pass</a><br>
+        लेखक शोध हब: <a href="https://mastermanikant.com/research/" target="_blank" rel="noopener" style="color:var(--accent-light);">https://mastermanikant.com/research/</a>
+      </p>
+
+    </article>
+
+  </main>
+<div id="site-footer"></div>
+
+<!-- Mobile bottom navigation -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="/pin.html" class="mob-nav-item" aria-label="PIN"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>PIN</span></a>
+  <a href="/secret-key-guide-hindi.html" class="mob-nav-item" aria-label="Guide"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>गाइड</span></a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="Pro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Pro</span></a>
+</nav>
+
+<!-- Scripts -->
+<script src="/frankpass-config.js?v=4.2.8"></script>
+<script src="/country-data.js?v=4.2.8"></script>
+<script src="/country-dropdown.js?v=4.2.8"></script>
+<script src="/footer.js?v=4.2.8"></script>
+<script src="/ai-prompt-bar.js?v=4.2.8"></script>
+<script>
+/* ── Header scroll shadow ── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+/* ── Mobile menu toggle ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+</script>
+
+</body>
+</html>

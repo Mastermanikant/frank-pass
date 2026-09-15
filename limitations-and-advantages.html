@@ -16,7 +16,7 @@
  <meta name="description" content="An honest, transparent analysis of FrankPass: Tension level comparison across 4 password methods, and why our 5 biggest perceived limitations are actually our strongest security features.">
  <meta name="keywords" content="FrankPass review, FrankPass pros and cons, FrankPass limitations, FrankPass safe or not, password manager tension comparison, master manikant yadav">
  <meta name="author" content="Master Manikant Yadav">
- <meta name="robots" content="index, follow">
+ <meta name="robots" content="noindex, follow">
  <link rel="canonical" href="https://frankpass.com/limitations-and-advantages.html">
    <link rel="alternate" hreflang="en" href="https://frankpass.com/limitations-and-advantages.html">
   <link rel="alternate" hreflang="hi" href="https://frankpass.com/limitations-and-advantages-hindi.html">
@@ -425,84 +425,54 @@
  </div>
  </section>
 
- <!-- Section 2: Why our flaws are our strengths -->
- <section style="margin-bottom:3rem">
- <h2 style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin-bottom:1rem">
- 🛡️ The 5 Perceived Limitations of FrankPass: How Our Flaws Are Your Shield
- </h2>
- <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem">
- What might initially appear as a "drawback" in FrankPass is actually an intentional, battle-tested cryptographic feature:
- </p>
+   <!-- Section 2: Architectural Trade-Offs & Security Matrix -->
+  <section style="margin-bottom:3rem">
+    <h2 style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin-bottom:0.75rem">
+      🛡️ Architectural Trade-Offs &amp; Operational Realities: The 4-Column Matrix
+    </h2>
+    <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem">
+      Stateless cryptography does not eliminate security responsibilities-it transfers them from vulnerable cloud database servers to sovereign local computation. Below is the transparent breakdown of our architectural characteristics, sovereign benefits, residual risks, and integrated tooling solutions:
+    </p>
 
- <div style="display:flex;flex-direction:column;gap:1.5rem">
-
- <!-- Flaw 1 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
- <h3 style="color:var(--text-primary);font-size:1.15rem;margin-bottom:0.5rem">
- 🔴 Perceived Limitation #1: &ldquo;FrankPass has no 'Forgot Password' or password reset button&rdquo;
- </h3>
- <div style="background:rgba(16,185,129,0.08);border-left:3px solid var(--success);padding:0.85rem 1rem;border-radius:0 8px 8px 0;margin-top:0.75rem">
- <strong style="color:var(--success);display:block;margin-bottom:0.25rem">🟢 The True Strength:</strong>
- <p style="color:var(--text-primary);font-size:0.9rem;line-height:1.6;margin:0">
- If our support team had the capability to reset your password, it would mathematically imply that a rogue employee, corrupt insider, or hacker could also breach our system to reset your password. <strong>The total absence of a 'Forgot Password' mechanism is mathematical proof that no one in the world can ever touch or hijack your credentials.</strong>
- </p>
- </div>
- </div>
-
- <!-- Flaw 2 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
- <h3 style="color:var(--text-primary);font-size:1.15rem;margin-bottom:0.5rem">
- 🔴 Perceived Limitation #2: &ldquo;It does not synchronize or store your passwords in the cloud&rdquo;
- </h3>
- <div style="background:rgba(16,185,129,0.08);border-left:3px solid var(--success);padding:0.85rem 1rem;border-radius:0 8px 8px 0;margin-top:0.75rem">
- <strong style="color:var(--success);display:block;margin-bottom:0.25rem">🟢 The True Strength:</strong>
- <p style="color:var(--text-primary);font-size:0.9rem;line-height:1.6;margin:0">
- Every catastrophic corporate data breach occurs on server-side databases. <strong>A password that was never transmitted over the internet or stored on a database can NEVER be leaked in a server breach. 0% Server Storage = 0% Server Breaches.</strong>
- </p>
- </div>
- </div>
-
- <!-- Flaw 3 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
- <h3 style="color:var(--text-primary);font-size:1.15rem;margin-bottom:0.5rem">
- 🔴 Perceived Limitation #3: &ldquo;If you forget your Secret Key, no company can recover it&rdquo;
- </h3>
- <div style="background:rgba(16,185,129,0.08);border-left:3px solid var(--success);padding:0.85rem 1rem;border-radius:0 8px 8px 0;margin-top:0.75rem">
- <strong style="color:var(--success);display:block;margin-bottom:0.25rem">🟢 The True Strength:</strong>
- <p style="color:var(--text-primary);font-size:0.9rem;line-height:1.6;margin:0">
- You do not need to memorize 50 randomized strings. You only need to remember <strong>ONE timeless, meaningful sentence</strong> (e.g. <code>i love reading books every day</code>). FrankPass liberates you from corporate vendor lock-in and restores 100% data sovereignty to your own hands.
- </p>
- </div>
- </div>
-
- <!-- Flaw 4 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
- <h3 style="color:var(--text-primary);font-size:1.15rem;margin-bottom:0.5rem">
- 🔴 Perceived Limitation #4: &ldquo;It does not run silent background password changers&rdquo;
- </h3>
- <div style="background:rgba(16,185,129,0.08);border-left:3px solid var(--success);padding:0.85rem 1rem;border-radius:0 8px 8px 0;margin-top:0.75rem">
- <strong style="color:var(--success);display:block;margin-bottom:0.25rem">🟢 The True Strength:</strong>
- <p style="color:var(--text-primary);font-size:0.9rem;line-height:1.6;margin:0">
- There are no background spyware bots or telemetric tracking processes running on your machine. Whenever you need to rotate a password for corporate compliance, simply use the <strong>Variant System (v1 to v2 or Month/Year rotation)</strong> - generating an entirely new password in 1 second without modifying your master seed phrase.
- </p>
- </div>
- </div>
-
- <!-- Flaw 5 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.5rem">
- <h3 style="color:var(--text-primary);font-size:1.15rem;margin-bottom:0.5rem">
- 🔴 Perceived Limitation #5: &ldquo;It is 100% free with no multi-million dollar cloud infrastructure&rdquo;
- </h3>
- <div style="background:rgba(16,185,129,0.08);border-left:3px solid var(--success);padding:0.85rem 1rem;border-radius:0 8px 8px 0;margin-top:0.75rem">
- <strong style="color:var(--success);display:block;margin-bottom:0.25rem">🟢 The True Strength:</strong>
- <p style="color:var(--text-primary);font-size:0.9rem;line-height:1.6;margin:0">
- Because all cryptographic computations (PBKDF2 HMAC-SHA512 at 1,000,000 iterations) run locally inside your own browser via the native WebCrypto API, we incur zero server maintenance overhead. That is why FrankPass will remain forever free, 100% tracker-free, and advertisement-free.
- </p>
- </div>
- </div>
-
- </div>
- </section>
+    <div class="table-responsive" style="overflow-x:auto;margin-bottom:2rem">
+      <table style="width:100%;border-collapse:collapse;font-size:0.92rem;background:var(--card-bg);border-radius:12px;border:1px solid var(--border)">
+        <thead>
+          <tr style="background:var(--bg-secondary);text-align:left">
+            <th style="padding:1rem;border-bottom:2px solid var(--border);color:var(--text-primary);width:22%">Architectural Trade-Off</th>
+            <th style="padding:1rem;border-bottom:2px solid var(--border);color:#10b981;width:26%">Sovereign Benefit (Why It Exists)</th>
+            <th style="padding:1rem;border-bottom:2px solid var(--border);color:#f59e0b;width:26%">Residual Operational Reality</th>
+            <th style="padding:1rem;border-bottom:2px solid var(--border);color:var(--accent-light);width:26%">Practical Tooling Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:1rem;border-bottom:1px solid var(--border)"><strong>1. Zero Cloud Vault Storage</strong></td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">Server breaches and cloud leaks yield 0 bytes of credential data to adversaries.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">Passwords are not stored; they must be re-derived on demand.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-primary)"><strong>FrankPass Browser Extension</strong> (1-click autofill) + <strong>Upcoming Android Native App</strong>.</td>
+          </tr>
+          <tr>
+            <td style="padding:1rem;border-bottom:1px solid var(--border)"><strong>2. No Remote Password Reset</strong></td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">Eliminates SIM-swaps, SMS OTP phishing, and rogue employee account takeover backdoors.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">Forgetting the Master Secret Key results in permanent inability to regenerate past credentials.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-primary)"><strong>Passphrase-First Guide</strong> with 50+ memorable real-life sentences impossible to forget.</td>
+          </tr>
+          <tr>
+            <td style="padding:1rem;border-bottom:1px solid var(--border)"><strong>3. Strict Determinism</strong></td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">100% cross-device reproducibility on any computer without network sync or server uptime.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">Entering an altered username or un-normalized domain produces a completely different password.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-primary)"><strong>MMY Input Normalization</strong> (auto-strips spaces/case) + <strong>Domain Auto-Detection</strong>.</td>
+          </tr>
+          <tr>
+            <td style="padding:1rem;border-bottom:1px solid var(--border)"><strong>4. Manual Version Incrementing</strong></td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">Zero background spyware or telemetric tracking scripts executing on your operating system.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-muted)">User must remember if a specific platform was rotated to Version 2 or 3.</td>
+            <td style="padding:1rem;border-bottom:1px solid var(--border);color:var(--text-primary)"><strong>FrankPass Pro Extension</strong> (stores custom site versions locally in encrypted local profiles).</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
  <!-- Section 3: Summary & Call to Action -->
  <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:14px;padding:1.75rem;text-align:center">

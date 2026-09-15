@@ -14,8 +14,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FrankPass Technical Specification & Master Manikant Yadav's Constant (MMY_constant)</title>
   <meta name="description" content="Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant).">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="noindex, follow">
   <link rel="canonical" href="https://frankpass.com/whitepaper.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/whitepaper.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/whitepaper-hindi.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/whitepaper.html">
   
   <meta property="og:title" content="FrankPass Technical Specification & Master Manikant Yadav's Constant (MMY_constant)">
   <meta property="og:description" content="Formal technical architecture and cryptographic specification of FrankPass client-side stateless password derivation and Master Manikant Yadav's Constant (MMY_constant).">
@@ -497,6 +500,12 @@
 </nav>
   <main class="article-container">
 
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
+      <a href="/whitepaper-hindi.html" class="btn-ghost" style="padding:0.4rem 0.95rem;font-size:0.82rem;border-radius:8px;font-weight:600;display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:1px solid var(--border);">
+        🇮🇳 हिंदी में पढ़ें &rarr;
+      </a>
+    </div>
+
     <div class="article-header">
       <div class="article-breadcrumb">
         <a href="/">Home</a> <span>&rsaquo;</span>
@@ -521,11 +530,11 @@
     <!-- Downloadable PDF Banner -->
     <div class="download-pdf-banner">
       <div>
-        <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem;">Official Academic Research Specification</strong>
-        <span style="color:var(--text-muted);font-size:0.88rem;">Download the formal 2-column archival paper with mathematical proofs and pseudocode.</span>
+        <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem;">Open-Source Reference Implementation (GitHub)</strong>
+        <span style="color:var(--text-muted);font-size:0.88rem;">FrankPass core cryptographic source code is published on GitHub. Inspect, verify, and independently audit the implementation.</span>
       </div>
-      <a href="https://mastermanikant.com/research/frankpass-cryptographic-specification.pdf" target="_blank" rel="noopener" class="btn-pdf">
-        <span>📥 Download Official PDF</span>
+      <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener" class="btn-pdf">
+        <span>📂 View on GitHub</span>
       </a>
     </div>
 
@@ -545,13 +554,13 @@
 
       <h2>Abstract</h2>
       <p>Centralized cloud password vaults introduce single points of catastrophic failure: ciphertext databases stored online invite offline brute-force attacks upon server breach, while cloud recovery backdoors create social engineering vectors. FrankPass presents an open, client-side, deterministic password derivation architecture that eliminates digital password storage entirely.</p>
-      <p>FrankPass formalizes <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>: a 7-parameter immutable architectural tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, aggressive natural language whitespace/casing normalization, Unicode NFC parity, and a zero-modulo-bias Golden Base-32 character mapping pool ($2^5 = 32$).</p>
-      <p>This specification documents the mathematical properties, entropy formulations ($80.000$ to $100.000$ bits of true search entropy), threat modeling, and lifetime determinism invariants that allow users to generate identical, unguessable credentials across decades without transmitting a single byte over the network.</p>
+      <p>FrankPass formalizes <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>: a 7-parameter immutable architectural tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, comprehensive natural language whitespace/casing normalization, Unicode NFC parity, and a zero-modulo-bias Golden Base-32 character mapping pool (2<sup>5</sup> = 32).</p>
+      <p>This specification documents the mathematical properties, entropy formulations (80 to 100 bits of true search entropy), threat modeling, and lifetime determinism invariants that allow users to generate identical, unguessable credentials across decades without transmitting a single byte over the network.</p>
 
       <hr>
 
       <h2>1. Background &amp; Problem Statement</h2>
-      <p>Traditional password management systems rely on encrypted server vaults: $C_i = E_K(P_i)$, where ciphertexts $C_i$ are stored on cloud infrastructure. This architecture suffers from three structural vulnerabilities:</p>
+      <p>Traditional password management systems rely on encrypted server vaults: <span class="math-inline">C<sub>i</sub> = E<sub>K</sub>(P<sub>i</sub>)</span>, where ciphertexts <span class="math-inline">C<sub>i</sub></span> are stored on cloud infrastructure. This architecture suffers from three structural vulnerabilities:</p>
       <ol>
         <li><strong>Server-Side Exfiltration Risk:</strong> Storing encrypted vaults on remote servers creates high-value honeypots. A server breach permits adversaries to download ciphertext backups and run multi-GPU offline brute-force attacks indefinitely.</li>
         <li><strong>Credential Recovery Backdoors:</strong> Server-side account recovery interfaces (SMS OTP, email reset links) bypass master encryption keys, causing the majority of SIM swap and account takeover attacks.</li>
@@ -570,14 +579,14 @@
 
       <div class="article-highlight-box">
         <h3 style="margin-top:0;color:var(--accent-light);">The Necessity of Immutability (Why &Mscr;&Mscr;&Yscr;<sub>constant</sub> is Frozen)</h3>
-        <p style="margin-bottom:0.75rem;"><strong>Honest Architectural Clarification:</strong> Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>) is not a physical constant of nature (such as Planck's constant $h$ or the gravitational constant $G$). Rather, it is a <strong>formally locked architectural and cryptographic invariant</strong> established by Master Manikant Yadav.</p>
+        <p style="margin-bottom:0.75rem;"><strong>Honest Architectural Clarification:</strong> Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>) is not a physical constant of nature (such as Planck's constant or the gravitational constant). Rather, it is a <strong>formally locked architectural and cryptographic invariant</strong> established by Master Manikant Yadav.</p>
         <p style="margin-bottom:0;">In a stateless key derivation system, if any internal parameter (such as iteration count, hash algorithm, context vector structure, or character mapping table) were to change in future software releases, the deterministic output would alter completely. Users would be forced to reset all their account passwords across the internet. Freezing this parameter tuple permanently guarantees that a credential derived today will generate byte-for-byte identically 10, 20, or 50 years from now on any standards-compliant computing device.</p>
       </div>
 
       <hr>
 
       <h2>3. Formal Definition of &Mscr;&Mscr;&Yscr;<sub>constant</sub></h2>
-      <p>Let $\mathcal{S}$ be the user's natural language Master Secret Key, $\mathcal{D}$ be the target domain/platform, $\mathcal{U}$ be the optional username/account identifier, $\mathcal{V} \in \mathbb{N}^+$ be the rotation counter version, and $\mathcal{L} \in \mathbb{N}^+$ be the target output password length.</p>
+      <p>Let <em>&Sscr;</em> be the user's natural language Master Secret Key, <em>&Dscr;</em> be the target domain/platform, <em>&Uscr;</em> be the optional username/account identifier, <em>&Vscr;</em> &isin; &#x2115;<sup>+</sup> be the rotation counter version, and <em>&Lscr;</em> &isin; &#x2115;<sup>+</sup> be the target output password length.</p>
       <p>Master Manikant Yadav's Constant is defined as the 7-element immutable tuple:</p>
 
       <div class="math-formula-box" style="font-size:1.05rem;word-break:break-word;">
@@ -604,27 +613,27 @@
             <td>Core protocol specification version tag.</td>
           </tr>
           <tr>
-            <td>$\mathcal{I}_{10^6}$</td>
-            <td>$1,000,000\text{ rounds}$</td>
+            <td>&Iscr;<sub>10<sup>6</sup></sub></td>
+            <td>1,000,000 rounds</td>
             <td>PBKDF2 iteration work factor, imposing massive computational cost against GPU/ASIC brute-force search.</td>
           </tr>
           <tr>
-            <td>$\mathcal{H}_{\text{SHA512}}$</td>
+            <td>&Hscr;<sub>SHA512</sub></td>
             <td><code>HMAC-SHA512</code></td>
             <td>512-bit pseudorandom function used for key derivation and continuous byte-stream expansion.</td>
           </tr>
           <tr>
-            <td>$\mathcal{C}_{\text{entropy}}$</td>
+            <td>&Cscr;<sub>entropy</sub></td>
             <td>Golden Base-32 Alphabet</td>
-            <td>Ambiguity-free 32-character pool ($2^5 = 32$) mathematically eliminating visual glyph confusion and modulo bias.</td>
+            <td>Ambiguity-free 32-character pool (2<sup>5</sup> = 32) mathematically eliminating visual glyph confusion and modulo bias.</td>
           </tr>
           <tr>
-            <td>$\mathcal{N}_{\text{aggressive}}$</td>
+            <td>&Nscr;<sub>norm</sub></td>
             <td>MMY Normalization</td>
-            <td>Aggressive input sanitization (lowercase conversion, whitespace removal, punctuation stripping) to neutralize device typing friction.</td>
+            <td>Comprehensive input sanitization (lowercase conversion, whitespace removal, punctuation stripping) to neutralize device typing friction.</td>
           </tr>
           <tr>
-            <td>$\mathcal{P}_{\text{NFC}}$</td>
+            <td>&Pscr;<sub>NFC</sub></td>
             <td>Unicode Standard NFC</td>
             <td>Canonical decomposition followed by canonical composition, preventing multi-byte visual spoofing across platforms.</td>
           </tr>
@@ -677,8 +686,8 @@
       <hr>
 
       <h2>5. Golden Base-32 Pool &amp; Mathematical Proof of Zero Modulo Bias</h2>
-      <p>Traditional random generators that map byte arrays ($0$ to $255$) to arbitrary character pool sizes (e.g. 55, 62, or 94 characters) suffer from <strong>Modulo Bias</strong> unless unaligned bytes are systematically rejected and discarded.</p>
-      <p>FrankPass solves this problem mathematically by utilizing an exact <strong>Golden Base-32 Character Pool</strong> ($\mathcal{C}$, where $|\mathcal{C}| = 32 = 2^5$):</p>
+      <p>Traditional random generators that map byte arrays (0 to 255) to arbitrary character pool sizes (e.g. 55, 62, or 94 characters) suffer from <strong>Modulo Bias</strong> unless unaligned bytes are systematically rejected and discarded.</p>
+      <p>FrankPass solves this problem mathematically by utilizing an exact <strong>Golden Base-32 Character Pool</strong> (&Cscr;, where |&Cscr;| = 32 = 2<sup>5</sup>):</p>
 
       <ul>
         <li><strong>Uppercase Alphabet (10 chars):</strong> <code>ADEFHLMNRT</code> (Removed ambiguous glyphs: B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z)</li>
@@ -688,61 +697,76 @@
       </ul>
 
       <div class="math-formula-box">
-        |\mathcal{C}| = 10 + 6 + 7 + 9 = 32 = 2^5\text{ characters}
+        |&Cscr;| = 10 + 6 + 7 + 9 = 32 = 2<sup>5</sup> characters
       </div>
 
       <h3>Mathematical Proof of Zero Modulo Bias:</h3>
-      <p>Let $B \in \{0, 1, \dots, 255\}$ be a uniformly distributed pseudorandom byte generated by HMAC-SHA512. The maximum aligned boundary $\text{validMax}$ is calculated as:</p>
+      <p>Let B &isin; {0, 1, ..., 255} be a uniformly distributed pseudorandom byte generated by HMAC-SHA512. The maximum aligned boundary validMax is calculated as:</p>
 
       <div class="math-formula-box">
-        \text{validMax} = 256 - (256 \pmod{32}) = 256 - 0 = 256
+        validMax = 256 - (256 mod 32) = 256 - 0 = 256
       </div>
 
-      <p>Because $256$ is an exact integer multiple of $32$ ($2^8 / 2^5 = 2^3 = 8$ exact full cycles):</p>
+      <p>Because 256 is an exact integer multiple of 32 (2<sup>8</sup> / 2<sup>5</sup> = 2<sup>3</sup> = 8 exact full cycles):</p>
       <div class="math-formula-box">
-        \forall c \in \mathcal{C}, \quad \Pr[\text{byteToChar}(B) = c] = \frac{8}{256} = \frac{1}{32} = 0.03125000\dots
+        &forall; c &isin; &Cscr;, &nbsp; P(byteToChar(B) = c) = 8 / 256 = 1 / 32 = 0.03125 (3.125%)
       </div>
       <p>Every character in the pool receives exactly equal probability of selection. Modulo bias loss is mathematically <strong>0.000% (Zero Loss)</strong>. No derived pseudorandom entropy is wasted or discarded.</p>
 
       <hr>
 
-      <h2>6. Cryptographic Search Entropy Formulations</h2>
-      <p>Because each character in the Golden Base-32 pool carries exactly $5$ bits of information entropy ($\log_2(32) = 5.00000\text{ bits}$), the search space complexity for generated passwords is strictly linear with length:</p>
+            <h2>6. Cryptographic Search Entropy Formulations</h2>
+      <p>Because each character in the Golden Base-32 pool carries exactly 5 bits of information entropy (log<sub>2</sub>(32) = 5.000 bits), the search space complexity for generated passwords is strictly linear with length:</p>
 
       <div class="math-formula-box">
-        H_{\text{password}} = L \times \log_2(32) = 5 \cdot L\text{ bits}
+        H<sub>password</sub> = L &times; log<sub>2</sub>(32) = 5 &times; L bits
       </div>
 
       <table>
         <thead>
           <tr>
-            <th>Password Length ($L$)</th>
+            <th>Password Length (L)</th>
             <th>Search Space Combinations</th>
-            <th>True Search Entropy</th>
-            <th>Time to Exhaust ($10^9\text{ guesses/sec}$)</th>
+            <th>Output Search Entropy</th>
+            <th>Time to Exhaust (10<sup>9</sup> guesses/sec)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>12 characters</strong></td>
-            <td>$32^{12} = 2^{60} \approx 1.15 \times 10^{18}$</td>
+            <td>32<sup>12</sup> = 2<sup>60</sup> &approx; 1.15 &times; 10<sup>18</sup></td>
             <td><strong>60.000 bits</strong></td>
-            <td>$36.5\text{ years}$</td>
+            <td>36.5 years</td>
           </tr>
           <tr>
             <td><strong>16 characters (Standard)</strong></td>
-            <td>$32^{16} = 2^{80} \approx 1.20 \times 10^{24}$</td>
+            <td>32<sup>16</sup> = 2<sup>80</sup> &approx; 1.20 &times; 10<sup>24</sup></td>
             <td><strong>80.000 bits</strong></td>
-            <td>$1.9 \times 10^{13}\text{ years}$ (Exceeds Universe Age)</td>
+            <td>1.9 &times; 10<sup>13</sup> years (Exceeds Universe Age)</td>
           </tr>
           <tr>
             <td><strong>20 characters (Extended)</strong></td>
-            <td>$32^{20} = 2^{100} \approx 1.26 \times 10^{30}$</td>
+            <td>32<sup>20</sup> = 2<sup>100</sup> &approx; 1.26 &times; 10<sup>30</sup></td>
             <td><strong>100.000 bits</strong></td>
-            <td>$2.0 \times 10^{19}\text{ years}$ (Cryptographically Eternal)</td>
+            <td>2.0 &times; 10<sup>19</sup> years (Computationally Infeasible)</td>
           </tr>
         </tbody>
       </table>
+
+      <div class="article-highlight-box">
+        <h3 style="margin-top:0;color:var(--accent-light);">Crucial Distinction: Master Secret Entropy vs. Output Search Space</h3>
+        <p style="margin-bottom:0.75rem;">A fundamental principle of applied cryptography is that a Key Derivation Function (KDF) cannot synthesize entropy from nothing. The real-world work factor for an adversary targeting a specific user is strictly bounded by:</p>
+        
+        <div class="math-formula-box" style="margin:0.75rem 0;font-size:1rem;">
+          Effective Security = min(H<sub>passphrase</sub>, KDF Bit Security)
+        </div>
+
+        <p style="margin-bottom:0.75rem;">While an output length of 16 characters (80 bits search space) or 20 characters (100 bits search space) prevents accidental collisions and satisfies strict target system constraints, an attacker who extracts a derived password from a third-party breach will brute-force the <em>input passphrase space</em>, not the output space. 1,000,000 iterations of PBKDF2-HMAC-SHA512 impose massive computational penalties on GPU/ASIC crackers, but baseline security remains bounded by the entropy of the user's secret.</p>
+        <p style="margin-bottom:0;"><strong>Architectural Recommendation:</strong> Users must choose a 5 to 6 word random passphrase (e.g. <code>"correct horse battery staple 2026"</code>), providing 60 to 80+ bits of true linguistic dictionary entropy.</p>
+      </div>
+
+      <h3>KDF Selection Rationale (PBKDF2 vs. Modern Memory-Hard KDFs):</h3>
+      <p>PBKDF2-HMAC-SHA512 at 1,000,000 iterations is selected primarily for <strong>universal, zero-dependency native execution</strong> via the W3C WebCrypto API (<code>crypto.subtle</code>). While memory-hard KDFs (such as Argon2id or scrypt) offer superior resistance against custom ASIC parallelization, they require heavy WebAssembly (WASM) binaries and introduce memory allocation risks on resource-constrained mobile hardware. 1,000,000 rounds of PBKDF2-HMAC-SHA512 provide robust computational friction while guaranteeing 100% native hardware acceleration across every browser, OS, and offline runtime without WASM cold-starts.</p>
 
       <hr>
 
@@ -753,7 +777,7 @@
         <li>Automatic insertion of smart punctuation or directional quotes.</li>
         <li>Trailing whitespace added during auto-complete suggestions.</li>
       </ul>
-      <p>In un-normalized systems, a single accidental space alters the entire derived password, causing authentication failures. FrankPass incorporates <strong>MMY Aggressive Input Normalization ($\mathcal{N}_{\text{aggressive}}$)</strong> and <strong>Unicode NFC Composition ($\mathcal{P}_{\text{NFC}}$)</strong> before derivation:</p>
+      <p>In un-normalized systems, a single accidental space alters the entire derived password, causing authentication failures. FrankPass incorporates <strong>MMY Comprehensive Input Normalization (&Nscr;<sub>norm</sub>)</strong> and <strong>Unicode NFC Composition (&Pscr;<sub>NFC</sub>)</strong> before derivation:</p>
 
       <pre><code>// Exact Canonical Normalization Implementation:
 const normalizedSecret = (secretKey || '')
@@ -761,24 +785,110 @@ const normalizedSecret = (secretKey || '')
     .replace(/\s+/g, '')
     .replace(/[^a-z0-9]/g, '');</code></pre>
 
-      <p>This guarantees that variations such as <code>"Master Secret 2026! "</code>, <code>"mastersecret2026"</code>, and <code>"master secret 2026"</code> always map to the exact same canonical byte array, eliminating cross-device human error while preserving high entropy.</p>
+      <p>This guarantees that variations such as <code>"Master Secret 2026! "</code>, <code>"mastersecret2026"</code>, and <code>"master secret 2026"</code> always map to the exact same canonical byte array, eliminating cross-device human error.</p>
+
+      <div class="article-highlight-box">
+        <h3 style="margin-top:0;color:var(--accent-light);">Cryptographic Trade-Off of Normalization</h3>
+        <p style="margin-bottom:0.75rem;"><strong>Honest Architectural Disclosure:</strong> Normalization restricts the effective character pool of the Master Secret to 36 alphanumeric characters (<code>[a-z0-9]</code>, ~5.17 bits per character). Any complexity added through uppercase letters, punctuation, or spaces is discarded during canonicalization.</p>
+        <p style="margin-bottom:0;">Consequently, users should build security through <strong>passphrase length and word count</strong> rather than relying on complex single-character substitutions (e.g. using <code>P@$$w0rd!</code> is ineffective; using <code>mango river copper guitar 2026</code> is highly effective).</p>
+      </div>
 
       <hr>
 
-      <h2>8. Threat Model &amp; Security Properties</h2>
+      <h2>8. Threat Model &amp; Endpoint Defense Matrix</h2>
 
       <h3>1. Server Compromise &amp; Zero-Storage Immunity:</h3>
-      <p>Because FrankPass servers store zero credentials, zero master keys, and zero ciphertext blobs ($0\text{ bytes stored}$), a total compromise of the hosting infrastructure, edge CDNs, or DNS routers yields zero actionable data to an adversary.</p>
+      <p>Because FrankPass servers store zero credentials, zero master keys, and zero ciphertext blobs (0 bytes stored), a total compromise of the hosting infrastructure, edge CDNs, or DNS routers yields zero actionable data to an adversary. Server-side data-at-rest exfiltration attacks are eliminated.</p>
 
       <h3>2. Cryptographic Domain Separation:</h3>
-      <p>By injecting the domain name into length-prefixed netstrings and salting the HMAC-SHA512 PRF, outputs across different platforms ($D_1 \neq D_2$) are computationally indistinguishable from independent random variables. A data breach at Service A gives an attacker zero mathematical leverage to predict credentials for Service B.</p>
+      <p>By injecting the domain name into length-prefixed netstrings and salting the HMAC-SHA512 PRF, outputs across different platforms (D<sub>1</sub> &ne; D<sub>2</sub>) are computationally indistinguishable from independent random variables. A data breach at Service A gives an attacker zero mathematical leverage to predict credentials for Service B.</p>
 
       <h3>3. Air-Gapped &amp; 100% Offline Survivability:</h3>
-      <p>FrankPass contains zero runtime network dependencies. Once cached by the Service Worker or saved as a standalone single-file HTML document ($150\text{ KB}$), the engine executes client-side on completely air-gapped computers without internet connectivity.</p>
+      <p>FrankPass contains zero runtime network dependencies. Once cached by the Service Worker or saved as a standalone single-file HTML document (150 KB), the engine executes client-side on completely air-gapped computers without internet connectivity.</p>
+
+      <h3>4. Endpoint Threat Matrix &amp; Residual Boundaries:</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Threat Vector</th>
+            <th>Mitigated By</th>
+            <th>Residual Attack Surface / Limitations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Clipboard Snooping</strong></td>
+            <td>Extension Direct DOM Injection / Native Android Autofill Service</td>
+            <td>Bypasses OS clipboard listeners, but cannot protect against malicious extensions with <code>&lt;all_urls&gt;</code> script injection permissions.</td>
+          </tr>
+          <tr>
+            <td><strong>Memory Scraping</strong></td>
+            <td>Ephemeral In-Memory State &amp; Best-effort Zeroization</td>
+            <td>Garbage-collected JavaScript engines do not guarantee instant physical zeroization of strings from RAM before garbage collector sweeps.</td>
+          </tr>
+          <tr>
+            <td><strong>Credential Phishing &amp; Homographs</strong></td>
+            <td>Strict Domain Binding</td>
+            <td>Generates a completely different, useless dummy password bound exclusively to the attacker's fake domain (e.g. Cyrillic homographs or cloned URLs). The victim's real account password and Master Secret remain 100% unexposed and secure.</td>
+          </tr>
+          <tr>
+            <td><strong>Mobile Keystroke Capture</strong></td>
+            <td>Native Android Autofill Service</td>
+            <td>Mitigates background clipboard access, but remains vulnerable to OS-level accessibility service exploits or compromised custom third-party keyboards.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5. The "Stateless Paradox" &amp; Metadata Storage:</h3>
+      <p>Completely stateless generation requires users to remember context parameters: Target Domain, Username, and Counter/Version (V). When enterprise workflows require frequent password changes (e.g. quarterly rotation from V=1 to V=2), maintaining an offline, non-sensitive index (e.g. an unencrypted text list such as <code>github.com: v2</code> or FrankPass Pro local profiles) is a pragmatic necessity. This formalizes FrankPass as a <strong>Stateless Credential Payload with Optional Local Metadata</strong>.</p>
 
       <hr>
 
-      <h2>9. Lifetime Governance &amp; GitHub Immutable Code Invariant</h2>
+      <h2>9. Official Cryptographic Test Vectors</h2>
+      <p>To enable independent verification and cross-platform implementation validation, the following official test vectors are formalized for <code>frankpass-core.js</code> (v1, Standard 16-char profile):</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Test Vector</th>
+            <th>Master Secret (Raw Input)</th>
+            <th>Platform</th>
+            <th>Username</th>
+            <th>Version</th>
+            <th>Canonical Output Password</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Vector #1</strong></td>
+            <td><code>mastersecret2026</code></td>
+            <td><code>google.com</code></td>
+            <td><code>user@example.com</code></td>
+            <td><code>1</code></td>
+            <td><code>d=FD9H+@Nd+H%*fe</code></td>
+          </tr>
+          <tr>
+            <td><strong>Vector #2</strong></td>
+            <td><code>Correct Horse Battery Staple 2026!</code></td>
+            <td><code>github.com</code></td>
+            <td><code>developer</code></td>
+            <td><code>1</code></td>
+            <td><code>3TLDMfAN6Am%D@#?</code></td>
+          </tr>
+          <tr>
+            <td><strong>Vector #3 (Rotation)</strong></td>
+            <td><code>Correct Horse Battery Staple 2026!</code></td>
+            <td><code>github.com</code></td>
+            <td><code>developer</code></td>
+            <td><code>2</code></td>
+            <td><code>N%+#Afh%7#N3M9HD</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <hr>
+
+      <h2>10. Lifetime Governance &amp; GitHub Immutable Code Invariant</h2>
       <p>To provide users with lifelong mathematical assurance, Master Manikant Yadav has established the <strong>FrankPass Core Invariant Governance Rule</strong>:</p>
       <ul>
         <li>The core cryptographic pipeline defined in <code>frankpass-core.js</code> and governed by &Mscr;&Mscr;&Yscr;<sub>constant</sub> is permanently frozen.</li>
@@ -788,8 +898,8 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>10. Conclusion &amp; Reference Implementation</h2>
-      <p>FrankPass establishes that password security does not require centralized cloud database vaults. By formalizing <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>, client-side WebCrypto key derivation, and ambiguity-free Base-32 entropy mapping, FrankPass delivers an open, permanent, and sovereign standard for personal digital authentication.</p>
+      <h2>11. Conclusion &amp; Reference Implementation</h2>
+      <p>FrankPass establishes that personal password security does not require centralized cloud database vaults. By formalizing <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>, client-side WebCrypto key derivation, and ambiguity-free Base-32 entropy mapping, FrankPass eliminates the cloud vault attack surface by replacing database storage with deterministic mathematical reproducibility.</p>
 
       <p>
         <strong>Official Reference Implementation:</strong><br>
@@ -809,7 +919,7 @@ const normalizedSecret = (secretKey || '')
 <nav class="mobile-bottom-nav" aria-label="Mobile navigation">
   <a href="/" class="mob-nav-item" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
   <a href="/pin.html" class="mob-nav-item" aria-label="PIN"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>PIN</span></a>
-  <a href="/secret-key-guide.html" class="mob-nav-item active" aria-label="Guide" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Guide</span></a>
+  <a href="/secret-key-guide.html" class="mob-nav-item" aria-label="Guide"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg><span>Guide</span></a>
   <a href="/faq.html" class="mob-nav-item" aria-label="FAQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
   <a href="/pro.html" class="mob-nav-item" aria-label="Pro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Pro</span></a>
 </nav>
