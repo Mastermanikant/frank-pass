@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>फ्रैंकपास का उपयोग कैसे करें: वेब ऐप, एक्सटेंशन, प्रो और मोबाइल पीडब्ल्यूए - FrankPass</title>
+  <meta name="description" content="फ्रैंकपास ऑनबोर्डिंग गाइड: स्टेटलेस वेब जनरेटर, 100% फ्री 1-क्लिक ब्राउज़र एक्सटेंशन, प्रो हार्डवेयर-बाउंड प्रोफाइल्स और ऑफलाइन मोबाइल पीडब्ल्यूए का उपयोग सीखें।">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://frankpass.com/get-started-hindi.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/get-started-hindi.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/get-started.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/get-started.html">
+  
+  <meta property="og:title" content="फ्रैंकपास का उपयोग कैसे करें: वेब ऐप, एक्सटेंशन और मोबाइल पीडब्ल्यूए">
+  <meta property="og:description" content="फ्रैंकपास का संपूर्ण ऑनबोर्डिंग गाइड: वेब जनरेटर, मुफ्त एक्सटेंशन ऑटो-फिल, प्रो पिन अनलॉक और ऑफलाइन मोबाइल पीडब्ल्यूए।">
+  <meta property="og:url" content="https://frankpass.com/get-started-hindi.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <meta name="twitter:title" content="फ्रैंकपास शुरुआत गाइड">
+  <meta name="twitter:description" content="वेब, एक्सटेंशन और मोबाइल पीडब्ल्यूए पर स्टेटलेस पासवर्ड जेनरेशन में महारत हासिल करें।">
+  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/style.css?v=4.2.8">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+
+  <style>
+    .ext-welcome-banner {
+      display: none;
+      background: linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(139,92,246,0.15) 100%);
+      border: 1px solid rgba(16,185,129,0.4);
+      border-radius: 18px;
+      padding: 1.75rem;
+      margin: 1.5rem auto 2.5rem;
+      text-align: left;
+      box-shadow: var(--card-shadow);
+    }
+    .ext-badge-pill {
+      display: inline-block;
+      background: #10b981;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      margin-bottom: 0.75rem;
+    }
+    .ext-steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+    .ext-step-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    .accordion-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+    .accordion-card.active {
+      border-color: var(--accent);
+      box-shadow: var(--card-shadow);
+    }
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .accordion-header-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .accordion-icon {
+      font-size: 1.8rem;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(139,92,246,0.1);
+    }
+    .accordion-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 0;
+    }
+    .accordion-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0.2rem 0 0;
+    }
+    .accordion-chevron {
+      width: 20px;
+      height: 20px;
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+    .accordion-card.active .accordion-chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+    .accordion-body {
+      display: none;
+      padding: 0 1.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: 0.5rem;
+    }
+    .accordion-card.active .accordion-body {
+      display: block;
+      padding-top: 1.25rem;
+    }
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+    }
+    .step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-primary);
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .fp-kbd {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.15rem 0.45rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--accent-light);
+    }
+    .trial-highlight {
+      background: rgba(16,185,129,0.08);
+      border: 1px solid rgba(16,185,129,0.3);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--text-primary);
+    }
+    .acc-cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .acc-btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.65rem 1.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .acc-btn-ghost {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.65rem 1.25rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    @media(max-width:640px) {
+      .accordion-icon { display: none; }
+      .accordion-header { padding: 1rem; }
+      .accordion-body { padding: 0 1rem 1rem; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "फ्रैंकपास स्टेटलेस सुरक्षा का उपयोग कैसे करें",
+    "description": "फ्रैंकपास वेब ऐप, फ्री एक्सटेंशन, प्रो प्रोफाइल्स और ऑफलाइन मोबाइल पीडब्ल्यूए की चरणबद्ध ऑनबोर्डिंग गाइड।",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "स्टेटलेस वेब ऐप",
+        "text": "किसी भी ब्राउज़र में frankpass.com खोलें। बिना किसी रजिस्ट्रेशन के पासवर्ड जनरेट करें।"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "मुफ्त ब्राउज़र एक्सटेंशन",
+        "text": "1-क्लिक डायरेक्ट DOM ऑटो-फिल के लिए एक्सटेंशन इंस्टॉल करें।"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "प्रो एक्सटेंशन प्रोफाइल्स",
+        "text": "4-डिजिट पिन और हार्डवेयर-बाउंड मल्टी-प्रोफाइल्स के लिए प्रो विकल्प।"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "मोबाइल ऑफलाइन पीडब्ल्यूए",
+        "text": "100% ऑफलाइन उपयोग के लिए होम स्क्रीन पर जोड़ें।"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">सीधे मुख्य सामग्री पर जाएं</a>
+
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    
+    <!-- Official Brand Logo -->
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <!-- Country Dropdown -->
+    <div class="header-country custom-country-dropdown" aria-label="Select your country">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+        <span id="country-display-name">India</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+        <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <input type="hidden" id="region" value="India (IN)">
+
+    <!-- Desktop Nav -->
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      
+      <!-- 1. Generators Dropdown -->
+      <div class="nav-dropdown" id="dropdown-generators">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
+          जनरेटर्स <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger" style="min-width:230px;">
+          <a href="/" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚡</span>
+            <span class="dropdown-title">स्टेटलेस जनरेटर</span>
+          </a>
+          <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🎲</span>
+            <span class="dropdown-title">रैंडम जनरेटर</span>
+          </a>
+          <a href="/pin.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🔢</span>
+            <span class="dropdown-title">पिन जनरेटर</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚖️</span>
+            <span class="dropdown-title">सभी टूल्स की तुलना</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Resources Dropdown -->
+      <div class="nav-dropdown" id="dropdown-resources">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
+          संसाधन <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
+          
+          <!-- Category 1: Core Guides & Specs -->
+          <div class="has-flyout" id="flyout-core-guides">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">📚</span>
+                <span class="flyout-cat-title">मुख्य गाइड्स व स्पेक्स</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/secret-key-guide-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔑</span>
+                <span class="dropdown-title">सीक्रेट की गाइड</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚙️</span>
+                <span class="dropdown-title">फ्रैंकपास कैसे काम करता है</span>
+              </a>
+              <a href="/why-stateless-password-generation-is-the-future-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚡</span>
+                <span class="dropdown-title">स्टेटलेस आर्किटेक्चर</span>
+              </a>
+              <a href="/faq.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">❓</span>
+                <span class="dropdown-title">सुरक्षा FAQ</span>
+              </a>
+              <a href="/whitepaper-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">📄</span>
+                <span class="dropdown-title">क्रिप्टोग्राफिक स्पेक्स</span>
+              </a>
+              <a href="/limitations-and-advantages-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚖️</span>
+                <span class="dropdown-title">कमियां और अच्छाइयां</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Category 2: Cyber Threat Defense -->
+          <div class="has-flyout" id="flyout-threat-defense">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">🛡️</span>
+                <span class="flyout-cat-title">साइबर सुरक्षा व थ्रेट डिफेंस</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">👁️</span>
+                <span class="dropdown-title">इनविजिबल वॉल्ट डिफेंस</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">☁️</span>
+                <span class="dropdown-title">क्लाउड वॉल्ट कमजोरियां</span>
+              </a>
+              <a href="/what-makes-a-password-strong-and-passphrase-guide-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🧮</span>
+                <span class="dropdown-title">पासवर्ड एन्ट्रापी गणित</span>
+              </a>
+              <a href="/atm-upi-pin-security-guide-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔢</span>
+                <span class="dropdown-title">एटीएम व यूपीआई पिन सुरक्षा</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Category 3: Trust & Founder -->
+          <div class="has-flyout" id="flyout-trust-founder">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">💡</span>
+                <span class="flyout-cat-title">संस्थापक व अर्थशास्त्र</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/about-us-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🏢</span>
+                <span class="dropdown-title">फ्रैंकपास के बारे में</span>
+              </a>
+              <a href="/founder-mastermanikant-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🎯</span>
+                <span class="dropdown-title">संस्थापक मास्टर मणिकान्त</span>
+              </a>
+              <a href="/how-frankpass-is-free-without-selling-data-hindi.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚖️</span>
+                <span class="dropdown-title">शून्य-सर्वर अर्थशास्त्र</span>
+              </a>
+              <a href="/sponsors.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🌱</span>
+                <span class="dropdown-title">ग्रीन स्पॉन्सर हब</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+          <a href="/library-hindi.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
+            <span class="dropdown-icon">🏛️</span>
+            <span class="dropdown-title" style="color:var(--accent-light);">मास्टर लाइब्रेरी एवं डायरेक्टरी &rarr;</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- 3. Products Link -->
+      <a href="/products.html" class="nav-link">प्रोडक्ट्स</a>
+
+      <!-- 4. Master Library Link -->
+      <a href="/library-hindi.html" class="nav-link" style="color:var(--accent-light);font-weight:600;">लाइब्रेरी</a>
+
+      <!-- 5. Founder Link -->
+      <a href="/founder-mastermanikant-hindi.html" class="nav-link">संस्थापक</a>
+
+      <!-- 6. Direct Pro CTA -->
+      <a href="/pro.html" class="btn-pro" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s;">
+        <span>Get Pro</span> <span style="font-size:0.85rem;">👑</span> &rarr;
+      </a>
+      
+      <!-- 7. Theme Toggle -->
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="थीम बदलें" title="थीम बदलें">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
+    </nav>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button class="hamburger-btn" id="hamburger" aria-label="मेन्यू खोलें" aria-expanded="false" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <div class="mobile-section-label">⚡ जनरेटर्स</div>
+  <a href="/" class="mobile-nav-link"><span>⚡</span> स्टेटलेस जनरेटर</a>
+  <a href="/random-password-generator.html" class="mobile-nav-link"><span>🎲</span> रैंडम जनरेटर</a>
+  <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> पिन जनरेटर</a>
+  <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html" class="mobile-nav-link"><span>⚖️</span> सभी टूल्स की तुलना</a>
+  
+  <div class="mobile-section-label">📚 संसाधन व गाइड्स</div>
+  
+  <!-- Mobile Accordion 1 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>📚 मुख्य गाइड्स व स्पेक्स</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/secret-key-guide-hindi.html" class="mobile-acc-item">🔑 सीक्रेट की गाइड</a>
+      <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="mobile-acc-item">⚙️ फ्रैंकपास कैसे काम करता है</a>
+      <a href="/why-stateless-password-generation-is-the-future-hindi.html" class="mobile-acc-item">⚡ स्टेटलेस आर्किटेक्चर</a>
+      <a href="/faq.html" class="mobile-acc-item">❓ सुरक्षा FAQ</a>
+      <a href="/whitepaper-hindi.html" class="mobile-acc-item">📄 क्रिप्टोग्राफिक स्पेक्स</a>
+      <a href="/limitations-and-advantages-hindi.html" class="mobile-acc-item">⚖️ कमियां और अच्छाइयां</a>
+    </div>
+  </div>
+
+  <!-- Mobile Accordion 2 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>🛡️ साइबर सुरक्षा व थ्रेट डिफेंस</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="mobile-acc-item">👁️ इनविजिबल वॉल्ट डिफेंस</a>
+      <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="mobile-acc-item">☁️ क्लाउड वॉल्ट कमजोरियां</a>
+      <a href="/what-makes-a-password-strong-and-passphrase-guide-hindi.html" class="mobile-acc-item">🧮 पासवर्ड एन्ट्रापी गणित</a>
+      <a href="/atm-upi-pin-security-guide-hindi.html" class="mobile-acc-item">🔢 एटीएम व यूपीआई पिन सुरक्षा</a>
+    </div>
+  </div>
+
+  <!-- Mobile Accordion 3 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>💡 संस्थापक व अर्थशास्त्र</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/about-us-hindi.html" class="mobile-acc-item">🏢 फ्रैंकपास के बारे में</a>
+      <a href="/founder-mastermanikant-hindi.html" class="mobile-acc-item">🎯 संस्थापक मास्टर मणिकान्त</a>
+      <a href="/how-frankpass-is-free-without-selling-data-hindi.html" class="mobile-acc-item">⚖️ शून्य-सर्वर अर्थशास्त्र</a>
+      <a href="/sponsors.html" class="mobile-acc-item">🌱 ग्रीन स्पॉन्सर हब</a>
+    </div>
+  </div>
+
+  <div class="mobile-section-label">🏢 इकोसिस्टम व डायरेक्टरी</div>
+  <a href="/library-hindi.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> मास्टर लाइब्रेरी एवं डायरेक्टरी</a>
+  <a href="/products.html" class="mobile-nav-link"><span>🌐</span> प्रोडक्ट्स हब</a>
+  <a href="/founder-mastermanikant-hindi.html" class="mobile-nav-link"><span>👨‍💻</span> संस्थापक (मास्टर मणिकान्त यादव)</a>
+  
+  <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
+</nav>
+
+<main class="container" id="main-content" style="max-width:900px;margin:2.5rem auto 4rem;padding:0 1.25rem;">
+  
+  <header style="text-align:center;margin-bottom:2.5rem;">
+    <div style="font-size:0.82rem;font-weight:700;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:0.25rem 0.75rem;border-radius:20px;display:inline-block;margin-bottom:0.75rem;">
+      संपूर्ण शुरुआत गाइड (Complete Onboarding Guide)
+    </div>
+    <h1 style="font-size:clamp(2rem,5vw,2.75rem);font-weight:800;color:var(--text-primary);line-height:1.2;margin:0 0 0.75rem 0;">
+      फ्रैंकपास का उपयोग कैसे करें
+    </h1>
+    <p style="color:var(--text-muted);font-size:1.05rem;max-width:640px;margin:0 auto;line-height:1.6;">
+      सभी 4 प्लेटफॉर्म्स पर स्टेटलेस सुरक्षा में महारत हासिल करें: इंस्टेंट वेब ऐप, 100% फ्री ब्राउज़र एक्सटेंशन, प्रो हार्डवेयर-बाउंड प्रोफाइल्स और ऑफलाइन मोबाइल पीडब्ल्यूए।
+    </p>
+  </header>
+
+  <!-- ── 4 Sovereign Onboarding Platforms ── -->
+  <div id="onboarding-accordions">
+
+    <!-- 1. Web App Onboarding -->
+    <div class="accordion-card active" id="acc-web">
+      <div class="accordion-header" onclick="toggleAcc('acc-web')">
+        <div class="accordion-header-left">
+          <div class="accordion-icon">🌐</div>
+          <div>
+            <h2 class="accordion-title">1. फ्रैंकपास वेब ऐप (सार्वभौमिक एक्सेस)</h2>
+            <p class="accordion-subtitle">शून्य इंस्टॉलेशन · कोई भी ब्राउज़र · 100% क्लाइंट-साइड वेबक्रिप्टो</p>
+          </div>
+        </div>
+        <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-body">
+        <ul class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <span>कंप्यूटर, मैक, लिनक्स, आईफोन या एंड्रॉइड पर <a href="/" style="color:var(--accent-light);font-weight:600;">frankpass.com</a> खोलें। <strong>किसी भी खाते, साइन-अप या ईमेल की आवश्यकता नहीं है।</strong></span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span><strong>Platform</strong> फील्ड में सेवा या वेबसाइट का नाम दर्ज करें (उदा. <code>github</code>, <code>gmail</code>, <code>amazon</code>)।</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>अपनी व्यक्तिगत, स्मरणीय <strong>Master Secret Key</strong> दर्ज करें (उदा. <code>suraj purab me ugta hai 2026</code>)।</span>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <span><strong>Generate Password</strong> पर क्लिक करें। 10 लाख PBKDF2 राउंड्स ~0.8 सेकंड में आपकी रैम में 115-बिट का अभेद्य पासवर्ड तैयार कर देंगे।</span>
+          </li>
+          <li>
+            <span class="step-num">5</span>
+            <span>पासवर्ड को अपने लॉगिन फॉर्म में कॉपी करें। भविष्य में जब भी आवश्यकता हो, वही सटीक इनपुट्स डालने पर दोबारा वही पासवर्ड गणितीय रूप से मिल जाएगा।</span>
+          </li>
+        </ul>
+
+        <div class="trial-highlight">
+          <span>💡</span>
+          <span><strong>शून्य डेटाबेस सुरक्षा:</strong> चूंकि पासवर्ड्स कहीं स्टोर होने के बजाय सीधे गणित से निकलते हैं, इसलिए हैक करने के लिए दुनिया में कोई डेटाबेस या क्लाउड फाइल मौजूद ही नहीं है।</span>
+        </div>
+
+        <div class="acc-cta-row">
+          <a href="/" class="acc-btn-primary">स्टेटलेस जनरेटर खोलें &rarr;</a>
+          <a href="/secret-key-guide-hindi.html" class="acc-btn-ghost">सीक्रेट की गाइड</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Free Browser Extension Onboarding -->
+    <div class="accordion-card" id="acc-ext-free">
+      <div class="accordion-header" onclick="toggleAcc('acc-ext-free')">
+        <div class="accordion-header-left">
+          <div class="accordion-icon" style="background:rgba(16,185,129,0.12);color:#10b981;">🧩</div>
+          <div>
+            <h2 class="accordion-title">2. मुफ्त ब्राउज़र एक्सटेंशन (1-क्लिक गेस्ट ऑटो-फिल)</h2>
+            <p class="accordion-subtitle">100% लाइफटाइम फ्री · ऑटो डोमेन डिटेक्शन · शून्य क्लिपबोर्ड जोखिम</p>
+          </div>
+        </div>
+        <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-body">
+        <ul class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <span><a href="/install.html" style="color:var(--accent-light);font-weight:600;">/install.html</a> से Chrome, Brave, Edge या Firefox में एक्सटेंशन इंस्टॉल करें।</span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span>ब्राउज़र के <strong>पजल आइकन (🧩)</strong> पर क्लिक करें और फ्रैंकपास को अपने टूलबार में पिन (📌) करें।</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>किसी भी वेबसाइट के लॉगिन पेज पर <kbd class="fp-kbd">Ctrl + Shift + F</kbd> (Mac: <kbd class="fp-kbd">⌘ + Shift + F</kbd>) दबाएं।</span>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <span>एक्सटेंशन डोमेन नाम को अपने-आप पहचान लेगा। <strong>Instant Guest Mode</strong> (जीवनभर 100% फ्री) में अपनी मास्टर सीक्रेट की टाइप करें।</span>
+          </li>
+          <li>
+            <span class="step-num">5</span>
+            <span><strong>⚡ Direct Autofill</strong> पर क्लिक करें। पासवर्ड सीधे DOM API द्वारा इनपुट फील्ड में भर दिया जाएगा बिना सिस्टम क्लिपबोर्ड को छुए।</span>
+          </li>
+        </ul>
+
+        <div class="trial-highlight" style="background:rgba(16,185,129,0.08);border-color:rgba(16,185,129,0.3);">
+          <span>🛡️</span>
+          <span><strong>शून्य-क्लिपबोर्ड सुरक्षा:</strong> इन्फोस्टीलर मैलवेयर ऑपरेटिंग सिस्टम के क्लिपबोर्ड की लगातार जासूसी करते हैं। फ्रैंकपास डायरेक्ट ऑटो-फिल क्लिपबोर्ड को पूरी तरह बायपास करता है, जिससे स्पाईवेयर पासवर्ड को कभी नहीं देख पाते।</span>
+        </div>
+
+        <div class="acc-cta-row">
+          <a href="/install.html" class="acc-btn-primary">फ्री एक्सटेंशन इंस्टॉल करें &rarr;</a>
+          <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="acc-btn-ghost">इनविजिबल वॉल्ट डिफेंस</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Pro Extension Benefits Onboarding -->
+    <div class="accordion-card" id="acc-ext-pro">
+      <div class="accordion-header" onclick="toggleAcc('acc-ext-pro')">
+        <div class="accordion-header-left">
+          <div class="accordion-icon" style="background:rgba(234,179,8,0.12);color:#fbbf24;">👑</div>
+          <div>
+            <h2 class="accordion-title">3. फ्रैंकपास प्रो एक्सटेंशन (हार्डवेयर-बाउंड शक्ति)</h2>
+            <p class="accordion-subtitle">4-अंकीय पिन अनलॉक · मल्टी-प्रोफाइल वॉल्ट · शून्य सीक्रेट की टाइपिंग</p>
+          </div>
+        </div>
+        <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-body">
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.65;margin-bottom:1rem;">
+          फ्रैंकपास प्रो एक वैकल्पिक हार्डवेयर-लाइसेंस्ड अपग्रेड है, जो दैनिक उपयोग में अधिकतम सुविधा और शून्य टाइपिंग फ्रिक्शन प्रदान करता है:
+        </p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1rem;margin:1.25rem 0;">
+          <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:1rem;">
+            <div style="font-size:1.2rem;margin-bottom:0.4rem;">🔢 <strong>4-अंकीय लोकल पिन अनलॉक</strong></div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.5;">साधारण 4-अंकीय पिन से 1 सेकंड में एक्सटेंशन अनलॉक करें। आपकी सीक्रेट की डिवाइस के हार्डवेयर में स्थानीय रूप से एन्क्रिप्ट रहती है।</p>
+          </div>
+          <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:1rem;">
+            <div style="font-size:1.2rem;margin-bottom:0.4rem;">🗂️ <strong>मल्टी-प्रोफाइल वॉल्ट्स</strong></div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.5;">पर्सनल, वर्क, क्लाइंट और हाई-सिक्योरिटी प्रोफाइल्स के बीच 1-क्लिक में तुरंत स्विच करें।</p>
+          </div>
+          <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:1rem;">
+            <div style="font-size:1.2rem;margin-bottom:0.4rem;">⚡ <strong>शून्य टाइपिंग स्पीड</strong></div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.5;"><kbd class="fp-kbd">Ctrl+Shift+F</kbd> दबाएं, 4 अंक डालें और 2 सेकंड के भीतर 50+ साइट्स पर रोज सुपरफास्ट लॉगिन करें।</p>
+          </div>
+          <div style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:1rem;">
+            <div style="font-size:1.2rem;margin-bottom:0.4rem;">🛡️ <strong>48-घंटे एंटी-थेफ्ट टाइमलॉक</strong></div>
+            <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.5;">सुरक्षा प्रश्नों से रीसेट होने पर 48-घंटे का आई-कंसीलमेंट लॉक सक्रिय होता है जिससे सीक्रेट की चोरी नहीं हो सकती।</p>
+          </div>
+        </div>
+
+        <div class="acc-cta-row">
+          <a href="/pro.html" class="acc-btn-primary" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);">प्रो प्लान्स देखें &rarr;</a>
+          <a href="/how-frankpass-is-free-without-selling-data-hindi.html" class="acc-btn-ghost">पारदर्शी मूल्य निर्धारण मॉडल</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Mobile Offline PWA Onboarding -->
+    <div class="accordion-card" id="acc-pwa">
+      <div class="accordion-header" onclick="toggleAcc('acc-pwa')">
+        <div class="accordion-header-left">
+          <div class="accordion-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;">📱</div>
+          <div>
+            <h2 class="accordion-title">4. मोबाइल ऑफलाइन पीडब्ल्यूए (iOS व Android)</h2>
+            <p class="accordion-subtitle">होम स्क्रीन पर इंस्टॉल करें · 100% ऑफलाइन · एयरप्लेन मोड में पूरी तरह कार्यरत</p>
+          </div>
+        </div>
+        <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-body">
+        <ul class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <span><strong>Android (Chrome/Brave/Edge):</strong> <code>frankpass.com</code> खोलें &rarr; ब्राउज़र मेन्यू <strong>(⋮)</strong> दबाएं &rarr; <strong>"Install app"</strong> या <strong>"Add to Home screen"</strong> चुनें।</span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span><strong>iOS (Safari):</strong> सफारी में <code>frankpass.com</code> खोलें &rarr; <strong>शेयर आइकन (📤)</strong> दबाएं &rarr; <strong>"Add to Home Screen"</strong> चुनें।</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>होम स्क्रीन से ऐप की तरह लॉन्च करें। सर्विस वर्कर पूरे इंजन को आपके फोन में सुरक्षित रूप से कैश कर लेता है।</span>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <span><strong>ऑफलाइन टेस्ट करें:</strong> फोन को एयरप्लेन मोड (Airplane Mode) में डालें। फ्रैंकपास इंटरनेट के बिना पूरे पासवर्ड्स और एटीएम पिन जनरेट करता है।</span>
+          </li>
+        </ul>
+
+        <div class="trial-highlight" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.3);">
+          <span>✈️</span>
+          <span><strong>शून्य इंटरनेट आवश्यकता:</strong> दूरदराज के इलाकों में, इंटरनेट शटडाउन में या अंतरराष्ट्रीय उड़ानों के दौरान भी आपकी क्रिप्टोग्राफिक रिकवरी की हमेशा आपके साथ रहती है।</span>
+        </div>
+
+        <div class="acc-cta-row">
+          <a href="/pin.html" class="acc-btn-primary">मोबाइल पिन जनरेटर आजमाएं &rarr;</a>
+          <a href="/install.html" class="acc-btn-ghost">ऑफलाइन इंस्टॉल हब</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Best Practices Section ── -->
+  <section style="margin-top:3.5rem;">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <h2 style="font-size:1.6rem;font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0;">स्टेटलेस सुरक्षा के 3 स्वर्णिम नियम</h2>
+      <p style="color:var(--text-muted);font-size:0.95rem;">सरल नियम जो जीवनभर अभेद्य डिजिटल सुरक्षा की गारंटी देते हैं।</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1.25rem;">
+      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:16px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">🔑</div>
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem;">1. स्मरणीय पासफ़्रेज़</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.6;">4+ शब्दों का एक सहज वाक्य चुनें जो आपको याद रहे। कभी भी एकल शब्द या जन्मतिथि न चुनें।</p>
+      </div>
+      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:16px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">🔄</div>
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem;">2. काउंटर रोटेशन</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.6;">जब कोई वेबसाइट पासवर्ड बदलने को कहे, तो सीक्रेट की बदले बिना काउंटर <code>v=1</code> से <code>v=2</code> कर दें।</p>
+      </div>
+      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:16px;padding:1.5rem;">
+        <div style="font-size:1.5rem;margin-bottom:0.5rem;">🔢</div>
+        <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem;">3. बैंकिंग पिन रिकॉल</h3>
+        <p style="font-size:0.85rem;color:var(--text-muted);margin:0;line-height:1.6;">कम इस्तेमाल होने वाले एटीएम कार्ड्स के लिए <code>/pin.html</code> का उपयोग करें और कहीं भी मांग पर दोबारा निकालें।</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/frankpass-config.js?v=4.2.8"></script>
+<script src="/country-data.js?v=4.2.8"></script>
+<script src="/country-dropdown.js?v=4.2.8"></script>
+<script src="/footer.js?v=4.2.8"></script>
+<script>
+function toggleAcc(id) {
+  const card = document.getElementById(id);
+  if (!card) return;
+  const isActive = card.classList.contains('active');
+  document.querySelectorAll('.accordion-card').forEach(c => c.classList.remove('active'));
+  if (!isActive) {
+    card.classList.add('active');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
+  }
+}
+</script>
+</body>
+</html>
