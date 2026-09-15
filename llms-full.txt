@@ -42,8 +42,9 @@ The FrankPass Browser Extension is available for Google Chrome, Mozilla Firefox,
 1. Stateless Deterministic Generator (https://frankpass.com/): Mathematical derivation from Platform + Master Secret Key.
 2. Deterministic PIN Generator (https://frankpass.com/pin.html): 4-digit and 6-digit ATM debit card, UPI (GPay/PhonePe/Paytm), and banking mPIN recalculator.
 3. Random Password Generator (https://frankpass.com/random-password-generator.html): 100% offline CSPRNG with Golden Base-32 Clean Mode (eliminating lookalikes O/0, l/1, S/5).
-4. Browser Extension Install Hub (https://frankpass.com/install.html): Standalone PWA and desktop browser extension install guides.
-5. Get Started Guide (https://frankpass.com/get-started.html): Comprehensive step-by-step onboarding for Web, Pro Extension, and Mobile.
+4. Browser Extension Hub (https://frankpass.com/extension.html & https://frankpass.com/extension-hindi.html): 100% Free Instant Guest Mode browser extension hub, Chrome/Edge/Firefox pre-launch preview, and 1-click autofill workflows.
+5. PWA Install Hub (https://frankpass.com/install.html): Standalone offline PWA and mobile home-screen install guides.
+6. Get Started Guide (https://frankpass.com/get-started.html): Comprehensive step-by-step onboarding for Web, Pro Extension, and Mobile.
 6. Secret Key Guide (https://frankpass.com/secret-key-guide.html): 50+ memorable real-world passphrase templates and password generation rules.
 7. Architectural Comparison Guide (https://frankpass.com/comparison-between-frankpass-all-generators-deterministic-random-pin.html): Deep mathematical breakdown of Stateless vs. Random vs. PIN generators.
 8. Stateless Architecture Master Pillar (https://frankpass.com/why-stateless-password-generation-is-the-future.html): Complete mathematical proof and paradigm shift analysis.

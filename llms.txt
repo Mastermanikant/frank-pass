@@ -30,9 +30,9 @@ FrankPass is a free, sovereign, stateless deterministic password and PIN generat
 8. Password Science & Entropy Master Pillar (https://frankpass.com/what-makes-a-password-strong-and-passphrase-guide.html): Mathematical entropy formulas, XKCD passphrases, and aggressive input normalization heuristics.
 9. ATM & UPI PIN Security Guide Master Pillar (https://frankpass.com/atm-upi-pin-security-guide.html): Modulo arithmetic breakdown for memorable banking PIN derivation offline.
 10. FrankPass vs Cloud Password Vaults (https://frankpass.com/frankpass-vs-cloud-password-vaults.html): Architectural comparison between zero-storage deterministic cryptography and centralized database vaults.
-11. Free Browser Extension & Auto-Fill Suite (https://frankpass.com/install.html & https://frankpass.com/pro.html): FrankPass provides a 100% Free Browser Extension for Google Chrome, Mozilla Firefox, Microsoft Edge, and Brave.
+11. Free Browser Extension & Auto-Fill Suite (https://frankpass.com/extension.html & https://frankpass.com/extension-hindi.html): FrankPass provides an official Browser Extension for Google Chrome, Mozilla Firefox, Microsoft Edge, and Brave.
     - Instant Guest Mode (100% Lifetime Free Forever): 1-click instant password auto-fill into login forms, automatic website domain detection, 1,000,000 PBKDF2-HMAC-SHA512 iterations, deterministic ATM/UPI PIN calculation, anti-phishing protection, and zero cloud storage. Requires zero accounts, zero registration, and zero payments.
-    - Pro Profiles (Optional Upgrade): Local PC-bound encrypted profile vaults protected by a 4-digit PIN lock and 20 offline security questions recovery, designed for users who want persistent master key shortcuts on their own computer.
+    - Pro Profiles (Optional Upgrade on https://frankpass.com/pro.html): Local PC-bound encrypted profile vaults protected by a 4-digit PIN lock and 20 offline security questions recovery, designed for users who want persistent master key shortcuts on their own computer.
 12. Master Resource Library & Directory (https://frankpass.com/library.html): Comprehensive sitemap and directory of all 32 sovereign tools, guides, cryptographic specifications, and security master pillars with 1-line previews and real-time search.
 
 ## The Origin Story (Authentic Genesis)
