@@ -854,8 +854,9 @@ const normalizedSecret = (secretKey || '')
       <h3>2. Cryptographic Domain Separation:</h3>
       <p>By injecting the domain name into length-prefixed netstrings and salting the HMAC-SHA512 PRF, outputs across different platforms (D<sub>1</sub> &ne; D<sub>2</sub>) are computationally indistinguishable from independent random variables. A data breach at Service A gives an attacker zero mathematical leverage to predict credentials for Service B.</p>
 
-      <h3>3. Air-Gapped &amp; 100% Offline Survivability:</h3>
-      <p>FrankPass contains zero runtime network dependencies. Once cached by the Service Worker or saved as a standalone single-file HTML document (150 KB), the engine executes client-side on completely air-gapped computers without internet connectivity.</p>
+      <h3>3. 100% Offline Architecture &amp; Zero Network Attack Surface:</h3>
+      <p>FrankPass web applications (PWA), desktop apps, mobile apps, and extensions are intentionally architected with <strong>zero runtime network dependencies and zero network requests</strong>. The foundational security axiom is absolute: <em>"Software that never initiates an outbound network connection can never exfiltrate a single byte of user data to a remote adversary or compromised server."</em></p>
+      <p>Once cached by the Service Worker or installed as a standalone application, FrankPass operates indefinitely on air-gapped, offline systems with 100% mathematical reproducibility.</p>
 
       <h3>4. Endpoint Threat Matrix &amp; Residual Boundaries:</h3>
       <table>
@@ -863,14 +864,19 @@ const normalizedSecret = (secretKey || '')
           <tr>
             <th>Threat Vector</th>
             <th>Mitigated By</th>
-            <th>Residual Attack Surface / Limitations</th>
+            <th>Residual Attack Surface &amp; Security Standards</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>Clipboard Snooping</strong></td>
             <td>Extension Direct DOM Injection / Native Android Autofill Service</td>
-            <td>Bypasses OS clipboard listeners, but cannot protect against malicious extensions with <code>&lt;all_urls&gt;</code> script injection permissions.</td>
+            <td>Bypasses OS clipboard listeners, but cannot protect against malicious browser extensions with broad <code>&lt;all_urls&gt;</code> script injection permissions.</td>
+          </tr>
+          <tr>
+            <td><strong>Third-Party Extension Snooping (DOM Scraping)</strong></td>
+            <td>Clean Browser Profiles &amp; Dedicated Native Applications (Windows &amp; Android)</td>
+            <td><strong>Honest Solution:</strong> Within a browser engine, extensions execute with equal DOM privileges. For critical environments (Banking, Master Email / Gmail, Crypto Wallets), users should maintain an isolated <strong>Clean Dedicated Browser Profile</strong> (containing zero third-party coupon/PDF extensions and only FrankPass) or use <strong>FrankPass Native Standalone Desktop/Android Apps</strong> operating completely outside the browser DOM sandbox.</td>
           </tr>
           <tr>
             <td><strong>Memory Scraping</strong></td>
@@ -890,7 +896,14 @@ const normalizedSecret = (secretKey || '')
         </tbody>
       </table>
 
-      <h3>5. The "Stateless Paradox" &amp; Metadata Storage:</h3>
+      <h3>5. Tiered Security Architecture for High-Value Accounts:</h3>
+      <p>FrankPass establishes a two-tiered operational security protocol:</p>
+      <ul>
+        <li><strong>Tier 1 (Everyday Web Services - Social, Shopping, Media):</strong> Utilize the FrankPass browser extension or offline PWA within standard browser sessions.</li>
+        <li><strong>Tier 2 (High-Stakes Credentials - Online Banking, Primary Gmail, Cloud Consoles):</strong> Execute logins exclusively inside an isolated <strong>Clean Browser Profile</strong> (devoid of third-party extensions) or via <strong>FrankPass Standalone Native Desktop &amp; Android Applications</strong> protected by OS-level memory sandboxing and Android <code>FLAG_SECURE</code> hardware protections.</li>
+      </ul>
+
+      <h3>6. The "Stateless Paradox" &amp; Metadata Storage:</h3>
       <p>Completely stateless generation requires users to remember context parameters: Target Domain, Username, and Counter/Version (V). When enterprise workflows require frequent password changes (e.g. quarterly rotation from V=1 to V=2), maintaining an offline, non-sensitive index (e.g. an unencrypted text list such as <code>github.com: v2</code> or FrankPass Pro local profiles) is a pragmatic necessity. This formalizes FrankPass as a <strong>Stateless Credential Payload with Optional Local Metadata</strong>.</p>
 
       <hr>
