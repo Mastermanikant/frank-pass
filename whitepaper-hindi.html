@@ -705,7 +705,7 @@
         <tbody>
           <tr>
             <td><strong>बड़े अक्षर (Uppercase)</strong></td>
-            <td><code>ADEFHLMNRT</code></td>
+            <td><code>A D E F H L M N R T</code></td>
             <td>10</td>
             <td><code>B, C, G, I, J, K, O, P, Q, S, U, V, W, X, Y, Z</code></td>
             <td>
@@ -714,7 +714,7 @@
           </tr>
           <tr>
             <td><strong>छोटे अक्षर (Lowercase)</strong></td>
-            <td><code>defhmt</code></td>
+            <td><code>d e f h m t</code></td>
             <td>6</td>
             <td><code>a, b, c, g, i, j, k, l, n, o, p, q, r, s, u, v, w, x, y, z</code></td>
             <td>
@@ -723,7 +723,7 @@
           </tr>
           <tr>
             <td><strong>अंक (Digits)</strong></td>
-            <td><code>2346789</code></td>
+            <td><code>2 3 4 6 7 8 9</code></td>
             <td>7</td>
             <td><code>0, 1, 5</code></td>
             <td>
@@ -732,7 +732,7 @@
           </tr>
           <tr>
             <td><strong>विशेष प्रतीक (Symbols)</strong></td>
-            <td><code>@#$%&*+=?</code></td>
+            <td><code>@ # $ % & * + = ?</code></td>
             <td>9</td>
             <td><code>' " ` ( ) { } [ ] &lt; &gt; / \ | ~ ^ : ; , . - _</code></td>
             <td>
@@ -873,7 +873,12 @@ const normalizedSecret = (secretKey || '')
           <tr>
             <td><strong>क्लिपबोर्ड स्नूपिंग</strong></td>
             <td>एक्सटेंशन डायरेक्ट DOM ऑटो-फिल / एंड्रॉइड ऑटो-फिल</td>
-            <td>ऑपरेटिंग सिस्टम क्लिपबोर्ड लिसनर्स को बायपास करता है, लेकिन <code>&lt;all_urls&gt;</code> परमिशन वाले दुर्भावनापूर्ण एक्सटेंशन से सुरक्षा नहीं दे सकता।</td>
+            <td>
+              <p style="margin-bottom:0.4rem;">ऑपरेटिंग सिस्टम क्लिपबोर्ड लिसनर्स को बायपास करता है, लेकिन <code>&lt;all_urls&gt;</code> परमिशन वाले दुर्भावनापूर्ण एक्सटेंशन से सुरक्षा नहीं दे सकता।</p>
+              <div style="background:rgba(16,185,129,0.1);border-left:3px solid #10b981;padding:0.4rem 0.6rem;border-radius:4px;font-size:0.85rem;margin-top:0.35rem;">
+                <strong>फ्रैंकपास का समाधान:</strong> बैंकिंग, पेमेंट्स व प्राथमिक ईमेल जैसे संवेदनशील कार्यों के लिए एक अलग <strong>'क्लीन ब्राउज़र प्रोफाइल'</strong> (जिसमें 0 थर्ड-पार्टी एक्सटेंशन हों और केवल फ्रैंकपास हो) का उपयोग करें या <strong>फ्रैंकपास स्टैंडअलोन नेटिव ऐप (Windows/Android)</strong> का उपयोग करें जो ब्राउज़र सैंडबॉक्स से बाहर स्वतंत्र रूप से चलती है।
+              </div>
+            </td>
           </tr>
           <tr>
             <td><strong>थर्ड-पार्टी एक्सटेंशन जासूसी (DOM Snooping)</strong></td>
