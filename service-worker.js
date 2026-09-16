@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.2.9 (Auto Controller Change & Instant Sync)
-const CACHE_NAME = 'frankpass-v4.2.9';
+// FrankPass Service Worker v4.3.0 (Auto Controller Change & Instant Sync)
+const CACHE_NAME = 'frankpass-v4.3.0';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -20,6 +20,7 @@ const CACHED_URLS = [
     '/secret-key-guide.html',
     '/secret-key-guide-hindi.html',
     '/get-started.html',
+    '/get-started-hindi.html',
     '/install.html',
     '/pro.html',
     '/products.html',
@@ -32,6 +33,9 @@ const CACHED_URLS = [
     '/whitepaper.html',
     '/whitepaper-hindi.html',
     '/docs.html',
+    '/docs-hindi.html',
+    '/extension.html',
+    '/extension-hindi.html',
     '/faq.html',
     '/about-us.html',
     '/about-us-hindi.html',
@@ -54,6 +58,7 @@ const CACHED_URLS = [
     '/icons/logo-key-64.webp',
     '/icons/icon-192.png',
     '/icons/icon-512.png',
+    '/icons/icon-512-maskable.png',
     '/icons/founder-master-manikant-yadav.webp',
     '/global_auth_registry.json',
     '/manifest.json'

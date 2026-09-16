@@ -486,6 +486,30 @@
     }
   }
 
+  function registerGlobalServiceWorker() {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(function (reg) {
+            reg.update();
+            reg.addEventListener('updatefound', function () {
+              const newWorker = reg.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', function () {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    console.log('[FrankPass PWA] New update installed.');
+                  }
+                });
+              }
+            });
+          })
+          .catch(function (err) {
+            console.warn('[FrankPass PWA] ServiceWorker registration notice:', err);
+          });
+      });
+    }
+  }
+
   function initFooter() {
     initTheme();
     setupMobileMenu();
@@ -493,6 +517,7 @@
     ensureCountryDropdown();
     buildFooter();
     setupVersionPopover();
+    registerGlobalServiceWorker();
     if (typeof Notification !== 'undefined' && Notification.permission === 'granted' && localStorage.getItem('fp_push_muted') !== 'true') {
       syncPushUI(true);
     }

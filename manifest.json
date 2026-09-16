@@ -34,5 +34,48 @@
       "type": "image/png",
       "purpose": "maskable"
     }
+  ],
+  "categories": [
+    "utilities",
+    "security",
+    "productivity"
+  ],
+  "shortcuts": [
+    {
+      "name": "Stateless Passwords",
+      "short_name": "Passwords",
+      "description": "Deterministic Master Secret Password Generator",
+      "url": "/?source=pwa_shortcut",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "ATM / UPI PIN",
+      "short_name": "PIN Gen",
+      "description": "Stateless High-Entropy PIN Generator",
+      "url": "/pin.html?source=pwa_shortcut",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Random Generator",
+      "short_name": "Random",
+      "description": "Client-Side Random Password Generator",
+      "url": "/random-password-generator.html?source=pwa_shortcut",
+      "icons": [
+        {
+          "src": "icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
   ]
 }
