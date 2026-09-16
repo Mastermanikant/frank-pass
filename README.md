@@ -35,17 +35,19 @@ FrankPass is a stateless cryptographic utility that replaces password storage wi
 
 ---
 
-## ⚙️ Mathematical Derivation Pipeline
+## ⚙️ Mathematical Derivation Pipeline & Specification
 
 ```
-[ Master Secret Key ] ─┐
-                       ├─► [ Seed Normalizer ] ─► [ 1,000,000 PBKDF2-HMAC-SHA512 Rounds ] ─► [ 16-char High-Entropy Password ]
-[ Platform Identifier ] ─┘
+[ Master Secret Key (S) ] ─┐
+                           ├─► [ MMY Normalization (N_norm) ] ─► [ 1,000,000 PBKDF2-HMAC-SHA512 ] ─► [ Golden Base-32 Password (L) ]
+[ Target Domain (D)     ] ─┘
 ```
 
-1. **Input Normalization:** Strips subdomains and lowercase protocols (`https://`, `www.`).
-2. **Entropy Stretcher:** Passes combined seed through 1,000,000 iterations of `PBKDF2` keyed with `HMAC-SHA512`.
-3. **Safe Charset Mapping:** Maps cryptographic bytes into 55 non-ambiguous alphanumeric and safe symbols (removing `l, I, O, 0, 1`).
+1. **Input Normalization ($\mathcal{N}_{norm}$):** Natural language whitespace removal, lowercase conversion, and punctuation stripping.
+2. **Local Pepper Derivation:** HMAC-SHA512 cascaded with 1,000 rounds SHA-256 digest.
+3. **Entropy Stretcher:** Context netstring passed through 1,000,000 iterations of `PBKDF2-HMAC-SHA512`.
+4. **Modulo Bias-Free Base-32 Mapping:** Exact $2^5 = 32$ alphabet mathematically eliminating modulo bias and ambiguous glyphs (`l, 1, I, O, 0, 8, B`).
+5. **Full Technical Whitepaper:** Read the formal cryptographic specification at [frankpass.com/whitepaper.html](https://frankpass.com/whitepaper.html) or in Hindi at [frankpass.com/whitepaper-hindi.html](https://frankpass.com/whitepaper-hindi.html).
 
 ---
 
