@@ -514,7 +514,7 @@
       <div class="article-byline">
         <span>लेखक: <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">मास्टर मणिकान्त यादव (Master Manikant Yadav)</a></span>
         <span>&middot;</span>
-        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (दोपहर 01:55 IST)</span>
+        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (दोपहर 02:25 IST)</span>
         <span>&middot;</span>
         <span>15 मिनट पठन</span>
         <span>&middot;</span>
@@ -805,6 +805,34 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- बहु-आयामी संयुक्त खोज जटिलता (Multivariate Search Space Complexity) -->
+      <h3>बहु-आयामी संयुक्त खोज जटिलता (Multivariate Search Space Complexity):</h3>
+      <p>पारंपरिक सिंगल-इनपुट KDF प्रणालियों के विपरीत, फ्रैंकपास में किसी वेबसाइट के आउटपुट पासवर्ड से मूल मास्टर सीक्रेट का अनुमान लगाना केवल एक आयामी (1D) पासफ़्रेज़ गेसिंग नहीं है। हमलावर को अज्ञात वैरिएबल्स के पूरे संयुक्त टुपल पर खोज करनी होती है:</p>
+
+      <div class="math-formula-box" style="font-size:1rem;">
+        Total Search Complexity = &Oscr;(|V| &times; |U| &times; |Passphrase Space|)
+      </div>
+
+      <p>जहाँ <em>|V|</em> पासवर्ड रोटेशन काउंटर (1, 2, 3...) है, <em>|U|</em> यूजरनेम/ईमेल के संभावित प्रारूप हैं, और <em>|Passphrase Space|</em> मास्टर सीक्रेट की संभावनाओं का दायरा है। डोमेन और यूजरनेम के विभिन्न संयोजनों के कारण हमलावर का ऑफलाइन ट्रायल स्पेस कई गुना गुणात्मक रूप से बढ़ जाता है, जिससे डिक्शनरी या रेनबो टेबल का कोई भी सामान्य प्रयास गणितीय रूप से विफल हो जाता है।</p>
+
+      <!-- 7 से 9 शब्दों का देसी पासफ़्रेज़ मॉडल (110+ बिट्स भाषाई एन्ट्रापी) -->
+      <div class="article-highlight-box" style="margin:1.75rem 0;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.04);">
+        <h3 style="margin-top:0;color:#10b981;display:flex;align-items:center;gap:8px;">
+          <span>🛡️</span> 7 से 9 शब्दों का प्राकृतिक भाषाई मॉडल (110+ बिट्स अभेद्य एन्ट्रापी)
+        </h3>
+        <p style="margin-bottom:0.75rem;color:var(--text-primary);font-weight:600;">
+          जटिल प्रतीकों (जैसे <code>P@$$w0rd!#</code>) की बनावटी सुरक्षा के भ्रम से बाहर निकलें। पारिवारिक व प्राकृतिक संबंध वाक्य शून्य प्रतीकों के साथ भी 110+ बिट्स की वास्तविक एन्ट्रापी प्रदान करते हैं।
+        </p>
+        <p style="margin-bottom:0.75rem;">
+          उदाहरण के लिए एक सामान्य 9-शब्दों का पारिवारिक वाक्य: <code>"mere door ke mosa ka beta ram bahut achha aadmi hai"</code>
+        </p>
+        <ul style="margin-bottom:0.75rem;">
+          <li><strong>110+ बिट्स भाषाई एन्ट्रापी:</strong> 8,000 शब्दों के सामान्य शब्दकोश में 9 शब्दों का संयोजन <em>9 &times; log<sub>2</sub>(8000) &approx; 116.7 बिट्स</em> की खोज जटिलता (8000<sup>9</sup> &approx; 1.34 &times; 10<sup>35</sup> कॉम्बिनेशन्स) उत्पन्न करता है।</li>
+          <li><strong>शून्य टाइपिंग गलतियां:</strong> बिना किसी अजीब सिंबल के साधारण शब्द होने के कारण मोबाइल पर टाइप करना अत्यंत सहज है और MMY Normalization स्पेस व केस की चिंता समाप्त कर देता है।</li>
+          <li><strong>फ्रैंकपास प्रो (FrankPass Pro) लोकल पिन सुविधा के साथ तालमेल:</strong> यूजर को यह 9-शब्दों का वाक्य केवल एक बार याद रखना होता है। फ्रैंकपास प्रो में यह पासफ़्रेज़ आपके डिवाइस पर ही लोकल एन्क्रिप्टेड वॉल्ट में सुरक्षित रहता है और केवल 4-अंकों के पिन (या बायोमेट्रिक्स) से 1 सेकंड में अनलॉक होकर ऑटो-फिल हो जाता है। यानी 120-बिट सुरक्षा और 1 सेकंड की सुविधा का सर्वोत्तम संगम।</li>
+        </ul>
+      </div>
 
       <div class="article-highlight-box">
         <h3 style="margin-top:0;color:var(--accent-light);">महत्वपूर्ण अंतर: सीक्रेट की एन्ट्रापी बनाम आउटपुट पासवर्ड</h3>
