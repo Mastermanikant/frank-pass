@@ -507,67 +507,65 @@
     </header>
 
     <div class="article-body">
-      <p>आज के समय में हर व्यक्ति के पास कई बैंक खाते और कार्ड्स होते हैं: 4-अंकीय डेबिट कार्ड एटीएम पिन, 6-अंकीय यूपीआई पिन (Google Pay, PhonePe, Paytm, BHIM) और सिम कार्ड पिन।</p>
+      <p>आधुनिक डिजिटल बैंकिंग में हर व्यक्ति को कई संख्यात्मक कोड्स याद रखने पड़ते हैं: 4 अंकों का एटीएम डेबिट कार्ड पिन (ATM PIN), 6 अंकों का मोबाइल यूपीआई बैंकिंग पिन (Google Pay, PhonePe, Paytm, BHIM), सिम कार्ड सुरक्षा लॉक, और नेट बैंकिंग सिक्योरिटी टोकन।</p>
 
-      <p>रोजाना इस्तेमाल होने वाले मुख्य कार्ड का पिन तो याद रहता है, लेकिन <strong>दूसरे या कम इस्तेमाल होने वाले बैंक खातों के पिन लोग अक्सर भूल जाते हैं।</strong> इसके कारण कार्ड ब्लॉक होना, बार-बार बैंक जाना या जन्म वर्ष (उदा. <code>1995</code>) जैसे आसान व असुरक्षित पिन रखने जैसी गलतियां होती हैं।</p>
+      <p>रोजमर्रा के प्राथमिक कार्ड्स तो याद रहते हैं, लेकिन <strong>अक्सर कम इस्तेमाल होने वाले सेकेंडरी बैंक कार्ड्स और खातों का पिन लोग भूल जाते हैं।</strong> इसके कारण बैंक खाते लॉक हो जाते हैं या लोग जन्म वर्ष (जैसे <code>1992</code>), आसान क्रम (<code>1234</code>) रखने या कार्ड पर पिन लिखने जैसी गंभीर सुरक्षा चूक कर बैठते हैं।</p>
 
-      <p><strong>फ्रैंकपास पिन जेनरेटर</strong> (<a href="/pin.html" style="color:var(--accent-light);">/pin.html</a>) इस समस्या का शुद्ध गणितीय समाधान देता है: बिना किसी डायरी या फाइल में लिखे, अपनी मास्टर सीक्रेट की और बैंक नाम से जरूरत पड़ने पर तुरंत 4 या 6 अंकों का पिन निकालना।</p>
+      <p><strong>फ्रैंकपास पिन जेनरेटर</strong> (<a href="/pin.html" style="color:var(--accent-light);">/pin.html</a>) इस समस्या का स्थायी समाधान शुद्ध डिटरमिनिस्टिक मॉड्यूलो गणित से करता है: बिना कोई डेटा स्टोर या ट्रांसमिट किए, आपकी एकमात्र मास्टर सीक्रेट की से 4-अंकीय व 6-अंकीय पिन की ऑन-डिमांड तुरंत पुनर्गणना।</p>
 
       <hr />
 
       <h2>1. डिटरमिनिस्टिक मॉड्यूलो गणित का फॉर्मूला</h2>
-      <p>डिटरमिनिस्टिक पिन फॉर्मूला आपकी मास्टर सीक्रेट की और बैंक नाम को क्रिप्टोग्राफिक हैशिंग और मॉड्यूलो गणित से प्रोसेस करता है:</p>
+      <p>डिटरमिनिस्टिक पिन फंक्शन उच्च-एन्ट्रापी सीक्रेट टुपल को क्रिप्टोग्राफिक हैशिंग और मॉड्यूलर अंकगणित के जरिए एक निश्चित लंबाई के संख्यात्मक पिन में बदलता है:</p>
 
-      <div class="math-formula-box">
-        PIN_4 = [ PBKDF2(MasterKey, BankSlug, 100,000, HMAC-SHA512) ] mod 10^4
+      <div class="math-formula-box" style="font-size:1.05rem;line-height:1.7;">
+        Salt = SHA-512( BankSlug || Username || Context || FRANKPASS_DOMAIN_SALT )<br>
+        Key = PBKDF2( SecretKey, Salt, 1,000,000, HMAC-SHA512 )<br>
+        Digit[i] = Key[i] mod 10 &nbsp;&nbsp;(for i = 0 .. L - 1)
       </div>
 
-      <div class="math-formula-box">
-        PIN_6 = [ PBKDF2(MasterKey, BankSlug, 100,000, HMAC-SHA512) ] mod 10^6
-      </div>
-
-      <p>यह प्रक्रिया 3 चरणों में पूरी होती है:</p>
+      <p>यह गणना प्रक्रिया तीन चरणों में पूरी होती है:</p>
 
       <ol>
-        <li><strong>इनपुट नॉर्मलाइजेशन:</strong> मास्टर की और बैंक का नाम (उदा. <code>sbi-atm</code> या <code>hdfc-upi</code>) अक्षरों और संख्याओं में नॉर्मलाइज होता है।</li>
-        <li><strong>क्रिप्टोग्राफिक स्ट्रेचिंग:</strong> इनपुट्स 1,00,000 राउंड्स PBKDF2-HMAC-SHA512 से गुजरते हैं।</li>
-        <li><strong>यूनिफॉर्म मॉड्यूलो मैपिंग:</strong> 32-बिट इंटीजर को <code>0000..9999</code> या <code>000000..999999</code> में निष्पक्षता से मैप किया जाता है।</li>
+        <li><strong>इनपुट नॉर्मलाइजेशन:</strong> यूजर की मास्टर सीक्रेट की और बैंक सर्विस का नाम (जैसे <code>sbi-atm</code> या <code>hdfc-upi</code>) MMY अल्फा-न्यूमेरिक मानक (<code>[a-z0-9]</code>) में कड़े रूप से मानकीकृत किए जाते हैं।</li>
+        <li><strong>क्रिप्टोग्राफिक स्ट्रेचिंग:</strong> इनपुट्स को PBKDF2-HMAC-SHA512 के ठीक <strong>10,00,000 (10 लाख) राउंड्स</strong> से प्रोसेस करके 512-बिट का स्यूडोरैंडम बाइट ऐरे प्राप्त किया जाता है।</li>
+        <li><strong>डिटरमिनिस्टिक न्यूमेरिक मैपिंग:</strong> प्रत्येक अंक स्थिति <em>i</em> के लिए व्युत्पन्न बाइट <code>Key[i]</code> पर <code>mod 10</code> लागू किया जाता है, जिससे शुद्ध दशमलव अंक <code>0..9</code> प्राप्त होता है। 4 अंकों के पिन (<span class="math-inline">L = 4</span>) के लिए प्रथम 4 बाइट्स और 6 अंकों के यूपीआई पिन (<span class="math-inline">L = 6</span>) के लिए प्रथम 6 बाइट्स लिए जाते हैं।</li>
       </ol>
 
       <hr />
 
       <h2>2. बैंकिंग कार्ड्स व यूपीआई का व्यावहारिक उपयोग</h2>
-      <p>डिटरमिनिस्टिक पिन सिस्टम में पिन याद रखने या सहेजने का कोई झंझट नहीं होता:</p>
+      <p>इस डिटरमिनिस्टिक पिन सिस्टम में किसी सतत प्रबंधन की आवश्यकता नहीं होती। आप बैंक में एक बार पिन सेट करते हैं और जरूरत पड़ने पर ही इसकी पुनर्गणना करते हैं:</p>
 
       <div class="table-responsive">
         <table>
           <thead>
             <tr>
               <th>चरण</th>
-              <th>क्रिया</th>
+              <th>क्रिया (Action)</th>
               <th>तकनीकी विवरण</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>चरण 1: पिन निकालें</strong></td>
-              <td>मोबाइल पर <a href="/pin.html" style="color:var(--accent-light);">/pin.html</a> खोलें</td>
-              <td>मास्टर की और बैंक का नाम (उदा. <code>icici-card</code>) दर्ज करके 4 या 6 डिजिट चुनें।</td>
+              <td><strong>चरण 1: पिन कैलकुलेट करें</strong></td>
+              <td>अपने फोन या लैपटॉप पर <a href="/pin.html" style="color:var(--accent-light);">/pin.html</a> खोलें</td>
+              <td>अपनी मास्टर सीक्रेट की + बैंक सर्विस का नाम (उदा. <code>icici-card</code>) दर्ज करें और 4 या 6 अंक चुनें।</td>
             </tr>
             <tr>
-              <td><strong>चरण 2: बैंक या एटीएम में सेट करें</strong></td>
-              <td>एटीएम मशीन या बैंकिंग ऐप में जाएं</td>
-              <td>"Change / Set PIN" में वही नंबर सेट कर दें।</td>
+              <td><strong>चरण 2: बैंक में पिन सेट करें</strong></td>
+              <td>एटीएम मशीन में कार्ड डालें या मोबाइल बैंकिंग ऐप खोलें</td>
+              <td>"Change / Set ATM PIN" पर जाएं और कैलकुलेट किया गया सटीक नंबर दर्ज करें।</td>
             </tr>
             <tr>
               <td><strong>चरण 3: नंबर भूल जाएं</strong></td>
-              <td>पिन को कहीं भी लिखने की जरूरत नहीं</td>
-              <td>न कोई डायरी, न मोबाइल नोट, न कोई क्लाउड सिंक।</td>
+              <td>पिन को कहीं भी लिखे बिना चिंतामुक्त रहें</td>
+              <td>शून्य कागजी पर्चियां, शून्य डिजिटल नोट्स, शून्य क्लाउड वॉल्ट सिंक।</td>
             </tr>
             <tr>
-              <td><strong>चरण 4: जरूरत पर दोबारा निकालें</strong></td>
-              <td>महीनों बाद जब भी उस कार्ड की जरूरत पड़े</td>
-              <td><a href="/pin.html" style="color:var(--accent-light);">/pin.html</a> खोलें, बैंक नाम डालें और तुरंत वही पिन स्क्रीन पर देखें।</td>
+              <td><strong>चरण 4: आवश्यकता पड़ने पर पुनर्गणना</strong></td>
+              <td>महीनों बाद जब उस कार्ड का उपयोग करना हो</td>
+              <td>ऑफलाइन एयरप्लेन मोड में <a href="/pin.html" style="color:var(--accent-light);">/pin.html</a> खोलें, बैंक का नाम दर्ज करें और अपना पिन तुरंत प्राप्त करें।</td>
             </tr>
           </tbody>
         </table>
@@ -576,35 +574,35 @@
       <hr />
 
       <h2>3. बैंक सेवाओं के लिए मानक नामकरण (Standard Naming)</h2>
-      <p>डिटरमिनिस्टिक सिस्टम में समान इनपुट पर ही समान आउटपुट मिलता है, इसलिए बैंक का नाम हमेशा एक जैसा रखें:</p>
+      <p>चूंकि डिटरमिनिस्टिक एल्गोरिदम समान इनपुट मिलने पर ही समान आउटपुट उत्पन्न करता है, इसलिए सर्विस के नाम में एकरूपता आवश्यक है। अनुशंसित मानक कीवर्ड्स:</p>
 
       <div class="table-responsive">
         <table>
           <thead>
             <tr>
-              <th>खाता / कार्ड</th>
+              <th>खाते का प्रकार</th>
               <th>अनुशंसित सर्विस नाम</th>
-              <th>प्रारूप</th>
+              <th>फॉर्मेट</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>मुख्य बैंक एटीएम कार्ड</td>
+              <td>प्राथमिक बैंक एटीएम कार्ड</td>
               <td><code>sbi-atm</code> या <code>sbi-card</code></td>
               <td>4 अंक</td>
             </tr>
             <tr>
-              <td>दूसरा बैंक डेबिट कार्ड</td>
+              <td>सेकेंडरी बैंक डेबिट कार्ड</td>
               <td><code>hdfc-atm</code> या <code>icici-card</code></td>
               <td>4 अंक</td>
             </tr>
             <tr>
-              <td>मुख्य यूपीआई पेमेंट (PhonePe / GPay)</td>
+              <td>प्राथमिक यूपीआई पेमेंट (PhonePe / GPay)</td>
               <td><code>phonepe-upi</code> या <code>gpay-upi</code></td>
               <td>6 अंक</td>
             </tr>
             <tr>
-              <td>दूसरे बैंक का यूपीआई पिन</td>
+              <td>सेकेंडरी बैंक यूपीआई पिन</td>
               <td><code>axis-upi</code> या <code>pnb-upi</code></td>
               <td>6 अंक</td>
             </tr>
@@ -620,28 +618,39 @@
       <hr />
 
       <h2>4. क्रिप्टोग्राफिक सुरक्षा व अलगाव</h2>
-      <p>क्या 4-अंकीय पिन जानकर कोई मास्टर की निकाल सकता है?</p>
+      <p>उपयोगकर्ता अक्सर पूछते हैं: <em>"यदि किसी को मेरा 4-अंकीय एटीएम पिन पता चल जाए, तो क्या वह मेरी मास्टर सीक्रेट की को रिवर्स-इंजीनियर कर सकता है?"</em></p>
 
       <div class="article-highlight-box">
-        <strong>वन-वे प्री-इमेज रेजिस्टेंस:</strong> 4-अंकीय पिन में केवल 10,000 संभावनाएं होती हैं। एकतरफा हैश फंक्शन के कारण 4-अंकीय नंबर से 100-बिट की मास्टर की को रिवर्स करना गणितीय रूप से असंभव है, क्योंकि अरबों अलग-अलग इनपुट्स एक ही 4-डिजिट नंबर निकाल सकते हैं।
+        <strong>वन-वे प्री-इमेज रेजिस्टेंस:</strong> 4 अंकों के पिन में केवल 13.29 बिट्स एन्ट्रापी होती है (<span class="math-inline">10^4 = 10,000</span> संयोजन), जबकि 6 अंकों के यूपीआई पिन में 19.93 बिट्स (<span class="math-inline">10^6 = 10,00,000</span> संयोजन) होती है। चूंकि PBKDF2-HMAC-SHA512 एक वन-वे क्रिप्टोग्राफिक कम्प्रेशन फंक्शन है, इसलिए 4 या 6 अंकों के आउटपुट से 100-बिट की मास्टर सीक्रेट की खोजना गणितीय रूप से असंभव है: अरबों ऐसे संभावित इनपुट्स हैं जो समान 4-अंकीय नंबर उत्पन्न करते हैं (हैश कोलिजन अस्पष्टता)।
       </div>
 
-      <p>साथ ही, <code>sbi-atm</code> का पिन जानने से किसी को <code>hdfc-atm</code> या आपके ईमेल पासवर्ड्स के बारे में 0 जानकारी मिलती है।</p>
+      <p>इसके अलावा, <code>sbi-atm</code> का पिन जानने से हैकर को <code>hdfc-atm</code> या आपके ईमेल पासवर्ड के बारे में शून्य जानकारी मिलती है। प्रत्येक सेवा अपने अद्वितीय डोमेन सॉल्ट द्वारा क्रिप्टोग्राफिक रूप से पूर्णतः पृथक रहती है।</p>
+
+      <p><strong>भौतिक दर-सीमित (Rate-Limiting) सुरक्षा:</strong> बैंकिंग एटीएम और यूपीआई प्रणालियों में 3 असफल प्रयासों के बाद खाता या कार्ड फ्रीज हो जाता है। अतः एटीएम पर किसी हैकर द्वारा 4-अंकीय पिन का अनुमान लगाने की संभावना 10,000 में से केवल 3 (0.03%) होती है।</p>
+
+      <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.25);border-radius:14px;padding:1.25rem 1.5rem;margin:2rem 0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;">
+          <div>
+            <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem;">📄 औपचारिक क्रिप्टोग्राफिक व्हाइटपेपर व मॉड्यूलो प्रमाण (v1.2)</strong>
+            <span style="color:var(--text-muted);font-size:0.9rem;">WebCrypto HMAC-SHA512 derivation pipeline, Kerckhoffs सॉल्ट संरचना और कोलिजन रेजिस्टेंस विश्लेषण हेतु तकनीकी व्हाइटपेपर पढ़ें।</span>
+          </div>
+          <a href="/whitepaper-hindi.html" class="btn-ghost" style="padding:0.5rem 1rem;font-size:0.88rem;border-radius:8px;font-weight:700;border:1px solid var(--accent);color:var(--accent-light);text-decoration:none;white-space:nowrap;">व्हाइटपेपर पढ़ें &rarr;</a>
+        </div>
+      </div>
 
       <hr />
 
       <h2>5. निष्कर्ष: चिंतामुक्त बैंकिंग</h2>
-      <p>डिटरमिनिस्टिक मॉड्यूलो गणित के साथ अपने सभी बैंक कार्ड्स और यूपीआई कोड्स को एक ही मास्टर सीक्रेट की से जोड़ें और पिन भूलने के डर से हमेशा के लिए मुक्त हो जाएं।</p>
+      <p>डिटरमिनिस्टिक मॉड्यूलो गणित बैंकिंग पिन याद रखने के तनाव को एक त्वरित गणितीय निश्चितता में बदल देता है। अपने सभी बैंक कार्ड्स, डेबिट खातों और यूपीआई ऐप्स को अपनी एकमात्र मास्टर सीक्रेट की से जोड़कर आप बिना किसी डेटा स्टोरेज के पूर्ण डिजिटल स्वतंत्रता प्राप्त करते हैं।</p>
 
       <div class="article-highlight-box" style="text-align:center;">
-        <h3 style="margin-top:0;">पिन जेनरेटर आज़माएं</h3>
-        <p style="margin-bottom:1.25rem;">क्लाइंट-साइड गणित से 4-अंकीय और 6-अंकीय पिन सुरक्षित रूप से निकालें।</p>
+        <h3 style="margin-top:0;">डिटरमिनिस्टिक पिन कैलकुलेटर का परीक्षण करें</h3>
+        <p style="margin-bottom:1.25rem;">क्लाइंट-साइड WebCrypto गणित से 4 और 6 अंकों के सुरक्षित बैंकिंग पिन बनाएं।</p>
         <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
           <a href="/pin.html" class="btn-primary" style="display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;padding:0.75rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:700;">पिन जेनरेटर खोलें &rarr;</a>
-          <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="btn-secondary" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-secondary);color:var(--text-primary);padding:0.75rem 1.5rem;border-radius:10px;border:1px solid var(--border);text-decoration:none;font-weight:700;">सभी टूल्स की तुलना</a>
+          <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html" class="btn-secondary" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-secondary);color:var(--text-primary);padding:0.75rem 1.5rem;border-radius:10px;border:1px solid var(--border);text-decoration:none;font-weight:700;">सभी जेनरेटर्स की तुलना</a>
         </div>
       </div>
-
     </div>
   </article>
 </main>

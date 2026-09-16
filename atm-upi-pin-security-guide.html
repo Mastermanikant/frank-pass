@@ -516,22 +516,20 @@
       <hr />
 
       <h2>1. The Mathematical Modulo Derivation Algorithm</h2>
-      <p>A deterministic PIN function transforms a high-entropy secret tuple into a fixed-length numeric bitstream using cryptographic hashing and modular arithmetic:</p>
+      <p>A deterministic PIN function transforms a high-entropy secret tuple into a fixed-length numeric sequence using cryptographic hashing and modular arithmetic:</p>
 
-      <div class="math-formula-box">
-        PIN_4 = [ PBKDF2(MasterKey, BankSlug, 100,000, HMAC-SHA512) ] mod 10^4
-      </div>
-
-      <div class="math-formula-box">
-        PIN_6 = [ PBKDF2(MasterKey, BankSlug, 100,000, HMAC-SHA512) ] mod 10^6
+      <div class="math-formula-box" style="font-size:1.05rem;line-height:1.7;">
+        Salt = SHA-512( BankSlug || Username || Context || FRANKPASS_DOMAIN_SALT )<br>
+        Key = PBKDF2( SecretKey, Salt, 1,000,000, HMAC-SHA512 )<br>
+        Digit[i] = Key[i] mod 10 &nbsp;&nbsp;(for i = 0 .. L - 1)
       </div>
 
       <p>The calculation pipeline operates in three distinct phases:</p>
 
       <ol>
         <li><strong>Input Normalization:</strong> The user's Master Secret Key and the Target Bank Identifier (e.g. <code>sbi-atm</code> or <code>hdfc-upi</code>) are canonicalized using MMY alphanumeric standards (<code>[a-z0-9]</code>).</li>
-        <li><strong>Cryptographic Stretching:</strong> The inputs are processed via PBKDF2-HMAC-SHA512 across 100,000 computational rounds to derive a 512-bit pseudorandom byte array.</li>
-        <li><strong>Uniform Modulo Extraction (Rejection Sampling):</strong> To prevent modulo bias (where certain digits appear with slightly higher mathematical probability), the leading 32-bit unsigned integer is mapped to the modulo range <code>0000..9999</code> (for 4 digits) or <code>000000..999999</code> (for 6 digits), zero-padded on the left.</li>
+        <li><strong>Cryptographic Stretching:</strong> The inputs are processed via PBKDF2-HMAC-SHA512 across exactly <strong>1,000,000 computational rounds</strong> to derive a 512-bit pseudorandom byte array.</li>
+        <li><strong>Deterministic Numeric Mapping:</strong> Each digit position <em>i</em> takes the derived byte <code>Key[i]</code> and applies <code>mod 10</code> to produce a clean decimal digit <code>0..9</code>. For a 4-digit PIN (<span class="math-inline">L = 4</span>), the first 4 bytes are sampled; for a 6-digit PIN (<span class="math-inline">L = 6</span>), the first 6 bytes are sampled.</li>
       </ol>
 
       <hr />
@@ -623,10 +621,22 @@
       <p>Users often ask: <em>"If someone learns my 4-digit ATM PIN, can they reverse-engineer my Master Secret Key?"</em></p>
 
       <div class="article-highlight-box">
-        <strong>One-Way Pre-Image Resistance:</strong> A 4-digit PIN contains only 13.29 bits of entropy (<span class="math-inline">10^4 = 10,000</span> combinations). Because PBKDF2-HMAC-SHA512 is a one-way cryptographic hash, reversing a 4-digit output to find a 100-bit Master Secret Key is mathematically impossible: there are billions of possible input strings that produce the exact same 4-digit number (hash collision ambiguity).
+        <strong>One-Way Pre-Image Resistance:</strong> A 4-digit PIN contains only 13.29 bits of entropy (<span class="math-inline">10^4 = 10,000</span> combinations), while a 6-digit UPI PIN contains 19.93 bits (<span class="math-inline">10^6 = 1,000,000</span> combinations). Because PBKDF2-HMAC-SHA512 is a one-way cryptographic compression function, reversing a 4-digit or 6-digit output to find a 100-bit Master Secret Key is mathematically impossible: there are countless billions of possible input strings that produce the exact same 4-digit number (hash collision ambiguity).
       </div>
 
       <p>Furthermore, learning the PIN for <code>sbi-atm</code> provides zero cryptographic information about the PIN for <code>hdfc-atm</code> or your email passwords. Each service is cryptographically isolated by its unique domain salt.</p>
+
+      <p><strong>Physical Rate-Limiting Protection:</strong> Banking ATMs and UPI payment systems enforce strict hardware rate-limiting (maximum 3 consecutive failed attempts before freezing the account or card). A brute-force attacker at an ATM has only a 3 in 10,000 (0.03%) chance of guessing a 4-digit PIN before the card is permanently blocked.</p>
+
+      <div style="background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.25);border-radius:14px;padding:1.25rem 1.5rem;margin:2rem 0;">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem;">
+          <div>
+            <strong style="color:var(--text-primary);display:block;margin-bottom:0.25rem;">📄 Formal Cryptographic Whitepaper &amp; Modulo Proof (v1.2)</strong>
+            <span style="color:var(--text-muted);font-size:0.9rem;">Review the complete WebCrypto HMAC-SHA512 derivation pipeline, Kerckhoffs-compliant salt architecture, and collision resistance in our academic whitepaper.</span>
+          </div>
+          <a href="/whitepaper.html" class="btn-ghost" style="padding:0.5rem 1rem;font-size:0.88rem;border-radius:8px;font-weight:700;border:1px solid var(--accent);color:var(--accent-light);text-decoration:none;white-space:nowrap;">Read Whitepaper &rarr;</a>
+        </div>
+      </div>
 
       <hr />
 
@@ -641,7 +651,6 @@
           <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="btn-secondary" style="display:inline-flex;align-items:center;gap:6px;background:var(--bg-secondary);color:var(--text-primary);padding:0.75rem 1.5rem;border-radius:10px;border:1px solid var(--border);text-decoration:none;font-weight:700;">Compare All Generators</a>
         </div>
       </div>
-
     </div>
   </article>
 </main>
