@@ -579,7 +579,7 @@
           <div><code>HMAC-SHA512</code>: 512-बिट का क्रिप्टोग्राफिक हस्ताक्षर फंक्शन।</div>
           <div><code>Stateless (स्टेटलेस)</code>: ऐसी प्रणाली जो कुछ भी सेव नहीं करती, हर बार गणना से पासवर्ड बनाती है।</div>
           <div><code>Domain Salt (डोमेन साल्ट)</code>: वेबसाइट का नाम जो हर प्लेटफॉर्म का पासवर्ड अलग बनाता है।</div>
-          <div><code>Pepper (लोकल नमक)</code>: एक सार्वजनिक एप्लिकेशन स्थिरांक जो प्री-प्रोसेसिंग में क्रॉस-एप्लिकेशन हमलों को रोकता है।</div>
+          <div><code>Application Salt / Pepper</code>: एप्लिकेशन-स्तरीय सार्वजनिक साल्ट जो क्रॉस-एप्लिकेशन टकराव को रोकता है।</div>
           <div><code>Normalization (सामान्यीकरण)</code>: इनपुट की स्वचालित सफाई - केवल a-z, 0-9 रखना।</div>
           <div><code>Entropy (एन्ट्रापी)</code>: अनिश्चितता का माप - जितने बिट्स अधिक, उतना अनुमान लगाना कठिन।</div>
         </div>
@@ -724,7 +724,7 @@
 
       <!-- Pepper Transparency Note -->
       <div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.75rem;">
-        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (पेपर / लोकल नमक) - पूर्ण पारदर्शिता</h4>
+        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (एप्लिकेशन डोमेन साल्ट) : पूर्ण पारदर्शिता</h4>
         <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.4rem;">
           उपरोक्त पाइपलाइन में <code>DEFAULT_PEPPER</code> का वास्तविक मान है:
         </p>
@@ -732,8 +732,8 @@
           FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!"
         </div>
         <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.25rem;">
-          <li><strong>यह एक सार्वजनिक (Public) स्थिरांक है</strong> - GitHub पर खुले में उपलब्ध है।</li>
-          <li><strong>यह गोपनीय नहीं है और इसे गोपनीय होने की जरूरत नहीं है।</strong> सुरक्षा का आधार यूजर की मास्टर सीक्रेट की है, यह स्थिरांक नहीं।</li>
+          <li><strong>यह एक सार्वजनिक (Public) स्थिरांक है</strong> (GitHub रिपॉजिटरी में खुले में उपलब्ध)।</li>
+          <li><strong>यह गुप्त नहीं है और न ही इसे गुप्त रखने की आवश्यकता है:</strong> सुरक्षा का आधार यूजर की मास्टर सीक्रेट की है, यह स्थिरांक नहीं।</li>
           <li>इसका उद्देश्य है <strong>क्रॉस-एप्लिकेशन डोमेन पृथक्करण (Cross-App Domain Separation)</strong> - किसी अन्य KDF एप्लिकेशन के साथ टकराव रोकना।</li>
           <li>यह <a href="https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle" target="_blank" rel="noopener" style="color:var(--accent-light);">Kerckhoffs का सिद्धांत</a> पालन करता है: "एल्गोरिथ्म और स्थिरांक सार्वजनिक हों, सुरक्षा केवल की की ताकत पर निर्भर हो।"</li>
         </ul>
