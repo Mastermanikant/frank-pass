@@ -514,7 +514,7 @@
       <div class="article-byline">
         <span>लेखक: <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">मास्टर मणिकान्त यादव (Master Manikant Yadav)</a></span>
         <span>&middot;</span>
-        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (शाम 06:30 IST)</span>
+        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (शाम 07:25 IST)</span>
         <span>&middot;</span>
         <span>15 मिनट पठन</span>
         <span>&middot;</span>
@@ -564,6 +564,9 @@
           <li><a href="#s7" style="color:var(--accent-light);">उपयोगिता सुरक्षा, MMY नॉर्मलाइजेशन एवं सीक्रेट की खोने का समाधान</a></li>
           <li><a href="#s8" style="color:var(--accent-light);">थ्रेट मॉडल एवं एंडपॉइंट सुरक्षा मैट्रिक्स</a></li>
           <li><a href="#s9" style="color:var(--accent-light);">आधिकारिक क्रिप्टोग्राफिक टेस्ट वेक्टर्स</a></li>
+          <li><a href="#s10" style="color:var(--accent-light);">आजीवन गवर्नेंस एवं फ्रोजन कोर नियम</a></li>
+          <li><a href="#s11" style="color:var(--accent-light);">निष्कर्ष एवं स्वतंत्र सत्यापन प्रकटीकरण</a></li>
+          <li><a href="#s12" style="color:var(--accent-light);">आधिकारिक मानक एवं सन्दर्भ (References)</a></li>
         </ol>
       </div>
 
@@ -1051,6 +1054,16 @@ const normalizedSecret = (secretKey || '')
 
       <h2 id="s8">8. थ्रेट मॉडल एवं एंडपॉइंट सुरक्षा मैट्रिक्स (Threat Model)</h2>
 
+      <!-- औपचारिक क्रिप्टोग्राफिक सुरक्षा मान्यताएं (Formal Security Assumptions) -->
+      <div class="article-highlight-box" style="margin:1rem 0 1.5rem;padding:1rem 1.25rem;background:rgba(99,102,241,0.05);border:1px solid rgba(99,102,241,0.25);">
+        <h4 style="margin-top:0;color:var(--accent-light);font-size:0.95rem;">📐 औपचारिक क्रिप्टोग्राफिक सुरक्षा मान्यताएं (Formal Cryptographic Assumptions)</h4>
+        <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.2rem;">
+          <li><strong>मान्यता A1 (PRF मजबूती):</strong> HMAC-SHA512 एक सुरक्षित स्यूडोरैंडम फंक्शन (PRF) है जिसके विरुद्ध कोई व्यावहारिक शॉर्टकट हमला ज्ञात नहीं है।</li>
+          <li><strong>मान्यता A2 (हमलावर का दायरा):</strong> हमलावर ऑफलाइन है और केवल किसी लीक हुए डेटाबेस से प्राप्त आउटपुट पासवर्ड से मास्टर की रिवर्स करने की कोशिश कर रहा है (Known-Plaintext Pre-image Attack)।</li>
+          <li><strong>मान्यता A3 (रनटाइम सुरक्षा):</strong> W3C WebCrypto API (C++ इंजन) मेमोरी और टाइमिंग साइड-चैनल हमलों से सुरक्षित मानक ब्राउज़र परिवेश प्रदान करता है।</li>
+        </ul>
+      </div>
+
       <h3>1. सर्वर ब्रीच से पूर्ण मुक्ति (Zero-Storage Immunity):</h3>
       <p>चूँकि फ्रैंकपास के सर्वर पर 0 पासवर्ड्स, 0 कीज़, और 0 फाइल्स (0 बाइट स्टोरेज) होती हैं, इसलिए सर्वर हैक होने पर भी हमलावर को शून्य (0) डेटा मिलता है। डेटाबेस चोरी का खतरा आर्किटेक्चरल रूप से विलोपित (Architecturally Eliminated) हो जाता है, क्योंकि सर्वर पर क्रेडेंशियल डेटा का अस्तित्व ही नहीं होता।</p>
 
@@ -1183,7 +1196,7 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>10. आजीवन गवर्नेंस एवं फ्रोजन कोर नियम</h2>
+      <h2 id="s10">10. आजीवन गवर्नेंस एवं फ्रोजन कोर नियम</h2>
       <p>यूजर्स को आजीवन पासवर्ड स्थिरता का आश्वासन देने के लिए मास्टर मणिकान्त यादव ने <strong>फ्रैंकपास कोर इनवेरिएंट नियम</strong> स्थापित किया है:</p>
       <ul>
         <li><code>frankpass-core.js</code> में परिभाषित और &Mscr;&Mscr;&Yscr;<sub>constant</sub> द्वारा शासित क्रिप्टोग्राफिक पाइपलाइन स्थायी रूप से फ्रोजन है।</li>
@@ -1193,14 +1206,30 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>11. निष्कर्ष एवं संदर्भ कार्यान्वयन</h2>
+      <h2 id="s11">11. निष्कर्ष एवं स्वतंत्र सत्यापन प्रकटीकरण</h2>
       <p>फ्रैंकपास यह प्रमाणित करता है कि व्यक्तिगत पासवर्ड सुरक्षा के लिए किसी भी तरह के क्लाउड वॉल्ट्स की आवश्यकता नहीं है। <strong>मास्टर मणिकान्त यादव के स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>, क्लाइंट-साइड WebCrypto और गोल्डन बेस-32 मैपिंग द्वारा फ्रैंकपास क्लाउड वॉल्ट्स के खतरों को समाप्त कर डेटाबेस स्टोरेज को शुद्ध गणितीय पुनरुत्पादन से बदल देता है।</p>
+
+      <div style="background:rgba(16,185,129,0.06);border-left:3px solid #10b981;padding:0.75rem 1rem;border-radius:0 8px 8px 0;margin:1rem 0;font-size:0.9rem;color:var(--text-muted);">
+        <strong>ईमानदार प्रकटीकरण एवं स्वतंत्र ऑडिट:</strong> फ्रैंकपास का पूरा सोर्स कोड MIT लाइसेंस के तहत GitHub पर सार्वजनिक है। इसका कोई भी घटक बंद या गुप्त नहीं है। दुनिया का कोई भी क्रिप्टोग्राफर, सुरक्षा शोधकर्ता या छात्र अनुभाग 9 के आधिकारिक 18 टेस्ट वेक्टर्स के साथ इसे स्वतंत्र रूप से गणितीय रूप से सत्यापित कर सकता है।
+      </div>
 
       <p>
         <strong>आधिकारिक संदर्भ कार्यान्वयन:</strong><br>
         ओपन-सोर्स कोड: <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="noopener" style="color:var(--accent-light);">https://github.com/Mastermanikant/frank-pass</a><br>
         संस्थापक रिसर्च हब: <a href="https://mastermanikant.com/research/" target="_blank" rel="noopener" style="color:var(--accent-light);">https://mastermanikant.com/research/</a>
       </p>
+
+      <hr>
+
+      <h2 id="s12">12. आधिकारिक मानक एवं सन्दर्भ (Standards &amp; References)</h2>
+      <ol style="color:var(--text-muted);font-size:0.88rem;line-height:1.8;padding-left:1.25rem;">
+        <li><strong>RFC 8018 / PKCS #5 v2.1:</strong> Moriarty, K., et al. <em>"PKCS #5: Password-Based Cryptography Specification Version 2.1"</em> (PBKDF2-HMAC-SHA512). IETF, 2017.</li>
+        <li><strong>NIST SP 800-132:</strong> Meltz, D. <em>"Recommendation for Password-Based Key Derivation"</em>. National Institute of Standards and Technology (NIST), 2010.</li>
+        <li><strong>RFC 2104:</strong> Krawczyk, H., Bellare, M., &amp; Canetti, R. <em>"HMAC: Keyed-Hashing for Message Authentication"</em>. IETF, 1997.</li>
+        <li><strong>Unicode Standard TR#15:</strong> Davis, M., &amp; Whistler, K. <em>"Unicode Normalization Forms (NFC Specification)"</em>. Unicode Consortium.</li>
+        <li><strong>W3C Web Cryptography API:</strong> Watson, M. <em>"Web Cryptography API - W3C Recommendation"</em> (SubtleCrypto Interface), 2017.</li>
+        <li><strong>Kerckhoffs का सिद्धांत (1883):</strong> Auguste Kerckhoffs, <em>"La Cryptographie Militaire"</em> (खुला आर्किटेक्चर, गोपनीय केवल मास्टर की)।</li>
+      </ol>
 
     </article>
 
