@@ -553,14 +553,49 @@
 
       <hr>
 
-      <h2>Abstract</h2>
+      <!-- Table of Contents -->
+      <div class="article-highlight-box" style="margin-bottom:2rem;padding:1.5rem;">
+        <h3 style="margin-top:0;color:var(--accent-light);font-size:1.1rem;">📑 Table of Contents</h3>
+        <ol style="color:var(--text-muted);line-height:2;font-size:0.95rem;margin:0;padding-left:1.25rem;">
+          <li><a href="#abstract" style="color:var(--accent-light);">Abstract</a></li>
+          <li><a href="#s1" style="color:var(--accent-light);">1. Background &amp; Problem Statement</a></li>
+          <li><a href="#s2" style="color:var(--accent-light);">2. Stateless Architecture &amp; Determinism Invariant</a></li>
+          <li><a href="#s3" style="color:var(--accent-light);">3. Formal Definition of Parameter Tuple (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</a></li>
+          <li><a href="#s4" style="color:var(--accent-light);">4. Cryptographic Derivation Pipeline (6-Stage)</a></li>
+          <li><a href="#s5" style="color:var(--accent-light);">5. Golden Base-32 Pool &amp; Zero Modulo Bias Proof</a></li>
+          <li><a href="#s6" style="color:var(--accent-light);">6. Cryptographic Search Entropy Formulations</a></li>
+          <li><a href="#s7" style="color:var(--accent-light);">7. Usable Security, MMY Normalization &amp; Key Recovery</a></li>
+          <li><a href="#s8" style="color:var(--accent-light);">8. Threat Model &amp; Endpoint Defense Matrix</a></li>
+          <li><a href="#s9" style="color:var(--accent-light);">9. Official Canonical Test Vectors</a></li>
+          <li><a href="#s10" style="color:var(--accent-light);">10. Lifetime Governance &amp; Frozen Core Invariant</a></li>
+          <li><a href="#s11" style="color:var(--accent-light);">11. Conclusion &amp; Independent Verification</a></li>
+          <li><a href="#s12" style="color:var(--accent-light);">12. Formal Standards &amp; Cryptographic References</a></li>
+        </ol>
+      </div>
+
+      <!-- Quick Glossary -->
+      <div style="background:rgba(139,92,246,0.05);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+        <h3 style="margin-top:0;font-size:1rem;color:var(--text-primary);">📚 Technical Terminology (Quick Glossary)</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:0.5rem 1.5rem;font-size:0.88rem;color:var(--text-muted);line-height:1.6;">
+          <div><code>KDF (Key Derivation Function)</code>: Deterministic algorithm deriving high-entropy keys from passphrases.</div>
+          <div><code>PBKDF2</code>: NIST-standardized iteration function enforcing a 1,000,000 work factor.</div>
+          <div><code>HMAC-SHA512</code>: 512-bit pseudorandom function (PRF) utilized for stream expansion.</div>
+          <div><code>Stateless</code>: Architecture that stores zero credentials and computes passwords strictly on demand.</div>
+          <div><code>Domain Salt</code>: Target platform identifier ensuring strict cross-service isolation.</div>
+          <div><code>Application Domain Salt</code>: Public domain separator preventing cross-application collisions.</div>
+          <div><code>Normalization</code>: Canonical sanitization enforcing lowercase alphanumeric encoding <code>[a-z0-9]</code>.</div>
+          <div><code>Entropy</code>: Measure of information uncertainty measured in bits (<span class="math-inline">log<sub>2</sub>(|S|)</span>).</div>
+        </div>
+      </div>
+
+      <h2 id="abstract">Abstract</h2>
       <p>Centralized cloud password vaults introduce single points of catastrophic failure: ciphertext databases stored online invite offline brute-force attacks upon server breach, while cloud recovery backdoors create social engineering vectors. FrankPass presents an open, client-side, deterministic password derivation architecture that eliminates digital password storage entirely.</p>
       <p>FrankPass formalizes the <strong>Canonical Protocol Parameter Tuple</strong>, designated as <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>: an immutable 7-parameter architectural tuple combining 1,000,000 rounds of PBKDF2 with HMAC-SHA512 continuous stream expansion, comprehensive natural language whitespace/casing normalization, Unicode NFC parity, and a zero-modulo-bias Golden Base-32 character mapping pool (2<sup>5</sup> = 32).</p>
       <p>This specification documents the mathematical properties, entropy formulations (80 to 100 bits of true search entropy), threat modeling, and lifetime determinism invariants that allow users to generate identical, unguessable credentials across decades without transmitting a single byte over the network.</p>
 
       <hr>
 
-      <h2>1. Background &amp; Problem Statement</h2>
+      <h2 id="s1">1. Background &amp; Problem Statement</h2>
       <p>Traditional password management systems rely on encrypted server vaults: <span class="math-inline">C<sub>i</sub> = E<sub>K</sub>(P<sub>i</sub>)</span>, where ciphertexts <span class="math-inline">C<sub>i</sub></span> are stored on cloud infrastructure. This architecture suffers from three structural vulnerabilities:</p>
       <ol>
         <li><strong>Server-Side Exfiltration Risk:</strong> Storing encrypted vaults on remote servers creates high-value honeypots. A server breach permits adversaries to download ciphertext backups and run multi-GPU offline brute-force attacks indefinitely.</li>
@@ -571,7 +606,7 @@
 
       <hr>
 
-      <h2>2. Stateless Architecture &amp; The Determinism Invariant</h2>
+      <h2 id="s2">2. Stateless Architecture &amp; The Determinism Invariant</h2>
       <p>In a stateless password architecture, passwords are never stored in databases, memory cookies, or cloud blobs. Instead, passwords are generated on demand as a pure deterministic function of four user inputs and one permanent architectural tuple:</p>
 
       <div class="math-formula-box">
@@ -586,7 +621,7 @@
 
       <hr>
 
-      <h2>3. Formal Definition of the Canonical Protocol Parameter Tuple (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</h2>
+      <h2 id="s3">3. Formal Definition of the Canonical Protocol Parameter Tuple (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</h2>
       <p>Let <em>&Sscr;</em> be the user's natural language Master Secret Key, <em>&Dscr;</em> be the target domain/platform, <em>&Uscr;</em> be the optional username/account identifier, <em>&Vscr;</em> &isin; &#x2115;<sup>+</sup> be the rotation counter version, and <em>&Lscr;</em> &isin; &#x2115;<sup>+</sup> be the target output password length.</p>
       <p>The FrankPass <strong>Canonical Protocol Parameter Tuple</strong>, designated as <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>, is formally defined as the 7-element immutable tuple:</p>
 
@@ -643,7 +678,7 @@
 
       <hr>
 
-      <h2>4. Cryptographic Derivation Pipeline</h2>
+      <h2 id="s4">4. Cryptographic Derivation Pipeline</h2>
       <p>The FrankPass derivation engine executes entirely client-side via the W3C WebCrypto API (<code>crypto.subtle</code>). The exact 6-step derivation pipeline is formalized below:</p>
 
       <pre><code>┌─────────────────────────────────────────────────────────────────────────┐
@@ -684,9 +719,25 @@
 │    OUTPUT_PASSWORD = Validated Mapped Characters (length L)             │
 └─────────────────────────────────────────────────────────────────────────┘</code></pre>
 
+      <!-- Application Salt Transparency Note -->
+      <div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.75rem;">
+        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (Application Domain Salt) : Public Specification</h4>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.4rem;">
+          In the derivation pipeline above, <code>DEFAULT_PEPPER</code> represents the public application constant:
+        </p>
+        <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:0.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:#a78bfa;margin-bottom:0.75rem;">
+          FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!"
+        </div>
+        <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.25rem;">
+          <li><strong>Public Constant:</strong> Fully visible in the open-source repository on GitHub.</li>
+          <li><strong>Kerckhoffs's Principle (1883):</strong> Security relies entirely on the secrecy of the user's Master Secret Key, not on keeping algorithm constants secret.</li>
+          <li><strong>Purpose:</strong> Acts as an application-level domain separator preventing cross-application rainbow table attacks.</li>
+        </ul>
+      </div>
+
       <hr>
 
-      <h2>5. Golden Base-32 Pool &amp; Mathematical Proof of Zero Modulo Bias</h2>
+      <h2 id="s5">5. Golden Base-32 Pool &amp; Mathematical Proof of Zero Modulo Bias</h2>
       <p>Traditional random generators that map byte arrays (0 to 255) to arbitrary character pool sizes (e.g. 55, 62, or 94 characters) suffer from <strong>Modulo Bias</strong> unless unaligned bytes are systematically rejected and discarded.</p>
       <p>FrankPass solves this problem mathematically by utilizing an exact <strong>Golden Base-32 Character Pool</strong> (&Cscr;, where |&Cscr;| = 32 = 2<sup>5</sup>):</p>
 
@@ -766,7 +817,7 @@
 
       <hr>
 
-            <h2>6. Cryptographic Search Entropy Formulations</h2>
+            <h2 id="s6">6. Cryptographic Search Entropy Formulations</h2>
       <p>Because each character in the Golden Base-32 pool carries exactly 5 bits of information entropy (log<sub>2</sub>(32) = 5.000 bits), the search space complexity for generated passwords is strictly linear with length:</p>
 
       <div class="math-formula-box">
@@ -903,7 +954,7 @@
 
       <hr>
 
-      <h2>7. Usable Security &amp; The Science of Input Normalization</h2>
+      <h2 id="s7">7. Usable Security &amp; The Science of Input Normalization</h2>
       <p>In deterministic key derivation systems, human typing variability is the primary operational failure point. When entering a master secret on mobile devices, modern virtual keyboards introduce automatic transformations:</p>
       <ul>
         <li>Automatic capitalization of the first letter (e.g. <code>MySecret</code> vs <code>mysecret</code>).</li>
@@ -926,9 +977,60 @@ const normalizedSecret = (secretKey || '')
         <p style="margin-bottom:0;">Consequently, users should build security through <strong>passphrase length and word count</strong> rather than relying on complex single-character substitutions (e.g. using <code>P@$$w0rd!</code> is ineffective; using <code>mango river copper guitar 2026</code> is highly effective).</p>
       </div>
 
+      <!-- Secret Key Recovery & Protection Model -->
+      <div class="article-highlight-box" style="margin:2rem 0;border:2px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.04);">
+        <h3 style="margin-top:0;color:#10b981;font-size:1.15rem;">🔑 Master Secret Key Defense &amp; Recovery Architecture (4 Layers)</h3>
+        <p style="color:var(--text-primary);font-weight:600;margin-bottom:1rem;">
+          FrankPass addresses the challenge of passphrase retention and typing precision across 4 complementary architectural layers:
+        </p>
+
+        <div style="border-left:4px solid #10b981;padding:0.75rem 1rem 0.75rem 1.25rem;margin-bottom:1rem;background:rgba(16,185,129,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:#10b981;">Layer 1: MMY Normalization (Zero-Error Input Sanitization)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            All inputs undergo automatic character filtering prior to key derivation:
+          </p>
+          <ul style="color:var(--text-muted);font-size:0.9rem;margin:0.5rem 0 0;line-height:1.8;">
+            <li><strong>Alphanumeric filtering:</strong> Only characters <code>[a-z0-9]</code> are retained; symbols are cleanly stripped.</li>
+            <li><strong>Automatic Lowercasing:</strong> Capitalization variations (e.g. mobile auto-capitals) are unified.</li>
+            <li><strong>Whitespace elimination:</strong> Spaces and tabs are stripped, ensuring identical byte streams.</li>
+          </ul>
+        </div>
+
+        <div style="border-left:4px solid #8b5cf6;padding:0.75rem 1rem 0.75rem 1.25rem;margin-bottom:1rem;background:rgba(139,92,246,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:var(--accent-light);">Layer 2: Memorable Natural Language Model (Secret Key Guide)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            The FrankPass <a href="/secret-key-guide.html" style="color:var(--accent-light);">Secret Key Guide</a> provides structured guidance on crafting lifelong memorable phrases (50+ real-world examples across personal milestones and natural sentences).
+          </p>
+        </div>
+
+        <div style="border-left:4px solid #f59e0b;padding:0.75rem 1rem 0.75rem 1.25rem;margin-bottom:1rem;background:rgba(245,158,11,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:#f59e0b;">Layer 3: Canonical Test Vectors (Self-Verification System)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            Users can self-audit their derivation setup using the standardized test vectors in Section 9 without transmitting any data over networks.
+          </p>
+        </div>
+
+        <div style="border-left:4px solid #3b82f6;padding:0.75rem 1rem 0.75rem 1.25rem;background:rgba(59,130,246,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:#60a5fa;">Layer 4: FrankPass Pro Local Vault (4-Digit PIN Unlock)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            Optional encrypted on-device storage using AES-GCM, allowing instant credential generation via a 4-digit PIN or biometrics with zero cloud storage.
+          </p>
+        </div>
+      </div>
+
       <hr>
 
-      <h2>8. Threat Model &amp; Endpoint Defense Matrix</h2>
+      <h2 id="s8">8. Threat Model &amp; Endpoint Defense Matrix</h2>
+
+      <!-- Formal Cryptographic Security Assumptions -->
+      <div class="article-highlight-box" style="margin:1rem 0 1.5rem;padding:1rem 1.25rem;background:rgba(99,102,241,0.05);border:1px solid rgba(99,102,241,0.25);">
+        <h4 style="margin-top:0;color:var(--accent-light);font-size:0.95rem;">📐 Formal Cryptographic Assumptions</h4>
+        <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.2rem;">
+          <li><strong>Assumption A1 (PRF Security):</strong> HMAC-SHA512 operates as a cryptographically secure Pseudorandom Function (PRF) with no known practical shortcut attacks.</li>
+          <li><strong>Assumption A2 (Adversary Model):</strong> The adversary is offline and conducting an inversion / pre-image search against the deterministic derivation function from a leaked output password.</li>
+          <li><strong>Assumption A3 (Runtime Integrity):</strong> W3C WebCrypto API implementations in major browser engines provide constant-time execution resistant to side-channel timing attacks.</li>
+        </ul>
+      </div>
 
       <h3>1. Server Compromise &amp; Zero-Storage Immunity:</h3>
       <p>Because FrankPass servers store zero credentials, zero master keys, and zero ciphertext blobs (0 bytes stored), a total compromise of the hosting infrastructure, edge CDNs, or DNS routers yields zero actionable data to an adversary. Server-side data-at-rest exfiltration attacks are eliminated.</p>
@@ -996,7 +1098,7 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>9. Official Cryptographic &amp; End-to-End Test Vectors</h2>
+      <h2 id="s9">9. Official Cryptographic &amp; End-to-End Test Vectors</h2>
       <p>For independent verification across programming languages and client implementations, the canonical test vectors for the complete FrankPass end-to-end pipeline (Domain &amp; Secret Normalization + <code>frankpass-core.js</code> 1,000,000 PBKDF2 rounds + Golden Base-32 mapping) are specified below:</p>
 
       <table>
@@ -1062,7 +1164,7 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>10. Lifetime Governance &amp; GitHub Immutable Code Invariant</h2>
+      <h2 id="s10">10. Lifetime Governance &amp; GitHub Immutable Code Invariant</h2>
       <p>To provide users with lifelong mathematical assurance, Master Manikant Yadav has established the <strong>FrankPass Core Invariant Governance Rule</strong>:</p>
       <ul>
         <li>The core cryptographic pipeline defined in <code>frankpass-core.js</code> and governed by &Mscr;&Mscr;&Yscr;<sub>constant</sub> is permanently frozen.</li>
@@ -1072,7 +1174,7 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>11. Conclusion &amp; Reference Implementation</h2>
+      <h2 id="s11">11. Conclusion &amp; Reference Implementation</h2>
       <p>FrankPass establishes that personal password security does not require centralized cloud database vaults. By formalizing <strong>Master Manikant Yadav's Constant (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong>, client-side WebCrypto key derivation, and ambiguity-free Base-32 entropy mapping, FrankPass eliminates the cloud vault attack surface by replacing database storage with deterministic mathematical reproducibility.</p>
 
       <p>
