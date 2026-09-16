@@ -514,7 +514,7 @@
       <div class="article-byline">
         <span>लेखक: <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">मास्टर मणिकान्त यादव (Master Manikant Yadav)</a></span>
         <span>&middot;</span>
-        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (पीयर-रिव्यू परिष्कृत v1.1)</span>
+        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (पीयर-रिव्यू स्वीकृत v1.2)</span>
         <span>&middot;</span>
         <span>15 मिनट पठन</span>
         <span>&middot;</span>
@@ -622,7 +622,7 @@
 
       <hr>
 
-      <h2 id="s3">3. कैनोनिकल प्रोटोकॉल पैरामीटर टुपल (&Mscr;&Mscr;&Yscr;<sub>constant</sub>) की औपचारिक परिभाषा</h2>
+      <h2 id="s3">3. कैनोनिकल प्रोटोकॉल पैरामीटर टुपल (FrankPass v1 विनिर्देश / &Mscr;&Mscr;&Yscr;<sub>constant</sub>) की औपचारिक परिभाषा</h2>
       <p>मान लीजिए <em>&Sscr;</em> यूजर की मास्टर सीक्रेट की है, <em>&Dscr;</em> लक्षित वेबसाइट या प्लेटफॉर्म है, <em>&Uscr;</em> यूजरनेम या ईमेल है, <em>&Vscr;</em> &isin; &#x2115;<sup>+</sup> वर्जन काउंटर है, और <em>&Lscr;</em> &isin; &#x2115;<sup>+</sup> पासवर्ड की लंबाई है।</p>
       <p>फ्रैंकपास का <strong>कैनोनिकल प्रोटोकॉल पैरामीटर टुपल (Canonical Protocol Parameter Tuple)</strong>, जिसे औपचारिक रूप से <strong>मास्टर मणिकान्त यादव का क्रिप्टोग्राफिक स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong> नामित किया गया है, 7 अनिवार्य फ्रोजन तत्वों का टुपल है:</p>
 
@@ -810,7 +810,7 @@
         |&Cscr;| = 10 + 6 + 7 + 9 = 32 = 2<sup>5</sup> कैरेक्टर
       </div>
 
-      <h3>शून्य मॉड्यूलो बायस का गणितीय प्रमाण:</h3>
+      <h3>शून्य मॉड्यूलो बायस एवं कैरेक्टर-पॉलिसी मैपिंग का गणितीय विश्लेषण:</h3>
       <p>मान लीजिए <em>B</em> &isin; {0, 1, ..., 255} HMAC-SHA512 द्वारा उत्पन्न एक समान वितरित स्यूडोरैंडम बाइट है। अधिकतम संरेखित सीमा validMax इस प्रकार ज्ञात होती है:</p>
 
       <div class="math-formula-box">
@@ -821,7 +821,19 @@
       <div class="math-formula-box">
         &forall; <em>c</em> &isin; &Cscr;, &nbsp; P(byteToChar(B) = <em>c</em>) = 8 / 256 = 1 / 32 = 0.03125 (3.125%)
       </div>
-      <p>पूल के प्रत्येक कैरेक्टर के चुने जाने की संभावना बिल्कुल 1/32 (3.125%) होती है। मॉड्यूलो बायस हानि गणितीय रूप से <strong>0.000% (Zero Loss)</strong> है।</p>
+      <p>प्राथमिक मैपिंग में प्रत्येक कैरेक्टर के चुने जाने की संभावना बिल्कुल 1/32 (3.125%) होती है, जिससे मॉड्यूलो बायस हानि <strong>0.000%</strong> है।</p>
+
+      <h4>अनिवार्य कैरेक्टर-सेट नीति प्रवर्तन (Mandatory Policy Enforcement):</h4>
+      <p>मानक प्रोफाइल ('standard') में 4 कैरेक्टर श्रेणियों (बड़ा अक्षर, छोटा अक्षर, अंक, प्रतीक) की अनिवार्य उपस्थिति सुनिश्चित करने के लिए <code>frankpass-core.js</code> एक डिटरमिनिस्टिक 2-चरणीय सत्यापन लागू करता है:</p>
+      <ol style="color:var(--text-muted);font-size:0.92rem;line-height:1.75;">
+        <li><strong>प्राथमिक स्ट्रीम मैपिंग:</strong> 128-बाइट स्यूडोरैंडम स्ट्रीम के पहले <em>L</em> बाइट्स को बेस-32 वर्णों में मैप किया जाता है।</li>
+        <li><strong>डिटरमिनिस्टिक इंजेक्शन:</strong> यदि <em>L</em> वर्णों में कोई अनिवार्य श्रेणी अनुपस्थित हो, तो स्ट्रीम के अंतिम बाइट्स (<code>revIdx</code>) का उपयोग करके एक अद्वितीय डिटरमिनिस्टिक इंडेक्स पर अनुपस्थित श्रेणी का वर्ण प्रतिस्थापित कर दिया जाता है।</li>
+      </ol>
+      <p>अनिवार्य श्रेणियों के प्रतिबंध के कारण <em>L = 16</em> पर कुल वैध कॉम्बिनेशन्स की संख्या समावेश-अपवर्जन सिद्धांत (Principle of Inclusion-Exclusion) द्वारा ज्ञात होती है:</p>
+      <div class="math-formula-box" style="font-size:0.95rem;">
+        |&Omega;<sub>valid</sub>| = 32<sup>16</sup> - &sum; (अमान्य कॉम्बिनेशन्स) &approx; 1.199 &times; 10<sup>24</sup> &nbsp;&implies;&nbsp; <em>H</em><sub>effective</sub> &approx; <strong>79.95 bits</strong>
+      </div>
+      <p style="color:var(--text-muted);font-size:0.88rem;">प्रतिबंधित नीति के बावजूद पासवर्ड की प्रभावी खोज एन्ट्रापी 80.00 बिट्स के व्यावहारिक समकक्ष बनी रहती है।</p>
 
       <hr>
 
@@ -1068,8 +1080,9 @@ const normalizedSecret = (secretKey || '')
       <h3>1. सर्वर ब्रीच से पूर्ण मुक्ति (Zero-Storage Immunity):</h3>
       <p>चूँकि फ्रैंकपास के सर्वर पर 0 पासवर्ड्स, 0 कीज़, और 0 फाइल्स (0 बाइट स्टोरेज) होती हैं, इसलिए सर्वर हैक होने पर भी हमलावर को शून्य (0) डेटा मिलता है। डेटाबेस चोरी का खतरा आर्किटेक्चरल रूप से विलोपित (Architecturally Eliminated) हो जाता है, क्योंकि सर्वर पर क्रेडेंशियल डेटा का अस्तित्व ही नहीं होता।</p>
 
-      <h3>2. डोमेन पृथक्करण (Domain Separation):</h3>
-      <p>डोमेन नाम को इनपुट में साल्ट करने से अलग-अलग वेबसाइट्स (D<sub>1</sub> &ne; D<sub>2</sub>) के पासवर्ड्स पूरी तरह स्वतंत्र होते हैं। यदि वेबसाइट A का पासवर्ड लीक भी हो जाए, तो उससे वेबसाइट B के पासवर्ड का अनुमान लगाना गणितीय रूप से असंभव है।</p>
+      <h3>2. डोमेन पृथक्करण एवं सीमाएं (Domain Separation &amp; Threat Boundary):</h3>
+      <p>डोमेन नाम को लेंथ-प्रिफिक्स नेटस्ट्रिंग में साल्ट करने से अलग-अलग प्लेटफॉर्म्स (D<sub>1</sub> &ne; D<sub>2</sub>) के पासवर्ड्स गणितीय रूप से असंबंधित होते हैं। यह क्रॉस-साइट पासवर्ड पुन:उपयोग (Password Reuse) और रेनबो-टेबल हमलों को 100% रोकता है। यदि वेबसाइट A का डेटाबेस लीक हो जाए, तो हमलावर उससे वेबसाइट B के पासवर्ड का अनुमान नहीं लगा सकता।</p>
+      <p style="color:var(--text-muted);font-size:0.88rem;"><em>क्रिप्टोग्राफिक सीमा:</em> डोमेन पृथक्करण मास्टर सीक्रेट के क्रैक होने से सुरक्षा नहीं देता। यदि हमलावर किसी एक पासवर्ड से मास्टर सीक्रेट की को ब्रूट-फोर्स करने में सफल हो जाता है, तो वह उसी सीक्रेट से सभी अन्य डोमेन्स के पासवर्ड्स निकाल सकता है। इसलिए सुरक्षा की वास्तविक नींव मास्टर सीक्रेट की एन्ट्रापी पर आधारित है।</p>
 
       <h3>3. शून्य-नेटवर्क एवं एयर-गैप्ड आर्किटेक्चर (Zero-Storage &amp; Zero Network Calls by Design):</h3>
       <p>फ्रैंकपास वेब ऐप (PWA), डेस्कटॉप ऐप, मोबाइल ऐप और एक्सटेंशन को आर्किटेक्चरल रूप से <strong>शून्य नेटवर्क कॉल्स (Zero Outbound Credential Requests)</strong> के साथ डिज़ाइन किया गया है। सर्वर पर पासवर्ड या क्रेडेंशियल भेजने का कोई एंडपॉइंट न होने के कारण, सर्वर-साइड डेटाबेस चोरी का खतरा पूरी तरह समाप्त हो जाता है।</p>
@@ -1133,6 +1146,19 @@ const normalizedSecret = (secretKey || '')
 
       <h2 id="s9">9. आधिकारिक क्रिप्टोग्राफिक एवं एंड-टू-एंड टेस्ट वेक्टर्स (Official Test Vectors)</h2>
       <p>फ्रैंकपास की पूर्ण एंड-टू-एंड पाइपलाइन (डोमेन व इनपुट नॉर्मलाइजेशन + <code>frankpass-core.js</code> 10 लाख PBKDF2 राउंड्स + गोल्डन बेस-32 मैपिंग) के 5 मुख्य कैनोनिकल टेस्ट वेक्टर्स नीचे तालिका में दिए गए हैं (पूर्ण स्वचालित टेस्ट सूट में सभी 18 कैनोनिकल वेक्टर्स शामिल हैं):</p>
+
+      <!-- इंटरमीडिएट स्टेट बाइट-दर-बाइट टेस्ट वेक्टर #1 ब्रेकडाउन -->
+      <div class="article-highlight-box" style="margin:1.25rem 0;padding:1.25rem;background:rgba(99,102,241,0.04);border:1px solid rgba(99,102,241,0.25);">
+        <h4 style="margin-top:0;color:var(--accent-light);font-size:0.95rem;">🔬 वेक्टर #1: बाइट-दर-बाइट इंटरमीडिएट स्टेट सत्यापन (Byte-for-Byte Canonical Trace)</h4>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:0.83rem;color:var(--text-muted);line-height:1.7;word-break:break-all;">
+          <strong>रॉ इनपुट्स:</strong> Key = <code>"mastersecret2026"</code>, Platform = <code>"google.com"</code>, User = <code>"user@example.com"</code>, V = 1, L = 16<br>
+          <strong>1. MMY सामान्यीकृत स्लग:</strong> S<sub>norm</sub> = <code>"mastersecret2026"</code>, D<sub>norm</sub> = <code>"google"</code>, U<sub>norm</sub> = <code>"user@example.com"</code><br>
+          <strong>2. लोकल पेपर (64 Hex Chars):</strong> <code>3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525</code><br>
+          <strong>3. कॉन्टेक्स्ट नेटस्ट्रिंग (CTX):</strong> <code>"22:MasterManikant_PassGen|2:v1|6:google|16:user@example.com|64:3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525|1:1|8:standard|2:16"</code><br>
+          <strong>4. PBKDF2-HMAC-SHA512:</strong> 10,00,000 Iterations (Key = Pepper NFC, Salt = CTX NFC, 64 Derived Bytes)<br>
+          <strong>5. कैनोनिकल आउटपुट पासवर्ड:</strong> <span style="color:#10b981;font-weight:700;">F6h?%Ld48&&e4f?f</span>
+        </div>
+      </div>
 
       <table>
         <thead>
