@@ -864,6 +864,12 @@
         <li><strong>80-Bit Passphrase Resilience:</strong> For a 6-word passphrase (~80 bits entropy), exhaustive search requires 1.20 &times; 10<sup>24</sup> attempts, remaining computationally infeasible against global supercomputing clusters.</li>
       </ul>
 
+      <div class="article-highlight-box" style="margin:1.25rem 0;">
+        <h4 style="margin-top:0;color:var(--accent-light);">💡 Exact Scope of the Cracking Benchmark:</h4>
+        <p style="margin-bottom:0.6rem;"><strong>1. What does this benchmark measure?</strong> This measures the computational cost for an adversary to <strong>reverse-engineer or guess the user's Master Secret Key (Known-Plaintext Pre-image Attack)</strong> starting from an exposed derived password, NOT merely guessing a website password directly.</p>
+        <p style="margin-bottom:0;"><strong>2. Online Lockout vs. Worst-Case Offline Breach:</strong> On live websites, automated rate-limiting, CAPTCHAs, and 3-5 attempt lockouts completely prevent online brute-force guessing. This GPU benchmark evaluates the absolute worst-case threat scenario: an adversary holding a breached password hash who runs offline dictionary/brute-force cracking on private multi-GPU clusters with zero network restrictions.</p>
+      </div>
+
       <h3>Technical Rationale: PBKDF2 vs Argon2id / Scrypt:</h3>
       <p>While Argon2id provides memory-hardness (ASIC resistance), executing it inside client-side web browsers requires 30MB+ WebAssembly (WASM) binaries and large RAM allocations. On budget mobile devices, background memory pressure frequently triggers browser tab terminations. In contrast, <code>PBKDF2-HMAC-SHA512</code> runs directly in native C++ OS cryptographic subroutines with zero WebAssembly overhead, zero external library vulnerabilities, and 100% crash-free cross-browser stability.</p>
 
