@@ -916,15 +916,16 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>9. आधिकारिक क्रिप्टोग्राफिक टेस्ट वेक्टर्स (Official Test Vectors)</h2>
-      <p>स्वतंत्र सत्यापन और अन्य प्रोग्रामिंग भाषाओं में कार्यान्वयन की पुष्टि के लिए <code>frankpass-core.js</code> (v1, स्टैंडर्ड 16-कैरेक्टर प्रोफाइल) के आधिकारिक टेस्ट वेक्टर्स नीचे दिए गए हैं:</p>
+      <h2>9. आधिकारिक क्रिप्टोग्राफिक एवं एंड-टू-एंड टेस्ट वेक्टर्स (Official Test Vectors)</h2>
+      <p>फ्रैंकपास की पूर्ण एंड-टू-एंड पाइपलाइन (डोमेन व इनपुट नॉर्मलाइजेशन + <code>frankpass-core.js</code> 10 लाख PBKDF2 राउंड्स + गोल्डन बेस-32 मैपिंग) के आधिकारिक टेस्ट वेक्टर्स नीचे दिए गए हैं। ये वेक्टर्स वेब ऐप, ब्राउज़र एक्सटेंशन और नेटिव ऐप्स में 100% एक समान परिणाम उत्पन्न करते हैं:</p>
 
       <table>
         <thead>
           <tr>
             <th>टेस्ट वेक्टर</th>
             <th>मास्टर सीक्रेट (रॉ इनपुट)</th>
-            <th>प्लेटफ़ॉर्म</th>
+            <th>रॉ प्लेटफ़ॉर्म इनपुट</th>
+            <th>सामान्यीकृत स्लग (Normalized Slug)</th>
             <th>यूज़रनेम</th>
             <th>वर्जन</th>
             <th>कैनोनिकल आउटपुट पासवर्ड</th>
@@ -932,28 +933,49 @@ const normalizedSecret = (secretKey || '')
         </thead>
         <tbody>
           <tr>
-            <td><strong>वेक्टर #1</strong></td>
+            <td><strong>वेक्टर #1 (Google SSO)</strong></td>
             <td><code>mastersecret2026</code></td>
-            <td><code>google.com</code></td>
+            <td><code>google.com</code> / <code>mail.google.com</code></td>
+            <td><code>google</code></td>
             <td><code>user@example.com</code></td>
             <td><code>1</code></td>
-            <td><code>d=FD9H+@Nd+H%*fe</code></td>
+            <td><code>F6h?%Ld48&&e4f?f</code></td>
           </tr>
           <tr>
-            <td><strong>वेक्टर #2</strong></td>
+            <td><strong>वेक्टर #2 (GitHub)</strong></td>
             <td><code>Correct Horse Battery Staple 2026!</code></td>
-            <td><code>github.com</code></td>
+            <td><code>github.com</code> / <code>https://github.com/login</code></td>
+            <td><code>github</code></td>
             <td><code>developer</code></td>
             <td><code>1</code></td>
-            <td><code>3TLDMfAN6Am%D@#?</code></td>
+            <td><code>tTM38@@6e7f*EMN?</code></td>
           </tr>
           <tr>
-            <td><strong>वेक्टर #3 (रोटेशन)</strong></td>
+            <td><strong>वेक्टर #3 (रोटेशन v2)</strong></td>
             <td><code>Correct Horse Battery Staple 2026!</code></td>
             <td><code>github.com</code></td>
+            <td><code>github</code></td>
             <td><code>developer</code></td>
             <td><code>2</code></td>
-            <td><code>N%+#Afh%7#N3M9HD</code></td>
+            <td><code>f#RAmLf4?7hhL#26</code></td>
+          </tr>
+          <tr>
+            <td><strong>वेक्टर #4 (Amazon Retail)</strong></td>
+            <td><code>secret2026</code></td>
+            <td><code>amazon.com</code> / <code>amazon.in</code></td>
+            <td><code>amazon</code></td>
+            <td><code>user</code></td>
+            <td><code>1</code></td>
+            <td><code>M6@Tfm8D&$@?A#EL</code></td>
+          </tr>
+          <tr>
+            <td><strong>वेक्टर #5 (AWS Cloud Isolation)</strong></td>
+            <td><code>secret2026</code></td>
+            <td><code>aws.amazon.com</code></td>
+            <td><code>aws</code></td>
+            <td><code>user</code></td>
+            <td><code>1</code></td>
+            <td><code>&F9Me@=N+Df37tet</code></td>
           </tr>
         </tbody>
       </table>

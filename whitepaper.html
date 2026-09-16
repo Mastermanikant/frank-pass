@@ -914,15 +914,16 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>9. Official Cryptographic Test Vectors</h2>
-      <p>To enable independent verification and cross-platform implementation validation, the following official test vectors are formalized for <code>frankpass-core.js</code> (v1, Standard 16-char profile):</p>
+      <h2>9. Official Cryptographic &amp; End-to-End Test Vectors</h2>
+      <p>For independent verification across programming languages and client implementations, the canonical test vectors for the complete FrankPass end-to-end pipeline (Domain &amp; Secret Normalization + <code>frankpass-core.js</code> 1,000,000 PBKDF2 rounds + Golden Base-32 mapping) are specified below:</p>
 
       <table>
         <thead>
           <tr>
             <th>Test Vector</th>
             <th>Master Secret (Raw Input)</th>
-            <th>Platform</th>
+            <th>Raw Platform Input</th>
+            <th>Normalized Slug</th>
             <th>Username</th>
             <th>Version</th>
             <th>Canonical Output Password</th>
@@ -930,28 +931,49 @@ const normalizedSecret = (secretKey || '')
         </thead>
         <tbody>
           <tr>
-            <td><strong>Vector #1</strong></td>
+            <td><strong>Vector #1 (Google SSO)</strong></td>
             <td><code>mastersecret2026</code></td>
-            <td><code>google.com</code></td>
+            <td><code>google.com</code> / <code>mail.google.com</code></td>
+            <td><code>google</code></td>
             <td><code>user@example.com</code></td>
             <td><code>1</code></td>
-            <td><code>d=FD9H+@Nd+H%*fe</code></td>
+            <td><code>F6h?%Ld48&&e4f?f</code></td>
           </tr>
           <tr>
-            <td><strong>Vector #2</strong></td>
+            <td><strong>Vector #2 (GitHub)</strong></td>
             <td><code>Correct Horse Battery Staple 2026!</code></td>
-            <td><code>github.com</code></td>
+            <td><code>github.com</code> / <code>https://github.com/login</code></td>
+            <td><code>github</code></td>
             <td><code>developer</code></td>
             <td><code>1</code></td>
-            <td><code>3TLDMfAN6Am%D@#?</code></td>
+            <td><code>tTM38@@6e7f*EMN?</code></td>
           </tr>
           <tr>
-            <td><strong>Vector #3 (Rotation)</strong></td>
+            <td><strong>Vector #3 (Rotation v2)</strong></td>
             <td><code>Correct Horse Battery Staple 2026!</code></td>
             <td><code>github.com</code></td>
+            <td><code>github</code></td>
             <td><code>developer</code></td>
             <td><code>2</code></td>
-            <td><code>N%+#Afh%7#N3M9HD</code></td>
+            <td><code>f#RAmLf4?7hhL#26</code></td>
+          </tr>
+          <tr>
+            <td><strong>Vector #4 (Amazon Retail)</strong></td>
+            <td><code>secret2026</code></td>
+            <td><code>amazon.com</code> / <code>amazon.in</code></td>
+            <td><code>amazon</code></td>
+            <td><code>user</code></td>
+            <td><code>1</code></td>
+            <td><code>M6@Tfm8D&$@?A#EL</code></td>
+          </tr>
+          <tr>
+            <td><strong>Vector #5 (AWS Cloud Isolation)</strong></td>
+            <td><code>secret2026</code></td>
+            <td><code>aws.amazon.com</code></td>
+            <td><code>aws</code></td>
+            <td><code>user</code></td>
+            <td><code>1</code></td>
+            <td><code>&F9Me@=N+Df37tet</code></td>
           </tr>
         </tbody>
       </table>
