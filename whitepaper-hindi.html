@@ -514,7 +514,7 @@
       <div class="article-byline">
         <span>लेखक: <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">मास्टर मणिकान्त यादव (Master Manikant Yadav)</a></span>
         <span>&middot;</span>
-        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (अंतिम फ्रोजन v1.0)</span>
+        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (पीयर-रिव्यू परिष्कृत v1.1)</span>
         <span>&middot;</span>
         <span>15 मिनट पठन</span>
         <span>&middot;</span>
@@ -676,6 +676,9 @@
           </tr>
         </tbody>
       </table>
+      <div style="font-size:0.83rem;color:var(--text-muted);margin:0.5rem 0 1.25rem;line-height:1.5;">
+        <em>* बेंचमार्क कार्यप्रणाली: Chromium 128 WebCrypto SubtleCrypto पर सामान्य तापमान में 100 लगातार परीक्षणों का औसत। GPU थ्रूपुट Hashcat v6.2.6 (मोड 12000: PBKDF2-HMAC-SHA512, 10 लाख राउंड्स) को NVIDIA RTX 4090 संदर्भ हार्डवेयर पर मापकर निकाला गया।</em>
+      </div>
 
       <hr>
 
@@ -895,7 +898,7 @@
         </div>
 
         <p style="margin-bottom:0.75rem;">16 अक्षरों का आउटपुट (80-बिट सर्च स्पेस) टकराव को रोकता है, लेकिन यदि किसी वेबसाइट से पासवर्ड चोरी हो जाए तो हमलावर आपके इनपुट पासफ़्रेज़ पर ब्रूट-फोर्स हमला करेगा। 10 लाख राउंड्स का PBKDF2 अटैकर को भारी धीमा करता है, लेकिन वास्तविक सुरक्षा आपकी सीक्रेट की की मजबूती पर टिकी होती है।</p>
-        <p style="margin-bottom:0;"><strong>अनुशंसा:</strong> यूजर्स को 5 से 6 शब्दों का आसान पासफ़्रेज़ (उदा. <code>"suraj purab me ugta hai 2026"</code>) चुनना चाहिए, जो 60 से 80+ बिट्स की वास्तविक भाषाई एन्ट्रापी देता है।</p>
+        <p style="margin-bottom:0;"><strong>अनुशंसा:</strong> यूजर्स को 5 से 6 यादृच्छिक शब्दों (डाइसवेयर / EFF स्टाइल, ~65 से 80 बिट्स वास्तविक एन्ट्रापी) या 7 से 9 शब्दों के व्यक्तिगत स्मरणीय वाक्यों का चयन करना चाहिए।</p>
       </div>
 
       <h3>KDF चयन का वैज्ञानिक कारण, हार्डवेयर बेंचमार्क एवं कम्प्यूटेशनल लागत (Empirical Benchmarks):</h3>
@@ -1058,7 +1061,7 @@ const normalizedSecret = (secretKey || '')
         <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.2rem;">
           <li><strong>मान्यता A1 (PRF मजबूती):</strong> HMAC-SHA512 एक सुरक्षित स्यूडोरैंडम फंक्शन (PRF) है जिसके विरुद्ध कोई व्यावहारिक शॉर्टकट हमला ज्ञात नहीं है।</li>
           <li><strong>मान्यता A2 (हमलावर का दायरा):</strong> हमलावर ऑफलाइन है और केवल किसी लीक हुए डेटाबेस से प्राप्त आउटपुट पासवर्ड से मास्टर की रिवर्स करने की कोशिश कर रहा है (Known-Plaintext Pre-image Attack)।</li>
-          <li><strong>मान्यता A3 (रनटाइम सुरक्षा):</strong> W3C WebCrypto API (C++ इंजन) मेमोरी और टाइमिंग साइड-चैनल हमलों से सुरक्षित मानक ब्राउज़र परिवेश प्रदान करता है।</li>
+          <li><strong>मान्यता A3 (रनटाइम अखंडता व टाइमिंग सुरक्षा):</strong> प्रमुख ब्राउज़र इंजन W3C WebCrypto API प्रिमिटिव्स को नेटिव C++ (जैसे BoringSSL, NSS) में निष्पादित करते हैं; फ्रैंकपास मानक कॉन्स्टेंट-टाइम निष्पादन और टाइमिंग-अटैक प्रतिरोध के लिए होस्ट क्रिप्टोग्राफिक लाइब्रेरी पर निर्भर करता है।</li>
         </ul>
       </div>
 

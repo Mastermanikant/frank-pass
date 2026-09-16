@@ -675,6 +675,9 @@
           </tr>
         </tbody>
       </table>
+      <div style="font-size:0.83rem;color:var(--text-muted);margin:0.5rem 0 1.25rem;line-height:1.5;">
+        <em>* Benchmark Methodology: Latency measured using Chromium 128 WebCrypto SubtleCrypto across 100 consecutive runs under ambient thermal conditions. GPU throughput derived from Hashcat v6.2.6 (Mode 12000: PBKDF2-HMAC-SHA512) scaled to 1,000,000 iterations on reference NVIDIA RTX 4090 hardware.</em>
+      </div>
 
       <hr>
 
@@ -892,7 +895,7 @@
         </div>
 
         <p style="margin-bottom:0.75rem;">While an output length of 16 characters (80 bits search space) or 20 characters (100 bits search space) prevents accidental collisions and satisfies strict target system constraints, an attacker who extracts a derived password from a third-party breach will brute-force the <em>input passphrase space</em>, not the output space. 1,000,000 iterations of PBKDF2-HMAC-SHA512 impose massive computational penalties on GPU/ASIC crackers, but baseline security remains bounded by the entropy of the user's secret.</p>
-        <p style="margin-bottom:0;"><strong>Architectural Recommendation:</strong> Users must choose a 5 to 6 word random passphrase (e.g. <code>"correct horse battery staple 2026"</code>), providing 60 to 80+ bits of true linguistic dictionary entropy.</p>
+        <p style="margin-bottom:0;"><strong>Architectural Recommendation:</strong> Users should generate passphrases using independent random word selection (Diceware / EFF wordlist style, yielding ~65 to 80 bits of true entropy for 5-6 words) or memorable personalized phrases exceeding 7 to 9 words.</p>
       </div>
 
       <h3>KDF Selection Scientific Rationale &amp; Empirical Benchmarks:</h3>
@@ -1028,18 +1031,18 @@ const normalizedSecret = (secretKey || '')
         <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.2rem;">
           <li><strong>Assumption A1 (PRF Security):</strong> HMAC-SHA512 operates as a cryptographically secure Pseudorandom Function (PRF) with no known practical shortcut attacks.</li>
           <li><strong>Assumption A2 (Adversary Model):</strong> The adversary is offline and conducting an inversion / pre-image search against the deterministic derivation function from a leaked output password.</li>
-          <li><strong>Assumption A3 (Runtime Integrity):</strong> W3C WebCrypto API implementations in major browser engines provide constant-time execution resistant to side-channel timing attacks.</li>
+          <li><strong>Assumption A3 (Runtime Integrity &amp; Timing Resistance):</strong> Major browser engines implement W3C WebCrypto API primitives in native compiled C++ (e.g., BoringSSL, NSS); FrankPass relies on the host cryptographic libraries for standard constant-time execution and timing-attack resistance.</li>
         </ul>
       </div>
 
       <h3>1. Server Compromise &amp; Zero-Storage Immunity:</h3>
-      <p>Because FrankPass servers store zero credentials, zero master keys, and zero ciphertext blobs (0 bytes stored), a total compromise of the hosting infrastructure, edge CDNs, or DNS routers yields zero actionable data to an adversary. Server-side data-at-rest exfiltration attacks are eliminated.</p>
+      <p>Because FrankPass servers store zero credentials, zero master keys, and zero ciphertext blobs (0 bytes stored), a total compromise of the hosting infrastructure, edge CDNs, or DNS routers eliminates server-side credential data storage, neutralizing database breach attack vectors.</p>
 
       <h3>2. Cryptographic Domain Separation:</h3>
       <p>By injecting the domain name into length-prefixed netstrings and salting the HMAC-SHA512 PRF, outputs across different platforms (D<sub>1</sub> &ne; D<sub>2</sub>) are computationally indistinguishable from independent random variables. A data breach at Service A gives an attacker zero mathematical leverage to predict credentials for Service B.</p>
 
       <h3>3. 100% Offline Architecture &amp; Zero Network Attack Surface:</h3>
-      <p>FrankPass web applications (PWA), desktop apps, mobile apps, and extensions are intentionally architected with <strong>zero runtime network dependencies and zero network requests</strong>. The foundational security axiom is absolute: <em>"Software that never initiates an outbound network connection can never exfiltrate a single byte of user data to a remote adversary or compromised server."</em></p>
+      <p>FrankPass web applications (PWA), desktop apps, mobile apps, and extensions are intentionally architected with <strong>zero runtime outbound network requests for credential generation</strong>. By eliminating server-side credential transmission endpoints, the threat of server-side data exfiltration and database breaches is eliminated by architectural design.</p>
       <p>Once cached by the Service Worker or installed as a standalone application, FrankPass operates indefinitely on air-gapped, offline systems with 100% mathematical reproducibility.</p>
 
       <h3>4. Endpoint Threat Matrix &amp; Residual Boundaries:</h3>
