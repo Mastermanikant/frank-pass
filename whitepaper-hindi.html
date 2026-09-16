@@ -514,7 +514,7 @@
       <div class="article-byline">
         <span>लेखक: <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--text-primary);font-weight:700;text-decoration:none">मास्टर मणिकान्त यादव (Master Manikant Yadav)</a></span>
         <span>&middot;</span>
-        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (दोपहर 02:25 IST)</span>
+        <span>प्रकाशन: 15 सितम्बर 2026 &middot; अद्यतन: 16 सितम्बर 2026 (शाम 06:30 IST)</span>
         <span>&middot;</span>
         <span>15 मिनट पठन</span>
         <span>&middot;</span>
@@ -550,7 +550,39 @@
 
       <hr>
 
-      <h2>सार (Abstract)</h2>
+      <!-- सामग्री तालिका (Table of Contents) -->
+      <div class="article-highlight-box" style="margin-bottom:2rem;padding:1.5rem;">
+        <h3 style="margin-top:0;color:var(--accent-light);font-size:1.1rem;">📑 सामग्री तालिका (Table of Contents)</h3>
+        <ol style="color:var(--text-muted);line-height:2;font-size:0.95rem;margin:0;padding-left:1.25rem;">
+          <li><a href="#abstract" style="color:var(--accent-light);">सार (Abstract)</a></li>
+          <li><a href="#s1" style="color:var(--accent-light);">पृष्ठभूमि एवं समस्या का विवरण</a></li>
+          <li><a href="#s2" style="color:var(--accent-light);">स्टेटलेस आर्किटेक्चर एवं डिटरमिनिज्म</a></li>
+          <li><a href="#s3" style="color:var(--accent-light);">MMY_constant की औपचारिक परिभाषा</a></li>
+          <li><a href="#s4" style="color:var(--accent-light);">क्रिप्टोग्राफिक व्युत्पत्ति पाइपलाइन (6-चरण)</a></li>
+          <li><a href="#s5" style="color:var(--accent-light);">गोल्डन बेस-32 पूल एवं शून्य मॉड्यूलो बायस</a></li>
+          <li><a href="#s6" style="color:var(--accent-light);">पासवर्ड एन्ट्रापी सूत्र एवं सुरक्षा विश्लेषण</a></li>
+          <li><a href="#s7" style="color:var(--accent-light);">उपयोगिता सुरक्षा, MMY नॉर्मलाइजेशन एवं सीक्रेट की खोने का समाधान</a></li>
+          <li><a href="#s8" style="color:var(--accent-light);">थ्रेट मॉडल एवं एंडपॉइंट सुरक्षा मैट्रिक्स</a></li>
+          <li><a href="#s9" style="color:var(--accent-light);">आधिकारिक क्रिप्टोग्राफिक टेस्ट वेक्टर्स</a></li>
+        </ol>
+      </div>
+
+      <!-- तकनीकी शब्द शब्दकोश (Hindi Glossary - First Use) -->
+      <div style="background:rgba(139,92,246,0.05);border:1px solid rgba(139,92,246,0.2);border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:2rem;">
+        <h3 style="margin-top:0;font-size:1rem;color:var(--text-primary);">📚 तकनीकी शब्द संक्षिप्त शब्दकोश (Quick Glossary)</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px,1fr));gap:0.5rem 1.5rem;font-size:0.88rem;color:var(--text-muted);line-height:1.6;">
+          <div><code>KDF (Key Derivation Function)</code>: की-व्युत्पत्ति फलन - एक गणितीय प्रक्रिया जो पासफ़्रेज़ से मजबूत पासवर्ड बनाती है।</div>
+          <div><code>PBKDF2</code>: KDF का एक प्रकार जो 10 लाख बार गणना दोहरा कर हमलावर को धीमा करता है।</div>
+          <div><code>HMAC-SHA512</code>: 512-बिट का क्रिप्टोग्राफिक हस्ताक्षर फंक्शन।</div>
+          <div><code>Stateless (स्टेटलेस)</code>: ऐसी प्रणाली जो कुछ भी सेव नहीं करती, हर बार गणना से पासवर्ड बनाती है।</div>
+          <div><code>Domain Salt (डोमेन साल्ट)</code>: वेबसाइट का नाम जो हर प्लेटफॉर्म का पासवर्ड अलग बनाता है।</div>
+          <div><code>Pepper (लोकल नमक)</code>: एक सार्वजनिक एप्लिकेशन स्थिरांक जो प्री-प्रोसेसिंग में क्रॉस-एप्लिकेशन हमलों को रोकता है।</div>
+          <div><code>Normalization (सामान्यीकरण)</code>: इनपुट की स्वचालित सफाई - केवल a-z, 0-9 रखना।</div>
+          <div><code>Entropy (एन्ट्रापी)</code>: अनिश्चितता का माप - जितने बिट्स अधिक, उतना अनुमान लगाना कठिन।</div>
+        </div>
+      </div>
+
+      <h2 id="abstract">सार (Abstract)</h2>
       <p>पारंपरिक क्लाउड पासवर्ड मैनेजर्स की सबसे बड़ी कमजोरी है: <strong>Single Point of Failure (विफलता का अकेला केंद्र)</strong>। वे आपके सभी पासवर्ड्स को एन्क्रिप्ट करके किसी रिमोट सर्वर पर सेव करते हैं। जब भी सर्वर हैक होता है, हमलावर पूरा डेटाबेस डाउनलोड कर लेता है और अपने कंप्यूटरों पर ऑफलाइन क्रैकिंग शुरू कर देता है। इसके अलावा, क्लाउड रिकवरी के नाम पर मिलने वाले SMS OTP और ईमेल रीसेट लिंक सोशल इंजीनियरिंग के नए खतरे पैदा करते हैं।</p>
       
       <p>फ्रैंकपास पासवर्ड स्टोर करने के इस पूरे झंझट और खतरे को हमेशा के लिए समाप्त कर देता है। यह एक <strong>100% क्लाइंट-साइड, ओपन और स्टेटलेस पासवर्ड जनरेशन सिस्टम</strong> है, जो सर्वर या डिवाइस पर कभी भी पासवर्ड को सेव नहीं करता।</p>
@@ -561,7 +593,7 @@
 
       <hr>
 
-      <h2>1. पृष्ठभूमि एवं समस्या का विवरण (Background &amp; Problem Statement)</h2>
+      <h2 id="s1">1. पृष्ठभूमि एवं समस्या का विवरण (Background &amp; Problem Statement)</h2>
       <p>पारंपरिक पासवर्ड मैनेजर एन्क्रिप्टेड सर्वर वॉल्ट्स पर काम करते हैं: <span class="math-inline"><em>C<sub>i</sub></em> = <em>E<sub>K</sub></em>(<em>P<sub>i</sub></em>)</span>, जहाँ एन्क्रिप्टेड डेटा <span class="math-inline"><em>C<sub>i</sub></em></span> को क्लाउड इंफ्रास्ट्रक्चर पर स्टोर किया जाता है। यह मॉडल 3 बड़ी बुनियादी कमजोरियों से ग्रस्त है:</p>
       <ol>
         <li><strong>सर्वर डेटा चोरी का खतरा:</strong> क्लाउड सर्वर पर लाखों यूज़र्स के वॉल्ट्स का जमा होना हैकर्स के लिए बड़ा निशाना (Honeypot) बन जाता है। सर्वर ब्रीच होते ही हमलावर डेटाबेस डाउनलोड कर लेता है और अपने सुपरकंप्यूटर पर जितने दिन चाहे ऑफलाइन क्रैकिंग चला सकता है।</li>
@@ -572,7 +604,7 @@
 
       <hr>
 
-      <h2>2. स्टेटलेस आर्किटेक्चर एवं डिटरमिनिज्म स्थिरांक (Determinism Invariant)</h2>
+      <h2 id="s2">2. स्टेटलेस आर्किटेक्चर एवं डिटरमिनिज्म स्थिरांक (Determinism Invariant)</h2>
       <p>स्टेटलेस का सीधा अर्थ है: <strong>शून्य स्टोरेज (Zero Storage)</strong>। पासवर्ड को कभी भी किसी डेटाबेस, ब्राउज़र कुकी, लोकल फाइल या क्लाउड में सेव नहीं किया जाता। इसके बजाय, यूजर के इनपुट्स और एक स्थायी क्रिप्टोग्राफिक टुपल की मदद से उसी समय ऑन-डिमांड पासवर्ड की गणना की जाती है:</p>
 
       <div class="math-formula-box">
@@ -587,7 +619,7 @@
 
       <hr>
 
-      <h2>3. कैनोनिकल प्रोटोकॉल पैरामीटर टुपल (&Mscr;&Mscr;&Yscr;<sub>constant</sub>) की औपचारिक परिभाषा</h2>
+      <h2 id="s3">3. कैनोनिकल प्रोटोकॉल पैरामीटर टुपल (&Mscr;&Mscr;&Yscr;<sub>constant</sub>) की औपचारिक परिभाषा</h2>
       <p>मान लीजिए <em>&Sscr;</em> यूजर की मास्टर सीक्रेट की है, <em>&Dscr;</em> लक्षित वेबसाइट या प्लेटफॉर्म है, <em>&Uscr;</em> यूजरनेम या ईमेल है, <em>&Vscr;</em> &isin; &#x2115;<sup>+</sup> वर्जन काउंटर है, और <em>&Lscr;</em> &isin; &#x2115;<sup>+</sup> पासवर्ड की लंबाई है।</p>
       <p>फ्रैंकपास का <strong>कैनोनिकल प्रोटोकॉल पैरामीटर टुपल (Canonical Protocol Parameter Tuple)</strong>, जिसे औपचारिक रूप से <strong>मास्टर मणिकान्त यादव का क्रिप्टोग्राफिक स्थिरांक (&Mscr;&Mscr;&Yscr;<sub>constant</sub>)</strong> नामित किया गया है, 7 अनिवार्य फ्रोजन तत्वों का टुपल है:</p>
 
@@ -644,7 +676,7 @@
 
       <hr>
 
-      <h2>4. क्रिप्टोग्राफिक व्युत्पत्ति पाइपलाइन (6-चरण प्रवाह)</h2>
+      <h2 id="s4">4. क्रिप्टोग्राफिक व्युत्पत्ति पाइपलाइन (6-चरण प्रवाह)</h2>
       <p>फ्रैंकपास का क्रिप्टोग्राफिक इंजन W3C WebCrypto API (<code>crypto.subtle</code>) के माध्यम से पूरी तरह आपके ब्राउज़र में निष्पादित होता है। इसकी 6-चरणीय प्रक्रिया नीचे दी गई है:</p>
 
       <pre><code>┌─────────────────────────────────────────────────────────────────────────┐
@@ -656,6 +688,8 @@
 │    D_norm = D.toLowerCase().replace(/\s+/g, '')                         │
 │                                                                         │
 │ 2. Local Pepper Derivation (getSubtlePepper):                           │
+│    DEFAULT_PEPPER = "FrankbaseSuperSecretMango2026!" (PUBLIC CONSTANT)  │
+│    [यह गोपनीय नहीं है - GitHub पर सार्वजनिक है - Kerckhoffs' Principle] │
 │    dataStr = "Version=v1|User=" + U_norm + "|Plat=" + D_norm + "|Key=" + S_norm
 │    hmac = HMAC_SHA512( DEFAULT_PEPPER, dataStr )                       │
 │    preKey = hex( hmac )                                                │
@@ -685,9 +719,26 @@
 │    OUTPUT_PASSWORD = Validated Mapped Characters (length L)             │
 └─────────────────────────────────────────────────────────────────────────┘</code></pre>
 
+      <!-- Pepper Transparency Note -->
+      <div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.75rem;">
+        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (पेपर / लोकल नमक) - पूर्ण पारदर्शिता</h4>
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.4rem;">
+          उपरोक्त पाइपलाइन में <code>DEFAULT_PEPPER</code> का वास्तविक मान है:
+        </p>
+        <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:0.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:#a78bfa;margin-bottom:0.75rem;">
+          FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!"
+        </div>
+        <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.25rem;">
+          <li><strong>यह एक सार्वजनिक (Public) स्थिरांक है</strong> - GitHub पर खुले में उपलब्ध है।</li>
+          <li><strong>यह गोपनीय नहीं है और इसे गोपनीय होने की जरूरत नहीं है।</strong> सुरक्षा का आधार यूजर की मास्टर सीक्रेट की है, यह स्थिरांक नहीं।</li>
+          <li>इसका उद्देश्य है <strong>क्रॉस-एप्लिकेशन डोमेन पृथक्करण (Cross-App Domain Separation)</strong> - किसी अन्य KDF एप्लिकेशन के साथ टकराव रोकना।</li>
+          <li>यह <a href="https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle" target="_blank" rel="noopener" style="color:var(--accent-light);">Kerckhoffs का सिद्धांत</a> पालन करता है: "एल्गोरिथ्म और स्थिरांक सार्वजनिक हों, सुरक्षा केवल की की ताकत पर निर्भर हो।"</li>
+        </ul>
+      </div>
+
       <hr>
 
-      <h2>5. गोल्डन बेस-32 पूल एवं शून्य मॉड्यूलो बायस का गणितीय प्रमाण</h2>
+      <h2 id="s5">5. गोल्डन बेस-32 पूल एवं शून्य मॉड्यूलो बायस का गणितीय प्रमाण</h2>
       <p>पारंपरिक रैंडम पासवर्ड जनरेटर जो 256 बाइट्स को किसी मनमाने कैरेक्टर पूल (जैसे 55, 62 या 94 अक्षरों) पर मैप करते हैं, वे <strong>मॉड्यूलो बायस (Modulo Bias)</strong> की बीमारी से ग्रस्त होते हैं, जिससे कुछ अक्षरों के चुने जाने की संभावना दूसरों से अधिक हो जाती है।</p>
       
       <p>फ्रैंकपास एक सटीक <strong>गोल्डन बेस-32 कैरेक्टर पूल</strong> (&Cscr;, जहाँ |&Cscr;| = 32 = 2<sup>5</sup>) का उपयोग करके इस समस्या को गणितीय रूप से हल करता है:</p>
@@ -768,7 +819,7 @@
 
       <hr>
 
-      <h2>6. पासवर्ड एन्ट्रापी सूत्र एवं सुरक्षा विश्लेषण</h2>
+      <h2 id="s6">6. पासवर्ड एन्ट्रापी सूत्र एवं सुरक्षा विश्लेषण</h2>
       <p>चूँकि गोल्डन बेस-32 पूल का प्रत्येक कैरेक्टर ठीक 5 बिट्स की सूचना एन्ट्रापी रखता है (log<sub>2</sub>(32) = 5.000 bits), इसलिए पासवर्ड की सर्च स्पेस जटिलता लंबाई के साथ रैखिक रूप से बढ़ती है:</p>
 
       <div class="math-formula-box">
@@ -905,7 +956,7 @@
 
       <hr>
 
-      <h2>7. उपयोगिता सुरक्षा एवं MMY नॉर्मलाइजेशन का विज्ञान</h2>
+      <h2 id="s7">7. उपयोगिता सुरक्षा एवं MMY नॉर्मलाइजेशन का विज्ञान</h2>
       <p>स्टेटलेस पासवर्ड सिस्टम्स में मानवीय टाइपिंग की भिन्नता सबसे बड़ी समस्या होती है। मोबाइल कीबोर्ड अक्सर:</p>
       <ul>
         <li>पहला अक्षर अपने-आप बड़ा कर देते हैं (जैसे <code>MySecret</code> बनाम <code>mysecret</code>)।</li>
@@ -928,9 +979,77 @@ const normalizedSecret = (secretKey || '')
         <p style="margin-bottom:0;">इसलिए यूजर्स को अजीब सिंबल्स (जैसे <code>P@$$w0rd!</code>) पर निर्भर रहने के बजाय <strong>पासफ़्रेज़ की लंबाई और शब्दों की संख्या</strong> बढ़ानी चाहिए (जैसे <code>mango river copper guitar 2026</code> अत्यंत सुरक्षित है)।</p>
       </div>
 
+      <!-- ★ सीक्रेट की खोने का डर - पूर्ण पारदर्शी समाधान ★ -->
+      <div class="article-highlight-box" style="margin:2rem 0;border:2px solid rgba(16,185,129,0.4);background:rgba(16,185,129,0.04);">
+        <h3 style="margin-top:0;color:#10b981;font-size:1.15rem;">🔑 सीक्रेट की भूल जाने का डर - पूर्ण पारदर्शी समाधान (4 सुरक्षा कवच)</h3>
+        <p style="color:var(--text-primary);font-weight:600;margin-bottom:1rem;">
+          फ्रैंकपास में "सीक्रेट की खोने" की समस्या को आर्किटेक्चरल स्तर पर 4 परतों में हल किया गया है। प्रत्येक परत स्वतंत्र रूप से काम करती है:
+        </p>
+
+        <div style="border-left:4px solid #10b981;padding:0.75rem 1rem 0.75rem 1.25rem;margin-bottom:1rem;background:rgba(16,185,129,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:#10b981;">कवच 1: MMY नॉर्मलाइजेशन (स्वचालित त्रुटि-शून्य इनपुट)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            फ्रैंकपास के नॉर्मलाइजेशन इंजन की सटीक सार्वजनिक कार्यविधि:
+          </p>
+          <ul style="color:var(--text-muted);font-size:0.9rem;margin:0.5rem 0 0;line-height:1.8;">
+            <li><strong>केवल a-z और 0-9 स्वीकार किए जाते हैं</strong> - सभी सिंबल्स (<code>@</code>, <code>!</code>, <code>#</code> आदि) स्वतः हट जाते हैं।</li>
+            <li><strong>सभी बड़े अक्षर (Capital Letters) स्वतः छोटे</strong> हो जाते हैं - <code>MySecret</code> = <code>mysecret</code>।</li>
+            <li><strong>सभी स्पेस (खाली जगह) स्वतः हट</strong> जाते हैं - <code>"mere ghar ke log"</code> = <code>"meregharkelog"</code>।</li>
+          </ul>
+          <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:0.6rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:#a78bfa;margin-top:0.75rem;">
+            "Mere Door Ke MOSA Ka Beta!" = "meredoorkemosakabetha"<br>
+            "mere door ke mosa ka beta " = "meredoorkemosakabetha"<br>
+            "MERE DOOR KE MOSA KA BETA" = "meredoorkemosakabetha"<br>
+            <span style="color:#10b981;font-weight:700;">→ तीनों से बिल्कुल एक ही पासवर्ड बनेगा</span>
+          </div>
+          <p style="color:var(--text-muted);font-size:0.88rem;margin:0.5rem 0 0;">
+            <strong>व्यावहारिक अर्थ:</strong> यूजर कभी भी "गलत" सीक्रेट की टाइप नहीं कर सकता जब तक कि शब्द पूरी तरह अलग न हों। केस, स्पेस, सिंबल्स - सब माफ।
+          </p>
+        </div>
+
+        <div style="border-left:4px solid #8b5cf6;padding:0.75rem 1rem 0.75rem 1.25rem;margin-bottom:1rem;background:rgba(139,92,246,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:var(--accent-light);">कवच 2: स्मरणीय प्राकृतिक भाषा मॉडल (Secret Key Guide)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            फ्रैंकपास की <a href="/secret-key-guide-hindi.html" style="color:var(--accent-light);">सीक्रेट की गाइड</a> यूजर्स को सिखाती है कि सीक्रेट की को जटिल बनाने के बजाय <strong>प्राकृतिक और स्मरणीय</strong> बनाएं:
+          </p>
+          <ul style="color:var(--text-muted);font-size:0.9rem;margin:0.5rem 0 0;line-height:1.8;">
+            <li><strong>50+ वास्तविक श्रेणी-वार उदाहरण</strong> - बचपन, परिवार, दैनिक जीवन, संकल्प - जो कोई भूल नहीं सकता।</li>
+            <li><strong>7 से 9 शब्दों का पारिवारिक संबंध वाक्य</strong> एक बार बोला तो ताउम्र याद रहेगा (उदा. "मेरे दूर के मोसा का बेटा राम")।</li>
+            <li><strong>"असंभव कल्पनाशील वाक्य" रणनीति</strong> - जो केवल आपकी कल्पना में है वह न कोई डिक्शनरी जानता है न AI।</li>
+          </ul>
+        </div>
+
+        <div style="border-left:4px solid #f59e0b;padding:0.75rem 1rem 0.75rem 1.25rem;margin-bottom:1rem;background:rgba(245,158,11,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:#f59e0b;">कवच 3: कैनोनिकल टेस्ट वेक्टर्स (स्व-सत्यापन प्रणाली)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            यदि कोई यूजर अपनी सीक्रेट की के बारे में अनिश्चित हो, तो वे <strong>अनुभाग 9 के आधिकारिक टेस्ट वेक्टर्स</strong> का उपयोग करके तुरंत जांच सकते हैं:
+          </p>
+          <ul style="color:var(--text-muted);font-size:0.9rem;margin:0.5rem 0 0;line-height:1.8;">
+            <li>वेक्टर #1 में <code>mastersecret2026</code> + <code>google.com</code> से हमेशा <code>F6h?%Ld48&amp;&amp;e4f?f</code> बनना चाहिए।</li>
+            <li>यदि यह आउटपुट मेल खाता है, तो आपकी सीक्रेट की और सेटअप सही है।</li>
+            <li>यह सत्यापन 100% ऑफलाइन है - कोई डेटा बाहर नहीं जाता।</li>
+          </ul>
+        </div>
+
+        <div style="border-left:4px solid #3b82f6;padding:0.75rem 1rem 0.75rem 1.25rem;background:rgba(59,130,246,0.06);border-radius:0 10px 10px 0;">
+          <strong style="color:#60a5fa;">कवच 4: FrankPass Pro लोकल एन्क्रिप्टेड वॉल्ट (4-PIN सुविधा)</strong>
+          <p style="color:var(--text-muted);font-size:0.92rem;margin:0.4rem 0 0;">
+            उन यूजर्स के लिए जो कभी भी टाइप करने की झंझट नहीं चाहते:
+          </p>
+          <ul style="color:var(--text-muted);font-size:0.9rem;margin:0.5rem 0 0;line-height:1.8;">
+            <li>सीक्रेट की को <strong>डिवाइस पर AES-GCM एन्क्रिप्शन</strong> से लोकल वॉल्ट में स्टोर करें।</li>
+            <li>केवल <strong>4-अंकों का PIN या बायोमेट्रिक (फिंगरप्रिंट)</strong> से 1 सेकंड में 1-क्लिक पासवर्ड।</li>
+            <li>सीक्रेट की सर्वर पर कभी नहीं जाती - सब कुछ डिवाइस पर ही रहता है।</li>
+          </ul>
+          <p style="color:var(--text-muted);font-size:0.88rem;margin:0.5rem 0 0;">
+            <strong>सारांश:</strong> 120-बिट क्रिप्टोग्राफिक सुरक्षा + 1 सेकंड की सुविधा = सर्वोत्तम संगम।
+          </p>
+        </div>
+      </div>
+
       <hr>
 
-      <h2>8. थ्रेट मॉडल एवं एंडपॉइंट सुरक्षा मैट्रिक्स (Threat Model)</h2>
+      <h2 id="s8">8. थ्रेट मॉडल एवं एंडपॉइंट सुरक्षा मैट्रिक्स (Threat Model)</h2>
 
       <h3>1. सर्वर ब्रीच से पूर्ण मुक्ति (Zero-Storage Immunity):</h3>
       <p>चूँकि फ्रैंकपास के सर्वर पर 0 पासवर्ड्स, 0 कीज़, और 0 फाइल्स (0 बाइट स्टोरेज) होती हैं, इसलिए सर्वर हैक होने पर भी हमलावर को शून्य (0) डेटा मिलता है। डेटाबेस चोरी का खतरा आर्किटेक्चरल रूप से विलोपित (Architecturally Eliminated) हो जाता है, क्योंकि सर्वर पर क्रेडेंशियल डेटा का अस्तित्व ही नहीं होता।</p>
@@ -998,7 +1117,7 @@ const normalizedSecret = (secretKey || '')
 
       <hr>
 
-      <h2>9. आधिकारिक क्रिप्टोग्राफिक एवं एंड-टू-एंड टेस्ट वेक्टर्स (Official Test Vectors)</h2>
+      <h2 id="s9">9. आधिकारिक क्रिप्टोग्राफिक एवं एंड-टू-एंड टेस्ट वेक्टर्स (Official Test Vectors)</h2>
       <p>फ्रैंकपास की पूर्ण एंड-टू-एंड पाइपलाइन (डोमेन व इनपुट नॉर्मलाइजेशन + <code>frankpass-core.js</code> 10 लाख PBKDF2 राउंड्स + गोल्डन बेस-32 मैपिंग) के आधिकारिक टेस्ट वेक्टर्स नीचे दिए गए हैं। ये वेक्टर्स वेब ऐप, ब्राउज़र एक्सटेंशन और नेटिव ऐप्स में 100% एक समान परिणाम उत्पन्न करते हैं:</p>
 
       <table>
