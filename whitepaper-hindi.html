@@ -878,23 +878,23 @@
 │    U_norm = U.toLowerCase().replace(/\s+/g, '')                         │
 │    D_norm = D.toLowerCase().replace(/\s+/g, '')                         │
 │                                                                         │
-│ 2. Local Pepper Derivation (getSubtlePepper):                           │
-│    DEFAULT_PEPPER = "FrankbaseSuperSecretMango2026!" (PUBLIC CONSTANT)  │
+│ 2. Local Domain Key Derivation (getLocalPepper):                        │
+│    FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!" (PUBLIC)    │
 │    [यह गोपनीय नहीं है - GitHub पर सार्वजनिक है - Kerckhoffs' Principle] │
 │    dataStr = "Version=v1|User=" + U_norm + "|Plat=" + D_norm + "|Key=" + S_norm
-│    hmac = HMAC_SHA512( DEFAULT_PEPPER, dataStr )                       │
+│    hmac = HMAC_SHA512( FRANKPASS_DOMAIN_SALT, dataStr )                 │
 │    preKey = hex( hmac )                                                │
 │    FOR i = 0 TO 999:                                                   │
-│        preKey = hex( SHA256( preKey + DEFAULT_PEPPER ) )               │
-│    pepper = preKey   (64-character hexadecimal string)                  │
+│        preKey = hex( SHA256( preKey + FRANKPASS_DOMAIN_SALT ) )         │
+│    appDomainKey = preKey   (64-character hexadecimal string)            │
 │                                                                         │
 │ 3. Context Vector Construction (Length-prefixed Netstring encoding):   │
 │    CTX = "22:MasterManikant_PassGen|2:v1|len(D):D_norm|len(U):U_norm|   │
-│           len(pepper):pepper|len(V):V|len(profile):profile|len(L):L"    │
+│           len(appDomainKey):appDomainKey|len(V):V|len(profile):profile|len(L):L" │
 │    seedData = UTF8_Encode( CTX.normalize('NFC') )                       │
 │                                                                         │
 │ 4. Primary Key Derivation (PBKDF2-HMAC-SHA512, 1M Iterations):          │
-│    baseKey = ImportKey( raw, UTF8_Encode( pepper.normalize('NFC') ) )  │
+│    baseKey = ImportKey( raw, UTF8_Encode( appDomainKey.normalize('NFC') ) ) │
 │    PRK = PBKDF2( baseKey, Salt=seedData, Iterations=1,000,000, SHA-512 )│
 │                                                                         │
 │ 5. Continuous HMAC Stream Expansion (HKDF-style expansion):             │
@@ -912,9 +912,9 @@
 
       <!-- Pepper Transparency Note -->
       <div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.75rem;">
-        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (एप्लिकेशन डोमेन साल्ट) : पूर्ण पारदर्शिता</h4>
+        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (सार्वजनिक एप्लिकेशन डोमेन विभाजक) : विनिर्देश</h4>
         <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.4rem;">
-          उपरोक्त पाइपलाइन में <code>DEFAULT_PEPPER</code> का वास्तविक मान है:
+          उपरोक्त पाइपलाइन में <code>FRANKPASS_DOMAIN_SALT</code> का मान है:
         </p>
         <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:0.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:#a78bfa;margin-bottom:0.75rem;">
           FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!"
@@ -923,7 +923,7 @@
           <li><strong>यह एक सार्वजनिक (Public) स्थिरांक है</strong> (GitHub रिपॉजिटरी में खुले में उपलब्ध)।</li>
           <li><strong>यह गुप्त नहीं है और न ही इसे गुप्त रखने की आवश्यकता है:</strong> सुरक्षा का आधार यूजर की मास्टर सीक्रेट की है, यह स्थिरांक नहीं।</li>
           <li>इसका उद्देश्य है <strong>क्रॉस-एप्लिकेशन डोमेन पृथक्करण (Cross-App Domain Separation)</strong> - किसी अन्य KDF एप्लिकेशन के साथ टकराव रोकना।</li>
-          <li>यह <a href="https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle" target="_blank" rel="noopener" style="color:var(--accent-light);">Kerckhoffs का सिद्धांत</a> पालन करता है: "एल्गोरिथ्म और स्थिरांक सार्वजनिक हों, सुरक्षा केवल की की ताकत पर निर्भर हो।"</li>
+          <li>यह <a href="https://en.wikipedia.org/wiki/Kerckhoffs%27s_principle" target="_blank" rel="noopener" style="color:var(--accent-light);">Kerckhoffs का सिद्धांत (1883)</a> पालन करता है: "एल्गोरिथ्म और स्थिरांक सार्वजनिक हों, सुरक्षा केवल की की मजबूती पर निर्भर हो।"</li>
         </ul>
       </div>
 
@@ -1016,11 +1016,7 @@
         <li><strong>प्राथमिक स्ट्रीम मैपिंग:</strong> 128-बाइट स्यूडोरैंडम स्ट्रीम के पहले <em>L</em> बाइट्स को बेस-32 वर्णों में मैप किया जाता है।</li>
         <li><strong>डिटरमिनिस्टिक इंजेक्शन:</strong> यदि <em>L</em> वर्णों में कोई अनिवार्य श्रेणी अनुपस्थित हो, तो स्ट्रीम के अंतिम बाइट्स (<code>revIdx</code>) का उपयोग करके एक अद्वितीय डिटरमिनिस्टिक इंडेक्स पर अनुपस्थित श्रेणी का वर्ण प्रतिस्थापित कर दिया जाता है।</li>
       </ol>
-      <p>अनिवार्य श्रेणियों के प्रतिबंध के कारण <em>L = 16</em> पर कुल वैध कॉम्बिनेशन्स की संख्या समावेश-अपवर्जन सिद्धांत (Principle of Inclusion-Exclusion) द्वारा ज्ञात होती है:</p>
-      <div class="math-formula-box" style="font-size:0.95rem;">
-        |&Omega;<sub>valid</sub>| = 32<sup>16</sup> - &sum; (अमान्य कॉम्बिनेशन्स) &approx; 1.199 &times; 10<sup>24</sup> &nbsp;&implies;&nbsp; <em>H</em><sub>effective</sub> &approx; <strong>79.95 bits</strong>
-      </div>
-      <p style="color:var(--text-muted);font-size:0.88rem;">प्रतिबंधित नीति के बावजूद पासवर्ड की प्रभावी खोज एन्ट्रापी 80.00 बिट्स के व्यावहारिक समकक्ष बनी रहती है।</p>
+      <p>16-कैरेक्टर बेस-32 का सर्च स्पेस 80 बिट्स ($32^{16} = 2^{80} \approx 1.21 \times 10^{24}$) है। अनिवार्य श्रेणी प्रवर्तन वैध सेट को सीमित करता है; प्रभावी सुरक्षा मास्टर सीक्रेट एन्ट्रापी और सर्च स्पेस की न्यूनतम सीमा पर निर्भर करती है: <span class="math-inline">Effective Security = min(H<sub>secret</sub>, H<sub>search</sub>)</span>。</p>
 
       <hr>
 
@@ -1028,11 +1024,8 @@
       <p>चूँकि गोल्डन बेस-32 पूल का प्रत्येक कैरेक्टर ठीक 5 बिट्स की सूचना एन्ट्रापी रखता है (log<sub>2</sub>(32) = 5.000 bits), इसलिए पासवर्ड की सर्च स्पेस जटिलता लंबाई के साथ रैखिक रूप से बढ़ती है:</p>
 
       <div class="math-formula-box">
-        <em>H</em><sub>unconstrained</sub> = <em>L</em> &times; log<sub>2</sub>(32) = 5 &times; <em>L</em> bits
+        <em>H</em><sub>search</sub> = <em>L</em> &times; log<sub>2</sub>(32) = 5 &times; <em>L</em> bits
       </div>
-      <p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.4rem;">
-        <em>कैरेक्टर-पॉलिसी प्रवर्तन पर नोट:</em> मानक प्रोफाइल ('standard') में 4 श्रेणियों (बड़ा अक्षर, छोटा अक्षर, अंक, प्रतीक) की अनिवार्य उपस्थिति के कारण <em>L = 16</em> पर सर्च स्पेस <span class="math-inline">|&Omega;<sub>valid</sub>| &approx; 1.199 &times; 10<sup>24</sup></span> होता है, जिससे प्रभावी एन्ट्रापी <span class="math-inline"><em>H</em><sub>effective</sub> &approx; <strong>79.95 bits</strong></span> प्राप्त होती है (अनुभाग 5 में समावेश-अपवर्जन प्रमाण देखें)।
-      </p>
 
       <div class="table-responsive">
 <table>
@@ -1040,8 +1033,9 @@
           <tr>
             <th>पासवर्ड लंबाई (L)</th>
             <th>सर्च स्पेस कॉम्बिनेशन</th>
-            <th>आउटपुट खोज एन्ट्रापी</th>
-            <th>GPU क्रैकिंग समय (10<sup>9</sup> अनुमान/सेकंड)</th>
+            <th>सर्च एन्ट्रापी (H<sub>search</sub>)</th>
+            <th>क्रैकिंग समय @ 10<sup>9</sup> अनुमान/सेकंड</th>
+            <th>समय @ 10<sup>6</sup> PBKDF2/सेकंड (क्लस्टर)</th>
           </tr>
         </thead>
         <tbody>
@@ -1049,47 +1043,52 @@
             <td><strong>12 कैरेक्टर</strong></td>
             <td>32<sup>12</sup> = 2<sup>60</sup> &approx; 1.15 &times; 10<sup>18</sup></td>
             <td><strong>60.000 bits</strong></td>
-            <td>36.5 वर्ष</td>
+            <td>~36.5 वर्ष</td>
+            <td>~36,500 वर्ष</td>
           </tr>
           <tr>
             <td><strong>16 कैरेक्टर (मानक)</strong></td>
-            <td>32<sup>16</sup> = 2<sup>80</sup> &approx; 1.20 &times; 10<sup>24</sup></td>
+            <td>32<sup>16</sup> = 2<sup>80</sup> &approx; 1.21 &times; 10<sup>24</sup></td>
             <td><strong>80.000 bits</strong></td>
-            <td>1.9 &times; 10<sup>13</sup> वर्ष (ब्रह्मांड की आयु से अधिक)</td>
+            <td>~38.3 मिलियन वर्ष (3.83 &times; 10<sup>7</sup> वर्ष)</td>
+            <td>~3.83 &times; 10<sup>10</sup> वर्ष</td>
           </tr>
           <tr>
             <td><strong>20 कैरेक्टर (विस्तारित)</strong></td>
-            <td>32<sup>20</sup> = 2<sup>100</sup> &approx; 1.26 &times; 10<sup>30</sup></td>
+            <td>32<sup>20</sup> = 2<sup>100</sup> &approx; 1.27 &times; 10<sup>30</sup></td>
             <td><strong>100.000 bits</strong></td>
-            <td>2.0 &times; 10<sup>19</sup> वर्ष (ज्ञात कम्प्यूटेशनल क्षमताओं से परे)</td>
+            <td>~40.2 ट्रिलियन वर्ष (ब्रह्मांड की आयु से अधिक)</td>
+            <td>~4.02 &times; 10<sup>16</sup> वर्ष</td>
           </tr>
         </tbody>
       </table>
 </div>
 
-      <!-- बहु-आयामी संयुक्त खोज जटिलता (Multivariate Search Space Complexity) -->
-      <h3>बहु-आयामी संयुक्त खोज जटिलता (Multivariate Search Space Complexity):</h3>
-      <p>पारंपरिक सिंगल-इनपुट KDF प्रणालियों के विपरीत, फ्रैंकपास में किसी वेबसाइट के आउटपुट पासवर्ड से मूल मास्टर सीक्रेट का अनुमान लगाना केवल एक आयामी (1D) पासफ़्रेज़ गेसिंग नहीं है। हमलावर को अज्ञात वैरिएबल्स के पूरे संयुक्त टुपल पर खोज करनी होती है:</p>
+      <!-- बहु-आयामी संदर्भ पृथक्करण -->
+      <h3>डिटरमिनिस्टिक संदर्भ पृथक्करण:</h3>
+      <p>फ्रैंकपास में ऑफलाइन प्री-इमेज सर्च स्पेस यूजर व डोमेन वैरिएबल्स के नेटस्ट्रिंग्स का उपयोग करता है:</p>
 
       <div class="math-formula-box" style="font-size:1rem;">
-        Total Search Complexity = &Oscr;(|V| &times; |U| &times; |Passphrase Space|)
+        Context Tuple = &lang; APP_ID, VER, D<sub>norm</sub>, U<sub>norm</sub>, appDomainKey, V, Profile, L &rang;
       </div>
 
-      <p>जहाँ <em>|V|</em> पासवर्ड रोटेशन काउंटर (1, 2, 3...) है, <em>|U|</em> यूजरनेम/ईमेल के संभावित प्रारूप हैं, और <em>|Passphrase Space|</em> मास्टर सीक्रेट की संभावनाओं का दायरा है। डोमेन और यूजरनेम के विभिन्न संयोजनों के कारण हमलावर का ऑफलाइन ट्रायल स्पेस कई गुना गुणात्मक रूप से बढ़ जाता है, जिससे डिक्शनरी या रेनबो टेबल का कोई भी सामान्य प्रयास गणितीय रूप से विफल हो जाता है।</p>
+      <p>डोमेन, यूजरनेम और वर्जन वैरिएबल्स डिटरमिनिस्टिक संदर्भ पृथक्करण प्रदान करते हैं जो क्रॉस-सर्विस टकराव व रेनबो टेबल को रोकते हैं। लेकिन जब वे किसी विशिष्ट खाते को लक्षित करने वाले हमलावर को ज्ञात हों, तो आधारभूत खोज कठिनाई यूजर की मास्टर सीक्रेट की की एन्ट्रापी द्वारा शासित होती है।</p>
 
       <!-- 7 से 9 शब्दों का पासफ़्रेज़ मॉडल (खोज जटिलता एवं व्यावहारिक सुरक्षा) -->
       <div class="article-highlight-box" style="margin:1.75rem 0;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.04);">
         <h3 style="margin-top:0;color:#10b981;display:flex;align-items:center;gap:8px;">
-          <span>🛡️</span> 7 से 9 शब्दों का पासफ़्रेज़ मॉडल (खोज जटिलता एवं व्यावहारिक सुरक्षा)
+          <span>🛡️</span> 7 से 9 शब्दों का पासफ़्रेज़ मॉडल (40 से 60+ प्रभावी एन्ट्रापी बिट्स)
         </h3>
         <p style="margin-bottom:0.75rem;color:var(--text-primary);font-weight:600;">
-          जटिल प्रतीकों (जैसे <code>P@$$w0rd!#</code>) की बनावटी सुरक्षा के भ्रम से बाहर निकलें। यादृच्छिक व स्मरणीय शब्द संयोजन उच्च खोज जटिलता प्रदान करते हैं:
+          जटिल प्रतीकों (जैसे <code>P@$$w0rd!#</code>) की बनावटी सुरक्षा के भ्रम से बाहर निकलें। प्राकृतिक व्यक्तिगत शब्द संयोजन बिना टाइपिंग बाधा के उच्च सुरक्षा प्रदान करते हैं:
+        </p>
+        <p style="margin-bottom:0.75rem;">
+          विचार करें एक 9-शब्दों के प्राकृतिक वाक्य पर: <code>"mere door ke mosa ka beta ram bahut achha aadmi hai"</code>
         </p>
         <ul style="margin-bottom:0.75rem;">
-          <li><strong>डाइसवेयर / यादृच्छिक शब्द मॉडल (110+ बिट्स सर्च स्पेस):</strong> यदि 8,000 शब्दों के शब्दकोश से 9 शब्द स्वतंत्र रूप से यादृच्छिक (Uniform Random Selection) चुने जाएं, तो सैद्धांतिक सर्च स्पेस <em>9 &times; log<sub>2</sub>(8000) &approx; 116.7 बिट्स</em> (8000<sup>9</sup> &approx; 1.34 &times; 10<sup>35</sup> कॉम्बिनेशन्स) होता है।</li>
-          <li><strong>प्राकृतिक वाक्य मॉडल (40 से 60+ बिट्स प्रभावी एन्ट्रापी):</strong> सामान्य बोलचाल या पारिवारिक वाक्यों (उदा. <code>"mere door ke mosa ka beta ram"</code>) में भाषाई संरचना (Grammatical redundancy) के बावजूद व्यावहारिक ऑफलाइन सर्च स्पेस 40 से 60+ बिट्स रहता है, जो 10 लाख PBKDF2 राउंड्स के साथ मिलकर उपभोक्ता खातों के लिए मजबूत सुरक्षा प्रदान करता है।</li>
+          <li><strong>व्यावहारिक पासफ़्रेज़ एन्ट्रापी:</strong> प्राकृतिक भाषाई संरचना के कारण मानव-निर्मित वाक्य में लगभग 40 से 60+ बिट्स की प्रभावी एन्ट्रापी होती है। 100+ बिट्स की पूर्ण क्रिप्टोग्राफिक एन्ट्रापी हेतु यूजर्स बहु-शब्दीय यादृच्छिक डाइसवेयर (Diceware) पासफ़्रेज़ का उपयोग कर सकते हैं।</li>
           <li><strong>शून्य टाइपिंग गलतियां:</strong> बिना किसी अजीब सिंबल के साधारण शब्द होने के कारण मोबाइल पर टाइप करना अत्यंत सहज है और MMY Normalization स्पेस व केस की चिंता समाप्त कर देता है।</li>
-          <li><strong>फ्रैंकपास प्रो (FrankPass Pro) लोकल पिन सुविधा के साथ तालमेल:</strong> यूजर को यह वाक्य केवल एक बार याद रखना होता है। फ्रैंकपास प्रो में यह पासफ़्रेज़ आपके डिवाइस पर ही लोकल एन्क्रिप्टेड वॉल्ट में सुरक्षित रहता है और केवल 4-अंकों के पिन (या बायोमेट्रिक्स) से 1 सेकंड में अनलॉक होकर ऑटो-फिल हो जाता है।</li>
+          <li><strong>फ्रैंकपास प्रो लोकल वॉल्ट के साथ तालमेल:</strong> यूजर को यह वाक्य केवल एक बार याद रखना होता है। फ्रैंकपास प्रो में यह पासफ़्रेज़ आपके डिवाइस पर ही लोकल एन्क्रिप्टेड वॉल्ट (AES-256-GCM) में सुरक्षित रहता है और केवल 4-अंकों के पिन या बायोमेट्रिक्स से 1 सेकंड में अनलॉक होकर ऑटो-फिल हो जाता है।</li>
         </ul>
       </div>
 
@@ -1098,11 +1097,11 @@
         <p style="margin-bottom:0.75rem;">अनुप्रयुक्त क्रिप्टोग्राफी का मूलभूत नियम है कि की-डेरिवेशन फ़ंक्शन (KDF) शून्य में से एन्ट्रापी नहीं बना सकता। वास्तविक सुरक्षा का नियम है:</p>
 
         <div class="math-formula-box" style="margin:0.75rem 0;font-size:1rem;">
-          Effective Security = min(H<sub>passphrase</sub>, KDF Bit Security)
+          Effective Security = min(H<sub>passphrase</sub>, H<sub>search</sub>)
         </div>
 
-        <p style="margin-bottom:0.75rem;">16 अक्षरों का आउटपुट (80-बिट सर्च स्पेस) टकराव को रोकता है, लेकिन यदि किसी वेबसाइट से पासवर्ड चोरी हो जाए तो हमलावर आपके इनपुट पासफ़्रेज़ पर ब्रूट-फोर्स हमला करेगा। 10 लाख राउंड्स का PBKDF2 अटैकर को भारी धीमा करता है, लेकिन वास्तविक सुरक्षा आपकी सीक्रेट की की मजबूती पर टिकी होती है।</p>
-        <p style="margin-bottom:0;"><strong>अनुशंसा:</strong> यूजर्स को 5 से 6 यादृच्छिक शब्दों (डाइसवेयर / EFF स्टाइल, ~65 से 80 बिट्स वास्तविक एन्ट्रापी) या 7 से 9 शब्दों के व्यक्तिगत स्मरणीय वाक्यों का चयन करना चाहिए।</p>
+        <p style="margin-bottom:0.75rem;">16 अक्षरों का आउटपुट (80-बिट सर्च स्पेस) टकराव को रोकता है, लेकिन यदि किसी वेबसाइट से पासवर्ड चोरी हो जाए तो हमलावर आपके इनपुट पासफ़्रेज़ पर ब्रूट-फोर्स हमला करेगा। 10 लाख राउंड्स का PBKDF2 अटैकर को भारी धीमा करता है, लेकिन वास्तविक सुरक्षा आपकी सीक्रेट की की मजबूती पर टिकी होती है。</p>
+        <p style="margin-bottom:0;"><strong>अनुशंसा:</strong> यूजर्स को 5 से 6 यादृच्छिक शब्दों (डाइसवेयर / EFF स्टाइल, ~65 से 80 बिट्स वास्तविक एन्ट्रापी) या 7 से 9 शब्दों के व्यक्तिगत स्मरणीय वाक्यों का चयन करना चाहिए。</p>
       </div>
 
       <h3>KDF चयन का वैज्ञानिक कारण, हार्डवेयर बेंचमार्क एवं कम्प्यूटेशनल लागत (Empirical Benchmarks):</h3>
@@ -1347,11 +1346,11 @@ const normalizedSecret = (secretKey || '')
       <div class="article-highlight-box" style="margin:1.25rem 0;padding:1.25rem;background:rgba(99,102,241,0.04);border:1px solid rgba(99,102,241,0.25);">
         <h4 style="margin-top:0;color:var(--accent-light);font-size:0.95rem;">🔬 वेक्टर #1: बाइट-दर-बाइट इंटरमीडिएट स्टेट सत्यापन (Byte-for-Byte Canonical Trace)</h4>
         <div style="font-family:'JetBrains Mono',monospace;font-size:0.83rem;color:var(--text-muted);line-height:1.7;word-break:break-all;">
-          <strong>रॉ इनपुट्स:</strong> Key = <code>"mastersecret2026"</code>, Platform = <code>"google.com"</code>, User = <code>"user@example.com"</code>, V = 1, L = 16<br>
+          <strong>रॉ इनपुट्स:</strong> Key = <code>"mastersecret2026"</code>, Platform = <code>"google.com"</code>, User = <code>"user@example.com"</code>, V = 1, Profile = <code>"standard"</code>, L = 16<br>
           <strong>1. MMY सामान्यीकृत स्लग:</strong> S<sub>norm</sub> = <code>"mastersecret2026"</code>, D<sub>norm</sub> = <code>"google"</code>, U<sub>norm</sub> = <code>"user@example.com"</code><br>
-          <strong>2. लोकल पेपर (64 Hex Chars):</strong> <code>3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525</code><br>
+          <strong>2. लोकल डोमेन की (appDomainKey, 64 Hex Chars):</strong> <code>3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525</code><br>
           <strong>3. कॉन्टेक्स्ट नेटस्ट्रिंग (CTX):</strong> <code>"22:MasterManikant_PassGen|2:v1|6:google|16:user@example.com|64:3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525|1:1|8:standard|2:16"</code><br>
-          <strong>4. PBKDF2-HMAC-SHA512:</strong> 10,00,000 Iterations (Key = Pepper NFC, Salt = CTX NFC, 64 Derived Bytes)<br>
+          <strong>4. PBKDF2-HMAC-SHA512:</strong> 10,00,000 Iterations (Key = appDomainKey NFC, Salt = CTX NFC, 64 Derived Bytes)<br>
           <strong>5. कैनोनिकल आउटपुट पासवर्ड:</strong> <span style="color:#10b981;font-weight:700;">F6h?%Ld48&&e4f?f</span>
         </div>
       </div>

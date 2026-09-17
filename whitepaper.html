@@ -889,21 +889,21 @@
 │    U_norm = U.toLowerCase().replace(/\s+/g, '')                         │
 │    D_norm = D.toLowerCase().replace(/\s+/g, '')                         │
 │                                                                         │
-│ 2. Local Pepper Derivation (getSubtlePepper):                           │
+│ 2. Local Domain Key Derivation (getLocalPepper):                        │
 │    dataStr = "Version=v1|User=" + U_norm + "|Plat=" + D_norm + "|Key=" + S_norm
-│    hmac = HMAC_SHA512( DEFAULT_PEPPER, dataStr )                       │
+│    hmac = HMAC_SHA512( FRANKPASS_DOMAIN_SALT, dataStr )                 │
 │    preKey = hex( hmac )                                                │
 │    FOR i = 0 TO 999:                                                   │
-│        preKey = hex( SHA256( preKey + DEFAULT_PEPPER ) )               │
-│    pepper = preKey   (64-character hexadecimal string)                  │
+│        preKey = hex( SHA256( preKey + FRANKPASS_DOMAIN_SALT ) )         │
+│    appDomainKey = preKey   (64-character hexadecimal string)            │
 │                                                                         │
 │ 3. Context Vector Construction (Length-prefixed Netstring encoding):   │
 │    CTX = "22:MasterManikant_PassGen|2:v1|len(D):D_norm|len(U):U_norm|   │
-│           len(pepper):pepper|len(V):V|len(profile):profile|len(L):L"    │
+│           len(appDomainKey):appDomainKey|len(V):V|len(profile):profile|len(L):L" │
 │    seedData = UTF8_Encode( CTX.normalize('NFC') )                       │
 │                                                                         │
 │ 4. Primary Key Derivation (PBKDF2-HMAC-SHA512, 1M Iterations):          │
-│    baseKey = ImportKey( raw, UTF8_Encode( pepper.normalize('NFC') ) )  │
+│    baseKey = ImportKey( raw, UTF8_Encode( appDomainKey.normalize('NFC') ) ) │
 │    PRK = PBKDF2( baseKey, Salt=seedData, Iterations=1,000,000, SHA-512 )│
 │                                                                         │
 │ 5. Continuous HMAC Stream Expansion (HKDF-style expansion):             │
@@ -921,17 +921,17 @@
 
       <!-- Application Salt Transparency Note -->
       <div style="background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:12px;padding:1rem 1.25rem;margin:1rem 0 1.75rem;">
-        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (Application Domain Salt) : Public Specification</h4>
+        <h4 style="margin-top:0;color:#f59e0b;font-size:0.95rem;">💡 FRANKPASS_DOMAIN_SALT (Public Application Domain Separator) : Specification</h4>
         <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:0.4rem;">
-          In the derivation pipeline above, <code>DEFAULT_PEPPER</code> represents the public application constant:
+          In the derivation pipeline above, <code>FRANKPASS_DOMAIN_SALT</code> represents the public application constant:
         </p>
         <div style="background:rgba(0,0,0,0.15);border-radius:8px;padding:0.5rem 1rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;color:#a78bfa;margin-bottom:0.75rem;">
           FRANKPASS_DOMAIN_SALT = "FrankbaseSuperSecretMango2026!"
         </div>
         <ul style="color:var(--text-muted);font-size:0.88rem;line-height:1.75;margin:0;padding-left:1.25rem;">
           <li><strong>Public Constant:</strong> Fully visible in the open-source repository on GitHub.</li>
-          <li><strong>Kerckhoffs's Principle (1883):</strong> Security relies entirely on the secrecy of the user's Master Secret Key, not on keeping algorithm constants secret.</li>
-          <li><strong>Purpose:</strong> Acts as an application-level domain separator preventing cross-application rainbow table attacks.</li>
+          <li><strong>Kerckhoffs's Principle (1883):</strong> System security relies entirely on the secrecy of the user's Master Secret Key, not on keeping algorithm constants secret.</li>
+          <li><strong>Purpose:</strong> Serves as a public application-level domain separator preventing cross-application rainbow table collisions.</li>
         </ul>
       </div>
 
@@ -1023,23 +1023,16 @@
         <li><strong>Primary Stream Mapping:</strong> The first <em>L</em> pseudorandom bytes are mapped directly via Base-32 modulo conversion.</li>
         <li><strong>Deterministic Injection:</strong> If any required category is absent from the initial <em>L</em> characters, a replacement character from the missing category is deterministically injected at position <code>byteStream[revIdx] % targetLength</code> using the tail of the 128-byte pseudorandom buffer.</li>
       </ol>
-      <p>By the principle of inclusion-exclusion, the constrained search space of passwords containing at least one character from each required subset for <em>L = 16</em> is:</p>
-      <div class="math-formula-box" style="font-size:0.95rem;">
-        |&Omega;<sub>valid</sub>| = 32<sup>16</sup> - &sum; (Excluded Combinations) &approx; 1.199 &times; 10<sup>24</sup> &nbsp;&implies;&nbsp; <em>H</em><sub>effective</sub> &approx; <strong>79.95 bits</strong>
-      </div>
-      <p style="color:var(--text-muted);font-size:0.88rem;">Policy enforcement preserves maximum search space complexity, remaining practically indistinguishable from unconstrained 80.00-bit entropy.</p>
+      <p>The unconstrained 16-character Base-32 search space is strictly 80 bits. Mandatory category enforcement restricts the set of valid outputs; effective security depends on the master secret key entropy and search space bound: <span class="math-inline">Effective Security = min(H<sub>secret</sub>, H<sub>search</sub>)</span>.</p>
 
       <hr>
 
-            <h2 id="s6">6. Cryptographic Search Entropy Formulations</h2>
+      <h2 id="s6">6. Cryptographic Search Entropy Formulations</h2>
       <p>Because each character in the Golden Base-32 pool carries exactly 5 bits of information entropy (log<sub>2</sub>(32) = 5.000 bits), the search space complexity for generated passwords is strictly linear with length:</p>
 
       <div class="math-formula-box">
-        H<sub>unconstrained</sub> = L &times; log<sub>2</sub>(32) = 5 &times; L bits
+        H<sub>search</sub> = L &times; log<sub>2</sub>(32) = 5 &times; L bits
       </div>
-      <p style="color:var(--text-muted);font-size:0.88rem;margin-top:0.4rem;">
-        <em>Note on Policy Enforcement:</em> For the 'standard' profile requiring at least one uppercase letter, lowercase letter, digit, and symbol, the constrained output space for <em>L = 16</em> is <span class="math-inline">|&Omega;<sub>valid</sub>| &approx; 1.199 &times; 10<sup>24</sup></span>, yielding <span class="math-inline">H<sub>effective</sub> &approx; <strong>79.95 bits</strong></span> (derived via the principle of inclusion-exclusion in Section 5).
-      </p>
 
       <div class="table-responsive">
 <table>
@@ -1047,8 +1040,9 @@
           <tr>
             <th>Password Length (L)</th>
             <th>Search Space Combinations</th>
-            <th>Output Search Entropy</th>
-            <th>Time to Exhaust (10<sup>9</sup> guesses/sec)</th>
+            <th>Search Entropy (H<sub>search</sub>)</th>
+            <th>Time to Exhaust @ 10<sup>9</sup> guesses/sec</th>
+            <th>Time @ 10<sup>6</sup> PBKDF2/sec (Cluster)</th>
           </tr>
         </thead>
         <tbody>
@@ -1056,49 +1050,52 @@
             <td><strong>12 characters</strong></td>
             <td>32<sup>12</sup> = 2<sup>60</sup> &approx; 1.15 &times; 10<sup>18</sup></td>
             <td><strong>60.000 bits</strong></td>
-            <td>36.5 years</td>
+            <td>~36.5 years</td>
+            <td>~36,500 years</td>
           </tr>
           <tr>
             <td><strong>16 characters (Standard)</strong></td>
-            <td>32<sup>16</sup> = 2<sup>80</sup> &approx; 1.20 &times; 10<sup>24</sup></td>
+            <td>32<sup>16</sup> = 2<sup>80</sup> &approx; 1.21 &times; 10<sup>24</sup></td>
             <td><strong>80.000 bits</strong></td>
-            <td>1.9 &times; 10<sup>13</sup> years (Exceeds Universe Age)</td>
+            <td>~38.3 million years (3.83 &times; 10<sup>7</sup> yrs)</td>
+            <td>~3.83 &times; 10<sup>10</sup> years</td>
           </tr>
           <tr>
             <td><strong>20 characters (Extended)</strong></td>
-            <td>32<sup>20</sup> = 2<sup>100</sup> &approx; 1.26 &times; 10<sup>30</sup></td>
+            <td>32<sup>20</sup> = 2<sup>100</sup> &approx; 1.27 &times; 10<sup>30</sup></td>
             <td><strong>100.000 bits</strong></td>
-            <td>2.0 &times; 10<sup>19</sup> years (Computationally Infeasible)</td>
+            <td>~40.2 trillion years (Exceeds Universe Age)</td>
+            <td>~4.02 &times; 10<sup>16</sup> years</td>
           </tr>
         </tbody>
       </table>
 </div>
 
-      <!-- Multivariate Combinatorial Search Space Complexity -->
-      <h3>Multivariate Combinatorial Search Space Complexity:</h3>
-      <p>Unlike simplistic single-input KDF systems, an adversary holding an exposed output password cannot merely perform a one-dimensional brute-force sweep over candidate passphrases. In FrankPass, the offline pre-image search space is combinatorially compounded across the entire multi-variable tuple:</p>
+      <!-- Context Separation & Search Complexity -->
+      <h3>Deterministic Context Separation:</h3>
+      <p>In FrankPass, the offline pre-image search space utilizes length-prefixed netstrings across user and domain variables:</p>
 
       <div class="math-formula-box" style="font-size:1rem;">
-        Total Search Complexity = &Oscr;(|V| &times; |U| &times; |Passphrase Space|)
+        Context Tuple = &lang; APP_ID, VER, D<sub>norm</sub>, U<sub>norm</sub>, appDomainKey, V, Profile, L &rang;
       </div>
 
-      <p>where <em>|V|</em> represents unknown version rotation counters (1, 2, 3...), <em>|U|</em> represents unknown username/email string variations, and <em>|Passphrase Space|</em> represents the master passphrase candidates. The requirement to simultaneously align the domain salt, username variations, and version counters multiplies the offline verification workload, rendering generalized rainbow tables mathematically infeasible.</p>
+      <p>Domain, username, and version counters provide deterministic context separation that mathematically eliminates cross-service collisions and rainbow table reuse. However, when those parameters are already known to an adversary targeting a specific account, baseline search difficulty is governed by the entropy of the user's Master Secret Key.</p>
 
-      <!-- 7-to-9 Word Natural Language Passphrase Model (110+ Bits Entropy) -->
+      <!-- 7-to-9 Word Natural Language Passphrase Model -->
       <div class="article-highlight-box" style="margin:1.75rem 0;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.04);">
         <h3 style="margin-top:0;color:#10b981;display:flex;align-items:center;gap:8px;">
-          <span>🛡️</span> The 7-to-9 Word Natural Language Model (110+ Bits Cryptographic Entropy)
+          <span>🛡️</span> The 7-to-9 Word Natural Language Model (40 to 60+ Effective Entropy Bits)
         </h3>
         <p style="margin-bottom:0.75rem;color:var(--text-primary);font-weight:600;">
-          Break free from the false illusion of symbol substitution (e.g. <code>P@$$w0rd!#</code>). Natural personal sentences with zero special symbols deliver over 110+ bits of true linguistic entropy while eliminating typing friction.
+          Break free from the false illusion of complex symbol substitution (e.g. <code>P@$$w0rd!#</code>). Natural personal phrases provide high usable security without typing friction.
         </p>
         <p style="margin-bottom:0.75rem;">
           Consider a 9-word descriptive natural language sentence: <code>"mere door ke mosa ka beta ram bahut achha aadmi hai"</code>
         </p>
         <ul style="margin-bottom:0.75rem;">
-          <li><strong>110+ Bits Linguistic Dictionary Entropy:</strong> Across an 8,000-word vernacular dictionary, a 9-word sequence yields <em>9 &times; log<sub>2</sub>(8000) &approx; 116.7 bits</em> of search complexity (8000<sup>9</sup> &approx; 1.34 &times; 10<sup>35</sup> search space), surpassing global supercomputing brute-force limits.</li>
-          <li><strong>Zero Typing Errors:</strong> Natural words prevent keyboard symbol confusion, and MMY Normalization automatically strips spaces and normalizes case in local memory.</li>
-          <li><strong>Synergy with FrankPass Pro Local Encrypted Vault:</strong> Users memorize this memorable phrase once. FrankPass Pro stores the key encrypted locally on the device (WebCrypto hardware enclave / AES-GCM), unlocking instant 1-click password derivation via a 4-digit PIN or biometrics: providing 120-bit cryptographic fortress security with 1-second daily convenience.</li>
+          <li><strong>Realistic Passphrase Entropy:</strong> A human-composed natural sentence provides ~40 to 60+ bits of effective entropy due to linguistic structure. For 100+ bits of cryptographic entropy, users may utilize multi-word Diceware random passphrases (5-6 words from an 8192-word wordlist).</li>
+          <li><strong>Zero Typing Errors:</strong> Natural words eliminate virtual keyboard symbol confusion, and MMY Normalization automatically strips spaces and normalizes casing.</li>
+          <li><strong>Synergy with FrankPass Pro Local Encrypted Vault:</strong> Users memorize this phrase once. FrankPass Pro optionally stores the key encrypted on-device (AES-256-GCM), unlocking instant 1-click derivation via a 4-digit PIN or biometrics with zero cloud storage.</li>
         </ul>
       </div>
 
@@ -1107,10 +1104,10 @@
         <p style="margin-bottom:0.75rem;">A fundamental principle of applied cryptography is that a Key Derivation Function (KDF) cannot synthesize entropy from nothing. The real-world work factor for an adversary targeting a specific user is strictly bounded by:</p>
         
         <div class="math-formula-box" style="margin:0.75rem 0;font-size:1rem;">
-          Effective Security = min(H<sub>passphrase</sub>, KDF Bit Security)
+          Effective Security = min(H<sub>passphrase</sub>, H<sub>search</sub>)
         </div>
 
-        <p style="margin-bottom:0.75rem;">While an output length of 16 characters (80 bits search space) or 20 characters (100 bits search space) prevents accidental collisions and satisfies strict target system constraints, an attacker who extracts a derived password from a third-party breach will brute-force the <em>input passphrase space</em>, not the output space. 1,000,000 iterations of PBKDF2-HMAC-SHA512 impose massive computational penalties on GPU/ASIC crackers, but baseline security remains bounded by the entropy of the user's secret.</p>
+        <p style="margin-bottom:0.75rem;">While an output length of 16 characters (80 bits search space) or 20 characters (100 bits search space) prevents collisions and satisfies system constraints, an attacker who extracts a derived password from a third-party breach will brute-force the <em>input passphrase space</em>, not the output space. 1,000,000 iterations of PBKDF2-HMAC-SHA512 impose massive computational penalties on GPU/ASIC crackers, but baseline security remains bounded by the entropy of the user's secret.</p>
         <p style="margin-bottom:0;"><strong>Architectural Recommendation:</strong> Users should generate passphrases using independent random word selection (Diceware / EFF wordlist style, yielding ~65 to 80 bits of true entropy for 5-6 words) or memorable personalized phrases exceeding 7 to 9 words.</p>
       </div>
 
@@ -1171,7 +1168,7 @@
       </div>
 
       <h3>Technical Rationale: PBKDF2 vs Argon2id / Scrypt:</h3>
-      <p>While Argon2id provides memory-hardness (ASIC resistance), executing it inside client-side web browsers requires 30MB+ WebAssembly (WASM) binaries and large RAM allocations. On budget mobile devices, background memory pressure frequently triggers browser tab terminations. In contrast, <code>PBKDF2-HMAC-SHA512</code> runs directly in native C++ OS cryptographic subroutines with zero WebAssembly overhead, zero external library vulnerabilities, and 100% crash-free cross-browser stability.</p>
+      <p>While Argon2id provides memory-hardness (ASIC resistance), executing it inside client-side web browsers requires 30MB+ WebAssembly (WASM) binaries and large RAM allocations. On budget mobile devices, background memory pressure frequently triggers browser tab terminations. In contrast, <code>PBKDF2-HMAC-SHA512</code> runs directly in native C++ OS cryptographic subroutines with zero WebAssembly overhead, zero external library vulnerabilities, and high cross-browser reliability.</p>
 
       <hr>
 
@@ -1340,9 +1337,9 @@ const normalizedSecret = (secretKey || '')
         <div style="font-family:'JetBrains Mono',monospace;font-size:0.83rem;color:var(--text-muted);line-height:1.7;word-break:break-all;">
           <strong>Raw Inputs:</strong> Key = <code>"mastersecret2026"</code>, Platform = <code>"google.com"</code>, User = <code>"user@example.com"</code>, V = 1, Profile = <code>"standard"</code>, L = 16<br>
           <strong>1. MMY Normalized Slugs:</strong> S<sub>norm</sub> = <code>"mastersecret2026"</code>, D<sub>norm</sub> = <code>"google"</code>, U<sub>norm</sub> = <code>"user@example.com"</code><br>
-          <strong>2. Local Pepper (64 Hex Chars):</strong> <code>3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525</code><br>
+          <strong>2. Local Domain Key (appDomainKey, 64 Hex Chars):</strong> <code>3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525</code><br>
           <strong>3. Context Netstring (CTX):</strong> <code>"22:MasterManikant_PassGen|2:v1|6:google|16:user@example.com|64:3a1ea6d5b148ccc141048ebfa19d61c970fef40b180d53199849e2b9357e7525|1:1|8:standard|2:16"</code><br>
-          <strong>4. PBKDF2 Derivation:</strong> 1,000,000 Iterations (HMAC-SHA512, Key = Pepper NFC, Salt = CTX NFC, 64 Derived Bytes)<br>
+          <strong>4. PBKDF2 Derivation:</strong> 1,000,000 Iterations (HMAC-SHA512, Key = appDomainKey NFC, Salt = CTX NFC, 64 Derived Bytes)<br>
           <strong>5. Canonical Derived Password:</strong> <span style="color:#10b981;font-weight:700;">F6h?%Ld48&&e4f?f</span>
         </div>
       </div>
