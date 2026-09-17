@@ -1,0 +1,45 @@
+{
+  "protocol": "FrankPass: Client-Side Stateless Key Derivation Architecture",
+  "canonical_constant": "Master Manikant Yadav's Cryptographic Constant (MMY_constant)",
+  "author": "Master Manikant Yadav (\u092e\u093e\u0938\u094d\u091f\u0930 \u092e\u0923\u093f\u0915\u093e\u0928\u094d\u0924 \u092f\u093e\u0926\u0935)",
+  "conceived_date": "2026-01-01",
+  "publication_date": "2026-09-15",
+  "specification_version": "1.2.0",
+  "canonical_spec_id": "FRANKPASS-SPEC-V1-20260915",
+  "repository": "https://github.com/Mastermanikant/frank-pass",
+  "research_hub": "https://mastermanikant.com/research",
+  "live_canonical_url": "https://frankpass.com/whitepaper.html",
+  "timestamp_utc": "2026-09-17T10:25:05.790721+00:00",
+  "files": {
+    "frankpass-whitepaper-v1.2.pdf": {
+      "size_bytes": 737474,
+      "sha256": "6b4e56bf18d3abdbbfec43e3a45419b0b91fb0c4bc49426660dd710020118b0b",
+      "sha512": "756efeeefa086415c2db3885b81eb1f15a3cfec5e6e33d4c2b3d019975f3c452b5d2de57391023f57094bad97ae7180d2a272ed7e6ce08c481c1ac1a9cb30611"
+    },
+    "frankpass-whitepaper.pdf": {
+      "size_bytes": 737474,
+      "sha256": "7401a08f352ffdf54801d0e38b042eb3f2d1e39519c9eee70d56a118eba73989",
+      "sha512": "f39fd222e8b045cf5da170150a4769128e81643489a256685ad0e786ac27481f61841c9f7986bc1edde75cfe6ec07a155a6893d6893267126a7d942521435ec1"
+    },
+    "whitepaper.html": {
+      "size_bytes": 96949,
+      "sha256": "0f56752b514554f80cf3da483e74842e88b5cb1dac98e0076610fad60521fd15",
+      "sha512": "f98e5b5469d70bbffd1020ddfa28c2ec026bb2ab5513e84a0c4234e1c8218958beb7e7442e3f6fde52da82c811709b8a4ae6bc0f8fa4acfae2ab24b0ed233286"
+    },
+    "whitepaper-hindi.html": {
+      "size_bytes": 138611,
+      "sha256": "bff9bebaf4b280e6a60a9cb33ec4da49ab6b541dce63ca287c788ff0355fcc8d",
+      "sha512": "0c0d344afd4c6fb251763bfa3060b1f6f9b795aaa5e21b9219c3ec126d5d4bbe053343374f8413fee1bbe698f446f2ecb24f179da044a64b5c827bf621e27e17"
+    },
+    "frankpass-core.js": {
+      "size_bytes": 8751,
+      "sha256": "9fc081c6c5e86c50b3b17512f3d46a114687f85b3b622b5e28067f4fdc3cb9f8",
+      "sha512": "c14c633ccc3e7ed3030f7fe9a88cb62d14f5b144a39a497cb0b4917fc80cbe76b8b3373758e6eb5e0ccaaa6c34b07cdca9943735bfe32da9e50a5184241c08a2"
+    },
+    "frankpass-config.js": {
+      "size_bytes": 3994,
+      "sha256": "c479061e16ff98466404ac485eb3a1b4007124c294194fa4893a93f33c290c4d",
+      "sha512": "ec7fac52110ab95eafabe055c9f1ce0431e26415d6c12e52e0a5856d37ef2ae4c9eed9f7c0924fb07ee7d242d4ceec548a905623972051ae4a8b62d3b90a1b9f"
+    }
+  }
+}
