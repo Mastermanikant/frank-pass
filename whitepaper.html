@@ -152,7 +152,26 @@
       font-size: 0.98rem;
       line-height: 1.7;
     }
+    
+    .table-responsive {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.75rem 0;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+    .table-responsive > table,
     .article-body table {
+      width: 100%;
+      min-width: 620px;
+      border-collapse: collapse;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .legacy-table {
       width: 100%;
       border-collapse: collapse;
       margin: 2rem 0;
@@ -670,7 +689,8 @@
         &Mscr;&Mscr;&Yscr;<sub>constant</sub> = &lang; APP_ID, VER, &Iscr;<sub>10<sup>6</sup></sub>, &Hscr;<sub>SHA512</sub>, &Cscr;<sub>entropy</sub>, &Nscr;<sub>norm</sub>, &Pscr;<sub>NFC</sub> &rang;
       </div>
 
-      <table>
+      <div class="table-responsive">
+<table>
         <thead>
           <tr>
             <th>Tuple Element</th>
@@ -716,6 +736,7 @@
           </tr>
         </tbody>
       </table>
+</div>
       <div style="font-size:0.83rem;color:var(--text-muted);margin:0.5rem 0 1.25rem;line-height:1.5;">
         <em>* Benchmark Methodology: Latency measured using Chromium 128 WebCrypto SubtleCrypto across 100 consecutive runs under ambient thermal conditions. GPU throughput derived from Hashcat v6.2.6 (Mode 12000: PBKDF2-HMAC-SHA512) scaled to 1,000,000 iterations on reference NVIDIA RTX 4090 hardware.</em>
       </div>
@@ -883,7 +904,8 @@
       <p>Traditional random generators that map byte arrays (0 to 255) to arbitrary character pool sizes (e.g. 55, 62, or 94 characters) suffer from <strong>Modulo Bias</strong> unless unaligned bytes are systematically rejected and discarded.</p>
       <p>FrankPass solves this problem mathematically by utilizing an exact <strong>Golden Base-32 Character Pool</strong> (&Cscr;, where |&Cscr;| = 32 = 2<sup>5</sup>):</p>
 
-      <table>
+      <div class="table-responsive">
+<table>
         <thead>
           <tr>
             <th>Character Set</th>
@@ -939,6 +961,7 @@
           </tr>
         </tfoot>
       </table>
+</div>
 
       <div class="math-formula-box">
         |&Cscr;| = 10 + 6 + 7 + 9 = 32 = 2<sup>5</sup> characters
@@ -981,7 +1004,8 @@
         <em>Note on Policy Enforcement:</em> For the 'standard' profile requiring at least one uppercase letter, lowercase letter, digit, and symbol, the constrained output space for <em>L = 16</em> is <span class="math-inline">|&Omega;<sub>valid</sub>| &approx; 1.199 &times; 10<sup>24</sup></span>, yielding <span class="math-inline">H<sub>effective</sub> &approx; <strong>79.95 bits</strong></span> (derived via the principle of inclusion-exclusion in Section 5).
       </p>
 
-      <table>
+      <div class="table-responsive">
+<table>
         <thead>
           <tr>
             <th>Password Length (L)</th>
@@ -1011,6 +1035,7 @@
           </tr>
         </tbody>
       </table>
+</div>
 
       <!-- Multivariate Combinatorial Search Space Complexity -->
       <h3>Multivariate Combinatorial Search Space Complexity:</h3>
@@ -1055,7 +1080,8 @@
       <h3>KDF Selection Scientific Rationale &amp; Empirical Benchmarks:</h3>
       <p>The selection of <code>PBKDF2-HMAC-SHA512</code> configured with 1,000,000 iterations is engineered to balance client-side browser performance with decisive offline brute-force attack friction, leveraging native W3C WebCrypto API (<code>crypto.subtle</code>) hardware acceleration:</p>
 
-      <table>
+      <div class="table-responsive">
+<table>
         <thead>
           <tr>
             <th>Benchmark Environment &amp; Hardware</th>
@@ -1091,6 +1117,7 @@
           </tr>
         </tbody>
       </table>
+</div>
 
       <h3>Adversary Work Factor &amp; GPU Hashcat Cost Analysis:</h3>
       <p>1,000,000 iterations of HMAC-SHA512 impose a massive computational and economic bottleneck against offline hashcat attacks:</p>
@@ -1210,7 +1237,8 @@ const normalizedSecret = (secretKey || '')
       <p>Once cached by the Service Worker or installed as a standalone application, FrankPass operates indefinitely on air-gapped, offline systems with 100% mathematical reproducibility.</p>
 
       <h3>4. Endpoint Threat Matrix &amp; Residual Boundaries:</h3>
-      <table>
+      <div class="table-responsive">
+<table>
         <thead>
           <tr>
             <th>Threat Vector</th>
@@ -1251,6 +1279,7 @@ const normalizedSecret = (secretKey || '')
           </tr>
         </tbody>
       </table>
+</div>
 
       <h3>5. Tiered Security Architecture for High-Value Accounts:</h3>
       <p>FrankPass establishes a two-tiered operational security protocol:</p>
@@ -1281,7 +1310,8 @@ const normalizedSecret = (secretKey || '')
         </div>
       </div>
 
-      <table>
+      <div class="table-responsive">
+<table>
         <thead>
           <tr>
             <th>Test Vector</th>
@@ -1341,6 +1371,7 @@ const normalizedSecret = (secretKey || '')
           </tr>
         </tbody>
       </table>
+</div>
 
       <hr>
 

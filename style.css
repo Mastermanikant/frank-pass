@@ -3800,3 +3800,35 @@ input:-webkit-autofill:active {
   background: rgba(0, 0, 0, 0.02);
   border-color: rgba(0, 0, 0, 0.06);
 }
+
+/* ============================================================
+   UNIVERSAL RESPONSIVE TABLE & CONTAINER OVERFLOW SHIELD
+   ============================================================ */
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.table-responsive > table {
+  width: 100%;
+  min-width: 580px;
+  border-collapse: collapse;
+  margin: 0;
+}
+
+.article-container,
+.card-glass,
+.article-highlight-box {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+pre, code {
+  max-width: 100%;
+  box-sizing: border-box;
+}
