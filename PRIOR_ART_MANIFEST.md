@@ -10,7 +10,7 @@
 **Canonical Research URL:** https://mastermanikant.com/research  
 **Live Whitepaper URL:** https://frankpass.com/whitepaper.html  
 **Open Source Repository:** https://github.com/Mastermanikant/frank-pass  
-**Manifest Generated At:** 2026-09-17 10:25:05 UTC  
+**Manifest Generated At:** 2026-09-17 11:19:42 UTC  
 
 ---
 
@@ -18,8 +18,10 @@
 
 | File | Size (Bytes) | SHA-256 Checksum |
 | :--- | :--- | :--- |
-| `frankpass-whitepaper-v1.2.pdf` | 737,474 | `6b4e56bf18d3abdbbfec43e3a45419b0b91fb0c4bc49426660dd710020118b0b` |
-| `frankpass-whitepaper.pdf` | 737,474 | `7401a08f352ffdf54801d0e38b042eb3f2d1e39519c9eee70d56a118eba73989` |
+| `frankpass-whitepaper-v1.2.pdf` | 736,242 | `8f7a9faef4c9c151f7a8ed637d3940698e8944c13f7cc9d0c6328b783481a244` |
+| `frankpass-whitepaper.pdf` | 736,242 | `8f7a9faef4c9c151f7a8ed637d3940698e8944c13f7cc9d0c6328b783481a244` |
+| `frankpass-whitepaper-hindi-v1.2.pdf` | 956,607 | `3fa717a1438cf0b999f989608f6a9a0cd9bacdbe394e71b6840c5393f28b0a95` |
+| `frankpass-whitepaper-hindi.pdf` | 956,607 | `3fa717a1438cf0b999f989608f6a9a0cd9bacdbe394e71b6840c5393f28b0a95` |
 | `whitepaper.html` | 96,949 | `0f56752b514554f80cf3da483e74842e88b5cb1dac98e0076610fad60521fd15` |
 | `whitepaper-hindi.html` | 138,611 | `bff9bebaf4b280e6a60a9cb33ec4da49ab6b541dce63ca287c788ff0355fcc8d` |
 | `frankpass-core.js` | 8,751 | `9fc081c6c5e86c50b3b17512f3d46a114687f85b3b622b5e28067f4fdc3cb9f8` |

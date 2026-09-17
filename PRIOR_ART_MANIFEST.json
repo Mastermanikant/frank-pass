@@ -9,17 +9,27 @@
   "repository": "https://github.com/Mastermanikant/frank-pass",
   "research_hub": "https://mastermanikant.com/research",
   "live_canonical_url": "https://frankpass.com/whitepaper.html",
-  "timestamp_utc": "2026-09-17T10:25:05.790721+00:00",
+  "timestamp_utc": "2026-09-17T11:19:42.481226+00:00",
   "files": {
     "frankpass-whitepaper-v1.2.pdf": {
-      "size_bytes": 737474,
-      "sha256": "6b4e56bf18d3abdbbfec43e3a45419b0b91fb0c4bc49426660dd710020118b0b",
-      "sha512": "756efeeefa086415c2db3885b81eb1f15a3cfec5e6e33d4c2b3d019975f3c452b5d2de57391023f57094bad97ae7180d2a272ed7e6ce08c481c1ac1a9cb30611"
+      "size_bytes": 736242,
+      "sha256": "8f7a9faef4c9c151f7a8ed637d3940698e8944c13f7cc9d0c6328b783481a244",
+      "sha512": "2d1dded19d3b33d79b7ac462374251d2dfa53ffb630061f21639dd47db7ac3f70cff3c5e590105cb9217e854cf413f81063ae63b3564c8e22a20a82a2601e47c"
     },
     "frankpass-whitepaper.pdf": {
-      "size_bytes": 737474,
-      "sha256": "7401a08f352ffdf54801d0e38b042eb3f2d1e39519c9eee70d56a118eba73989",
-      "sha512": "f39fd222e8b045cf5da170150a4769128e81643489a256685ad0e786ac27481f61841c9f7986bc1edde75cfe6ec07a155a6893d6893267126a7d942521435ec1"
+      "size_bytes": 736242,
+      "sha256": "8f7a9faef4c9c151f7a8ed637d3940698e8944c13f7cc9d0c6328b783481a244",
+      "sha512": "2d1dded19d3b33d79b7ac462374251d2dfa53ffb630061f21639dd47db7ac3f70cff3c5e590105cb9217e854cf413f81063ae63b3564c8e22a20a82a2601e47c"
+    },
+    "frankpass-whitepaper-hindi-v1.2.pdf": {
+      "size_bytes": 956607,
+      "sha256": "3fa717a1438cf0b999f989608f6a9a0cd9bacdbe394e71b6840c5393f28b0a95",
+      "sha512": "b56ed03c6801553e31edf9d6bffac5ad4d2d2c5008c788ccf798fd7b35de173306fa28fb8f695d8d3614a092c386188b7183c33be7e0ea80d8962f3f8db07c76"
+    },
+    "frankpass-whitepaper-hindi.pdf": {
+      "size_bytes": 956607,
+      "sha256": "3fa717a1438cf0b999f989608f6a9a0cd9bacdbe394e71b6840c5393f28b0a95",
+      "sha512": "b56ed03c6801553e31edf9d6bffac5ad4d2d2c5008c788ccf798fd7b35de173306fa28fb8f695d8d3614a092c386188b7183c33be7e0ea80d8962f3f8db07c76"
     },
     "whitepaper.html": {
       "size_bytes": 96949,
