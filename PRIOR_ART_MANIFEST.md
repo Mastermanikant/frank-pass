@@ -26,3 +26,5 @@
 | `whitepaper-hindi.html` | 138,611 | `bff9bebaf4b280e6a60a9cb33ec4da49ab6b541dce63ca287c788ff0355fcc8d` |
 | `frankpass-core.js` | 8,751 | `9fc081c6c5e86c50b3b17512f3d46a114687f85b3b622b5e28067f4fdc3cb9f8` |
 | `frankpass-config.js` | 3,994 | `c479061e16ff98466404ac485eb3a1b4007124c294194fa4893a93f33c290c4d` |
+| rankpass-whitepaper.tsr | 943 | e2c1a0fc3ddfe1b03e7668377d3d722a3a47d9e4a3b449fd605435ab1d248687 |
+| rankpass-whitepaper-hindi.tsr | 942 | 355793c65057cb5a8b39fc254faab6b997e856906d39404a873900a1f85e011 |
