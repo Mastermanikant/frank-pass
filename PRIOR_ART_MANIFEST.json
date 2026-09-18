@@ -63,5 +63,6 @@
       "rfc3161_timestamp_gmt": "2026-09-18T01:52:38Z",
       "tsa_authority": "FreeTSA (DirName: /O=Free TSA/CN=www.freetsa.org/L=Wuerzburg/C=DE)"
     }
-  }
+  },
+  "internet_archive_record": "https://archive.org/details/frankpass-cryptographic-whitepaper-v1"
 }

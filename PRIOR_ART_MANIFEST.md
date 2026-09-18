@@ -8,6 +8,7 @@
 **Specification Version:** v1.2.0  
 **Spec Identifier:** `FRANKPASS-SPEC-V1-20260915`  
 **Canonical Research URL:** https://mastermanikant.com/research  
+**Internet Archive Record:** https://archive.org/details/frankpass-cryptographic-whitepaper-v1  
 **Live Whitepaper URL:** https://frankpass.com/whitepaper.html  
 **Open Source Repository:** https://github.com/Mastermanikant/frank-pass  
 **Manifest Generated At:** 2026-09-18 01:39:18 UTC  
