@@ -10,6 +10,11 @@
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https://flagcdn.com https://frankpass.com https://www.frankpass.com; connect-src 'self' https://store.frankbase.com https://api.frankpass.com https://cloudflareinsights.com https://static.cloudflareinsights.com; worker-src 'self' blob:;
   Cache-Control: public, max-age=0, must-revalidate
 
+/*.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline
+  Cache-Control: public, max-age=3600, must-revalidate
+
 /*.html
   Content-Type: text/html; charset=utf-8
 
