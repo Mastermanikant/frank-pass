@@ -1009,13 +1009,13 @@
     <article class="deep-dive-card">
       <span class="deep-dive-badge pin">🔢 Tool 3: Deterministic PIN Generator</span>
       <h3 style="font-size:1.25rem;font-weight:800;color:var(--text-primary);margin-bottom:0.75rem">
-        How the PIN Generator Keeps Your Secret Key 100% Safe
+        How Domain Isolation Protects Your Secret Key
       </h3>
       <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.75;margin-bottom:1rem">
         Debit cards, UPI applications (Google Pay, PhonePe, Paytm), and mobile SIM cards do not accept 16-character alphanumeric passwords-they require a 4-digit or 6-digit numeric PIN.
       </p>
       <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.75;margin:0">
-        You can safely use the <strong>exact same Master Secret Key</strong> for both your passwords and your PINs. FrankPass uses <strong>Cryptographic Salt Isolation</strong> (<code>frankpass-pin-v1</code>). The derived numbers have zero mathematical correlation with your website passwords. Even if an attacker learns your 4-digit ATM PIN, it is mathematically impossible to reverse-engineer your Master Secret Key or guess your Gmail password.
+        You can safely use the <strong>exact same Master Secret Key</strong> for both your passwords and your PINs. FrankPass uses <strong>Cryptographic Salt Isolation</strong> (<code>frankpass-pin-v1</code>). The derived numbers have zero mathematical correlation with your website passwords. Even if an attacker learns your 4-digit ATM PIN, one-way preimage resistance and domain isolation make it computationally infeasible to reverse-engineer your Master Secret Key or guess your website passwords.
       </p>
     </article>
 

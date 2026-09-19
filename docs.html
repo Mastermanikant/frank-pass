@@ -380,7 +380,7 @@
 
  <h3>The Mathematical Guarantee</h3>
  <p>Deterministic cryptography is the foundation: given identical inputs, a cryptographic function always produces an identical output. This property - called <strong>determinism</strong> - is what makes FrankPass possible. Your password is a pure mathematical consequence of three things you know: the platform name, your secret key, and the variant number.</p>
- <p>Change any one of these and you get a completely different password. Keep them the same and you always get the same password - on any device, in any country, offline, forever.</p>
+ <p>Change any one of these and you get a completely different password. Keep them the same and you always get the same password - on any device, in any country, completely offline.</p>
 
  <h3>The Threat Model Comparison</h3>
  <p>With a cloud vault, you must trust the company's server security, their encryption implementation, their employee access controls, and their backup procedures. A failure in any of these exposes all of your passwords simultaneously.</p>
@@ -435,7 +435,7 @@
 
  <h3>The Critical Rule</h3>
   <p><strong>Never use a generated password as your Secret Key, and never use your Secret Key as a password on any website.</strong> Your Secret Key is your private mathematical master seed.</p>
-  <p>An attacker could only ever derive or calculate your passwords if they simultaneously obtain <strong>both</strong> your private Master Secret Key <strong>and</strong> the exact Password Number (Counter) you selected for that platform. Because both pieces of information reside exclusively in your mind and are never transmitted over the internet or stored on any server, guessing or reversing your password is mathematically impossible. Protect your Secret Key with absolute confidentiality.</p>
+  <p>An attacker could only ever derive or calculate your passwords if they simultaneously obtain <strong>both</strong> your private Master Secret Key <strong>and</strong> the exact Password Number (Counter) you selected for that platform. Because both pieces of information reside exclusively in your mind and are never transmitted over the internet or stored on any server, reversing or predicting your password is computationally infeasible under standard cryptographic assumptions. Protect your Secret Key with absolute confidentiality.</p>
 
    <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:12px;padding:1.15rem;margin:1.25rem 0">
      <div style="font-weight:700;color:var(--text-primary);font-size:0.95rem;margin-bottom:0.35rem">💡 Need Inspiration for a Memorable Secret Key?</div>

@@ -55,7 +55,7 @@
  {
  "@type": "Question",
  "name": "What happens if the FrankPass site goes down?",
- "acceptedAnswer": { "@type": "Answer", "text": "Nothing changes. If you've installed FrankPass as a PWA (Progressive Web App), it works fully offline forever - even if the domain expired. The algorithm is open and documented, so it can always be re-implemented." }
+ "acceptedAnswer": { "@type": "Answer", "text": "Nothing changes. If you've installed FrankPass as a PWA (Progressive Web App), it operates fully offline via browser-native WebCrypto - even if the domain is unreachable. The algorithm is open, standardized, and fully documented." }
  },
  {
  "@type": "Question",
@@ -100,7 +100,7 @@
  {
  "@type": "Question",
  "name": "Is the browser extension free, and do I need FrankPass Pro?",
- "acceptedAnswer": { "@type": "Answer", "text": "Yes! The FrankPass Browser Extension is 100% free to install and use with Instant Guest Mode, featuring automatic domain detection and 1-click password autofill. FrankPass Pro is an optional hardware-bound upgrade that adds encrypted local multi-profile vaults with 4-digit PIN lock. The core web app and extension guest mode are free forever." }
+ "acceptedAnswer": { "@type": "Answer", "text": "Yes! The FrankPass Browser Extension is free to install and use with Instant Guest Mode, featuring automatic domain detection and 1-click password autofill. FrankPass Pro is an optional hardware-bound upgrade that adds encrypted local multi-profile vaults with 4-digit PIN lock. The core web app and extension guest mode are 100% free." }
  },
  {
  "@type": "Question",
@@ -115,7 +115,7 @@
  {
  "@type": "Question",
  "name": "If a website suffers a data breach, can hackers find my Secret Key?",
- "acceptedAnswer": { "@type": "Answer", "text": "No, absolutely not. FrankPass uses 1,000,000 PBKDF2 iterations with HMAC-SHA512. Cryptographic one-way hashing makes it mathematically impossible to reverse a generated password back into your Master Secret Key." }
+ "acceptedAnswer": { "@type": "Answer", "text": "No. FrankPass uses 1,000,000 PBKDF2 iterations with HMAC-SHA512 and independent domain salting. Due to one-way pre-image resistance and domain context separation, obtaining a password from a breached database gives an attacker zero mathematical leverage to reverse your Master Secret Key or compromise other accounts." }
  },
  {
  "@type": "Question",
@@ -418,7 +418,7 @@
  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
  </summary>
  <div class="faq-body">
- FrankPass (often written as <strong>Frank Pass</strong>) is a <strong>stateless, deterministic password and PIN generator</strong> created by Master Manikant Yadav. The name combines <strong>"Frank"</strong> (standing for 100% honesty, zero trackers, and radical transparency) and <strong>"Pass"</strong> (for passwords and PINs derived deterministically). Instead of storing your passwords in a cloud vault, it derives them mathematically each time from three inputs you provide: a platform name, your secret key, and a variant number. It uses PBKDF2 and HMAC-SHA512 with 1,000,000 iterations-running entirely in your browser via the Web Cryptography API. Zero cloud, zero storage, zero accounts. The same inputs always produce the same password, on any device, forever.
+ FrankPass (often written as <strong>Frank Pass</strong>) is a <strong>stateless, deterministic password and PIN generator</strong> created by Master Manikant Yadav. The name combines <strong>"Frank"</strong> (standing for 100% honesty, zero trackers, and radical transparency) and <strong>"Pass"</strong> (for passwords and PINs derived deterministically). Instead of storing your passwords in a cloud vault, it derives them mathematically each time from three inputs you provide: a platform name, your secret key, and a variant number. It uses PBKDF2 and HMAC-SHA512 with 1,000,000 iterations-running entirely in your browser via the Web Cryptography API. Zero cloud, zero storage, zero accounts. The same inputs always produce the same password deterministically across any standard device.
  </div>
  </details>
 
@@ -563,7 +563,7 @@
   </summary>
   <div class="faq-body">
   <strong>Yes, the browser extension is 100% free to install and use!</strong><br><br>
-  In <strong>Instant Guest Mode</strong>, the extension automatically detects active website domains and provides <strong>1-click password generation and autofill completely free forever</strong> with zero storage and zero registration.<br><br>
+  In <strong>Instant Guest Mode</strong>, the extension automatically detects active website domains and provides <strong>1-click password generation and autofill completely free</strong> with zero storage and zero registration.<br><br>
   <strong>FrankPass Pro</strong> is an optional upgrade for power users that adds <strong>Local Encrypted Multi-Profile Vaults</strong> with a <strong>4-digit quick PIN lock</strong>, allowing you to save different master keys locally on your computer without re-typing them every session.
   </div>
   </details>
@@ -603,7 +603,7 @@
   <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
   </summary>
   <div class="faq-body">
-  <strong>No, mathematically impossible.</strong> FrankPass uses 1,000,000 PBKDF2 iterations with HMAC-SHA512. Cryptographic one-way hashing ensures that even if an attacker obtains your generated password from a compromised website database, they can never reverse it back to determine your Master Secret Key. All your other accounts remain 100% secure.
+  <strong>No.</strong> FrankPass uses 1,000,000 PBKDF2 iterations with HMAC-SHA512 and independent domain salting. Due to cryptographic one-way pre-image resistance and domain context separation, even if an attacker obtains a derived password from a compromised third-party database, they cannot reverse it to discover your Master Secret Key or derive credentials for your other accounts.
   </div>
   </details>
 

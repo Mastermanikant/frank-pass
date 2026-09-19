@@ -621,7 +621,7 @@
       <p>Users often ask: <em>"If someone learns my 4-digit ATM PIN, can they reverse-engineer my Master Secret Key?"</em></p>
 
       <div class="article-highlight-box">
-        <strong>One-Way Pre-Image Resistance:</strong> A 4-digit PIN contains only 13.29 bits of entropy (<span class="math-inline">10^4 = 10,000</span> combinations), while a 6-digit UPI PIN contains 19.93 bits (<span class="math-inline">10^6 = 1,000,000</span> combinations). Because PBKDF2-HMAC-SHA512 is a one-way cryptographic compression function, reversing a 4-digit or 6-digit output to find a 100-bit Master Secret Key is mathematically impossible: there are countless billions of possible input strings that produce the exact same 4-digit number (hash collision ambiguity).
+        <strong>One-Way Pre-Image Resistance:</strong> A 4-digit PIN contains only 13.29 bits of entropy (<span class="math-inline">10^4 = 10,000</span> combinations), while a 6-digit UPI PIN contains 19.93 bits (<span class="math-inline">10^6 = 1,000,000</span> combinations). Because PBKDF2-HMAC-SHA512 is a one-way cryptographic compression function, reversing a 4-digit or 6-digit output to recover a high-entropy Master Secret Key is computationally infeasible and mathematically underdetermined: there are countless billions of possible input strings that compress to the exact same 4-digit number (massive pre-image collision ambiguity).
       </div>
 
       <p>Furthermore, learning the PIN for <code>sbi-atm</code> provides zero cryptographic information about the PIN for <code>hdfc-atm</code> or your email passwords. Each service is cryptographically isolated by its unique domain salt.</p>

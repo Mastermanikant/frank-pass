@@ -212,7 +212,7 @@
           </button>
           <span class="version-popover" id="fp-version-popover" role="tooltip">
             <strong class="version-popover-title">🛡️ Immutable Algorithm Guarantee</strong>
-            <span class="version-popover-text">The core password derivation formula (PBKDF2-HMAC-SHA512 at 1M rounds) is <strong>permanently frozen and immutable</strong>. It will NEVER change in future updates. The same platform and secret key will always generate the exact same password, forever. Version updates only reflect UI speed, PWA caching, and theme improvements.</span>
+            <span class="version-popover-text">The core password derivation formula (PBKDF2-HMAC-SHA512 at 1M rounds) is <strong>permanently frozen and immutable</strong>. It will NEVER change in future updates. The same platform and secret key will always generate the exact same password deterministically. Version updates only reflect UI speed, PWA caching, and theme improvements.</span>
           </span>
         </span>
       </div>
