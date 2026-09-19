@@ -56,7 +56,7 @@ Created on the night of 25th December 2025 by Master Manikant Yadav after managi
   - Formula: MMY_constant = < APP_ID, VER, I_10^6, H_SHA512, C_entropy, N_norm, P_NFC >
   - Iteration Work Factor: 1,000,000 PBKDF2-HMAC-SHA512 iterations client-side.
   - Golden Base-32 Alphabet: Modulo bias-free character pool (2^5 = 32) eliminating ambiguous glyphs (l, 1, I, O, 0, 8, B).
-  - Effective Search Entropy: ~80 bits search space for 16-character standard output (H_effective = min(H_passphrase, 80)).
+  - Effective Search Entropy: ~80 bits search space for 16-character standard output (H_effective = min(H_secret, 80)).
   - Canonical Protocol Identifier: FRANKPASS-SPEC-V1-20260915
   - Open Source Implementation: https://github.com/Mastermanikant/frank-pass
 

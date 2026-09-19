@@ -28,7 +28,7 @@ Turn off your Wi-Fi, disconnect your Ethernet, switch on Airplane Mode, and clic
 FrankPass is a stateless cryptographic utility that replaces password storage with **deterministic mathematical derivation**. Instead of saving passwords in vulnerable cloud vaults (like LastPass or Bitwarden), FrankPass calculates your password on-demand from a memorable Master Secret Key and a Platform Identifier.
 
 - 🔒 **Zero Server Database:** Zero user accounts, zero cloud vaults, zero honeypots.
-- ⚡ **1,000,000 PBKDF2-HMAC-SHA512 Iterations:** Extreme computational cost making brute-force attacks mathematically infeasible.
+- ⚡ **1,000,000 PBKDF2-HMAC-SHA512 Iterations:** Extreme computational cost imposing massive resistance against offline brute-force attacks.
 - 🌐 **100% Stateless & Deterministic:** Same inputs always yield the identical high-entropy output across every device.
 - 📱 **Installable Offline PWA:** Instant standalone app for Android, iOS, Windows, Mac, and Linux.
 - 🌍 **28,500+ Platform Auto-Suggest:** Instant normalization for domains and apps worldwide.

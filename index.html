@@ -635,6 +635,12 @@
  </div>
  </div>
 
+ <!-- Prominent Zero-Recovery Architectural Invariant -->
+ <div class="zero-recovery-banner" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:0.6rem 0.85rem;margin-bottom:1.15rem;display:flex;align-items:flex-start;gap:0.5rem;font-size:0.78rem;color:var(--text-muted);line-height:1.45;">
+ <span style="color:#ef4444;font-size:0.95rem;line-height:1;flex-shrink:0;">⚠️</span>
+ <span><strong style="color:var(--text-primary);">Zero-Recovery Invariant:</strong> FrankPass never stores accounts or Master Keys. If you lose your Secret Key, account recovery is mathematically impossible. Memorize your key or keep a private offline physical hint.</span>
+ </div>
+
  <!-- Username / Email (Optional) -->
   <div class="form-group" id="username-group">
   <label class="form-label" for="username-input">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
@@ -1040,7 +1046,7 @@
 <section class="section" aria-labelledby="how-heading">
  <div class="container">
  <div class="text-center mb-4">
- <div class="section-label" aria-hidden="true">No vault. No sync. No breach.</div>
+ <div class="section-label" aria-hidden="true">No cloud database. No sync honeypots. Client-side math.</div>
  <h2 id="how-heading" class="section-title">The Stateless Workflow</h2>
  <p class="section-desc">Three inputs. One mathematical function. One password. No storage.</p>
  </div>
@@ -1145,16 +1151,16 @@
  <div class="card-glass" style="padding:1.75rem">
  <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
  <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
- <h3 style="margin:0;font-size:1.1rem">You can't breach what doesn't exist</h3>
+ <h3 style="margin:0;font-size:1.1rem">Zero Centralized Credential Storage</h3>
  </div>
- <p>FrankPass has no servers, no databases, no user accounts, no synced vault. There is simply nothing to steal. Your password exists only during the brief moment it appears on your screen.</p>
+ <p>FrankPass operates without centralized servers, cloud databases, user accounts, or synced vault files. Your derived credentials exist only in volatile device RAM during generation.</p>
  </div>
  <div class="card-glass" style="padding:1.75rem">
  <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem">
  <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0" aria-hidden="true"></span>
  <h3 style="margin:0;font-size:1.1rem">Works when the internet doesn't</h3>
  </div>
- <p>Cloud managers fail when their servers go down or when you're offline. FrankPass is a PWA - install it once and it works forever, even in airplane mode, even if our domain expired.</p>
+ <p>Cloud managers fail when their servers go down or when you're offline. FrankPass is a PWA - install it once and it operates offline via local browser WebCrypto, even in airplane mode.</p>
  </div>
  </div>
  </div>
