@@ -552,7 +552,7 @@
           
           <!-- Quote with Mathematical Conviction -->
           <p class="founder-trust-quote" style="font-size:0.88rem;font-style:italic;margin-bottom:1.25rem;line-height:1.55;padding:0.75rem 1rem;border-radius:0 10px 10px 0;background:rgba(255,255,255,0.02);border-left:3px solid var(--accent)">
-            &ldquo;A password that was never stored on a server can never be stolen in a data breach. Calculated on-demand with 1,000,000 PBKDF2 iterations  -  zero cloud, zero trace.&rdquo;
+            &ldquo;A password never stored in a centralized database cannot be stolen in a server breach. Calculated on-demand locally with 1,000,000 PBKDF2 iterations.&rdquo;
           </p>
 
           <!-- 4 Trust Badges -->
@@ -689,23 +689,23 @@
  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
  </button>
  <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
- <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
- <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. One memorable phrase generates unique, mathematically resilient passwords for all your platforms (Gmail, Amazon, GitHub).</p>
- <div class="info-popover-tip">
- 💡 <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
- ✨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
- </div>
- <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
-  <a href="/secret-key-guide.html" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
-    <span>📖</span> Secret Key Guide &amp; Best Practices &rarr;
-  </a>
- </div>
- </div>
- </div>
- </div>
- </div>
- <div class="input-wrapper">
- <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. my pet is faithful, my secret phrase..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
+  <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
+  <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. A private, unpredictable phrase calculates unique, mathematically isolated credentials for each platform (Gmail, Amazon, GitHub).</p>
+  <div class="info-popover-tip">
+  💡 <strong>Choose an Unpredictable Sentence:</strong> Invent a private 5+ word phrase (e.g. <code>two hot samosas with green chutney on mars</code>). Avoid obvious names, dates, or common clichés.<br>
+  ✨ <strong>Case &amp; Space Normalization:</strong> <code>MY PHRASE 2026</code> = <code>my phrase 2026</code> = <code>myphrase2026</code>. Spaces and capital letters are automatically normalized across devices.
+  </div>
+  <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
+   <a href="/secret-key-guide.html" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
+     <span>📖</span> Secret Key Guide &amp; Best Practices &rarr;
+   </a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="input-wrapper">
+  <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. two hot samosas with green chutney on mars..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
  <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
  <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
  </button>

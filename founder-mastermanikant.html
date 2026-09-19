@@ -493,7 +493,7 @@
         I developed a personal mental algorithm: I would take the first 3 characters of the platform (e.g. <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">support</code> &rarr; <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">Sup</code>), calculate the cube or square of the letter count (7<sup>3</sup> = <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">343</code>), and append a private digit sequence with a special symbol. Passwords like <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">Sup343#852108</code> were generated deterministically on a phone calculator or in my head.
       </p>
       <p style="margin-bottom:1.25rem;">
-        On that night of 25th December 2025, when a lockout occurred, the core breakthrough struck: <em>"Why do manual arithmetic on a calculator? Can this deterministic mental reasoning be converted into an unbreakable, client-side cryptographic algorithm?"</em>
+        On that night of 25th December 2025, when a lockout occurred, the core breakthrough struck: <em>"Why do manual arithmetic on a calculator? Can this deterministic mental reasoning be converted into a resilient, client-side cryptographic algorithm?"</em>
       </p>
 
       <div style="background:var(--bg-secondary);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.5rem;margin:1.75rem 0;">
@@ -507,7 +507,7 @@
         The Birth of Stateless Deterministic Cryptography
       </h3>
       <p style="margin-bottom:1.25rem;">
-        Humans are terrible at memorizing random strings, but exceptional at remembering meaningful natural phrases (like <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">i love reading books</code>). 
+        Humans are terrible at memorizing random strings, but exceptional at remembering meaningful natural phrases (like <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">two hot samosas with green chutney on mars</code>). 
       </p>
       <p style="margin-bottom:1.25rem;">
         By feeding a single memorable <strong style="color:var(--text-primary);">Master Secret Key</strong> together with a <strong style="color:var(--text-primary);">Platform Identifier</strong> (e.g. <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">gmail.com</code>) into 1,000,000 iterations of <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">PBKDF2-HMAC-SHA512</code>, the browser derives the exact same 16-character, high-entropy password in less than a second - completely offline, with zero server involvement.
