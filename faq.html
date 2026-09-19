@@ -110,7 +110,7 @@
  {
  "@type": "Question",
  "name": "Can I use just 1 or 2 words as my Secret Key?",
- "acceptedAnswer": { "@type": "Answer", "text": "Yes! If you choose a short 1-word or 2-word Secret Key (e.g. peaceful or blue lotus), simply enter your Email or Username in the generator's Username field. Because your email address is globally unique to you, FrankPass's 1,000,000 PBKDF2 iterations will produce a 100% unique password that will never match anyone else's password." }
+ "acceptedAnswer": { "@type": "Answer", "text": "We strongly recommend a 5 to 8 word natural passphrase instead. While entering your email as a username provides account isolation and prevents cross-account collision, email addresses are public identifiers. An attacker targeting a known email could attempt offline dictionary attacks on short 1-2 word keys. For maximum cryptographic defense, choose a memorable 5+ word sentence." }
  },
  {
  "@type": "Question",
@@ -591,8 +591,8 @@
   <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
   </summary>
   <div class="faq-body">
-  <strong>Yes, absolutely! Just follow this simple rule:</strong> If you choose a short 1-word or 2-word Secret Key (such as <code>blue lotus</code> or <code>peaceful</code>), always enter your <strong>Email or Username</strong> in the generator's Username field. Because your email address is globally unique to you, FrankPass's 1,000,000 PBKDF2 iterations will produce a 100% unique password that will <strong>never collide with or match anyone else's password</strong>.<br><br>
-  <em>💡 Tip:</em> If you prefer leaving the Username field blank, simply choose a <strong>3-5 word natural sentence</strong> (like <code>two hot samosas with green chutney</code>) as your Secret Key. Explore 50+ ideas in our <a href="/secret-key-guide.html" style="color:var(--accent);font-weight:700">Secret Key Guide &rarr;</a>
+  <strong>We strongly recommend a 5 to 8 word natural passphrase instead.</strong> While entering your <strong>Email or Username</strong> provides platform isolation and prevents cross-account collisions, an email address is a public identifier. If an adversary knows your email, a short 1-word or 2-word secret key has a very small dictionary search space. 1,000,000 PBKDF2 iterations enforce heavy computational delay on brute-force attempts, but true mathematical security comes from choosing a memorable, surreal <strong>5+ word natural sentence</strong> (such as <code>two hot samosas with green chutney on mars</code>).<br><br>
+  <em>💡 Tip:</em> Explore practical passphrase construction rules and 15+ surreal examples in our <a href="/secret-key-guide.html" style="color:var(--accent);font-weight:700">Secret Key Guide &rarr;</a>
   </div>
   </details>
 

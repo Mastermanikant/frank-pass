@@ -367,63 +367,63 @@
  <!-- AI Prompt & Research Component -->
  <div id="ai-prompt-bar" data-topic="FrankPass Limitations &amp; Advantages (Honest Architectural Comparison)" data-summary="An honest analysis of mental tension across 4 password management methods and why FrankPass's 5 perceived limitations are its greatest security strengths."></div>
 
- <!-- Section 1: Tension Comparison Matrix -->
- <section style="margin-bottom:3rem">
- <h2 style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin-bottom:1rem">
- ⚖️ The 4 Password Methods: What Is Your True Mental Tension Level?
- </h2>
- <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem">
- If you manage 50 to 60 online accounts (Gmail, Banking, Social Media, Netflix, Work Portal), here is how your mental stress and risk exposure compare across the 4 methods:
- </p>
+  <!-- Section 1: Risk & Tension Comparison Matrix -->
+  <section style="margin-bottom:3rem">
+  <h2 style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin-bottom:1rem">
+  ⚖️ The 4 Password Methods: Comparing Operational Friction &amp; Threat Profiles
+  </h2>
+  <p style="color:var(--text-muted);line-height:1.7;margin-bottom:1.5rem">
+  If you manage 50 to 60 online accounts (Gmail, Banking, Social Media, Netflix, Work Portal), here is how your mental stress and risk exposure compare across the 4 methods:
+  </p>
 
- <div style="display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1.5rem">
- 
- <!-- Method 1 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem">
- <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
- <strong style="color:var(--text-primary);font-size:1.05rem">1. Memorizing Passwords Manually (Brain / Notepad)</strong>
- <span style="background:rgba(239,68,68,0.15);color:#ef4444;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">Tension: 95% (Extreme)</span>
- </div>
- <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
- <strong>The Problem:</strong> The human brain cannot memorize 50 unique 16-character cryptographic strings. Consequently, people reuse weak passwords like <code>Password@123</code> across multiple sites. If one low-security forum is breached, hackers use that exact password to breach your bank and primary email.
- </p>
- </div>
+  <div style="display:grid;grid-template-columns:1fr;gap:1rem;margin-bottom:1.5rem">
+  
+  <!-- Method 1 -->
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+  <strong style="color:var(--text-primary);font-size:1.05rem">1. Memorizing Passwords Manually (Brain / Notepad)</strong>
+  <span style="background:rgba(239,68,68,0.15);color:#ef4444;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">Severe Risk: High Friction &amp; Password Reuse</span>
+  </div>
+  <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
+  <strong>The Problem:</strong> The human brain cannot memorize 50 unique 16-character cryptographic strings. Consequently, people reuse weak passwords like <code>Password@123</code> across multiple sites. If one low-security forum is breached, attackers use that exact credential to access bank accounts and primary email.
+  </p>
+  </div>
 
- <!-- Method 2 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem">
- <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
- <strong style="color:var(--text-primary);font-size:1.05rem">2. Saving on Google / Chrome / Apple iCloud Keychain</strong>
- <span style="background:rgba(245,158,11,0.15);color:#f59e0b;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">Tension: 70% (High Centralized Risk)</span>
- </div>
- <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
- <strong>The Problem:</strong> This creates a dangerous Single Point of Failure. All your credentials sit in a centralized cloud vault. If your primary Google or Apple account is compromised or your phone is stolen unlocked, the intruder instantly gains access to your entire digital life.
- </p>
- </div>
+  <!-- Method 2 -->
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+  <strong style="color:var(--text-primary);font-size:1.05rem">2. Saving in Browser / Ecosystem Keychain (Google / Apple)</strong>
+  <span style="background:rgba(245,158,11,0.15);color:#f59e0b;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">High Risk: Centralized Single Point of Failure</span>
+  </div>
+  <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
+  <strong>The Problem:</strong> This creates a single point of failure. All credentials sit in a centralized cloud ecosystem. If your primary Google or Apple account is compromised or your unlocked device is stolen, an adversary immediately gains access to your entire digital identity.
+  </p>
+  </div>
 
- <!-- Method 3 -->
- <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem">
- <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
- <strong style="color:var(--text-primary);font-size:1.05rem">3. Traditional Cloud Password Vaults</strong>
- <span style="background:rgba(59,130,246,0.15);color:#3b82f6;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">Tension: 50% (Subscription + Centralized Risk)</span>
- </div>
- <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
- <strong>The Architectural Trade-off:</strong> These services use strong AES-256 encryption and offer convenient cross-device sync. However, they require recurring subscription fees and your encrypted vault database resides on centralized corporate servers, which creates a potential target for offline brute-force attacks if a server-side breach occurs.
- </p>
- </div>
+  <!-- Method 3 -->
+  <div style="background:var(--card-bg);border:1px solid var(--border);border-radius:14px;padding:1.25rem">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+  <strong style="color:var(--text-primary);font-size:1.05rem">3. Traditional Cloud Password Vaults</strong>
+  <span style="background:rgba(59,130,246,0.15);color:#3b82f6;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">Moderate Risk: Recurring Subscription + Central Server Exposure</span>
+  </div>
+  <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
+  <strong>The Architectural Trade-off:</strong> These services use strong AES-256 encryption and offer convenient cross-device sync. However, they require recurring subscription fees and your encrypted vault database resides on centralized corporate servers, which creates a target for offline brute-force attacks if a server-side breach occurs.
+  </p>
+  </div>
 
- <!-- Method 4: FrankPass -->
- <div style="background:rgba(16,185,129,0.06);border:2px solid rgba(16,185,129,0.3);border-radius:14px;padding:1.25rem">
- <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
- <strong style="color:var(--text-primary);font-size:1.05rem">4. Our FrankPass.com (Stateless Mathematics)</strong>
- <span style="background:rgba(16,185,129,0.2);color:#10b981;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">Tension: 5% (Zero Storage, Pure Peace of Mind)</span>
- </div>
- <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
- <strong>The Solution:</strong> Zero servers, zero database, zero subscriptions. Just remember ONE simple memorable sentence from your life. Client-side mathematics automatically derives 100 unique, uncrackable passwords for 100 platforms on demand.
- </p>
- </div>
+  <!-- Method 4: FrankPass -->
+  <div style="background:rgba(16,185,129,0.06);border:2px solid rgba(16,185,129,0.3);border-radius:14px;padding:1.25rem">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem">
+  <strong style="color:var(--text-primary);font-size:1.05rem">4. FrankPass (Stateless Client-Side Mathematics)</strong>
+  <span style="background:rgba(16,185,129,0.2);color:#10b981;font-weight:800;font-size:0.8rem;padding:0.25rem 0.65rem;border-radius:6px">Minimal Operational Risk: Zero Server Storage</span>
+  </div>
+  <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6;margin:0">
+  <strong>The Solution:</strong> Zero servers, zero database, zero subscriptions. Just remember ONE memorable sentence. Client-side mathematics (1,000,000 PBKDF2 rounds) deterministically derives high-entropy passwords on demand across all platforms.
+  </p>
+  </div>
 
- </div>
- </section>
+  </div>
+  </section>
 
    <!-- Section 2: Architectural Trade-Offs & Security Matrix -->
   <section style="margin-bottom:3rem">
