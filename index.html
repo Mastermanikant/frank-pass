@@ -66,7 +66,7 @@
         "operatingSystem": "Any - Web, PWA, Chrome, Firefox, Edge, Safari, iOS, Android, Windows, Mac, Linux",
         "url": "https://frankpass.com",
         "image": "https://frankpass.com/icons/icon-512.png",
-        "description": "FrankPass (also known as Frank Pass) is a stateless, deterministic cryptographic password and PIN generator created by Master Manikant Yadav. Zero cloud, zero storage, zero accounts. It derives unique, unhackable passwords and numeric PINs on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations in local browser memory.",
+        "description": "FrankPass (also known as Frank Pass) is a stateless, deterministic cryptographic password and PIN generator created by Master Manikant Yadav. Zero cloud, zero storage, zero accounts. It derives unique, high-entropy passwords and numeric PINs on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations in local browser memory.",
         "softwareVersion": "4.2.7",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "author": {
@@ -690,14 +690,14 @@
  </button>
  <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
  <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
- <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. One memorable phrase generates unique, unhackable passwords for all your platforms (Gmail, Amazon, GitHub).</p>
+ <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. One memorable phrase generates unique, mathematically resilient passwords for all your platforms (Gmail, Amazon, GitHub).</p>
  <div class="info-popover-tip">
  💡 <strong>Use a Simple Sentence:</strong> Enter any easy phrase (e.g. <code>i love reading books</code> or <code>my secret phrase</code>).<br>
  ✨ <strong>Case &amp; Space Insensitive:</strong> <code>MASTER MANIKANT</code> = <code>master manikant</code> = <code>MasterManikant</code>. Spaces and capital letters are automatically normalized - no complex symbols needed!
  </div>
  <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
   <a href="/secret-key-guide.html" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
-    <span>📖</span> 50+ Secret Key Ideas &amp; Platform Guide &rarr;
+    <span>📖</span> Secret Key Guide &amp; Best Practices &rarr;
   </a>
  </div>
  </div>
@@ -1061,7 +1061,7 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
  </div>
  <h3>Enter Your Secret Key</h3>
- <p>Your secret key is the seed. It never leaves your device. PBKDF2 with 1,000,000 iterations and HMAC-SHA512 expansion transform it into an unbreakable cryptographic anchor.</p>
+ <p>Your secret key is the seed. It never leaves your device. PBKDF2 with 1,000,000 iterations and HMAC-SHA512 expansion transform it into a mathematically isolated cryptographic seed.</p>
  </div>
  <!-- Step 3 -->
  <div class="card-glass step-card" role="listitem" aria-label="Step 3: Copy your password">
