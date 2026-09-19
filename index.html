@@ -552,7 +552,7 @@
           
           <!-- Quote with Mathematical Conviction -->
           <p class="founder-trust-quote" style="font-size:0.88rem;font-style:italic;margin-bottom:1.25rem;line-height:1.55;padding:0.75rem 1rem;border-radius:0 10px 10px 0;background:rgba(255,255,255,0.02);border-left:3px solid var(--accent)">
-            &ldquo;A password never stored in a centralized database cannot be stolen in a server breach. Calculated on-demand locally with 1,000,000 PBKDF2 iterations.&rdquo;
+            &ldquo;A password never stored in a centralized database eliminates centralized server database breach exposure. Calculated on-demand locally with 1,000,000 PBKDF2 iterations.&rdquo;
           </p>
 
           <!-- 4 Trust Badges -->
@@ -638,7 +638,7 @@
  <!-- Prominent Zero-Recovery Architectural Invariant -->
  <div class="zero-recovery-banner" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:0.6rem 0.85rem;margin-bottom:1.15rem;display:flex;align-items:flex-start;gap:0.5rem;font-size:0.78rem;color:var(--text-muted);line-height:1.45;">
  <span style="color:#ef4444;font-size:0.95rem;line-height:1;flex-shrink:0;">⚠️</span>
- <span><strong style="color:var(--text-primary);">Zero-Recovery Invariant:</strong> FrankPass never stores accounts or Master Keys. If you lose your Secret Key, account recovery is impossible by architectural design. Memorize your key or keep a private offline physical hint.</span>
+ <span><strong style="color:var(--text-primary);">Zero-Recovery Invariant:</strong> FrankPass has no Secret Key recovery mechanism. If the Secret Key is lost, previously derived credentials cannot be regenerated from FrankPass; affected accounts must be reset through their respective services. Memorize your key or keep a private offline physical hint.</span>
  </div>
 
  <!-- Username / Email (Optional) -->
@@ -893,7 +893,7 @@
     </p>
     
     <div style="background:rgba(16,185,129,0.08);border-left:3px solid #10b981;padding:0.5rem 0.75rem;border-radius:0 8px 8px 0;margin-bottom:0.85rem;font-size:0.8rem;color:var(--text-primary)">
-      🔒 <strong>100% Privacy Guarantee:</strong> FrankPass is 100% client-side and offline. We <strong>NEVER read your clipboard</strong>. We only overwrite it with empty text when the countdown finishes.
+      🔒 <strong>Stateless Privacy Model:</strong> FrankPass is client-side and offline. The Auto-Clear function does not inspect clipboard contents; it overwrites the buffer upon timer expiration.
     </div>
 
     <!-- Duration Choice Buttons -->
