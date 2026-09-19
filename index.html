@@ -759,7 +759,7 @@
   <!-- Mode 1: Numeric Counter (1-999) with stepper -->
   <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
   <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">&minus;</button>
-  <input id="variant-input" class="form-input" type="number" min="1" max="999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
+  <input id="variant-input" class="form-input" type="number" min="1" max="999999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
   <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
   </div>
 
@@ -1857,7 +1857,7 @@ function updateVariantDisplay() {
  if (currentVariantMode === 'counter') {
  let val = variantInput ? parseInt(variantInput.value, 10) : 1;
  if (isNaN(val) || val < 1) val = 1;
- if (val > 999) val = 999;
+ if (val > 999999) val = 999999;
  if (variantVal) variantVal.textContent = `(v${val})`;
  } else {
  const m = monthSelect ? monthSelect.value : curMonth;
@@ -1914,33 +1914,33 @@ if (varMinus) {
 
 const varPlus = document.getElementById('variant-plus');
 if (varPlus) {
- varPlus.addEventListener('click', () => {
- let val = parseInt(variantInput.value, 10) || 1;
- if (val < 999) {
- variantInput.value = val + 1;
- updateVariantDisplay();
- }
- });
+  varPlus.addEventListener('click', () => {
+  let val = parseInt(variantInput.value, 10) || 1;
+  if (val < 999999) {
+  variantInput.value = val + 1;
+  updateVariantDisplay();
+  }
+  });
 }
 
 if (variantInput) {
- variantInput.addEventListener('input', () => {
- let val = parseInt(variantInput.value, 10);
- if (!isNaN(val)) {
- if (val > 999) variantInput.value = 999;
- if (val < 1) variantInput.value = 1;
- }
- updateVariantDisplay();
- });
+  variantInput.addEventListener('input', () => {
+  let val = parseInt(variantInput.value, 10);
+  if (!isNaN(val)) {
+  if (val > 999999) variantInput.value = 999999;
+  if (val < 1) variantInput.value = 1;
+  }
+  updateVariantDisplay();
+  });
 }
 if (monthSelect) monthSelect.addEventListener('change', updateVariantDisplay);
 if (yearInput) yearInput.addEventListener('input', updateVariantDisplay);
 
 function getActiveVariant() {
- if (currentVariantMode === 'counter') {
- const val = variantInput ? parseInt(variantInput.value, 10) : 1;
- return Math.max(1, Math.min(999, isNaN(val) ? 1 : val));
- } else {
+  if (currentVariantMode === 'counter') {
+  const val = variantInput ? parseInt(variantInput.value, 10) : 1;
+  return Math.max(1, Math.min(999999, isNaN(val) ? 1 : val));
+  } else {
  const m = monthSelect ? monthSelect.value : '01';
  const y = yearInput ? (yearInput.value || '2026').trim() : '2026';
  return `${m}${y}`;
@@ -2363,7 +2363,7 @@ document.addEventListener('DOMContentLoaded', () => {
  
  if (saved.variant) {
     const vNum = parseInt(saved.variant, 10);
-    if (!isNaN(vNum) && vNum >= 1 && vNum <= 999 && String(saved.variant).length <= 3) {
+    if (!isNaN(vNum) && vNum >= 1 && vNum <= 999999 && String(saved.variant).length <= 6) {
       document.getElementById('variant-input').value = vNum;
     } else {
       document.getElementById('variant-input').value = 1;
