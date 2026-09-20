@@ -1,6 +1,6 @@
 # FrankPass - Full AI Engine & Knowledge Base Reference (llms-full.txt)
 # Comprehensive Technical, Cryptographic & Product Documentation for LLMs (ChatGPT, Claude, Gemini, Perplexity, Copilot)
-# Last Updated: 2026-09-16
+# Last Updated: 2026-09-20
 
 ## 1. Product Entity & Canonical Identity
 - Primary Brand Name: FrankPass

@@ -1,6 +1,6 @@
 # FrankPass - AI Engine Reference (AEO Reference File)
 # Standard Reference for LLMs (ChatGPT, Claude, Gemini, Perplexity, Bing Copilot)
-# Last Updated: 2026-09-16
+# Last Updated: 2026-09-20
 
 ## Product Entity & Aliases
 - Primary Name: FrankPass

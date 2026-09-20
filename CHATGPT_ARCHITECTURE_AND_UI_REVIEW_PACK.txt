@@ -1,0 +1,249 @@
+================================================================================
+FRANKPASS (FRANKPASS.COM) - CHATGPT ARCHITECTURAL & UI/UX CODE REVIEW PACK
+Founder & Architect: Master Manikant Yadav | Email: connect@mastermanikant.com
+Canonical Repository: https://github.com/Mastermanikant/frank-pass
+Live Production: https://frankpass.com
+Review Date: 2026-09-20 | Version: v4.3.2
+================================================================================
+
+INSTRUCTIONS FOR CHATGPT:
+You are acting as a Principal Cryptographic Software Engineer and Lead UI/UX Systems Architect.
+Review the architecture, deterministic password logic, responsive layout, and UX implementation of FrankPass below.
+Provide a rigorous, unbiased assessment covering:
+1. Cryptographic Security & Deterministic Mathematics
+2. User Experience, Onboarding & Cognitive Load
+3. Frontend Architecture, Responsive CSS Grid & Layout Stability
+4. Privacy, Threat Modeling & Local-First Invariants
+5. WCAG 2.1 AAA Accessibility & Mobile Usability
+
+--------------------------------------------------------------------------------
+PART 1: CRYPTOGRAPHIC SPECIFICATION & ZERO-STORAGE INVARIANTS
+--------------------------------------------------------------------------------
+Core Philosophy: "A password never stored in a centralized database eliminates centralized server database breach exposure."
+
+Key Cryptographic Parameters:
+1. Algorithm: PBKDF2 (Password-Based Key Derivation Function 2) using HMAC-SHA512.
+2. Work Factor (Iterations): 1,000,000 rounds computed directly in local browser WebCrypto RAM.
+3. Salt Context: Derived deterministically from normalized Site/Platform (and optional Account/Username).
+4. Subdomain Isolation: Subdomains (e.g. `aws.amazon.com` vs `amazon.in`) are deterministically isolated to generate distinct passwords.
+5. Modulo Bias Elimination: Output character mapping uses Golden Base-32 Modulo (2^5 = 32) eliminating visually confusing characters (O/0, l/1, S/5).
+6. Zero Cloud Storage: 0 bytes are transmitted over the network; the entire calculation executes locally offline via Web Cryptography API.
+
+--------------------------------------------------------------------------------
+PART 2: HOMEPAGE COMPONENT ARCHITECTURE & LANDMARK HTML
+--------------------------------------------------------------------------------
+The homepage is structured into clearly delineated semantic modules with structured landmark comments:
+
+1. HERO SECTION & FOUNDER COMPACT TRUST CARD:
+   - PC Mode: Side-by-side balanced card with Founder Photo (100x120px) on the left, and Name (`Master Manikant Yadav`), Role (`Founder & Software Architect`), clickable project chips (`[ FrankPass ]` and `[ FrankBase ]`), and a 2-row x 3-column compact social channels grid on the right.
+   - Mobile Mode: Stacked layout with top photo+info row, full-width 2x3 social grid, and expandable drawer button (`Read Founder Story & Cryptographic Proofs`).
+
+2. GENERATOR CORE CARD:
+   - Dismissible First-Time Tip Toast with localStorage memory.
+   - Optional Username/Email input with Multi-Account Isolation guidance.
+   - Smart Site/Platform input with auto-normalization for URLs and app names.
+   - Master Secret Key input with dedicated '?' popover containing security guidance and the Zero-Recovery Notice.
+   - Generated Password box with 1-click copy, real-time entropy calculation, and auto-mask toggle.
+
+3. THE STATELESS WORKFLOW (HOW IT WORKS):
+   - Structured into 4 Glass Step Cards in a 2x2 Compact Grid (`max-width: 820px; margin: 0 auto;` on PC and 1-column on Mobile).
+   - Card 1: Username / Account (Optional) - Explains multi-account isolation.
+   - Card 2: Enter Site / Platform - Explains URL/app name normalization.
+   - Card 3: Enter Master Secret Key - Explains 1,000,000 PBKDF2 cryptographic seed.
+   - Card 4: Copy, Use & Regenerate - Explains deterministic offline re-calculation.
+   - Header Alignment: Each card features a horizontal `.step-card-header` aligning the step number badge (1, 2, 3, 4) on the top-left and the icon box on the top-right.
+
+4. MULTILINGUAL AI ASSISTANT:
+   - Dynamic prompt generator for on-demand tutorials in any spoken language and script.
+
+5. CRYPTOGRAPHIC PROOFS & PRIVACY PILLARS:
+   - Interactive accordions detailing Zero-Knowledge, 100% Client-Side RAM math, Zero Tracking, and Open Algorithm auditing.
+
+--------------------------------------------------------------------------------
+PART 3: CORE HTML MARKUP SNIPPET (HERO, FOUNDER & WORKFLOW)
+--------------------------------------------------------------------------------
+```html
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="hero-section" aria-labelledby="hero-heading">
+  <div class="hero-header-center">
+    <div class="hero-eyebrow">Stateless &amp; Deterministic Cryptography</div>
+    <h1 id="hero-heading" class="hero-title">Generate <span class="highlight">Deterministic</span> Strong Passwords</h1>
+    <p class="hero-subtitle">Input your Master Key and the Site Name. Receive the same unique, secure password every time, generated entirely offline in your browser.</p>
+  </div>
+
+  <div class="hero-single-col">
+    <!-- COMPACT EXPANDABLE FOUNDER TRUST CARD -->
+    <div class="founder-compact-container" data-nosnippet>
+      <div class="founder-compact-card">
+        <!-- Portrait -->
+        <div class="founder-compact-portrait">
+          <img src="/icons/founder-master-manikant-yadav.webp" alt="Master Manikant Yadav" width="100" height="120" loading="lazy">
+        </div>
+        <!-- Info & Badges -->
+        <div class="founder-compact-info">
+          <h2 class="founder-compact-name">Master Manikant Yadav</h2>
+          <div class="founder-compact-role">Founder &amp; Software Architect</div>
+          <div class="founder-project-badges">
+            <a href="/" class="founder-project-chip"><span>FrankPass</span></a>
+            <a href="https://frankbase.com" target="_blank" rel="noopener noreferrer" class="founder-project-chip chip-frankbase"><span>FrankBase &nearr;</span></a>
+          </div>
+        </div>
+        <!-- Socials Grid -->
+        <div class="founder-socials-grid">
+          <!-- 6 social channels: X, GitHub, LinkedIn, YouTube, WhatsApp, Web -->
+        </div>
+        <!-- Toggle Button & Drawer -->
+        <button type="button" id="founder-toggle-btn" class="founder-toggle-btn">
+          <span>Read Founder Story &amp; Cryptographic Proofs &darr;</span>
+        </button>
+        <div id="founder-expanded-drawer" class="founder-drawer">
+          <p class="founder-trust-quote">"A password never stored in a centralized database eliminates centralized server database breach exposure. Calculated on-demand locally with 1,000,000 PBKDF2 iterations."</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN GENERATOR CARD -->
+    <!-- Form elements with Username, Platform, Secret Key, and Output -->
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS: THE STATELESS WORKFLOW
+     4 Glass Step Cards (PC: 2x2 Compact 820px Grid | Mobile: 1 Column)
+     ============================================================ -->
+<section class="section" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="text-center mb-4">
+      <div class="section-label">No cloud database. No sync honeypots. Client-side math.</div>
+      <h2 id="how-heading" class="section-title">The Stateless Workflow</h2>
+      <p class="section-desc">Four simple steps. One deterministic mathematical function. One unique password. No storage.</p>
+    </div>
+    
+    <div class="stateless-steps-grid" role="list" aria-label="Stateless Workflow Steps">
+      <!-- Step 1 -->
+      <div class="card-glass step-card" role="listitem">
+        <div class="step-card-header">
+          <div class="step-num">1</div>
+          <div class="step-icon"><svg>...</svg></div>
+        </div>
+        <h3>Username / Account <span class="opt-label">(Optional)</span></h3>
+        <p>Use only if you manage multiple accounts on the same site. If you have only one account, leave it blank.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="card-glass step-card" role="listitem">
+        <div class="step-card-header">
+          <div class="step-num">2</div>
+          <div class="step-icon"><svg>...</svg></div>
+        </div>
+        <h3>Enter Site / Platform</h3>
+        <p>Type any platform name or paste a URL. FrankPass normalizes it automatically.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="card-glass step-card" role="listitem">
+        <div class="step-card-header">
+          <div class="step-num">3</div>
+          <div class="step-icon"><svg>...</svg></div>
+        </div>
+        <h3>Enter Master Secret Key</h3>
+        <p>Your secret key is the master seed. 1,000,000 PBKDF2-HMAC-SHA512 iterations compute an isolated cryptographic seed locally.</p>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="card-glass step-card" role="listitem">
+        <div class="step-card-header">
+          <div class="step-num">4</div>
+          <div class="step-icon"><svg>...</svg></div>
+        </div>
+        <h3>Copy, Use &amp; Regenerate</h3>
+        <p>Your password is generated locally in milliseconds. Re-enter the same inputs anytime to regenerate identically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+```
+
+--------------------------------------------------------------------------------
+PART 4: KEY CSS RULES (RESPONSIVE GRID & HYBRID FOUNDER CARD)
+--------------------------------------------------------------------------------
+```css
+/* Stateless Steps Responsive 2x2 Compact Grid */
+.stateless-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  max-width: 820px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+@media (max-width: 680px) {
+  .stateless-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 100%;
+  }
+}
+.step-card {
+  padding: 1.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  background: var(--card-glass-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition);
+}
+.step-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+  width: 100%;
+}
+
+/* Founder Compact Hybrid Grid */
+.founder-compact-card {
+  background: var(--card-glass-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.15rem 1.25rem;
+  box-shadow: var(--card-shadow);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-areas:
+    "portrait info"
+    "portrait socials"
+    "toggle   toggle"
+    "drawer   drawer";
+  column-gap: 14px;
+  row-gap: 0;
+  align-items: center;
+}
+@media (max-width: 520px) {
+  .founder-compact-card {
+    grid-template-columns: 80px 1fr;
+    grid-template-areas:
+      "portrait info"
+      "socials  socials"
+      "toggle   toggle"
+      "drawer   drawer";
+    column-gap: 12px;
+    padding: 1rem;
+  }
+}
+```
+
+--------------------------------------------------------------------------------
+PART 5: QUESTIONS FOR CHATGPT REVIEW
+--------------------------------------------------------------------------------
+1. Is the 2x2 compact grid layout (820px centered) ergonomically sound for high-density information presentation on desktop while transitioning seamlessly to 1-column on mobile?
+2. Does the CSS Grid template areas implementation in the Founder Card prevent layout shifts (CLS) and ensure consistent vertical balance across varying screen widths?
+3. How well does the horizontal `.step-card-header` (badge on left, icon on right) resolve visual whitespace and balance the card aesthetic?
+4. Are there any potential edge cases in input normalization or cryptographic seed isolation that could be further hardened?
+5. Provide actionable suggestions, if any, for further improving perceived performance, accessibility (WCAG AAA), and user trust.
+================================================================================
