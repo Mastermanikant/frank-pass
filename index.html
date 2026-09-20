@@ -635,11 +635,14 @@
  </div>
  </div>
 
- <!-- Prominent Zero-Recovery Architectural Invariant -->
- <div class="zero-recovery-banner" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:0.6rem 0.85rem;margin-bottom:1.15rem;display:flex;align-items:flex-start;gap:0.5rem;font-size:0.78rem;color:var(--text-muted);line-height:1.45;">
- <span style="color:#ef4444;font-size:0.95rem;line-height:1;flex-shrink:0;">⚠️</span>
- <span><strong style="color:var(--text-primary);">Zero-Recovery Invariant:</strong> FrankPass has no Secret Key recovery mechanism. If the Secret Key is lost, previously derived credentials cannot be regenerated from FrankPass; affected accounts must be reset through their respective services. Memorize your key or keep a private offline physical hint.</span>
- </div>
+  <!-- First-Time Quick Tip Toast (Dismissible) -->
+  <div id="first-time-guide-toast" style="display:none;background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(99,102,241,0.08));border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.65rem 2rem 0.65rem 0.85rem;margin-bottom:1.15rem;font-size:0.8rem;color:var(--text-muted);line-height:1.45;position:relative;">
+    <div style="display:flex;align-items:flex-start;gap:0.45rem;">
+      <span style="color:var(--accent-light);font-size:0.95rem;line-height:1;flex-shrink:0;">💡</span>
+      <span><strong style="color:var(--text-primary);">Quick Guide:</strong> FrankPass calculates passwords locally via math. No cloud storage exists. Enter your platform, a memorable 5 to 8 word Secret Key, and copy your password. Regenerate it anytime with the exact same inputs.</span>
+    </div>
+    <button type="button" id="dismiss-guide-toast-btn" aria-label="Close guide tip" style="position:absolute;top:0.45rem;right:0.55rem;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;line-height:1;padding:0.2rem;border-radius:4px;transition:color 0.2s;" title="Dismiss tip" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✖</button>
+  </div>
 
  <!-- Username / Email (Optional) -->
   <div class="form-group" id="username-group">
@@ -648,7 +651,7 @@
   <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
   </div>
   <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
-  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">Generates a unique password for this specific username/profile.</span>
+  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Multi-Account Isolation:</strong> Use only if you have multiple accounts on the same site. Establish a personal rule and follow it consistently.</span>
   </div>
 
  <!-- Platform input -->
@@ -698,8 +701,12 @@
   <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
   <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. A private, unpredictable phrase calculates unique, mathematically isolated credentials for each platform (Gmail, Amazon, GitHub).</p>
   <div class="info-popover-tip">
-  💡 <strong>Choose an Unpredictable Sentence:</strong> Invent a private 5+ word phrase (e.g. <code>two hot samosas with green chutney on mars</code>). Avoid obvious names, dates, or common clichés.<br>
+  💡 <strong>Choose an Unpredictable Sentence:</strong> Invent a private 5 to 8 word phrase (e.g. <code>two hot samosas with green chutney on mars</code>). Avoid obvious names or dates.<br>
   ✨ <strong>Case &amp; Space Normalization:</strong> <code>MY PHRASE 2026</code> = <code>my phrase 2026</code> = <code>myphrase2026</code>. Spaces and capital letters are automatically normalized across devices.
+  </div>
+  <!-- Shifted Zero-Recovery Notice inside Popover -->
+  <div style="margin-top:0.6rem;padding:0.5rem 0.65rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;font-size:0.74rem;line-height:1.45;color:var(--text-muted)">
+    <strong style="color:#ef4444;">⚠️ Zero-Recovery Notice:</strong> FrankPass has no server database and cannot recover lost keys. If lost, previous passwords cannot be regenerated and must be reset on the respective services. Keep your key memorized or physically noted offline.
   </div>
   <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
    <a href="/secret-key-guide.html" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
@@ -1041,42 +1048,51 @@
 
 <!-- ============================================================
  HOW IT WORKS
- 3 connected glass step cards
+ 4 connected glass step cards
  ============================================================ -->
 <section class="section" aria-labelledby="how-heading">
  <div class="container">
  <div class="text-center mb-4">
  <div class="section-label" aria-hidden="true">No cloud database. No sync honeypots. Client-side math.</div>
  <h2 id="how-heading" class="section-title">The Stateless Workflow</h2>
- <p class="section-desc">Three inputs. One mathematical function. One password. No storage.</p>
+ <p class="section-desc">Four simple steps. One deterministic mathematical function. One unique password. No storage.</p>
  </div>
- <div class="grid-3" role="list" aria-label="Stateless Workflow Steps">
+ <div class="grid-4" role="list" aria-label="Stateless Workflow Steps">
  <!-- Step 1 -->
- <div class="card-glass step-card" role="listitem" aria-label="Step 1: Enter your platform">
+ <div class="card-glass step-card" role="listitem" aria-label="Step 1: Enter Username or Account (Optional)">
  <div class="step-num" aria-hidden="true">1</div>
+ <div class="step-icon" aria-hidden="true">
+ <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+ </div>
+ <h3>Username / Account <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></h3>
+ <p>Use only if you manage multiple accounts on the same site (e.g. personal vs work). If you have only one account, leave it blank. Establish a personal rule and follow it consistently.</p>
+ </div>
+ <!-- Step 2 -->
+ <div class="card-glass step-card" role="listitem" aria-label="Step 2: Enter your platform">
+ <div class="step-num" aria-hidden="true">2</div>
  <div class="step-icon" aria-hidden="true">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
  </div>
  <h3>Enter Site / Platform</h3>
  <p>Type any platform name or paste a URL. FrankPass normalizes it automatically - <code>facebook.com</code>, <code>www.facebook.com</code>, or just <code>facebook</code> all produce the exact same result.</p>
  </div>
- <!-- Step 2 -->
- <div class="card-glass step-card" role="listitem" aria-label="Step 2: Enter your secret key">
- <div class="step-num" aria-hidden="true">2</div>
+ <!-- Step 3 -->
+ <div class="card-glass step-card" role="listitem" aria-label="Step 3: Enter your secret key">
+ <div class="step-num" aria-hidden="true">3</div>
  <div class="step-icon" aria-hidden="true">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
  </div>
- <h3>Enter Your Secret Key</h3>
- <p>Your secret key is the seed. It never leaves your device. PBKDF2 with 1,000,000 iterations and HMAC-SHA512 expansion transform it into a mathematically isolated cryptographic seed.</p>
+ <h3>Enter Master Secret Key</h3>
+ <p>Your secret key is the master seed. It never leaves your device memory. 1,000,000 PBKDF2-HMAC-SHA512 iterations compute a mathematically isolated cryptographic seed locally.</p>
  </div>
- <!-- Step 3 -->
- <div class="card-glass step-card" role="listitem" aria-label="Step 3: Copy your password">
- <div class="step-num" aria-hidden="true">3</div>
+ <!-- Step 4 -->
+ <div class="card-glass step-card" role="listitem" aria-label="Step 4: Copy, Use and Regenerate">
+ <div class="step-num" aria-hidden="true">4</div>
  <div class="step-icon" aria-hidden="true">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
  </div>
- <h3>Copy &amp; Use</h3>
- <p>Your password is generated in milliseconds - entirely on your device. Copy it, use it, and forget it. The math will reproduce it identically next time. Nothing is ever saved.</p>
+ <h3>Copy, Use &amp; Regenerate</h3>
+ <p>Your password is generated locally in milliseconds. Copy it and use it. Whenever you need it again, simply re-enter the same inputs to regenerate the exact same password instantly.</p>
  </div>
  </div>
  </div>
@@ -2467,6 +2483,25 @@ function shareLink(platform, e) {
       }
     });
   }
+
+  // First-Time Quick Tip Toast Handler
+  (function initGuideToast() {
+    try {
+      var toast = document.getElementById('first-time-guide-toast');
+      var dismissBtn = document.getElementById('dismiss-guide-toast-btn');
+      if (toast && !localStorage.getItem('fp_guide_dismissed')) {
+        toast.style.display = 'block';
+      }
+      if (dismissBtn && toast) {
+        dismissBtn.addEventListener('click', function() {
+          toast.style.display = 'none';
+          try {
+            localStorage.setItem('fp_guide_dismissed', '1');
+          } catch(e) {}
+        });
+      }
+    } catch(e) {}
+  })();
 </script>
 
 <!-- ============================================================
