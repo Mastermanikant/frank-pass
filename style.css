@@ -1298,7 +1298,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 /* ── 23. STEP CARDS ──────────────────────────────────────── */
 .stateless-steps-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
   max-width: 820px;
   margin: 0 auto;
@@ -1307,7 +1307,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 @media (max-width: 680px) {
   .stateless-steps-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
     max-width: 100%;
   }
@@ -3362,7 +3362,7 @@ input:-webkit-autofill:active {
   width: 100%;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 100px minmax(0, 1fr);
   grid-template-areas:
     "portrait info"
     "portrait socials"
@@ -3510,7 +3510,7 @@ input:-webkit-autofill:active {
 
 @media (max-width: 520px) {
   .founder-compact-card {
-    grid-template-columns: 80px 1fr;
+    grid-template-columns: 80px minmax(0, 1fr);
     grid-template-areas:
       "portrait info"
       "socials  socials"
