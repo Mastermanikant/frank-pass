@@ -6,6 +6,9 @@
 (function () {
     'use strict';
 
+    if (window.__fp_country_dropdown_inited) return;
+    window.__fp_country_dropdown_inited = true;
+
     const CDN = '/flags/';
     const FALLBACK_CDN = 'https://flagcdn.com/w40/';
     const DEFAULT_CODE = 'in';
@@ -234,12 +237,24 @@
         }
 
         // ── Events ──────────────────────────────────────────────────────
-        trigger.addEventListener('click', () =>
-            panel.classList.contains('open') ? closeDropdown() : openDropdown());
+        trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (panel.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        });
+
+        panel.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
 
         trigger.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
                 e.preventDefault();
+                e.stopPropagation();
                 openDropdown();
             }
         });
@@ -250,7 +265,6 @@
             if (e.key === 'Escape') closeDropdown();
         });
 
-        
         // ── Browser Back / Forward Sync ──────────────────────────────
         window.addEventListener('popstate', (e) => {
             let p = window.location.pathname.replace(/\//g, '').toLowerCase();
@@ -263,7 +277,8 @@
 
         // Close on outside click
         document.addEventListener('click', (e) => {
-            if (!trigger.closest('.custom-country-dropdown').contains(e.target)) {
+            const dropdown = trigger ? trigger.closest('.custom-country-dropdown') : null;
+            if (!dropdown || !dropdown.contains(e.target)) {
                 closeDropdown();
             }
         });

@@ -195,3 +195,5 @@ window.COUNTRY_LIST = [
   { name: "Zambia", code: "zm", label: "Zambia (ZM)" },
   { name: "Zimbabwe", code: "zw", label: "Zimbabwe (ZW)" },
 ];
+window.COUNTRY_DATA = window.COUNTRY_LIST;
+

@@ -474,13 +474,15 @@
   }
 
   function ensureCountryDropdown() {
-    if (document.getElementById('country-trigger') && typeof COUNTRY_DATA === 'undefined') {
+    if (document.getElementById('country-trigger') && typeof window.COUNTRY_LIST === 'undefined' && !window.__fp_country_dropdown_inited) {
       const s1 = document.createElement('script');
-      s1.src = '/country-data.js?v=4.2.7';
+      s1.src = '/country-data.js?v=4.2.8';
       s1.onload = function() {
-        const s2 = document.createElement('script');
-        s2.src = '/country-dropdown.js?v=4.2.7';
-        document.body.appendChild(s2);
+        if (!window.__fp_country_dropdown_inited) {
+          const s2 = document.createElement('script');
+          s2.src = '/country-dropdown.js?v=4.2.8';
+          document.body.appendChild(s2);
+        }
       };
       document.body.appendChild(s1);
     }
