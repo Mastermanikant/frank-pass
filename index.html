@@ -36,7 +36,7 @@
  <noscript>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
  </noscript>
- <link rel="stylesheet" href="/style.css?v=4.3.0">
+ <link rel="stylesheet" href="/style.css?v=4.3.1">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs Context">
@@ -1070,37 +1070,45 @@
  <div class="stateless-steps-grid" role="list" aria-label="Stateless Workflow Steps">
  <!-- Step 1 -->
  <div class="card-glass step-card" role="listitem" aria-label="Step 1: Enter Username or Account (Optional)">
- <div class="step-num" aria-hidden="true">1</div>
- <div class="step-icon" aria-hidden="true">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
- </div>
+  <div class="step-card-header">
+    <div class="step-num" aria-hidden="true">1</div>
+    <div class="step-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+  </div>
  <h3>Username / Account <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></h3>
  <p>Use only if you manage multiple accounts on the same site (e.g. personal vs work). If you have only one account, leave it blank. Establish a personal rule and follow it consistently.</p>
  </div>
  <!-- Step 2 -->
  <div class="card-glass step-card" role="listitem" aria-label="Step 2: Enter your platform">
- <div class="step-num" aria-hidden="true">2</div>
- <div class="step-icon" aria-hidden="true">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
- </div>
+  <div class="step-card-header">
+    <div class="step-num" aria-hidden="true">2</div>
+    <div class="step-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+    </div>
+  </div>
  <h3>Enter Site / Platform</h3>
  <p>Type any platform name or paste a URL. FrankPass normalizes it automatically - <code>facebook.com</code>, <code>www.facebook.com</code>, or just <code>facebook</code> all produce the exact same result.</p>
  </div>
  <!-- Step 3 -->
  <div class="card-glass step-card" role="listitem" aria-label="Step 3: Enter your secret key">
- <div class="step-num" aria-hidden="true">3</div>
- <div class="step-icon" aria-hidden="true">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
- </div>
+  <div class="step-card-header">
+    <div class="step-num" aria-hidden="true">3</div>
+    <div class="step-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
+    </div>
+  </div>
  <h3>Enter Master Secret Key</h3>
  <p>Your secret key is the master seed. It never leaves your device memory. 1,000,000 PBKDF2-HMAC-SHA512 iterations compute a mathematically isolated cryptographic seed locally.</p>
  </div>
  <!-- Step 4 -->
  <div class="card-glass step-card" role="listitem" aria-label="Step 4: Copy, Use and Regenerate">
- <div class="step-num" aria-hidden="true">4</div>
- <div class="step-icon" aria-hidden="true">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
- </div>
+  <div class="step-card-header">
+    <div class="step-num" aria-hidden="true">4</div>
+    <div class="step-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+    </div>
+  </div>
  <h3>Copy, Use &amp; Regenerate</h3>
  <p>Your password is generated locally in milliseconds. Copy it and use it. Whenever you need it again, simply re-enter the same inputs to regenerate the exact same password instantly.</p>
  </div>

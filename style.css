@@ -1310,33 +1310,67 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .step-card {
   padding: 1.5rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 18px;
+  background: var(--card-glass-bg);
+  border: 1px solid var(--border);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition);
+}
+.step-card:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 92, 246, 0.15);
+}
+.step-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+  width: 100%;
 }
 .step-num {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--accent);
-  border-radius: var(--radius-sm);
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border-radius: 10px;
   font-family: var(--font-heading);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 1rem;
+  margin: 0;
   flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(139, 92, 246, 0.35);
 }
 .step-icon {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--glass-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  color: var(--accent);
-  margin-bottom: 1rem;
+  width: 36px;
+  height: 36px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  border-radius: 10px;
+  color: var(--accent-light);
+  margin: 0;
+  flex-shrink: 0;
+}
+.step-card h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.65rem 0;
+  line-height: 1.35;
+}
+.step-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
 }
 
 /* ── 24. HERO SECTION ────────────────────────────────────── */
@@ -3207,6 +3241,11 @@ html, body {
 [data-theme="light"] .btn-ghost:hover {
   background: rgba(109, 40, 217, 0.08) !important;
   border-color: #6d28d9 !important;
+  color: #6d28d9 !important;
+}
+[data-theme="light"] .step-icon {
+  background: rgba(109, 40, 217, 0.08) !important;
+  border-color: rgba(109, 40, 217, 0.2) !important;
   color: #6d28d9 !important;
 }
 [data-theme="light"] .rating-action-btn {
