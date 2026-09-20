@@ -1296,6 +1296,17 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 
 /* ── 23. STEP CARDS ──────────────────────────────────────── */
+.stateless-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 680px) {
+  .stateless-steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
 .step-card {
   padding: 1.5rem;
   position: relative;
@@ -3297,16 +3308,16 @@ input:-webkit-autofill:active {
   display: flex;
   gap: 14px;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .founder-compact-portrait {
-  width: 100px;
-  height: 120px;
+  width: 80px;
+  height: 96px;
   flex-shrink: 0;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
   border: 2px solid rgba(139, 92, 246, 0.55);
-  box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.35);
   background: #0d0e1a;
 }
 .founder-compact-portrait img {
@@ -3317,33 +3328,27 @@ input:-webkit-autofill:active {
 }
 .founder-compact-info {
   flex: 1;
-  min-width: 200px;
+  min-width: 0;
 }
 .founder-compact-name {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--text-primary);
   margin: 0 0 3px 0;
   line-height: 1.2;
 }
 .founder-compact-role {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--accent-light);
-  line-height: 1.3;
-  margin-bottom: 3px;
-}
-.founder-compact-sub {
-  font-size: 0.78rem;
-  color: var(--text-muted);
   line-height: 1.35;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0;
 }
 .founder-socials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 5px;
-  margin-top: 6px;
+  gap: 6px;
+  margin-top: 0.85rem;
   width: 100%;
 }
 .founder-socials-grid .has-hover-card {
@@ -3352,8 +3357,8 @@ input:-webkit-autofill:active {
 .founder-socials-grid .founder-social-btn {
   width: 100%;
   box-sizing: border-box;
-  font-size: 0.72rem;
-  padding: 0.38rem 0.25rem;
+  font-size: 0.74rem;
+  padding: 0.42rem 0.25rem;
   gap: 4px;
   justify-content: center;
   border-radius: 8px;
