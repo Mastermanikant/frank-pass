@@ -314,7 +314,7 @@ pre code {
 .header-nav .btn-pro:hover { background: var(--accent-glow); transform: translateY(-1px); color: #fff; }
 
 /* Hamburger */
-.hamburger {
+.hamburger, .hamburger-btn, #hamburger {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -330,11 +330,11 @@ pre code {
   border-radius: var(--radius-sm);
   transition: background var(--transition);
 }
-.hamburger:focus-visible {
+.hamburger:focus-visible, .hamburger-btn:focus-visible, #hamburger:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
-.hamburger span {
+.hamburger span, .hamburger-btn span, #hamburger span {
   display: block;
   width: 22px;
   height: 2px;
@@ -343,9 +343,9 @@ pre code {
   transition: transform 0.3s ease, opacity 0.3s ease;
   transform-origin: center;
 }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.hamburger.open span:nth-child(1), .hamburger-btn.open span:nth-child(1), #hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2), .hamburger-btn.open span:nth-child(2), #hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.open span:nth-child(3), .hamburger-btn.open span:nth-child(3), #hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* Mobile menu */
 .mobile-menu {
@@ -1465,12 +1465,12 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 /* ── 26. RESPONSIVE VISIBILITY ───────────────────────────── */
 @media (min-width: 1025px) {
   .header-nav  { display: flex; }
-  .hamburger   { display: none; }
+  .hamburger, .hamburger-btn, #hamburger { display: none !important; }
   body { padding-bottom: 0; }
 }
 @media (max-width: 1024px) {
   .mobile-bottom-nav { display: flex; }
-  .hamburger { display: flex; }
+  .hamburger, .hamburger-btn, #hamburger { display: flex; }
   .header-nav { display: none; }
   body:not(.no-mobile-nav) { padding-bottom: var(--mobile-nav-h); }
   #toast-container { bottom: calc(var(--mobile-nav-h) + 1rem); }

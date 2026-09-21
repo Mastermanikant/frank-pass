@@ -367,7 +367,12 @@
       <!-- 5. Founder Link -->
       <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
 
-      <!-- 6. Direct High-Impact Pro CTA -->
+      <!-- 6. PWA Install CTA -->
+      <button type="button" id="header-pwa-install-btn" class="pwa-install-btn" style="background:rgba(139,92,246,0.12);color:var(--text-primary);border:1px solid rgba(139,92,246,0.3);font-weight:600;padding:0.4rem 0.85rem;border-radius:10px;display:inline-flex;align-items:center;gap:5px;cursor:pointer;font-size:0.85rem;transition:all 0.2s;">
+        <span>📲</span> <span>Install App</span>
+      </button>
+
+      <!-- 7. Direct High-Impact Pro CTA -->
       <a href="/pro.html" class="btn-pro" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s;">
         <span>Get Pro</span> <span style="font-size:0.85rem;">👑</span> &rarr;
       </a>
@@ -448,7 +453,11 @@
   <a href="/products.html" class="mobile-nav-link"><span>🌐</span> Products Hub</a>
   <a href="/founder-mastermanikant.html" class="mobile-nav-link"><span>👨‍💻</span> Founder (Master Manikant Yadav)</a>
   
-  <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
+  <button type="button" class="pwa-install-btn btn-primary" style="margin-top:0.85rem;width:100%;text-align:center;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.35);display:flex;align-items:center;justify-content:center;gap:6px;padding:0.75rem 1rem;border-radius:10px;color:var(--text-primary);font-weight:700;cursor:pointer;">
+    <span>📲</span> <span>Install Offline App</span>
+  </button>
+  
+  <a href="/pro.html" class="btn-primary" style="margin-top:0.65rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
 </nav>
 
 <!-- ============================================================
@@ -627,10 +636,7 @@
  <!-- Card Header with Badges & Country Pill -->
  <div class="gen-header">
  <div class="gen-title">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
- <path d="M16 2 L28 8 L28 16 C28 23 22 28 16 30 C10 28 4 23 4 16 L4 8 Z" fill="#8b5cf6" opacity="0.3" stroke="#8b5cf6" stroke-width="2"/>
- <path d="M13 15 L15 17 L19 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
- </svg>
+ <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="22" height="22" style="display:inline-block;vertical-align:middle;border-radius:4px;" loading="lazy" decoding="async">
  <span>FrankPass Generator</span>
  </div>
  <div class="gen-header-badges">
