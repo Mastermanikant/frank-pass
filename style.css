@@ -315,7 +315,7 @@ pre code {
 
 /* Hamburger */
 .hamburger, .hamburger-btn, #hamburger {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -1049,6 +1049,14 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   letter-spacing: 0.08em;
   word-break: break-all;
   min-height: 1.5em;
+  transition: filter 0.15s ease, letter-spacing 0.15s ease;
+}
+.output-password.masked {
+  -webkit-text-security: disc;
+  text-security: disc;
+  letter-spacing: 0.18em;
+  filter: none;
+  user-select: none;
 }
 .output-password.placeholder { color: var(--text-muted); font-size: 1.25rem; letter-spacing: 0.15em; }
 .copy-btn {

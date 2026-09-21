@@ -15,7 +15,7 @@
     const cfg   = (typeof FRANKPASS_CONFIG !== 'undefined') ? FRANKPASS_CONFIG : {};
     const soc   = cfg.SOCIAL || {};
     const year  = new Date().getFullYear();
-    const ver   = cfg.SITE_VERSION || '4.3.3';
+    const ver   = cfg.SITE_VERSION || '4.3.4';
 
     /* ── SVG icons ── */
     const ico = {
