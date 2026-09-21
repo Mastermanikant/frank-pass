@@ -697,45 +697,56 @@
   <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Confused?</strong> Paste the full website URL or type the app name  -  FrankPass handles the normalization automatically.</span>
   </div>
 
- <!-- Secret key input -->
- <div class="form-group">
- <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
- <div style="display:flex;align-items:center;gap:0.4rem">
- <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
- <!-- Info Guidance Popover Tooltip -->
- <div class="secret-info-wrap" id="secret-info-wrap">
- <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?">
- <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
- </button>
- <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
-  <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
-  <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. A private, unpredictable phrase calculates unique, mathematically isolated credentials for each platform (Gmail, Amazon, GitHub).</p>
-  <div class="info-popover-tip">
-  💡 <strong>Choose an Unpredictable Sentence:</strong> Invent a private 5 to 8 word phrase (e.g. <code>two hot samosas with green chutney on mars</code>). Avoid obvious names or dates.<br>
-  ✨ <strong>Case &amp; Space Normalization:</strong> <code>MY PHRASE 2026</code> = <code>my phrase 2026</code> = <code>myphrase2026</code>. Spaces and capital letters are automatically normalized across devices.
+  <!-- Secret key input -->
+  <div class="form-group">
+  <div class="vault-header-row">
+    <div style="display:flex;align-items:center;gap:0.4rem">
+      <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
+      <!-- Info Guidance Popover Tooltip -->
+      <div class="secret-info-wrap" id="secret-info-wrap">
+        <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </button>
+        <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
+          <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
+          <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. A private, unpredictable phrase calculates unique, mathematically isolated credentials for each platform (Gmail, Amazon, GitHub).</p>
+          <div class="info-popover-tip">
+            💡 <strong>Choose an Unpredictable Sentence:</strong> Invent a private 5 to 8 word phrase (e.g. <code>two hot samosas with green chutney on mars</code>). Avoid obvious names or dates.<br>
+            ✨ <strong>Case &amp; Space Normalization:</strong> <code>MY PHRASE 2026</code> = <code>my phrase 2026</code> = <code>myphrase2026</code>. Spaces and capital letters are automatically normalized across devices.
+          </div>
+          <div style="margin-top:0.6rem;padding:0.5rem 0.65rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;font-size:0.74rem;line-height:1.45;color:var(--text-muted)">
+            <strong style="color:#ef4444;">⚠️ Zero-Recovery Notice:</strong> FrankPass has no server database and cannot recover lost keys. If lost, previous passwords cannot be regenerated and must be reset on the respective services. Keep your key memorized or physically noted offline.
+          </div>
+          <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
+            <a href="/secret-key-guide.html" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
+              <span>📖</span> Secret Key Guide &amp; Best Practices &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Vault Status & Lock Controls -->
+    <div class="vault-badge-group">
+      <button type="button" id="vault-status-btn" class="vault-status-pill status-none" aria-label="Device Vault Status" title="Click to manage device vault">
+        <span id="vault-status-icon">🔒</span>
+        <span id="vault-status-text">Save to Device</span>
+      </button>
+    </div>
   </div>
-  <!-- Shifted Zero-Recovery Notice inside Popover -->
-  <div style="margin-top:0.6rem;padding:0.5rem 0.65rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;font-size:0.74rem;line-height:1.45;color:var(--text-muted)">
-    <strong style="color:#ef4444;">⚠️ Zero-Recovery Notice:</strong> FrankPass has no server database and cannot recover lost keys. If lost, previous passwords cannot be regenerated and must be reset on the respective services. Keep your key memorized or physically noted offline.
+
+  <div class="input-wrapper" style="position:relative">
+    <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. two hot samosas with green chutney on mars..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
+    <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
+      <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+    <button type="button" id="inline-unlock-btn" class="btn-primary" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);padding:4px 10px;font-size:0.78rem;font-weight:700;border-radius:6px;z-index:2">
+      🔓 Unlock
+    </button>
   </div>
-  <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
-   <a href="/secret-key-guide.html" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
-     <span>📖</span> Secret Key Guide &amp; Best Practices &rarr;
-   </a>
+  <div id="secret-warning" style="display:none;font-size:0.75rem;color:#f59e0b;margin-top:0.35rem;line-height:1.4;" role="alert">⚠️ Please use English letters (a-z) and numbers (0-9). Symbols and non-Latin scripts are omitted automatically for universal consistency.</div>
+  <span id="secret-hint" class="sr-only">Auto-cleared after inactivity or tab switch</span>
   </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  <div class="input-wrapper">
-  <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. two hot samosas with green chutney on mars..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
- <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
- <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
- </button>
- </div>
- <div id="secret-warning" style="display:none;font-size:0.75rem;color:#f59e0b;margin-top:0.35rem;line-height:1.4;" role="alert">⚠️ Please use English letters (a-z) and numbers (0-9). Symbols and non-Latin scripts are omitted automatically for universal consistency.</div>
- <span id="secret-hint" class="sr-only">Auto-cleared after 2 minutes of inactivity</span>
- </div>
 
  <!-- Advanced options accordion -->
  <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel" aria-label="Toggle advanced rules and rotation options">
@@ -1305,6 +1316,7 @@
 <script src="/platforms.js?v=4.3.3" defer></script>
 <script src="/frankpass-utils.js?v=4.3.3"></script>
 <script src="/frankpass-core.js?v=4.3.3"></script>
+<script src="/frankpass-vault.js?v=4.3.3"></script>
 <script src="/footer.js?v=4.3.3"></script>
 
 <script>
@@ -2024,13 +2036,24 @@ if (typeSelect) {
 
 /* ── Generate button ── */
 document.getElementById('generate-btn').addEventListener('click', async () => {
- const platform = (document.getElementById('platform-input').value || '').trim();
- const secretKey = (document.getElementById('secret-key').value || '').trim();
- if (!platform) { showToast('Please enter a site or platform name.'); return; }
- if (!secretKey) { showToast('Please enter your secret key.'); return; }
+  const platform = (document.getElementById('platform-input').value || '').trim();
+  
+  if (typeof FrankPassVault !== 'undefined' && FrankPassVault.isConfigured() && !FrankPassVault.isUnlocked()) {
+    if (typeof openVaultUnlockModal === 'function') {
+      openVaultUnlockModal();
+    }
+    return;
+  }
 
- const normalizedPlatform = (typeof FrankPassUtils !== 'undefined')
- ? FrankPassUtils.getNormalizedPlatform(platform) : platform.toLowerCase().trim();
+  const secretKey = (typeof FrankPassVault !== 'undefined' && FrankPassVault.isUnlocked())
+    ? FrankPassVault.getActiveSecretKey()
+    : (document.getElementById('secret-key').value || '').trim();
+
+  if (!platform) { showToast('Please enter a site or platform name.'); return; }
+  if (!secretKey) { showToast('Please enter your secret key or unlock your vault.'); return; }
+
+  const normalizedPlatform = (typeof FrankPassUtils !== 'undefined')
+  ? FrankPassUtils.getNormalizedPlatform(platform) : platform.toLowerCase().trim();
  const username = (document.getElementById('username-input').value || '').trim().toLowerCase();
  const variant = getActiveVariant();
  const length = parseInt(lengthSlider.value, 10) || 16;
@@ -2544,45 +2567,553 @@ if ('serviceWorker' in navigator) {
         console.warn('ServiceWorker registration error:', err);
       });
   });
-}
-</script>
-
 <!-- ============================================================
-     FUTURE FEATURE SPECIFICATIONS & PLACEHOLDERS (DO NOT REMOVE)
-     1. FUTURE: First-visit product promotion splash (once per 24 hours via localStorage timestamp)
-     2. FUTURE: Auto-suggest platform detection from clipboard/URL bar
-     3. FUTURE: Password strength entropy visual indicator bar
+     FRANKPASS PWA LOCAL VAULT MODALS & UI CONTROLLER (v4.3.3)
      ============================================================ -->
 
-<!-- Biometric & Local Encryption Choice Modal -->
-<div id="biometric-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="bio-modal-title">
+<!-- 1. Vault Setup Modal -->
+<div id="vault-setup-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-setup-title">
   <div class="custom-modal-card">
-    <div style="font-size:2.2rem;margin-bottom:0.5rem;text-align:center">🛡️ </div>
-    <h3 id="bio-modal-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.5rem">
-      Enable Biometric Lock?
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">🔒</div>
+    <h3 id="vault-setup-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Save Key to Device Vault
     </h3>
-    <p style="font-size:0.88rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
-      Protect your Master Secret Key using your device's biometric authentication (Fingerprint, Face ID, or Windows Hello).
+    <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+      Choose a 4-digit PIN to securely encrypt and lock your Master Secret Key locally on this device with AES-GCM (100k PBKDF2 rounds).
     </p>
 
-    <!-- Important Notice Box -->
-    <div style="background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:12px;padding:0.85rem;margin-bottom:1.25rem">
-      <div style="font-size:0.78rem;font-weight:700;color:#f87171;margin-bottom:0.25rem">⚠️ Important Privacy Notice:</div>
-      <p style="font-size:0.76rem;color:var(--text-muted);line-height:1.45;margin:0">
-        If you <strong>skip</strong> biometric protection, your Secret Key is saved with blind AES-GCM encryption for generating passwords, but <strong>you will NEVER be able to reveal/view the secret key on screen later</strong>. With biometrics enabled, you can reveal it anytime by scanning your fingerprint/face.
-      </p>
+    <div class="form-group" style="margin-bottom:1rem">
+      <label class="form-label" style="text-align:center;display:block">Set 4-Digit Numeric PIN</label>
+      <div class="vault-pin-display" id="setup-pin-display">
+        <div class="pin-digit-box" data-idx="0">•</div>
+        <div class="pin-digit-box" data-idx="1">•</div>
+        <div class="pin-digit-box" data-idx="2">•</div>
+        <div class="pin-digit-box" data-idx="3">•</div>
+        <input type="tel" id="setup-pin-input" class="pin-real-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" autocomplete="off" aria-label="Enter 4-digit PIN to set up">
+      </div>
+      <div id="setup-pin-error" style="display:none;color:#ef4444;font-size:0.76rem;text-align:center;margin-top:0.3rem"></div>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:0.65rem">
-      <button type="button" id="btn-enable-bio" class="btn-primary" aria-label="Enable Device Biometric Lock" style="width:100%;padding:0.75rem;font-size:0.9rem;font-weight:700;border-radius:10px;justify-content:center">
-        👆 Enable Biometric Lock
+    <!-- Biometric Toggle Option -->
+    <div id="setup-bio-option" style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:12px;padding:0.75rem 0.85rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;gap:8px">
+      <div style="display:flex;flex-direction:column">
+        <span style="font-size:0.84rem;font-weight:700;color:var(--text-primary)">👆 Enable Biometrics</span>
+        <span style="font-size:0.72rem;color:var(--text-muted)">Fingerprint / Face ID for 1-tap unlock &amp; PIN recovery</span>
+      </div>
+      <label class="toggle-switch-right" for="setup-bio-checkbox" style="margin:0;cursor:pointer">
+        <input type="checkbox" id="setup-bio-checkbox" role="switch" checked style="display:none">
+        <span class="toggle-track" aria-hidden="true"></span>
+      </label>
+    </div>
+
+    <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:0.6rem 0.75rem;margin-bottom:1.2rem;font-size:0.75rem;color:var(--text-muted);line-height:1.45">
+      🛡️ <strong>Zero-Knowledge Promise:</strong> Your key never leaves this browser. If you forget your PIN, Biometrics allows setting a new PIN instantly.
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0.6rem">
+      <button type="button" id="btn-save-vault" class="btn-primary" style="width:100%;padding:0.75rem;font-weight:700;justify-content:center">
+        🔒 Save &amp; Lock Vault
       </button>
-      <button type="button" id="btn-skip-bio" class="btn-ghost" aria-label="Skip Biometric Setup" style="width:100%;padding:0.65rem;font-size:0.85rem;font-weight:600;border-radius:10px;justify-content:center">
-        Skip (Save Encrypted Only)
+      <button type="button" id="btn-cancel-setup" class="btn-ghost" style="width:100%;padding:0.65rem;font-weight:600;justify-content:center">
+        Cancel (Stay Stateless)
       </button>
     </div>
   </div>
 </div>
+
+<!-- 2. Vault Unlock Modal -->
+<div id="vault-unlock-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-unlock-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">🔐</div>
+    <h3 id="vault-unlock-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Unlock Device Vault
+    </h3>
+    <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+      Enter your 4-digit PIN or scan your biometric to decrypt your Master Secret Key.
+    </p>
+
+    <!-- 1-Tap Biometric Button -->
+    <div id="unlock-bio-wrap" style="margin-bottom:1.2rem">
+      <button type="button" id="btn-bio-prompt" class="btn-bio-unlock" aria-label="Unlock with Fingerprint or Face">
+        <span>👆</span> Unlock with Fingerprint / Face ID
+      </button>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:1rem;color:var(--text-muted);font-size:0.78rem">
+        <span style="flex:1;height:1px;background:var(--border)"></span>
+        <span>OR ENTER 4-DIGIT PIN</span>
+        <span style="flex:1;height:1px;background:var(--border)"></span>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-bottom:0.75rem">
+      <div class="vault-pin-display" id="unlock-pin-display">
+        <div class="pin-digit-box" data-idx="0">•</div>
+        <div class="pin-digit-box" data-idx="1">•</div>
+        <div class="pin-digit-box" data-idx="2">•</div>
+        <div class="pin-digit-box" data-idx="3">•</div>
+        <input type="tel" id="unlock-pin-input" class="pin-real-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" autocomplete="off" aria-label="Enter 4-digit PIN to unlock">
+      </div>
+      <div id="unlock-pin-error" style="display:none;color:#ef4444;font-size:0.76rem;text-align:center;margin-top:0.3rem"></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;font-size:0.8rem">
+      <button type="button" id="btn-forgot-pin" style="background:none;border:none;color:var(--accent-light);cursor:pointer;text-decoration:underline;padding:0;font-size:0.8rem;font-weight:600">
+        Forgot PIN?
+      </button>
+      <button type="button" id="btn-cancel-unlock" class="btn-ghost btn-sm" style="padding:4px 10px;font-size:0.75rem">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Vault Reset / Recovery Modal -->
+<div id="vault-reset-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-reset-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">🔄</div>
+    <h3 id="vault-reset-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Vault Recovery &amp; PIN Reset
+    </h3>
+    
+    <div id="reset-with-bio-section" style="margin-bottom:1.25rem">
+      <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+        Scan your device biometric (Fingerprint / Face ID) to verify ownership and set a new 4-digit PIN without losing your key.
+      </p>
+      <button type="button" id="btn-bio-verify-reset" class="btn-bio-unlock" style="margin-bottom:1rem">
+        <span>👆</span> Verify Biometric &amp; Set New PIN
+      </button>
+    </div>
+
+    <!-- Set New PIN Box (hidden until bio verified) -->
+    <div id="new-pin-box" style="display:none;margin-bottom:1.25rem">
+      <label class="form-label" style="text-align:center;display:block">Enter New 4-Digit PIN</label>
+      <div class="vault-pin-display" id="new-pin-display">
+        <div class="pin-digit-box" data-idx="0">•</div>
+        <div class="pin-digit-box" data-idx="1">•</div>
+        <div class="pin-digit-box" data-idx="2">•</div>
+        <div class="pin-digit-box" data-idx="3">•</div>
+        <input type="tel" id="new-pin-input" class="pin-real-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" autocomplete="off" aria-label="Enter new 4-digit PIN">
+      </div>
+      <button type="button" id="btn-confirm-new-pin" class="btn-primary" style="width:100%;padding:0.75rem;font-weight:700;justify-content:center">
+        Confirm New PIN
+      </button>
+    </div>
+
+    <!-- Fallback Clear Vault Warning -->
+    <div style="border-top:1px solid var(--border);padding-top:1rem;margin-top:0.75rem">
+      <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.45;margin-bottom:0.65rem">
+        If you cannot verify your biometric or PIN, you can reset and clear the local vault from this device.
+      </p>
+      <button type="button" id="btn-clear-vault-confirm" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171;font-size:0.8rem;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;width:100%">
+        🗑️ Clear Vault &amp; Remove Key from Device
+      </button>
+    </div>
+
+    <div style="margin-top:1rem;text-align:center">
+      <button type="button" id="btn-close-reset-modal" class="btn-ghost btn-sm" style="padding:4px 12px">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Vault Management Modal -->
+<div id="vault-manage-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-manage-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">⚙️</div>
+    <h3 id="vault-manage-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Device Vault Options
+    </h3>
+    <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1.25rem">
+      Your Master Secret Key is encrypted and stored locally in this browser.
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:0.75rem">
+      <button type="button" id="btn-manage-lock" class="btn-primary" style="width:100%;padding:0.75rem;justify-content:center;font-weight:700">
+        🔒 Lock Vault Now
+      </button>
+      <button type="button" id="btn-manage-change-pin" class="btn-ghost" style="width:100%;padding:0.75rem;justify-content:center;font-weight:600">
+        🔑 Change 4-Digit PIN
+      </button>
+      <button type="button" id="btn-manage-remove" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171;font-size:0.85rem;font-weight:700;padding:0.75rem;border-radius:10px;cursor:pointer;width:100%">
+        🗑️ Remove Key from Device
+      </button>
+      <button type="button" id="btn-close-manage" class="btn-ghost" style="width:100%;padding:0.6rem;justify-content:center;font-size:0.85rem">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Vault UI Controller Script ── -->
+<script>
+(function initVaultController() {
+  const vaultStatusBtn = document.getElementById('vault-status-btn');
+  const vaultStatusIcon = document.getElementById('vault-status-icon');
+  const vaultStatusText = document.getElementById('vault-status-text');
+  const secretKeyInput = document.getElementById('secret-key');
+  const inlineUnlockBtn = document.getElementById('inline-unlock-btn');
+
+  const setupModal = document.getElementById('vault-setup-modal');
+  const unlockModal = document.getElementById('vault-unlock-modal');
+  const resetModal = document.getElementById('vault-reset-modal');
+  const manageModal = document.getElementById('vault-manage-modal');
+
+  // PIN Inputs
+  const setupPinInput = document.getElementById('setup-pin-input');
+  const unlockPinInput = document.getElementById('unlock-pin-input');
+  const newPinInput = document.getElementById('new-pin-input');
+
+  function renderPinBoxes(containerId, inputEl) {
+    const container = document.getElementById(containerId);
+    if (!container || !inputEl) return;
+    const val = inputEl.value;
+    const boxes = container.querySelectorAll('.pin-digit-box');
+    boxes.forEach((box, idx) => {
+      box.textContent = val[idx] ? '●' : '•';
+      box.classList.toggle('active', idx === val.length);
+    });
+  }
+
+  function syncPinInput(containerId, inputEl, onComplete) {
+    if (!inputEl) return;
+    inputEl.addEventListener('input', () => {
+      inputEl.value = inputEl.value.replace(/[^0-9]/g, '').slice(0, 4);
+      renderPinBoxes(containerId, inputEl);
+      if (inputEl.value.length === 4 && typeof onComplete === 'function') {
+        onComplete(inputEl.value);
+      }
+    });
+  }
+
+  syncPinInput('setup-pin-display', setupPinInput);
+  syncPinInput('unlock-pin-display', unlockPinInput, (pin) => {
+    doUnlockWithPin(pin);
+  });
+  syncPinInput('new-pin-display', newPinInput);
+
+  function updateVaultUI() {
+    if (typeof FrankPassVault === 'undefined') return;
+    const isConfigured = FrankPassVault.isConfigured();
+    const isUnlocked = FrankPassVault.isUnlocked();
+
+    if (!isConfigured) {
+      if (vaultStatusBtn) {
+        vaultStatusBtn.className = 'vault-status-pill status-none';
+        vaultStatusIcon.textContent = '🔒';
+        vaultStatusText.textContent = 'Save to Device';
+        vaultStatusBtn.title = 'Save your secret key to this device (Encrypted with PIN)';
+      }
+      if (secretKeyInput) {
+        secretKeyInput.disabled = false;
+        secretKeyInput.placeholder = 'e.g. two hot samosas with green chutney on mars...';
+      }
+      if (inlineUnlockBtn) inlineUnlockBtn.style.display = 'none';
+    } else if (!isUnlocked) {
+      if (vaultStatusBtn) {
+        vaultStatusBtn.className = 'vault-status-pill status-locked';
+        vaultStatusIcon.textContent = '🔒';
+        vaultStatusText.textContent = 'Locked';
+        vaultStatusBtn.title = 'Vault is locked. Click to unlock with PIN or Biometrics.';
+      }
+      if (secretKeyInput) {
+        secretKeyInput.disabled = true;
+        secretKeyInput.value = '';
+        secretKeyInput.placeholder = '🔒 Key Locked in Device Vault (Click Unlock)';
+      }
+      if (inlineUnlockBtn) inlineUnlockBtn.style.display = 'block';
+    } else {
+      if (vaultStatusBtn) {
+        vaultStatusBtn.className = 'vault-status-pill status-unlocked';
+        vaultStatusIcon.textContent = '🔓';
+        vaultStatusText.textContent = 'Unlocked';
+        vaultStatusBtn.title = 'Vault is unlocked. Click to manage or lock.';
+      }
+      if (secretKeyInput) {
+        secretKeyInput.disabled = false;
+        secretKeyInput.value = FrankPassVault.getActiveSecretKey() || '';
+        secretKeyInput.placeholder = 'Master Secret Key loaded';
+        // Trigger entropy update
+        secretKeyInput.dispatchEvent(new Event('input'));
+      }
+      if (inlineUnlockBtn) inlineUnlockBtn.style.display = 'none';
+    }
+  }
+
+  window.addEventListener('fp-vault-changed', updateVaultUI);
+
+  // Status Button Click
+  if (vaultStatusBtn) {
+    vaultStatusBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!FrankPassVault.isConfigured()) {
+        openVaultSetupModal();
+      } else if (!FrankPassVault.isUnlocked()) {
+        openVaultUnlockModal();
+      } else {
+        openVaultManageModal();
+      }
+    });
+  }
+
+  if (inlineUnlockBtn) {
+    inlineUnlockBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openVaultUnlockModal();
+    });
+  }
+
+  // Setup Modal Handlers
+  function openVaultSetupModal() {
+    const curKey = (secretKeyInput ? secretKeyInput.value : '').trim();
+    if (!curKey) {
+      showToast('Please type your Master Secret Key first, then click Save.', 'warning');
+      if (secretKeyInput) secretKeyInput.focus();
+      return;
+    }
+    if (setupPinInput) {
+      setupPinInput.value = '';
+      renderPinBoxes('setup-pin-display', setupPinInput);
+    }
+    const errEl = document.getElementById('setup-pin-error');
+    if (errEl) errEl.style.display = 'none';
+
+    // Check biometric availability
+    FrankPassVault.isBiometricAvailable().then(avail => {
+      const bioOpt = document.getElementById('setup-bio-option');
+      if (bioOpt) bioOpt.style.display = avail ? 'flex' : 'none';
+    });
+
+    if (setupModal) setupModal.style.display = 'flex';
+    if (setupPinInput) setTimeout(() => setupPinInput.focus(), 100);
+  }
+
+  const btnSaveVault = document.getElementById('btn-save-vault');
+  if (btnSaveVault) {
+    btnSaveVault.addEventListener('click', async () => {
+      const curKey = (secretKeyInput ? secretKeyInput.value : '').trim();
+      const pin = setupPinInput ? setupPinInput.value : '';
+      const bioCheck = document.getElementById('setup-bio-checkbox');
+      const enableBio = bioCheck ? bioCheck.checked : false;
+
+      const errEl = document.getElementById('setup-pin-error');
+      if (!pin || pin.length !== 4) {
+        if (errEl) {
+          errEl.textContent = 'Please enter a complete 4-digit PIN.';
+          errEl.style.display = 'block';
+        }
+        return;
+      }
+
+      btnSaveVault.disabled = true;
+      btnSaveVault.textContent = 'Encrypting & Saving...';
+
+      try {
+        await FrankPassVault.setupVault(curKey, pin, enableBio);
+        if (setupModal) setupModal.style.display = 'none';
+        showToast('Vault created & locked on this device.', 'success');
+      } catch (err) {
+        if (errEl) {
+          errEl.textContent = err.message || 'Setup failed.';
+          errEl.style.display = 'block';
+        }
+      } finally {
+        btnSaveVault.disabled = false;
+        btnSaveVault.textContent = '🔒 Save & Lock Vault';
+      }
+    });
+  }
+
+  const btnCancelSetup = document.getElementById('btn-cancel-setup');
+  if (btnCancelSetup) {
+    btnCancelSetup.addEventListener('click', () => {
+      if (setupModal) setupModal.style.display = 'none';
+    });
+  }
+
+  // Unlock Modal Handlers
+  window.openVaultUnlockModal = function () {
+    if (unlockPinInput) {
+      unlockPinInput.value = '';
+      renderPinBoxes('unlock-pin-display', unlockPinInput);
+    }
+    const errEl = document.getElementById('unlock-pin-error');
+    if (errEl) errEl.style.display = 'none';
+
+    const bioWrap = document.getElementById('unlock-bio-wrap');
+    if (bioWrap) {
+      bioWrap.style.display = FrankPassVault.hasBiometrics() ? 'block' : 'none';
+    }
+
+    if (unlockModal) unlockModal.style.display = 'flex';
+    if (unlockPinInput) setTimeout(() => unlockPinInput.focus(), 100);
+  };
+
+  async function doUnlockWithPin(pin) {
+    const errEl = document.getElementById('unlock-pin-error');
+    try {
+      await FrankPassVault.unlockWithPin(pin);
+      if (unlockModal) unlockModal.style.display = 'none';
+      showToast('Vault unlocked successfully.', 'success');
+    } catch (err) {
+      if (errEl) {
+        errEl.textContent = err.message || 'Incorrect PIN.';
+        errEl.style.display = 'block';
+      }
+      if (unlockPinInput) {
+        unlockPinInput.value = '';
+        renderPinBoxes('unlock-pin-display', unlockPinInput);
+      }
+    }
+  }
+
+  const btnBioPrompt = document.getElementById('btn-bio-prompt');
+  if (btnBioPrompt) {
+    btnBioPrompt.addEventListener('click', async () => {
+      const errEl = document.getElementById('unlock-pin-error');
+      try {
+        await FrankPassVault.unlockWithBiometric();
+        if (unlockModal) unlockModal.style.display = 'none';
+        showToast('Unlocked with Biometrics.', 'success');
+      } catch (err) {
+        if (errEl) {
+          errEl.textContent = err.message || 'Biometric authentication failed.';
+          errEl.style.display = 'block';
+        }
+      }
+    });
+  }
+
+  const btnCancelUnlock = document.getElementById('btn-cancel-unlock');
+  if (btnCancelUnlock) {
+    btnCancelUnlock.addEventListener('click', () => {
+      if (unlockModal) unlockModal.style.display = 'none';
+    });
+  }
+
+  // Forgot PIN & Reset Handlers
+  const btnForgotPin = document.getElementById('btn-forgot-pin');
+  if (btnForgotPin) {
+    btnForgotPin.addEventListener('click', () => {
+      if (unlockModal) unlockModal.style.display = 'none';
+      openVaultResetModal();
+    });
+  }
+
+  function openVaultResetModal() {
+    const hasBio = FrankPassVault.hasBiometrics();
+    const bioSec = document.getElementById('reset-with-bio-section');
+    const newPinBox = document.getElementById('new-pin-box');
+
+    if (bioSec) bioSec.style.display = hasBio ? 'block' : 'none';
+    if (newPinBox) newPinBox.style.display = 'none';
+
+    if (resetModal) resetModal.style.display = 'flex';
+  }
+
+  const btnBioVerifyReset = document.getElementById('btn-bio-verify-reset');
+  if (btnBioVerifyReset) {
+    btnBioVerifyReset.addEventListener('click', async () => {
+      try {
+        await FrankPassVault.unlockWithBiometric();
+        const bioSec = document.getElementById('reset-with-bio-section');
+        const newPinBox = document.getElementById('new-pin-box');
+        if (bioSec) bioSec.style.display = 'none';
+        if (newPinBox) {
+          newPinBox.style.display = 'block';
+          if (newPinInput) {
+            newPinInput.value = '';
+            renderPinBoxes('new-pin-display', newPinInput);
+            newPinInput.focus();
+          }
+        }
+        showToast('Biometric verified. Please set your new 4-digit PIN.', 'info');
+      } catch (err) {
+        showToast(err.message || 'Biometric verification failed.', 'error');
+      }
+    });
+  }
+
+  const btnConfirmNewPin = document.getElementById('btn-confirm-new-pin');
+  if (btnConfirmNewPin) {
+    btnConfirmNewPin.addEventListener('click', async () => {
+      const pin = newPinInput ? newPinInput.value : '';
+      if (!pin || pin.length !== 4) {
+        showToast('Please enter a 4-digit PIN.', 'warning');
+        return;
+      }
+      try {
+        await FrankPassVault.resetPinWithBiometric(pin);
+        if (resetModal) resetModal.style.display = 'none';
+        showToast('New 4-digit PIN saved successfully!', 'success');
+      } catch (err) {
+        showToast(err.message || 'PIN update failed.', 'error');
+      }
+    });
+  }
+
+  const btnClearVaultConfirm = document.getElementById('btn-clear-vault-confirm');
+  if (btnClearVaultConfirm) {
+    btnClearVaultConfirm.addEventListener('click', () => {
+      if (confirm('Are you sure you want to remove your saved key from this device? You will need to re-enter it to generate passwords.')) {
+        FrankPassVault.clearVault();
+        if (resetModal) resetModal.style.display = 'none';
+        if (manageModal) manageModal.style.display = 'none';
+        showToast('Vault cleared from this device.', 'info');
+      }
+    });
+  }
+
+  const btnCloseResetModal = document.getElementById('btn-close-reset-modal');
+  if (btnCloseResetModal) {
+    btnCloseResetModal.addEventListener('click', () => {
+      if (resetModal) resetModal.style.display = 'none';
+    });
+  }
+
+  // Manage Modal Handlers
+  function openVaultManageModal() {
+    if (manageModal) manageModal.style.display = 'flex';
+  }
+
+  const btnManageLock = document.getElementById('btn-manage-lock');
+  if (btnManageLock) {
+    btnManageLock.addEventListener('click', () => {
+      FrankPassVault.lockVault();
+      if (manageModal) manageModal.style.display = 'none';
+      showToast('Vault locked.', 'info');
+    });
+  }
+
+  const btnManageChangePin = document.getElementById('btn-manage-change-pin');
+  if (btnManageChangePin) {
+    btnManageChangePin.addEventListener('click', () => {
+      if (manageModal) manageModal.style.display = 'none';
+      openVaultResetModal();
+    });
+  }
+
+  const btnManageRemove = document.getElementById('btn-manage-remove');
+  if (btnManageRemove) {
+    btnManageRemove.addEventListener('click', () => {
+      if (confirm('Are you sure you want to remove your saved key from this device?')) {
+        FrankPassVault.clearVault();
+        if (manageModal) manageModal.style.display = 'none';
+        showToast('Vault removed from this device.', 'info');
+      }
+    });
+  }
+
+  const btnCloseManage = document.getElementById('btn-close-manage');
+  if (btnCloseManage) {
+    btnCloseManage.addEventListener('click', () => {
+      if (manageModal) manageModal.style.display = 'none';
+    });
+  }
+
+  // Initial render on boot
+  updateVaultUI();
+})();
+</script>
 
 </body>
 </html>

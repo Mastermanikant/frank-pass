@@ -49,6 +49,7 @@ const CACHED_URLS = [
     '/frankpass-utils.js',
     '/footer.js',
     '/frankpass-core.js',
+    '/frankpass-vault.js',
     '/platforms.js',
     '/country-data.js',
     '/country-dropdown.js',
