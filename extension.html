@@ -478,6 +478,93 @@
   </section>
 
   <!-- ============================================================
+   SECTION: 4 Real Problems of Traditional Extensions vs FrankPass Solution
+   ============================================================ -->
+  <section class="section" style="background:rgba(255,255,255,0.015);border-top:1px solid var(--border);">
+    <div class="container" style="max-width:960px;">
+      
+      <div class="text-center mb-4">
+        <div class="section-label" aria-hidden="true">Architectural Reality</div>
+        <h2 style="font-size:clamp(1.75rem,3.5vw,2.3rem);margin-bottom:0.5rem">4 Real Problems of Traditional Extensions vs The FrankPass Solution</h2>
+        <p class="section-desc">Why traditional cloud password extensions introduce invisible risks and how stateless math solves them.</p>
+      </div>
+
+      <div class="grid-2" style="gap:1.5rem;">
+        
+        <!-- Card 1: Background Tab Snooping -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">🛑</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">Problem 1: 24/7 Tab Snooping &amp; RAM Bloat</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">Heavy DOM Injection Across All Tabs</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            Traditional cloud extensions run continuous background listeners across every open tab, consuming 300MB to 500MB RAM and creating broad DOM vulnerability surfaces.
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ FrankPass Solution:</strong> Pure On-Demand execution. The extension stays completely dormant in memory until you trigger <code>Ctrl+Shift+F</code>. Zero background monitoring and 0 MB idle RAM overhead.
+          </div>
+        </div>
+
+        <!-- Card 2: Clipboard Malware -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">📋</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">Problem 2: Clipboard Hijacking Malware</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">Exposing Passwords to OS Sniffers</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            Copy-pasting passwords leaves cleartext strings in your operating system clipboard buffer where malicious background apps and screen sniffer scripts can siphon them.
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ FrankPass Solution:</strong> Direct Stealth Autofill into the password DOM input directly from client WebCrypto RAM with zero clipboard transit.
+          </div>
+        </div>
+
+        <!-- Card 3: Cloud Outages & Lockouts -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">☁️</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">Problem 3: Cloud Outages &amp; Subscription Lockouts</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">Central Server Single Point of Failure</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            If cloud servers experience downtime, or if you stop paying yearly subscription rents, you risk being locked out of your own credentials.
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ FrankPass Solution:</strong> 100% Offline Sovereign Mathematics. Works mid-flight on an airplane with zero internet. Your passwords exist as mathematical proofs, not remote database records.
+          </div>
+        </div>
+
+        <!-- Card 4: Banking Complexity & Rotation -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">🏛️</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">Problem 4: Banking Rules &amp; Password Rotation</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">Fear of Rejection or Mandatory Changes</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            Users worry that banking portals requiring uppercase, lowercase, numbers, and special symbols will reject deterministic passwords when rotation is forced.
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ FrankPass Solution:</strong> Guaranteed Policy Enforcement. The Standard profile code guarantees all 4 character types in every password. When a site forces changes, simply increment rotation context (e.g. <code>v2</code>, <code>v3</code>).
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
    SECTION: Extension FAQ
    ============================================================ -->
   <section class="section-sm" style="background:rgba(139,92,246,0.03);border-top:1px solid var(--border);">

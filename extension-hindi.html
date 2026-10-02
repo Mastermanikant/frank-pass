@@ -478,6 +478,93 @@
   </section>
 
   <!-- ============================================================
+   SECTION: 4 Real Problems of Traditional Extensions vs FrankPass Solution (Hindi)
+   ============================================================ -->
+  <section class="section" style="background:rgba(255,255,255,0.015);border-top:1px solid var(--border);">
+    <div class="container" style="max-width:960px;">
+      
+      <div class="text-center mb-4">
+        <div class="section-label" aria-hidden="true">आर्किटेक्चरल सत्य</div>
+        <h2 style="font-size:clamp(1.75rem,3.5vw,2.3rem);margin-bottom:0.5rem">पारंपरिक एक्सटेंशन्स की 4 बड़ी खामियां और फ्रैंकपास का समाधान</h2>
+        <p class="section-desc">पारंपरिक क्लाउड पासवर्ड एक्सटेंशन्स में क्या अनदेखे जोखिम हैं और स्टेटलेस गणित उन्हें कैसे हल करता है।</p>
+      </div>
+
+      <div class="grid-2" style="gap:1.5rem;">
+        
+        <!-- Card 1: 24/7 Tab Snooping & RAM Bloat -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">🛑</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">समस्या 1: 24/7 बैकग्राउंड जासूसी व भारी रैम खर्च</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">हर खुले टैब में भारी स्क्रिप्ट इंजेक्शन</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            पारंपरिक क्लाउड एक्सटेंशन्स हर खुले हुए वेब पेज को 24 घंटे बैकग्राउंड में स्कैन करते रहते हैं, जिससे 300MB से 500MB रैम खर्च होती है और ब्राउज़र असुरक्षित रहता है।
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ फ्रैंकपास समाधान:</strong> विशुद्ध ऑन-डिमांड एग्जीक्यूशन। एक्सटेंशन बैकग्राउंड में शून्य रैम लेता है और केवल तभी सक्रिय होता है जब आप <code>Ctrl+Shift+F</code> दबाते हैं।
+          </div>
+        </div>
+
+        <!-- Card 2: Clipboard Hijacking Malware -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">📋</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">समस्या 2: क्लिपबोर्ड चोरी व स्निफर मैलवेयर</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">ऑपरेटिंग सिस्टम क्लिपबोर्ड पर पासवर्ड छोड़ना</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            पासवर्ड को कॉपी-पेस्ट करने से वह आपके कंप्यूटर के क्लिपबोर्ड बफर में खुला रह जाता है, जहाँ से बैकग्राउंड मैलवेयर उसे आसानी से चुरा लेते हैं।
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ फ्रैंकपास समाधान:</strong> शून्य-क्लिपबोर्ड स्टील्थ ऑटोफिल। पासवर्ड रैम से सीधे लॉगिन फील्ड में इंजेक्ट होता है, क्लिपबोर्ड कभी छुए बिना।
+          </div>
+        </div>
+
+        <!-- Card 3: Cloud Outages & Subscription Lockouts -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">☁️</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">समस्या 3: क्लाउड डाउनटाइम व सब्सक्रिप्शन लॉकआउट</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">केंद्रीय सर्वर व वार्षिक किराए पर निर्भरता</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            यदि क्लाउड कंपनियों का सर्वर डाउन हो जाए या आप हर साल $60 का किराया न दें, तो आप अपने ही पासवर्ड्स से लॉकआउट हो जाते हैं।
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ फ्रैंकपास समाधान:</strong> 100% ऑफलाइन गणितीय संप्रभुता। बिना इंटरनेट के या हवाई जहाज में भी यह ठीक उसी तरह काम करता है। आपका पासवर्ड डेटाबेस में नहीं, शुद्ध गणित में है।
+          </div>
+        </div>
+
+        <!-- Card 4: Banking Rules & Password Rotation -->
+        <div class="card-glass" style="padding:1.75rem;border-radius:16px;border:1px solid var(--border);">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+            <div style="font-size:1.5rem;background:rgba(239,68,68,0.12);padding:8px 12px;border-radius:10px;">🏛️</div>
+            <div>
+              <div style="font-size:0.75rem;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:0.06em;">समस्या 4: बैंकिंग नियम व पासवर्ड रोटेशन का डर</div>
+              <h3 style="font-size:1.15rem;margin:0;color:var(--text-primary);">कठिन नियमों में रिजेक्शन का संशय</h3>
+            </div>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.6;margin-bottom:1rem;">
+            उपयोगकर्ताओं को डर रहता है कि बैंक के सख्त नियम (अपरकेस, लोअरकेस, नंबर, स्पेशल कैरेक्टर) स्टेटलेस में कैसे पूरे होंगे।
+          </p>
+          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.85rem 1rem;font-size:0.86rem;color:var(--text-primary);">
+            <strong style="color:#10b981;">⚡ फ्रैंकपास समाधान:</strong> 100% कोड-गारंटीड पॉलिसी। Standard पासवर्ड में सभी 4 कैरेक्टर सेट्स की गणितीय गारंटी है। पासवर्ड बदलने पर केवल <code>v2</code>, <code>v3</code> साल्ट जोड़ना होता है।
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
    SECTION: Extension FAQ
    ============================================================ -->
   <section class="section-sm" style="background:rgba(139,92,246,0.03);border-top:1px solid var(--border);">
