@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>FrankPass Clean Minimal Guide Demo</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        width: 1920px;
+        height: 1080px;
+        background: #080c16;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif;
+        color: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Clean Subtle Background */
+    .bg-ambient {
+        position: absolute;
+        inset: 0;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 60%),
+            radial-gradient(circle at 80% 70%, rgba(56, 189, 248, 0.08) 0%, transparent 60%);
+        z-index: 1;
+    }
+
+    /* Main Container */
+    .main-wrapper {
+        position: relative;
+        z-index: 10;
+        width: 1800px;
+        height: 980px;
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 28px;
+        padding: 48px 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Top Header */
+    .header-section {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding-bottom: 20px;
+    }
+    .tag-badge {
+        display: inline-block;
+        background: rgba(139, 92, 246, 0.15);
+        color: #c084fc;
+        border: 1px solid rgba(139, 92, 246, 0.35);
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .headline {
+        font-size: 40px;
+        font-weight: 900;
+        color: #ffffff;
+        letter-spacing: -0.01em;
+        margin-bottom: 8px;
+    }
+    .subheadline {
+        font-size: 20px;
+        color: #94a3b8;
+        font-weight: 400;
+    }
+
+    /* Two Columns Body */
+    .body-section {
+        display: flex;
+        gap: 60px;
+        align-items: center;
+        flex: 1;
+        padding: 30px 0;
+    }
+
+    /* Left Column: Big Crisp UI Close-up */
+    .left-col {
+        flex: 0 0 680px;
+        background: #0f172a;
+        border: 1.5px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        padding: 36px 36px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+    .ui-box-title {
+        font-size: 13px;
+        font-weight: 800;
+        color: #38bdf8;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .field-label-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    .field-label {
+        font-size: 17px;
+        font-weight: 800;
+        color: #e2e8f0;
+        letter-spacing: 0.02em;
+    }
+    .field-optional {
+        font-size: 14px;
+        color: #94a3b8;
+        font-weight: 600;
+    }
+    .big-input-box {
+        width: 100%;
+        height: 64px;
+        background: #1e293b;
+        border: 2.5px solid #8b5cf6;
+        border-radius: 12px;
+        padding: 0 20px;
+        font-size: 20px;
+        color: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 0 0 5px rgba(139, 92, 246, 0.22);
+    }
+    .input-text {
+        font-family: 'JetBrains Mono', monospace, sans-serif;
+        color: #94a3b8;
+    }
+    .input-cursor {
+        width: 2px;
+        height: 26px;
+        background: #8b5cf6;
+        display: inline-block;
+        animation: blink 1s infinite;
+        vertical-align: middle;
+        margin-left: 2px;
+    }
+    .field-helper {
+        margin-top: 14px;
+        font-size: 15px;
+        color: #94a3b8;
+        line-height: 1.5;
+        background: rgba(255, 255, 255, 0.03);
+        padding: 12px 16px;
+        border-radius: 8px;
+        border-left: 3px solid #8b5cf6;
+    }
+
+    /* Right Column: 2 Clean Action Cards */
+    .right-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .action-card {
+        background: #131c31;
+        border-radius: 18px;
+        padding: 26px 30px;
+        border: 1.5px solid rgba(255, 255, 255, 0.08);
+    }
+    .action-card.green-card {
+        border-color: rgba(16, 185, 129, 0.4);
+        background: rgba(16, 185, 129, 0.04);
+    }
+    .action-card.purple-card {
+        border-color: rgba(168, 85, 247, 0.4);
+        background: rgba(168, 85, 247, 0.04);
+    }
+
+    .card-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 10px;
+    }
+    .card-icon {
+        font-size: 26px;
+    }
+    .card-title-green {
+        font-size: 22px;
+        font-weight: 800;
+        color: #34d399;
+    }
+    .card-title-purple {
+        font-size: 22px;
+        font-weight: 800;
+        color: #c084fc;
+    }
+    .card-body-text {
+        font-size: 17px;
+        color: #cbd5e1;
+        line-height: 1.6;
+        margin-bottom: 8px;
+    }
+    .card-takeaway {
+        font-size: 16px;
+        color: #f1f5f9;
+        font-weight: 700;
+        background: rgba(0, 0, 0, 0.35);
+        padding: 8px 14px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    /* Bottom Summary Bar */
+    .bottom-bar {
+        background: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 14px;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        color: #cbd5e1;
+    }
+    .bottom-bar strong {
+        color: #38bdf8;
+    }
+    .brand-text {
+        font-size: 14px;
+        color: #64748b;
+        font-weight: 700;
+    }
+</style>
+</head>
+<body>
+    <div class="bg-ambient"></div>
+
+    <div class="main-wrapper">
+        <!-- Header -->
+        <div class="header-section">
+            <div class="tag-badge">FrankPass Guide • Field 01</div>
+            <h1 class="headline">USERNAME / EMAIL (वैकल्पिक इनपुट)</h1>
+            <p class="subheadline">यह फील्ड पासवर्ड गणना में तीसरा इनपुट जोड़ता है। जानें कब खाली छोड़ें और कब भरें:</p>
+        </div>
+
+        <!-- Body: 2 Balanced Columns -->
+        <div class="body-section">
+            <!-- Left: 100% Big Sharp UI Close-up -->
+            <div class="left-col">
+                <div class="ui-box-title">
+                    <span>🔍</span> असली वेबसाइट यूआई (100% स्पष्ट व बड़ा क्लोज़-अप)
+                </div>
+
+                <div class="field-label-row">
+                    <span class="field-label">USERNAME / EMAIL</span>
+                    <span class="field-optional">(OPTIONAL)</span>
+                </div>
+
+                <div class="big-input-box">
+                    <span class="input-text">e.g. work@gmail.com, personal, user_01<span class="input-cursor"></span></span>
+                </div>
+
+                <div class="field-helper">
+                    💡 <strong>मल्टी-अकाउंट आइसोलेशन:</strong> इसका उपयोग केवल तभी करें जब आपके पास एक ही वेबसाइट पर 2 अलग-अलग खाते हों।
+                </div>
+            </div>
+
+            <!-- Right: 2 Direct Action Cards -->
+            <div class="right-col">
+                <!-- Green Card: Single Account -->
+                <div class="action-card green-card">
+                    <div class="card-head">
+                        <span class="card-icon">🟢</span>
+                        <h2 class="card-title-green">1. कब खाली छोड़ना है? (Single Account)</h2>
+                    </div>
+                    <p class="card-body-text">
+                        <strong>LinkedIn, Netflix, Amazon, Facebook</strong> या Hotstar जैसी सेवाएं जहां आपका केवल 1 खाता है।
+                    </p>
+                    <div class="card-takeaway">
+                        👉 खाली रखें &rarr; पासवर्ड निकालते समय ईमेल याद रखने का कोई झंझट नहीं रहेगा।
+                    </div>
+                </div>
+
+                <!-- Purple Card: Multi Account -->
+                <div class="action-card purple-card">
+                    <div class="card-head">
+                        <span class="card-icon">🟣</span>
+                        <h2 class="card-title-purple">2. कब भरना जरूरी है? (Multi-Account)</h2>
+                    </div>
+                    <p class="card-body-text">
+                        <strong>Instagram (Personal vs Creator)</strong> या <strong>Google (Work vs Personal ID)</strong> जहां 1 ही साइट पर 2 अलग खाते हैं।
+                    </p>
+                    <div class="card-takeaway">
+                        👉 यूजरनेम भरें &rarr; एक ही मास्टर की पर दोनों खातों के लिए अलग पासवर्ड मिलेंगे।
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Summary -->
+        <div class="bottom-bar">
+            <div>
+                💡 <strong>सरल नियम:</strong> 1 खाता है तो खाली छोड़ें, 2 खाते हैं तो यूजरनेम लिखें। कोई भी डेटा कभी किसी सर्वर पर सेव नहीं होता।
+            </div>
+            <div class="brand-text">FrankPass.com • 100% Stateless Math</div>
+        </div>
+    </div>
+</body>
+</html>

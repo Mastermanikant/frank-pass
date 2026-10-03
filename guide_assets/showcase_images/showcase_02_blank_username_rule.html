@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>USERNAME / EMAIL (गणितीय आइडेंटिफायर)</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        width: 1920px;
+        height: 1080px;
+        background: #060913;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Devanagari', Helvetica, Arial, sans-serif;
+        color: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 1;
+    }
+    .ambient-glow {
+        position: absolute;
+        width: 900px;
+        height: 900px;
+        background: radial-gradient(circle, rgba(56, 189, 248, 0.09) 0%, rgba(139, 92, 246, 0.05) 45%, transparent 70%);
+        top: 50%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .showcase-wrapper {
+        position: relative;
+        z-index: 10;
+        width: 1820px;
+        height: 1000px;
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 28px;
+        padding: 45px 55px;
+        display: flex;
+        align-items: center;
+        gap: 65px;
+        box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(25px);
+    }
+
+    .left-stage {
+        flex: 0 0 530px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-frame {
+        position: relative;
+        width: 524px;
+        border-radius: 20px;
+        overflow: visible;
+        background: rgba(15, 23, 42, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65);
+    }
+    .card-img {
+        width: 100%;
+        display: block;
+        border-radius: 20px;
+    }
+
+    .neon-highlight-box {
+        position: absolute;
+        left: 23px;
+        top: 228px;
+        width: 482px;
+        height: 52px;
+        border: 2.5px solid #00d4ff;
+        border-radius: 12px;
+        box-shadow: 0 0 25px rgba(0, 212, 255, 0.7), inset 0 0 15px rgba(0, 212, 255, 0.4);
+        pointer-events: none;
+        z-index: 25;
+    }
+    .neon-pointer-arrow {
+        position: absolute;
+        left: 508px;
+        top: 229px;
+        z-index: 30;
+        pointer-events: none;
+        filter: drop-shadow(0 0 12px #00d4ff);
+    }
+
+    .right-stage {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 26px;
+    }
+
+    .active-feature-card {
+        background: rgba(14, 165, 233, 0.08);
+        border: 1.5px solid #00d4ff;
+        border-radius: 20px;
+        padding: 28px 32px;
+        box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
+    }
+    .feature-title-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 10px;
+    }
+    .feature-icon {
+        font-size: 32px;
+    }
+    .feature-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: #38bdf8;
+        letter-spacing: -0.01em;
+    }
+    .feature-subtitle {
+        font-size: 18px;
+        color: #e2e8f0;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+
+    .detail-card {
+        background: rgba(30, 41, 59, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 24px 28px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+    }
+    .detail-card.accent-card {
+        border-left: 4.5px solid #8b5cf6;
+        background: rgba(139, 92, 246, 0.07);
+    }
+    .detail-card.warn-card {
+        border-left: 4.5px solid #38bdf8;
+        background: rgba(56, 189, 248, 0.07);
+    }
+    .detail-icon {
+        font-size: 26px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .detail-content h3 {
+        font-size: 19px;
+        font-weight: 700;
+        color: #f8fafc;
+        margin-bottom: 6px;
+    }
+    .detail-content p {
+        font-size: 16.5px;
+        color: #cbd5e1;
+        line-height: 1.6;
+    }
+
+    .brand-badge-bar {
+        margin-top: 6px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 14px;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .brand-pill {
+        background: rgba(56, 189, 248, 0.12);
+        color: #38bdf8;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+</style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="showcase-wrapper">
+        <div class="left-stage">
+            <div class="card-frame">
+                <img src="file:///D:/01_Websites_and_Content/MMY_Website_Project/07_frankpass.com/01_Website_App/guide_assets/real_ui_captures/card_default_filled.png" class="card-img" alt="FrankPass Real UI">
+                <div class="neon-highlight-box"></div>
+                <div class="neon-pointer-arrow">
+                    <svg width="75" height="50" viewBox="0 0 75 50" fill="none">
+                        <path d="M 70 25 L 18 25" stroke="#00d4ff" stroke-width="4.5" stroke-linecap="round"/>
+                        <polygon points="4,25 24,13 24,37" fill="#00d4ff"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-stage">
+            <div class="active-feature-card">
+                <div class="feature-title-row">
+                    <span class="feature-icon">🎯</span>
+                    <h2 class="feature-title">USERNAME / EMAIL (गणितीय आइडेंटिफायर)</h2>
+                </div>
+                <p class="feature-subtitle">यह फील्ड पासवर्ड की गणना में तीसरा इनपुट जोड़ता है। जानें इसे खाली छोड़ने या भरने का सटीक प्रभाव:</p>
+            </div>
+
+            <div class="detail-card warn-card">
+                <div class="detail-icon">💡</div>
+                <div class="detail-content">
+                    <h3>खाली छोड़ने का फायदा (एकल खाता / Single Account):</h3>
+                    <p>जिन सेवाओं पर आपका केवल 1 खाता है (जैसे LinkedIn, Amazon, Netflix), इसे खाली रखने से भविष्य में कभी यह याद नहीं रखना पड़ता कि कौन सा ईमेल भरा था। केवल प्लेटफॉर्म नाम से पासवर्ड तुरंत निकल आता है।</p>
+                </div>
+            </div>
+
+            <div class="detail-card accent-card">
+                <div class="detail-icon">👥</div>
+                <div class="detail-content">
+                    <h3>भरने की आवश्यकता कब है (मल्टी-अकाउंट / Multi-Account Isolation):</h3>
+                    <p>यदि एक ही प्लेटफॉर्म पर आपके 2 खाते हैं (उदा. Instagram Personal vs Business या Gmail Work vs Personal), तो यूजरनेम लिखने से एक ही मास्टर की पर दोनों खातों के लिए पूरी तरह अलग पासवर्ड जनरेट होते हैं।</p>
+                </div>
+            </div>
+
+            <div class="brand-badge-bar">
+                <div>FrankPass.com • Master Manikant Yadav</div>
+                <div class="brand-pill">Zero-Vault Security Standard</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

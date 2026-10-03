@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Password Rotation & Advanced Options</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        width: 1920px;
+        height: 1080px;
+        background: #060913;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Devanagari', Helvetica, Arial, sans-serif;
+        color: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 1;
+    }
+    .ambient-glow {
+        position: absolute;
+        width: 900px;
+        height: 900px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(56, 189, 248, 0.05) 45%, transparent 70%);
+        top: 50%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .showcase-wrapper {
+        position: relative;
+        z-index: 10;
+        width: 1820px;
+        height: 1000px;
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 28px;
+        padding: 40px 50px;
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        box-shadow: 0 30px 70px -15px rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(25px);
+    }
+
+    .left-stage {
+        flex: 0 0 530px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+    .card-frame {
+        position: relative;
+        width: 524px;
+        max-height: 900px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: rgba(15, 23, 42, 0.98);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.65);
+    }
+    .card-img {
+        width: 100%;
+        display: block;
+        transform: translateY(-220px); /* Focus on Advanced Panel area */
+    }
+
+    .neon-highlight-box {
+        position: absolute;
+        left: 23px;
+        top: 558px; /* Highlight directly over PASSWORD NUMBER / ROTATION counter */
+        width: 480px;
+        height: 48px;
+        border: 2.5px solid #00d4ff;
+        border-radius: 12px;
+        box-shadow: 0 0 25px rgba(0, 212, 255, 0.7), inset 0 0 15px rgba(0, 212, 255, 0.4);
+        pointer-events: none;
+        z-index: 25;
+    }
+    .neon-pointer-arrow {
+        position: absolute;
+        left: 508px;
+        top: 559px;
+        z-index: 30;
+        pointer-events: none;
+        filter: drop-shadow(0 0 12px #00d4ff);
+    }
+
+    .right-stage {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 22px;
+    }
+
+    .active-feature-card {
+        background: rgba(139, 92, 246, 0.09);
+        border: 1.5px solid #a855f7;
+        border-radius: 20px;
+        padding: 26px 30px;
+        box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15);
+    }
+    .feature-title-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 8px;
+    }
+    .feature-icon {
+        font-size: 32px;
+    }
+    .feature-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: #c084fc;
+        letter-spacing: -0.01em;
+    }
+    .feature-subtitle {
+        font-size: 17.5px;
+        color: #e2e8f0;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+
+    .detail-card {
+        background: rgba(30, 41, 59, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 22px 26px;
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .detail-card.accent-card {
+        border-left: 4.5px solid #00d4ff;
+        background: rgba(0, 212, 255, 0.06);
+    }
+    .detail-card.warn-card {
+        border-left: 4.5px solid #10b981;
+        background: rgba(16, 185, 129, 0.06);
+    }
+    .detail-icon {
+        font-size: 24px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .detail-content h3 {
+        font-size: 18.5px;
+        font-weight: 700;
+        color: #f8fafc;
+        margin-bottom: 5px;
+    }
+    .detail-content p {
+        font-size: 16px;
+        color: #cbd5e1;
+        line-height: 1.55;
+    }
+
+    .brand-badge-bar {
+        margin-top: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 14px;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .brand-pill {
+        background: rgba(168, 85, 247, 0.15);
+        color: #c084fc;
+        border: 1px solid rgba(168, 85, 247, 0.35);
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+</style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="showcase-wrapper">
+        <div class="left-stage">
+            <div class="card-frame">
+                <img src="file:///D:/01_Websites_and_Content/MMY_Website_Project/07_frankpass.com/01_Website_App/guide_assets/real_ui_captures/card_advanced_open.png" class="card-img" alt="FrankPass Advanced Open">
+                <div class="neon-highlight-box"></div>
+                <div class="neon-pointer-arrow">
+                    <svg width="75" height="50" viewBox="0 0 75 50" fill="none">
+                        <path d="M 70 25 L 18 25" stroke="#00d4ff" stroke-width="4.5" stroke-linecap="round"/>
+                        <polygon points="4,25 24,13 24,37" fill="#00d4ff"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-stage">
+            <div class="active-feature-card">
+                <div class="feature-title-row">
+                    <span class="feature-icon">🔄</span>
+                    <h2 class="feature-title">पासवर्ड रोटेशन (बिना मास्टर की बदले नया पासवर्ड)</h2>
+                </div>
+                <p class="feature-subtitle">
+                    यदि किसी 1 साइट पर पासवर्ड बदलना पड़े, तो कभी अपनी Master Secret Key न बदलें। केवल Advanced Options में Password Number बढ़ाएं।
+                </p>
+            </div>
+
+            <div class="detail-card accent-card">
+                <div class="detail-icon">🔢</div>
+                <div class="detail-content">
+                    <h3>Counter (1, 2, 3...) vs Month/Year (महीना/वर्ष):</h3>
+                    <p>डिफ़ॉल्ट 1 होता है। पासवर्ड बदलने के लिए 2 या 3 करें। यदि कोई कंपनी हर माह पासवर्ड बदलने को कहे, तो Month/Year मोड (उदा. 10/2026) चुन लें। दोनों का काम एक जैसा है, जो याद रखना आसान लगे वही चुनें।</p>
+                </div>
+            </div>
+
+            <div class="detail-card warn-card">
+                <div class="detail-icon">🛡️</div>
+                <div class="detail-content">
+                    <h3>गेस करने का शून्य खतरा (Zero Guessing Risk):</h3>
+                    <p>यदि कोई आपका काउंटर (2) या महीना (10/2026) जान भी ले, तो भी बिना आपकी सीक्रेट की के कोई पासवर्ड का 1 अक्षर भी नहीं जान सकता। पासवर्ड 10 लाख PBKDF2 राउंड्स की सीक्रेट की से ही सुरक्षित रहता है।</p>
+                </div>
+            </div>
+
+            <div class="brand-badge-bar">
+                <div>FrankPass.com • Master Manikant Yadav</div>
+                <div class="brand-pill">Advanced Rotation Architecture</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>Demo 2 - Spotlight & Clean Pointer</title>
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        width: 1920px;
+        height: 1080px;
+        background: #060913;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans Devanagari', sans-serif;
+        color: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .bg-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(56, 189, 248, 0.035) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(56, 189, 248, 0.035) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 1;
+    }
+    .ambient-glow {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 70%);
+        top: 50%;
+        left: 28%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .showcase-wrapper {
+        position: relative;
+        z-index: 10;
+        width: 1820px;
+        height: 1000px;
+        background: rgba(15, 23, 42, 0.72);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 28px;
+        padding: 45px 55px;
+        display: flex;
+        align-items: center;
+        gap: 75px;
+        box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(25px);
+    }
+
+    .left-stage {
+        flex: 0 0 540px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .card-frame {
+        position: relative;
+        width: 500px;
+        background: #0f172a;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 26px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+    }
+
+    .mock-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 22px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .mock-brand {
+        font-size: 17px;
+        font-weight: 700;
+        color: #38bdf8;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .mock-badge {
+        font-size: 11px;
+        background: rgba(16, 185, 129, 0.15);
+        color: #34d399;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-weight: 600;
+    }
+
+    .dimmed-field {
+        margin-bottom: 16px;
+        opacity: 0.35;
+    }
+    .dimmed-label {
+        font-size: 11px;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 6px;
+        font-weight: 600;
+    }
+    .dimmed-input {
+        width: 100%;
+        height: 42px;
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 0 12px;
+        color: #cbd5e1;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+    }
+
+    /* SPOTLIGHTED ACTIVE FIELD - Ultra Crisp (No blurry glow!) */
+    .spotlight-field {
+        position: relative;
+        background: rgba(56, 189, 248, 0.06);
+        border: 1.5px solid #38bdf8;
+        border-radius: 12px;
+        padding: 14px 16px;
+        margin-bottom: 18px;
+        box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.12);
+    }
+    .spotlight-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #38bdf8;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        margin-bottom: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .spotlight-stepper {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .spotlight-btn {
+        width: 38px;
+        height: 38px;
+        background: rgba(30, 41, 59, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 700;
+        color: #fff;
+    }
+    .spotlight-counter {
+        flex: 1;
+        height: 38px;
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid rgba(56, 189, 248, 0.4);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 800;
+        color: #fff;
+    }
+
+    /* Floating Pill Pointer Badge */
+    .pointer-badge {
+        position: absolute;
+        right: -45px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #38bdf8;
+        color: #04101e;
+        font-weight: 800;
+        font-size: 12px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 30;
+    }
+
+    /* Right Column - Beautiful Cards */
+    .right-stage {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .active-card {
+        background: rgba(56, 189, 248, 0.08);
+        border: 1.5px solid #38bdf8;
+        border-radius: 20px;
+        padding: 28px 32px;
+        box-shadow: 0 10px 30px rgba(56, 189, 248, 0.12);
+    }
+    .card-title-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 8px;
+    }
+    .card-icon { font-size: 30px; }
+    .card-title {
+        font-size: 26px;
+        font-weight: 800;
+        color: #38bdf8;
+    }
+    .card-sub {
+        font-size: 17px;
+        color: #e2e8f0;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+
+    .detail-box {
+        background: rgba(30, 41, 59, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 24px 28px;
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+    }
+    .detail-box.accent-box {
+        border-left: 4px solid #a855f7;
+        background: rgba(168, 85, 247, 0.06);
+    }
+    .detail-box.green-box {
+        border-left: 4px solid #10b981;
+        background: rgba(16, 185, 129, 0.06);
+    }
+    .detail-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .detail-text h3 {
+        font-size: 18.5px;
+        font-weight: 700;
+        color: #f8fafc;
+        margin-bottom: 5px;
+    }
+    .detail-text p {
+        font-size: 16px;
+        color: #cbd5e1;
+        line-height: 1.55;
+    }
+
+    .footer-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 14px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 14px;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .brand-pill {
+        background: rgba(56, 189, 248, 0.12);
+        color: #38bdf8;
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        padding: 4px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+</style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="showcase-wrapper">
+        <!-- Left Stage: Spotlit Card + Crisp Pointer -->
+        <div class="left-stage">
+            <div class="card-frame">
+                <div class="mock-header">
+                    <div class="mock-brand"><span>🔑</span> FrankPass Generator</div>
+                    <div class="mock-badge">100% Offline</div>
+                </div>
+
+                <div class="dimmed-field">
+                    <div class="dimmed-label">Site / Platform</div>
+                    <div class="dimmed-input">google.com</div>
+                </div>
+
+                <div class="dimmed-field">
+                    <div class="dimmed-label">Master Secret Key</div>
+                    <div class="dimmed-input">••••••••••••••••••••••••••••</div>
+                </div>
+
+                <!-- SPOTLIGHTED ACTIVE FIELD -->
+                <div class="spotlight-field">
+                    <div class="spotlight-label">
+                        <span>Password Number / Rotation</span>
+                        <span style="font-size:10px;background:#38bdf8;color:#04101e;padding:1px 6px;border-radius:4px;font-weight:800;">ACTIVE</span>
+                    </div>
+                    <div class="spotlight-stepper">
+                        <div class="spotlight-btn">&minus;</div>
+                        <div class="spotlight-counter">1</div>
+                        <div class="spotlight-btn">+</div>
+                    </div>
+                    
+                    <div class="pointer-badge">
+                        <span>👉</span> Focus Field
+                    </div>
+                </div>
+
+                <div class="dimmed-field" style="margin-top:14px;">
+                    <div style="height:40px;background:#8b5cf6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;">
+                        ⚡ Generate Password
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Stage: Clear Educational Explanations -->
+        <div class="right-stage">
+            <div class="active-card">
+                <div class="card-title-row">
+                    <span class="card-icon">🔄</span>
+                    <h2 class="card-title">पासवर्ड रोटेशन (बिना मास्टर की बदले नया पासवर्ड)</h2>
+                </div>
+                <p class="card-sub">
+                    यदि किसी 1 वेबसाइट पर पासवर्ड बदलना पड़े, तो कभी अपनी Master Secret Key न बदलें। केवल Advanced Options में Password Number बढ़ाएं।
+                </p>
+            </div>
+
+            <div class="detail-box accent-box">
+                <div class="detail-icon">🔢</div>
+                <div class="detail-text">
+                    <h3>Counter (1, 2, 3...) vs Month/Year (महीना/वर्ष):</h3>
+                    <p>डिफ़ॉल्ट नंबर 1 रहता है। पासवर्ड बदलने के लिए 2 या 3 करें। यदि कंपनी हर माह पासवर्ड बदलने को कहे, तो Month/Year मोड (उदा. 10/2026) चुन लें। दोनों का काम एक जैसा है, जो याद रखना आसान लगे वही चुनें।</p>
+                </div>
+            </div>
+
+            <div class="detail-box green-box">
+                <div class="detail-icon">🛡️</div>
+                <div class="detail-text">
+                    <h3>गेस करने का शून्य खतरा (Zero Guessing Risk):</h3>
+                    <p>यदि कोई आपका काउंटर (2) या महीना (10/2026) जान भी ले, तो भी बिना आपकी सीक्रेट की के कोई पासवर्ड का 1 अक्षर भी नहीं जान सकता। पासवर्ड 10 लाख PBKDF2 राउंड्स की सीक्रेट की से ही सुरक्षित रहता है।</p>
+                </div>
+            </div>
+
+            <div class="footer-bar">
+                <div>FrankPass.com • Master Manikant Yadav</div>
+                <div class="brand-pill">Option 2: Clean Spotlight Style</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
