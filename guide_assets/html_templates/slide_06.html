@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap');
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        width: 1200px;
+        height: 1600px;
+        background: radial-gradient(circle at 50% 0%, #0c2d48 0%, #070d18 70%, #020617 100%);
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 60px;
+        position: relative;
+        overflow: hidden;
+    }
+    /* Subtle grid overlay */
+    .grid-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 50px 50px;
+        pointer-events: none;
+    }
+    /* Top Header */
+    .slide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding-bottom: 24px;
+    }
+    .brand-group {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+    .brand-logo-badge {
+        background: linear-gradient(135deg, #8b5cf6, #38bdf8);
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 0 20px rgba(139,92,246,0.5);
+    }
+    .brand-title {
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+    .brand-title span {
+        color: #38bdf8;
+    }
+    .slide-pill {
+        background: rgba(139,92,246,0.15);
+        border: 1.5px solid rgba(139,92,246,0.4);
+        color: #c4b5fd;
+        font-weight: 800;
+        font-size: 15px;
+        padding: 8px 18px;
+        border-radius: 30px;
+        letter-spacing: 0.08em;
+    }
+    /* Content Area */
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+        position: relative;
+        z-index: 10;
+        padding: 20px 0;
+    }
+    .headline-wrap {
+        margin-bottom: 10px;
+    }
+    .headline {
+        font-size: 42px;
+        font-weight: 900;
+        line-height: 1.22;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #ffffff 40%, #94a3b8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 14px;
+    }
+    .subtitle {
+        font-size: 19px;
+        color: #94a3b8;
+        line-height: 1.55;
+    }
+    /* Pro Tip Box */
+    .pro-tip-box {
+        background: rgba(15, 23, 42, 0.85);
+        border: 1.5px solid rgba(56, 189, 248, 0.35);
+        border-radius: 14px;
+        padding: 18px 24px;
+        font-size: 16px;
+        color: #e2e8f0;
+        line-height: 1.5;
+        margin-top: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    /* Footer */
+    .slide-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 24px;
+        position: relative;
+        z-index: 10;
+        font-size: 16px;
+        color: #64748b;
+        font-weight: 600;
+    }
+    .footer-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #94a3b8;
+    }
+    .footer-right {
+        color: #38bdf8;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+    }
+</style>
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    
+    <!-- Top Header -->
+    <header class="slide-header">
+        <div class="brand-group">
+            <div class="brand-logo-badge">🔑</div>
+            <div class="brand-title">Frank<span>Pass</span></div>
+        </div>
+        <div class="slide-pill">06 / 14 • SECURITY PROFILES</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content-container">
+        <div class="headline-wrap">
+            <h1 class="headline">100% Guaranteed Bank & Corporate Acceptance</h1>
+            <p class="subtitle">FrankPass strictly enforces enterprise complexity rules so your passwords never get rejected by banking or government portals.</p>
+        </div>
+
+        <!-- Middle Visual Stage -->
+        
+        <div style="background: #0f172a; border: 2px solid #10b981; border-radius: 18px; padding: 25px; width: 100%; box-sizing: border-box; margin: 20px 0;">
+            <div style="color: #e2e8f0; font-weight: 700; font-size: 18px; margin-bottom: 12px;">🛡️ Guaranteed Character Complexity Matrix</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;">
+                <div style="background: rgba(56,189,248,0.15); border: 1px solid #38bdf8; border-radius: 10px; padding: 12px 6px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #38bdf8;">A-Z</div>
+                    <div style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Uppercase (10)</div>
+                </div>
+                <div style="background: rgba(139,92,246,0.15); border: 1px solid #8b5cf6; border-radius: 10px; padding: 12px 6px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #a78bfa;">a-z</div>
+                    <div style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Lowercase (6)</div>
+                </div>
+                <div style="background: rgba(245,158,11,0.15); border: 1px solid #f59e0b; border-radius: 10px; padding: 12px 6px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #fbbf24;">2-9</div>
+                    <div style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Digits (7)</div>
+                </div>
+                <div style="background: rgba(16,185,129,0.15); border: 1px solid #10b981; border-radius: 10px; padding: 12px 6px;">
+                    <div style="font-size: 22px; font-weight: 800; color: #34d399;">@#$%</div>
+                    <div style="font-size: 12px; color: #cbd5e1; margin-top: 4px;">Symbols (9)</div>
+                </div>
+            </div>
+            <div style="margin-top: 15px; font-size: 14px; color: #94a3b8; text-align: center;">
+                Total 32 Golden Base-32 Pool • <span style="color:#f87171; font-weight:700;">0 Ambiguous Glyphs (No 0, O, 1, l, I)</span>
+            </div>
+        </div>
+        
+
+        <!-- Bullet Points -->
+        <div style="margin-top: 15px;">
+            
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px;">
+            <div style="font-size: 22px; line-height: 1; flex-shrink: 0; margin-top: 2px;">🏛️</div>
+            <div>
+                <strong style="color: #f8fafc; font-size: 17px; font-weight: 700;">Standard Profile (Default):</strong>
+                <span style="color: #94a3b8; font-size: 16px; line-height: 1.5; display: block; margin-top: 2px;">Guarantees at least 1 Uppercase, 1 Lowercase, 1 Number, and 1 Special Symbol (e.g. <code>@#$%&*+=?</code>).</span>
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px;">
+            <div style="font-size: 22px; line-height: 1; flex-shrink: 0; margin-top: 2px;">👁️</div>
+            <div>
+                <strong style="color: #f8fafc; font-size: 17px; font-weight: 700;">Zero-Confusion Pool:</strong>
+                <span style="color: #94a3b8; font-size: 16px; line-height: 1.5; display: block; margin-top: 2px;">Visually ambiguous glyphs (like <code>0</code> vs <code>O</code>, <code>1</code> vs <code>l</code>, <code>I</code>) are mathematically excluded.</span>
+            </div>
+        </div>
+        
+        </div>
+
+        <!-- Pro Tip Card -->
+        <div class="pro-tip-box">
+            💡 <strong>Guaranteed Validity:</strong> You will never face the frustrating 'password must contain at least one symbol and number' rejection.
+        </div>
+    </main>
+
+    <!-- Footer Branding -->
+    <footer class="slide-footer">
+        <div class="footer-left">
+            <span>FrankPass.com</span> • <span>MasterManikant.com</span>
+        </div>
+        <div class="footer-right">
+            DETERMINISTIC CRYPTOGRAPHY MANUAL
+        </div>
+    </footer>
+</body>
+</html>
