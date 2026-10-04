@@ -672,7 +672,7 @@
         <span id="save-usernames-icon">💾</span>
         <span id="save-usernames-text">Save Email: ON</span>
       </button>
-      <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Clear recent username suggestions from this browser" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear</button>
+      <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Clear all recent username suggestions from this browser" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear All</button>
     </div>
   </div>
   <div class="input-wrapper">
@@ -2220,6 +2220,7 @@ const RECENT_USERNAMES_KEY = 'fp_recent_usernames';
 const SAVE_USERNAMES_PREF_KEY = 'fp_save_usernames_enabled';
 const MAX_RECENT_USERNAMES = 50;
 const MAX_VISIBLE_CHIPS = 5;
+let showAllUsernameChips = false;
 
 function isSaveUsernamesEnabled() {
   try {
@@ -2265,11 +2266,25 @@ function saveRecentUsername(uname) {
   }
 }
 
+function deleteRecentUsername(targetUname) {
+  if (!targetUname) return;
+  try {
+    let list = getRecentUsernames();
+    list = list.filter(item => item !== targetUname);
+    localStorage.setItem(RECENT_USERNAMES_KEY, JSON.stringify(list));
+    renderRecentUsernames();
+    showToast('Removed "' + targetUname + '" from suggestions', 'info');
+  } catch (e) {
+    console.warn('Could not delete recent username:', e);
+  }
+}
+
 function clearRecentUsernames() {
   try {
     localStorage.removeItem(RECENT_USERNAMES_KEY);
+    showAllUsernameChips = false;
     renderRecentUsernames();
-    showToast('Recent username suggestions cleared', 'info');
+    showToast('All recent username suggestions cleared', 'info');
   } catch (e) {}
 }
 
@@ -2311,11 +2326,11 @@ function renderRecentUsernames() {
     });
   }
   
-  // 3. Populate Top Visual 1-Tap Chips (top 5 most recent for instant 1-click filling)
+  // 3. Populate Visual 1-Tap Chips with Individual ✕ Delete Buttons
   if (chipsContainer) {
     chipsContainer.innerHTML = '';
-    const topRecent = list.slice(0, MAX_VISIBLE_CHIPS);
-    if (topRecent.length > 0) {
+    const visibleList = showAllUsernameChips ? list : list.slice(0, MAX_VISIBLE_CHIPS);
+    if (list.length > 0) {
       chipsContainer.style.display = 'flex';
       
       const label = document.createElement('span');
@@ -2325,15 +2340,17 @@ function renderRecentUsernames() {
       label.textContent = 'Recent:';
       chipsContainer.appendChild(label);
       
-      topRecent.forEach(item => {
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.style.cssText = 'background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);font-size:0.72rem;font-weight:600;padding:2px 8px;border-radius:999px;cursor:pointer;transition:all 0.2s ease;';
-        chip.textContent = item;
-        chip.title = 'Click to use ' + item;
-        chip.onmouseover = () => { chip.style.background = 'rgba(139,92,246,0.25)'; };
-        chip.onmouseout = () => { chip.style.background = 'rgba(139,92,246,0.12)'; };
-        chip.onclick = () => {
+      visibleList.forEach(item => {
+        const chip = document.createElement('div');
+        chip.style.cssText = 'display:inline-flex;align-items:center;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);border-radius:999px;padding:2px 4px 2px 8px;gap:5px;transition:all 0.2s ease;';
+        
+        const textSpan = document.createElement('span');
+        textSpan.textContent = item;
+        textSpan.style.cssText = 'color:var(--accent-light);font-size:0.72rem;font-weight:600;cursor:pointer;line-height:1.2;user-select:none;';
+        textSpan.title = 'Click to use ' + item;
+        textSpan.onmouseover = () => { textSpan.style.color = '#fff'; };
+        textSpan.onmouseout = () => { textSpan.style.color = 'var(--accent-light)'; };
+        textSpan.onclick = () => {
           if (uInput) {
             uInput.value = item;
             uInput.dispatchEvent(new Event('input', { bubbles: true }));
@@ -2341,8 +2358,38 @@ function renderRecentUsernames() {
             showToast('Account selected: ' + item, 'info');
           }
         };
+        
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.textContent = '✕';
+        delBtn.setAttribute('aria-label', 'Delete ' + item);
+        delBtn.title = 'Delete ' + item + ' from history';
+        delBtn.style.cssText = 'background:transparent;border:none;color:var(--text-muted);font-size:0.68rem;cursor:pointer;padding:0 3px;line-height:1;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s;';
+        delBtn.onmouseover = () => { delBtn.style.color = '#ef4444'; delBtn.style.background = 'rgba(239,68,68,0.2)'; };
+        delBtn.onmouseout = () => { delBtn.style.color = 'var(--text-muted)'; delBtn.style.background = 'transparent'; };
+        delBtn.onclick = (e) => {
+          e.stopPropagation();
+          deleteRecentUsername(item);
+        };
+        
+        chip.appendChild(textSpan);
+        chip.appendChild(delBtn);
         chipsContainer.appendChild(chip);
       });
+      
+      // Expand / Collapse toggle if more than MAX_VISIBLE_CHIPS
+      if (list.length > MAX_VISIBLE_CHIPS) {
+        const moreBtn = document.createElement('button');
+        moreBtn.type = 'button';
+        moreBtn.style.cssText = 'background:transparent;border:1px dashed rgba(139,92,246,0.4);color:var(--accent-light);font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:999px;cursor:pointer;transition:all 0.2s;';
+        moreBtn.textContent = showAllUsernameChips ? 'Show less ▲' : `+${list.length - MAX_VISIBLE_CHIPS} more ▼`;
+        moreBtn.title = showAllUsernameChips ? 'Show top 5' : `Show all ${list.length} saved emails`;
+        moreBtn.onclick = () => {
+          showAllUsernameChips = !showAllUsernameChips;
+          renderRecentUsernames();
+        };
+        chipsContainer.appendChild(moreBtn);
+      }
     } else {
       chipsContainer.style.display = 'none';
     }
