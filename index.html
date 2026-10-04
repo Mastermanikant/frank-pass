@@ -662,10 +662,16 @@
 
  <!-- Username / Email (Optional) -->
   <div class="form-group" id="username-group">
-  <label class="form-label" for="username-input">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
-  <div class="input-wrapper">
-  <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" aria-describedby="username-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
+    <label class="form-label" for="username-input" style="margin:0">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
+    <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Clear recent username suggestions from this browser" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear Recent</button>
   </div>
+  <div class="input-wrapper">
+  <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" list="username-recent-list" aria-describedby="username-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
+  <datalist id="username-recent-list"></datalist>
+  </div>
+  <!-- Quick Clickable Recent Chips -->
+  <div id="recent-usernames-chips" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.4rem;"></div>
   <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
   <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Multi-Account Isolation:</strong> Use only if you have multiple accounts on the same site. Establish a personal rule and follow it consistently.</span>
   </div>
@@ -2080,10 +2086,13 @@ document.getElementById('generate-btn').addEventListener('click', async () => {
  genBtn.textContent = 'Generating…';
 
  try {
- const password = await FRANKPASS_CORE.generate(
- normalizedPlatform, username, secretKey, variant, finalProfile, length
- );
- const out = document.getElementById('output-password');
+  const password = await FRANKPASS_CORE.generate(
+    normalizedPlatform, username, secretKey, variant, finalProfile, length
+  );
+  if (username) {
+    saveRecentUsername(username);
+  }
+  const out = document.getElementById('output-password');
  out.textContent = password;
  out.classList.remove('placeholder');
  applyMaskState();
@@ -2195,6 +2204,111 @@ if (maskBtn && outPassword) {
     showToast(isPasswordRevealed ? 'Password visible' : 'Password hidden (Privacy Shield)');
   });
 }
+
+
+/* ── Local Recent Usernames & Emails Auto-Suggestion Controller ── */
+const RECENT_USERNAMES_KEY = 'fp_recent_usernames';
+const MAX_RECENT_USERNAMES = 5;
+
+function getRecentUsernames() {
+  try {
+    const raw = localStorage.getItem(RECENT_USERNAMES_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveRecentUsername(uname) {
+  if (!uname || typeof uname !== 'string') return;
+  const clean = uname.trim().toLowerCase().replace(/\s+/g, '');
+  if (!clean || clean.length < 2) return;
+  
+  try {
+    let list = getRecentUsernames();
+    list = list.filter(item => item !== clean);
+    list.unshift(clean);
+    if (list.length > MAX_RECENT_USERNAMES) {
+      list = list.slice(0, MAX_RECENT_USERNAMES);
+    }
+    localStorage.setItem(RECENT_USERNAMES_KEY, JSON.stringify(list));
+    renderRecentUsernames();
+  } catch (e) {
+    console.warn('Could not save recent username:', e);
+  }
+}
+
+function clearRecentUsernames() {
+  try {
+    localStorage.removeItem(RECENT_USERNAMES_KEY);
+    renderRecentUsernames();
+    showToast('Recent username suggestions cleared', 'info');
+  } catch (e) {}
+}
+
+function renderRecentUsernames() {
+  const datalist = document.getElementById('username-recent-list');
+  const chipsContainer = document.getElementById('recent-usernames-chips');
+  const clearBtn = document.getElementById('clear-username-history-btn');
+  const uInput = document.getElementById('username-input');
+  
+  const list = getRecentUsernames();
+  
+  // 1. Populate HTML5 Datalist
+  if (datalist) {
+    datalist.innerHTML = '';
+    list.forEach(item => {
+      const opt = document.createElement('option');
+      opt.value = item;
+      datalist.appendChild(opt);
+    });
+  }
+  
+  // 2. Populate Visual 1-Tap Chips
+  if (chipsContainer) {
+    chipsContainer.innerHTML = '';
+    if (list.length > 0) {
+      chipsContainer.style.display = 'flex';
+      
+      const label = document.createElement('span');
+      label.style.fontSize = '0.72rem';
+      label.style.color = 'var(--text-muted)';
+      label.style.fontWeight = '600';
+      label.textContent = 'Recent:';
+      chipsContainer.appendChild(label);
+      
+      list.forEach(item => {
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.style.cssText = 'background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);font-size:0.72rem;font-weight:600;padding:2px 8px;border-radius:999px;cursor:pointer;transition:all 0.2s ease;';
+        chip.textContent = item;
+        chip.title = 'Click to use ' + item;
+        chip.onmouseover = () => { chip.style.background = 'rgba(139,92,246,0.25)'; };
+        chip.onmouseout = () => { chip.style.background = 'rgba(139,92,246,0.12)'; };
+        chip.onclick = () => {
+          if (uInput) {
+            uInput.value = item;
+            uInput.dispatchEvent(new Event('input', { bubbles: true }));
+            uInput.focus();
+            showToast('Account selected: ' + item, 'info');
+          }
+        };
+        chipsContainer.appendChild(chip);
+      });
+    } else {
+      chipsContainer.style.display = 'none';
+    }
+  }
+  
+  // 3. Clear button toggle
+  if (clearBtn) {
+    clearBtn.style.display = list.length > 0 ? 'inline-block' : 'none';
+    clearBtn.onclick = clearRecentUsernames;
+  }
+}
+
+// Initial render
+renderRecentUsernames();
 
 /* ── Username Input Live Normalization (Instant Lowercase + Zero Spaces) ── */
 const uInput = document.getElementById('username-input');
@@ -2552,6 +2666,8 @@ if ('serviceWorker' in navigator) {
         console.warn('ServiceWorker registration error:', err);
       });
   });
+}
+</script>
 <!-- ============================================================
      FRANKPASS PWA LOCAL VAULT MODALS & UI CONTROLLER (v4.3.3)
      ============================================================ -->
