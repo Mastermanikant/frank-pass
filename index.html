@@ -666,12 +666,15 @@
     <div style="display:flex;align-items:center;gap:0.4rem">
       <label class="form-label" for="username-input" style="margin:0">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
     </div>
-    <!-- Save Email Locally Pill Button / Controls -->
+    <!-- Torch-style Sliding Toggle Switch & Clear All -->
     <div class="vault-badge-group">
-      <button type="button" id="toggle-save-usernames-btn" class="vault-status-pill status-unlocked" aria-label="Save Email Locally" title="Click to toggle automatic local saving of usernames/emails">
-        <span id="save-usernames-icon">💾</span>
-        <span id="save-usernames-text">Save Email: ON</span>
-      </button>
+      <label class="torch-switch-wrap" for="toggle-save-usernames-check" title="Toggle automatic local saving of usernames/emails">
+        <span class="torch-switch-label" id="save-usernames-label">Save Email</span>
+        <div class="torch-switch">
+          <input type="checkbox" id="toggle-save-usernames-check" checked aria-label="Toggle Auto-Save Usernames Locally">
+          <span class="torch-slider"></span>
+        </div>
+      </label>
       <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Clear all recent username suggestions from this browser" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear All</button>
     </div>
   </div>
@@ -2383,26 +2386,19 @@ function renderRecentUsernames() {
   const datalist = document.getElementById('username-recent-list');
   const chipsContainer = document.getElementById('recent-usernames-chips');
   const clearBtn = document.getElementById('clear-username-history-btn');
-  const toggleBtn = document.getElementById('toggle-save-usernames-btn');
-  const toggleText = document.getElementById('save-usernames-text');
-  const toggleIcon = document.getElementById('save-usernames-icon');
+  const toggleCheck = document.getElementById('toggle-save-usernames-check');
+  const toggleLabel = document.getElementById('save-usernames-label');
   const uInput = document.getElementById('username-input');
   
   const isEnabled = isSaveUsernamesEnabled();
   
-  // 1. Sync Toggle Pill Button
-  if (toggleBtn && toggleText && toggleIcon) {
-    if (isEnabled) {
-      toggleBtn.className = 'vault-status-pill status-unlocked';
-      toggleIcon.textContent = '💾';
-      toggleText.textContent = 'Save Email: ON';
-      toggleBtn.title = 'Auto-Save is ON. Click to disable saving emails locally.';
-    } else {
-      toggleBtn.className = 'vault-status-pill status-none';
-      toggleIcon.textContent = '🚫';
-      toggleText.textContent = 'Save Email: OFF';
-      toggleBtn.title = 'Auto-Save is OFF. Click to enable saving emails locally.';
-    }
+  // 1. Sync Torch Switch Checkbox & Label
+  if (toggleCheck) {
+    toggleCheck.checked = isEnabled;
+  }
+  if (toggleLabel) {
+    toggleLabel.style.color = isEnabled ? 'var(--accent-light)' : 'var(--text-muted)';
+    toggleLabel.textContent = isEnabled ? 'Save Email: ON' : 'Save Email: OFF';
   }
 
   const list = getRecentUsernames();
@@ -2493,12 +2489,11 @@ function renderRecentUsernames() {
   }
 }
 
-// Toggle button click listener
-const toggleSaveUsernamesBtn = document.getElementById('toggle-save-usernames-btn');
-if (toggleSaveUsernamesBtn) {
-  toggleSaveUsernamesBtn.addEventListener('click', () => {
-    const currentState = isSaveUsernamesEnabled();
-    const newState = !currentState;
+// Torch Switch change listener
+const toggleSaveUsernamesCheck = document.getElementById('toggle-save-usernames-check');
+if (toggleSaveUsernamesCheck) {
+  toggleSaveUsernamesCheck.addEventListener('change', (e) => {
+    const newState = e.target.checked;
     setSaveUsernamesEnabled(newState);
     renderRecentUsernames();
     showToast(newState ? 'Auto-Save enabled: Usernames will be saved locally' : 'Auto-Save disabled: Usernames will not be saved', 'info');

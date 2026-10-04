@@ -2071,6 +2071,67 @@ select option {
   transform: translateX(16px);
 }
 
+/* Torch / Sliding Switch for Save Email */
+.torch-switch-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  user-select: none;
+}
+.torch-switch-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+.torch-switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.torch-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.torch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.torch-slider::before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #94a3b8;
+  border-radius: 50%;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+.torch-switch input:checked + .torch-slider {
+  background: var(--accent, #8b5cf6);
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.35);
+}
+.torch-switch input:checked + .torch-slider::before {
+  transform: translateX(16px);
+  background-color: #ffffff;
+}
+.torch-switch-wrap:hover .torch-switch-label {
+  color: var(--text-primary);
+}
+
 /* WCAG High Contrast Focus Indicators */
 button:focus-visible,
 input:focus-visible,
