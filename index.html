@@ -2279,13 +2279,104 @@ function deleteRecentUsername(targetUname) {
   }
 }
 
-function clearRecentUsernames() {
+let clearConfirmTimer = null;
+let clearCountdownInterval = null;
+
+function requestClearRecentUsernames() {
+  const list = getRecentUsernames();
+  if (!list || list.length === 0) {
+    showToast('No saved emails to clear', 'info');
+    return;
+  }
+  
+  // Clean up any existing confirmation toast and timer first
+  const existingToast = document.getElementById('fp-clear-confirm-toast');
+  if (existingToast) {
+    if (clearConfirmTimer) clearTimeout(clearConfirmTimer);
+    if (clearCountdownInterval) clearInterval(clearCountdownInterval);
+    existingToast.remove();
+  }
+
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  let secondsLeft = 5;
+
+  const t = document.createElement('div');
+  t.id = 'fp-clear-confirm-toast';
+  t.className = 'toast warning';
+  t.style.cssText = 'display:flex;flex-direction:column;gap:8px;padding:12px 14px;min-width:280px;max-width:360px;background:#1e1b4b;border:1px solid #ef4444;box-shadow:0 12px 30px rgba(0,0,0,0.6);border-radius:10px;pointer-events:auto;z-index:10000;';
+
+  const msgRow = document.createElement('div');
+  msgRow.style.cssText = 'display:flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:600;color:#fca5a5;';
+  msgRow.innerHTML = '<span>⚠️</span> <span>Clear all saved emails? Auto-clearing in <strong id="clear-countdown-num" style="color:#fff;font-size:0.9rem;text-decoration:underline;">5s</strong>...</span>';
+
+  const btnRow = document.createElement('div');
+  btnRow.style.cssText = 'display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:2px;';
+
+  // 1. Cancel button
+  const cancelBtn = document.createElement('button');
+  cancelBtn.type = 'button';
+  cancelBtn.textContent = 'Cancel';
+  cancelBtn.style.cssText = 'background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);color:#e2e8f0;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:6px;cursor:pointer;transition:all 0.2s;';
+  cancelBtn.onmouseover = () => { cancelBtn.style.background = 'rgba(255,255,255,0.18)'; };
+  cancelBtn.onmouseout = () => { cancelBtn.style.background = 'rgba(255,255,255,0.08)'; };
+  cancelBtn.onclick = () => {
+    if (clearConfirmTimer) clearTimeout(clearConfirmTimer);
+    if (clearCountdownInterval) clearInterval(clearCountdownInterval);
+    t.remove();
+    showToast('Clear cancelled. Saved emails kept.', 'info');
+  };
+
+  // 2. Clear Now button
+  const clearNowBtn = document.createElement('button');
+  clearNowBtn.type = 'button';
+  clearNowBtn.textContent = 'Clear Now';
+  clearNowBtn.style.cssText = 'background:#ef4444;border:none;color:#fff;font-size:0.75rem;font-weight:700;padding:4px 12px;border-radius:6px;cursor:pointer;transition:all 0.2s;';
+  clearNowBtn.onmouseover = () => { clearNowBtn.style.background = '#dc2626'; };
+  clearNowBtn.onmouseout = () => { clearNowBtn.style.background = '#ef4444'; };
+  clearNowBtn.onclick = () => {
+    if (clearConfirmTimer) clearTimeout(clearConfirmTimer);
+    if (clearCountdownInterval) clearInterval(clearCountdownInterval);
+    t.remove();
+    executeClearRecentUsernames();
+  };
+
+  btnRow.appendChild(cancelBtn);
+  btnRow.appendChild(clearNowBtn);
+  t.appendChild(msgRow);
+  t.appendChild(btnRow);
+  container.appendChild(t);
+
+  // Live countdown interval
+  clearCountdownInterval = setInterval(() => {
+    secondsLeft--;
+    const countEl = document.getElementById('clear-countdown-num');
+    if (countEl) {
+      countEl.textContent = `${secondsLeft}s`;
+    }
+    if (secondsLeft <= 0) {
+      clearInterval(clearCountdownInterval);
+    }
+  }, 1000);
+
+  // 5s Auto-Clear timer
+  clearConfirmTimer = setTimeout(() => {
+    if (clearCountdownInterval) clearInterval(clearCountdownInterval);
+    if (t.parentNode) t.remove();
+    executeClearRecentUsernames();
+  }, 5000);
+}
+
+function executeClearRecentUsernames() {
   try {
     localStorage.removeItem(RECENT_USERNAMES_KEY);
     showAllUsernameChips = false;
     renderRecentUsernames();
-    showToast('All recent username suggestions cleared', 'info');
-  } catch (e) {}
+    showToast('All saved emails have been cleared', 'info');
+  } catch (e) {
+    console.warn('Could not clear usernames:', e);
+  }
 }
 
 function renderRecentUsernames() {
@@ -2398,7 +2489,7 @@ function renderRecentUsernames() {
   // 4. Clear button toggle
   if (clearBtn) {
     clearBtn.style.display = list.length > 0 ? 'inline-block' : 'none';
-    clearBtn.onclick = clearRecentUsernames;
+    clearBtn.onclick = requestClearRecentUsernames;
   }
 }
 
