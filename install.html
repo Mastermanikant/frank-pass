@@ -427,33 +427,19 @@
 
  <!-- DYNAMIC SMART INSTALL / LAUNCH CARD -->
  <div class="install-status-card">
- <!-- Dynamic Status Badge -->
- <div id="pwa-status-badge" style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);color:var(--success);padding:0.35rem 0.9rem;border-radius:999px;font-size:0.85rem;font-weight:700;margin-bottom:1.25rem">
- &#10003; 100% Offline Ready &middot; Zero Storage Required
- </div>
+        <!-- Dynamic Status Badge -->
+        <div id="pwa-status-badge" style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);color:var(--success);padding:0.35rem 0.9rem;border-radius:999px;font-size:0.85rem;font-weight:700;margin-bottom:1.25rem">
+          &#10003; 100% Offline Ready &middot; Zero Storage Required
+        </div>
 
- <h2 id="pwa-card-heading" style="font-size:1.4rem;margin-bottom:0.6rem">
- Get the Standalone App
- </h2>
- <p id="pwa-card-sub" style="font-size:0.92rem;color:var(--text-muted);margin-bottom:1.5rem">
- Instant home-screen access. Fast launch without browser URL bars or tabs.
- </p>
+        <h2 id="pwa-card-heading" style="font-size:1.4rem;margin-bottom:0.6rem">
+          Get the Standalone App
+        </h2>
+        <p id="pwa-card-sub" style="font-size:0.92rem;color:var(--text-muted);margin-bottom:1.5rem">
+          Instant home-screen access. Fast launch without browser URL bars or tabs.
+        </p>
 
- <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:1.75rem;text-align:center">
- <div>
- <strong style="display:block;font-size:1.1rem;color:var(--text-primary)">100%</strong>
- <span style="font-size:0.78rem;color:var(--text-muted)">Offline Capability</span>
- </div>
- <div>
- <strong style="display:block;font-size:1.1rem;color:var(--text-muted)">Zero</strong>
- <span style="font-size:0.78rem;color:var(--text-muted)">Data Stored</span>
- </div>
- <div>
- <strong style="display:block;font-size:1.1rem;color:var(--text-primary)">Local</strong>
- <span style="font-size:0.78rem;color:var(--text-muted)">Outage Proof</span>
- </div>
- </div>
- <!-- Primary Dynamic Action Button -->
+        <!-- Primary Dynamic Action Button -->
  <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap">
  <button id="main-install-btn" class="btn-primary" style="font-size:1.05rem;padding:0.9rem 2rem;display:inline-flex;align-items:center;gap:0.6rem;cursor:pointer">
  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -803,47 +789,153 @@ FrankPass पूरी तरह आपके मोबाइल या कं�
  <script src="/footer.js?v=4.3.3"></script>
  <script>
  /* ── PWA Detection & Dynamic Smart Launcher ── */
- let deferredInstallPrompt = null;
- const mainInstallBtn = document.getElementById('main-install-btn');
- const mainInstallBtnText = document.getElementById('main-install-btn-text');
- const pwaStatusBadge = document.getElementById('pwa-status-badge');
- const pwaHeading = document.getElementById('pwa-card-heading');
- const pwaSub = document.getElementById('pwa-card-sub');
+  (function() {
+    let deferredInstallPrompt = null;
+    const mainInstallBtn = document.getElementById('main-install-btn');
+    const mainInstallBtnText = document.getElementById('main-install-btn-text');
+    const pwaStatusBadge = document.getElementById('pwa-status-badge');
+    const pwaHeading = document.getElementById('pwa-card-heading');
+    const pwaSub = document.getElementById('pwa-card-sub');
 
- // Check if launched as Standalone PWA
- const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    // 1. Detection flags
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
 
- if (isStandalone) {
- if (pwaStatusBadge) pwaStatusBadge.innerHTML = '&#10003; FrankPass App is Active (Standalone Mode)';
- if (pwaHeading) pwaHeading.textContent = 'App Already Installed';
- if (pwaSub) pwaSub.textContent = 'You are currently using the standalone offline FrankPass application.';
- if (mainInstallBtnText) mainInstallBtnText.textContent = 'Launch Generator';
- mainInstallBtn.onclick = () => window.location.href = '/';
- } else {
- window.addEventListener('beforeinstallprompt', (e) => {
- e.preventDefault();
- deferredInstallPrompt = e;
- if (mainInstallBtnText) mainInstallBtnText.textContent = 'Install FrankPass App (1-Click)';
- });
+    // State A: Running inside the installed Standalone PWA app
+    function renderStandaloneMode() {
+      if (pwaStatusBadge) {
+        pwaStatusBadge.style.background = 'rgba(16,185,129,0.15)';
+        pwaStatusBadge.style.borderColor = 'rgba(16,185,129,0.35)';
+        pwaStatusBadge.style.color = 'var(--success)';
+        pwaStatusBadge.innerHTML = '&#10003; FrankPass App is Active (Standalone Offline Mode)';
+      }
+      if (pwaHeading) pwaHeading.textContent = 'App Already Running Standalone';
+      if (pwaSub) pwaSub.textContent = 'You are currently using the standalone offline FrankPass application.';
+      if (mainInstallBtnText) mainInstallBtnText.textContent = 'Launch Generator';
+      if (mainInstallBtn) {
+        mainInstallBtn.onclick = () => window.location.href = '/';
+      }
+    }
 
- mainInstallBtn.onclick = async () => {
- if (deferredInstallPrompt) {
- deferredInstallPrompt.prompt();
- const { outcome } = await deferredInstallPrompt.userChoice;
- if (outcome === 'accepted') {
- deferredInstallPrompt = null;
- showToast('&#10003; App Installed successfully!');
- }
- } else {
- // If browser doesn't support direct prompt, guide to manual install tab
- const tabBtn = document.querySelector('.platform-tab-btn.active') || document.querySelector('.platform-tab-btn');
- if (tabBtn) tabBtn.scrollIntoView({ behavior: 'smooth' });
- showToast('Follow device instructions below &#128071;');
- }
- };
- }
+    // State B: App is Installed on device, but user is currently browsing via standard browser tab
+    function renderOpenInAppMode() {
+      if (pwaStatusBadge) {
+        pwaStatusBadge.style.background = 'rgba(139,92,246,0.15)';
+        pwaStatusBadge.style.borderColor = 'rgba(139,92,246,0.35)';
+        pwaStatusBadge.style.color = 'var(--accent-light)';
+        pwaStatusBadge.innerHTML = '&#10003; FrankPass App is Installed on this Device';
+      }
+      if (pwaHeading) pwaHeading.textContent = 'FrankPass App is Installed';
+      if (pwaSub) pwaSub.textContent = 'Launch your dedicated standalone app icon or click below to open.';
+      if (mainInstallBtnText) mainInstallBtnText.textContent = '🚀 Open in FrankPass App';
+      if (mainInstallBtn) {
+        mainInstallBtn.onclick = () => {
+          window.location.href = '/';
+          showToast('🚀 Opening FrankPass App...');
+        };
+      }
+    }
 
- /* ── Platform Tabs Switcher ── */
+    // State C: Apple iOS (iPhone/iPad) Guidance
+    function renderIOSMode() {
+      if (pwaStatusBadge) pwaStatusBadge.innerHTML = '🍏 Apple iOS Web App Ready';
+      if (mainInstallBtnText) mainInstallBtnText.textContent = '🍏 Add to Home Screen (iOS)';
+      if (mainInstallBtn) {
+        mainInstallBtn.onclick = () => {
+          const iosTab = document.querySelector('[data-tab="tab-ios"]');
+          if (iosTab) iosTab.click();
+          const tabPane = document.getElementById('tab-ios');
+          if (tabPane) tabPane.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          showToast('Tap Share ⎋ at bottom &rarr; Choose "Add to Home Screen" ⊞');
+        };
+      }
+    }
+
+    // State D: 1-Click Installable (Uninstalled State)
+    function renderInstallableMode() {
+      if (mainInstallBtnText) mainInstallBtnText.textContent = '⚡ Install FrankPass App (1-Click)';
+      if (mainInstallBtn) {
+        mainInstallBtn.onclick = async () => {
+          if (deferredInstallPrompt) {
+            try {
+              deferredInstallPrompt.prompt();
+              const { outcome } = await deferredInstallPrompt.userChoice;
+              if (outcome === 'accepted') {
+                deferredInstallPrompt = null;
+                try { localStorage.setItem('fp_pwa_installed', 'true'); } catch(e) {}
+                renderOpenInAppMode();
+                showToast('&#10003; App Installed successfully!');
+              }
+            } catch(err) {
+              console.warn('Install prompt error:', err);
+              scrollToPlatformGuide();
+            }
+          } else {
+            scrollToPlatformGuide();
+          }
+        };
+      }
+    }
+
+    function scrollToPlatformGuide() {
+      const activeTab = document.querySelector('.platform-tab-btn.active') || document.querySelector('.platform-tab-btn');
+      if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth' });
+      showToast('Follow device instructions below &#128071;');
+    }
+
+    // Execution
+    if (isStandalone) {
+      renderStandaloneMode();
+    } else {
+      let isAlreadyInstalled = false;
+      try {
+        if (localStorage.getItem('fp_pwa_installed') === 'true') {
+          isAlreadyInstalled = true;
+        }
+      } catch(e) {}
+
+      // Check OS-level installed PWA status on Chromium
+      if (navigator.getInstalledRelatedApps) {
+        navigator.getInstalledRelatedApps().then(apps => {
+          if (apps && apps.length > 0) {
+            try { localStorage.setItem('fp_pwa_installed', 'true'); } catch(e) {}
+            renderOpenInAppMode();
+          } else if (isAlreadyInstalled) {
+            renderOpenInAppMode();
+          } else if (isIOS) {
+            renderIOSMode();
+          } else {
+            renderInstallableMode();
+          }
+        }).catch(() => {
+          if (isAlreadyInstalled) renderOpenInAppMode();
+          else if (isIOS) renderIOSMode();
+          else renderInstallableMode();
+        });
+      } else if (isAlreadyInstalled) {
+        renderOpenInAppMode();
+      } else if (isIOS) {
+        renderIOSMode();
+      } else {
+        renderInstallableMode();
+      }
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredInstallPrompt = e;
+        renderInstallableMode();
+      });
+
+      window.addEventListener('appinstalled', () => {
+        deferredInstallPrompt = null;
+        try { localStorage.setItem('fp_pwa_installed', 'true'); } catch(e) {}
+        renderOpenInAppMode();
+        showToast('&#10003; App Installed successfully!');
+      });
+    }
+  })();
+
+  /* ── Platform Tabs Switcher ── */
  const platformBtns = document.querySelectorAll('.platform-tab-btn');
  const tabPanes = document.querySelectorAll('.tab-pane');
 
