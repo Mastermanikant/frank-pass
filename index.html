@@ -660,11 +660,20 @@
     <button type="button" id="dismiss-guide-toast-btn" aria-label="Close guide tip" style="position:absolute;top:0.45rem;right:0.55rem;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;line-height:1;padding:0.2rem;border-radius:4px;transition:color 0.2s;" title="Dismiss tip" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✖</button>
   </div>
 
- <!-- Username / Email (Optional) -->
+  <!-- Username / Email (Optional) -->
   <div class="form-group" id="username-group">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
-    <label class="form-label" for="username-input" style="margin:0">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
-    <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Clear recent username suggestions from this browser" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear Recent</button>
+  <div class="vault-header-row">
+    <div style="display:flex;align-items:center;gap:0.4rem">
+      <label class="form-label" for="username-input" style="margin:0">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
+    </div>
+    <!-- Save Email Locally Pill Button / Controls -->
+    <div class="vault-badge-group">
+      <button type="button" id="toggle-save-usernames-btn" class="vault-status-pill status-unlocked" aria-label="Save Email Locally" title="Click to toggle automatic local saving of usernames/emails">
+        <span id="save-usernames-icon">💾</span>
+        <span id="save-usernames-text">Save Email: ON</span>
+      </button>
+      <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Clear recent username suggestions from this browser" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear</button>
+    </div>
   </div>
   <div class="input-wrapper">
   <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" list="username-recent-list" aria-describedby="username-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
@@ -2208,7 +2217,24 @@ if (maskBtn && outPassword) {
 
 /* ── Local Recent Usernames & Emails Auto-Suggestion Controller ── */
 const RECENT_USERNAMES_KEY = 'fp_recent_usernames';
-const MAX_RECENT_USERNAMES = 5;
+const SAVE_USERNAMES_PREF_KEY = 'fp_save_usernames_enabled';
+const MAX_RECENT_USERNAMES = 50;
+const MAX_VISIBLE_CHIPS = 5;
+
+function isSaveUsernamesEnabled() {
+  try {
+    const pref = localStorage.getItem(SAVE_USERNAMES_PREF_KEY);
+    return pref === null ? true : pref === 'true';
+  } catch (e) {
+    return true;
+  }
+}
+
+function setSaveUsernamesEnabled(val) {
+  try {
+    localStorage.setItem(SAVE_USERNAMES_PREF_KEY, val ? 'true' : 'false');
+  } catch (e) {}
+}
 
 function getRecentUsernames() {
   try {
@@ -2220,6 +2246,7 @@ function getRecentUsernames() {
 }
 
 function saveRecentUsername(uname) {
+  if (!isSaveUsernamesEnabled()) return;
   if (!uname || typeof uname !== 'string') return;
   const clean = uname.trim().toLowerCase().replace(/\s+/g, '');
   if (!clean || clean.length < 2) return;
@@ -2250,11 +2277,31 @@ function renderRecentUsernames() {
   const datalist = document.getElementById('username-recent-list');
   const chipsContainer = document.getElementById('recent-usernames-chips');
   const clearBtn = document.getElementById('clear-username-history-btn');
+  const toggleBtn = document.getElementById('toggle-save-usernames-btn');
+  const toggleText = document.getElementById('save-usernames-text');
+  const toggleIcon = document.getElementById('save-usernames-icon');
   const uInput = document.getElementById('username-input');
   
+  const isEnabled = isSaveUsernamesEnabled();
+  
+  // 1. Sync Toggle Pill Button
+  if (toggleBtn && toggleText && toggleIcon) {
+    if (isEnabled) {
+      toggleBtn.className = 'vault-status-pill status-unlocked';
+      toggleIcon.textContent = '💾';
+      toggleText.textContent = 'Save Email: ON';
+      toggleBtn.title = 'Auto-Save is ON. Click to disable saving emails locally.';
+    } else {
+      toggleBtn.className = 'vault-status-pill status-none';
+      toggleIcon.textContent = '🚫';
+      toggleText.textContent = 'Save Email: OFF';
+      toggleBtn.title = 'Auto-Save is OFF. Click to enable saving emails locally.';
+    }
+  }
+
   const list = getRecentUsernames();
   
-  // 1. Populate HTML5 Datalist
+  // 2. Populate HTML5 Datalist (all up to 50 items for instant autocomplete matching while typing)
   if (datalist) {
     datalist.innerHTML = '';
     list.forEach(item => {
@@ -2264,10 +2311,11 @@ function renderRecentUsernames() {
     });
   }
   
-  // 2. Populate Visual 1-Tap Chips
+  // 3. Populate Top Visual 1-Tap Chips (top 5 most recent for instant 1-click filling)
   if (chipsContainer) {
     chipsContainer.innerHTML = '';
-    if (list.length > 0) {
+    const topRecent = list.slice(0, MAX_VISIBLE_CHIPS);
+    if (topRecent.length > 0) {
       chipsContainer.style.display = 'flex';
       
       const label = document.createElement('span');
@@ -2277,7 +2325,7 @@ function renderRecentUsernames() {
       label.textContent = 'Recent:';
       chipsContainer.appendChild(label);
       
-      list.forEach(item => {
+      topRecent.forEach(item => {
         const chip = document.createElement('button');
         chip.type = 'button';
         chip.style.cssText = 'background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);font-size:0.72rem;font-weight:600;padding:2px 8px;border-radius:999px;cursor:pointer;transition:all 0.2s ease;';
@@ -2300,11 +2348,23 @@ function renderRecentUsernames() {
     }
   }
   
-  // 3. Clear button toggle
+  // 4. Clear button toggle
   if (clearBtn) {
     clearBtn.style.display = list.length > 0 ? 'inline-block' : 'none';
     clearBtn.onclick = clearRecentUsernames;
   }
+}
+
+// Toggle button click listener
+const toggleSaveUsernamesBtn = document.getElementById('toggle-save-usernames-btn');
+if (toggleSaveUsernamesBtn) {
+  toggleSaveUsernamesBtn.addEventListener('click', () => {
+    const currentState = isSaveUsernamesEnabled();
+    const newState = !currentState;
+    setSaveUsernamesEnabled(newState);
+    renderRecentUsernames();
+    showToast(newState ? 'Auto-Save enabled: Usernames will be saved locally' : 'Auto-Save disabled: Usernames will not be saved', 'info');
+  });
 }
 
 // Initial render
