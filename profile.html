@@ -728,31 +728,44 @@
     });
   }
 
-  // 4. Export JSON
+  // 4. Export JSON (Universal Sovereign Backup)
   const btnExport = document.getElementById('btn-export-accounts');
   if (btnExport) {
     btnExport.addEventListener('click', () => {
+      const accounts = getAccounts();
+      const pinned = getPinnedAccounts();
+      const saveUsernamesPref = localStorage.getItem(SAVE_USERNAMES_PREF_KEY) !== 'false';
+      const clipboardAutoclear = parseInt(localStorage.getItem(CLIPBOARD_AUTOCLEAR_KEY) || '30', 10);
+      
       const data = {
         app: "FrankPass",
-        version: "4.3.7",
+        formatVersion: "4.4.0",
+        exportSource: "website",
         exportedAt: new Date().toISOString(),
-        accounts: getAccounts(),
-        pinned: getPinnedAccounts()
+        accounts: accounts,
+        pinnedAccounts: pinned,
+        savedUsernames: accounts,
+        profiles: [],
+        sitePreferences: {},
+        vaultSettings: {
+          saveUsernamesEnabled: saveUsernamesPref,
+          clipboardAutoClear: clipboardAutoclear
+        }
       };
       const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `frankpass-saved-accounts-${new Date().toISOString().slice(0,10)}.json`;
+      a.download = `frankpass-backup-${new Date().toISOString().slice(0,10)}.json`;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast('Accounts JSON exported successfully!', 'success');
+      showToast('Universal Backup JSON exported successfully!', 'success');
     });
   }
 
-  // 5. Import JSON
+  // 5. Universal Tolerant Import (Accepts Website JSON, Extension .frankpass, Legacy formats)
   const importTrigger = document.getElementById('btn-import-trigger');
   const importFile = document.getElementById('import-accounts-file');
   if (importTrigger && importFile) {
@@ -764,24 +777,67 @@
       reader.onload = (event) => {
         try {
           const parsed = JSON.parse(event.target.result);
-          const rawAccounts = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.accounts) ? parsed.accounts : []);
-          const cleanAccounts = rawAccounts.map(cleanUsername).filter(a => a.length >= 2);
+          if (!parsed || typeof parsed !== 'object') {
+            throw new Error('Invalid file format');
+          }
+
+          // Smart Extraction from all possible sources
+          let collected = [];
+          
+          if (Array.isArray(parsed)) {
+            collected = parsed;
+          } else {
+            if (Array.isArray(parsed.accounts)) collected.push(...parsed.accounts);
+            if (Array.isArray(parsed.savedUsernames)) collected.push(...parsed.savedUsernames);
+            if (Array.isArray(parsed.usernames)) collected.push(...parsed.usernames);
+            if (Array.isArray(parsed.profiles)) {
+              parsed.profiles.forEach(p => {
+                if (p && typeof p.name === 'string' && p.name.includes('@')) {
+                  collected.push(p.name);
+                }
+              });
+            }
+          }
+
+          const cleanAccounts = collected
+            .map(cleanUsername)
+            .filter(a => typeof a === 'string' && a.length >= 2);
+
           if (cleanAccounts.length === 0) {
-            showToast('No valid accounts found in JSON file', 'warning');
+            showToast('No valid accounts found in backup file', 'warning');
             return;
           }
+
           let current = getAccounts();
           let merged = Array.from(new Set([...current, ...cleanAccounts])).slice(0, MAX_ACCOUNTS);
           setAccounts(merged);
-          if (Array.isArray(parsed.pinned)) {
+
+          // Pinned accounts extraction
+          const pinnedSource = Array.isArray(parsed.pinnedAccounts) ? parsed.pinnedAccounts : (Array.isArray(parsed.pinned) ? parsed.pinned : []);
+          if (pinnedSource.length > 0) {
             let currentPins = getPinnedAccounts();
-            let mergedPins = Array.from(new Set([...currentPins, ...parsed.pinned.map(cleanUsername)]));
+            let mergedPins = Array.from(new Set([...currentPins, ...pinnedSource.map(cleanUsername)])).filter(p => merged.includes(p));
             setPinnedAccounts(mergedPins);
           }
+
+          // Vault Settings extraction if present
+          if (parsed.vaultSettings && typeof parsed.vaultSettings === 'object') {
+            if (typeof parsed.vaultSettings.saveUsernamesEnabled === 'boolean') {
+              localStorage.setItem(SAVE_USERNAMES_PREF_KEY, String(parsed.vaultSettings.saveUsernamesEnabled));
+              const toggle = document.getElementById('pref-save-usernames-toggle');
+              if (toggle) toggle.checked = parsed.vaultSettings.saveUsernamesEnabled;
+            }
+            if (typeof parsed.vaultSettings.clipboardAutoClear === 'number') {
+              localStorage.setItem(CLIPBOARD_AUTOCLEAR_KEY, String(parsed.vaultSettings.clipboardAutoClear));
+              const select = document.getElementById('pref-clipboard-autoclear');
+              if (select) select.value = String(parsed.vaultSettings.clipboardAutoClear);
+            }
+          }
+
           renderAccountsList();
-          showToast(`Imported ${cleanAccounts.length} accounts successfully!`, 'success');
+          showToast(`Imported ${cleanAccounts.length} accounts & settings successfully!`, 'success');
         } catch (err) {
-          showToast('Invalid JSON file format', 'error');
+          showToast('Invalid JSON / Backup file format', 'error');
         }
       };
       reader.readAsText(file);
