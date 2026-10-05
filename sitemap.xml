@@ -169,6 +169,18 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://frankpass.com/profile-hindi.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://frankpass.com/profile.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
     <loc>https://frankpass.com/pro.html</loc>
     <lastmod>2026-09-29</lastmod>
     <changefreq>weekly</changefreq>

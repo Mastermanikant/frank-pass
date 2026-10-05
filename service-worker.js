@@ -1,8 +1,10 @@
-// FrankPass Service Worker v4.3.6 (Auto Controller Change & Instant Sync)
-const CACHE_NAME = 'frankpass-v4.3.6';
+// FrankPass Service Worker v4.3.7 (Auto Controller Change & Instant Sync)
+const CACHE_NAME = 'frankpass-v4.3.7';
 const CACHED_URLS = [
     '/',
     '/index.html',
+    '/profile.html',
+    '/profile-hindi.html',
     '/random-password-generator.html',
     '/pin.html',
     '/comparison-between-frankpass-all-generators-deterministic-random-pin.html',

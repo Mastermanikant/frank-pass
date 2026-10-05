@@ -666,7 +666,7 @@
     <div style="display:flex;align-items:center;gap:0.4rem">
       <label class="form-label" for="username-input" style="margin:0">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
     </div>
-    <!-- Torch-style Sliding Toggle Switch & Clear All -->
+    <!-- Torch-style Sliding Toggle Switch, Manage Pill & Clear All -->
     <div class="vault-badge-group">
       <label class="torch-switch-wrap" for="toggle-save-usernames-check" title="Toggle automatic local saving of usernames/emails">
         <span class="torch-switch-label" id="save-usernames-label">Save Email</span>
@@ -675,6 +675,10 @@
           <span class="torch-slider"></span>
         </div>
       </label>
+      <a href="/profile.html" id="manage-accounts-btn" class="vault-status-pill status-none" style="text-decoration:none;display:inline-flex;align-items:center;gap:4px;" title="Open Profile & Pre-Saved Accounts Manager">
+        <span>📁</span>
+        <span>Manage (<span id="saved-accounts-count">0</span>)</span>
+      </a>
       <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Clear all recent username suggestions from this browser" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear All</button>
     </div>
   </div>
@@ -1330,9 +1334,9 @@
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
  <span>FAQ</span>
  </a>
- <a href="/about-us.html" class="mob-nav-item" aria-label="About">
+ <a href="/profile.html" class="mob-nav-item" aria-label="Profile">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
- <span>About</span>
+ <span>Profile</span>
  </a>
 </nav>
 
@@ -2482,7 +2486,13 @@ function renderRecentUsernames() {
     }
   }
   
-  // 4. Clear button toggle
+  // 4. Update Manage Button Count Badge
+  const countBadge = document.getElementById('saved-accounts-count');
+  if (countBadge) {
+    countBadge.textContent = list.length;
+  }
+
+  // 5. Clear button toggle
   if (clearBtn) {
     clearBtn.style.display = list.length > 0 ? 'inline-block' : 'none';
     clearBtn.onclick = requestClearRecentUsernames;

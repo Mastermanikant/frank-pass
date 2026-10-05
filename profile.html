@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offline Profile &amp; Pre-Saved Accounts Manager - FrankPass</title>
+  <meta name="description" content="Manage your pre-saved emails, device vault security, clipboard preferences, and offline data backups locally. Zero cloud databases - 100% private to your browser.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://frankpass.com/profile.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/profile.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/profile-hindi.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/profile.html">
+  
+  <meta property="og:title" content="Offline Profile &amp; Account Manager - FrankPass">
+  <meta property="og:description" content="Manage pre-saved usernames, device vault PINs, and zero-cloud JSON backups.">
+  <meta property="og:url" content="https://frankpass.com/profile.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <meta name="twitter:title" content="FrankPass Offline Profile Manager">
+  <meta name="twitter:description" content="Manage pre-saved emails, vault settings, and local JSON backups.">
+  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/style.css?v=4.3.7">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+
+  <style>
+    .profile-container {
+      max-width: 800px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    .profile-header-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: var(--card-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-avatar-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(99,102,241,0.25));
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+      box-shadow: 0 8px 20px rgba(139,92,246,0.25);
+    }
+    .profile-section-card {
+      background: var(--card-glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--card-shadow);
+      transition: border-color 0.2s;
+    }
+    .profile-section-card:hover {
+      border-color: rgba(139,92,246,0.4);
+    }
+    .profile-card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+      gap: 0.5rem;
+    }
+    .profile-account-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      margin-bottom: 0.6rem;
+      transition: all 0.2s ease;
+    }
+    .profile-account-item:hover {
+      border-color: rgba(139,92,246,0.3);
+      transform: translateY(-1px);
+    }
+    .profile-account-item.is-pinned {
+      border-color: rgba(234, 179, 8, 0.4);
+      background: rgba(234, 179, 8, 0.05);
+    }
+    .pin-star-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 2px 6px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .pin-star-btn.active {
+      color: #eab308;
+    }
+    .pin-star-btn:hover {
+      transform: scale(1.15);
+    }
+    .account-del-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .account-del-btn:hover {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.12);
+    }
+    .profile-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 640px) {
+      .profile-grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .profile-header-card {
+        padding: 1.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Skip to main content -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <div class="header-country custom-country-dropdown" aria-label="Select your country">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+        <span id="country-display-name">India</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+        <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <input type="hidden" id="region" value="India (IN)">
+
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      <a href="/" class="nav-link">Generator</a>
+      <a href="/get-started.html" class="nav-link">Get Started</a>
+      <a href="/pro.html" class="nav-link">Pro</a>
+      <a href="/library.html" class="nav-link">Library</a>
+      <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle dark and light theme" title="Toggle theme">
+        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="/pro.html" class="btn-primary" style="padding:0.45rem 0.95rem;font-size:0.84rem;border-radius:8px;font-weight:700;text-decoration:none">Get Pro 👑 →</a>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main id="main-content" class="profile-container" role="main">
+
+  <!-- Header Card -->
+  <div class="profile-header-card">
+    <div class="profile-avatar-circle">👤</div>
+    <h1 style="font-size:1.75rem;font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0">Offline Profile &amp; Accounts</h1>
+    <p style="font-size:0.92rem;color:var(--text-muted);margin:0 auto;max-width:560px;line-height:1.55">
+      Manage your pre-saved emails, device vault security, and offline data backups locally. Zero cloud databases - 100% private to this device.
+    </p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-top:1.25rem;flex-wrap:wrap">
+      <span class="trust-pill" style="font-size:0.76rem;border:1px solid var(--border);padding:4px 10px;border-radius:999px;color:var(--text-muted)">
+        🔒 100% Client-Side RAM
+      </span>
+      <span class="trust-pill" style="font-size:0.76rem;border:1px solid var(--border);padding:4px 10px;border-radius:999px;color:var(--text-muted)">
+        🚫 Zero Telemetry
+      </span>
+      <span class="trust-pill" style="font-size:0.76rem;border:1px solid var(--border);padding:4px 10px;border-radius:999px;color:var(--text-muted)">
+        💾 LocalStorage Sandbox
+      </span>
+    </div>
+  </div>
+
+  <!-- SECTION 1: PRE-SAVED ACCOUNTS & EMAILS -->
+  <section class="profile-section-card" aria-labelledby="accounts-section-title">
+    <div class="profile-card-title">
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <span>📧</span>
+        <span id="accounts-section-title">Pre-Saved Usernames &amp; Emails</span>
+      </div>
+      <span id="profile-accounts-badge" style="font-size:0.75rem;font-weight:700;background:rgba(139,92,246,0.15);color:var(--accent-light);border:1px solid rgba(139,92,246,0.3);padding:3px 8px;border-radius:999px">0 Saved</span>
+    </div>
+
+    <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:1.15rem;line-height:1.5">
+      Add your frequent emails and usernames in advance. They will automatically appear in autocomplete suggestions and quick 1-tap chips on the generator.
+    </p>
+
+    <!-- Add Account Input Form -->
+    <div style="display:flex;gap:8px;margin-bottom:0.75rem;flex-wrap:wrap">
+      <input type="text" id="new-account-input" class="form-input" placeholder="e.g. work@company.com, personal, user_01" style="flex:1;min-width:220px;text-transform:lowercase" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <button type="button" id="btn-add-account" class="btn-primary" style="padding:8px 16px;border-radius:8px;font-weight:700;font-size:0.85rem">
+        + Add Account
+      </button>
+      <button type="button" id="btn-toggle-bulk-input" class="btn-ghost" style="padding:8px 12px;border-radius:8px;font-size:0.82rem;font-weight:600;border:1px solid var(--border)">
+        Paste Multiple ▾
+      </button>
+    </div>
+
+    <!-- Bulk Paste Box (Collapsed by default) -->
+    <div id="bulk-input-container" style="display:none;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;padding:1rem;margin-bottom:1rem">
+      <label class="form-label" for="bulk-accounts-textarea" style="font-size:0.78rem">Paste multiple emails / usernames (separated by commas or new lines):</label>
+      <textarea id="bulk-accounts-textarea" class="form-input" rows="3" placeholder="work@gmail.com, personal@yahoo.com, user_test" style="width:100%;box-sizing:border-box;font-family:monospace;font-size:0.82rem;margin-bottom:0.6rem;text-transform:lowercase"></textarea>
+      <div style="display:flex;justify-content:flex-end;gap:8px">
+        <button type="button" id="btn-bulk-cancel" class="btn-ghost" style="padding:5px 10px;font-size:0.78rem;border:1px solid var(--border);border-radius:6px">Cancel</button>
+        <button type="button" id="btn-bulk-save" class="btn-primary" style="padding:5px 14px;font-size:0.78rem;font-weight:700;border-radius:6px">Add All to List</button>
+      </div>
+    </div>
+
+    <!-- Search/Filter Input if > 5 accounts -->
+    <div id="account-search-wrap" style="display:none;margin-bottom:0.75rem">
+      <input type="search" id="account-filter-input" class="form-input" placeholder="🔍 Search saved accounts..." style="font-size:0.82rem;padding:6px 10px">
+    </div>
+
+    <!-- List of Saved Accounts -->
+    <div id="profile-accounts-list-container" style="margin-top:1rem">
+      <!-- Populated via JavaScript -->
+    </div>
+
+    <!-- Zero-Cloud Backup & Portability Actions -->
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);flex-wrap:wrap">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" id="btn-export-accounts" class="btn-ghost" style="padding:6px 12px;font-size:0.78rem;font-weight:600;border:1px solid var(--border);border-radius:8px;display:inline-flex;align-items:center;gap:5px" title="Export saved accounts to a JSON file">
+          <span>📥</span> <span>Export Accounts JSON</span>
+        </button>
+        <button type="button" id="btn-import-trigger" class="btn-ghost" style="padding:6px 12px;font-size:0.78rem;font-weight:600;border:1px solid var(--border);border-radius:8px;display:inline-flex;align-items:center;gap:5px" title="Import accounts from JSON file">
+          <span>📤</span> <span>Import JSON</span>
+        </button>
+        <input type="file" id="import-accounts-file" accept=".json" style="display:none">
+      </div>
+
+      <button type="button" id="btn-profile-clear-all" style="background:transparent;border:none;color:var(--text-muted);font-size:0.78rem;font-weight:600;cursor:pointer;padding:4px 8px;border-radius:6px;transition:color 0.2s" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">
+        ✕ Clear All Accounts
+      </button>
+    </div>
+  </section>
+
+  <!-- SECTION 2: DEVICE VAULT & MASTER KEY SECURITY -->
+  <section class="profile-section-card" aria-labelledby="vault-section-title">
+    <div class="profile-card-title">
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <span>🔒</span>
+        <span id="vault-section-title">Device Vault &amp; Master Key</span>
+      </div>
+      <span id="vault-state-pill" class="vault-status-pill status-none">Not Configured</span>
+    </div>
+
+    <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:1.15rem;line-height:1.5">
+      Optionally save your Master Secret Key encrypted with a local 4-digit PIN or Device Biometrics (FaceID / Fingerprint). Your key never leaves your local browser RAM.
+    </p>
+
+    <div id="vault-details-box" style="background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;padding:1.15rem;margin-bottom:1rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem">
+        <span style="font-size:0.82rem;color:var(--text-muted)">Vault Configuration:</span>
+        <strong id="vault-status-desc" style="font-size:0.84rem;color:var(--text-primary)">No key saved on this device</strong>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.6rem">
+        <span style="font-size:0.82rem;color:var(--text-muted)">Biometric Unlock:</span>
+        <strong id="vault-bio-desc" style="font-size:0.84rem;color:var(--text-primary)">Disabled</strong>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:0.82rem;color:var(--text-muted)">Encryption Iterations:</span>
+        <strong style="font-size:0.84rem;color:var(--accent-light)">1,000,000 PBKDF2-SHA512</strong>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a href="/" class="btn-primary" style="padding:7px 14px;font-size:0.82rem;font-weight:700;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:5px">
+        <span>🔑</span> <span>Open Generator &amp; Manage Vault</span>
+      </a>
+      <a href="/secret-key-guide.html" class="btn-ghost" style="padding:7px 12px;font-size:0.82rem;font-weight:600;border:1px solid var(--border);border-radius:8px;text-decoration:none">
+        📖 Secret Key Best Practices
+      </a>
+    </div>
+  </section>
+
+  <!-- SECTION 3: APP & PRIVACY PREFERENCES -->
+  <section class="profile-section-card" aria-labelledby="prefs-section-title">
+    <div class="profile-card-title">
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <span>⚙️</span>
+        <span id="prefs-section-title">App &amp; Privacy Preferences</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:1.15rem">
+      
+      <!-- Toggle: Auto-Save Usernames -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--border)">
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Auto-Save Usernames on Generate</strong>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Automatically record used emails to suggestions when generating passwords.</span>
+        </div>
+        <label class="torch-switch-wrap" for="pref-autosave-check">
+          <div class="torch-switch">
+            <input type="checkbox" id="pref-autosave-check" checked>
+            <span class="torch-slider"></span>
+          </div>
+        </label>
+      </div>
+
+      <!-- Clipboard Auto-Clear Timeout -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Clipboard Auto-Clear Delay</strong>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Automatically wipe copied passwords from OS clipboard for privacy.</span>
+        </div>
+        <select id="pref-clipboard-select" class="form-input" style="width:auto;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px">
+          <option value="15">15 Seconds</option>
+          <option value="30" selected>30 Seconds (Default)</option>
+          <option value="60">60 Seconds</option>
+          <option value="120">2 Minutes</option>
+          <option value="0">Never (Manual Clear)</option>
+        </select>
+      </div>
+
+      <!-- Quick Reset All Cache -->
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Reset All Local Application Cache</strong>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Clear saved emails, settings, and theme preferences from this browser.</span>
+        </div>
+        <button type="button" id="btn-reset-all-prefs" class="btn-ghost" style="color:#ef4444;border-color:rgba(239,68,68,0.3);padding:6px 12px;font-size:0.78rem;font-weight:700;border-radius:8px" onmouseover="this.style.background='rgba(239,68,68,0.1)'" onmouseout="this.style.background='transparent'">
+          Reset All Preferences
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: ABOUT, FOUNDER & CRYPTOGRAPHIC BLUEPRINTS -->
+  <section class="profile-section-card" aria-labelledby="about-section-title">
+    <div class="profile-card-title">
+      <div style="display:flex;align-items:center;gap:0.5rem">
+        <span>🏢</span>
+        <span id="about-section-title">About FrankPass &amp; Founder</span>
+      </div>
+    </div>
+
+    <div class="profile-grid-2">
+      <a href="/founder-mastermanikant.html" style="text-decoration:none;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;padding:1rem;display:flex;align-items:flex-start;gap:10px;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="font-size:1.4rem">👨‍💻</span>
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Founder Story</strong>
+          <span style="font-size:0.76rem;color:var(--text-muted)">Read Master Manikant Yadav's cryptographic journey &amp; research memoirs.</span>
+        </div>
+      </a>
+
+      <a href="/about-us.html" style="text-decoration:none;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;padding:1rem;display:flex;align-items:flex-start;gap:10px;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="font-size:1.4rem">🏢</span>
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">About Project</strong>
+          <span style="font-size:0.76rem;color:var(--text-muted)">Why stateless math eliminates centralized database breach exposure.</span>
+        </div>
+      </a>
+
+      <a href="/whitepaper.html" style="text-decoration:none;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;padding:1rem;display:flex;align-items:flex-start;gap:10px;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="font-size:1.4rem">📄</span>
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Cryptographic Specs</strong>
+          <span style="font-size:0.76rem;color:var(--text-muted)">Mathematical whitepaper on PBKDF2-HMAC-SHA512 iteration proofs.</span>
+        </div>
+      </a>
+
+      <a href="/library.html" style="text-decoration:none;background:var(--bg-tertiary);border:1px solid var(--border);border-radius:12px;padding:1rem;display:flex;align-items:flex-start;gap:10px;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+        <span style="font-size:1.4rem">🏛️</span>
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Master Library</strong>
+          <span style="font-size:0.76rem;color:var(--text-muted)">Complete directory of all 42+ guides, whitepapers, and CBT tools.</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<!-- SHARED FOOTER -->
+<div id="site-footer"></div>
+
+<!-- MOBILE BOTTOM NAVIGATION (With Profile as 5th Active Tab) -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="/get-started.html" class="mob-nav-item" aria-label="Get Started with FrankPass">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>Get Started</span>
+  </a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="Pro">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    <span>Pro</span>
+  </a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>FAQ</span>
+  </a>
+  <a href="/profile.html" class="mob-nav-item active" aria-label="Profile" aria-current="page">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>Profile</span>
+  </a>
+</nav>
+
+<!-- Toast Container -->
+<div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+<!-- Core Scripts -->
+<script src="/frankpass-config.js?v=4.3.7"></script>
+<script src="/frankpass-vault.js?v=4.3.7"></script>
+<script src="/footer.js?v=4.3.7"></script>
+
+<script>
+/* ── Offline Profile Page Controller ── */
+(function initProfilePage() {
+  const RECENT_USERNAMES_KEY = 'fp_recent_usernames';
+  const PINNED_USERNAMES_KEY = 'fp_pinned_usernames';
+  const SAVE_USERNAMES_PREF_KEY = 'fp_save_usernames_enabled';
+  const CLIPBOARD_AUTOCLEAR_KEY = 'fp_clipboard_autoclear';
+  const MAX_ACCOUNTS = 50;
+
+  // Toast Helper
+  function showToast(msg, type = '') {
+    const t = document.createElement('div');
+    t.className = 'toast' + (type ? ' ' + type : '');
+    t.textContent = msg;
+    const container = document.getElementById('toast-container');
+    if (container) {
+      container.appendChild(t);
+      setTimeout(() => t.remove(), 3000);
+    }
+  }
+
+  // Storage Getters / Setters
+  function getAccounts() {
+    try {
+      const raw = localStorage.getItem(RECENT_USERNAMES_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function setAccounts(list) {
+    try {
+      localStorage.setItem(RECENT_USERNAMES_KEY, JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  function getPinnedAccounts() {
+    try {
+      const raw = localStorage.getItem(PINNED_USERNAMES_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function setPinnedAccounts(list) {
+    try {
+      localStorage.setItem(PINNED_USERNAMES_KEY, JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  // Sanitizer
+  function cleanUsername(u) {
+    if (!u || typeof u !== 'string') return '';
+    return u.trim().toLowerCase().replace(/\s+/g, '');
+  }
+
+  // Render Saved Accounts
+  function renderAccountsList(filter = '') {
+    const listContainer = document.getElementById('profile-accounts-list-container');
+    const badge = document.getElementById('profile-accounts-badge');
+    const searchWrap = document.getElementById('account-search-wrap');
+    if (!listContainer) return;
+
+    const allAccounts = getAccounts();
+    const pinnedAccounts = getPinnedAccounts();
+
+    if (badge) {
+      badge.textContent = `${allAccounts.length} Saved`;
+    }
+
+    if (searchWrap) {
+      searchWrap.style.display = allAccounts.length > 5 ? 'block' : 'none';
+    }
+
+    // Filter if search query exists
+    let displayList = allAccounts;
+    if (filter) {
+      const q = filter.toLowerCase();
+      displayList = allAccounts.filter(acc => acc.toLowerCase().includes(q));
+    }
+
+    if (displayList.length === 0) {
+      if (filter) {
+        listContainer.innerHTML = '<div style="text-align:center;padding:2rem 1rem;color:var(--text-muted);font-size:0.86rem">No matching accounts found for "' + filter + '"</div>';
+      } else {
+        listContainer.innerHTML = '<div style="text-align:center;padding:2.5rem 1rem;background:var(--bg-tertiary);border:1px dashed var(--border);border-radius:12px;color:var(--text-muted);font-size:0.88rem"><span style="font-size:2rem;display:block;margin-bottom:0.5rem">📭</span>No pre-saved accounts yet. Add your main email above to get started.</div>';
+      }
+      return;
+    }
+
+    listContainer.innerHTML = '';
+    displayList.forEach((account) => {
+      const isPinned = pinnedAccounts.includes(account);
+      const row = document.createElement('div');
+      row.className = 'profile-account-item' + (isPinned ? ' is-pinned' : '');
+
+      const left = document.createElement('div');
+      left.style.cssText = 'display:flex;align-items:center;gap:10px;overflow:hidden;text-overflow:ellipsis;';
+
+      const icon = document.createElement('span');
+      icon.textContent = account.includes('@') ? '✉️' : '👤';
+      icon.style.fontSize = '1.1rem';
+
+      const textWrap = document.createElement('div');
+      const name = document.createElement('span');
+      name.textContent = account;
+      name.style.cssText = 'font-size:0.88rem;font-weight:700;color:var(--text-primary);display:block;word-break:break-all;';
+
+      const tag = document.createElement('span');
+      tag.style.cssText = 'font-size:0.72rem;color:var(--text-muted);';
+      tag.textContent = isPinned ? '⭐ Pinned to Top' : 'Local Account';
+
+      textWrap.appendChild(name);
+      textWrap.appendChild(tag);
+      left.appendChild(icon);
+      left.appendChild(textWrap);
+
+      const right = document.createElement('div');
+      right.style.cssText = 'display:flex;align-items:center;gap:6px;';
+
+      // Pin button
+      const pinBtn = document.createElement('button');
+      pinBtn.type = 'button';
+      pinBtn.className = 'pin-star-btn' + (isPinned ? ' active' : '');
+      pinBtn.innerHTML = isPinned ? '★' : '☆';
+      pinBtn.title = isPinned ? 'Unpin account' : 'Pin to top of suggestions';
+      pinBtn.onclick = () => {
+        let pinned = getPinnedAccounts();
+        if (pinned.includes(account)) {
+          pinned = pinned.filter(a => a !== account);
+          showToast('Account unpinned', 'info');
+        } else {
+          pinned.push(account);
+          // Move pinned item to front of accounts list
+          let accs = getAccounts().filter(a => a !== account);
+          accs.unshift(account);
+          setAccounts(accs);
+          showToast('Account pinned to top ⭐', 'info');
+        }
+        setPinnedAccounts(pinned);
+        renderAccountsList(document.getElementById('account-filter-input')?.value || '');
+      };
+
+      // Delete button
+      const delBtn = document.createElement('button');
+      delBtn.type = 'button';
+      delBtn.className = 'account-del-btn';
+      delBtn.textContent = '✕ Remove';
+      delBtn.title = 'Remove ' + account;
+      delBtn.onclick = () => {
+        let accs = getAccounts().filter(a => a !== account);
+        let pinned = getPinnedAccounts().filter(a => a !== account);
+        setAccounts(accs);
+        setPinnedAccounts(pinned);
+        renderAccountsList(document.getElementById('account-filter-input')?.value || '');
+        showToast(`Removed "${account}"`, 'info');
+      };
+
+      right.appendChild(pinBtn);
+      right.appendChild(delBtn);
+      row.appendChild(left);
+      row.appendChild(right);
+      listContainer.appendChild(row);
+    });
+  }
+
+  // Add Account Action
+  function handleAddAccount(rawInput) {
+    const clean = cleanUsername(rawInput);
+    if (!clean || clean.length < 2) {
+      showToast('Please enter a valid email or username (min 2 chars)', 'warning');
+      return false;
+    }
+
+    let accs = getAccounts();
+    if (accs.includes(clean)) {
+      showToast('Account is already saved in your list', 'info');
+      return false;
+    }
+
+    if (accs.length >= MAX_ACCOUNTS) {
+      showToast('Maximum 50 saved accounts reached', 'warning');
+      return false;
+    }
+
+    accs.push(clean);
+    setAccounts(accs);
+    renderAccountsList();
+    showToast(`Added "${clean}" to saved accounts`, 'success');
+    return true;
+  }
+
+  // 1. Single Add
+  const btnAdd = document.getElementById('btn-add-account');
+  const inputNew = document.getElementById('new-account-input');
+  if (btnAdd && inputNew) {
+    btnAdd.addEventListener('click', () => {
+      if (handleAddAccount(inputNew.value)) {
+        inputNew.value = '';
+      }
+    });
+    inputNew.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (handleAddAccount(inputNew.value)) {
+          inputNew.value = '';
+        }
+      }
+    });
+  }
+
+  // 2. Bulk Add
+  const btnToggleBulk = document.getElementById('btn-toggle-bulk-input');
+  const bulkContainer = document.getElementById('bulk-input-container');
+  const bulkTextarea = document.getElementById('bulk-accounts-textarea');
+  const btnBulkSave = document.getElementById('btn-bulk-save');
+  const btnBulkCancel = document.getElementById('btn-bulk-cancel');
+
+  if (btnToggleBulk && bulkContainer) {
+    btnToggleBulk.addEventListener('click', () => {
+      const isClosed = bulkContainer.style.display === 'none';
+      bulkContainer.style.display = isClosed ? 'block' : 'none';
+      btnToggleBulk.textContent = isClosed ? 'Hide Bulk ▴' : 'Paste Multiple ▾';
+      if (isClosed && bulkTextarea) bulkTextarea.focus();
+    });
+  }
+  if (btnBulkCancel && bulkContainer) {
+    btnBulkCancel.addEventListener('click', () => {
+      bulkContainer.style.display = 'none';
+      if (btnToggleBulk) btnToggleBulk.textContent = 'Paste Multiple ▾';
+    });
+  }
+  if (btnBulkSave && bulkTextarea) {
+    btnBulkSave.addEventListener('click', () => {
+      const rawText = bulkTextarea.value || '';
+      const items = rawText.split(/[\n,;]+/).map(cleanUsername).filter(a => a.length >= 2);
+      if (items.length === 0) {
+        showToast('No valid usernames or emails found in paste box', 'warning');
+        return;
+      }
+      let accs = getAccounts();
+      let addedCount = 0;
+      items.forEach(item => {
+        if (!accs.includes(item) && accs.length < MAX_ACCOUNTS) {
+          accs.push(item);
+          addedCount++;
+        }
+      });
+      setAccounts(accs);
+      renderAccountsList();
+      bulkTextarea.value = '';
+      bulkContainer.style.display = 'none';
+      if (btnToggleBulk) btnToggleBulk.textContent = 'Paste Multiple ▾';
+      showToast(`Added ${addedCount} new accounts successfully!`, 'success');
+    });
+  }
+
+  // 3. Search filter listener
+  const filterInput = document.getElementById('account-filter-input');
+  if (filterInput) {
+    filterInput.addEventListener('input', (e) => {
+      renderAccountsList(e.target.value);
+    });
+  }
+
+  // 4. Export JSON
+  const btnExport = document.getElementById('btn-export-accounts');
+  if (btnExport) {
+    btnExport.addEventListener('click', () => {
+      const data = {
+        app: "FrankPass",
+        version: "4.3.7",
+        exportedAt: new Date().toISOString(),
+        accounts: getAccounts(),
+        pinned: getPinnedAccounts()
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `frankpass-saved-accounts-${new Date().toISOString().slice(0,10)}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('Accounts JSON exported successfully!', 'success');
+    });
+  }
+
+  // 5. Import JSON
+  const importTrigger = document.getElementById('btn-import-trigger');
+  const importFile = document.getElementById('import-accounts-file');
+  if (importTrigger && importFile) {
+    importTrigger.addEventListener('click', () => importFile.click());
+    importFile.addEventListener('change', (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        try {
+          const parsed = JSON.parse(event.target.result);
+          const rawAccounts = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.accounts) ? parsed.accounts : []);
+          const cleanAccounts = rawAccounts.map(cleanUsername).filter(a => a.length >= 2);
+          if (cleanAccounts.length === 0) {
+            showToast('No valid accounts found in JSON file', 'warning');
+            return;
+          }
+          let current = getAccounts();
+          let merged = Array.from(new Set([...current, ...cleanAccounts])).slice(0, MAX_ACCOUNTS);
+          setAccounts(merged);
+          if (Array.isArray(parsed.pinned)) {
+            let currentPins = getPinnedAccounts();
+            let mergedPins = Array.from(new Set([...currentPins, ...parsed.pinned.map(cleanUsername)]));
+            setPinnedAccounts(mergedPins);
+          }
+          renderAccountsList();
+          showToast(`Imported ${cleanAccounts.length} accounts successfully!`, 'success');
+        } catch (err) {
+          showToast('Invalid JSON file format', 'error');
+        }
+      };
+      reader.readAsText(file);
+      importFile.value = '';
+    });
+  }
+
+  // 6. Clear All
+  const btnClearAll = document.getElementById('btn-profile-clear-all');
+  if (btnClearAll) {
+    btnClearAll.addEventListener('click', () => {
+      if (confirm('Are you sure you want to remove all saved accounts from this browser?')) {
+        localStorage.removeItem(RECENT_USERNAMES_KEY);
+        localStorage.removeItem(PINNED_USERNAMES_KEY);
+        renderAccountsList();
+        showToast('All saved accounts removed', 'info');
+      }
+    });
+  }
+
+  // 7. Vault Status Sync
+  function syncVaultStatus() {
+    const pill = document.getElementById('vault-state-pill');
+    const desc = document.getElementById('vault-status-desc');
+    const bioDesc = document.getElementById('vault-bio-desc');
+
+    if (typeof FrankPassVault !== 'undefined') {
+      const isConfigured = FrankPassVault.isConfigured();
+      const isUnlocked = FrankPassVault.isUnlocked();
+      const hasBio = FrankPassVault.hasBiometrics();
+
+      if (pill) {
+        if (!isConfigured) {
+          pill.className = 'vault-status-pill status-none';
+          pill.textContent = '🔒 Not Configured';
+        } else if (isUnlocked) {
+          pill.className = 'vault-status-pill status-unlocked';
+          pill.textContent = '🔓 Unlocked';
+        } else {
+          pill.className = 'vault-status-pill status-locked';
+          pill.textContent = '🔒 Locked (PIN Protected)';
+        }
+      }
+
+      if (desc) {
+        desc.textContent = isConfigured ? (isUnlocked ? 'Key Active in RAM' : 'Encrypted with 4-Digit PIN') : 'No key saved on this device';
+      }
+      if (bioDesc) {
+        bioDesc.textContent = hasBio ? 'Enabled (FaceID / Fingerprint)' : 'Disabled (PIN Only)';
+      }
+    }
+  }
+
+  // 8. Preferences Handlers
+  const autoSaveCheck = document.getElementById('pref-autosave-check');
+  if (autoSaveCheck) {
+    const saved = localStorage.getItem(SAVE_USERNAMES_PREF_KEY);
+    autoSaveCheck.checked = saved === null ? true : saved === 'true';
+    autoSaveCheck.addEventListener('change', (e) => {
+      localStorage.setItem(SAVE_USERNAMES_PREF_KEY, e.target.checked ? 'true' : 'false');
+      showToast(e.target.checked ? 'Auto-Save enabled' : 'Auto-Save disabled', 'info');
+    });
+  }
+
+  const clipSelect = document.getElementById('pref-clipboard-select');
+  if (clipSelect) {
+    const saved = localStorage.getItem(CLIPBOARD_AUTOCLEAR_KEY);
+    if (saved !== null) clipSelect.value = saved;
+    clipSelect.addEventListener('change', (e) => {
+      localStorage.setItem(CLIPBOARD_AUTOCLEAR_KEY, e.target.value);
+      showToast('Clipboard timeout updated to ' + (e.target.value === '0' ? 'Never' : e.target.value + 's'), 'info');
+    });
+  }
+
+  const btnResetPrefs = document.getElementById('btn-reset-all-prefs');
+  if (btnResetPrefs) {
+    btnResetPrefs.addEventListener('click', () => {
+      if (confirm('Reset all FrankPass settings, preferences, and cached accounts on this browser?')) {
+        localStorage.clear();
+        showToast('All preferences reset to default', 'info');
+        setTimeout(() => location.reload(), 1000);
+      }
+    });
+  }
+
+  // Initial Run
+  renderAccountsList();
+  syncVaultStatus();
+})();
+</script>
+
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"b63ac26d6a19414e837f1139e14a41b0","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
