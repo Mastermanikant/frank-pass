@@ -548,21 +548,77 @@
     </p>
   </header>
 
-  <!-- Master Visual Guide Download Banner -->
+  <!-- Extension Install Welcome Hero Banner (Triggered via ?ref=extension_install) -->
+  <div id="ext-welcome-banner" class="ext-welcome-banner" style="display:none;background:linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(139,92,246,0.18) 100%);border:2px solid #10b981;border-radius:18px;padding:1.75rem;margin-bottom:2.25rem;box-shadow:0 12px 35px rgba(16,185,129,0.2);">
+    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+      <span class="ext-badge-pill" style="background:#10b981;color:#fff;font-size:0.85rem;font-weight:800;padding:0.3rem 0.85rem;border-radius:20px;">🎉 Extension Installed Successfully!</span>
+      <span style="font-size:0.82rem;font-weight:700;color:var(--text-muted);">Quick 3-Step Setup Guide</span>
+    </div>
+    
+    <h2 style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin:0 0 0.6rem 0;">How to Use FrankPass Browser Extension</h2>
+    <p style="font-size:0.92rem;color:var(--text-muted);margin:0 0 1.25rem 0;line-height:1.55;">
+      Your extension is ready! Follow these 3 simple steps to start auto-filling ultra-secure mathematical passwords across all websites:
+    </p>
+
+    <div class="ext-steps-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem;margin-bottom:1.25rem;">
+      
+      <!-- Step 1: Pin -->
+      <div class="ext-step-card" style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.15rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <span style="background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;">1</span>
+          <strong style="font-size:0.95rem;color:var(--text-primary);">Pin the Extension</strong>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Click the <strong>Puzzle Icon 🧩</strong> in Chrome/Edge toolbar and click the <strong>Pin 📌</strong> next to FrankPass for 1-click instant access.</p>
+      </div>
+
+      <!-- Step 2: Open on Any Site -->
+      <div class="ext-step-card" style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.15rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <span style="background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;">2</span>
+          <strong style="font-size:0.95rem;color:var(--text-primary);">Auto Domain Detect</strong>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Visit any login page (e.g. Gmail, GitHub). Click the FrankPass icon or press <kbd class="fp-kbd">Ctrl + Shift + F</kbd>. It automatically normalizes the site domain!</p>
+      </div>
+
+      <!-- Step 3: Enter Key & Fill -->
+      <div class="ext-step-card" style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.15rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
+          <span style="background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;">3</span>
+          <strong style="font-size:0.95rem;color:var(--text-primary);">1-Click Direct Autofill</strong>
+        </div>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Type your Master Secret Key and click <strong>Auto-Fill</strong>. Password injects directly into the login field with zero clipboard exposure!</p>
+      </div>
+
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <a href="/" class="btn-primary" style="padding:8px 16px;font-size:0.85rem;font-weight:700;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+        <span>⚡</span> Try Live Web Generator
+      </a>
+      <button type="button" onclick="toggleAcc('acc-ext-free')" class="btn-ghost" style="padding:8px 14px;font-size:0.85rem;font-weight:600;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.05);color:var(--text-primary);cursor:pointer;">
+        📖 View Full Extension Walkthrough ▾
+      </button>
+    </div>
+  </div>
+
+  <!-- Master Visual Guide & Whitepaper Read Banner (Dual Language) -->
   <div style="background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(59,130,246,0.08));border:1px solid rgba(139,92,246,0.35);border-radius:16px;padding:1.5rem;margin-bottom:2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;">
     <div style="display:flex;align-items:center;gap:1rem;max-width:620px;">
       <div style="width:48px;height:48px;border-radius:12px;background:rgba(139,92,246,0.2);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">📊</div>
       <div>
         <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;flex-wrap:wrap;">
-          <h2 style="font-size:1.15rem;font-weight:700;color:var(--text-primary);margin:0;">Real UI Master Visual Guide (PDF)</h2>
-          <span style="font-size:0.75rem;font-weight:700;background:rgba(16,185,129,0.2);color:#34d399;padding:0.15rem 0.5rem;border-radius:999px;border:1px solid rgba(16,185,129,0.3);">14 High-Res Slides</span>
+          <h2 style="font-size:1.15rem;font-weight:700;color:var(--text-primary);margin:0;">Master Visual Guide &amp; Specs (PDF)</h2>
+          <span style="font-size:0.75rem;font-weight:700;background:rgba(16,185,129,0.2);color:#34d399;padding:0.15rem 0.5rem;border-radius:999px;border:1px solid rgba(16,185,129,0.3);">Bilingual (English &amp; हिन्दी)</span>
         </div>
         <p style="font-size:0.88rem;color:var(--text-muted);margin:0;line-height:1.5;">Complete visual walkthrough using real generator screenshots, neon field pointers, blank username rules, and banking PIN tips.</p>
       </div>
     </div>
-    <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
-      <a href="/FrankPass-Master-Visual-Guide.pdf" target="_blank" class="acc-btn-primary" style="padding:0.6rem 1.1rem;font-size:0.88rem;">
-        <span>📥</span> Download Visual PDF
+    <div style="display:flex;gap:0.65rem;flex-wrap:wrap;align-items:center;">
+      <a href="/FrankPass-Master-Visual-Guide.pdf" target="_blank" rel="noopener" class="acc-btn-primary" style="padding:0.6rem 1.1rem;font-size:0.86rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
+        <span>📖</span> Read English PDF
+      </a>
+      <a href="/frankpass-whitepaper-hindi.pdf" target="_blank" rel="noopener" class="acc-btn-ghost" style="padding:0.6rem 1.1rem;font-size:0.86rem;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(139,92,246,0.4);text-decoration:none;color:var(--accent-light);">
+        <span>📖</span> हिन्दी PDF पढ़ें
       </a>
     </div>
   </div>
@@ -800,6 +856,17 @@ function toggleAcc(id) {
     setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
   }
 }
+
+(function checkExtensionReferrer() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('ref') === 'extension_install' || window.location.hash === '#extension') {
+    const banner = document.getElementById('ext-welcome-banner');
+    if (banner) banner.style.display = 'block';
+    setTimeout(() => {
+      if (typeof toggleAcc === 'function') toggleAcc('acc-ext-free');
+    }, 150);
+  }
+})();
 </script>
 </body>
 </html>
