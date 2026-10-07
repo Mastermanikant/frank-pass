@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.3.7 (Auto Controller Change & Instant Sync)
-const CACHE_NAME = 'frankpass-v4.3.7';
+// FrankPass Service Worker v4.4.0 (Auto Controller Change & Instant Sync)
+const CACHE_NAME = 'frankpass-v4.4.0';
 const CACHED_URLS = [
     '/',
     '/index.html',
