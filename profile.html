@@ -285,6 +285,27 @@
         ✕ Clear All Accounts
       </button>
     </div>
+
+    <!-- 30-Day Recycle Bin Drawer -->
+    <div id="profile-trash-card" style="margin-top:1.25rem;background:var(--bg-tertiary);border:1px dashed var(--border);border-radius:12px;padding:0.9rem 1.15rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer" id="btn-toggle-trash">
+        <div style="display:flex;align-items:center;gap:8px;font-size:0.86rem;font-weight:700;color:var(--text-primary)">
+          <span>🗑️</span>
+          <span>30-Day Recycle Bin (<span id="trash-accounts-count">0</span>)</span>
+        </div>
+        <span id="trash-toggle-arrow" style="font-size:0.75rem;color:var(--text-muted);transition:transform 0.2s">▾ Show</span>
+      </div>
+      <div id="profile-trash-container" style="display:none;margin-top:0.85rem;padding-top:0.75rem;border-top:1px solid var(--border)">
+        <p style="font-size:0.75rem;color:var(--text-muted);margin:0 0 0.75rem;line-height:1.45">
+          Deleted accounts stay here for 30 days before permanent auto-removal. Restore anytime with 1 click.
+        </p>
+        <div id="trash-accounts-list" style="display:flex;flex-direction:column;gap:6px"></div>
+        <div style="display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:0.85rem;padding-top:0.6rem;border-top:1px solid var(--border)">
+          <button type="button" id="btn-trash-restore-all" class="btn-ghost" style="padding:4px 10px;font-size:0.75rem;border:1px solid var(--border);border-radius:6px">Restore All</button>
+          <button type="button" id="btn-trash-empty" style="background:transparent;border:none;color:#ef4444;font-size:0.75rem;font-weight:600;cursor:pointer;padding:4px 8px">Empty Bin</button>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- SECTION 2: DEVICE VAULT & MASTER KEY SECURITY -->
@@ -465,10 +486,12 @@
 /* ── Offline Profile Page Controller ── */
 (function initProfilePage() {
   const RECENT_USERNAMES_KEY = 'fp_recent_usernames';
+  const TRASH_USERNAMES_KEY = 'fp_trash_usernames';
   const PINNED_USERNAMES_KEY = 'fp_pinned_usernames';
   const SAVE_USERNAMES_PREF_KEY = 'fp_save_usernames_enabled';
   const CLIPBOARD_AUTOCLEAR_KEY = 'fp_clipboard_autoclear';
   const MAX_ACCOUNTS = 50;
+  const TRASH_RETENTION_MS = 30 * 24 * 60 * 60 * 1000; // 30 Days
 
   // Toast Helper
   function showToast(msg, type = '') {
@@ -480,6 +503,34 @@
       container.appendChild(t);
       setTimeout(() => t.remove(), 3000);
     }
+  }
+
+  function showToastWithUndo(msg, undoCallback, durationMs = 8000) {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+    const t = document.createElement('div');
+    t.className = 'toast info';
+    t.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;min-width:280px;background:#1e1b4b;border:1px solid var(--accent);box-shadow:0 8px 25px rgba(0,0,0,0.5);border-radius:8px;pointer-events:auto;z-index:10000;';
+    
+    const span = document.createElement('span');
+    span.textContent = msg;
+    span.style.cssText = 'font-size:0.82rem;font-weight:600;color:#f8fafc;';
+    
+    const undoBtn = document.createElement('button');
+    undoBtn.type = 'button';
+    undoBtn.textContent = '↩ Undo';
+    undoBtn.style.cssText = 'background:var(--accent);color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:0.75rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:background 0.2s;';
+    undoBtn.onmouseover = () => { undoBtn.style.background = '#4338ca'; };
+    undoBtn.onmouseout = () => { undoBtn.style.background = 'var(--accent)'; };
+    undoBtn.onclick = () => {
+      t.remove();
+      if (typeof undoCallback === 'function') undoCallback();
+    };
+    
+    t.appendChild(span);
+    t.appendChild(undoBtn);
+    container.appendChild(t);
+    setTimeout(() => { if (t.parentNode) t.remove(); }, durationMs);
   }
 
   // Storage Getters / Setters
@@ -510,6 +561,96 @@
   function setPinnedAccounts(list) {
     try {
       localStorage.setItem(PINNED_USERNAMES_KEY, JSON.stringify(list));
+    } catch (e) {}
+  }
+
+  // 30-Day Recycle Bin Getters / Setters
+  function getTrashAccounts() {
+    try {
+      const raw = localStorage.getItem(TRASH_USERNAMES_KEY);
+      if (!raw) return [];
+      let items = JSON.parse(raw);
+      if (!Array.isArray(items)) return [];
+      const now = Date.now();
+      const valid = items.filter(it => it && it.username && (now - (it.deletedAt || 0) <= TRASH_RETENTION_MS));
+      if (valid.length !== items.length) {
+        localStorage.setItem(TRASH_USERNAMES_KEY, JSON.stringify(valid));
+      }
+      return valid;
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function moveAccountsToTrash(list, pinnedList = []) {
+    if (!Array.isArray(list) || list.length === 0) return;
+    try {
+      let trash = getTrashAccounts();
+      const now = Date.now();
+      list.forEach(acc => {
+        trash = trash.filter(t => t.username !== acc);
+        trash.unshift({
+          username: acc,
+          deletedAt: now,
+          wasPinned: pinnedList.includes(acc)
+        });
+      });
+      localStorage.setItem(TRASH_USERNAMES_KEY, JSON.stringify(trash));
+    } catch (e) {}
+  }
+
+  function restoreTrashAccount(acc) {
+    try {
+      let trash = getTrashAccounts();
+      const item = trash.find(t => t.username === acc);
+      if (!item) return;
+      trash = trash.filter(t => t.username !== acc);
+      localStorage.setItem(TRASH_USERNAMES_KEY, JSON.stringify(trash));
+      let current = getAccounts();
+      if (!current.includes(acc)) {
+        current.unshift(acc);
+        setAccounts(current);
+      }
+      if (item.wasPinned) {
+        let pinned = getPinnedAccounts();
+        if (!pinned.includes(acc)) {
+          pinned.push(acc);
+          setPinnedAccounts(pinned);
+        }
+      }
+    } catch (e) {}
+  }
+
+  function deleteTrashAccountPermanently(acc) {
+    try {
+      let trash = getTrashAccounts().filter(t => t.username !== acc);
+      localStorage.setItem(TRASH_USERNAMES_KEY, JSON.stringify(trash));
+    } catch (e) {}
+  }
+
+  function emptyTrash() {
+    try {
+      localStorage.removeItem(TRASH_USERNAMES_KEY);
+    } catch (e) {}
+  }
+
+  function restoreAllTrashAccounts() {
+    try {
+      let trash = getTrashAccounts();
+      if (trash.length === 0) return;
+      let current = getAccounts();
+      let pinned = getPinnedAccounts();
+      trash.forEach(it => {
+        if (!current.includes(it.username)) {
+          current.push(it.username);
+        }
+        if (it.wasPinned && !pinned.includes(it.username)) {
+          pinned.push(it.username);
+        }
+      });
+      setAccounts(current);
+      setPinnedAccounts(pinned);
+      localStorage.removeItem(TRASH_USERNAMES_KEY);
     } catch (e) {}
   }
 
@@ -606,19 +747,27 @@
         renderAccountsList(document.getElementById('account-filter-input')?.value || '');
       };
 
-      // Delete button
+      // Delete button (Moves to 30-Day Recycle Bin with Instant Undo)
       const delBtn = document.createElement('button');
       delBtn.type = 'button';
       delBtn.className = 'account-del-btn';
       delBtn.textContent = '✕ Remove';
-      delBtn.title = 'Remove ' + account;
+      delBtn.title = 'Move ' + account + ' to 30-Day Recycle Bin';
       delBtn.onclick = () => {
+        let isPinned = getPinnedAccounts().includes(account);
         let accs = getAccounts().filter(a => a !== account);
         let pinned = getPinnedAccounts().filter(a => a !== account);
+        moveAccountsToTrash([account], isPinned ? [account] : []);
         setAccounts(accs);
         setPinnedAccounts(pinned);
         renderAccountsList(document.getElementById('account-filter-input')?.value || '');
-        showToast(`Removed "${account}"`, 'info');
+        renderTrashList();
+        showToastWithUndo(`Moved "${account}" to 30-Day Recycle Bin`, () => {
+          restoreTrashAccount(account);
+          renderAccountsList(document.getElementById('account-filter-input')?.value || '');
+          renderTrashList();
+          showToast(`Restored "${account}"`, 'success');
+        }, 8000);
       };
 
       right.appendChild(pinBtn);
@@ -845,15 +994,135 @@
     });
   }
 
-  // 6. Clear All
+  // 6. Clear All (Moves to 30-Day Recycle Bin with Undo)
   const btnClearAll = document.getElementById('btn-profile-clear-all');
   if (btnClearAll) {
     btnClearAll.addEventListener('click', () => {
-      if (confirm('Are you sure you want to remove all saved accounts from this browser?')) {
-        localStorage.removeItem(RECENT_USERNAMES_KEY);
-        localStorage.removeItem(PINNED_USERNAMES_KEY);
+      const accs = getAccounts();
+      if (accs.length === 0) {
+        showToast('No saved accounts to clear', 'info');
+        return;
+      }
+      if (confirm('Move all saved accounts to the 30-Day Recycle Bin? You can restore them anytime within 30 days.')) {
+        const pinned = getPinnedAccounts();
+        moveAccountsToTrash(accs, pinned);
+        setAccounts([]);
+        setPinnedAccounts([]);
         renderAccountsList();
-        showToast('All saved accounts removed', 'info');
+        renderTrashList();
+        showToastWithUndo('All accounts moved to 30-Day Recycle Bin', () => {
+          restoreAllTrashAccounts();
+          renderAccountsList();
+          renderTrashList();
+          showToast('Restored all accounts', 'success');
+        }, 10000);
+      }
+    });
+  }
+
+  // 6b. 30-Day Recycle Bin UI Renderer & Listeners
+  function renderTrashList() {
+    const trashListEl = document.getElementById('trash-accounts-list');
+    const trashCountBadge = document.getElementById('trash-accounts-count');
+    if (!trashListEl || !trashCountBadge) return;
+
+    const trash = getTrashAccounts();
+    trashCountBadge.textContent = trash.length;
+
+    if (trash.length === 0) {
+      trashListEl.innerHTML = '<div style="text-align:center;padding:1rem;color:var(--text-muted);font-size:0.8rem">Recycle bin is empty</div>';
+      return;
+    }
+
+    trashListEl.innerHTML = '';
+    const now = Date.now();
+    trash.forEach(item => {
+      const daysLeft = Math.max(1, Math.ceil((TRASH_RETENTION_MS - (now - (item.deletedAt || now))) / (24 * 60 * 60 * 1000)));
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;';
+
+      const left = document.createElement('div');
+      left.style.cssText = 'display:flex;align-items:center;gap:8px;overflow:hidden;';
+      const icon = document.createElement('span');
+      icon.textContent = '🗑️';
+      icon.style.fontSize = '0.9rem';
+      const textWrap = document.createElement('div');
+      const name = document.createElement('span');
+      name.textContent = item.username;
+      name.style.cssText = 'font-size:0.82rem;font-weight:700;color:var(--text-primary);display:block;word-break:break-all;';
+      const tag = document.createElement('span');
+      tag.textContent = `${daysLeft} days remaining`;
+      tag.style.cssText = 'font-size:0.7rem;color:#f59e0b;';
+      textWrap.appendChild(name);
+      textWrap.appendChild(tag);
+      left.appendChild(icon);
+      left.appendChild(textWrap);
+
+      const right = document.createElement('div');
+      right.style.cssText = 'display:flex;align-items:center;gap:6px;';
+
+      const restoreBtn = document.createElement('button');
+      restoreBtn.type = 'button';
+      restoreBtn.textContent = 'Restore';
+      restoreBtn.className = 'btn-ghost';
+      restoreBtn.style.cssText = 'padding:3px 8px;font-size:0.72rem;font-weight:700;border:1px solid var(--border);border-radius:6px;';
+      restoreBtn.onclick = () => {
+        restoreTrashAccount(item.username);
+        renderAccountsList();
+        renderTrashList();
+        showToast(`Restored "${item.username}"`, 'success');
+      };
+
+      const permDelBtn = document.createElement('button');
+      permDelBtn.type = 'button';
+      permDelBtn.textContent = '✕';
+      permDelBtn.title = 'Delete Permanently';
+      permDelBtn.style.cssText = 'background:transparent;border:none;color:var(--text-muted);font-size:0.85rem;cursor:pointer;padding:2px 6px;';
+      permDelBtn.onmouseover = () => { permDelBtn.style.color = '#ef4444'; };
+      permDelBtn.onmouseout = () => { permDelBtn.style.color = 'var(--text-muted)'; };
+      permDelBtn.onclick = () => {
+        deleteTrashAccountPermanently(item.username);
+        renderTrashList();
+        showToast('Account permanently deleted', 'info');
+      };
+
+      right.appendChild(restoreBtn);
+      right.appendChild(permDelBtn);
+      row.appendChild(left);
+      row.appendChild(right);
+      trashListEl.appendChild(row);
+    });
+  }
+
+  // Trash Accordion & Action Listeners
+  const toggleTrashBtn = document.getElementById('btn-toggle-trash');
+  const trashContainer = document.getElementById('profile-trash-container');
+  const trashToggleArrow = document.getElementById('trash-toggle-arrow');
+  if (toggleTrashBtn && trashContainer) {
+    toggleTrashBtn.addEventListener('click', () => {
+      const isClosed = trashContainer.style.display === 'none';
+      trashContainer.style.display = isClosed ? 'block' : 'none';
+      if (trashToggleArrow) trashToggleArrow.textContent = isClosed ? '▴ Hide' : '▾ Show';
+    });
+  }
+
+  const btnTrashRestoreAll = document.getElementById('btn-trash-restore-all');
+  if (btnTrashRestoreAll) {
+    btnTrashRestoreAll.addEventListener('click', () => {
+      restoreAllTrashAccounts();
+      renderAccountsList();
+      renderTrashList();
+      showToast('All accounts restored from Recycle Bin', 'success');
+    });
+  }
+
+  const btnTrashEmpty = document.getElementById('btn-trash-empty');
+  if (btnTrashEmpty) {
+    btnTrashEmpty.addEventListener('click', () => {
+      if (confirm('Permanently empty the 30-Day Recycle Bin? This action cannot be undone.')) {
+        emptyTrash();
+        renderTrashList();
+        showToast('Recycle bin emptied', 'info');
       }
     });
   }
@@ -925,6 +1194,7 @@
 
   // Initial Run
   renderAccountsList();
+  renderTrashList();
   syncVaultStatus();
 })();
 </script>
