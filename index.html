@@ -2348,29 +2348,48 @@ function saveRecentUsername(uname) {
       list = list.slice(0, MAX_RECENT_USERNAMES);
     }
     localStorage.setItem(RECENT_USERNAMES_KEY, JSON.stringify(list));
+    // If it was previously dismissed from recent chips, bring it back
+    let dismissed = getDismissedRecentChips().filter(item => item !== clean);
+    localStorage.setItem(DISMISSED_RECENT_CHIPS_KEY, JSON.stringify(dismissed));
     renderRecentUsernames();
   } catch (e) {
     console.warn('Could not save recent username:', e);
   }
 }
 
-function deleteRecentUsername(targetUname) {
-  if (!targetUname) return;
+const DISMISSED_RECENT_CHIPS_KEY = 'fp_dismissed_recent_chips';
+
+function getDismissedRecentChips() {
   try {
-    let list = getRecentUsernames();
-    list = list.filter(item => item !== targetUname);
-    localStorage.setItem(RECENT_USERNAMES_KEY, JSON.stringify(list));
-    moveUsernamesToTrash([targetUname]);
-    renderRecentUsernames();
-    showToastWithUndo(`Moved "${targetUname}" to 30-Day Bin`, () => {
-      restoreTrashUsername(targetUname);
-      renderRecentUsernames();
-      showToast(`Restored "${targetUname}"`, 'success');
-    }, 8000);
+    const raw = localStorage.getItem(DISMISSED_RECENT_CHIPS_KEY);
+    return raw ? JSON.parse(raw) : [];
   } catch (e) {
-    console.warn('Could not delete recent username:', e);
+    return [];
   }
 }
+
+function dismissRecentChip(targetUname) {
+  if (!targetUname) return;
+  try {
+    let dismissed = getDismissedRecentChips();
+    if (!dismissed.includes(targetUname)) {
+      dismissed.push(targetUname);
+      localStorage.setItem(DISMISSED_RECENT_CHIPS_KEY, JSON.stringify(dismissed));
+    }
+    renderRecentUsernames();
+    showToastWithUndo(`Removed "${targetUname}" from Recent (still saved in Manage)`, () => {
+      let d = getDismissedRecentChips().filter(item => item !== targetUname);
+      localStorage.setItem(DISMISSED_RECENT_CHIPS_KEY, JSON.stringify(d));
+      renderRecentUsernames();
+      showToast(`Restored "${targetUname}" to Recent chips`, 'success');
+    }, 8000);
+  } catch (e) {
+    console.warn('Could not dismiss recent chip:', e);
+  }
+}
+
+let clearConfirmTimer = null;
+let clearCountdownInterval = null;
 
 function requestClearRecentUsernames() {
   const list = getRecentUsernames();
@@ -2379,12 +2398,16 @@ function requestClearRecentUsernames() {
     return;
   }
   
-  // Clean up any existing confirmation toast
+  // Clean up any existing confirmation toast and timers
+  if (clearConfirmTimer) clearTimeout(clearConfirmTimer);
+  if (clearCountdownInterval) clearInterval(clearCountdownInterval);
   const existingToast = document.getElementById('fp-clear-confirm-toast');
   if (existingToast) existingToast.remove();
 
   const container = document.getElementById('toast-container');
   if (!container) return;
+
+  let secondsLeft = 5;
 
   const t = document.createElement('div');
   t.id = 'fp-clear-confirm-toast';
@@ -2397,10 +2420,17 @@ function requestClearRecentUsernames() {
 
   const descRow = document.createElement('div');
   descRow.style.cssText = 'font-size:0.78rem;color:#cbd5e1;line-height:1.45;';
-  descRow.innerHTML = 'They will move to the <strong>30-Day Recycle Bin</strong>. You can restore them anytime from Manage.';
+  descRow.innerHTML = 'Auto-cancelling in <strong id="clear-countdown-num" style="color:#ef4444;font-size:0.88rem;text-decoration:underline;">5s</strong>... (Nothing will be deleted unless confirmed)';
 
   const btnRow = document.createElement('div');
   btnRow.style.cssText = 'display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-top:4px;';
+
+  const cancelClearAction = () => {
+    if (clearConfirmTimer) clearTimeout(clearConfirmTimer);
+    if (clearCountdownInterval) clearInterval(clearCountdownInterval);
+    if (t.parentNode) t.remove();
+    showToast('Clear cancelled. Saved emails kept safely.', 'info');
+  };
 
   // 1. Cancel button
   const cancelBtn = document.createElement('button');
@@ -2409,19 +2439,18 @@ function requestClearRecentUsernames() {
   cancelBtn.style.cssText = 'background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.25);color:#e2e8f0;font-size:0.78rem;font-weight:600;padding:5px 12px;border-radius:6px;cursor:pointer;transition:all 0.2s;';
   cancelBtn.onmouseover = () => { cancelBtn.style.background = 'rgba(255,255,255,0.18)'; };
   cancelBtn.onmouseout = () => { cancelBtn.style.background = 'rgba(255,255,255,0.08)'; };
-  cancelBtn.onclick = () => {
-    t.remove();
-    showToast('Clear cancelled. Saved emails kept.', 'info');
-  };
+  cancelBtn.onclick = cancelClearAction;
 
-  // 2. Clear Now button (Requires EXPLICIT user click: ZERO auto-delete timer)
+  // 2. Clear Now button (Requires EXPLICIT user click)
   const confirmBtn = document.createElement('button');
   confirmBtn.type = 'button';
-  confirmBtn.textContent = 'Clear & Move to Bin';
+  confirmBtn.textContent = 'Confirm Delete';
   confirmBtn.style.cssText = 'background:#ef4444;border:none;color:#fff;font-size:0.78rem;font-weight:700;padding:5px 14px;border-radius:6px;cursor:pointer;transition:all 0.2s;box-shadow:0 2px 8px rgba(239,68,68,0.4);';
   confirmBtn.onmouseover = () => { confirmBtn.style.background = '#dc2626'; };
   confirmBtn.onmouseout = () => { confirmBtn.style.background = '#ef4444'; };
   confirmBtn.onclick = () => {
+    if (clearConfirmTimer) clearTimeout(clearConfirmTimer);
+    if (clearCountdownInterval) clearInterval(clearCountdownInterval);
     t.remove();
     executeMoveRecentUsernamesToTrash();
   };
@@ -2432,6 +2461,21 @@ function requestClearRecentUsernames() {
   t.appendChild(descRow);
   t.appendChild(btnRow);
   container.appendChild(t);
+
+  // Live countdown to AUTO-CANCEL (NOT auto-delete!)
+  clearCountdownInterval = setInterval(() => {
+    secondsLeft--;
+    const countEl = document.getElementById('clear-countdown-num');
+    if (countEl) countEl.textContent = `${secondsLeft}s`;
+    if (secondsLeft <= 0) {
+      clearInterval(clearCountdownInterval);
+    }
+  }, 1000);
+
+  // 5s Auto-CANCEL Timer (Safely cancels if user does not confirm)
+  clearConfirmTimer = setTimeout(() => {
+    cancelClearAction();
+  }, 5000);
 }
 
 function executeMoveRecentUsernamesToTrash() {
@@ -2441,6 +2485,7 @@ function executeMoveRecentUsernamesToTrash() {
     const backupList = [...list];
     moveUsernamesToTrash(list);
     localStorage.removeItem(RECENT_USERNAMES_KEY);
+    localStorage.removeItem(DISMISSED_RECENT_CHIPS_KEY);
     showAllUsernameChips = false;
     renderRecentUsernames();
     showToastWithUndo(`Moved ${backupList.length} email(s) to 30-Day Recycle Bin`, () => {
@@ -2477,6 +2522,9 @@ function renderRecentUsernames() {
   }
 
   const list = getRecentUsernames();
+  const dismissed = getDismissedRecentChips();
+  // Filter out any dismissed chips from recent view while keeping main file intact
+  const recentChipsList = list.filter(item => !dismissed.includes(item));
   
   // 2. Populate HTML5 Datalist (all up to 50 items for instant autocomplete matching while typing)
   if (datalist) {
@@ -2488,11 +2536,11 @@ function renderRecentUsernames() {
     });
   }
   
-  // 3. Populate Visual 1-Tap Chips with Individual ✕ Delete Buttons
+  // 3. Populate Visual 1-Tap Chips with Individual ✕ Dismiss Buttons
   if (chipsContainer) {
     chipsContainer.innerHTML = '';
-    const visibleList = showAllUsernameChips ? list : list.slice(0, MAX_VISIBLE_CHIPS);
-    if (list.length > 0) {
+    const visibleList = showAllUsernameChips ? recentChipsList : recentChipsList.slice(0, MAX_VISIBLE_CHIPS);
+    if (recentChipsList.length > 0) {
       chipsContainer.style.display = 'flex';
       
       const label = document.createElement('span');
@@ -2524,14 +2572,14 @@ function renderRecentUsernames() {
         const delBtn = document.createElement('button');
         delBtn.type = 'button';
         delBtn.textContent = '✕';
-        delBtn.setAttribute('aria-label', 'Delete ' + item);
-        delBtn.title = 'Delete ' + item + ' from history';
+        delBtn.setAttribute('aria-label', 'Dismiss ' + item + ' from recent');
+        delBtn.title = 'Dismiss ' + item + ' from Recent chips (remains saved in Manage)';
         delBtn.style.cssText = 'background:transparent;border:none;color:var(--text-muted);font-size:0.68rem;cursor:pointer;padding:0 3px;line-height:1;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s;';
         delBtn.onmouseover = () => { delBtn.style.color = '#ef4444'; delBtn.style.background = 'rgba(239,68,68,0.2)'; };
         delBtn.onmouseout = () => { delBtn.style.color = 'var(--text-muted)'; delBtn.style.background = 'transparent'; };
         delBtn.onclick = (e) => {
           e.stopPropagation();
-          deleteRecentUsername(item);
+          dismissRecentChip(item);
         };
         
         chip.appendChild(textSpan);
@@ -2540,12 +2588,12 @@ function renderRecentUsernames() {
       });
       
       // Expand / Collapse toggle if more than MAX_VISIBLE_CHIPS
-      if (list.length > MAX_VISIBLE_CHIPS) {
+      if (recentChipsList.length > MAX_VISIBLE_CHIPS) {
         const moreBtn = document.createElement('button');
         moreBtn.type = 'button';
         moreBtn.style.cssText = 'background:transparent;border:1px dashed rgba(139,92,246,0.4);color:var(--accent-light);font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:999px;cursor:pointer;transition:all 0.2s;';
-        moreBtn.textContent = showAllUsernameChips ? 'Show less ▲' : `+${list.length - MAX_VISIBLE_CHIPS} more ▼`;
-        moreBtn.title = showAllUsernameChips ? 'Show top 5' : `Show all ${list.length} saved emails`;
+        moreBtn.textContent = showAllUsernameChips ? 'Show less ▲' : `+${recentChipsList.length - MAX_VISIBLE_CHIPS} more ▼`;
+        moreBtn.title = showAllUsernameChips ? 'Show top 5' : `Show all ${recentChipsList.length} recent emails`;
         moreBtn.onclick = () => {
           showAllUsernameChips = !showAllUsernameChips;
           renderRecentUsernames();
@@ -2557,7 +2605,7 @@ function renderRecentUsernames() {
     }
   }
   
-  // 4. Update Manage Button Count Badge
+  // 4. Update Manage Button Count Badge (Main file count remains accurate!)
   const countBadge = document.getElementById('saved-accounts-count');
   if (countBadge) {
     countBadge.textContent = list.length;
