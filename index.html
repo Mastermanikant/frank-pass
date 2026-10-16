@@ -2967,18 +2967,10 @@ function shareLink(platform, e) {
 </script>
 
 <!-- ============================================================
-     OFFLINE PWA SERVICE WORKER REGISTRATION (v3.2.9)
+     OFFLINE PWA SERVICE WORKER REGISTRATION (v4.4.3)
      ============================================================ -->
 <script>
 if ('serviceWorker' in navigator) {
-  let refreshing = false;
-  navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (!refreshing) {
-      refreshing = true;
-      window.location.reload();
-    }
-  });
-
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
       .then(reg => {
