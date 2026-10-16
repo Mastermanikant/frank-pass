@@ -948,13 +948,94 @@ const FrankPassUtils = (function () {
         return 'Using as: "' + normalized + '"';
     }
 
+    /**
+     * Curated Master Directory of Banking, ATM Cards, UPI Apps, and Device PIN presets.
+     * Guaranteed deterministic zero-collision seeds across Web and Extensions.
+     */
+    const BANKING_UPI_PLATFORMS = [
+        // --- Popular UPI & Payment Apps ---
+        'Google Pay (GPay UPI)',
+        'PhonePe UPI',
+        'Paytm UPI',
+        'BHIM UPI',
+        'Amazon Pay UPI',
+        'CRED UPI',
+        'WhatsApp Pay',
+        'Navi UPI',
+        'Tata Neu UPI',
+        'Super.money UPI',
+        'Airtel Payments Bank (mPIN)',
+        'Jio Payments Bank',
+        'Postpe UPI',
+        'Slice UPI',
+
+        // --- Major Indian Public & Private Banks (ATM / Debit / mPIN) ---
+        'State Bank of India (SBI)',
+        'SBI ATM Card',
+        'SBI YONO mPIN',
+        'HDFC Bank',
+        'HDFC Debit Card',
+        'HDFC Credit Card',
+        'ICICI Bank',
+        'ICICI Debit Card',
+        'ICICI iMobile mPIN',
+        'Axis Bank',
+        'Axis ATM Card',
+        'Kotak Mahindra Bank',
+        'Kotak 811 PIN',
+        'Punjab National Bank (PNB)',
+        'PNB ONE mPIN',
+        'Bank of Baroda (BOB)',
+        'Canara Bank',
+        'Union Bank of India',
+        'IDFC FIRST Bank',
+        'IndusInd Bank',
+        'Yes Bank',
+        'Federal Bank',
+        'Central Bank of India',
+        'Indian Bank',
+        'Bank of India (BOI)',
+        'UCO Bank',
+        'RBL Bank',
+        'Bandhan Bank',
+        'Au Small Finance Bank',
+
+        // --- Card Networks & Global Banking ---
+        'RuPay Debit Card',
+        'Visa Debit Card',
+        'Mastercard Debit Card',
+        'SBI Credit Card',
+        'ICICI Credit Card',
+        'HDFC Credit Card',
+        'Axis Credit Card',
+        'American Express Card',
+        'Chase Bank ATM',
+        'Bank of America ATM',
+        'Wells Fargo ATM',
+        'Citibank ATM',
+        'Barclays ATM',
+        'HSBC Bank ATM',
+
+        // --- Device Locks, SIM & App Verification PINs ---
+        'SIM Card PIN (Airtel)',
+        'SIM Card PIN (Jio)',
+        'SIM Card PIN (Vi / BSNL)',
+        'Android Screen Lock PIN',
+        'Windows Hello PIN',
+        'Apple iPhone Passcode',
+        'Samsung Knox PIN',
+        'WhatsApp Two-Step Verification PIN',
+        'Telegram Cloud PIN'
+    ];
+
     return {
         getNormalizedPlatform: getNormalizedPlatform,
         getPrettyNameFromDB: getPrettyNameFromDB,
         getSeedHint: getSeedHint,
         GLOBAL_ALIASES: GLOBAL_ALIASES,
         VISUAL_ALIASES: VISUAL_ALIASES,
-        ECOSYSTEM_LABELS: ECOSYSTEM_LABELS
+        ECOSYSTEM_LABELS: ECOSYSTEM_LABELS,
+        BANKING_UPI_PLATFORMS: BANKING_UPI_PLATFORMS
     };
 })();
 

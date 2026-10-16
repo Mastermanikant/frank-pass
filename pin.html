@@ -339,7 +339,21 @@
     <!-- Input 1: Bank / Card / App Name -->
     <div class="form-group" style="margin-bottom:1.25rem">
       <label class="form-label" for="pin-platform" style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">Bank / Card / App Name</label>
-      <input id="pin-platform" class="form-input" type="text" placeholder="e.g. HDFC ATM Card, GPay UPI, Airtel mPIN..." autocomplete="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 1rem;text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')" onkeydown="if(event.key===' '||event.keyCode===32){event.preventDefault();}">
+      <div class="input-wrapper" style="position:relative">
+        <input id="pin-platform" class="form-input" type="text" list="pin-platform-list" placeholder="e.g. SBI ATM Card, Google Pay, HDFC..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 2.5rem 0.85rem 1rem">
+        <div id="pin-platform-valid-icon" class="input-indicator" style="right:1rem;top:50%;transform:translateY(-50%) scale(0.8);display:flex;align-items:center;" title="Recognized in preset directory" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <datalist id="pin-platform-list"></datalist>
+      <div id="pin-quick-chips" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.5rem">
+        <button type="button" class="pin-chip-btn" data-name="SBI ATM Card" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">💳 SBI ATM</button>
+        <button type="button" class="pin-chip-btn" data-name="HDFC Debit Card" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">💳 HDFC Card</button>
+        <button type="button" class="pin-chip-btn" data-name="Google Pay (GPay UPI)" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">⚡ Google Pay</button>
+        <button type="button" class="pin-chip-btn" data-name="PhonePe UPI" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">⚡ PhonePe</button>
+        <button type="button" class="pin-chip-btn" data-name="Paytm UPI" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">⚡ Paytm UPI</button>
+        <button type="button" class="pin-chip-btn" data-name="SIM Card PIN (Jio)" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">📱 SIM PIN</button>
+      </div>
       <span id="pin-platform-hint" style="font-size:0.75rem;color:var(--accent-light);display:block;margin-top:0.35rem"></span>
     </div>
 
@@ -474,17 +488,38 @@ toggleSecretBtn.addEventListener('click', () => {
   }
 });
 
-// Platform input hint & auto-blank on focus / restore on blur
+// Platform input hint, autocomplete & chips
 const platformInput = document.getElementById('pin-platform');
 const platformHint = document.getElementById('pin-platform-hint');
+const platformValidIcon = document.getElementById('pin-platform-valid-icon');
+const platformDatalist = document.getElementById('pin-platform-list');
 let savedPinPlatformVal = '';
 
+function renderPinPlatformDatalist(filterQuery = '') {
+  if (!platformDatalist || typeof FrankPassUtils === 'undefined' || !FrankPassUtils.BANKING_UPI_PLATFORMS) return;
+  platformDatalist.innerHTML = '';
+  const q = (filterQuery || '').toLowerCase().trim();
+  const list = FrankPassUtils.BANKING_UPI_PLATFORMS;
+  const matched = q ? list.filter(p => p.toLowerCase().includes(q)).slice(0, 30) : list.slice(0, 30);
+  const frag = document.createDocumentFragment();
+  matched.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    frag.appendChild(opt);
+  });
+  platformDatalist.appendChild(frag);
+}
+
 if (platformInput) {
+  renderPinPlatformDatalist('');
+
   platformInput.addEventListener('focus', () => {
     if (platformInput.value.trim()) {
       savedPinPlatformVal = platformInput.value;
       platformInput.value = '';
+      renderPinPlatformDatalist('');
       if (platformHint) platformHint.textContent = '';
+      if (platformValidIcon) platformValidIcon.classList.remove('visible');
     }
   });
 
@@ -497,14 +532,37 @@ if (platformInput) {
   });
 
   platformInput.addEventListener('input', () => {
-    const val = platformInput.value.trim();
-    if (val && typeof FrankPassUtils !== 'undefined') {
-      platformHint.textContent = FrankPassUtils.getSeedHint(val);
+    const raw = platformInput.value.trim();
+    renderPinPlatformDatalist(raw);
+
+    if (raw && typeof FrankPassUtils !== 'undefined') {
+      platformHint.textContent = FrankPassUtils.getSeedHint(raw);
+      const normalized = FrankPassUtils.getNormalizedPlatform(raw);
+      const isRecognized = FrankPassUtils.BANKING_UPI_PLATFORMS.some(p => 
+        p.toLowerCase() === raw.toLowerCase() || 
+        FrankPassUtils.getNormalizedPlatform(p) === normalized
+      );
+      if (platformValidIcon) platformValidIcon.classList.toggle('visible', isRecognized);
     } else {
-      platformHint.textContent = '';
+      if (platformHint) platformHint.textContent = '';
+      if (platformValidIcon) platformValidIcon.classList.remove('visible');
     }
   });
 }
+
+// 1-Tap Quick Chips
+document.querySelectorAll('.pin-chip-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.name;
+    if (platformInput && name) {
+      platformInput.value = name;
+      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+      if (secretInput && !secretInput.value) {
+        secretInput.focus();
+      }
+    }
+  });
+});
 
 // Toast Notification Helper
 function showToast(msg) {
