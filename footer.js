@@ -99,6 +99,7 @@
         <a href="/faq.html">Security FAQ</a>
         <a href="/limitations-and-advantages.html">Limitations &amp; Advantages</a>
         <a href="/why-stateless-password-generation-is-the-future.html">Stateless Architecture</a>
+        <a href="/library-hindi.html" style="color:var(--accent-light);font-weight:600">🇮🇳 हिन्दी लाइब्रेरी (Hindi Security Guides)</a>
         <a href="/library.html" style="color:var(--accent-light);font-weight:600">🏛️ Master Library &amp; Directory</a>
       </div>
 
