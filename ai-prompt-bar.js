@@ -260,4 +260,24 @@ Please explain how this stateless architecture works, address any specific quest
   } else {
     initAIPromptBar();
   }
+
+  window.copyAIPassphrasePrompt = function(btn) {
+    const prompt = `You are my FrankPass Master Secret Key Coach. Help me craft an unforgettable, personalized Master Passphrase for FrankPass (the stateless password generator).
+
+Strict Rules:
+1. Use ONLY lowercase letters, numbers, and simple natural words (e.g. "i like 30 legs cat", "i like flying ant 109", "ilikemyfriendsmastermanikants100").
+2. NO complex symbols or capital letters are needed! FrankPass mathematically expands this key into unhackable passwords using 1,000,000 PBKDF2 rounds.
+3. Ask me 2-3 quick, fun questions about my life, a quirky childhood memory, an absurd imaginative thought, or a personal habit.
+4. Based on my answers, provide 3 unique, unforgettable Master Passphrase options.
+5. Security reminder: Once I pick my passphrase, I should NEVER share it with anyone or paste it back into this chat, and just use it directly in FrankPass!`;
+
+    navigator.clipboard.writeText(prompt).then(() => {
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<span>✓ Copied! Paste in AI</span>';
+        setTimeout(() => { btn.innerHTML = orig; }, 2500);
+      }
+    }).catch(() => {});
+  };
+
 })();

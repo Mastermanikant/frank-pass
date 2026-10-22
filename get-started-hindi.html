@@ -721,6 +721,62 @@
             <span class="step-num">3</span>
             <span>अपनी व्यक्तिगत, स्मरणीय <strong>Master Secret Key</strong> दर्ज करें (उदा. <code>mars par hari chatni samosa 742</code> - केवल उदाहरण, इसे कॉपी न करें)।</span>
           </li>
+
+        <!-- AI Master Secret Key Coach Component (Hindi) -->
+        <div class="ai-secret-key-coach-card" style="background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(16,185,129,0.08) 100%); border: 1.5px solid rgba(139,92,246,0.4); border-radius: 16px; padding: 1.35rem 1.5rem; margin: 1.25rem 0; box-shadow: 0 8px 30px rgba(0,0,0,0.2);">
+          
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 1.35rem;">🤖 🔑</span>
+              <strong style="font-size: 1.05rem; color: var(--text-primary); font-family: 'Outfit', sans-serif;">
+                किसी भी AI से पूछें अपनी अनूठी मास्टर सीक्रेट की (जो सिर्फ आपकी होगी)
+              </strong>
+            </div>
+            <span style="font-size: 0.75rem; font-weight: 800; background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid rgba(16,185,129,0.4); padding: 3px 10px; border-radius: 999px;">
+              1-क्लिक AI सहायक
+            </span>
+          </div>
+
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 0.85rem;">
+            समझ नहीं आ रहा कि कौन सी मास्टर की चुनें? ChatGPT, Gemini या Claude को अपना पर्सनल कोच बनाएं!
+            <strong>नियम:</strong> केवल छोटे अक्षर (lowercase) और संख्याएं ही इस्तेमाल करें (जैसे: <code style="color: #38bdf8; font-weight:700;">i like 30 legs cat</code>, <code style="color: #38bdf8; font-weight:700;">i like flying ant 109</code>, या <code style="color: #38bdf8; font-weight:700;">ilikemyfriendsmastermanikants100</code>)। आपको किसी कठिन सिंबल या कैपिटल लेटर की जरूरत नहीं है: बाकी सारा काम फ्रैंकपास का 10 लाख PBKDF2 गणित खुद संभाल लेगा!
+          </p>
+
+          <!-- 1-Click Copy AI Prompt Box -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 0.8rem 1rem; margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+            <span style="color: #10b981; font-weight: 700;">AI के लिए प्रॉम्प्ट:</span> "You are my FrankPass Secret Key Coach. Help me create an unforgettable Master Passphrase that only I know and no one can guess. Rules: 1. Use ONLY lowercase letters, numbers, and simple words (e.g. 'i like 30 legs cat', 'i like flying ant 109'). No complex symbols needed! 2. Ask me 2-3 fun, quirky questions about my childhood, weird habits, or imagination. 3. Give me 3 unguessable options. 4. Remind me to never share my final phrase with anyone!"
+          </div>
+
+          <!-- Launch & Action Buttons -->
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+            <button type="button" onclick="copyAIPassphrasePrompt(this)" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; border: none; font-weight: 800; font-size: 0.84rem; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 15px rgba(139,92,246,0.35);">
+              <span>📋</span> <span>AI प्रॉम्प्ट कॉपी करें</span>
+            </button>
+            <a href="https://chatgpt.com/?q=You%20are%20my%20FrankPass%20Secret%20Key%20Coach.%20Help%20me%20create%20an%20unforgettable%20Master%20Passphrase%20using%20only%20lowercase%20letters%20and%20numbers%20like%20'i%20like%2030%20legs%20cat'%20or%20'i%20like%20flying%20ant%20109'.%20Ask%20me%202-3%20quirky%20questions%20to%20give%20me%203%20unique%20options!" target="_blank" rel="noopener noreferrer" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 0.82rem; padding: 0.58rem 0.95rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px;">
+              <span>🟢</span> ChatGPT ↗
+            </a>
+            <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 0.82rem; padding: 0.58rem 0.95rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px;">
+              <span>✨</span> Gemini ↗
+            </a>
+            <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 0.82rem; padding: 0.58rem 0.95rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px;">
+              <span>🟠</span> Claude ↗
+            </a>
+          </div>
+
+          <!-- Try It Yourself & Share Feedback Callout -->
+          <div style="margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 0.82rem; color: var(--text-muted);">
+            <div>
+              <span>🧪</span> <strong>खुद टेस्ट करें (Try It Yourself):</strong> अपनी की को <a href="/" style="color: #38bdf8; font-weight: 700;">वेब जनरेटर</a> या एक्सटेंशन में डालकर देखें। वही इनपुट = 100% वही पासवर्ड!
+            </div>
+            <div>
+              <a href="https://whatsapp.com/channel/0029VbCnmPe0VycPXCmBBH43" target="_blank" rel="noopener" style="color: #10b981; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
+                <span>💬</span> कोई समस्या या फीडबैक साझा करें ↗
+              </a>
+            </div>
+          </div>
+
+        </div>
+
           <li>
             <span class="step-num">4</span>
             <span><strong>Generate Password</strong> पर क्लिक करें। 10 लाख PBKDF2 राउंड्स ~0.8 सेकंड में आपकी रैम में उच्च-एन्ट्रॉपी पासवर्ड तैयार कर देंगे।</span>
