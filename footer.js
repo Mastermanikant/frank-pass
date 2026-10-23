@@ -83,7 +83,8 @@
         <a href="/index.html">Stateless Generator</a>
         <a href="/random-password-generator.html">Random Password Generator</a>
         <a href="/pin.html">PIN Generator</a>
-        <a href="/pro.html">FrankPass Pro</a>
+        <a href="/extension.html">Browser Extension</a>
+        <a href="/pricing.html">Pricing &amp; Plans</a>
         <a href="https://tools.frankpass.com" target="_blank" rel="noopener">Developer Tools ↗</a>
         <a href="/install.html">Install Offline App</a>
         <a href="/products.html">All Products Hub</a>

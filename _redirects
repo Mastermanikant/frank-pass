@@ -26,8 +26,11 @@
 /app /install 301
 /download /install 301
 /pwa /install 301
-/pricing /pro 301
-/pricing/extensions /pro 301
+/pro /pricing 301
+/pro.html /pricing 301
+/pro-hindi /pricing-hindi 301
+/pro-hindi.html /pricing-hindi 301
+/pricing/extensions /extension 301
 /about /about-us 301
 /about-hindi /about-us-hindi 301
 /founder /founder-mastermanikant 301

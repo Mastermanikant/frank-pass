@@ -302,7 +302,8 @@ pre code {
 .header-nav a:hover, .header-nav a.active { color: var(--text-primary); background: var(--glass-bg); }
 .header-nav .separator { color: rgba(255,255,255,0.15); font-size: 0.8rem; }
 
-.header-nav .btn-pro {
+.header-nav .btn-pro,
+.header-nav .btn-extension-cta {
   background: var(--accent);
   color: #fff;
   padding: 0.45rem 1.1rem;
@@ -311,7 +312,8 @@ pre code {
   margin-left: 0.5rem;
   transition: background var(--transition), transform var(--transition);
 }
-.header-nav .btn-pro:hover { background: var(--accent-glow); transform: translateY(-1px); color: #fff; }
+.header-nav .btn-pro:hover,
+.header-nav .btn-extension-cta:hover { background: var(--accent-glow); transform: translateY(-1px); color: #fff; }
 
 /* Hamburger */
 .hamburger, .hamburger-btn, #hamburger {
@@ -1591,7 +1593,8 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   font-weight: 700;
   border: 1px solid rgba(109, 40, 217, 0.25);
 }
-[data-theme="light"] .header-nav .btn-pro {
+[data-theme="light"] .header-nav .btn-pro,
+.header-nav .btn-extension-cta {
   background: #6d28d9 !important;
   color: #ffffff !important;
   box-shadow: 0 4px 14px rgba(109, 40, 217, 0.35) !important;

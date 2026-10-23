@@ -96,6 +96,7 @@
     <input type="hidden" id="region" value="India (IN)">
 
     <!-- Desktop Nav -->
+        <!-- Desktop Nav -->
     <nav class="header-nav" role="navigation" aria-label="Main navigation">
       
       <!-- 1. Generators Dropdown -->
@@ -129,33 +130,41 @@
         <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
           Resources <span class="dropdown-chevron">▾</span>
         </button>
-        <div class="nav-dropdown-menu flyout-grid-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
           
-          <!-- Category 1: User Guides -->
-          <div class="has-flyout" id="flyout-user-guides">
+          <!-- Category 1: Core Guides & Specs -->
+          <div class="has-flyout" id="flyout-core-guides">
             <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
               <div class="flyout-header-content">
-                <span class="flyout-cat-icon">📖</span>
-                <span class="flyout-cat-title">User Guides</span>
+                <span class="flyout-cat-icon">📚</span>
+                <span class="flyout-cat-title">Core Guides &amp; Specs</span>
               </div>
               <span class="flyout-chevron">›</span>
             </div>
             <div class="flyout-menu" role="menu">
-              <a href="/docs.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📄</span>
-                <span class="dropdown-title">Documentation</span>
-              </a>
               <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">🔑</span>
                 <span class="dropdown-title">Secret Key Guide</span>
               </a>
-              <a href="/atm-upi-pin-security-guide.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">💳</span>
-                <span class="dropdown-title">ATM &amp; UPI PIN Guide</span>
+              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚙️</span>
+                <span class="dropdown-title">How FrankPass Works</span>
               </a>
-              <a href="/install.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📲</span>
-                <span class="dropdown-title">Install App (PWA)</span>
+              <a href="/why-stateless-password-generation-is-the-future.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚡</span>
+                <span class="dropdown-title">Stateless Architecture</span>
+              </a>
+              <a href="/faq.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">❓</span>
+                <span class="dropdown-title">Security FAQ</span>
+              </a>
+              <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">📄</span>
+                <span class="dropdown-title">Cryptographic Specs</span>
+              </a>
+              <a href="/limitations-and-advantages.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚖️</span>
+                <span class="dropdown-title">Limitations &amp; Advantages</span>
               </a>
             </div>
           </div>
@@ -165,7 +174,7 @@
             <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
               <div class="flyout-header-content">
                 <span class="flyout-cat-icon">🛡️</span>
-                <span class="flyout-cat-title">Security &amp; Threat Defense</span>
+                <span class="flyout-cat-title">Cyber Threat Defense</span>
               </div>
               <span class="flyout-chevron">›</span>
             </div>
@@ -176,29 +185,25 @@
               </a>
               <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">☁️</span>
-                <span class="dropdown-title">Cloud Vault Weaknesses</span>
+                <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
               </a>
               <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">🧮</span>
-                <span class="dropdown-title">Password Entropy Math</span>
+                <span class="dropdown-title">Password Science &amp; Math</span>
               </a>
-              <a href="/why-stateless-password-generation-is-the-future.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🚀</span>
-                <span class="dropdown-title">Stateless Security Future</span>
-              </a>
-              <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📜</span>
-                <span class="dropdown-title">Technical Whitepaper</span>
+              <a href="/atm-upi-pin-security-guide.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔢</span>
+                <span class="dropdown-title">ATM &amp; UPI PIN Security</span>
               </a>
             </div>
           </div>
 
-          <!-- Category 3: Trust & Founder -->
+          <!-- Category 3: Trust & Ecosystem -->
           <div class="has-flyout" id="flyout-trust-founder">
             <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
               <div class="flyout-header-content">
                 <span class="flyout-cat-icon">💡</span>
-                <span class="flyout-cat-title">Founder &amp; Economics</span>
+                <span class="flyout-cat-title">Trust &amp; Ecosystem</span>
               </div>
               <span class="flyout-chevron">›</span>
             </div>
@@ -209,15 +214,19 @@
               </a>
               <a href="/founder-mastermanikant.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">🎯</span>
-                <span class="dropdown-title">Founder (Master Manikant)</span>
+                <span class="dropdown-title">Founder Master Manikant</span>
               </a>
               <a href="/how-frankpass-is-free-without-selling-data.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">⚖️</span>
                 <span class="dropdown-title">Zero-Server Economics</span>
               </a>
+              <a href="/products.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🌐</span>
+                <span class="dropdown-title">Ecosystem Products Hub</span>
+              </a>
               <a href="/sponsors.html" class="dropdown-item" role="menuitem">
                 <span class="dropdown-icon">🌱</span>
-                <span class="dropdown-title">Green Sponsor Hub</span>
+                <span class="dropdown-title">Green Sponsors Hub</span>
               </a>
             </div>
           </div>
@@ -225,28 +234,28 @@
           <div class="dropdown-divider"></div>
           <a href="/library.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
             <span class="dropdown-icon">🏛️</span>
-            <span class="dropdown-title" style="color:var(--accent-light);">Master Library Directory &rarr;</span>
+            <span class="dropdown-title" style="color:var(--accent-light);">Master Library &amp; Directory &rarr;</span>
           </a>
 
         </div>
       </div>
 
-      <!-- 3. Extension Link (Active) -->
-      <a href="/extension.html" class="nav-link active" style="color:var(--accent-light);font-weight:700;">Extension ⚡</a>
-
-      <!-- 4. Products Link -->
-      <a href="/products.html" class="nav-link">Products</a>
-
-      <!-- 5. Master Library Link -->
+      <!-- 3. Master Library Link -->
       <a href="/library.html" class="nav-link">Library</a>
 
-      <!-- 6. Direct Pro CTA -->
-      <a href="/pro.html" class="btn-pro" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all 0.2s;">
-        <span>Get Pro</span> <span style="font-size:0.85rem;">👑</span> &rarr;
+      <!-- 4. Pricing Link -->
+      <a href="/pricing.html" class="nav-link" style="font-weight:600;">Pricing</a>
+
+      <!-- 5. Founder Link -->
+      <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
+
+      <!-- 6. Extension Primary CTA Button (Active) -->
+      <a href="/extension.html" class="btn-extension-cta active" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1.05rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;transition:all 0.2s;">
+        <span>⚡ Extension</span>
       </a>
       
       <!-- 7. Theme Toggle -->
-      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle visual theme" title="Toggle theme">
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
         <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       </button>
 
@@ -275,7 +284,7 @@
   <a href="/faq.html" class="mobile-nav-link"><span>❓</span> FAQ</a>
   <a href="/whitepaper.html" class="mobile-nav-link"><span>📜</span> Technical Whitepaper</a>
   <a href="/founder-mastermanikant.html" class="mobile-nav-link"><span>👨‍💻</span> Founder (Master Manikant Yadav)</a>
-  <a href="/pro.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
+  <a href="/pricing.html" class="btn-primary" style="margin-top:1rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">Get Pro 👑 &rarr;</a>
 </nav>
 
 <main id="main-content">
@@ -342,6 +351,39 @@
         </div>
       </div>
 
+            <!-- Mobile PWA & Windows Desktop Callout -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem;max-width:840px;margin:2rem auto 2.5rem;text-align:left;">
+        <!-- Card 1: Desktop Workstations -->
+        <div class="card-glass" style="border-radius:16px;padding:1.5rem;border:1px solid var(--border);background:var(--card-glass-bg);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem;">
+            <span style="font-size:1.4rem;">💻</span>
+            <strong style="font-size:1.05rem;color:var(--text-primary);">Windows, Mac &amp; Linux</strong>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.5;margin:0 0 0.85rem;">
+            Native browser extension for Chrome, Edge, Firefox, Brave and Opera. 1-click autofill with universal hotkey <code>Ctrl+Shift+F</code>.
+          </p>
+          <div style="font-size:0.78rem;color:#10b981;font-weight:700;">✓ 100% Free Instant Guest Mode Included</div>
+        </div>
+
+        <!-- Card 2: Mobile Devices -->
+        <div class="card-glass" style="border-radius:16px;padding:1.5rem;border:1px solid rgba(139,92,246,0.3);background:rgba(139,92,246,0.06);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.6rem;">
+            <span style="font-size:1.4rem;">📱</span>
+            <strong style="font-size:1.05rem;color:var(--text-primary);">Android &amp; iPhone (PWA)</strong>
+          </div>
+          <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.5;margin:0 0 0.85rem;">
+            Using a mobile phone or tablet? Install FrankPass as an air-gapped Standalone Web App directly to your home screen.
+          </p>
+          <a href="/install.html" class="pwa-install-btn" style="display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:700;color:var(--accent-light);text-decoration:underline;">
+            <span>📲 Install Mobile App (PWA)</span> &rarr;
+          </a>
+        </div>
+      </div>
+
+      <!-- Post-Install Onboarding Note -->
+      <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:14px;padding:1rem 1.4rem;max-width:840px;margin:0 auto 2.5rem;text-align:center;font-size:0.9rem;color:var(--text-primary);line-height:1.6;">
+        ✨ <strong>Automatic Onboarding:</strong> As soon as the extension is installed in your browser, it automatically opens the comprehensive <strong>Getting Started Guide</strong> to walk you through your master key setup in 30 seconds.
+      </div>
       <!-- Quick Highlights -->
       <div style="display:flex;justify-content:center;gap:18px;flex-wrap:wrap;font-size:0.88rem;color:var(--text-muted);">
         <span>✓ 100% Free Instant Guest Mode</span>
@@ -415,7 +457,7 @@
             <li><strong style="color:var(--accent-light);">✓</strong> Starting at only Rs 200/year (or $3/year)</li>
           </ul>
 
-          <a href="/pro.html" class="btn-pro" style="display:block;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(139,92,246,0.35);">
+          <a href="/pricing.html" class="btn-pro" style="display:block;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(139,92,246,0.35);">
             Explore Pro Features &rarr;
           </a>
         </div>
@@ -622,6 +664,64 @@
     </div>
   </section>
 
+  <!-- ============================================================
+   SECTION: Interactive Accordion FAQ
+   ============================================================ -->
+  <section class="section" style="border-top:1px solid var(--border);padding-top:3.5rem;padding-bottom:4rem;">
+    <div class="container" style="max-width:820px;">
+      
+      <div class="text-center mb-4">
+        <div class="section-label" aria-hidden="true">Common Inquiries</div>
+        <h2 style="font-size:clamp(1.75rem,3.5vw,2.3rem);margin-bottom:0.5rem">Frequently Asked Questions</h2>
+        <p class="section-desc">Quick answers regarding extension installation, hotkeys, and mathematical isolation.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        
+        <details class="card-glass" style="border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--border);cursor:pointer;">
+          <summary style="font-weight:700;font-size:1.02rem;color:var(--text-primary);outline:none;user-select:none;display:flex;justify-content:space-between;align-items:center;">
+            <span>How does the extension autofill without a central database?</span>
+            <span style="color:var(--accent-light);font-size:1.2rem;">▾</span>
+          </summary>
+          <p style="margin-top:0.85rem;font-size:0.92rem;color:var(--text-muted);line-height:1.65;cursor:default;">
+            FrankPass does not possess or communicate with any password database. When you visit a website (e.g., github.com), the extension reads the active domain name and computes a SHA-512 cryptographic hash using 1,000,000 PBKDF2 rounds directly in your computer's RAM. The moment the tab closes, the calculated credential evaporates from memory.
+          </p>
+        </details>
+
+        <details class="card-glass" style="border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--border);cursor:pointer;">
+          <summary style="font-weight:700;font-size:1.02rem;color:var(--text-primary);outline:none;user-select:none;display:flex;justify-content:space-between;align-items:center;">
+            <span>Which operating systems and browsers are supported?</span>
+            <span style="color:var(--accent-light);font-size:1.2rem;">▾</span>
+          </summary>
+          <p style="margin-top:0.85rem;font-size:0.92rem;color:var(--text-muted);line-height:1.65;cursor:default;">
+            The browser extension runs seamlessly on Windows, macOS, and Linux across Google Chrome, Microsoft Edge, Mozilla Firefox, Brave, and Opera. For mobile phones (Android and iPhone), FrankPass provides a standalone PWA (Progressive Web App) that installs in 1 click.
+          </p>
+        </details>
+
+        <details class="card-glass" style="border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--border);cursor:pointer;">
+          <summary style="font-weight:700;font-size:1.02rem;color:var(--text-primary);outline:none;user-select:none;display:flex;justify-content:space-between;align-items:center;">
+            <span>What hotkey triggers the 1-click password autofill?</span>
+            <span style="color:var(--accent-light);font-size:1.2rem;">▾</span>
+          </summary>
+          <p style="margin-top:0.85rem;font-size:0.92rem;color:var(--text-muted);line-height:1.65;cursor:default;">
+            On Windows and Linux, press <code>Ctrl+Shift+F</code>. On macOS, press <code>Command+Shift+F</code>. The extension instantly detects the active input field and populates your mathematically derived password in 0.1 seconds.
+          </p>
+        </details>
+
+        <details class="card-glass" style="border-radius:14px;padding:1.2rem 1.4rem;border:1px solid var(--border);cursor:pointer;">
+          <summary style="font-weight:700;font-size:1.02rem;color:var(--text-primary);outline:none;user-select:none;display:flex;justify-content:space-between;align-items:center;">
+            <span>Does FrankPass require creating an account or email signup?</span>
+            <span style="color:var(--accent-light);font-size:1.2rem;">▾</span>
+          </summary>
+          <p style="margin-top:0.85rem;font-size:0.92rem;color:var(--text-muted);line-height:1.65;cursor:default;">
+            No. Free Instant Guest Mode requires zero signups, zero phone numbers, and zero email addresses. The founder operates on a strict Zero-PII oath: if the math can function offline without your identity, we will never ask for it.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
 </main>
 
 <div id="site-footer"></div>
@@ -632,7 +732,7 @@
   <a href="/pin.html" class="mob-nav-item" aria-label="PIN"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>PIN</span></a>
   <a href="/extension.html" class="mob-nav-item active" aria-label="Extension"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span>Extension</span></a>
   <a href="/faq.html" class="mob-nav-item" aria-label="FAQ"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
-  <a href="/pro.html" class="mob-nav-item" aria-label="Pro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Pro</span></a>
+  <a href="/pricing.html" class="mob-nav-item" aria-label="Pro"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Pro</span></a>
 </nav>
 
 <!-- Scripts -->
