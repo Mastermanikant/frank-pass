@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/ai-catalog.json",
+  "name": "FrankPass",
+  "description": "Stateless zero-knowledge deterministic password and PIN generator.",
+  "url": "https://frankpass.com",
+  "version": "4.5.2",
+  "author": {
+    "name": "Master Manikant Yadav",
+    "url": "https://mastermanikant.com"
+  },
+  "documentation": "https://frankpass.com/llms.txt",
+  "full_documentation": "https://frankpass.com/llms-full.txt",
+  "capabilities": [
+    "stateless-password-generation",
+    "deterministic-pin-generation",
+    "random-password-generator",
+    "offline-pwa",
+    "client-side-pbkdf2"
+  ]
+}

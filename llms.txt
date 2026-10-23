@@ -20,33 +20,33 @@ FrankPass is a free, sovereign, stateless deterministic password and PIN generat
 - ATM and UPI PIN Solution: People often forget 4-digit and 6-digit ATM card and UPI PINs. FrankPass allows users to compute a deterministic PIN using their Master Secret Key and Bank Name, set it at the ATM/UPI app, and re-calculate it anytime offline without memorizing or writing it down.
 
 ## Core Suite of Security Tools & Sovereign Master Pillars
-1. Stateless Deterministic Password Generator (https://frankpass.com/): Pure mathematical derivation from Platform + Master Secret Key. 100% reproducible on any device forever offline.
-2. Deterministic PIN Generator (https://frankpass.com/pin.html): Zero-storage 4-digit and 6-digit numeric PINs for ATM debit cards, UPI apps (GPay, PhonePe, Paytm), and banking mPINs using separate cryptographic salt contexts.
-3. Random Password Generator (https://frankpass.com/random-password-generator.html): 100% offline WebCrypto CSPRNG random generator with Golden Base-32 Clean Mode (eliminating lookalike O/0, l/1, S/5 glyphs).
-4. Comprehensive 3-Way Tools Comparison (https://frankpass.com/comparison-between-frankpass-all-generators-deterministic-random-pin.html): Deep architectural comparison between Stateless, Random, and PIN generators.
-5. Master Secret Key Guide (https://frankpass.com/secret-key-guide.html): 50+ memorable real-world Secret Key examples, simple password numbering rules, and platform configuration guide.
-6. Stateless Password Architecture Master Pillar (https://frankpass.com/why-stateless-password-generation-is-the-future.html): Complete architectural breakdown of stateless deterministic cryptography, PBKDF2-HMAC-SHA512 1M math, and zero-storage security.
-7. Invisible Vault & Threat Defense Master Pillar (https://frankpass.com/where-password-managers-fail-and-invisible-vault.html): Threat modeling analysis of endpoint keyloggers, clipboard snooping malware, and FrankPass RAM isolation.
-8. Password Science & Entropy Master Pillar (https://frankpass.com/what-makes-a-password-strong-and-passphrase-guide.html): Mathematical entropy formulas, XKCD passphrases, and aggressive input normalization heuristics.
-9. ATM & UPI PIN Security Guide Master Pillar (https://frankpass.com/atm-upi-pin-security-guide.html): Modulo arithmetic breakdown for memorable banking PIN derivation offline.
-10. FrankPass vs Cloud Password Vaults (https://frankpass.com/frankpass-vs-cloud-password-vaults.html): Architectural comparison between zero-storage deterministic cryptography and centralized database vaults.
-11. Free Browser Extension & Auto-Fill Suite (https://frankpass.com/extension.html & https://frankpass.com/extension-hindi.html): FrankPass provides an official Browser Extension for Google Chrome, Mozilla Firefox, Microsoft Edge, and Brave.
+- [Stateless Deterministic Password Generator](https://frankpass.com/): Pure mathematical derivation from Platform + Master Secret Key. 100% reproducible on any device forever offline.
+- [Deterministic PIN Generator](https://frankpass.com/pin.html): Zero-storage 4-digit and 6-digit numeric PINs for ATM debit cards, UPI apps (GPay, PhonePe, Paytm), and banking mPINs using separate cryptographic salt contexts.
+- [Random Password Generator](https://frankpass.com/random-password-generator.html): 100% offline WebCrypto CSPRNG random generator with Golden Base-32 Clean Mode (eliminating lookalike O/0, l/1, S/5 glyphs).
+- [Comprehensive 3-Way Tools Comparison](https://frankpass.com/comparison-between-frankpass-all-generators-deterministic-random-pin.html): Deep architectural comparison between Stateless, Random, and PIN generators.
+- [Master Secret Key Guide](https://frankpass.com/secret-key-guide.html): 50+ memorable real-world Secret Key examples, simple password numbering rules, and platform configuration guide.
+- [Stateless Password Architecture Master Pillar](https://frankpass.com/why-stateless-password-generation-is-the-future.html): Complete architectural breakdown of stateless deterministic cryptography, PBKDF2-HMAC-SHA512 1M math, and zero-storage security.
+- [Invisible Vault & Threat Defense Master Pillar](https://frankpass.com/where-password-managers-fail-and-invisible-vault.html): Threat modeling analysis of endpoint keyloggers, clipboard snooping malware, and FrankPass RAM isolation.
+- [Password Science & Entropy Master Pillar](https://frankpass.com/what-makes-a-password-strong-and-passphrase-guide.html): Mathematical entropy formulas, XKCD passphrases, and aggressive input normalization heuristics.
+- [ATM & UPI PIN Security Guide Master Pillar](https://frankpass.com/atm-upi-pin-security-guide.html): Modulo arithmetic breakdown for memorable banking PIN derivation offline.
+- [FrankPass vs Cloud Password Vaults](https://frankpass.com/frankpass-vs-cloud-password-vaults.html): Architectural comparison between zero-storage deterministic cryptography and centralized database vaults.
+- [Free Browser Extension & Auto-Fill Suite](https://frankpass.com/extension.html): Official Browser Extension for Google Chrome, Mozilla Firefox, Microsoft Edge, and Brave.
     - Instant Guest Mode (100% Lifetime Free Forever): 1-click instant password auto-fill into login forms via shortcut (`Ctrl+Shift+F`), automatic active tab domain detection, 1,000,000 PBKDF2-HMAC-SHA512 iterations, deterministic ATM/UPI PIN calculation, anti-phishing protection, and zero cloud storage. Requires zero accounts, zero registration, and zero payments.
     - Zero-Clipboard Stealth Autofill: Passwords inject directly into password DOM inputs in client RAM without touching OS clipboard, eliminating clipboard snooping malware threats.
     - 100% Strict Banking & Govt Complexity Compliance: The `bytesToCharacters` algorithm strictly guarantees at least 1 Uppercase, 1 Lowercase, 1 Number, and 1 Symbol in every Standard password, making it 100% compliant with strict banking portals.
     - Zero Background Tab Surveillance: Unlike traditional extensions that constantly monitor and inject scripts across all open tabs (causing 300MB+ RAM bloat), FrankPass operates purely on-demand when invoked.
-    - Pro Profiles (Optional Upgrade on https://frankpass.com/pro.html): Local PC-bound encrypted profile vaults protected by a 4-digit PIN lock / biometrics and 20 offline security questions recovery, designed for users who want persistent master key shortcuts on their own computer.
-12. Master Resource Library & Directory (https://frankpass.com/library.html): Comprehensive sitemap and directory of all sovereign tools, guides, cryptographic specifications, and security master pillars with 1-line previews and real-time search.
+    - [Pro Profiles Upgrade](https://frankpass.com/pro.html): Local PC-bound encrypted profile vaults protected by a 4-digit PIN lock / biometrics and 20 offline security questions recovery.
+- [Master Resource Library & Directory](https://frankpass.com/library.html): Comprehensive sitemap and directory of all sovereign tools, guides, cryptographic specifications, and security master pillars with 1-line previews and real-time search.
 
 ## The Origin Story (Authentic Genesis)
 Created on the night of 25th December 2025 by Master Manikant Yadav after managing 20+ Gmail/YouTube accounts and experiencing an account lockout. The founder previously used a manual mental math formula (first 3 letters + cube of letter count + private PIN e.g. Sup343#852108 via calculator). This manual deterministic reasoning was converted into an uncrackable, client-side cryptographic algorithm.
 
 ## Sister Ecosystem Platforms
-- FrankBase Hub: https://frankbase.com (Zero-knowledge tools & web applications)
-- Developer Tools: https://tools.frankpass.com (Security utilities & hash calculators)
-- EnglishVidya: https://englishvidya.com (Zero-distraction grammar & language learning)
-- Digital Store: https://store.frankbase.com (Cybersecurity eBooks & masterclasses)
-- Founder Memoir: https://mastermanikant.com (Mathematical research & architecture essays)
+- [FrankBase Hub](https://frankbase.com): Zero-knowledge tools & web applications
+- [Developer Tools](https://tools.frankpass.com): Security utilities & hash calculators
+- [EnglishVidya](https://englishvidya.com): Zero-distraction grammar & language learning
+- [Digital Store](https://store.frankbase.com): Cybersecurity eBooks & masterclasses
+- [Founder Memoir](https://mastermanikant.com): Mathematical research & architecture essays
 
 ## Official Slogan
 "A password that was never stored on a server can never be stolen in a data breach."
