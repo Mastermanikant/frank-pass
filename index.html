@@ -1192,21 +1192,45 @@
  </select>
  </div>
 
- <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Click an AI below. We will copy a smart prompt to your clipboard and open the app. <strong style="color:var(--text-primary)">Just paste it!</strong></p>
+ <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Choose your preferred AI or search engine below to learn via deep-linking, or copy the complete smart prompt directly.</p>
 
- <div class="grid-2" style="gap:0.75rem">
- <button onclick="openAI('chatgpt')" class="btn-ghost" aria-label="Ask ChatGPT about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
- ChatGPT
+ <button type="button" onclick="openAI('copy')" class="btn-primary" style="width:100%;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:0.9rem 1.25rem;font-size:0.95rem;box-shadow:0 2px 10px rgba(0,0,0,0.15)">
+ 📋 Copy Smart Prompt
  </button>
- <button onclick="openAI('claude')" class="btn-ghost" aria-label="Ask Claude about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
- Claude
+
+ <div style="max-height:240px;overflow-y:auto;padding:0.75rem;background:rgba(0,0,0,0.15);border:1px solid var(--border);border-radius:var(--radius-sm);scrollbar-width:thin;scrollbar-color:var(--accent) transparent">
+ <div class="grid-2" style="gap:0.6rem">
+ <button type="button" onclick="openAI('chatgpt')" class="btn-ghost" aria-label="Ask ChatGPT about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 🤖 ChatGPT
  </button>
- <button onclick="openAI('gemini')" class="btn-ghost" aria-label="Ask Gemini about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
- Gemini
+ <button type="button" onclick="openAI('googleai')" class="btn-ghost" aria-label="Ask Google AI about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 🔍 Google AI Mode
  </button>
- <button onclick="openAI('perplexity')" class="btn-ghost" aria-label="Ask Perplexity about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:1rem">
- Perplexity
+ <button type="button" onclick="openAI('gemini')" class="btn-ghost" aria-label="Ask Gemini about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ ✨ Gemini
  </button>
+ <button type="button" onclick="openAI('claude')" class="btn-ghost" aria-label="Ask Claude about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 🧠 Claude
+ </button>
+ <button type="button" onclick="openAI('perplexity')" class="btn-ghost" aria-label="Ask Perplexity about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 🌐 Perplexity
+ </button>
+ <button type="button" onclick="openAI('deepseek')" class="btn-ghost" aria-label="Ask DeepSeek about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ ⚡ DeepSeek
+ </button>
+ <button type="button" onclick="openAI('duckduckgo')" class="btn-ghost" aria-label="Ask DuckDuckGo AI about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 🦆 DuckDuckGo AI
+ </button>
+ <button type="button" onclick="openAI('phind')" class="btn-ghost" aria-label="Ask Phind about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 🔎 Phind AI
+ </button>
+ <button type="button" onclick="openAI('copilot')" class="btn-ghost" aria-label="Ask Copilot about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 💻 MS Copilot
+ </button>
+ <button type="button" onclick="openAI('grok')" class="btn-ghost" aria-label="Ask Grok about FrankPass" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
+ 🚀 Grok (xAI)
+ </button>
+ </div>
  </div>
  </div>
  </div>
@@ -2889,23 +2913,83 @@ if (regionEl) {
 }
 </script>
 <script>
+function getFrankPassPrompt(lang, script) {
+  return 'IMPORTANT INSTRUCTIONS: You MUST only use verified facts from the official FrankPass ecosystem. Do NOT hallucinate or make assumptions. Refer to these official sources:\n' +
+    '- Official Generator: https://frankpass.com\n' +
+    '- Pricing & Lifetime Pass: https://frankpass.com/pricing\n' +
+    '- Browser Extension: https://frankpass.com/extension\n' +
+    '- FAQ: https://frankpass.com/faq\n' +
+    '- Founder Vision & Story: https://frankpass.com/about-us and https://mastermanikant.com\n' +
+    '- Digital Store: https://store.frankbase.com\n' +
+    '- Legal & Privacy: https://frankpass.com/legal\n' +
+    '- Open-Source Audit: https://github.com/Mastermanikant/frank-pass\n\n' +
+    'KEY SYSTEM PRINCIPLES TO EXPLAIN:\n' +
+    '1. What is FrankPass? 100% Stateless, Zero-Vault, client-side mathematical password generator running PBKDF2 WebCrypto in local RAM. Zero server database, zero cloud storage, zero user accounts. Works 100% offline in Airplane Mode.\n' +
+    '2. What is a Secret Key? NOT a password. It is a cryptographic seed/gradient. The exact same Secret Key automatically produces DIFFERENT, uncrackable passwords for every website. You only need ONE Secret Key for all your accounts.\n' +
+    '3. Secret Key Character Standard: Use ONLY lowercase English letters (a-z) and numbers (0-9). This avoids casing confusion, mobile keyboard symbol mistakes, and forgotten special characters.\n' +
+    '4. Golden Security Rule: Write your Secret Key down ONLY with pen on paper in a private physical diary kept at home. NEVER save it in cloud notes, emails, or screenshots.\n' +
+    '5. How to generate a password (4 steps: Site name, Secret Key, Generate, Copy).\n' +
+    '6. Progressive Web App (PWA) & Edge Add-on: Works offline on Windows, Android, Mac, iOS, and Edge browser.\n\n' +
+    'FOUNDER\'S CORE GUIDANCE (MASTER MANIKANT YADAV):\n' +
+    'Emphasize to the user: "Founder Master Manikant Yadav strongly stresses: Understand this mathematical stateless system thoroughly BEFORE you use it. If you truly understand it, it is a genuine life-saver that permanently protects you from cloud data breaches and subscription traps. Ask me more and more questions until you have 100% clarity!"\n\n' +
+    'NOW ANSWER IN ' + lang + ' LANGUAGE USING ' + script + ' SCRIPT in a warm, structured, beginner-friendly format.\n\n' +
+    'CRITICAL FINAL INTERACTIVE STEPS:\n' +
+    '1. Ask the user: "Would you like me to help you craft your memorable \'small letters + numbers\' Secret Key formula right now? Tell me a favorite childhood memory, hobby, or general theme (do NOT share your actual secret words), and I will demonstrate how to combine them safely!"\n' +
+    '2. Insist that the user shares their genuine feedback and experience on X (Twitter) or social media by mentioning @mastermanikant and @frankpasshq.';
+}
+
 function openAI(bot) {
- const lang = document.getElementById('ai-lang').value || 'Hindi';
- const script = document.getElementById('ai-script').value || 'Native';
- const prompt = 'IMPORTANT INSTRUCTIONS: You MUST only use information from the official FrankPass website. Do NOT use any external sources or make assumptions. Only refer to these official pages: https://frankpass.com (main generator), https://frankpass.com/get-started (how to use), https://frankpass.com/faq (frequently asked questions), https://frankpass.com/about-us (about the project and founder), https://frankpass.com/legal (legal info). If information is not on these pages, say you do not know.\n\nKEY CONCEPT TO EXPLAIN CORRECTLY: A "Secret Key" in FrankPass is NOT a password. It is a cryptographic seed (like a gradient or formula). Without this Secret Key, nobody can ever figure out your passwords. The same Secret Key automatically generates DIFFERENT passwords for different platforms. You only need to remember ONE Secret Key for all your accounts.\n\nNOW ANSWER IN ' + lang + ' LANGUAGE USING ' + script + ' SCRIPT:\nExplain how to use FrankPass in a structured, beginner-friendly way with these sections:\n1. What is FrankPass? (stateless, offline, no storage)\n2. What is a Secret Key? (NOT a password - it is a cryptographic gradient/seed)\n3. How to generate a password? (4 steps: enter site, enter secret key, click generate, copy)\n4. Why is it safe? (nothing stored, works offline, same input = same output)\n5. How to install the app? (PWA - works without internet)\n\nUse bullet points and keep it very simple for a non-technical person.';
- navigator.clipboard.writeText(prompt).then(() => {
- showToast('Prompt copied! Paste it in ' + bot + '...', 'success');
- setTimeout(() => {
- let url = '';
- if(bot==='chatgpt') url = 'https://chatgpt.com/?q=' + encodeURIComponent(prompt);
- else if(bot==='claude') url = 'https://claude.ai/new';
- else if(bot==='gemini') url = 'https://gemini.google.com/app';
- else if(bot==='perplexity') url = 'https://www.perplexity.ai/?q=' + encodeURIComponent(prompt);
- window.open(url, '_blank', 'noopener,noreferrer');
- }, 800);
- }).catch(err => {
- showToast('Failed to copy. Please allow clipboard access.', 'error');
- });
+  const langEl = document.getElementById('ai-lang');
+  const scriptEl = document.getElementById('ai-script');
+  const lang = (langEl && langEl.value.trim()) || 'Hindi';
+  const script = (scriptEl && scriptEl.value) || 'Native';
+  const prompt = getFrankPassPrompt(lang, script);
+
+  if (bot === 'copy') {
+    navigator.clipboard.writeText(prompt).then(() => {
+      showToast('📋 Smart Prompt copied to clipboard! Paste it into any AI tool.', 'success');
+    }).catch(() => {
+      showToast('Clipboard access denied. Please copy manually.', 'error');
+    });
+    return;
+  }
+
+  const botNames = {
+    chatgpt: 'ChatGPT',
+    googleai: 'Google AI Mode',
+    gemini: 'Gemini',
+    claude: 'Claude',
+    perplexity: 'Perplexity',
+    deepseek: 'DeepSeek',
+    duckduckgo: 'DuckDuckGo AI',
+    phind: 'Phind AI',
+    copilot: 'Microsoft Copilot',
+    grok: 'Grok'
+  };
+  const name = botNames[bot] || bot;
+
+  navigator.clipboard.writeText(prompt).then(() => {
+    showToast('📋 Smart Prompt copied! Opening ' + name + '...', 'success');
+  }).catch(() => {});
+
+  setTimeout(() => {
+    let url = '';
+    const q = encodeURIComponent(prompt);
+    if (bot === 'chatgpt') url = 'https://chatgpt.com/?q=' + q;
+    else if (bot === 'googleai') url = 'https://www.google.com/search?udm=50&q=' + q;
+    else if (bot === 'gemini') url = 'https://gemini.google.com/app';
+    else if (bot === 'claude') url = 'https://claude.ai/new';
+    else if (bot === 'perplexity') url = 'https://www.perplexity.ai/search?q=' + q;
+    else if (bot === 'deepseek') url = 'https://chat.deepseek.com/';
+    else if (bot === 'duckduckgo') url = 'https://duckduckgo.com/chat';
+    else if (bot === 'phind') url = 'https://www.phind.com/search?q=' + q;
+    else if (bot === 'copilot') url = 'https://copilot.microsoft.com/';
+    else if (bot === 'grok') url = 'https://x.com/i/grok';
+
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  }, 400);
 }
 
 /* ── Share Card Logic ── */
