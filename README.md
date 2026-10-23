@@ -7,7 +7,8 @@
 ![Client-Side Cryptography](https://img.shields.io/badge/Security-Client--Side_Cryptography-red?style=flat-square)
 ![Stateless](https://img.shields.io/badge/Privacy-100%25_Stateless-brightgreen?style=flat-square)
 ![Version](https://img.shields.io/badge/Version-V3.3.6-purple?style=flat-square)
-![License](https://img.shields.io/badge/License-Proprietary-orange?style=flat-square)
+![License](https://img.shields.io/badge/License-Source--Available%20%7C%20Audit--Open-blue?style=flat-square)
+[![Live GitHub Pages Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen?style=flat-square)](https://mastermanikant.github.io/frank-pass/)
 
 > *"A password that was never stored on a server can never be stolen in a data breach."*
 
@@ -90,7 +91,10 @@ frank-pass/
 
 ---
 
-## 🛡️ License & Copyright
+## 🛡️ License & Commercial Protection (Source-Available for Security Audit)
 
-Designed & Engineered with 100% integrity by **Master Manikant Yadav**.  
-All rights reserved. FrankBase & FrankPass Digital Ecosystem.
+Designed & engineered with 100% cryptographic integrity by **Master Manikant Yadav**.
+
+- **Open for Public Audit & Verification:** Free for personal offline use, cryptographic inspection, security auditing, and educational verification.
+- **Strict Commercial Protection:** You may NOT redistribute, clone, rebrand, host on other domains, or sell this software as a competing commercial service/SaaS without an explicit commercial license.
+- See the full [LICENSE](LICENSE) for details.
