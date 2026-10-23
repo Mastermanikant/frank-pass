@@ -84,6 +84,7 @@
         <a href="/random-password-generator.html">Random Password Generator</a>
         <a href="/pin.html">PIN Generator</a>
         <a href="/extension.html">Browser Extension</a>
+        <a href="https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj" target="_blank" rel="noopener" style="color:#10b981;font-weight:600">🌊 Edge Addon (Live ↗)</a>
         <a href="/pricing.html">Pricing &amp; Plans</a>
         <a href="https://tools.frankpass.com" target="_blank" rel="noopener">Developer Tools ↗</a>
         <a href="/install.html">Install Offline App</a>
