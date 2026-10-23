@@ -91,10 +91,11 @@ frank-pass/
 
 ---
 
-## 🛡️ License & Commercial Protection (Source-Available for Security Audit)
+## 🛡️ License & Legal Protection (Strict Service Prohibition)
 
 Designed & engineered with 100% cryptographic integrity by **Master Manikant Yadav**.
 
-- **Open for Public Audit & Verification:** Free for personal offline use, cryptographic inspection, security auditing, and educational verification.
-- **Strict Commercial Protection:** You may NOT redistribute, clone, rebrand, host on other domains, or sell this software as a competing commercial service/SaaS without an explicit commercial license.
-- See the full [LICENSE](LICENSE) for details.
+- **Open for Public Security Audit:** Free for individual offline password generation, academic verification, and cryptographic review.
+- **Total Prohibition on Services (Paid or Free):** Hosting, mirroring, or deploying FrankPass as a public/private web service, app, extension, or SaaS (whether free or paid) is strictly forbidden.
+- **Legal Liability & Action:** Any unauthorized deployment or redistribution makes the infringer directly liable for all commercial and financial damages, and will trigger immediate legal action, DMCA takedowns, and statutory damage claims.
+- Read the binding legal terms in [LICENSE](LICENSE).
