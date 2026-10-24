@@ -1,25 +1,33 @@
 {
-  "$schema": "https://json.schemastore.org/ai-catalog.json",
   "specVersion": "1.0",
-  "name": "FrankPass",
-  "description": "Stateless zero-knowledge deterministic password and PIN generator.",
-  "url": "https://frankpass.com",
-  "version": "4.5.2",
-  "documentation": "https://frankpass.com/llms.txt",
+  "host": {
+    "displayName": "FrankPass",
+    "documentationUrl": "https://frankpass.com/llms.txt"
+  },
   "entries": [
     {
-      "name": "FrankPass Stateless Generator",
-      "type": "web-application",
+      "identifier": "urn:air:frankpass:password-generator",
+      "displayName": "FrankPass Stateless Generator",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://frankpass.com/llms.txt",
       "description": "Pure client-side cryptographic deterministic password generator using 1,000,000 PBKDF2 iterations.",
-      "url": "https://frankpass.com",
-      "documentation": "https://frankpass.com/llms.txt"
+      "representativeQueries": [
+        "Generate deterministic stateless password",
+        "How to use FrankPass password generator",
+        "Deterministic password without cloud storage"
+      ]
     },
     {
-      "name": "FrankPass ATM & UPI PIN Generator",
-      "type": "web-application",
+      "identifier": "urn:air:frankpass:atm-upi-pin-generator",
+      "displayName": "FrankPass ATM & UPI PIN Generator",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://frankpass.com/atm-upi-pin-security-guide.html",
       "description": "Deterministic 4-digit and 6-digit banking and UPI PIN generator.",
-      "url": "https://frankpass.com/pin.html",
-      "documentation": "https://frankpass.com/atm-upi-pin-security-guide.html"
+      "representativeQueries": [
+        "Generate ATM UPI PIN deterministically",
+        "Secure stateless banking PIN generator",
+        "Deterministic numeric PIN generator"
+      ]
     }
   ]
 }
