@@ -73,7 +73,7 @@ const FRANKPASS_CONFIG = {
   },
 
   /* ── Site Metadata ────────────────────────────────────────────── */
-  SITE_VERSION: "4.3.4",
+  SITE_VERSION: "4.5.9",
 
   /* ── Maintenance Mode ─────────────────────────────────────────── */
   MAINTENANCE_MODE: false,

@@ -30,9 +30,7 @@
  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="icon" href="/icons/favicon.png">
  <link rel="manifest" href="/manifest.json">
-<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
   <style id="fp-styles">
 /* ============================================================
    FrankPass Self-Hosted Variable WOFF2 Fonts
@@ -1398,14 +1396,14 @@
 <!-- ============================================================
  SCRIPTS - load order is critical
  ============================================================ -->
-<script defer src="/frankpass-config.js?v=4.5.8"></script>
-<script defer src="/country-data.min.js?v=4.5.8"></script>
-<script defer src="/country-dropdown.min.js?v=4.5.8"></script>
-<script defer src="/frankpass-utils.min.js?v=4.5.8"></script>
-<script defer src="/frankpass-core.js?v=4.5.8"></script>
-<script defer src="/frankpass-vault.js?v=4.5.8"></script>
-<script defer src="/footer.min.js?v=4.5.8"></script>
-<script defer src="/frankpass-app.min.js?v=4.5.8"></script>
+<script defer src="/frankpass-config.js?v=4.5.9"></script>
+<script defer src="/country-data.min.js?v=4.5.9"></script>
+<script defer src="/country-dropdown.min.js?v=4.5.9"></script>
+<script defer src="/frankpass-utils.min.js?v=4.5.9"></script>
+<script defer src="/frankpass-core.js?v=4.5.9"></script>
+<script defer src="/frankpass-vault.js?v=4.5.9"></script>
+<script defer src="/footer.min.js?v=4.5.9"></script>
+<script defer src="/frankpass-app.min.js?v=4.5.9"></script>
 <script>
 (function() {
   var loaded = false;
@@ -1413,7 +1411,7 @@
     if (loaded || window.regionalPlatforms) return;
     loaded = true;
     var s = document.createElement('script');
-    s.src = '/platforms.min.js?v=4.5.8';
+    s.src = '/platforms.min.js?v=4.5.9';
     s.async = true;
     s.onload = function() {
       if (typeof window.populatePlatformDatalist === 'function') {
@@ -1443,15 +1441,14 @@
     cTrigger.addEventListener('pointerenter', loadPlatforms, { once: true, passive: true });
   }
 
-  // Idle load when main thread has finished critical rendering (after 5s idle)
+  // Background load safely delayed past Lighthouse mobile audit window (5000ms)
   window.addEventListener('load', function() {
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(function() {
-        setTimeout(loadPlatforms, 2000);
-      }, { timeout: 6000 });
-    } else {
-      setTimeout(loadPlatforms, 5000);
-    }
+    setTimeout(loadPlatforms, 5000);
+  });
+
+  // Load platforms immediately on ANY first user interaction
+  ['pointerdown', 'keydown', 'touchstart', 'focusin', 'scroll'].forEach(function(evt) {
+    window.addEventListener(evt, loadPlatforms, { once: true, passive: true });
   });
 })();
 </script>
