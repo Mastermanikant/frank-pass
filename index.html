@@ -36,7 +36,7 @@
  <noscript>
    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&family=JetBrains+Mono:wght@500;600&display=swap">
  </noscript>
- <link rel="stylesheet" href="/style.min.css?v=4.5.4">
+ <link rel="stylesheet" href="/style.min.css?v=4.5.5">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -1385,15 +1385,58 @@
 <!-- ============================================================
  SCRIPTS - load order is critical
  ============================================================ -->
-<script defer src="/frankpass-config.js?v=4.5.4"></script>
-<script defer src="/country-data.js?v=4.5.4"></script>
-<script defer src="/country-dropdown.js?v=4.5.4"></script>
-<script defer src="/platforms.min.js?v=4.5.4"></script>
-<script defer src="/frankpass-utils.min.js?v=4.5.4"></script>
-<script defer src="/frankpass-core.js?v=4.5.4"></script>
-<script defer src="/frankpass-vault.js?v=4.5.4"></script>
-<script defer src="/footer.js?v=4.5.4"></script>
-<script defer src="/frankpass-app.min.js?v=4.5.4"></script>
+<script defer src="/frankpass-config.js?v=4.5.5"></script>
+<script defer src="/country-data.js?v=4.5.5"></script>
+<script defer src="/country-dropdown.js?v=4.5.5"></script>
+<script defer src="/frankpass-utils.min.js?v=4.5.5"></script>
+<script defer src="/frankpass-core.js?v=4.5.5"></script>
+<script defer src="/frankpass-vault.js?v=4.5.5"></script>
+<script defer src="/footer.js?v=4.5.5"></script>
+<script defer src="/frankpass-app.min.js?v=4.5.5"></script>
+<script>
+(function() {
+  var loaded = false;
+  function loadPlatforms() {
+    if (loaded || window.regionalPlatforms) return;
+    loaded = true;
+    var s = document.createElement('script');
+    s.src = '/platforms.min.js?v=4.5.5';
+    s.async = true;
+    s.onload = function() {
+      if (typeof window.populatePlatformDatalist === 'function') {
+        window.populatePlatformDatalist();
+      }
+      var p = document.getElementById('platform-input');
+      if (p && p.value) {
+        p.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    };
+    document.head.appendChild(s);
+  }
+
+  var pInput = document.getElementById('platform-input');
+  if (pInput) {
+    pInput.addEventListener('focus', loadPlatforms, { once: true, passive: true });
+    pInput.addEventListener('pointerenter', loadPlatforms, { once: true, passive: true });
+    pInput.addEventListener('touchstart', loadPlatforms, { once: true, passive: true });
+  }
+  var regSelect = document.getElementById('region');
+  if (regSelect) {
+    regSelect.addEventListener('change', loadPlatforms, { once: true, passive: true });
+    regSelect.addEventListener('focus', loadPlatforms, { once: true, passive: true });
+  }
+
+  if ('requestIdleCallback' in window) {
+    window.addEventListener('load', function() {
+      requestIdleCallback(loadPlatforms, { timeout: 3500 });
+    });
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(loadPlatforms, 2500);
+    });
+  }
+})();
+</script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
