@@ -1414,27 +1414,32 @@
     document.head.appendChild(s);
   }
 
+  // Trigger on user interaction with platform input
   var pInput = document.getElementById('platform-input');
   if (pInput) {
     pInput.addEventListener('focus', loadPlatforms, { once: true, passive: true });
     pInput.addEventListener('pointerenter', loadPlatforms, { once: true, passive: true });
     pInput.addEventListener('touchstart', loadPlatforms, { once: true, passive: true });
-  }
-  var regSelect = document.getElementById('region');
-  if (regSelect) {
-    regSelect.addEventListener('change', loadPlatforms, { once: true, passive: true });
-    regSelect.addEventListener('focus', loadPlatforms, { once: true, passive: true });
+    pInput.addEventListener('keydown', loadPlatforms, { once: true, passive: true });
   }
 
-  if ('requestIdleCallback' in window) {
-    window.addEventListener('load', function() {
-      requestIdleCallback(loadPlatforms, { timeout: 3500 });
-    });
-  } else {
-    window.addEventListener('load', function() {
-      setTimeout(loadPlatforms, 2500);
-    });
+  // Trigger if user interacts with country selector
+  var cTrigger = document.getElementById('country-trigger');
+  if (cTrigger) {
+    cTrigger.addEventListener('click', loadPlatforms, { once: true, passive: true });
+    cTrigger.addEventListener('pointerenter', loadPlatforms, { once: true, passive: true });
   }
+
+  // Idle load when main thread has finished critical rendering (after 5s idle)
+  window.addEventListener('load', function() {
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(function() {
+        setTimeout(loadPlatforms, 2000);
+      }, { timeout: 6000 });
+    } else {
+      setTimeout(loadPlatforms, 5000);
+    }
+  });
 })();
 </script>
 <script>
