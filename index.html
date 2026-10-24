@@ -30,13 +30,9 @@
  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="icon" href="/icons/favicon.png">
  <link rel="manifest" href="/manifest.json">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&family=JetBrains+Mono:wght@500;600&display=swap" media="print" onload="this.media='all'">
- <noscript>
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700&family=JetBrains+Mono:wght@500;600&display=swap">
- </noscript>
- <link rel="stylesheet" href="/style.min.css?v=4.5.5">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.min.css?v=4.5.6">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -1385,14 +1381,14 @@
 <!-- ============================================================
  SCRIPTS - load order is critical
  ============================================================ -->
-<script defer src="/frankpass-config.js?v=4.5.5"></script>
-<script defer src="/country-data.js?v=4.5.5"></script>
-<script defer src="/country-dropdown.js?v=4.5.5"></script>
-<script defer src="/frankpass-utils.min.js?v=4.5.5"></script>
-<script defer src="/frankpass-core.js?v=4.5.5"></script>
-<script defer src="/frankpass-vault.js?v=4.5.5"></script>
-<script defer src="/footer.js?v=4.5.5"></script>
-<script defer src="/frankpass-app.min.js?v=4.5.5"></script>
+<script defer src="/frankpass-config.js?v=4.5.6"></script>
+<script defer src="/country-data.js?v=4.5.6"></script>
+<script defer src="/country-dropdown.js?v=4.5.6"></script>
+<script defer src="/frankpass-utils.min.js?v=4.5.6"></script>
+<script defer src="/frankpass-core.js?v=4.5.6"></script>
+<script defer src="/frankpass-vault.js?v=4.5.6"></script>
+<script defer src="/footer.js?v=4.5.6"></script>
+<script defer src="/frankpass-app.min.js?v=4.5.6"></script>
 <script>
 (function() {
   var loaded = false;
@@ -1400,7 +1396,7 @@
     if (loaded || window.regionalPlatforms) return;
     loaded = true;
     var s = document.createElement('script');
-    s.src = '/platforms.min.js?v=4.5.5';
+    s.src = '/platforms.min.js?v=4.5.6';
     s.async = true;
     s.onload = function() {
       if (typeof window.populatePlatformDatalist === 'function') {
