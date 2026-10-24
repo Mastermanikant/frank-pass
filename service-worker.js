@@ -1,5 +1,5 @@
-// FrankPass Service Worker v4.5.2 (Safe Offline Cache & Zero Rogue Reloads)
-const CACHE_NAME = 'frankpass-v4.5.2';
+// FrankPass Service Worker v4.5.3 (Safe Offline Cache & Zero Rogue Reloads)
+const CACHE_NAME = 'frankpass-v4.5.3';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -49,6 +49,12 @@ const CACHED_URLS = [
     '/legal.html',
     '/ai-prompt-bar.js',
     '/style.css',
+    '/style.min.css',
+    '/frankpass-app.min.js',
+    '/platforms.min.js',
+    '/frankpass-utils.min.js',
+    '/ai-catalog.json',
+    '/.well-known/ai-catalog.json',
     '/frankpass-config.js',
     '/frankpass-utils.js',
     '/footer.js',
