@@ -2,7 +2,7 @@
 
 > **Ecosystem:** FrankPass Web Application (PWA)  
 > **Canonical Domain:** `https://www.frankpass.com/` | `https://main.frankpass.pages.dev/`  
-> **Current Version:** `v4.5.5` (Edge Deployed)  
+> **Current Version:** `v4.5.6` (Edge Deployed)  
 > **Architecture:** 100% Client-Side Stateless Zero-Knowledge Deterministic Password Generator  
 > **Standards:** WCAG 2.1 AA | ARD Agentic Browsing (4/4) | W3C PWA | PBKDF2-HMAC-SHA512  
 
