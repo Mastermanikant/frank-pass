@@ -1,20 +1,25 @@
 {
   "$schema": "https://json.schemastore.org/ai-catalog.json",
+  "specVersion": "1.0",
   "name": "FrankPass",
   "description": "Stateless zero-knowledge deterministic password and PIN generator.",
   "url": "https://frankpass.com",
   "version": "4.5.2",
-  "author": {
-    "name": "Master Manikant Yadav",
-    "url": "https://mastermanikant.com"
-  },
   "documentation": "https://frankpass.com/llms.txt",
-  "full_documentation": "https://frankpass.com/llms-full.txt",
-  "capabilities": [
-    "stateless-password-generation",
-    "deterministic-pin-generation",
-    "random-password-generator",
-    "offline-pwa",
-    "client-side-pbkdf2"
+  "entries": [
+    {
+      "name": "FrankPass Stateless Generator",
+      "type": "web-application",
+      "description": "Pure client-side cryptographic deterministic password generator using 1,000,000 PBKDF2 iterations.",
+      "url": "https://frankpass.com",
+      "documentation": "https://frankpass.com/llms.txt"
+    },
+    {
+      "name": "FrankPass ATM & UPI PIN Generator",
+      "type": "web-application",
+      "description": "Deterministic 4-digit and 6-digit banking and UPI PIN generator.",
+      "url": "https://frankpass.com/pin.html",
+      "documentation": "https://frankpass.com/atm-upi-pin-security-guide.html"
+    }
   ]
 }
