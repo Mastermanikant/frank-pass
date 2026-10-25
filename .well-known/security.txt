@@ -1,0 +1,15 @@
+# FrankPass Vulnerability Disclosure Policy (RFC 9116)
+# Canonical URL: https://frankpass.com/.well-known/security.txt
+
+Contact: mailto:connect@mastermanikant.com
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, hi
+Canonical: https://frankpass.com/.well-known/security.txt
+Policy: https://frankpass.com/legal.html#security
+Acknowledgments: https://frankpass.com/sponsors.html
+Encryption: https://mastermanikant.com/contact.html
+
+# Security Invariants:
+# 1. Zero-vault stateless architecture: We store 0 passwords, 0 master keys, 0 user records.
+# 2. Immutable mathematical formula: PBKDF2-HMAC-SHA512 at 1,000,000 iterations is permanently frozen.
+# 3. Transparent responsible disclosure via connect@mastermanikant.com.

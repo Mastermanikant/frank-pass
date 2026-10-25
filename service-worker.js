@@ -47,6 +47,8 @@ const CACHED_URLS = [
     '/founder-mastermanikant-hindi.html',
     '/sponsors.html',
     '/legal.html',
+    '/404.html',
+    '/.well-known/security.txt',
     '/ai-prompt-bar.js',
     '/fonts/inter-latin.woff2',
     '/fonts/outfit-latin.woff2',
