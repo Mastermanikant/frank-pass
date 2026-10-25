@@ -114,6 +114,7 @@
         <a href="/legal.html#privacy">Privacy Policy</a>
         <a href="/legal.html#terms">Terms of Service</a>
         <a href="/legal.html">Legal &amp; Safety Hub</a>
+        <a href="https://mastermanikant.com/contact.html?ref=frankpass_footer" target="_blank" rel="noopener" style="color:var(--accent-light);font-weight:600">💬 Feedback &amp; Suggestions ↗</a>
       </div>
 
     </div>
@@ -223,6 +224,7 @@
         <a href="/legal.html#privacy">Privacy Policy</a>
         <a href="/legal.html#terms">Terms of Service</a>
         <a href="/legal.html">Legal Hub</a>
+        <a href="https://mastermanikant.com/contact.html?ref=frankpass_footer_bottom" target="_blank" rel="noopener">Feedback &amp; Suggestions</a>
       </div>
     </div>
 
