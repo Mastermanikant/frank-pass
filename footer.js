@@ -494,23 +494,24 @@
   function registerGlobalServiceWorker() {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(function (reg) {
-            reg.update();
-            reg.addEventListener('updatefound', function () {
-              const newWorker = reg.installing;
-              if (newWorker) {
-                newWorker.addEventListener('statechange', function () {
-                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                    console.log('[FrankPass PWA] New update installed.');
-                  }
-                });
-              }
+        setTimeout(function () {
+          navigator.serviceWorker.register('/service-worker.js')
+            .then(function (reg) {
+              reg.addEventListener('updatefound', function () {
+                const newWorker = reg.installing;
+                if (newWorker) {
+                  newWorker.addEventListener('statechange', function () {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                      // Silently active for next visit
+                    }
+                  });
+                }
+              });
+            })
+            .catch(function () {
+              // Graceful silent fallback
             });
-          })
-          .catch(function (err) {
-            console.warn('[FrankPass PWA] ServiceWorker registration notice:', err);
-          });
+        }, 2500);
       });
     }
   }
