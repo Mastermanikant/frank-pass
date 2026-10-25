@@ -62,7 +62,7 @@
         
         <div class="footer-social" style="margin-top:1.15rem;display:flex;gap:8px;flex-wrap:wrap;max-width:300px">
           ${socialLink(soc.X || 'https://x.com/frankpasshq', 'X (Twitter)', ico.x, 'Official product updates & security announcements (@frankpasshq).')}
-          ${socialLink(soc.GITHUB || 'https://github.com/Mastermanikant/frank-pass', 'GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
+          ${socialLink(soc.GITHUB || 'https://github.com/Mastermanikant/frank-pass', 'FrankPass on GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
           ${socialLink(soc.LINKEDIN || 'https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin, 'Professional milestones & tech collaborations.')}
           ${socialLink(soc.YOUTUBE || 'https://youtube.com/@frankpasshq', 'FrankPass on YouTube', ico.youtube, 'Official video guides & product walkthroughs (@frankpasshq).')}
           ${socialLink(waLink, 'WhatsApp Channel', ico.whatsapp, 'Instant spam-free security alerts & releases.')}
