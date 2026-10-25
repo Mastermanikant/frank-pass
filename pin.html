@@ -24,7 +24,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@frankpasshq">
   
-  <link rel="stylesheet" href="/style.css?v=4.3.3">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.min.css?v=4.6.2">
   <link rel="icon" href="/icons/favicon.png">
   <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="manifest" href="/manifest.json">
@@ -430,7 +432,7 @@
      ============================================================ -->
 
 <script src="/frankpass-core.js?v=4.3.3"></script>
-<script src="/frankpass-utils.js?v=4.3.3"></script>
+<script src="/frankpass-utils.min.js?v=4.6.2"></script>
 <script>
 let currentPinLength = 4;
 let generatedPinRaw = '';
@@ -644,7 +646,7 @@ document.getElementById('pin-copy-btn').addEventListener('click', () => {
      SECTION 8: UNIVERSAL SHARED FOOTER & CONTROLLERS
      ============================================================ -->
 <div id="site-footer"></div>
-<script src="/footer.js?v=4.3.3"></script>
+<script src="/footer.min.js?v=4.6.2"></script>
 </body>
 </html>
 
