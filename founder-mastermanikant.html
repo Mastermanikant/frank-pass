@@ -462,66 +462,108 @@
 
   </div>
 
-  <!-- ── 25TH DECEMBER 2025 GENESIS STORY SECTION ── -->
+  <!-- ── AUTHENTIC GENESIS STORY SECTION ── -->
   <section style="background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.3);border-radius:24px;padding:2.25rem;box-shadow:var(--card-shadow);margin-bottom:2.5rem;">
     <div style="font-size:0.82rem;font-weight:700;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:0.25rem 0.75rem;border-radius:20px;display:inline-block;margin-bottom:0.75rem;">
       Origin Story &amp; Genesis
     </div>
     <h2 style="font-size:clamp(1.5rem, 3.5vw, 2rem);font-weight:800;color:var(--text-primary);margin:0 0 1.25rem 0;line-height:1.3;">
-      The 25th December Genesis: Why I Quit Cloud Password Managers and Built Serverless Math
+      The Genesis of FrankPass: From Mental Math to Serverless Cryptography
     </h2>
 
     <div style="font-size:1rem;line-height:1.8;color:var(--text-muted);">
+
+      <h3 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:1.5rem 0 0.75rem;">
+        Stage 1: The Mental Math Formula
+      </h3>
       <p style="margin-bottom:1.25rem;">
-        On the late night of <strong style="color:var(--text-primary);">25th December 2025 (Christmas Night)</strong>, I found myself trapped in an excruciating digital nightmare. Managing more than 20 separate Google and YouTube channels across several education and technology projects, I urgently needed to access an old, critical email account.
+        Like anyone else, I started with ordinary passwords. But as the accounts multiplied (multiple Gmail, YouTube, Instagram, X, Snapchat, and several project accounts), ordinary passwords stopped working. Repeating them was a security failure, and remembering dozens of strong ones was a cognitive impossibility.
+      </p>
+      <p style="margin-bottom:1.25rem;">
+        So I invented my own mental math formula:
+      </p>
+      <ul style="padding-left:1.25rem;margin-bottom:1.25rem;">
+        <li style="margin-bottom:0.4rem;">Take the <strong>first letter</strong> and the <strong>last letter</strong> of the platform name.</li>
+        <li style="margin-bottom:0.4rem;">Count the total letters in the platform name. <strong>Cube that number</strong> (<code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">letter_count<sup>3</sup></code>).</li>
+        <li style="margin-bottom:0.4rem;">Append a <strong>private random word / PIN</strong> I kept in my head.</li>
+      </ul>
+      <p style="margin-bottom:1.25rem;">
+        That was my password. No app, no manager, no cloud. Pure mental arithmetic, calculated fresh every time I needed to log in. It worked - for a while.
       </p>
 
+      <h3 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:1.75rem 0 0.75rem;">
+        Stage 2: The Collapse
+      </h3>
       <p style="margin-bottom:1.25rem;">
-        I stared at the login screen. The password had been a 16-character random jumble created two years prior. I tried every permutation I could imagine. Then came the dreaded recovery flow: SMS OTP delays, security questions whose answers felt ambiguous after years, and automated account lockout timers. I was completely locked out of my own digital life.
+        Three fatal problems destroyed the mental math system:
       </p>
-
-      <blockquote style="border-left:3px solid var(--accent);padding:1rem 1.5rem;margin:1.75rem 0;background:rgba(139,92,246,0.06);border-radius:0 14px 14px 0;font-style:italic;color:var(--text-primary);font-size:1.05rem;">
-        "Human working memory can hold 7 &plusmn; 2 items. Demanding that a human remember fifty 16-character random strings across dozens of platforms is not a security policy - it is a neurological impossibility."
+      <ol style="padding-left:1.25rem;margin-bottom:1.25rem;">
+        <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">Cognitive Overload:</strong> With every new account, the mental calculation burden grew heavier. Remembering which formula variation applied to which platform became an unsustainable daily exercise.</li>
+        <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">Pattern Vulnerability:</strong> If an attacker obtained 4-5 of my passwords, the underlying mathematical pattern was reverse-engineerable. The formula was deterministic, and deterministic meant predictable.</li>
+        <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">Rotation Breakdown:</strong> The moment I had to change a password on even one platform, the entire homegrown formula collapsed for that entry. There was no clean way to "version" a mental calculation.</li>
+      </ol>
+      <blockquote style="border-left:3px solid var(--accent);padding:1rem 1.5rem;margin:1.5rem 0;background:rgba(139,92,246,0.06);border-radius:0 14px 14px 0;font-style:italic;color:var(--text-primary);font-size:1.02rem;">
+        "The mental math formula that was supposed to free me from memorization had become its own prison."
       </blockquote>
 
       <h3 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:1.75rem 0 0.75rem;">
-        The Mental Math System That Started It All
+        Stage 3: The Algorithm, and The Server-Side Mistake
       </h3>
       <p style="margin-bottom:1.25rem;">
-        Whenever a new idea struck, I created a new Gmail ID. As the list grew past 20 accounts, writing down passwords felt unsafe, and memorizing 20 random strings was impossible.
+        I began researching whether this mental burden could be offloaded to a proper algorithm. Could a machine replicate and improve what I was doing in my head?
       </p>
       <p style="margin-bottom:1.25rem;">
-        I developed a personal mental algorithm: I would take the first 3 characters of the platform (e.g. <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">support</code> &rarr; <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">Sup</code>), calculate the cube or square of the letter count (7<sup>3</sup> = <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">343</code>), and append a private digit sequence with a special symbol. Passwords like <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">Sup343#852108</code> were generated deterministically on a phone calculator or in my head.
+        The answer was yes. I developed the algorithm and initially deployed it <strong>server-side, online</strong>.
       </p>
       <p style="margin-bottom:1.25rem;">
-        On that night of 25th December 2025, when a lockout occurred, the core breakthrough struck: <em>"Why do manual arithmetic on a calculator? Can this deterministic mental reasoning be converted into a resilient, client-side cryptographic algorithm?"</em>
+        Then I studied the threat model. The conclusion was immediate and non-negotiable: if the algorithm lives on a server, the password (or the inputs that produce it) must travel over the network and exist in a server database, even if only transiently. That is an attack surface. That is a breach waiting to happen.
       </p>
-
-      <div style="background:var(--bg-secondary);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.5rem;margin:1.75rem 0;">
-        <h4 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin:0 0 0.5rem 0;">💡 The 2:00 AM Breakthrough</h4>
+      <div style="background:var(--bg-secondary);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.25rem 1.5rem;margin:1.5rem 0;">
+        <h4 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin:0 0 0.5rem 0;">⚡ The Rebuild: Killing the Server</h4>
         <p style="margin:0;font-size:0.95rem;color:var(--text-muted);">
-          Sitting in the quiet of that Christmas night, the core question crystallized: <strong style="color:var(--text-primary);">What if we never store passwords anywhere?</strong> What if passwords weren't static data blobs sitting in a database waiting to be hacked, but mathematical outcomes calculated on-demand?
+          I killed the server-side version immediately. The architecture was rebuilt from scratch as <strong style="color:var(--text-primary);">100% offline-first</strong>: the entire computation runs inside the user's browser, in WebCrypto RAM using 1,000,000 iterations of PBKDF2-HMAC-SHA512. Zero server. Zero database. Zero network transmission of secrets. Zero bytes stored anywhere.
         </p>
       </div>
 
       <h3 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:1.75rem 0 0.75rem;">
-        The Birth of Stateless Deterministic Cryptography
+        Stage 4: Real-World Hardening &amp; 5 Edge Cases
       </h3>
       <p style="margin-bottom:1.25rem;">
-        Humans are terrible at memorizing random strings, but exceptional at remembering meaningful natural phrases (like <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">two hot samosas with green chutney on mars</code>). 
+        Making it work for myself was one problem. Making it work for the world was an entirely different engineering challenge. Five critical edge cases had to be solved:
       </p>
-      <p style="margin-bottom:1.25rem;">
-        By feeding a single memorable <strong style="color:var(--text-primary);">Master Secret Key</strong> together with a <strong style="color:var(--text-primary);">Platform Identifier</strong> (e.g. <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">gmail.com</code>) into 1,000,000 iterations of <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">PBKDF2-HMAC-SHA512</code>, the browser derives the exact same 16-character, high-entropy password in less than a second - completely offline, with zero server involvement.
-      </p>
-
-      <h3 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:1.75rem 0 0.75rem;">
-        Our Permanent Sovereign Promises
-      </h3>
-      <ul style="padding-left:1.25rem;margin-bottom:0;">
-        <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">Zero Cloud Database:</strong> Not a single byte of your passwords is ever saved.</li>
-        <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">Deterministic Immutability:</strong> The mathematical derivation formula is permanently immutable across versions.</li>
-        <li style="margin-bottom:0.5rem;"><strong style="color:var(--text-primary);">Free &amp; Offline:</strong> The web generator works without internet anywhere in the world.</li>
+      <ul style="padding-left:1.25rem;margin-bottom:1.5rem;">
+        <li style="margin-bottom:0.75rem;">
+          <strong style="color:var(--text-primary);">Edge Case 1: Platform Name Ambiguity</strong><br>
+          What would users actually type as the platform name? I researched and built a curated preset directory of popular platforms so the input is standardized, not guesswork.
+        </li>
+        <li style="margin-bottom:0.75rem;">
+          <strong style="color:var(--text-primary);">Edge Case 2: Sub-Domain &amp; SSO Ecosystems</strong><br>
+          Google owns Gmail, YouTube, Drive, and dozens of services, all under one Single Sign-On (SSO). If the algorithm treated "Gmail" and "YouTube" as separate platforms, users would generate conflicting passwords. I standardized shared-ecosystem platforms to produce one consistent password per SSO boundary.
+        </li>
+        <li style="margin-bottom:0.75rem;">
+          <strong style="color:var(--text-primary);">Edge Case 3: Consumer vs. Developer Account Separation</strong><br>
+          Amazon Shopping and Amazon Web Services (AWS) share a brand name but are completely separate security domains. If both generated the same password, an e-commerce breach could compromise cloud infrastructure. I separated consumer accounts from developer/cloud accounts so each generates an independent password.
+        </li>
+        <li style="margin-bottom:0.75rem;">
+          <strong style="color:var(--text-primary);">Edge Case 4: Domain-Based Anti-Phishing (Zero-Database Defense)</strong><br>
+          FrankPass has no database of "known websites" - it calculates purely from the domain string you provide. This is a deliberate security feature by design: if you paste the URL of a phishing site (e.g. <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">flipkart-fake.com</code> instead of <code style="font-family:monospace;background:var(--bg-secondary);padding:2px 6px;border-radius:4px;color:var(--accent);">flipkart.com</code>), FrankPass calculates a completely different password for the fake domain. The attacker captures an entirely useless string. Your real account stays untouched.
+        </li>
+        <li style="margin-bottom:0.75rem;">
+          <strong style="color:var(--text-primary);">Edge Case 5: Password Versioning &amp; Month/Year Rotation</strong><br>
+          Platforms demand password changes every 30, 60, or 90 days. Changing your master secret key every time is dangerous and inconvenient. Instead, I built <strong>password versioning</strong>: change the version number (v1 to v2, or v200) and a completely new password is derived from the same master key. An attacker now needs both your secret key and your current version number. The Month/Year selector makes it easy to remember which version is active for platforms with mandatory rotation cycles.
+        </li>
       </ul>
+
+      <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.3);border-radius:16px;padding:1.25rem 1.5rem;margin-top:1.5rem;">
+        <h4 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin:0 0 0.5rem 0;">What FrankPass Is &amp; What It Is Not</h4>
+        <p style="margin:0 0 0.5rem 0;font-size:0.95rem;color:var(--text-muted);">
+          &bull; <strong>What FrankPass is NOT:</strong> It is NOT a password vault. It stores nothing. It is NOT a cloud password manager. It was NOT born from using existing password managers - the founder never used one.
+        </p>
+        <p style="margin:0;font-size:0.95rem;color:var(--text-muted);">
+          &bull; <strong>What FrankPass IS:</strong> A stateless, deterministic, zero-knowledge password generator. Born from an authentic mental math formula, refined through failure, and rebuilt into client-side WebCrypto RAM where every trace vanishes the moment you close the tab.
+        </p>
+      </div>
+
     </div>
   </section>
 
@@ -579,7 +621,7 @@
           <span class="eco-feature">PBKDF2 WebCrypto speed benchmarking</span>
           <span class="eco-feature">SHA-512 cryptographic hash calculators</span>
         </div>
-        <a href="https://tools.frankpass.com" target="_blank" rel="noopener" class="eco-card-cta">Explore Tools Suite &nearr;</a>
+        <a href="https://tools.frankbase.com" target="_blank" rel="noopener" class="eco-card-cta">Explore Tools Suite &nearr;</a>
       </div>
     </div>
 

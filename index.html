@@ -1455,6 +1455,28 @@
 </script>
 
 
+<!-- Cloudflare Web Analytics - Smart 5s Delayed Loader (Zero-Impact on Core Web Vitals) -->
+<script>
+(function() {
+  var cfLoaded = false;
+  function loadCFAnalytics() {
+    if (cfLoaded || document.querySelector('script[src*="cloudflareinsights.com/beacon.min.js"]')) return;
+    cfLoaded = true;
+    var s = document.createElement('script');
+    s.type = 'module';
+    s.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+    s.setAttribute('data-cf-beacon', '{"token": "b63ac26d6a19414e837f1139e14a41b0"}');
+    document.body.appendChild(s);
+  }
+  window.addEventListener('load', function() {
+    setTimeout(loadCFAnalytics, 5000);
+  });
+  ['pointerdown', 'keydown', 'touchstart', 'focusin', 'scroll'].forEach(function(evt) {
+    window.addEventListener(evt, loadCFAnalytics, { once: true, passive: true });
+  });
+})();
+</script>
+
 </body>
 </html>
 
