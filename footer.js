@@ -64,7 +64,7 @@
           ${socialLink(soc.X || 'https://x.com/frankpasshq', 'X (Twitter)', ico.x, 'Official product updates & security announcements (@frankpasshq).')}
           ${socialLink(soc.GITHUB || 'https://github.com/Mastermanikant/frank-pass', 'GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
           ${socialLink(soc.LINKEDIN || 'https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin, 'Professional milestones & tech collaborations.')}
-          ${socialLink(soc.YOUTUBE || 'https://youtube.com/@frankpasshq', 'YouTube', ico.youtube, 'Official video guides & product walkthroughs (@frankpasshq).')}
+          ${socialLink(soc.YOUTUBE || 'https://youtube.com/@frankpasshq', 'FrankPass on YouTube', ico.youtube, 'Official video guides & product walkthroughs (@frankpasshq).')}
           ${socialLink(waLink, 'WhatsApp Channel', ico.whatsapp, 'Instant spam-free security alerts & releases.')}
           ${socialLink(soc.INSTAGRAM || 'https://instagram.com/frankpasshq', 'Instagram', ico.instagram, 'Official product visuals & feature highlights (@frankpasshq).')}
         </div>

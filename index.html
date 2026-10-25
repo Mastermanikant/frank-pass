@@ -499,7 +499,7 @@
         
         <!-- Portrait (Grid Area: portrait) -->
         <div class="founder-compact-portrait">
-          <img src="/icons/founder-master-manikant-yadav.webp" onerror="this.src='/icons/founder-master-manikant-yadav.png'" alt="Master Manikant Yadav" width="100" height="120" fetchpriority="high" decoding="async">
+          <img src="/icons/founder-master-manikant-yadav.webp?v=4.5.9" onerror="this.src='/icons/founder-master-manikant-yadav.png'" alt="Master Manikant Yadav" width="100" height="120" fetchpriority="high" decoding="async">
         </div>
 
         <!-- Info: Name, Role & Project Chips (Grid Area: info) -->
@@ -545,7 +545,7 @@
           </div>
 
           <div class="has-hover-card">
-            <a href="https://youtube.com/@mastermanikant" target="_blank" rel="nofollow noopener noreferrer" class="founder-social-btn">
+            <a href="https://youtube.com/@mastermanikant" target="_blank" rel="nofollow noopener noreferrer" class="founder-social-btn" aria-label="Master Manikant on YouTube">
               <svg viewBox="0 0 24 24" width="13" height="13"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               <span>YouTube</span>
             </a>
@@ -660,13 +660,14 @@
  </div>
 
   <!-- First-Time Quick Tip Toast (Dismissible) -->
-  <div id="first-time-guide-toast" style="display:none;background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(99,102,241,0.08));border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.65rem 2rem 0.65rem 0.85rem;margin-bottom:1.15rem;font-size:0.8rem;color:var(--text-muted);line-height:1.45;position:relative;">
+  <div id="first-time-guide-toast" style="background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(99,102,241,0.08));border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.65rem 2rem 0.65rem 0.85rem;margin-bottom:1.15rem;font-size:0.8rem;color:var(--text-muted);line-height:1.45;position:relative;">
     <div style="display:flex;align-items:flex-start;gap:0.45rem;">
       <span style="color:var(--accent-light);font-size:0.95rem;line-height:1;flex-shrink:0;">💡</span>
       <span><strong style="color:var(--text-primary);">Quick Guide:</strong> FrankPass calculates passwords locally via math. No cloud storage exists. Enter your platform, a memorable 5 to 8 word Secret Key, generate and use your password. Regenerate it anytime with the exact same inputs.</span>
     </div>
     <button type="button" id="dismiss-guide-toast-btn" aria-label="Close guide tip" style="position:absolute;top:0.45rem;right:0.55rem;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;line-height:1;padding:0.2rem;border-radius:4px;transition:color 0.2s;" title="Dismiss tip" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✖</button>
   </div>
+  <script>(function(){try{if(localStorage.getItem('fp_guide_dismissed')){var g=document.getElementById('first-time-guide-toast');if(g)g.style.display='none';}}catch(e){}})();</script>
 
   <!-- Username / Email (Optional) -->
   <div class="form-group" id="username-group">
@@ -1014,7 +1015,7 @@
           <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           <span>X / Twitter</span>
         </a>
-        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:0.65rem 0.8rem;border-radius:10px;color:var(--text-primary);text-decoration:none;font-size:0.85rem;font-weight:600;transition:var(--transition)">
+        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer" aria-label="Master Manikant YouTube Channel" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:0.65rem 0.8rem;border-radius:10px;color:var(--text-primary);text-decoration:none;font-size:0.85rem;font-weight:600;transition:var(--transition)">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           <span>YouTube</span>
         </a>
@@ -1331,7 +1332,7 @@
       </a>
 
       <!-- 6. YouTube Channel -->
-      <a href="https://youtube.com/@frankpasshq" target="_blank" rel="nofollow noopener noreferrer" class="btn-ghost rating-action-btn">
+      <a href="https://youtube.com/@frankpasshq" target="_blank" rel="nofollow noopener noreferrer" class="btn-ghost rating-action-btn" aria-label="FrankPass Official YouTube Channel">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
         <span>YouTube Channel ↗</span>
       </a>
