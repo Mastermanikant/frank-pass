@@ -389,6 +389,17 @@
         </select>
       </div>
 
+      <!-- Default Country / Region Selector -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">डिफ़ॉल्ट देश / क्षेत्र (Country / Region)</strong>
+          <span style="font-size:0.78rem;color:var(--text-muted)">क्षेत्रीय सेवाओं, मुद्रा और स्थानीय प्लेटफ़ॉर्म सुझावों हेतु प्राथमिक देश।</span>
+        </div>
+        <select id="pref-country-select" class="form-input" style="width:auto;max-width:220px;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px" aria-label="डिफ़ॉल्ट देश चुनें">
+          <option value="in">India (IN)</option>
+        </select>
+      </div>
+
       <!-- Quick Reset All Cache -->
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
         <div>
@@ -483,6 +494,8 @@
 <script src="/frankpass-config.js?v=4.3.7"></script>
 <script src="/frankpass-vault.js?v=4.3.7"></script>
 <script src="/footer.min.js?v=4.6.2"></script>
+<script defer src="/country-data.min.js?v=4.5.9"></script>
+<script defer src="/country-dropdown.min.js?v=4.6.5"></script>
 
 <script>
 /* ── Hindi Offline Profile Page Controller ── */
@@ -1190,6 +1203,43 @@
         localStorage.clear();
         showToast('सभी प्राथमिकताएं डिफ़ॉल्ट पर रीसेट कर दी गईं', 'info');
         setTimeout(() => location.reload(), 1000);
+      }
+    });
+  }
+
+  // Country Preference Handler
+  const countrySelect = document.getElementById('pref-country-select');
+  if (countrySelect) {
+    function populateCountrySelect() {
+      if (!window.COUNTRY_LIST || !window.COUNTRY_LIST.length) {
+        setTimeout(populateCountrySelect, 60);
+        return;
+      }
+      var saved = localStorage.getItem('fp_preferred_country') || 'in';
+      countrySelect.innerHTML = '';
+      window.COUNTRY_LIST.forEach(function(c) {
+        var opt = document.createElement('option');
+        opt.value = c.code;
+        opt.textContent = c.label;
+        if (c.code === saved) opt.selected = true;
+        countrySelect.appendChild(opt);
+      });
+    }
+    populateCountrySelect();
+
+    countrySelect.addEventListener('change', function(e) {
+      var code = e.target.value;
+      if (window.FrankPassCountry && typeof window.FrankPassCountry.select === 'function') {
+        window.FrankPassCountry.select(code);
+      } else {
+        localStorage.setItem('fp_preferred_country', code);
+      }
+      showToast('डिफ़ॉल्ट देश अपडेट किया गया', 'success');
+    });
+
+    window.addEventListener('fp-country-changed', function(e) {
+      if (e.detail && e.detail.code && countrySelect.value !== e.detail.code) {
+        countrySelect.value = e.detail.code;
       }
     });
   }

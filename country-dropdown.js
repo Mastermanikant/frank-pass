@@ -167,6 +167,11 @@
             }
         } catch (e) { /* local file:// - ignore */ }
 
+        // 6. Dispatch global event for profile settings and other components
+        try {
+            window.dispatchEvent(new CustomEvent('fp-country-changed', { detail: country }));
+        } catch (e) {}
+
         closeDropdown();
     }
 
@@ -360,6 +365,17 @@
             }
         });
     }
+
+    // Expose Global API for programmatic country selection (e.g., Profile Settings)
+    window.FrankPassCountry = {
+        select: function(code) {
+            if (!code || !allCountries) return;
+            var c = allCountries.find(function(item) { return item.code === code.toLowerCase(); });
+            if (c) selectCountry(c, true);
+        },
+        getCurrent: function() { return currentCode; },
+        getAll: function() { return allCountries; }
+    };
 
     // Run after DOM ready
     if (document.readyState === 'loading') {
