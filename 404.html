@@ -7,6 +7,13 @@
       var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
       var theme = saved || 'dark';
       document.documentElement.setAttribute('data-theme', theme);
+
+      // Auto-recover country paths if edge misses rewrite
+      var segs = window.location.pathname.split('/').filter(Boolean);
+      if (segs.length === 1 && segs[0].length === 2) {
+        localStorage.setItem('fp_preferred_country', segs[0].toLowerCase());
+        window.location.replace('/');
+      }
     } catch(e) {}
   })();
   </script>
