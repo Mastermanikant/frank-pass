@@ -745,28 +745,10 @@
   <div class="vault-header-row">
     <div style="display:flex;align-items:center;gap:0.4rem">
       <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
-      <!-- Info Guidance Popover Tooltip -->
-      <div class="secret-info-wrap" id="secret-info-wrap">
-        <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        </button>
-        <div class="secret-info-popover" id="secret-info-popover" role="tooltip">
-          <div class="info-popover-title">🔑 What is a Master Secret Key?</div>
-          <p class="info-popover-desc">This is <strong>NOT</strong> an ordinary password - it is your personal master seed. A private, unpredictable phrase calculates unique, mathematically isolated credentials for each platform (Gmail, Amazon, GitHub).</p>
-          <div class="info-popover-tip">
-            💡 <strong>Choose an Unpredictable Sentence:</strong> Invent a private 5 to 8 word phrase (e.g. <code>two hot samosas with green chutney on mars</code>). Avoid obvious names or dates.<br>
-            ✨ <strong>Case &amp; Space Normalization:</strong> <code>MY PHRASE 2026</code> = <code>my phrase 2026</code> = <code>myphrase2026</code>. Spaces and capital letters are automatically normalized across devices.
-          </div>
-          <div style="margin-top:0.6rem;padding:0.5rem 0.65rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:8px;font-size:0.74rem;line-height:1.45;color:var(--text-muted)">
-            <strong style="color:#ef4444;">⚠️ Zero-Recovery Notice:</strong> FrankPass has no server database and cannot recover lost keys. If lost, previous passwords cannot be regenerated and must be reset on the respective services. Keep your key memorized or physically noted offline.
-          </div>
-          <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
-            <a href="/secret-key-guide.html" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
-              <span>📖</span> Secret Key Guide &amp; Best Practices &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
+      <!-- Info Guidance Trigger -->
+      <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?" aria-haspopup="dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      </button>
     </div>
     
     <!-- Vault Status & Lock Controls -->
@@ -1397,6 +1379,99 @@
  </a>
 </nav>
 
+<!-- Master Secret Key Guidance Modal (Non-clipping, Centered, Accessible) -->
+<div id="secret-key-modal" class="custom-modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="secret-modal-title">
+  <div class="custom-modal-card" style="max-width:480px;padding:1.6rem;position:relative;max-height:88vh;display:flex;flex-direction:column;box-sizing:border-box;">
+    <!-- Modal Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;border-bottom:1px solid rgba(139,92,246,0.2);padding-bottom:0.75rem;">
+      <h3 id="secret-modal-title" style="margin:0;font-size:1.1rem;font-weight:700;color:var(--text-primary);display:flex;align-items:center;gap:0.5rem;">
+        <span>🔑</span> What is a Master Secret Key?
+      </h3>
+      <button type="button" id="close-secret-modal-btn" aria-label="Close" style="background:transparent;border:none;color:var(--text-muted);font-size:1.3rem;cursor:pointer;padding:4px 8px;border-radius:6px;line-height:1;transition:color 0.2s;" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✕</button>
+    </div>
+
+    <!-- Scrollable Modal Body -->
+    <div style="overflow-y:auto;flex:1;padding-right:4px;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:0.85rem;">
+      <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.55;margin:0;">
+        This is <strong style="color:var(--accent-light);">NOT</strong> an ordinary password: it is your personal cryptographic master seed. A private, unpredictable phrase calculates unique, mathematically isolated credentials for each platform (Gmail, Amazon, GitHub).
+      </p>
+
+      <div style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.85rem;font-size:0.82rem;line-height:1.55;color:var(--text-muted);">
+        <div style="margin-bottom:0.5rem;">
+          <strong style="color:var(--text-primary);">💡 Choose an Unpredictable Sentence:</strong><br>
+          Invent a private 5 to 8 word phrase (e.g. <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">two hot samosas with green chutney on mars</code>). Avoid obvious names or dates.
+        </div>
+        <div>
+          <strong style="color:var(--text-primary);">✨ Case &amp; Space Normalization:</strong><br>
+          <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">MY PHRASE 2026</code> = <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">my phrase 2026</code> = <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">myphrase2026</code>. Spaces and capital letters are automatically normalized across devices.
+        </div>
+      </div>
+
+      <div style="padding:0.75rem 0.85rem;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:12px;font-size:0.8rem;line-height:1.5;color:var(--text-muted);">
+        <strong style="color:#ef4444;display:block;margin-bottom:0.25rem;">⚠️ Zero-Recovery Notice:</strong>
+        FrankPass has no server database and cannot recover lost keys. If lost, previous passwords cannot be regenerated and must be reset on the respective services. Keep your key memorized or physically noted offline.
+      </div>
+
+      <div style="padding:0.4rem 0;">
+        <a href="/secret-key-guide.html" target="_blank" rel="noopener" style="color:var(--accent-light);font-size:0.84rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+          <span>📖</span> Read Full Secret Key Guide &amp; Best Practices &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Modal Footer -->
+    <div style="margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:flex-end;">
+      <button type="button" id="confirm-secret-modal-btn" class="btn-primary btn-sm" style="width:100%;justify-content:center;padding:0.65rem 1.25rem;border-radius:10px;font-weight:700;">Got It</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Secret Key Guidance Modal Controller
+(function() {
+  function initSecretModal() {
+    var infoBtn = document.getElementById('secret-info-btn');
+    var modal = document.getElementById('secret-key-modal');
+    var closeBtn = document.getElementById('close-secret-modal-btn');
+    var gotItBtn = document.getElementById('confirm-secret-modal-btn');
+
+    if (!infoBtn || !modal) return;
+
+    function openModal(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+      if (infoBtn) infoBtn.focus();
+    }
+
+    infoBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (gotItBtn) gotItBtn.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSecretModal);
+  } else {
+    initSecretModal();
+  }
+})();
+</script>
+
 <!-- Toast container -->
 <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
@@ -1405,7 +1480,7 @@
  ============================================================ -->
 <script defer src="/frankpass-config.js?v=4.5.9"></script>
 <script defer src="/country-data.min.js?v=4.5.9"></script>
-<script defer src="/country-dropdown.min.js?v=4.6.8"></script>
+<script defer src="/country-dropdown.min.js?v=4.6.9"></script>
 <script defer src="/frankpass-utils.min.js?v=4.5.9"></script>
 <script defer src="/frankpass-core.js?v=4.5.9"></script>
 <script defer src="/frankpass-vault.js?v=4.5.9"></script>
