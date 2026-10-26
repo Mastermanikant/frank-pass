@@ -118,10 +118,11 @@
         if (!country) return;
         currentCode = country.code;
 
-        // Persist user selection if explicitly triggered
+        // Persist user selection if explicitly triggered (localStorage + 1-year Cookie)
         if (savePreference) {
             try {
                 localStorage.setItem('fp_preferred_country', country.code);
+                document.cookie = 'fp_preferred_country=' + encodeURIComponent(country.code) + '; path=/; max-age=31536000; SameSite=Lax';
             } catch (e) {}
         }
 
@@ -207,10 +208,14 @@
             try { localStorage.setItem('fp_preferred_country', urlPath); } catch (e) {}
         }
 
-        // Tier 2: Saved Preference in localStorage (when arriving at root '/')
+        // Tier 2: Saved Preference in localStorage or Cookie (Persistent across Hard Refresh & Edge)
         if (!initCode) {
             try {
-                const saved = localStorage.getItem('fp_preferred_country');
+                let saved = localStorage.getItem('fp_preferred_country');
+                if (!saved) {
+                    const m = document.cookie.match(/(?:^|;\s*)fp_preferred_country=([^;]+)/);
+                    if (m && m[1]) saved = decodeURIComponent(m[1]);
+                }
                 if (saved && allCountries.find(c => c.code === saved.toLowerCase())) {
                     initCode = saved.toLowerCase();
                 }
