@@ -159,11 +159,10 @@
             populatePlatformDatalist(country.code);
         }
 
-        // 5. Update URL path clean root '/' for default India, '/<code>' for other countries
+        // 5. Keep URL clean at '/' to prevent 404 on refresh for countries without physical HTML files
         try {
-            const newPath = (country.code === DEFAULT_CODE || country.code === 'in') ? '/' : '/' + country.code;
-            if (window.location.pathname !== newPath && window.location.pathname.length <= 4) {
-                window.history.replaceState({ code: country.code }, '', newPath);
+            if (window.location.pathname.length <= 4 && window.location.pathname !== '/') {
+                window.history.replaceState({ code: country.code }, '', '/');
             }
         } catch (e) { /* local file:// - ignore */ }
 
