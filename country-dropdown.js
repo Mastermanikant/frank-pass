@@ -159,10 +159,11 @@
             populatePlatformDatalist(country.code);
         }
 
-        // 5. Keep URL clean at '/' to prevent 404 on refresh for countries without physical HTML files
+        // 5. Explicit country slug on home/root paths (/in, /us, /ug)
         try {
-            if (window.location.pathname.length <= 4 && window.location.pathname !== '/') {
-                window.history.replaceState({ code: country.code }, '', '/');
+            const targetPath = '/' + country.code.toLowerCase();
+            if (window.location.pathname.length <= 4 && window.location.pathname !== targetPath) {
+                window.history.replaceState({ code: country.code }, '', targetPath);
             }
         } catch (e) { /* local file:// - ignore */ }
 
@@ -197,22 +198,23 @@
         // ── Multi-Tier Auto-Detect Initial Country ─────────────────────
         let initCode = null;
 
-        // Tier 0: Saved Preference in localStorage
-        try {
-            const saved = localStorage.getItem('fp_preferred_country');
-            if (saved && allCountries.find(c => c.code === saved.toLowerCase())) {
-                initCode = saved.toLowerCase();
-            }
-        } catch (e) {}
+        // Tier 1 (Highest Priority): Explicit URL Path (/in, /us, /ug, etc.)
+        let urlPath = window.location.pathname.split('/').filter(Boolean)[0] || '';
+        urlPath = urlPath.toLowerCase();
+        if (urlPath === 'hn') urlPath = 'in'; // Alias for Hindi
+        if (urlPath.length === 2 && allCountries.find(c => c.code === urlPath)) {
+            initCode = urlPath;
+            try { localStorage.setItem('fp_preferred_country', urlPath); } catch (e) {}
+        }
 
-        // Tier 1: URL Path (/us, /gb, /ca, /de, /in, /hn -> 'in')
+        // Tier 2: Saved Preference in localStorage (when arriving at root '/')
         if (!initCode) {
-            let path = window.location.pathname.split('/').filter(Boolean)[0] || '';
-            path = path.toLowerCase();
-            if (path === 'hn') path = 'in'; // Alias for Hindi
-            if (path.length === 2 && allCountries.find(c => c.code === path)) {
-                initCode = path;
-            }
+            try {
+                const saved = localStorage.getItem('fp_preferred_country');
+                if (saved && allCountries.find(c => c.code === saved.toLowerCase())) {
+                    initCode = saved.toLowerCase();
+                }
+            } catch (e) {}
         }
 
         // Tier 2: Zero-Latency Client Device Locale (0.05ms)
