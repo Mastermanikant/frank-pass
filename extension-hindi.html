@@ -654,27 +654,25 @@
   <!-- ============================================================
    HERO SECTION: 100% Free Extension Live & Smart Browser Detection
    ============================================================ -->
-  <section class="section" style="padding-top:1.5rem;padding-bottom:3rem;text-align:center;">
+  <section class="section" style="padding-top:1.25rem;padding-bottom:3rem;text-align:center;">
     <div class="container" style="max-width:880px;">
       
-      <!-- Live Status Badge -->
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.82rem;font-weight:700;padding:6px 18px;border-radius:999px;margin-bottom:1.25rem;letter-spacing:0.04em;">
-        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></span>
-        आधिकारिक रूप से लाइव · ज़ीरो क्लाउड वॉल्ट एक्सटेंशन
+      <!-- Topmost Live Badge & Detected Browser Highlight Strip (Directly Below Header) -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.82rem;font-weight:700;padding:6px 16px;border-radius:999px;letter-spacing:0.04em;">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></span>
+          आधिकारिक रूप से लाइव · ज़ीरो क्लाउड वॉल्ट
+        </div>
+
+        <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-light);background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);padding:6px 16px;border-radius:999px;">
+          <span>🎯</span> डिटेक्टेड ब्राउज़र: <strong id="fp-detected-browser-name" style="color:var(--text-primary);margin-left:4px;">Google Chrome</strong>
+        </div>
       </div>
 
-      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;line-height:1.2;margin-bottom:1rem;letter-spacing:-0.03em;">
-        फ्रैंकपास ब्राउज़र एक्सटेंशन
-      </h1>
-      
-      <p style="font-size:1.15rem;color:var(--text-muted);line-height:1.65;max-width:720px;margin:0 auto 1.75rem;">
-        ब्राउज़र टूलबार में 1-क्लिक स्टेटलेस पासवर्ड जेनरेशन और ऑटो-फिल। <strong>100% फ्री इंस्टेंट गेस्ट मोड</strong> शून्य साइनअप, शून्य क्लाउड डेटाबेस और शून्य यूजर ट्रैकिंग के साथ।
-      </p>
-
-      <!-- Instant Primary Call To Action (Top-Most Direct Hero Action) -->
-      <div style="margin-bottom:2rem;display:flex;flex-direction:column;align-items:center;gap:12px;">
-        <a id="fp-primary-hero-btn" href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" class="fp-browser-glow-btn" style="background:linear-gradient(135deg,#2563eb,#3b82f6);max-width:90%;">
-          <svg id="fp-hero-btn-icon" width="26" height="26" viewBox="0 0 48 48" aria-hidden="true">
+      <!-- Instant Top Primary Call To Action (Large Glowing Button Directly Below Header) -->
+      <div style="margin-bottom:2rem;display:flex;flex-direction:column;align-items:center;gap:10px;">
+        <a id="fp-primary-hero-btn" href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" class="fp-browser-glow-btn" style="background:linear-gradient(135deg,#2563eb,#3b82f6);max-width:92%;">
+          <svg id="fp-hero-btn-icon" width="28" height="28" viewBox="0 0 48 48" aria-hidden="true">
             <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
             <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
             <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
@@ -682,7 +680,7 @@
           </svg>
           <span id="fp-hero-btn-label">Google Chrome में जोड़ें (मुफ़्त) ↗</span>
         </a>
-        <div style="font-size:0.86rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;">
+        <div style="font-size:0.86rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
           <span>⚡ 100% मुफ़्त कोर ऑटोफ़िल</span>
           <span>•</span>
           <span>🔒 0-बाइट क्लाउड वॉल्ट</span>
@@ -691,12 +689,16 @@
         </div>
       </div>
 
+      <h1 style="font-size:clamp(2rem,4.5vw,3rem);font-weight:800;line-height:1.2;margin-bottom:0.75rem;letter-spacing:-0.03em;">
+        फ्रैंकपास ब्राउज़र एक्सटेंशन
+      </h1>
+      
+      <p style="font-size:1.12rem;color:var(--text-muted);line-height:1.6;max-width:720px;margin:0 auto 2rem;">
+        ब्राउज़र टूलबार में 1-क्लिक स्टेटलेस पासवर्ड जेनरेशन और ऑटो-फिल। <strong>100% फ्री इंस्टेंट गेस्ट मोड</strong> शून्य साइनअप, शून्य क्लाउड डेटाबेस और शून्य यूजर ट्रैकिंग के साथ।
+      </p>
+
       <!-- Smart Detected Browser & Installation Guide Box -->
       <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:24px;padding:2rem 1.75rem;max-width:760px;margin:0 auto 2.5rem;box-shadow:var(--card-shadow);text-align:center;">
-        
-        <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-light);margin-bottom:1.25rem;background:rgba(139,92,246,0.1);padding:5px 16px;border-radius:999px;">
-          <span>🎯</span> आपके ब्राउज़र के लिए डिटेक्ट किया गया: <span id="fp-detected-browser-name" style="color:var(--text-primary);margin-left:4px;">Google Chrome</span>
-        </div>
 
         <!-- Browser Switcher (Side-by-Side Shrink/Expand Tabs) -->
         <div style="text-align:left;">
