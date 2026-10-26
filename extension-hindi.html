@@ -71,9 +71,70 @@
   <link rel="icon" href="/icons/favicon.png">
 
   <link rel="manifest" href="/manifest.json">
+  <link rel="alternate" type="application/json" href="/ai-catalog.json">
 
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+  @font-face{font-family:'Inter';font-style:normal;font-weight:400 700;font-display:optional;src:url('/fonts/inter-latin.woff2') format('woff2');}
+  @font-face{font-family:'Outfit';font-style:normal;font-weight:600 800;font-display:optional;src:url('/fonts/outfit-latin.woff2') format('woff2');}
+  .fp-browser-glow-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 1.1rem 2.2rem;
+    border-radius: 14px;
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: #ffffff !important;
+    text-decoration: none;
+    box-shadow: 0 0 25px rgba(139,92,246,0.5), 0 4px 20px rgba(0,0,0,0.4);
+    transition: all 0.25s ease;
+    animation: fpGlowPulse 2.4s infinite ease-in-out;
+  }
+  @keyframes fpGlowPulse {
+    0%, 100% { box-shadow: 0 0 22px rgba(139,92,246,0.45), 0 4px 18px rgba(0,0,0,0.3); transform: scale(1); }
+    50% { box-shadow: 0 0 38px rgba(139,92,246,0.85), 0 6px 28px rgba(139,92,246,0.4); transform: scale(1.02); }
+  }
+  .fp-browser-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--card-glass-bg);
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .fp-browser-tab-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent);
+    background: rgba(139,92,246,0.08);
+  }
+  .fp-browser-tab-btn.active {
+    background: rgba(139,92,246,0.16);
+    border-color: var(--accent);
+    color: var(--text-primary);
+    box-shadow: 0 0 16px rgba(139,92,246,0.25);
+  }
+  .fp-guide-panel {
+    display: none;
+    animation: fpFadeIn 0.25s ease;
+  }
+  .fp-guide-panel.active {
+    display: block;
+  }
+  @keyframes fpFadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  </style>
   <link rel="stylesheet" href="/style.min.css?v=4.6.2">
 
 
@@ -550,7 +611,7 @@
 
   <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> पिन जनरेटर</a>
 
-  <a href="/extension-hindi.html" class="mobile-nav-link active" style="color:var(--accent-light);font-weight:700;"><span>⚡</span> एक्सटेंशन (आगामी)</a>
+  <a href="/extension-hindi.html" class="mobile-nav-link active" style="color:var(--accent-light);font-weight:700;"><span>⚡</span> एक्सटेंशन (आधिकारिक लाइव)</a>
 
   <a href="/products.html" class="mobile-nav-link"><span>📦</span> प्रोडक्ट्स व प्राइसिंग</a>
 
@@ -591,141 +652,173 @@
 
 
   <!-- ============================================================
-
-   HERO SECTION: 100% Free Extension Pre-Launch
-
+   HERO SECTION: 100% Free Extension Live & Smart Browser Detection
    ============================================================ -->
-
   <section class="section" style="padding-top:2rem;padding-bottom:3rem;text-align:center;">
-
     <div class="container" style="max-width:880px;">
-
       
-
-      <!-- Pre-launch status badge -->
-
-      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,0.14);border:1px solid rgba(139,92,246,0.35);color:var(--accent-light);font-size:0.82rem;font-weight:700;padding:6px 18px;border-radius:999px;margin-bottom:1.5rem;letter-spacing:0.04em;">
-
-        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#eab308;"></span>
-
-        प्री-लॉन्च पूर्वावलोकन · वेब स्टोर्स पर जल्द आ रहा है
-
+      <!-- Live Status Badge -->
+      <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.82rem;font-weight:700;padding:6px 18px;border-radius:999px;margin-bottom:1.5rem;letter-spacing:0.04em;">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></span>
+        आधिकारिक रूप से लाइव · ज़ीरो क्लाउड वॉल्ट एक्सटेंशन
       </div>
-
-
 
       <h1 style="font-size:clamp(2.2rem,5vw,3.4rem);font-weight:800;line-height:1.2;margin-bottom:1.25rem;letter-spacing:-0.03em;">
-
         फ्रैंकपास ब्राउज़र एक्सटेंशन
-
       </h1>
-
       
-
       <p style="font-size:1.18rem;color:var(--text-muted);line-height:1.65;max-width:720px;margin:0 auto 2.25rem;">
-
         ब्राउज़र टूलबार में 1-क्लिक स्टेटलेस पासवर्ड जेनरेशन और ऑटो-फिल। <strong>100% फ्री इंस्टेंट गेस्ट मोड</strong> शून्य साइनअप, शून्य क्लाउड डेटाबेस और शून्य यूजर ट्रैकिंग के साथ।
-
       </p>
 
-
-
-      <!-- Store Badges Box -->
-
-      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:20px;padding:2rem 1.5rem;max-width:760px;margin:0 auto 2.5rem;box-shadow:var(--card-shadow);">
-
-        <div style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-light);margin-bottom:1.25rem;">
-
-          आधिकारिक स्टोर रिलीज़ (100% मुफ़्त कोर ऑटोफ़िल)
-
-        </div>
-
+      <!-- Smart Detected Browser Hero Box -->
+      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:24px;padding:2.25rem 1.75rem;max-width:760px;margin:0 auto 2.5rem;box-shadow:var(--card-shadow);text-align:center;">
         
+        <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-light);margin-bottom:1.25rem;background:rgba(139,92,246,0.1);padding:4px 14px;border-radius:999px;">
+          <span>🎯</span> आपके ब्राउज़र के लिए डिटेक्ट किया गया: <span id="fp-detected-browser-name" style="color:var(--text-primary);margin-left:4px;">Google Chrome</span>
+        </div>
 
-        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem;">
-
-          <!-- 1. Microsoft Edge (LIVE NOW) -->
-
-          <a href="https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj" target="_blank" rel="noopener" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.45);border-radius:12px;padding:10px 20px;display:flex;align-items:center;gap:10px;font-size:0.92rem;font-weight:700;color:var(--text-primary);text-decoration:none;box-shadow:0 0 15px rgba(16,185,129,0.2);transition:all 0.2s;">
-
-            <span>🌊 Microsoft Edge</span>
-
-            <span style="font-size:0.75rem;background:#10b981;color:#000;padding:2px 8px;border-radius:6px;font-weight:800;">LIVE NOW ↗</span>
-
+        <!-- Dynamic Glowing CTA Button -->
+        <div style="margin-bottom:1.5rem;">
+          <a id="fp-primary-hero-btn" href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" class="fp-browser-glow-btn" style="background:linear-gradient(135deg,#2563eb,#3b82f6);">
+            <svg id="fp-hero-btn-icon" width="24" height="24" viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            <span id="fp-hero-btn-label">Google Chrome में जोड़ें (मुफ़्त) ↗</span>
           </a>
+        </div>
 
+        <div style="font-size:0.86rem;color:var(--text-muted);margin-bottom:1.75rem;">
+          आधिकारिक स्टोर रिलीज़ · 1-क्लिक डायरेक्ट इंस्टॉलेशन · इंस्टेंट गेस्ट मोड शामिल
+        </div>
 
+        <!-- Browser Switcher (Side-by-Side Shrink/Expand Tabs) -->
+        <div style="border-top:1px solid var(--border);padding-top:1.5rem;text-align:left;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:8px;">
+            <div style="font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-muted);">
+              ब्राउज़र गाइड व इंस्टॉलेशन चुनें:
+            </div>
+            <div style="font-size:0.75rem;color:var(--accent-light);font-weight:600;">
+              निर्देश देखने के लिए क्लिक करें
+            </div>
+          </div>
 
-                    <!-- 2. Google Chrome (लाइव है) -->
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1.5rem;" role="tablist" aria-label="Browser installation guides">
+            
+            <!-- Chrome Tab -->
+            <button class="fp-browser-tab-btn active" id="fp-tab-chrome" type="button" role="tab" aria-selected="true" onclick="fpSelectBrowser('chrome')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" stroke="#4285F4" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" fill="#4285F4"/>
+                <path d="M12 2a10 10 0 0 1 8.66 5H12" stroke="#EA4335" stroke-width="2"/>
+                <path d="M20.66 7A10 10 0 0 1 12 22l4.33-7.5" stroke="#34A853" stroke-width="2"/>
+                <path d="M12 22A10 10 0 0 1 3.34 7L7.67 14.5" stroke="#FBBC05" stroke-width="2"/>
+              </svg>
+              <span>Chrome</span>
+              <span style="font-size:0.7rem;background:#10b981;color:#000;padding:1px 6px;border-radius:4px;font-weight:800;">लाइव</span>
+            </button>
 
-          <a href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.45);border-radius:12px;padding:10px 20px;display:flex;align-items:center;gap:10px;font-size:0.92rem;font-weight:700;color:var(--text-primary);text-decoration:none;box-shadow:0 0 15px rgba(16,185,129,0.2);transition:all 0.2s;">
+            <!-- Edge Tab -->
+            <button class="fp-browser-tab-btn" id="fp-tab-edge" type="button" role="tab" aria-selected="false" onclick="fpSelectBrowser('edge')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M21.95 13.88c-.28 4.22-3.8 7.62-8.1 7.62-4.5 0-8.15-3.66-8.15-8.17 0-3.32 1.98-6.17 4.82-7.44-.24.73-.37 1.5-.37 2.31 0 3.73 3.03 6.75 6.77 6.75.87 0 1.7-.17 2.46-.47.16-.06.31-.14.46-.22.46-.26.96-.34 1.48-.22.42.1.84.35 1.13.72.31.39.46.88.42 1.39z" fill="#0078D7"/>
+                <path d="M13.85 2.5c4.5 0 8.15 3.66 8.15 8.17 0 .54-.05 1.07-.15 1.58-.36-2.58-2.58-4.55-5.27-4.55-2.22 0-4.13 1.34-4.96 3.25-.4-.95-.62-2-.62-3.1 0-2.95 2.17-5.35 2.85-5.35z" fill="#00BCF2"/>
+                <path d="M17.23 7.7c2.69 0 4.91 1.97 5.27 4.55-.92.83-2.13 1.34-3.46 1.34-2.6 0-4.75-1.92-5.06-4.44.97-.9 2.26-1.45 3.25-1.45z" fill="#00B294"/>
+              </svg>
+              <span>Edge</span>
+              <span style="font-size:0.7rem;background:#10b981;color:#000;padding:1px 6px;border-radius:4px;font-weight:800;">लाइव</span>
+            </button>
 
-            <span>🌐 Google Chrome</span>
+            <!-- Brave Tab -->
+            <button class="fp-browser-tab-btn" id="fp-tab-brave" type="button" role="tab" aria-selected="false" onclick="fpSelectBrowser('brave')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2l3 3.5 4.5-.5-1.5 5 3.5 3-4 3 1 5-6.5-2.5L5.5 21l1-5-4-3 3.5-3-1.5-5 4.5.5L12 2z" fill="#FB542B"/>
+              </svg>
+              <span>Brave</span>
+              <span style="font-size:0.7rem;background:rgba(255,255,255,0.1);color:var(--text-muted);padding:1px 6px;border-radius:4px;font-weight:700;">1-क्लिक</span>
+            </button>
 
-            <span style="font-size:0.75rem;background:#10b981;color:#000;padding:2px 8px;border-radius:6px;font-weight:800;">लाइव है ↗</span>
-
-          </a>
-
-
-
-          <!-- 3. Brave -->
-
-          <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:10px 20px;display:flex;align-items:center;gap:10px;font-size:0.92rem;font-weight:700;">
-
-            <span>🦁 Brave</span>
-
-            <span style="font-size:0.75rem;background:#eab308;color:#000;padding:2px 8px;border-radius:6px;font-weight:800;">जल्द आ रहा है</span>
+            <!-- Firefox Tab -->
+            <button class="fp-browser-tab-btn" id="fp-tab-firefox" type="button" role="tab" aria-selected="false" onclick="fpSelectBrowser('firefox')">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="#FF7139"/>
+                <path d="M12 4c4.42 0 8 3.58 8 8 0 1.25-.29 2.43-.8 3.48-.73-3.1-2.92-5.48-5.7-5.48-1.5 0-2.88.65-3.83 1.7-.85-.95-2.09-1.55-3.47-1.55-.54 0-1.06.09-1.54.26C5.64 7.6 8.56 4 12 4z" fill="#FF9400"/>
+                <path d="M12 20c-4.42 0-8-3.58-8-8 0-.66.08-1.3.23-1.91.73 1.83 2.5 3.11 4.57 3.11 1.27 0 2.42-.48 3.3-1.28.84.8 1.99 1.28 3.26 1.28 2.07 0 3.84-1.28 4.57-3.11.15.61.23 1.25.23 1.91 0 4.42-3.58 8-8 8z" fill="#00539F"/>
+              </svg>
+              <span>Firefox</span>
+              <span style="font-size:0.7rem;background:rgba(234,179,8,0.2);color:#eab308;padding:1px 6px;border-radius:4px;font-weight:700;">वेब PWA</span>
+            </button>
 
           </div>
 
+          <!-- Specific Browser Installation Instructions Accordion / Container -->
+          <div style="background:var(--bg-tertiary);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.25rem;">
+            
+            <!-- 1. Chrome Guide -->
+            <div id="fp-guide-chrome" class="fp-guide-panel active">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <strong style="color:var(--text-primary);font-size:1.02rem;">Google Chrome में इंस्टॉल करने की विधि:</strong>
+                <a href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" style="font-size:0.84rem;color:#3b82f6;text-decoration:underline;font-weight:700;">Chrome Web Store पेज ↗</a>
+              </div>
+              <ol style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.65;">
+                <li style="margin-bottom:0.4rem;">ऊपर दिए गए नीले बटन <strong>"Google Chrome में जोड़ें (मुफ़्त)"</strong> पर क्लिक करें।</li>
+                <li style="margin-bottom:0.4rem;">स्टोर विंडो में <strong>"Add to Chrome"</strong> पर क्लिक करें और अनुमति स्वीकार करें।</li>
+                <li>किसी भी लॉगिन पेज पर तुरंत पासवर्ड जेनरेशन और ऑटो-फिल के लिए <code>Ctrl+Shift+F</code> दबाएं।</li>
+              </ol>
+            </div>
 
+            <!-- 2. Edge Guide -->
+            <div id="fp-guide-edge" class="fp-guide-panel">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <strong style="color:var(--text-primary);font-size:1.02rem;">Microsoft Edge में इंस्टॉल करने की विधि:</strong>
+                <a href="https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj" target="_blank" rel="noopener" style="font-size:0.84rem;color:#10b981;text-decoration:underline;font-weight:700;">Edge Addons स्टोर पेज ↗</a>
+              </div>
+              <ol style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.65;">
+                <li style="margin-bottom:0.4rem;">ऊपर दिए गए हरे बटन <strong>"Microsoft Edge में जोड़ें (मुफ़्त)"</strong> पर क्लिक करें।</li>
+                <li style="margin-bottom:0.4rem;">स्टोर पेज पर <strong>"Get"</strong> पर क्लिक करें और एक्सटेंशन सीधे आपके Edge टूलबार में जुड़ जाएगा।</li>
+                <li>एक्सटेंशन सक्रिय है। 1-क्लिक त्वरित एक्सेस के लिए इसे टूलबार में पिन करें।</li>
+              </ol>
+            </div>
 
-          <!-- 4. Firefox -->
+            <!-- 3. Brave Guide -->
+            <div id="fp-guide-brave" class="fp-guide-panel">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <strong style="color:var(--text-primary);font-size:1.02rem;">Brave व Chromium ब्राउज़रों में इंस्टॉलेशन:</strong>
+                <a href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" style="font-size:0.84rem;color:#fb542b;text-decoration:underline;font-weight:700;">Chrome Web Store लिंक ↗</a>
+              </div>
+              <ol style="margin:0;padding-left:1.25rem;color:var(--text-muted);font-size:0.9rem;line-height:1.65;">
+                <li style="margin-bottom:0.4rem;">चूंकि Brave क्रोमियम इंजन पर बना है, यह Chrome एक्सटेंशन को सीधे 1-क्लिक में सपोर्ट करता है।</li>
+                <li style="margin-bottom:0.4rem;">ऊपर <strong>"Brave में जोड़ें (via Chrome Store)"</strong> पर क्लिक करें और स्टोर पेज पर <strong>"Add to Brave"</strong> चुनें।</li>
+                <li>शून्य ट्रैकर और 100% ऑफ़लाइन गोपनीयता का आनंद लें।</li>
+              </ol>
+            </div>
 
-          <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:10px 20px;display:flex;align-items:center;gap:10px;font-size:0.92rem;font-weight:700;">
-
-            <span>🦊 Firefox</span>
-
-            <span style="font-size:0.75rem;background:#eab308;color:#000;padding:2px 8px;border-radius:6px;font-weight:800;">जल्द आ रहा है</span>
+            <!-- 4. Firefox Guide -->
+            <div id="fp-guide-firefox" class="fp-guide-panel">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;">
+                <strong style="color:var(--text-primary);font-size:1.02rem;">Firefox व अन्य प्लेटफॉर्म:</strong>
+                <a href="/" style="font-size:0.84rem;color:var(--accent-light);text-decoration:underline;font-weight:700;">ऑफ़लाइन वेब ऐप खोलें &rarr;</a>
+              </div>
+              <p style="margin:0 0 0.5rem;font-size:0.9rem;color:var(--text-muted);line-height:1.6;">
+                Firefox Add-on वर्तमान में Mozilla समीक्षा प्रक्रिया में है। इस दौरान आप हमारे <strong>100% मुफ़्त ऑफ़लाइन वेब जनरेटर</strong> का बिना किसी प्रतीक्षा या इंस्टॉलेशन के तुरंत उपयोग कर सकते हैं:
+              </p>
+              <div style="margin-top:0.6rem;">
+                <a href="/" class="btn-ghost" style="padding:0.5rem 1rem;font-size:0.85rem;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+                  <span>⚡</span> तुरंत वेब ऐप शुरू करें (कोई इंस्टॉलेशन आवश्यक नहीं) &rarr;
+                </a>
+              </div>
+            </div>
 
           </div>
-
-        </div>
-
-
-
-        <!-- Note regarding browser compatibility -->
-
-        <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:10px;padding:0.75rem 1rem;font-size:0.84rem;color:var(--text-muted);line-height:1.55;margin-bottom:1.5rem;text-align:left;">
-
-          <strong style="color:var(--text-primary);">ℹ️ ब्राउज़र कम्पैटिबिलिटी नोट:</strong> Microsoft Edge Addons का आधिकारिक स्टोर लिंक सीधे <strong>Microsoft Edge ब्राउज़र</strong> में 1-क्लिक में काम करता है। Google Chrome Web Store वर्ज़न वर्तमान में अंतिम रिव्यू में है और जल्द लाइव होगा।
-
-        </div>
-
-
-
-        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;align-items:center;">
-
-          <a href="https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj" target="_blank" rel="noopener" class="btn-primary" style="padding:0.9rem 1.8rem;border-radius:12px;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#059669,#10b981);box-shadow:0 4px 15px rgba(16,185,129,0.35);">
-
-            <span>🌊</span> Edge Addons से प्राप्त करें ↗
-
-          </a>
-
-          <a href="/" class="btn-ghost" style="padding:0.9rem 1.6rem;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid var(--border);display:inline-flex;align-items:center;gap:8px;">
-
-            <span>⚡</span> मुफ़्त वेब जनरेटर का उपयोग करें &rarr;
-
-          </a>
 
         </div>
 
       </div>
 
-
-
       <!-- Mobile PWA & Windows Desktop Callout -->
-
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem;max-width:840px;margin:2rem auto 2.5rem;text-align:left;">
 
         <!-- Card 1: Desktop Workstations -->
@@ -1529,6 +1622,101 @@ if (dismissBtn && banner) {
   });
 
 }
+
+/* Smart Browser Detection & Accordion Switcher */
+function fpDetectBrowser() {
+  const ua = navigator.userAgent;
+  if (/Edg\//i.test(ua)) return 'edge';
+  if (/Brave/i.test(ua) || (navigator.brave && typeof navigator.brave.isBrave === 'function')) return 'brave';
+  if (/Firefox|FxiOS/i.test(ua)) return 'firefox';
+  if (/Chrome|CriOS/i.test(ua)) return 'chrome';
+  return 'chrome'; // Default modern fallback
+}
+
+const fpBrowserConfigs = {
+  chrome: {
+    name: 'Google Chrome',
+    btnLabel: 'Google Chrome में जोड़ें (मुफ़्त) ↗',
+    btnUrl: 'https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef',
+    btnBg: 'linear-gradient(135deg, #1d4ed8, #3b82f6)',
+    iconSvg: '<path fill=\"#EA4335\" d=\"M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z\"/><path fill=\"#4285F4\" d=\"M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z\"/><path fill=\"#FBBC05\" d=\"M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z\"/><path fill=\"#34A853\" d=\"M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z\"/>'
+  },
+  edge: {
+    name: 'Microsoft Edge',
+    btnLabel: 'Microsoft Edge में जोड़ें (मुफ़्त) ↗',
+    btnUrl: 'https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj',
+    btnBg: 'linear-gradient(135deg, #059669, #10b981)',
+    iconSvg: '<path d=\"M43.9 27.76c-.56 8.44-7.6 15.24-16.2 15.24-9 0-16.3-7.32-16.3-16.34 0-6.64 3.96-12.34 9.64-14.88-.48 1.46-.74 3-.74 4.62 0 7.46 6.06 13.5 13.54 13.5 1.74 0 3.4-.34 4.92-.94.32-.12.62-.28.92-.44.92-.52 1.92-.68 2.96-.44.84.2 1.68.7 2.26 1.44.62.78.92 1.76.84 2.78z\" fill=\"#0078D7\"/><path d=\"M27.7 5c9 0 16.3 7.32 16.3 16.34 0 1.08-.1 2.14-.3 3.16-.72-5.16-5.16-9.1-10.54-9.1-4.44 0-8.26 2.68-9.92 6.5-.8-1.9-1.24-4-1.24-6.2 0-5.9 4.34-10.7 5.7-10.7z\" fill=\"#00BCF2\"/><path d=\"M34.46 15.4c5.38 0 9.82 3.94 10.54 9.1-1.84 1.66-4.26 2.68-6.92 2.68-5.2 0-9.5-3.84-10.12-8.88 1.94-1.8 4.52-2.9 6.5-2.9z\" fill=\"#00B294\"/>'
+  },
+  brave: {
+    name: 'Brave Browser',
+    btnLabel: 'Brave में जोड़ें (via Chrome Store) ↗',
+    btnUrl: 'https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef',
+    btnBg: 'linear-gradient(135deg, #c2410c, #fb542b)',
+    iconSvg: '<path d=\"M24 4l6 7 9-1-3 10 7 6-8 6 2 10-13-5-13 5 2-10-8-6 7-6-3-10 9 1 6-7z\" fill=\"#FB542B\"/>'
+  },
+  firefox: {
+    name: 'Mozilla Firefox',
+    btnLabel: 'तुरंत वेब ऐप खोलें (नो इंस्टॉलेशन) &rarr;',
+    btnUrl: '/',
+    btnBg: 'linear-gradient(135deg, #7c3aed, #8b5cf6)',
+    iconSvg: '<circle cx=\"24\" cy=\"24\" r=\"20\" fill=\"#FF7139\"/><path d=\"M24 8c8.84 0 16 7.16 16 16 0 2.5-.58 4.86-1.6 6.96-1.46-6.2-5.84-10.96-11.4-10.96-3 0-5.76 1.3-7.66 3.4-1.7-1.9-4.18-3.1-6.94-3.1-1.08 0-2.12.18-3.08.52C11.28 15.2 17.12 8 24 8z\" fill=\"#FF9400\"/>'
+  }
+};
+
+function fpSelectBrowser(key) {
+  const cfg = fpBrowserConfigs[key] || fpBrowserConfigs.chrome;
+  
+  // Update Detected Text
+  const nameEl = document.getElementById('fp-detected-browser-name');
+  if (nameEl) nameEl.textContent = cfg.name;
+
+  // Update Hero Button
+  const btn = document.getElementById('fp-primary-hero-btn');
+  const label = document.getElementById('fp-hero-btn-label');
+  const icon = document.getElementById('fp-hero-btn-icon');
+  if (btn && label && icon) {
+    btn.href = cfg.btnUrl;
+    btn.style.background = cfg.btnBg;
+    label.innerHTML = cfg.btnLabel;
+    icon.innerHTML = cfg.iconSvg;
+    if (key === 'firefox') {
+      btn.removeAttribute('target');
+      btn.removeAttribute('rel');
+    } else {
+      btn.setAttribute('target', '_blank');
+      btn.setAttribute('rel', 'noopener');
+    }
+  }
+
+  // Update Tab States
+  ['chrome', 'edge', 'brave', 'firefox'].forEach(b => {
+    const tab = document.getElementById('fp-tab-' + b);
+    const panel = document.getElementById('fp-guide-' + b);
+    if (tab) {
+      if (b === key) {
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+      } else {
+        tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
+      }
+    }
+    if (panel) {
+      if (b === key) {
+        panel.classList.add('active');
+      } else {
+        panel.classList.remove('active');
+      }
+    }
+  });
+}
+
+// Auto-run detection on load
+document.addEventListener('DOMContentLoaded', () => {
+  const detected = fpDetectBrowser();
+  fpSelectBrowser(detected);
+});
 
 </script>
 
