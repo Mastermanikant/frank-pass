@@ -26,7 +26,7 @@
     }
 
     function extractCode(label) {
-        const m = label.match(/\\(([A-Z]{2})\\)/);
+        const m = label.match(/\(([A-Z]{2})\)/);
         return m ? m[1].toLowerCase() : '';
     }
 
@@ -125,20 +125,22 @@
             } catch (e) {}
         }
 
-        // Update trigger display
+        // 1. Update header trigger flag and name
         if (triggerFlag) {
             triggerFlag.src = getFlagUrl(country.code);
+            triggerFlag.alt = country.name;
             triggerFlag.style.display = '';
         }
         if (displayName) {
             displayName.textContent = country.name;
         }
 
-        // Update premium header flag
+        // 2. Update generator card pill flag and label (Keep in 100% sync!)
         const headerFlag = document.getElementById('header-flag-img');
         if (headerFlag) {
-            headerFlag.src = `/flags/${country.code.toLowerCase()}.png`;
-            headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${country.code.toLowerCase()}.png`; };
+            headerFlag.src = getFlagUrl(country.code);
+            headerFlag.alt = country.name;
+            headerFlag.onerror = function() { this.src = FALLBACK_CDN + country.code.toLowerCase() + '.png'; };
             headerFlag.style.display = '';
         }
         const cardLabel = document.getElementById('card-country-label');
@@ -146,22 +148,21 @@
         const cardPill = document.getElementById('card-country-pill');
         if (cardPill) cardPill.title = country.label;
 
-        // Update hidden input (replaces old regionEl value)
+        // 3. Update hidden input (replaces old regionEl value)
         if (hiddenInput) {
             hiddenInput.value = country.label;
-            // Fire change event so script.js listeners pick it up
             hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
         }
 
-        // Update platform datalist
+        // 4. Update platform datalist
         if (typeof populatePlatformDatalist === 'function') {
             populatePlatformDatalist(country.code);
         }
 
-        // Update URL: Clean root '/' for default India, '/<code>' for other countries
+        // 5. Update URL path clean root '/' for default India, '/<code>' for other countries
         try {
             const newPath = (country.code === DEFAULT_CODE || country.code === 'in') ? '/' : '/' + country.code;
-            if (window.location.pathname !== newPath) {
+            if (window.location.pathname !== newPath && window.location.pathname.length <= 4) {
                 window.history.replaceState({ code: country.code }, '', newPath);
             }
         } catch (e) { /* local file:// - ignore */ }
@@ -202,7 +203,8 @@
 
         // Tier 1: URL Path (/us, /gb, /ca, /de, /in, /hn -> 'in')
         if (!initCode) {
-            let path = window.location.pathname.replace(/\\//g, '').toLowerCase();
+            let path = window.location.pathname.split('/').filter(Boolean)[0] || '';
+            path = path.toLowerCase();
             if (path === 'hn') path = 'in'; // Alias for Hindi
             if (path.length === 2 && allCountries.find(c => c.code === path)) {
                 initCode = path;
@@ -282,39 +284,14 @@
                             allCountries.find(c => c.code === DEFAULT_CODE);
 
         if (initCountry) {
-            currentCode = initCountry.code;
-
-            if (triggerFlag) {
-                triggerFlag.src = getFlagUrl(initCountry.code);
-                triggerFlag.style.display = '';
-            }
-            if (displayName) displayName.textContent = initCountry.name;
-            if (hiddenInput) {
-                hiddenInput.value = initCountry.label;
-                hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-
-            const headerFlag = document.getElementById('header-flag-img');
-            if (headerFlag) {
-                headerFlag.src = `/flags/${initCountry.code.toLowerCase()}.png`;
-                headerFlag.onerror = function() { this.src = `https://flagcdn.com/w160/${initCountry.code.toLowerCase()}.png`; };
-                headerFlag.style.display = '';
-            }
-            const cardLabel = document.getElementById('card-country-label');
-            if (cardLabel) cardLabel.textContent = initCountry.code.toUpperCase();
-            const cardPill = document.getElementById('card-country-pill');
-            if (cardPill) cardPill.title = initCountry.label;
-
-            // Load platform list for this country
-            if (typeof populatePlatformDatalist === 'function') {
-                populatePlatformDatalist(initCountry.code);
-            }
+            selectCountry(initCountry, false);
         }
 
         // Tier 4: Background Non-blocking Cloudflare Edge Geolocation (/cdn-cgi/trace)
         try {
             const hasSaved = !!localStorage.getItem('fp_preferred_country');
-            const hasPath = window.location.pathname.length > 2;
+            const pathClean = window.location.pathname.split('/').filter(Boolean)[0] || '';
+            const hasPath = pathClean.length === 2 && allCountries.find(c => c.code === pathClean.toLowerCase());
             if (!hasSaved && !hasPath && typeof fetch === 'function') {
                 const idleRunner = window.requestIdleCallback || ((cb) => setTimeout(cb, 1200));
                 idleRunner(() => {
@@ -366,7 +343,8 @@
 
         // ── Browser Back / Forward Sync ──────────────────────────────
         window.addEventListener('popstate', (e) => {
-            let p = window.location.pathname.replace(/\\//g, '').toLowerCase();
+            let p = window.location.pathname.split('/').filter(Boolean)[0] || '';
+            p = p.toLowerCase();
             if (p === 'hn') p = 'in';
             const matched = allCountries.find(c => c.code === p) || allCountries.find(c => c.code === DEFAULT_CODE);
             if (matched && matched.code !== currentCode) {
