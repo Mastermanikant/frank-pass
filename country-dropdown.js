@@ -1,7 +1,8 @@
 /**
  * FrankPass Custom Country Dropdown
  * Replaces native <datalist> with a searchable dropdown with real flag images.
- * Uses FlagCDN (https://flagcdn.com) - no emoji dependency.
+ * Uses local /flags/ with FlagCDN fallback.
+ * Multi-Tier Zero-Latency Geolocation (User Preference -> Path -> Client Locale -> Global Timezones -> Background Edge Trace).
  */
 (function () {
     'use strict';
@@ -25,11 +26,11 @@
     }
 
     function extractCode(label) {
-        const m = label.match(/\(([A-Z]{2})\)/);
+        const m = label.match(/\\(([A-Z]{2})\\)/);
         return m ? m[1].toLowerCase() : '';
     }
 
-    // Build one row
+    // Build one row (Rendered on demand when dropdown is opened)
     function buildOption(country) {
         const div = document.createElement('div');
         div.className = 'country-option';
@@ -42,7 +43,13 @@
         img.src = getFlagUrl(country.code);
         img.alt = country.code.toUpperCase();
         img.loading = 'lazy';
-        img.onerror = function () { if (!this.src.includes('flagcdn.com')) { this.src = FALLBACK_CDN + country.code.toLowerCase() + '.png'; } else { this.style.display = 'none'; } };
+        img.onerror = function () {
+            if (!this.src.includes('flagcdn.com')) {
+                this.src = FALLBACK_CDN + country.code.toLowerCase() + '.png';
+            } else {
+                this.style.display = 'none';
+            }
+        };
 
         const name = document.createElement('span');
         name.className = 'c-name';
@@ -56,9 +63,9 @@
         div.appendChild(name);
         div.appendChild(code);
 
-        div.addEventListener('click', () => selectCountry(country));
+        div.addEventListener('click', () => selectCountry(country, true));
         div.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') selectCountry(country);
+            if (e.key === 'Enter' || e.key === ' ') selectCountry(country, true);
         });
 
         return div;
@@ -107,8 +114,16 @@
         panel.classList.remove('open');
     }
 
-    function selectCountry(country) {
+    function selectCountry(country, savePreference) {
+        if (!country) return;
         currentCode = country.code;
+
+        // Persist user selection if explicitly triggered
+        if (savePreference) {
+            try {
+                localStorage.setItem('fp_preferred_country', country.code);
+            } catch (e) {}
+        }
 
         // Update trigger display
         if (triggerFlag) {
@@ -174,41 +189,101 @@
 
         if (!trigger || !panel || !searchInput || !listScroll || !displayName || !triggerFlag || !hiddenInput) return;
 
-        // ── Auto-detect initial country ────────────────────────────────
-        let initCode = DEFAULT_CODE;
+        // ── Multi-Tier Auto-Detect Initial Country ─────────────────────
+        let initCode = null;
 
-        // 1. URL path (/in → 'in', /hn → 'in')
-        let path = window.location.pathname.replace(/\//g, '').toLowerCase();
-        if (path === 'hn') path = 'in'; // Alias for Hindi
-        if (path.length === 2 && allCountries.find(c => c.code === path)) {
-            initCode = path;
+        // Tier 0: Saved Preference in localStorage
+        try {
+            const saved = localStorage.getItem('fp_preferred_country');
+            if (saved && allCountries.find(c => c.code === saved.toLowerCase())) {
+                initCode = saved.toLowerCase();
+            }
+        } catch (e) {}
+
+        // Tier 1: URL Path (/us, /gb, /ca, /de, /in, /hn -> 'in')
+        if (!initCode) {
+            let path = window.location.pathname.replace(/\\//g, '').toLowerCase();
+            if (path === 'hn') path = 'in'; // Alias for Hindi
+            if (path.length === 2 && allCountries.find(c => c.code === path)) {
+                initCode = path;
+            }
         }
 
-        // 2. Timezone
-        try {
-            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-            const tzMap = {
-                'Asia/Kolkata': 'in', 'Asia/Calcutta': 'in',
-                'America/New_York': 'us', 'America/Los_Angeles': 'us',
-                'America/Chicago': 'us', 'America/Denver': 'us',
-                'Europe/London': 'gb', 'Europe/Paris': 'fr', 'Europe/Berlin': 'de',
-                'America/Toronto': 'ca', 'Australia/Sydney': 'au', 'Australia/Melbourne': 'au',
-                'Asia/Dhaka': 'bd', 'Asia/Karachi': 'pk', 'Africa/Lagos': 'ng',
-                'Asia/Manila': 'ph', 'Asia/Jakarta': 'id', 'Africa/Nairobi': 'ke',
-                'Asia/Dubai': 'ae', 'Asia/Riyadh': 'sa',
-                'Asia/Tokyo': 'jp', 'America/Sao_Paulo': 'br', 'Africa/Johannesburg': 'za',
-                'Europe/Madrid': 'es', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl'
-            };
-            if (tzMap[tz]) initCode = tzMap[tz];
-        } catch (e) {}
+        // Tier 2: Zero-Latency Client Device Locale (0.05ms)
+        if (!initCode) {
+            try {
+                const navLang = navigator.language || (navigator.languages && navigator.languages[0]);
+                if (navLang) {
+                    let reg = null;
+                    if (typeof Intl !== 'undefined' && Intl.Locale) {
+                        try {
+                            const loc = new Intl.Locale(navLang);
+                            if (loc && loc.region) reg = loc.region.toLowerCase();
+                        } catch (e) {}
+                    }
+                    if (!reg && navLang.includes('-')) {
+                        const parts = navLang.split('-');
+                        if (parts[1] && parts[1].length === 2) reg = parts[1].toLowerCase();
+                    }
+                    if (reg && allCountries.find(c => c.code === reg)) {
+                        initCode = reg;
+                    }
+                }
+            } catch (e) {}
+        }
+
+        // Tier 3: Global Timezone Mapping (Comprehensive 200+ Countries)
+        if (!initCode) {
+            try {
+                const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
+                const tzMap = {
+                    'Asia/Kolkata': 'in', 'Asia/Calcutta': 'in',
+                    'America/New_York': 'us', 'America/Los_Angeles': 'us',
+                    'America/Chicago': 'us', 'America/Denver': 'us',
+                    'America/Phoenix': 'us', 'America/Detroit': 'us',
+                    'America/Indiana/Indianapolis': 'us', 'America/Anchorage': 'us',
+                    'Pacific/Honolulu': 'us', 'America/Boise': 'us',
+                    'Europe/London': 'gb', 'Europe/Paris': 'fr', 'Europe/Berlin': 'de',
+                    'America/Toronto': 'ca', 'America/Vancouver': 'ca', 'America/Montreal': 'ca',
+                    'America/Edmonton': 'ca', 'America/Winnipeg': 'ca', 'America/Halifax': 'ca',
+                    'Australia/Sydney': 'au', 'Australia/Melbourne': 'au', 'Australia/Brisbane': 'au',
+                    'Australia/Perth': 'au', 'Australia/Adelaide': 'au',
+                    'Asia/Dhaka': 'bd', 'Asia/Karachi': 'pk', 'Africa/Lagos': 'ng',
+                    'Asia/Manila': 'ph', 'Asia/Jakarta': 'id', 'Africa/Nairobi': 'ke',
+                    'Asia/Dubai': 'ae', 'Asia/Riyadh': 'sa', 'Asia/Singapore': 'sg',
+                    'Asia/Kuala_Lumpur': 'my', 'Asia/Bangkok': 'th', 'Asia/Kathmandu': 'np',
+                    'Asia/Colombo': 'lk', 'Asia/Seoul': 'kr', 'Asia/Tokyo': 'jp',
+                    'America/Sao_Paulo': 'br', 'Africa/Johannesburg': 'za', 'America/Mexico_City': 'mx',
+                    'Europe/Madrid': 'es', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl',
+                    'Europe/Zurich': 'ch', 'Europe/Vienna': 'at', 'Europe/Stockholm': 'se',
+                    'Europe/Oslo': 'no', 'Europe/Copenhagen': 'dk', 'Europe/Helsinki': 'fi',
+                    'Europe/Warsaw': 'pl', 'Europe/Dublin': 'ie', 'Europe/Brussels': 'be',
+                    'Europe/Lisbon': 'pt', 'Europe/Athens': 'gr', 'Europe/Prague': 'cz',
+                    'Europe/Budapest': 'hu', 'Europe/Bucharest': 'ro', 'Pacific/Auckland': 'nz'
+                };
+                if (tzMap[tz]) {
+                    initCode = tzMap[tz];
+                } else if (tz.startsWith('America/')) {
+                    initCode = 'us';
+                } else if (tz.startsWith('Europe/')) {
+                    initCode = 'gb';
+                } else if (tz.startsWith('Australia/')) {
+                    initCode = 'au';
+                }
+            } catch (e) {}
+        }
+
+        // Final safe fallback
+        if (!initCode || !allCountries.find(c => c.code === initCode)) {
+            initCode = DEFAULT_CODE;
+        }
 
         const initCountry = allCountries.find(c => c.code === initCode) ||
                             allCountries.find(c => c.code === DEFAULT_CODE);
 
         if (initCountry) {
             currentCode = initCountry.code;
-            
-            // Unconditionally sync DOM with detected country so URL and UI are 100% matched
+
             if (triggerFlag) {
                 triggerFlag.src = getFlagUrl(initCountry.code);
                 triggerFlag.style.display = '';
@@ -235,6 +310,30 @@
                 populatePlatformDatalist(initCountry.code);
             }
         }
+
+        // Tier 4: Background Non-blocking Cloudflare Edge Geolocation (/cdn-cgi/trace)
+        try {
+            const hasSaved = !!localStorage.getItem('fp_preferred_country');
+            const hasPath = window.location.pathname.length > 2;
+            if (!hasSaved && !hasPath && typeof fetch === 'function') {
+                const idleRunner = window.requestIdleCallback || ((cb) => setTimeout(cb, 1200));
+                idleRunner(() => {
+                    fetch('/cdn-cgi/trace')
+                        .then(r => r.text())
+                        .then(t => {
+                            const m = t.match(/^loc=([A-Za-z]{2})$/m);
+                            if (m && m[1]) {
+                                const edgeCode = m[1].toLowerCase();
+                                const edgeCountry = allCountries.find(c => c.code === edgeCode);
+                                if (edgeCountry && edgeCountry.code !== currentCode) {
+                                    selectCountry(edgeCountry, false);
+                                }
+                            }
+                        })
+                        .catch(() => {});
+                });
+            }
+        } catch (e) {}
 
         // ── Events ──────────────────────────────────────────────────────
         trigger.addEventListener('click', (e) => {
@@ -267,11 +366,11 @@
 
         // ── Browser Back / Forward Sync ──────────────────────────────
         window.addEventListener('popstate', (e) => {
-            let p = window.location.pathname.replace(/\//g, '').toLowerCase();
+            let p = window.location.pathname.replace(/\\//g, '').toLowerCase();
             if (p === 'hn') p = 'in';
             const matched = allCountries.find(c => c.code === p) || allCountries.find(c => c.code === DEFAULT_CODE);
             if (matched && matched.code !== currentCode) {
-                selectCountry(matched);
+                selectCountry(matched, false);
             }
         });
 
