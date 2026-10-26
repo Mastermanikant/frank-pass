@@ -189,15 +189,7 @@
 
 
 
-<!-- Launch Notice Banner -->
-
-<div id="sale-banner" class="sale-banner" role="region" aria-label="Launch announcement" style="display:block">
-
-  🎉 <strong>आधिकारिक रूप से लाइव:</strong> FrankPass ब्राउज़र एक्सटेंशन अब <a href="https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Microsoft Edge Addons Store ↗</a> पर लाइव है! और <a href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Chrome Web Store ↗</a> दोनों पर लाइव है!
-
-  <button class="dismiss-btn" id="dismiss-banner" aria-label="Dismiss banner">&times;</button>
-
-</div>
+  <!-- Launch Notice Banner Removed -->
 
 
 
@@ -652,25 +644,21 @@
 
 
   <!-- ============================================================
-   HERO SECTION: 100% Free Extension Live & Smart Browser Detection
+   HERO SECTION: 100% Free Extension Live & Platform Selector
    ============================================================ -->
-  <section class="section" style="padding-top:1.25rem;padding-bottom:3rem;text-align:center;">
+  <section class="section" style="padding-top:1.5rem;padding-bottom:3rem;text-align:center;">
     <div class="container" style="max-width:880px;">
       
-      <!-- Topmost Live Badge & Detected Browser Highlight Strip (Directly Below Header) -->
-      <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem;">
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.82rem;font-weight:700;padding:6px 16px;border-radius:999px;letter-spacing:0.04em;">
+      <!-- Topmost Live Badge (Clean - No Detected Text) -->
+      <div style="margin-bottom:1.25rem;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.84rem;font-weight:700;padding:6px 18px;border-radius:999px;letter-spacing:0.04em;">
           <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></span>
-          आधिकारिक रूप से लाइव · ज़ीरो क्लाउड वॉल्ट
-        </div>
-
-        <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-light);background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);padding:6px 16px;border-radius:999px;">
-          <span>🎯</span> डिटेक्टेड ब्राउज़र: <strong id="fp-detected-browser-name" style="color:var(--text-primary);margin-left:4px;">Google Chrome</strong>
+          आधिकारिक रूप से लाइव · ज़ीरो क्लाउड वॉल्ट एक्सटेंशन
         </div>
       </div>
 
-      <!-- Instant Top Primary Call To Action (Large Glowing Button Directly Below Header) -->
-      <div style="margin-bottom:2rem;display:flex;flex-direction:column;align-items:center;gap:10px;">
+      <!-- Instant Top Primary Call To Action (Direct Hero Action) -->
+      <div style="margin-bottom:1.5rem;display:flex;flex-direction:column;align-items:center;gap:12px;">
         <a id="fp-primary-hero-btn" href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" class="fp-browser-glow-btn" style="background:linear-gradient(135deg,#2563eb,#3b82f6);max-width:92%;">
           <svg id="fp-hero-btn-icon" width="28" height="28" viewBox="0 0 48 48" aria-hidden="true">
             <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -680,7 +668,22 @@
           </svg>
           <span id="fp-hero-btn-label">Google Chrome में जोड़ें (मुफ़्त) ↗</span>
         </a>
-        <div style="font-size:0.86rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+
+        <!-- Also Available On Expandable Drawer Button -->
+        <details class="card-glass" style="max-width:540px;width:100%;border-radius:14px;padding:0.6rem 1rem;border:1px solid var(--border);cursor:pointer;background:rgba(139,92,246,0.06);margin-top:0.25rem;">
+          <summary style="font-size:0.86rem;font-weight:700;color:var(--text-muted);list-style:none;display:flex;align-items:center;justify-content:center;gap:8px;outline:none;user-select:none;">
+            <span>🌐 अन्य प्लेटफॉर्म पर भी उपलब्ध (Edge, Brave, Firefox, PWA)</span>
+            <span style="font-size:1.1rem;color:var(--accent-light);">+</span>
+          </summary>
+          <div style="padding-top:0.85rem;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);margin-top:0.6rem;">
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('edge')">🌊 Microsoft Edge (लाइव)</button>
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('brave')">🦁 Brave (1-क्लिक)</button>
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('chrome')">🌐 Google Chrome</button>
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('firefox')">🦊 Firefox (वेब PWA)</button>
+          </div>
+        </details>
+
+        <div style="font-size:0.86rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:0.35rem;">
           <span>⚡ 100% मुफ़्त कोर ऑटोफ़िल</span>
           <span>•</span>
           <span>🔒 0-बाइट क्लाउड वॉल्ट</span>
@@ -940,110 +943,99 @@
 
 
 
-      <div class="grid-2" style="gap:2rem;">
+      <!-- Clean Comparison Table -->
+      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:20px;overflow-x:auto;box-shadow:var(--card-shadow);margin-bottom:2rem;">
+        <table style="width:100%;border-collapse:collapse;text-align:left;min-width:600px;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(139,92,246,0.08);">
+              <th style="padding:1.1rem 1.4rem;font-size:0.95rem;font-weight:700;color:var(--text-primary);width:45%;">सुरक्षा व ऑटो-फिल क्षमताएं</th>
+              <th style="padding:1.1rem 1.2rem;font-size:0.95rem;font-weight:800;color:#10b981;text-align:center;width:27.5%;">
+                फ्री इंस्टेंट गेस्ट मोड<br>
+                <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">100% फ्री (₹0) लाइफटाइम</span>
+              </th>
+              <th style="padding:1.1rem 1.2rem;font-size:0.95rem;font-weight:800;color:var(--accent-light);text-align:center;width:27.5%;">
+                फ्रैंकपास प्रो अपग्रेड<br>
+                <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">₹200/वर्ष (या $3/वर्ष)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                स्टेटलेस डिटरमिनिस्टिक ऑटो-फिल (0 क्लाउड वॉल्ट)
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">शुद्ध गणितीय फ़ंक्शन द्वारा पासवर्ड निकालना, कोई क्लाउड स्टोरेज नहीं</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                1-क्लिक डोमेन ऑटो-फिल (<code>Ctrl+Shift+F</code> / <code>Cmd+Shift+F</code>)
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">सक्रिय टैब डोमेन की स्वतः पहचान और तुरंत पासवर्ड भरना</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                10,00,000 PBKDF2 HMAC-SHA512 राउंड्स
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">मिलिट्री-ग्रेड की-डेरिवेशन, शून्य सर्वर लीकेज</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                शून्य साइनअप व शून्य अकाउंट्स की आवश्यकता
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">कोई ईमेल, फोन या पहचान प्रमाण नहीं मांगा जाता</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ शामिल है</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(139,92,246,0.04);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                मल्टी-प्रोफाइल वॉल्ट्स (Personal, Work, Freelance)
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">अलग-अलग जीवन क्षेत्रों के लिए स्वतंत्र क्रिप्टोग्राफिक प्रोफाइल्स</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">सिंगल डिफ़ॉल्ट प्रोफाइल</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ असीमित प्रोफाइल्स</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(139,92,246,0.04);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                0.1 सेकंड में 4-डिजिट पिन से इंस्टेंट अनलॉक
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">हर बार लंबी सीक्रेट की टाइप किए बिना त्वरित पिन अनलॉक</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">सीक्रेट की टाइप करें</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ इंस्टेंट पिन अनलॉक</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(139,92,246,0.04);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                20 कस्टमाइज़ेबल ऑफलाइन सुरक्षा प्रश्न (पिन रिकवरी)
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">एयर-गैप्ड ऑफलाइन रिकवरी तंत्र</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">मानक मास्टर की</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ 20 सुरक्षा प्रश्न</td>
+            </tr>
+            <tr style="background:rgba(139,92,246,0.06);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                समस्त ब्राउज़र्स व Windows Desktop App लाइसेंस
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">1 लाइसेंस = उसी कंप्यूटर के Chrome, Edge, Brave व Desktop App पर मान्य</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:700;">सभी ब्राउज़र्स पर फ्री</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ 1 लाइसेंस = सभी ऐप्स</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        
-
-        <!-- Tier 1: Free Instant Guest Mode -->
-
-        <div class="card-glass" style="border-radius:20px;padding:2.25rem 2rem;border:2px solid #10b981;position:relative;">
-
-          <div style="position:absolute;top:-12px;left:24px;background:#10b981;color:#000;font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;text-transform:uppercase;">
-
-            लाइफटाइम फ्री (₹0)
-
-          </div>
-
-          
-
-          <h3 style="font-size:1.4rem;margin-bottom:0.5rem;color:var(--text-primary);">इंस्टेंट गेस्ट मोड (Guest Mode)</h3>
-
-          <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;margin-bottom:1.5rem;">
-
-            दैनिक सामान्य यूज़र्स के लिए सर्वोत्तम, जिन्हें बिना किसी डेटा सेविंग के तेज़ और सुरक्षित ऑटो-फिल चाहिए।
-
-          </p>
-
-
-
-          <ul style="list-style:none;padding:0;margin:0 0 1.75rem;color:var(--text-muted);font-size:0.92rem;line-height:2;">
-
-            <li><strong style="color:#10b981;">✓</strong> सक्रिय टैब के डोमेन नाम की स्वचालित पहचान</li>
-
-            <li><strong style="color:#10b981;">✓</strong> 1-क्लिक फास्ट फिल (<code>Ctrl+Shift+F</code> / <code>Cmd+Shift+F</code>)</li>
-
-            <li><strong style="color:#10b981;">✓</strong> 10,00,000 PBKDF2 HMAC-SHA512 राउंड्स</li>
-
-            <li><strong style="color:#10b981;">✓</strong> शून्य क्लाउड अकाउंट्स, शून्य पासवर्ड स्टोरेज</li>
-
-            <li><strong style="color:#10b981;">✓</strong> फ़िशिंग क्लोन्स पर अलग डमी पासवर्ड सुरक्षा</li>
-
-            <li><strong style="color:#10b981;">✓</strong> 100% लाइफटाइम फ्री (शून्य विज्ञापन, शून्य ट्रैकिंग)</li>
-
-          </ul>
-
-
-
-          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;color:var(--text-primary);text-align:center;">
-
-            ⚡ हर ब्राउज़र एक्सटेंशन इंस्टॉलेशन में इनबिल्ट फ्री रहेगा।
-
-          </div>
-
-        </div>
-
-
-
-        <!-- Tier 2: Optional Pro Upgrade -->
-
-        <div class="card-glass" style="border-radius:20px;padding:2.25rem 2rem;border:2px solid var(--accent);position:relative;">
-
-          <div style="position:absolute;top:-12px;left:24px;background:var(--accent);color:#fff;font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;text-transform:uppercase;">
-
-            वैकल्पिक प्रो अपग्रेड
-
-          </div>
-
-          
-
-          <h3 style="font-size:1.4rem;margin-bottom:0.5rem;color:var(--text-primary);">फ्रैंकपास प्रो (FrankPass PRO)</h3>
-
-          <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;margin-bottom:1.5rem;">
-
-            पावर यूज़र्स के लिए, जिन्हें मल्टी-प्रोफाइल्स (Personal, Office, Freelance) और 4-डिजिट पिन अनलॉक चाहिए।
-
-          </p>
-
-
-
-          <ul style="list-style:none;padding:0;margin:0 0 1.75rem;color:var(--text-muted);font-size:0.92rem;line-height:2;">
-
-            <li><strong style="color:var(--accent-light);">✓</strong> <strong>फ्री गेस्ट मोड के सभी फीचर्स शामिल</strong></li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> लोकल एन्क्रिप्टेड मल्टी-प्रोफाइल वॉल्ट्स</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> 0.1 सेकंड में 4-डिजिट पिन से इंस्टेंट अनलॉक</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> 20 कस्टमाइज़ेबल ऑफलाइन सुरक्षा प्रश्न (PIN रिकवरी)</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> 1 PC = उसी मशीन के सभी ब्राउज़र्स व Windows App मान्य</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> मात्र ₹200/वर्ष (या $3/वर्ष) से शुरू</li>
-
-          </ul>
-
-
-
-          <a href="/pricing-hindi.html" class="btn-pro" style="display:block;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(139,92,246,0.35);">
-
-            प्रो फीचर्स व प्राइसिंग देखें &rarr;
-
-          </a>
-
-        </div>
-
-
-
+      <!-- Action Row Below Table -->
+      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;align-items:center;">
+        <a href="#fp-primary-hero-btn" class="btn-ghost" style="padding:0.75rem 1.4rem;border-radius:10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+          <span>⚡</span> मुफ़्त एक्सटेंशन का उपयोग करें
+        </a>
+        <a href="/pricing-hindi.html" class="btn-primary" style="padding:0.75rem 1.5rem;border-radius:10px;font-weight:800;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);box-shadow:0 4px 15px rgba(139,92,246,0.35);">
+          <span>👑</span> फ्रैंकपास प्रो प्राप्त करें (₹200/वर्ष) &rarr;
+        </a>
       </div>
 
 

@@ -189,15 +189,7 @@
 
 
 
-<!-- Launch Notice Banner -->
-
-<div id="sale-banner" class="sale-banner" role="region" aria-label="Launch announcement" style="display:block">
-
-  🎉 <strong>Officially Live:</strong> FrankPass Browser Extension is now live on <a href="https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Microsoft Edge Addons Store ↗</a> and <a href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Chrome Web Store ↗</a>!
-
-  <button class="dismiss-btn" id="dismiss-banner" aria-label="Dismiss banner">&times;</button>
-
-</div>
+  <!-- Launch Notice Banner Removed -->
 
 
 
@@ -652,25 +644,21 @@
 
 
   <!-- ============================================================
-   HERO SECTION: 100% Free Extension Live & Smart Browser Detection
+   HERO SECTION: 100% Free Extension Live & Platform Selector
    ============================================================ -->
-  <section class="section" style="padding-top:1.25rem;padding-bottom:3rem;text-align:center;">
+  <section class="section" style="padding-top:1.5rem;padding-bottom:3rem;text-align:center;">
     <div class="container" style="max-width:880px;">
       
-      <!-- Topmost Live Badge & Detected Browser Highlight Strip (Directly Below Header) -->
-      <div style="display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:1.25rem;">
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.82rem;font-weight:700;padding:6px 16px;border-radius:999px;letter-spacing:0.04em;">
+      <!-- Topmost Live Badge (Clean - No Detected Text) -->
+      <div style="margin-bottom:1.25rem;">
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,0.14);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.84rem;font-weight:700;padding:6px 18px;border-radius:999px;letter-spacing:0.04em;">
           <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#10b981;box-shadow:0 0 10px #10b981;"></span>
-          OFFICIALLY LIVE · ZERO CLOUD VAULT
-        </div>
-
-        <div style="display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent-light);background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);padding:6px 16px;border-radius:999px;">
-          <span>🎯</span> Detected Browser: <strong id="fp-detected-browser-name" style="color:var(--text-primary);margin-left:4px;">Google Chrome</strong>
+          OFFICIALLY LIVE · ZERO CLOUD VAULT EXTENSION
         </div>
       </div>
 
-      <!-- Instant Top Primary Call To Action (Large Glowing Button Directly Below Header) -->
-      <div style="margin-bottom:2rem;display:flex;flex-direction:column;align-items:center;gap:10px;">
+      <!-- Instant Top Primary Call To Action (Direct Hero Action) -->
+      <div style="margin-bottom:1.5rem;display:flex;flex-direction:column;align-items:center;gap:12px;">
         <a id="fp-primary-hero-btn" href="https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef" target="_blank" rel="noopener" class="fp-browser-glow-btn" style="background:linear-gradient(135deg,#2563eb,#3b82f6);max-width:92%;">
           <svg id="fp-hero-btn-icon" width="28" height="28" viewBox="0 0 48 48" aria-hidden="true">
             <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
@@ -680,7 +668,22 @@
           </svg>
           <span id="fp-hero-btn-label">Add to Google Chrome (Free) ↗</span>
         </a>
-        <div style="font-size:0.86rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;">
+
+        <!-- Also Available On Expandable Drawer Button -->
+        <details class="card-glass" style="max-width:540px;width:100%;border-radius:14px;padding:0.6rem 1rem;border:1px solid var(--border);cursor:pointer;background:rgba(139,92,246,0.06);margin-top:0.25rem;">
+          <summary style="font-size:0.86rem;font-weight:700;color:var(--text-muted);list-style:none;display:flex;align-items:center;justify-content:center;gap:8px;outline:none;user-select:none;">
+            <span>🌐 Also Available On Other Platforms (Edge, Brave, Firefox, PWA)</span>
+            <span style="font-size:1.1rem;color:var(--accent-light);">+</span>
+          </summary>
+          <div style="padding-top:0.85rem;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,0.08);margin-top:0.6rem;">
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('edge')">🌊 Microsoft Edge (Live)</button>
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('brave')">🦁 Brave (1-Click)</button>
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('chrome')">🌐 Google Chrome</button>
+            <button class="fp-browser-tab-btn" type="button" onclick="fpSelectBrowser('firefox')">🦊 Firefox (Web PWA)</button>
+          </div>
+        </details>
+
+        <div style="font-size:0.86rem;color:var(--text-muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:0.35rem;">
           <span>⚡ 100% Free Core Autofill</span>
           <span>•</span>
           <span>🔒 0-Byte Cloud Vault</span>
@@ -940,110 +943,99 @@
 
 
 
-      <div class="grid-2" style="gap:2rem;">
+      <!-- Clean Comparison Table -->
+      <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:20px;overflow-x:auto;box-shadow:var(--card-shadow);margin-bottom:2rem;">
+        <table style="width:100%;border-collapse:collapse;text-align:left;min-width:600px;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border);background:rgba(139,92,246,0.08);">
+              <th style="padding:1.1rem 1.4rem;font-size:0.95rem;font-weight:700;color:var(--text-primary);width:45%;">Security &amp; Autofill Capabilities</th>
+              <th style="padding:1.1rem 1.2rem;font-size:0.95rem;font-weight:800;color:#10b981;text-align:center;width:27.5%;">
+                Free Instant Guest Mode<br>
+                <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">100% Free ($0) Forever</span>
+              </th>
+              <th style="padding:1.1rem 1.2rem;font-size:0.95rem;font-weight:800;color:var(--accent-light);text-align:center;width:27.5%;">
+                FrankPass PRO Upgrade<br>
+                <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600;">Rs 200/year (or $3/year)</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                Deterministic Stateless Autofill (0 Cloud Vaults)
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">Derives strong passwords via pure mathematical functions without storing secrets</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                1-Click Domain Autofill (<code>Ctrl+Shift+F</code> / <code>Cmd+Shift+F</code>)
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">Automatic tab URL detection and instant field population</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                1,000,000 PBKDF2 HMAC-SHA512 Rounds
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">Military-grade key derivation with strict zero cloud transmission</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                Zero Signups &amp; Zero Accounts Required
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">No email, no phone, no verification, no telemetry</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:800;font-size:1.1rem;">✓ Included</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(139,92,246,0.04);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                Multi-Profile Vaults (Personal, Work, Freelance)
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">Switch between separate cryptographic profiles effortlessly</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">Single Default Profile</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ Unlimited Profiles</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(139,92,246,0.04);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                Instant 0.1s 4-Digit Quick PIN Unlock
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">Unlock your master key securely without typing long passphrases every time</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">Type Master Key</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ Instant PIN Unlock</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(139,92,246,0.04);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                20 Customizable Offline Security Questions
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">Air-gapped local mnemonic recovery questions</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:var(--text-muted);font-size:0.9rem;">Standard Key</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ 20 Offline Questions</td>
+            </tr>
+            <tr style="background:rgba(139,92,246,0.06);">
+              <td style="padding:1rem 1.4rem;font-size:0.92rem;color:var(--text-primary);font-weight:600;">
+                All Browsers &amp; Windows Desktop App License
+                <div style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">One single activation covers Edge, Chrome, Brave &amp; Desktop PC</div>
+              </td>
+              <td style="padding:1rem;text-align:center;color:#10b981;font-weight:700;">Free on All Browsers</td>
+              <td style="padding:1rem;text-align:center;color:var(--accent-light);font-weight:800;font-size:1.1rem;">✓ 1 License = All Apps</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        
-
-        <!-- Tier 1: Free Instant Guest Mode -->
-
-        <div class="card-glass" style="border-radius:20px;padding:2.25rem 2rem;border:2px solid #10b981;position:relative;">
-
-          <div style="position:absolute;top:-12px;left:24px;background:#10b981;color:#000;font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;text-transform:uppercase;">
-
-            100% Free ($0)
-
-          </div>
-
-          
-
-          <h3 style="font-size:1.4rem;margin-bottom:0.5rem;color:var(--text-primary);">Instant Guest Mode</h3>
-
-          <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;margin-bottom:1.5rem;">
-
-            Ideal for everyday users who want rapid, frictionless password autofill without storing anything on disk.
-
-          </p>
-
-
-
-          <ul style="list-style:none;padding:0;margin:0 0 1.75rem;color:var(--text-muted);font-size:0.92rem;line-height:2;">
-
-            <li><strong style="color:#10b981;">✓</strong> Automatic Active Tab Domain Detection</li>
-
-            <li><strong style="color:#10b981;">✓</strong> 1-Click Fast Fill (<code>Ctrl+Shift+F</code> / <code>Cmd+Shift+F</code>)</li>
-
-            <li><strong style="color:#10b981;">✓</strong> 1,000,000 PBKDF2 HMAC-SHA512 Rounds</li>
-
-            <li><strong style="color:#10b981;">✓</strong> Zero Cloud Accounts, Zero Passwords Stored</li>
-
-            <li><strong style="color:#10b981;">✓</strong> Mathematical Phishing Domain Isolation</li>
-
-            <li><strong style="color:#10b981;">✓</strong> 100% Lifetime Free (No Ads, No Telemetry)</li>
-
-          </ul>
-
-
-
-          <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);border-radius:10px;padding:0.75rem 1rem;font-size:0.85rem;color:var(--text-primary);text-align:center;">
-
-            ⚡ Built into every browser extension installation.
-
-          </div>
-
-        </div>
-
-
-
-        <!-- Tier 2: Optional Pro Upgrade -->
-
-        <div class="card-glass" style="border-radius:20px;padding:2.25rem 2rem;border:2px solid var(--accent);position:relative;">
-
-          <div style="position:absolute;top:-12px;left:24px;background:var(--accent);color:#fff;font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;text-transform:uppercase;">
-
-            Optional Pro Upgrade
-
-          </div>
-
-          
-
-          <h3 style="font-size:1.4rem;margin-bottom:0.5rem;color:var(--text-primary);">FrankPass PRO</h3>
-
-          <p style="color:var(--text-muted);font-size:0.92rem;line-height:1.6;margin-bottom:1.5rem;">
-
-            Designed for power users who want multi-profile management (Personal, Office, Freelance) with quick 4-digit PIN unlock.
-
-          </p>
-
-
-
-          <ul style="list-style:none;padding:0;margin:0 0 1.75rem;color:var(--text-muted);font-size:0.92rem;line-height:2;">
-
-            <li><strong style="color:var(--accent-light);">✓</strong> <strong>Everything in Free Instant Guest Mode</strong></li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> Local Encrypted Multi-Profile Vaults</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> Instant 0.1s 4-Digit PIN Unlock</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> 20 Customizable Offline Security Questions</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> 1 License = All Browsers &amp; Windows App on 1 PC</li>
-
-            <li><strong style="color:var(--accent-light);">✓</strong> Starting at only Rs 200/year (or $3/year)</li>
-
-          </ul>
-
-
-
-          <a href="/pricing.html" class="btn-pro" style="display:block;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;box-shadow:0 4px 14px rgba(139,92,246,0.35);">
-
-            Explore Pro Features &rarr;
-
-          </a>
-
-        </div>
-
-
-
+      <!-- Action Row Below Table -->
+      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;align-items:center;">
+        <a href="#fp-primary-hero-btn" class="btn-ghost" style="padding:0.75rem 1.4rem;border-radius:10px;font-weight:700;display:inline-flex;align-items:center;gap:6px;">
+          <span>⚡</span> Use Free Extension Now
+        </a>
+        <a href="/pricing.html" class="btn-primary" style="padding:0.75rem 1.5rem;border-radius:10px;font-weight:800;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);box-shadow:0 4px 15px rgba(139,92,246,0.35);">
+          <span>👑</span> Get FrankPass PRO (Rs 200/yr) &rarr;
+        </a>
       </div>
 
 
