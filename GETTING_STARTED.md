@@ -24,32 +24,51 @@ Follow this guide once to establish unbreakable, lifetime digital sovereignty.
 
 ---
 
-## STEP 1: Craft Your Master Secret Key (The Personal Bizarre Mnemonic Formula)
+## STEP 1: Craft Your Master Secret Key (The 4 Golden Rules for Worldwide Sovereign Passphrases)
 
-Traditional advice tells you to pick random gibberish like `P@$$w0rd!#99` (which you will forget) or standard dictionary phrases like `correct horse battery staple` (which attackers can include in targeted dictionary attacks).
+Traditional advice tells you to pick random gibberish like `P@$$w0rd!#99` (which you will forget) or standard dictionary phrases like `correct horse battery staple` (which attackers can easily crack with dictionary attacks).
 
-Founder Master Manikant Yadav has formulated the **Two-Pillar Cognitive Secret Key Rule**:
+Founder Master Manikant Yadav has formulated the **4 Golden Rules for Worldwide Sovereign Passphrases** on [frankpass.com](https://frankpass.com):
 
-### Pillar 1: Personalize with a Real Human Anchor
-Include your own name, a family member, a relative, or a close childhood friend's name (e.g., *Sohan, Rohit, Ramesh, Elbert, Priya*). This anchors the secret to your personal emotional memory.
+### 1. Personalize with a Real Human Anchor
+Include your own name, a family member, a relative, or a close friend's name (e.g., *sohan, rohit, ramesh, elbert, priya*). This anchors the passphrase directly to your personal emotional memory so you never forget it.
 
-### Pillar 2: Form an Unrealistic, Absurd Visual Action
-Cognitive neuroscience proves that the human brain retains bizarre visual imagery for decades with zero effort. Automated password cracking tools rely on logical sentence structures and standard grammar. An absurd mental visual is virtually impossible for an algorithm to guess!
+### 2. Form an Unrealistic, Absurd Visual Sentence (4 to 7 words)
+Cognitive neuroscience proves that the human brain retains bizarre visual imagery for decades with zero effort. Automated cracking tools and AI models rely on logical grammar and common associations. An absurd mental visual is virtually impossible for an algorithm to guess!
 
-#### Top English Examples:
-* `my friend sohan will fly on elephant`
-* `my brother elbert drives aeroplane on the road`
-* `uncle ramesh drinks hot tea on the moon 2026`
-* `sohan jumps over thirty blue tigers`
+### 3. Universal Roman Script (Worldwide QWERTY Invariant)
+Whether your native language is English, Hindi, Spanish, Bengali, or German, always formulate your passphrase strictly in the **standard Roman alphabet (`a-z`, `0-9`)**. This ensures you can type your secret effortlessly on any keyboard, phone, airport kiosk, or terminal across the globe without special font packs or IME software.
 
-#### Top Bilingual / Localized Examples (Always in Roman Script):
-If you speak Hindi, Bengali, Spanish, or another language, craft the bizarre sentence in your native tongue, but **keep it strictly in the Roman English alphabet** so you can easily type it on any computer or phone in the world:
-* `meri nani rohit ke sath chand par chai pi rahi hai`
-* `chacha ramesh cycle se mars par gaye 77`
-* `mera dost sohan hathi par baithkar ud raha hai`
+### 4. Phonetic Clarity (Zero Dialect Confusion)
+Strictly avoid ambiguous words that have multiple spelling variants across accents or transliterations (e.g. avoid `sankar` vs `shankar`, `laxmi` vs `lakshmi`, `ph` vs `f`, silent letters). Pick crisp, single-spelling words whose pronunciation and Roman spelling are unmistakable.
 
-#### The Simplicity Rule:
-Use simple lowercase letters and spaces. You do **not** need annoying punctuation marks or uppercase shifting. The FrankPass mathematical engine automatically handles all cryptographic entropy and character complexity!
+#### Viral Meme & Absurd Visual Examples:
+* **English:**
+  * `my friend sohan will fly on elephant`
+  * `my brother elbert drives aeroplane on the road`
+  * `uncle ramesh drinks hot tea on moon`
+  * `tiger sohan eats pizza under blue water`
+* **Romanized Hindi / Multilingual:**
+  * `meri nani rohit ke sath chand par chai pi rahi hai`
+  * `chacha ramesh cycle se mars par gaye`
+  * `mera dost sohan hathi par ud raha hai`
+
+#### The Mathematical Engine Invariant (Whitespace & Symbol Immunity):
+In FrankPass, our normalization engine strips all spaces and symbols, and converts everything to lowercase:
+`normalizedSecret = (secretKey || '').toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');`
+This means `my friend sohan will fly on elephant`, `My Friend Sohan Will Fly On Elephant!`, and `myfriendsohanwillflyonelephant` all produce the exact same unbreakable cryptographic password!
+
+#### 1-Click AI Prompt for ChatGPT, Gemini, or Claude:
+```text
+You are my private Passphrase Architect for frankpass.com. Help me generate an unbreakable, memorable Master Secret Key.
+Rules:
+1. Personalize with my family member or friend's name and create an absurd, unrealistic visual sentence (4 to 7 words).
+2. Universal Roman Script only: regardless of language, write exclusively in standard Roman lowercase letters (a-z) and numbers (0-9).
+3. Phonetic clarity: strictly avoid words with ambiguous transliterations (e.g. avoid shankar/sankar, lakshmi/laxmi).
+4. Do not include special symbols or punctuation.
+5. Provide 3 hilarious, viral-level absurd options.
+6. Remind me to keep my final chosen phrase completely secret!
+```
 
 ---
 
