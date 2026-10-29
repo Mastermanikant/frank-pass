@@ -112,7 +112,7 @@ self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
     
     // Ignore chrome-extension or external analytics
-    if (!event.request.url.startsWith(self.location.origin) && !event.request.url.includes('flagcdn.com')) {
+    if (!event.request.url.startsWith(self.location.origin)) {
         return;
     }
 

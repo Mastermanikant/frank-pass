@@ -519,7 +519,7 @@
     <!-- Country Dropdown -->
     <div class="header-country custom-country-dropdown" aria-label="Select your country">
       <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
-        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
         <span id="country-display-name">India</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
@@ -902,7 +902,7 @@
           <div class="custom-country-dropdown" style="position:relative">
             <button id="sponsor-country-picker-trigger" class="country-select-btn" type="button" aria-haspopup="listbox" aria-expanded="false" onclick="toggleSponsorCountryPicker(event)">
               <span style="display:flex;align-items:center;gap:8px">
-                <img id="sponsor-flag-icon" src="/flags/in.png" onerror="this.src='https://flagcdn.com/w40/in.png'" width="20" height="15" alt="Flag" style="border-radius:2px">
+                <img id="sponsor-flag-icon" src="/flags/in.png" onerror="this.src='/flags/global.png'" width="20" height="15" alt="Flag" style="border-radius:2px">
                 <span id="sponsor-country-name-txt">India (IN)</span>
               </span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
@@ -1431,7 +1431,7 @@
       row.onmouseleave = () => row.style.background = 'transparent';
       
       row.innerHTML = `
-        <img src="/flags/${c.code.toLowerCase()}.png" onerror="this.src='https://flagcdn.com/w40/${c.code.toLowerCase()}.png'" width="18" height="13" style="border-radius:2px" alt="${c.code}">
+        <img src="/flags/${c.code.toLowerCase()}.png" onerror="this.src='/flags/global.png'" width="18" height="13" style="border-radius:2px" alt="${c.code}">
         <span style="flex:1">${c.name}</span>
         <span style="font-size:0.75rem;color:var(--text-muted);font-weight:600">${c.code.toUpperCase()}</span>
       `;
