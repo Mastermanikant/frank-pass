@@ -120,7 +120,27 @@
  "@type": "Question",
  "name": "Can I use the exact same Secret Key for the FrankPass PIN Generator?",
  "acceptedAnswer": { "@type": "Answer", "text": "Yes! FrankPass incorporates separate cryptographic context salts for passwords and numeric PINs. Using the same Secret Key for your ATM card or UPI app produces a completely separate 4-digit or 6-digit PIN with zero mathematical overlap." }
- }
+ },
+  {
+  "@type": "Question",
+  "name": "Is FrankPass a Password Manager or a Password Generator, or both?",
+  "acceptedAnswer": { "@type": "Answer", "text": "FrankPass is both. Traditional password managers manage credentials by storing an encrypted vault on cloud servers. FrankPass manages credentials mathematically without saving anything. Because it generates the exact same deterministic password every time using your Secret Key and target platform, you never need to save, sync, or backup a password vault. It completely eliminates the danger of centralized database breaches while functioning as a seamless, zero-vault password manager." }
+  },
+  {
+  "@type": "Question",
+  "name": "You say privacy is a human right: What if I cannot afford $25 for FrankPass Pro?",
+  "acceptedAnswer": { "@type": "Answer", "text": "We believe privacy is a fundamental human right, not a luxury. If you cannot afford the $25 lifetime pass, use our full 30-day free trial. If it keeps you secure, share your honest feedback and experience on X. We will send you a 75% community discount coupon ($6.25 final price) to ensure cost is never a barrier to your online security." }
+  },
+  {
+  "@type": "Question",
+  "name": "If I share my review of FrankPass publicly on X, won't hackers target me?",
+  "acceptedAnswer": { "@type": "Answer", "text": "No. According to Kerckhoffs's Principle, a secure system remains secure even if everything about the system is public knowledge, as long as the key remains secret. Because FrankPass has zero servers, zero cloud accounts, and zero database vaults, an attacker knowing you use FrankPass gains zero leverage. Without your secret Master Key, no supercomputer on Earth can reverse 1,000,000 PBKDF2 iterations." }
+  },
+  {
+  "@type": "Question",
+  "name": "What happens if frankpass.com domain expires or shuts down in the future?",
+  "acceptedAnswer": { "@type": "Answer", "text": "Your access never stops. FrankPass is an installable PWA that works 100% offline in browser memory without internet. Our permanent Cloudflare mirror (frankpass.pages.dev) never expires, and our complete cryptographic core is open source on GitHub. You can also download our single-file offline HTML generator to a USB drive and regenerate your exact passwords offline forever." }
+  }
  ]
  }
  </script>
@@ -617,6 +637,56 @@
   <strong>Yes!</strong> FrankPass incorporates completely isolated cryptographic context salts for passwords and numeric PINs. Using the same Secret Key on the <a href="/pin.html" style="color:var(--accent);font-weight:700">FrankPass PIN Generator</a> produces an independent 4-digit or 6-digit PIN with zero cryptographic correlation to your alphanumeric passwords.
   </div>
   </details>
+
+  <!-- Q16 - Manager vs Generator -->
+  <details class="faq-item" id="faq-manager-vs-generator">
+  <summary>
+  <span>Is FrankPass a Password Manager or a Password Generator, or both?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>FrankPass is both.</strong> Traditional password managers manage credentials by storing an encrypted vault on remote servers. FrankPass manages credentials mathematically without saving anything. Because it derives the exact same deterministic password every time from your Master Secret Key and target platform, you never need to save, sync, or backup a password vault. It completely eliminates the risk of cloud database breaches while functioning as a seamless zero-vault password manager.
+  </div>
+  </details>
+
+  <!-- Q17 - Affordability and Privacy is a Human Right -->
+  <details class="faq-item" id="faq-affordability-community-discount">
+  <summary>
+  <span>You say privacy is a human right: What if I cannot afford $25 for FrankPass Pro?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>Privacy is a fundamental human right, not a luxury.</strong> If you cannot afford the $25 single lifetime pass, use our full 30-day free trial. If it keeps you secure, share your honest feedback and experience on X (Twitter). We will personally send you a <strong>75% community discount coupon ($6.25 final price)</strong> via direct message so financial hardship never prevents you from accessing world-class cyber defense.
+  </div>
+  </details>
+
+  <!-- Q18 - Threat Model & Kerckhoffs Principle -->
+  <details class="faq-item" id="faq-threat-model-kerckhoffs">
+  <summary>
+  <span>If I share my review of FrankPass publicly on X, won't hackers target me?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>No.</strong> Under Kerckhoffs's Principle (the foundation of modern cryptography), a secure system remains completely secure even if the entire world knows which tool and algorithm you use, provided your key remains secret. Because FrankPass has zero servers, zero user accounts, and zero database vaults, a hacker knowing you use FrankPass gains zero leverage. Without your brain's secret Master Key and version number, no supercomputer on Earth can reverse 1,000,000 PBKDF2-HMAC-SHA512 iterations.
+  </div>
+  </details>
+
+  <!-- Q19 - PWA, Domain Expiration, and GitHub Mirror -->
+  <details class="faq-item" id="faq-permanent-offline-access">
+  <summary>
+  <span>What happens if the frankpass.com domain expires or the company shuts down in 10 years?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>Your access never stops.</strong> You are never locked out:
+  <ul style="margin:0.5rem 0 0 1.25rem;padding:0;line-height:1.6">
+    <li><strong>100% Offline PWA:</strong> FrankPass installs locally as a Progressive Web App that runs entirely offline in browser memory without internet.</li>
+    <li><strong>Permanent Cloudflare Mirror:</strong> Our direct Cloudflare Pages URL (<code>frankpass.pages.dev</code>) never expires with a domain renewal.</li>
+    <li><strong>Open Source & Airgap HTML:</strong> The full cryptographic core is open source on GitHub. You can also download our single-file offline HTML airgap generator to a USB drive and regenerate your exact credentials offline for the next 50 years.</li>
+  </ul>
+  </div>
+  </details>
+
 
   </div>
  </div>
