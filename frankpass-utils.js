@@ -172,6 +172,18 @@ const FrankPassUtils = (function () {
 
         // Indian Financial, Tax, Investment & Govt Aliases
         'boi': 'bankofindia',
+        'bankofindiaboi': 'bankofindia',
+        'bankofindia-boi': 'bankofindia',
+        'bankofbarodabob': 'bankofbaroda',
+        'bankofbaroda-bob': 'bankofbaroda',
+        'bankofmaharashtrabom': 'bankofmaharashtra',
+        'statebankofindiasbi': 'statebankofindia',
+        'statebankofindia-sbi': 'statebankofindia',
+        'centralbankofindiacentralbank': 'centralbankofindia',
+        'unionbankofindiaunionbank': 'unionbankofindia',
+        'canarabankcanara': 'canarabank',
+        'cityunionbankcub': 'cityunionbank',
+        'southindianbanksib': 'southindianbank',
         'sbi': 'statebankofindia',
         'onlinesbi': 'statebankofindia',
         'yono': 'statebankofindia',
@@ -848,8 +860,8 @@ const FrankPassUtils = (function () {
         }
         platform = strippedPlatform;
         
-        // 6. Strip parenthetical and trailing hyphen acronym suffixes
-        platform = platform.replace(/\s+[-–-]\s+[a-z0-9\s]+$/, '');
+        // 6. Strip parenthetical and trailing hyphen acronym suffixes (with or without spaces)
+        platform = platform.replace(/\s*[-–-]\s*[a-z0-9\s]+$/, '');
         platform = platform.replace(/\s*\([^)]*\)/g, '');
 
         // 7. Check again if cleaned string matches an alias
