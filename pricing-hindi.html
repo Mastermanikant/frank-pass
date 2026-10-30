@@ -502,7 +502,191 @@
 
     </div>
 
-    <!-- 3 TRANSPARENT DISCOUNT CHANNELS (HINDI) -->
+    <!-- ============================================================
+         INTERACTIVE PPP (PURCHASING POWER PARITY) CALCULATOR (HINDI)
+         ============================================================ -->
+    <div id="ppp-calculator-card" class="card-glass" style="margin: 0 auto 3rem; max-width: 960px; border-radius: 22px; border: 1.5px solid rgba(139,92,246,0.35); padding: 2.25rem 2rem; background: linear-gradient(180deg, rgba(139,92,246,0.08) 0%, var(--card-glass-bg) 100%); box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: left;">
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 1.25rem;">
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.35); padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
+            <span>🌐</span> निष्पक्ष वैश्विक मूल्य निर्धारण
+          </div>
+          <h3 style="font-size: clamp(1.4rem, 3vw, 1.85rem); color: var(--text-primary); margin: 0 0 0.4rem; letter-spacing: -0.02em;">
+            अपने देश के लिए क्रय शक्ति समता (PPP) के अनुसार उचित मूल्य जानें
+          </h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); margin: 0; line-height: 1.55; max-width: 700px;">
+            सॉफ्टवेयर की कीमतें दुनिया भर में आर्थिक भेदभाव से मुक्त होनी चाहिए। अपना देश चुनें और स्थानीय मुद्रा, समर्थित पेमेंट गेटवे (UPI, RuPay, कार्ड्स) और वॉल्यूम छूट का हिसाब देखें।
+          </p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;">
+        
+        <!-- Country Selector -->
+        <div>
+          <label for="ppp-country-select-hi" style="display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light); margin-bottom: 0.5rem;">
+            1. अपना देश चुनें:
+          </label>
+          <select id="ppp-country-select-hi" class="form-input" style="width: 100%; padding: 0.8rem 1rem; border-radius: 10px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); font-size: 0.95rem; cursor: pointer;">
+            <option value="in" selected>🇮🇳 भारत (INR ₹) - 60% PPP टियर</option>
+            <option value="us">🇺🇸 संयुक्त राज्य अमेरिका (USD $) - मानक</option>
+            <option value="gb">🇬🇧 यूनाइटेड किंगडम (GBP £) - मानक</option>
+            <option value="eu">🇪🇺 यूरोपीय संघ (EUR €) - मानक</option>
+            <option value="ca">🇨🇦 कनाडा (CAD C$) - मानक</option>
+            <option value="au">🇦🇺 ऑस्ट्रेलिया (AUD A$) - मानक</option>
+            <option value="br">🇧🇷 ब्राजील (BRL R$) - 40% PPP टियर</option>
+            <option value="mx">🇲🇽 मेक्सिको (MXN Mex$) - 40% PPP टियर</option>
+            <option value="tr">🇹🇷 तुर्की (TRY ₺) - 40% PPP टियर</option>
+            <option value="za">🇿🇦 दक्षिण अफ्रीका (ZAR R) - 40% PPP टियर</option>
+            <option value="bd">🇧🇩 बांग्लादेश (BDT ৳) - 60% PPP टियर</option>
+            <option value="pk">🇵🇰 पाकिस्तान (PKR Rs) - 60% PPP टियर</option>
+            <option value="ng">🇳🇬 नाइजीरिया (NGN ₦) - 60% PPP टियर</option>
+            <option value="id">🇮🇩 इंडोनेशिया (IDR Rp) - 60% PPP टियर</option>
+            <option value="ph">🇵🇭 फिलीपींस (PHP ₱) - 60% PPP टियर</option>
+            <option value="vn">🇻🇳 वियतनाम (VND ₫) - 60% PPP टियर</option>
+            <option value="other_t1">🌐 अन्य उच्च आय वाले देश (USD $25)</option>
+            <option value="other_t2">🌐 अन्य मध्यम आय वाले देश (USD $15)</option>
+            <option value="other_t3">🌐 अन्य विकासशील देश (USD $10)</option>
+          </select>
+        </div>
+
+        <!-- PC Quantity Selector -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+            <label for="ppp-pc-count-hi" style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light);">
+              2. कंप्यूटर (PC) की संख्या:
+            </label>
+            <span id="ppp-pc-label-hi" style="font-size: 0.95rem; font-weight: 800; color: var(--text-primary);">1 PC</span>
+          </div>
+          <input type="range" id="ppp-pc-count-hi" min="1" max="20" value="1" style="width: 100%; accent-color: var(--accent); cursor: pointer; height: 6px; margin: 0.6rem 0;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.74rem; color: var(--text-muted);">
+            <span>1 PC (एकल)</span>
+            <span>5 PCs (30% छूट)</span>
+            <span>20 PCs (50% छूट)</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Real-Time Calculated Price Output -->
+      <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+        <div>
+          <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px;">
+            <span id="ppp-country-name-hi" style="color: var(--accent-light);">भारत</span> के लिए उचित स्थानीय मूल्य:
+          </div>
+          <div style="display: flex; align-items: baseline; gap: 10px;">
+            <span id="ppp-final-price-hi" style="font-size: 2.6rem; font-weight: 900; color: var(--text-primary); letter-spacing: -0.03em;">₹899</span>
+            <span id="ppp-discount-badge-hi" style="background: rgba(16,185,129,0.18); color: #10b981; border: 1px solid rgba(16,185,129,0.35); font-size: 0.82rem; font-weight: 800; padding: 3px 10px; border-radius: 999px;">
+              60% PPP उचित मूल्य
+            </span>
+          </div>
+          <div id="ppp-breakdown-text-hi" style="font-size: 0.84rem; color: var(--text-muted); margin-top: 6px;">
+            1 कंप्यूटर के लिए हार्डवेयर-बाउंड लाइफटाइम पास (विंडोज डेस्कटॉप ऐप शामिल)।
+          </div>
+          <div id="ppp-payment-methods-hi" style="font-size: 0.78rem; color: #10b981; margin-top: 4px; font-weight: 600;">
+            ✓ समर्थित भुगतान: UPI (GPay, PhonePe, Paytm), RuPay, क्रेडिट/डेबिट कार्ड्स एवं नेटबैंकिंग
+          </div>
+        </div>
+
+        <div>
+          <a id="ppp-checkout-btn-hi" href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem; font-weight: 800; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 6px 25px rgba(139,92,246,0.35);">
+            <span>🚀</span> स्टोर पर लाइफटाइम पास प्राप्त करें &rarr;
+          </a>
+          <div style="font-size: 0.74rem; color: var(--text-muted); text-align: center; margin-top: 6px;">
+            चेकआउट पर कूपन कोड <code style="color: #eab308; font-weight: 700;">PRIVACY20</code> लगाएं और 20% अतिरिक्त छूट पाएं
+          </div>
+        </div>
+      </div>
+
+      <!-- Hardware Upgrade Policy Guarantee Notice -->
+      <div style="margin-top: 1.25rem; padding: 0.85rem 1.15rem; border-radius: 10px; background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.2); font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;">
+        <strong style="color: var(--text-primary);">🛡️ मदरबोर्ड खराबी व हार्डवेयर अपग्रेड नीति:</strong> आपका 1 PC लाइसेंस आपके कंप्यूटर के हार्डवेयर से बंधा होता है। यदि आपका मदरबोर्ड खराब हो जाता है, रिपेयर होता है, या आप अपना कंप्यूटर बदलते हैं, तो लाइसेंस सर्टिफिकेट दिखाकर बिना किसी अतिरिक्त शुल्क के नया की पुनः जारी करा सकते हैं।
+      </div>
+    </div>
+
+    <script>
+    (function initPPPCalculatorHi() {
+      const countrySelect = document.getElementById('ppp-country-select-hi');
+      const pcCountInput = document.getElementById('ppp-pc-count-hi');
+      const pcLabel = document.getElementById('ppp-pc-label-hi');
+      const countryNameSpan = document.getElementById('ppp-country-name-hi');
+      const finalPriceSpan = document.getElementById('ppp-final-price-hi');
+      const discountBadge = document.getElementById('ppp-discount-badge-hi');
+      const breakdownText = document.getElementById('ppp-breakdown-text-hi');
+      const paymentMethods = document.getElementById('ppp-payment-methods-hi');
+
+      if (!countrySelect || !pcCountInput) return;
+
+      const RATES = {
+        'in': { name: 'भारत', cur: '₹', base: 899, tier: '60% PPP उचित मूल्य', methods: '✓ समर्थित: UPI (GPay, PhonePe, Paytm), RuPay, क्रेडिट/डेबिट कार्ड्स एवं नेटबैंकिंग' },
+        'us': { name: 'संयुक्त राज्य अमेरिका', cur: '$', base: 25, tier: 'ग्लोबल मानक टियर', methods: '✓ समर्थित: कार्ड्स, Apple Pay, Google Pay, PayPal' },
+        'gb': { name: 'यूनाइटेड किंगडम', cur: '£', base: 20, tier: 'ग्लोबल मानक टियर', methods: '✓ समर्थित: कार्ड्स, Apple Pay, Google Pay' },
+        'eu': { name: 'यूरोपीय संघ', cur: '€', base: 24, tier: 'ग्लोबल मानक टियर', methods: '✓ समर्थित: कार्ड्स, SEPA, Apple Pay, Google Pay' },
+        'ca': { name: 'कनाडा', cur: 'C$', base: 34, tier: 'ग्लोबल मानक टियर', methods: '✓ समर्थित: कार्ड्स, Apple Pay, Google Pay' },
+        'au': { name: 'ऑस्ट्रेलिया', cur: 'A$', base: 38, tier: 'ग्लोबल मानक टियर', methods: '✓ समर्थित: कार्ड्स, Apple Pay, Google Pay' },
+        'br': { name: 'ब्राजील', cur: 'R$', base: 75, tier: '40% PPP टियर', methods: '✓ समर्थित: क्रेडिट/डेबिट कार्ड्स एवं PIX' },
+        'mx': { name: 'मेक्सिको', cur: 'Mex$', base: 260, tier: '40% PPP टियर', methods: '✓ समर्थित: क्रेडिट/डेबिट कार्ड्स' },
+        'tr': { name: 'तुर्की', cur: '₺', base: 480, tier: '40% PPP टियर', methods: '✓ समर्थित: क्रेडिट/डेबिट कार्ड्स' },
+        'za': { name: 'दक्षिण अफ्रीका', cur: 'R', base: 275, tier: '40% PPP टियर', methods: '✓ समर्थित: क्रेडिट/डेबिट कार्ड्स' },
+        'bd': { name: 'बांग्लादेश', cur: '৳', base: 1100, tier: '60% PPP टियर', methods: '✓ समर्थित: कार्ड्स एवं स्थानीय पेमेंट' },
+        'pk': { name: 'पाकिस्तान', cur: 'Rs', base: 2800, tier: '60% PPP टियर', methods: '✓ समर्थित: कार्ड्स एवं स्थानीय पेमेंट' },
+        'ng': { name: 'नाइजीरिया', cur: '₦', base: 14500, tier: '60% PPP टियर', methods: '✓ समर्थित: कार्ड्स एवं बैंक ट्रांसफर' },
+        'id': { name: 'इंडोनेशिया', cur: 'Rp', base: 155000, tier: '60% PPP टियर', methods: '✓ समर्थित: कार्ड्स एवं स्थानीय वॉलेट्स' },
+        'ph': { name: 'फिलीपींस', cur: '₱', base: 560, tier: '60% PPP टियर', methods: '✓ समर्थित: कार्ड्स एवं GCash/Maya' },
+        'vn': { name: 'वियतनाम', cur: '₫', base: 245000, tier: '60% PPP टियर', methods: '✓ समर्थित: कार्ड्स एवं स्थानीय गेटवे' },
+        'other_t1': { name: 'उच्च आय वाले देश', cur: '$', base: 25, tier: 'मानक टियर', methods: '✓ समर्थित: अंतर्राष्ट्रीय कार्ड्स, Apple Pay एवं Google Pay' },
+        'other_t2': { name: 'मध्यम आय वाले देश', cur: '$', base: 15, tier: '40% PPP टियर', methods: '✓ समर्थित: अंतर्राष्ट्रीय कार्ड्स एवं स्थानीय गेटवे' },
+        'other_t3': { name: 'विकासशील देश', cur: '$', base: 10, tier: '60% PPP टियर', methods: '✓ समर्थित: अंतर्राष्ट्रीय कार्ड्स एवं स्थानीय गेटवे' }
+      };
+
+      function updateCalculationHi() {
+        const cCode = countrySelect.value || 'in';
+        const pcs = parseInt(pcCountInput.value, 10) || 1;
+        const info = RATES[cCode] || RATES['in'];
+
+        pcLabel.textContent = pcs === 1 ? '1 PC (एकल)' : pcs + ' PCs';
+        countryNameSpan.textContent = info.name;
+        paymentMethods.textContent = info.methods;
+
+        let unitPrice = info.base;
+        let volumeDiscountText = '';
+
+        if (pcs >= 6) {
+          unitPrice = Math.round(info.base * 0.50);
+          volumeDiscountText = ' (50% टीम वॉल्यूम छूट: ' + info.cur + unitPrice + ' / PC)';
+          discountBadge.textContent = '50% वॉल्यूम छूट लागू';
+          discountBadge.style.color = '#38bdf8';
+          discountBadge.style.background = 'rgba(56,189,248,0.18)';
+        } else if (pcs >= 2) {
+          unitPrice = Math.round(info.base * 0.70);
+          volumeDiscountText = ' (30% वॉल्यूम छूट: ' + info.cur + unitPrice + ' / PC)';
+          discountBadge.textContent = '30% वॉल्यूम छूट लागू';
+          discountBadge.style.color = '#eab308';
+          discountBadge.style.background = 'rgba(234,179,8,0.18)';
+        } else {
+          discountBadge.textContent = info.tier;
+          discountBadge.style.color = '#10b981';
+          discountBadge.style.background = 'rgba(16,185,129,0.18)';
+        }
+
+        const totalPrice = unitPrice * pcs;
+        finalPriceSpan.textContent = info.cur + totalPrice.toLocaleString();
+
+        if (pcs === 1) {
+          breakdownText.textContent = '1 कंप्यूटर के लिए हार्डवेयर-बाउंड लाइफटाइम पास (विंडोज डेस्कटॉप ऐप शामिल)।';
+        } else {
+          breakdownText.textContent = pcs + ' स्वतंत्र हार्डवेयर-बाउंड PC लाइसेंस' + volumeDiscountText + '। बिना किसी क्लाउड निर्भरता के तत्काल सक्रियण।';
+        }
+      }
+
+      countrySelect.addEventListener('change', updateCalculationHi);
+      pcCountInput.addEventListener('input', updateCalculationHi);
+      updateCalculationHi();
+    })();
+    </script>
+
+
+        <!-- 3 TRANSPARENT DISCOUNT CHANNELS (HINDI) -->
     <div style="margin: 0 auto 1.5rem; max-width: 960px; text-align: left;">
       <div style="text-align: center; margin-bottom: 1.5rem;">
         <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-light); margin-bottom: 0.4rem;">पारदर्शिता एवं सुलभता मानक</div>

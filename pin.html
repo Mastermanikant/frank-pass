@@ -425,6 +425,28 @@
     </div>
   </div>
 
+  <!-- Transparent Mathematical Entropy & Physical Rate-Limiting Disclosure -->
+  <div class="card-glass" style="margin-top:1.5rem;padding:1.4rem 1.6rem;border-radius:16px;border:1px solid rgba(234,179,8,0.35);background:rgba(234,179,8,0.06);box-shadow:0 4px 20px rgba(0,0,0,0.12)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.6rem">
+      <span style="font-size:1.25rem;">⚖️</span>
+      <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin:0">Mathematical Entropy vs. Physical ATM Rate-Limiting &amp; Memory Offloading</h3>
+    </div>
+    <div style="font-size:0.87rem;color:var(--text-muted);line-height:1.65;display:flex;flex-direction:column;gap:0.65rem">
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">1. Low Mathematical Entropy by Nature:</strong> A 4-digit PIN has only 10,000 combinations (<span style="font-family:monospace;color:var(--accent-light)">10⁴</span>, approx. 13.3 bits of entropy), and a 6-digit PIN has 1,000,000 combinations (approx. 19.9 bits). Mathematically, short numeric PINs are not high-entropy cryptographic keys and are not meant to replace complex 20+ character master passphrases.
+      </p>
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">2. Why Physical Brute-Force is Impossible at the Terminal:</strong> In the real world, banking ATMs, Point-of-Sale (PoS) machines, and UPI payment apps (GPay, PhonePe, Paytm, BHIM) enforce strict hardware-level and server-level rate limits (typically 3 to 4 consecutive failed attempts before freezing the card or account). An attacker has only a 0.03% (3 in 10,000) chance of guessing a 4-digit PIN before the card is permanently locked.
+      </p>
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">3. The Real-World Purpose (Human Memory Offloading):</strong> Most people own multiple bank debit cards (SBI, HDFC, ICICI, Axis) and rarely used payment apps. When an ATM card is not used for 6 months, remembering its PIN is difficult, leading people to dangerously write PINs on paper or notes apps. With FrankPass, you only remember your single Master Secret Key. By typing your card name (e.g. <span style="font-family:monospace;color:var(--accent-light)">sbi</span> or <span style="font-family:monospace;color:var(--accent-light)">hdfc</span>) plus an optional month/year rotation, your exact PIN is re-calculated in 2 seconds offline.
+      </p>
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">4. 100% Local &amp; Private:</strong> All PBKDF2-HMAC-SHA512 calculations happen strictly in volatile device RAM via the native Web Cryptography API. Zero bytes are ever transmitted over the network or saved in any database. How you choose to utilize this tool remains entirely your personal preference.
+      </p>
+    </div>
+  </div>
+
 </main>
 
 <!-- ============================================================
