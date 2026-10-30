@@ -404,41 +404,28 @@
 
 
 
-        // ── Multi-Tier Auto-Detect Initial Country ─────────────────────
-
+        // ── Pure Live Location & Timezone Detection (Zero-Stale Storage) ────
         let initCode = null;
 
-        // Hardware Timezone & Offset Check (High Precision for India UTC+05:30)
-        const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat ? Intl.DateTimeFormat().resolvedOptions().timeZone || '' : '');
-        const tzOffset = (new Date()).getTimezoneOffset(); // -330 for IST
-        const isIndiaDevice = (tz.includes('Kolkata') || tz.includes('Calcutta') || tzOffset === -330);
-
-        // Tier 1: Explicit URL Path (/in, /us, /ug, etc.)
-        let urlPath = window.location.pathname.split('/').filter(Boolean)[0] || '';
-        urlPath = urlPath.toLowerCase();
-        if (urlPath === 'hn') urlPath = 'in';
-        if (urlPath.length === 2 && allCountries.find(c => c.code === urlPath)) {
-            initCode = urlPath;
+        // Priority 1: Explicit Country in URL Path (/in, /us, /pk, /gb, /de, etc.)
+        const urlParts = window.location.pathname.split('/').filter(Boolean);
+        let pathCountry = urlParts[0] ? urlParts[0].toLowerCase() : '';
+        if (pathCountry === 'hn') pathCountry = 'in';
+        if (pathCountry.length === 2 && allCountries.find(c => c.code === pathCountry)) {
+            initCode = pathCountry;
         }
 
-        // Tier 2: Explicit User Click in Previous Session
+        // Priority 2: Direct Hardware Timezone & Offset (Physical Device Clock)
         if (!initCode) {
-            try {
-                const explicitChoice = localStorage.getItem('fp_user_explicit_choice');
-                if (explicitChoice && allCountries.find(c => c.code === explicitChoice.toLowerCase())) {
-                    initCode = explicitChoice.toLowerCase();
-                }
-            } catch (e) {}
-        }
+            const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat ? Intl.DateTimeFormat().resolvedOptions().timeZone || '' : '');
+            const tzOffset = (new Date()).getTimezoneOffset(); // -330 for India (UTC+05:30)
 
-        // Tier 3: Device Physical Location via Hardware Clock
-        if (!initCode) {
-            if (isIndiaDevice) {
+            // High Precision India Detection
+            if (tz.includes('Kolkata') || tz.includes('Calcutta') || tzOffset === -330) {
                 initCode = 'in';
             } else {
                 try {
                     const tzMap = {
-                        'Asia/Kolkata': 'in', 'Asia/Calcutta': 'in',
                         'America/New_York': 'us', 'America/Los_Angeles': 'us',
                         'America/Chicago': 'us', 'America/Denver': 'us',
                         'America/Phoenix': 'us', 'America/Detroit': 'us',
@@ -446,16 +433,12 @@
                         'Pacific/Honolulu': 'us', 'America/Boise': 'us',
                         'Europe/London': 'gb', 'Europe/Paris': 'fr', 'Europe/Berlin': 'de',
                         'America/Toronto': 'ca', 'America/Vancouver': 'ca', 'America/Montreal': 'ca',
-                        'America/Edmonton': 'ca', 'America/Winnipeg': 'ca', 'America/Halifax': 'ca',
                         'Australia/Sydney': 'au', 'Australia/Melbourne': 'au', 'Australia/Brisbane': 'au',
-                        'Australia/Perth': 'au', 'Australia/Adelaide': 'au',
                         'Asia/Dhaka': 'bd', 'Asia/Karachi': 'pk', 'Africa/Lagos': 'ng',
                         'Asia/Manila': 'ph', 'Asia/Jakarta': 'id', 'Africa/Nairobi': 'ke',
                         'Asia/Dubai': 'ae', 'Asia/Riyadh': 'sa', 'Asia/Singapore': 'sg',
-                        'Asia/Kuala_Lumpur': 'my', 'Asia/Bangkok': 'th', 'Asia/Kathmandu': 'np',
-                        'Asia/Colombo': 'lk', 'Asia/Seoul': 'kr', 'Asia/Tokyo': 'jp',
-                        'America/Sao_Paulo': 'br', 'Africa/Johannesburg': 'za', 'America/Mexico_City': 'mx',
-                        'Europe/Madrid': 'es', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl'
+                        'Asia/Tokyo': 'jp', 'America/Sao_Paulo': 'br', 'Africa/Johannesburg': 'za',
+                        'America/Mexico_City': 'mx', 'Europe/Madrid': 'es', 'Europe/Rome': 'it'
                     };
                     if (tzMap[tz]) {
                         initCode = tzMap[tz];
@@ -470,93 +453,38 @@
             }
         }
 
-        // Tier 4: Locale check ONLY if not in India (prevents en-US Windows bug in India)
-        if (!initCode && !isIndiaDevice) {
-            try {
-                const navLang = navigator.language || (navigator.languages && navigator.languages[0]);
-                if (navLang && navLang.includes('-')) {
-                    const parts = navLang.split('-');
-                    if (parts[1] && parts[1].length === 2) {
-                        const reg = parts[1].toLowerCase();
-                        if (allCountries.find(c => c.code === reg)) initCode = reg;
-                    }
-                }
-            } catch (e) {}
-        }
-
-        // Final safe fallback
-
+        // Final Default: India ('in')
         if (!initCode || !allCountries.find(c => c.code === initCode)) {
-
             initCode = DEFAULT_CODE;
-
         }
-
-
 
         const initCountry = allCountries.find(c => c.code === initCode) ||
-
                             allCountries.find(c => c.code === DEFAULT_CODE);
 
-
-
         if (initCountry) {
-
             selectCountry(initCountry, false);
-
         }
 
-
-
-        // Tier 4: Background Non-blocking Cloudflare Edge Geolocation (/cdn-cgi/trace)
-
-        try {
-
-            const hasSaved = !!localStorage.getItem('fp_preferred_country');
-
-            const pathClean = window.location.pathname.split('/').filter(Boolean)[0] || '';
-
-            const hasPath = pathClean.length === 2 && allCountries.find(c => c.code === pathClean.toLowerCase());
-
-            if (!hasSaved && !hasPath && typeof fetch === 'function') {
-
-                const idleRunner = window.requestIdleCallback || ((cb) => setTimeout(cb, 1200));
-
-                idleRunner(() => {
-
-                    fetch('/cdn-cgi/trace')
-
-                        .then(r => r.text())
-
-                        .then(t => {
-
-                            const m = t.match(/^loc=([A-Za-z]{2})$/m);
-
-                            if (m && m[1]) {
-
-                                const edgeCode = m[1].toLowerCase();
-
-                                const edgeCountry = allCountries.find(c => c.code === edgeCode);
-
-                                if (edgeCountry && edgeCountry.code !== currentCode) {
-
-                                    selectCountry(edgeCountry, false);
-
-                                }
-
+        // Priority 3: Real-Time Non-blocking Cloudflare Edge Geolocation (/cdn-cgi/trace)
+        // Always verifies actual physical IP location on live edge without relying on any cache
+        if (typeof fetch === 'function') {
+            try {
+                fetch('/cdn-cgi/trace')
+                    .then(r => r.text())
+                    .then(t => {
+                        const m = t.match(/^loc=([A-Za-z]{2})$/m);
+                        if (m && m[1]) {
+                            const edgeCode = m[1].toLowerCase();
+                            const edgeCountry = allCountries.find(c => c.code === edgeCode);
+                            // If user is not on an explicit country URL, sync to actual Cloudflare Edge location
+                            if (edgeCountry && !pathCountry && edgeCountry.code !== currentCode) {
+                                selectCountry(edgeCountry, false);
                             }
-
-                        })
-
-                        .catch(() => {});
-
-                });
-
-            }
-
-        } catch (e) {}
-
-
+                        }
+                    })
+                    .catch(() => {});
+            } catch (e) {}
+        }
 
         // ── Events ──────────────────────────────────────────────────────
 

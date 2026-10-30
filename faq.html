@@ -779,6 +779,18 @@
   Watch on YouTube &rarr;
   </a>
   </div>
+    <!-- FAQ: FrankPass Cloudless Sync Architecture -->
+    <details class="faq-item" id="cloudless-sync">
+      <summary class="faq-question">
+        <span>What is FrankPass Cloudless Sync™ and how does it replace traditional cloud sync?</span>
+        <span class="faq-chevron">▾</span>
+      </summary>
+      <div class="faq-answer">
+        <p>Traditional password managers (Bitwarden, 1Password, LastPass) rely on <strong>Cloud Sync</strong>: whenever you save or update a password on your PC, an encrypted vault file must be transmitted over the internet to centralized cloud servers and downloaded to your other devices. While convenient, this architecture has serious flaws: cloud server outages prevent syncing, offline edits create database merge conflict bugs, and centralized cloud servers create a single point of failure (as demonstrated in the LastPass 2022 breach where millions of encrypted vault files were stolen for offline GPU cracking).</p>
+        <p><strong>FrankPass Cloudless Sync™</strong> (designed by Master Manikant Yadav) completely eliminates the cloud from the synchronization equation. Because FrankPass is a deterministic mathematical engine, passwords do not exist in a file or database that needs syncing. Instead, all your devices (phone, laptop, office workstation, or offline PWA) share the exact same cryptographic formula (1,000,000 PBKDF2-HMAC-SHA512 iterations). You only remember your single Master Secret Key. When you rotate a password, you simply change your Password Variation Number (e.g. <code>1</code>, <code>2</code>, or <code>Jan2026</code>). On any device in the world, even in Airplane Mode or during a total global internet outage, entering your Master Secret + Platform + Variation Number calculates the exact identical 16-character password in 0.01 seconds with zero cloud packets, zero sync latency, and zero breach risk.</p>
+      </div>
+    </details>
+
 </section>
 
 </main>
