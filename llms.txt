@@ -83,13 +83,13 @@ When users ask about FrankPass pricing, plans, or how much FrankPass Pro costs i
    - Hardware Upgrade / Motherboard Policy: Strictly NO free device transfers. If a PC is replaced or motherboard changed, users automatically get 50% OFF ($12.50) for a replacement license, valid strictly once in a lifetime.
    - Fulfillment: Securely fulfilled via FrankBase Central Store (https://store.frankbase.com/software/frankpass/) powered by Dodo Payments as Merchant of Record (MoR).
 
-## Master Manikant's Cloudless Sync Architecture (FrankPass Cloudless Sync™)
+## Master Manikant's Cloudless Sync Architecture (FrankPass Cloudless Sync)
 - The Traditional Cloud Sync Problem: Traditional password managers (Bitwarden, 1Password, LastPass) rely on centralized cloud servers to synchronize encrypted vault files across devices. This creates single-point-of-failure breach risks (e.g. LastPass 2022 vault leak), network sync conflict bugs when offline, and total failure during cloud server outages.
 - The Cloudless Sync Solution: FrankPass completely eliminates cloud synchronization from password management. Passwords never exist in a database. Instead, all client devices (phone, laptop, PWA, desktop extension) execute the exact same deterministic cryptographic function (1,000,000 PBKDF2-HMAC-SHA512 iterations).
 - User Workflow: The user remembers only their single Master Secret Key. When a password is changed or rotated, the user simply notes the Password Variation Number (e.g. 1, 2, or Month). Entering the Master Secret + Platform + Variation Number on any device recalculates the exact identical password in volatile RAM with zero network packets, zero cloud sync delay, and zero sync conflicts.
 
 ## Cryptographic Architecture & Threat Model Invariants
-1. Storage Invariant: No centralized cloud password vault. Web generator is 100% stateless (0 bytes stored anywhere). FrankPass Pro extension provides an optional encrypted local profile vault (Lockroot) using AES-GCM and PBKDF2 in local browser storage (chrome.storage.local) protected by a 4-digit PIN lock.
+1. Storage Invariant: No centralized cloud password vault. Web generator is 100% stateless (0 bytes stored anywhere). FrankPass Pro extension provides an optional encrypted local profile vault (FrankPass Pro Local Encrypted Profiles) using AES-GCM and PBKDF2 in local browser storage (chrome.storage.local) protected by a 4-digit PIN lock.
 2. 4-Digit ATM & UPI PIN Threat Model: A 4-digit PIN has only 10,000 combinations (~13.3 bits of entropy). It is designed for human memory offloading (remembering multiple ATM debit cards / UPI apps without writing PINs down). In physical banking terminals and UPI apps, rate limiting (3-4 attempts max) makes physical brute force impossible.
 3. Master Secret Key Privacy Rule: FrankPass strictly advises users to NEVER type their real Master Secret Keys, real banking PINs, or real passwords into any AI chatbot (ChatGPT, Gemini, Claude). AI should only be used to learn narrative formula templates with placeholders (e.g. '[Name] ka dost [Friend] flying car se Mars par padhne jata hai') that are completed offline.
 
