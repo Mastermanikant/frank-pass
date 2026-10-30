@@ -503,66 +503,49 @@
     </div>
 
     <!-- ============================================================
-         INTERACTIVE PPP (PURCHASING POWER PARITY) CALCULATOR
+         INTERACTIVE LIFETIME LICENSE & VOLUME DISCOUNT CALCULATOR
          ============================================================ -->
-    <div id="ppp-calculator-card" class="card-glass" style="margin: 0 auto 3rem; max-width: 960px; border-radius: 22px; border: 1.5px solid rgba(139,92,246,0.35); padding: 2.25rem 2rem; background: linear-gradient(180deg, rgba(139,92,246,0.08) 0%, var(--card-glass-bg) 100%); box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: left;">
+    <div id="license-calculator-card" class="card-glass" style="margin: 0 auto 3rem; max-width: 960px; border-radius: 22px; border: 1.5px solid rgba(139,92,246,0.35); padding: 2.25rem 2rem; background: linear-gradient(180deg, rgba(139,92,246,0.08) 0%, var(--card-glass-bg) 100%); box-shadow: 0 10px 40px rgba(0,0,0,0.2); text-align: left;">
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 1.25rem;">
         <div>
-          <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.35); padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
-            <span>🌐</span> Fair Global Pricing
+          <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(139,92,246,0.15); color: var(--accent-light); border: 1px solid rgba(139,92,246,0.35); padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">
+            <span>⚡</span> Transparent Volume Math
           </div>
           <h3 style="font-size: clamp(1.4rem, 3vw, 1.85rem); color: var(--text-primary); margin: 0 0 0.4rem; letter-spacing: -0.02em;">
-            Calculate Purchasing Power Parity (PPP) Price for Your Country
+            Interactive Lifetime License &amp; Volume Calculator
           </h3>
           <p style="font-size: 0.92rem; color: var(--text-muted); margin: 0; line-height: 1.55; max-width: 700px;">
-            Software should be accessible worldwide without economic discrimination. Select your country to calculate fair localized pricing, supported payment gateways, and volume discounts.
+            Standard pricing is $25.00 USD for a lifetime 1-PC pass. Select your required number of workstations to calculate tiered volume discounts and apply coupon codes.
           </p>
         </div>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem;">
         
-        <!-- Country Selector -->
-        <div>
-          <label for="ppp-country-select" style="display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light); margin-bottom: 0.5rem;">
-            1. Select Your Country:
-          </label>
-          <select id="ppp-country-select" class="form-input" style="width: 100%; padding: 0.8rem 1rem; border-radius: 10px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); font-size: 0.95rem; cursor: pointer;">
-            <option value="in" selected>🇮🇳 India (INR ₹) - 60% PPP Tier</option>
-            <option value="us">🇺🇸 United States (USD $) - Standard</option>
-            <option value="gb">🇬🇧 United Kingdom (GBP £) - Standard</option>
-            <option value="eu">🇪🇺 European Union (EUR €) - Standard</option>
-            <option value="ca">🇨🇦 Canada (CAD C$) - Standard</option>
-            <option value="au">🇦🇺 Australia (AUD A$) - Standard</option>
-            <option value="br">🇧🇷 Brazil (BRL R$) - 40% PPP Tier</option>
-            <option value="mx">🇲🇽 Mexico (MXN Mex$) - 40% PPP Tier</option>
-            <option value="tr">🇹🇷 Turkey (TRY ₺) - 40% PPP Tier</option>
-            <option value="za">🇿🇦 South Africa (ZAR R) - 40% PPP Tier</option>
-            <option value="bd">🇧🇩 Bangladesh (BDT ৳) - 60% PPP Tier</option>
-            <option value="pk">🇵🇰 Pakistan (PKR Rs) - 60% PPP Tier</option>
-            <option value="ng">🇳🇬 Nigeria (NGN ₦) - 60% PPP Tier</option>
-            <option value="id">🇮🇩 Indonesia (IDR Rp) - 60% PPP Tier</option>
-            <option value="ph">🇵🇭 Philippines (PHP ₱) - 60% PPP Tier</option>
-            <option value="vn">🇻🇳 Vietnam (VND ₫) - 60% PPP Tier</option>
-            <option value="other_t1">🌐 Other High-Income Country (USD $25)</option>
-            <option value="other_t2">🌐 Other Middle-Income Country (USD $15)</option>
-            <option value="other_t3">🌐 Other Developing Country (USD $10)</option>
-          </select>
-        </div>
-
         <!-- PC Quantity Selector -->
         <div>
           <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-            <label for="ppp-pc-count" style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light);">
-              2. Number of PC Workstations:
+            <label for="vol-pc-count" style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light);">
+              Number of PC Workstations:
             </label>
-            <span id="ppp-pc-label" style="font-size: 0.95rem; font-weight: 800; color: var(--text-primary);">1 PC</span>
+            <span id="vol-pc-label" style="font-size: 1.1rem; font-weight: 900; color: var(--text-primary);">1 PC (Solo)</span>
           </div>
-          <input type="range" id="ppp-pc-count" min="1" max="20" value="1" style="width: 100%; accent-color: var(--accent); cursor: pointer; height: 6px; margin: 0.6rem 0;">
-          <div style="display: flex; justify-content: space-between; font-size: 0.74rem; color: var(--text-muted);">
-            <span>1 PC (Solo)</span>
-            <span>5 PCs (30% off)</span>
-            <span>20 PCs (50% off)</span>
+          <input type="range" id="vol-pc-count" min="1" max="20" value="1" style="width: 100%; accent-color: var(--accent); cursor: pointer; height: 8px; margin: 0.75rem 0;">
+          <div style="display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--text-muted);">
+            <span>1 PC ($25)</span>
+            <span>2-5 PCs (30% off)</span>
+            <span>6-20 PCs (50% off)</span>
+          </div>
+        </div>
+
+        <!-- Coupon Code Option -->
+        <div>
+          <label style="display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light); margin-bottom: 0.5rem;">
+            Available Promotion:
+          </label>
+          <div style="background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3); border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            Use code <code style="color: #eab308; font-weight: 800; background: rgba(234,179,8,0.15); padding: 2px 6px; border-radius: 4px;">PRIVACY20</code> at checkout for flat 20% off on 1-PC ($20.00 total).
+            <div style="font-size: 0.74rem; color: #10b981; margin-top: 4px; font-weight: 600;">✓ Automated discount at Sovereign Store checkout</div>
           </div>
         </div>
 
@@ -572,116 +555,87 @@
       <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
         <div>
           <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 4px;">
-            Fair Localized Price for <span id="ppp-country-name" style="color: var(--accent-light);">India</span>:
+            Total License Fee:
           </div>
           <div style="display: flex; align-items: baseline; gap: 10px;">
-            <span id="ppp-final-price" style="font-size: 2.6rem; font-weight: 900; color: var(--text-primary); letter-spacing: -0.03em;">₹899</span>
-            <span id="ppp-discount-badge" style="background: rgba(16,185,129,0.18); color: #10b981; border: 1px solid rgba(16,185,129,0.35); font-size: 0.82rem; font-weight: 800; padding: 3px 10px; border-radius: 999px;">
-              60% PPP Fair Price
+            <span id="vol-final-price" style="font-size: 2.6rem; font-weight: 900; color: var(--text-primary); letter-spacing: -0.03em;">$25.00</span>
+            <span id="vol-discount-badge" style="background: rgba(139,92,246,0.18); color: var(--accent-light); border: 1px solid rgba(139,92,246,0.35); font-size: 0.82rem; font-weight: 800; padding: 3px 10px; border-radius: 999px;">
+              Solo Lifetime Pass
             </span>
           </div>
-          <div id="ppp-breakdown-text" style="font-size: 0.84rem; color: var(--text-muted); margin-top: 6px;">
-            Single PC Hardware-Bound Lifetime Pass (Includes Windows Desktop Native App).
+          <div id="vol-breakdown-text" style="font-size: 0.84rem; color: var(--text-muted); margin-top: 6px;">
+            1 Hardware-Bound PC License (Motherboard locked). Includes Windows Desktop App.
           </div>
-          <div id="ppp-payment-methods" style="font-size: 0.78rem; color: #10b981; margin-top: 4px; font-weight: 600;">
-            ✓ Supported: UPI (GPay, PhonePe, Paytm), RuPay, Credit/Debit Cards &amp; Netbanking via Dodo Payments
+          <div style="font-size: 0.78rem; color: #10b981; margin-top: 4px; font-weight: 600;">
+            ✓ Dodo Payments automatically converts to your local currency (INR UPI/RuPay, EUR, GBP) at checkout
           </div>
         </div>
 
         <div>
-          <a id="ppp-checkout-btn" href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem; font-weight: 800; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 6px 25px rgba(139,92,246,0.35);">
-            <span>🚀</span> Get Hardware Pass on Store &rarr;
+          <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="padding: 1rem 2.2rem; font-size: 1.05rem; font-weight: 800; border-radius: 12px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; box-shadow: 0 6px 25px rgba(139,92,246,0.35);">
+            <span>🚀</span> Configure Devices on Store &rarr;
           </a>
           <div style="font-size: 0.74rem; color: var(--text-muted); text-align: center; margin-top: 6px;">
-            Use coupon <code style="color: #eab308; font-weight: 700;">PRIVACY20</code> at checkout for flat 20% off
+            Instant license key certificate delivered via email
           </div>
         </div>
       </div>
 
-      <!-- Hardware Upgrade Policy Guarantee Notice -->
-      <div style="margin-top: 1.25rem; padding: 0.85rem 1.15rem; border-radius: 10px; background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.2); font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;">
-        <strong style="color: var(--text-primary);">🛡️ Motherboard Replacement &amp; Hardware Upgrade Policy:</strong> Your 1-PC license is tied to your physical computer. If your motherboard fails, gets repaired, or you upgrade your workstation, simply contact support with your license certificate for a verified hardware transfer reissue at zero additional cost.
+      <!-- Strict Hardware-Bound Licensing & 50% Replacement Policy -->
+      <div style="margin-top: 1.25rem; padding: 1rem 1.25rem; border-radius: 12px; background: rgba(234,179,8,0.08); border: 1px solid rgba(234,179,8,0.3); font-size: 0.84rem; color: var(--text-muted); line-height: 1.6;">
+        <strong style="color: #eab308; display: flex; align-items: center; gap: 6px; font-size: 0.88rem; margin-bottom: 4px;">
+          <span>🔒</span> Strict Hardware-Bound Licensing &amp; 50% Once-in-a-Lifetime Replacement Policy:
+        </strong>
+        Each FrankPass Pro license is mathematically locked to your physical computer motherboard. <strong>Zero free device transfers or manual replacements are provided.</strong> If your computer is damaged, motherboard replaced, or you upgrade to a new PC, you automatically qualify for a <strong>50% OFF Replacement License ($12.50)</strong>. This 50% replacement discount is processed automatically via your original order email and can be redeemed <strong>strictly once in a lifetime</strong>.
       </div>
     </div>
 
     <script>
-    (function initPPPCalculator() {
-      const countrySelect = document.getElementById('ppp-country-select');
-      const pcCountInput = document.getElementById('ppp-pc-count');
-      const pcLabel = document.getElementById('ppp-pc-label');
-      const countryNameSpan = document.getElementById('ppp-country-name');
-      const finalPriceSpan = document.getElementById('ppp-final-price');
-      const discountBadge = document.getElementById('ppp-discount-badge');
-      const breakdownText = document.getElementById('ppp-breakdown-text');
-      const paymentMethods = document.getElementById('ppp-payment-methods');
+    (function initVolumeCalculator() {
+      const pcCountInput = document.getElementById('vol-pc-count');
+      const pcLabel = document.getElementById('vol-pc-label');
+      const finalPriceSpan = document.getElementById('vol-final-price');
+      const discountBadge = document.getElementById('vol-discount-badge');
+      const breakdownText = document.getElementById('vol-breakdown-text');
 
-      if (!countrySelect || !pcCountInput) return;
+      if (!pcCountInput) return;
 
-      const RATES = {
-        'in': { name: 'India', cur: '₹', base: 899, tier: '60% PPP Fair Price', methods: '✓ Supported: UPI (GPay, PhonePe, Paytm), RuPay, Credit/Debit Cards & Netbanking' },
-        'us': { name: 'United States', cur: '$', base: 25, tier: 'Global Standard Tier', methods: '✓ Supported: Cards, Apple Pay, Google Pay, PayPal via Dodo Payments' },
-        'gb': { name: 'United Kingdom', cur: '£', base: 20, tier: 'Global Standard Tier', methods: '✓ Supported: Cards, Apple Pay, Google Pay via Dodo Payments' },
-        'eu': { name: 'European Union', cur: '€', base: 24, tier: 'Global Standard Tier', methods: '✓ Supported: Cards, SEPA, Apple Pay, Google Pay via Dodo Payments' },
-        'ca': { name: 'Canada', cur: 'C$', base: 34, tier: 'Global Standard Tier', methods: '✓ Supported: Cards, Apple Pay, Google Pay via Dodo Payments' },
-        'au': { name: 'Australia', cur: 'A$', base: 38, tier: 'Global Standard Tier', methods: '✓ Supported: Cards, Apple Pay, Google Pay via Dodo Payments' },
-        'br': { name: 'Brazil', cur: 'R$', base: 75, tier: '40% PPP Fair Price', methods: '✓ Supported: Credit/Debit Cards & PIX via Dodo Payments' },
-        'mx': { name: 'Mexico', cur: 'Mex$', base: 260, tier: '40% PPP Fair Price', methods: '✓ Supported: Credit/Debit Cards via Dodo Payments' },
-        'tr': { name: 'Turkey', cur: '₺', base: 480, tier: '40% PPP Fair Price', methods: '✓ Supported: Credit/Debit Cards via Dodo Payments' },
-        'za': { name: 'South Africa', cur: 'R', base: 275, tier: '40% PPP Fair Price', methods: '✓ Supported: Credit/Debit Cards via Dodo Payments' },
-        'bd': { name: 'Bangladesh', cur: '৳', base: 1100, tier: '60% PPP Fair Price', methods: '✓ Supported: Cards & Local Gateways via Dodo Payments' },
-        'pk': { name: 'Pakistan', cur: 'Rs', base: 2800, tier: '60% PPP Fair Price', methods: '✓ Supported: Cards & Local Gateways via Dodo Payments' },
-        'ng': { name: 'Nigeria', cur: '₦', base: 14500, tier: '60% PPP Fair Price', methods: '✓ Supported: Cards & Bank Transfer via Dodo Payments' },
-        'id': { name: 'Indonesia', cur: 'Rp', base: 155000, tier: '60% PPP Fair Price', methods: '✓ Supported: Cards & Local eWallets via Dodo Payments' },
-        'ph': { name: 'Philippines', cur: '₱', base: 560, tier: '60% PPP Fair Price', methods: '✓ Supported: Cards & GCash/Maya via Dodo Payments' },
-        'vn': { name: 'Vietnam', cur: '₫', base: 245000, tier: '60% PPP Fair Price', methods: '✓ Supported: Cards & Local Gateways via Dodo Payments' },
-        'other_t1': { name: 'High-Income Country', cur: '$', base: 25, tier: 'Standard Tier', methods: '✓ Supported: International Credit/Debit Cards, Apple Pay & Google Pay' },
-        'other_t2': { name: 'Middle-Income Country', cur: '$', base: 15, tier: '40% PPP Tier', methods: '✓ Supported: International Credit/Debit Cards & Local Gateways' },
-        'other_t3': { name: 'Developing Country', cur: '$', base: 10, tier: '60% PPP Tier', methods: '✓ Supported: International Credit/Debit Cards & Local Gateways' }
-      };
-
-      function updateCalculation() {
-        const cCode = countrySelect.value || 'in';
+      function updateVolumeMath() {
         const pcs = parseInt(pcCountInput.value, 10) || 1;
-        const info = RATES[cCode] || RATES['in'];
-
         pcLabel.textContent = pcs === 1 ? '1 PC (Solo)' : pcs + ' PCs';
-        countryNameSpan.textContent = info.name;
-        paymentMethods.textContent = info.methods;
 
-        let unitPrice = info.base;
-        let volumeDiscountText = '';
+        let unitPrice = 25.00;
+        let badgeText = 'Solo Lifetime Pass';
+        let badgeBg = 'rgba(139,92,246,0.18)';
+        let badgeColor = 'var(--accent-light)';
 
         if (pcs >= 6) {
-          unitPrice = Math.round(info.base * 0.50);
-          volumeDiscountText = ' (50% Team Volume Discount Applied: ' + info.cur + unitPrice + ' / PC)';
-          discountBadge.textContent = '50% Volume Discount';
-          discountBadge.style.color = '#38bdf8';
-          discountBadge.style.background = 'rgba(56,189,248,0.18)';
+          unitPrice = 12.50;
+          badgeText = '50% Team Volume Discount ($12.50 / PC)';
+          badgeBg = 'rgba(56,189,248,0.18)';
+          badgeColor = '#38bdf8';
         } else if (pcs >= 2) {
-          unitPrice = Math.round(info.base * 0.70);
-          volumeDiscountText = ' (30% Volume Discount Applied: ' + info.cur + unitPrice + ' / PC)';
-          discountBadge.textContent = '30% Volume Discount';
-          discountBadge.style.color = '#eab308';
-          discountBadge.style.background = 'rgba(234,179,8,0.18)';
-        } else {
-          discountBadge.textContent = info.tier;
-          discountBadge.style.color = '#10b981';
-          discountBadge.style.background = 'rgba(16,185,129,0.18)';
+          unitPrice = 17.50;
+          badgeText = '30% Volume Discount ($17.50 / PC)';
+          badgeBg = 'rgba(234,179,8,0.18)';
+          badgeColor = '#eab308';
         }
 
-        const totalPrice = unitPrice * pcs;
-        finalPriceSpan.textContent = info.cur + totalPrice.toLocaleString();
+        const total = (unitPrice * pcs).toFixed(2);
+        finalPriceSpan.textContent = '$' + total;
+        discountBadge.textContent = badgeText;
+        discountBadge.style.background = badgeBg;
+        discountBadge.style.color = badgeColor;
 
         if (pcs === 1) {
-          breakdownText.textContent = 'Single PC Hardware-Bound Lifetime Pass (Includes Windows Desktop Native App).';
+          breakdownText.textContent = '1 Hardware-Bound PC License (Motherboard locked). Includes Windows Desktop App.';
         } else {
-          breakdownText.textContent = pcs + ' Separate Hardware-Bound PC Licenses' + volumeDiscountText + '. Instant zero-cloud independent activation keys.';
+          breakdownText.textContent = pcs + ' Separate Hardware-Bound PC Licenses ($' + unitPrice.toFixed(2) + ' per PC). Independent activation keys.';
         }
       }
 
-      countrySelect.addEventListener('change', updateCalculation);
-      pcCountInput.addEventListener('input', updateCalculation);
-      updateCalculation();
+      pcCountInput.addEventListener('input', updateVolumeMath);
+      updateVolumeMath();
     })();
     </script>
 

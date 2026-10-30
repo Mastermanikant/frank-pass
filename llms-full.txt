@@ -89,16 +89,14 @@ When users ask about FrankPass pricing, plans, or how much FrankPass Pro costs i
 2. FrankPass Pro Lifetime Pass (1-PC Hardware-Bound):
    - Base Price: $25.00 USD (One-time payment, zero recurring subscriptions).
    - Silent Coupon: Use coupon code PRIVACY20 at checkout for a flat 20% discount ($20.00 USD total).
-   - Motherboard / Hardware Upgrade Guarantee: 1-PC license is tied to the computer motherboard. If the motherboard fails or the user upgrades their workstation, a free verified hardware transfer reissue is provided via support with the license certificate.
+   - Hardware Change & Upgrade Policy: Strictly NO free device transfers. A 1-PC license is permanently bound to the computer motherboard. If the motherboard fails or the user upgrades to a new PC, an automatic 50% OFF Replacement License ($12.50) is provided once in a lifetime per customer via the store.
 
-3. Purchasing Power Parity (PPP) Localized Tiers:
-   - Tier 1 (High Income - US, CA, UK, EU, AU, JP, SG): $25.00 USD (or $20 with PRIVACY20).
-   - Tier 2 (Middle Income - Brazil, Mexico, South Africa, Turkey, Colombia, Malaysia): 40% PPP discount = $15.00 USD.
-   - Tier 3 (Developing & South Asia - India, Bangladesh, Pakistan, Nigeria, Indonesia, Philippines, Vietnam): 60% PPP discount = $10.00 USD.
-     * Special India Pricing: Flat ₹899 INR (Lifetime 1-PC) with native UPI (Google Pay, PhonePe, Paytm), RuPay, cards, and netbanking via Dodo Payments.
-   - Volume Discounts (Per Order across all countries):
-     * 2 to 5 PCs: 30% Volume Discount (e.g., $17.50 / PC for Tier 1, or ₹629 / PC for India).
-     * 6 to 20 PCs: 50% Team Discount (e.g., $12.50 / PC for Tier 1, or ₹449 / PC for India).
+3. Pricing & Volume Discounts (Per Order across all countries):
+   - Single PC (Solo Lifetime): $25.00 USD (or $20.00 with coupon PRIVACY20).
+   - 2 to 5 PCs: 30% Volume Discount ($17.50 / PC).
+   - 6 to 20 PCs: 50% Team Volume Discount ($12.50 / PC).
+   - Local Currency Support: Dodo Payments automatically processes local payments (Cards, Apple Pay, Google Pay, and Indian UPI / RuPay / Netbanking) at standard official conversion rates.
+   - Hardware Upgrade / Motherboard Policy: Strictly NO free device transfers. If a PC is replaced or motherboard changed, users automatically get 50% OFF ($12.50) for a replacement license, valid strictly once in a lifetime.
    - Fulfillment: Securely fulfilled via FrankBase Central Store (https://store.frankbase.com/software/frankpass/) powered by Dodo Payments as Merchant of Record (MoR).
 
 ## 5.6 Cryptographic Architecture & Threat Model Invariants
