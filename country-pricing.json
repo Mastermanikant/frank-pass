@@ -1,0 +1,142 @@
+{
+  "spec_version": "1.0.0",
+  "last_updated": "2026-10-30",
+  "base_currency": "USD",
+  "base_solo_lifetime_price_usd": 25.0,
+  "promotions": {
+    "silent_buyer_coupon": {
+      "code": "PRIVACY20",
+      "discount_pct": 20,
+      "discounted_price_usd": 20.0,
+      "description": "Flat 20% off at checkout on store.frankbase.com"
+    },
+    "replacement_guarantee": {
+      "discount_pct": 50,
+      "price_usd": 12.5,
+      "token_format": "FP-REPLACE-XXXX-XXXX",
+      "rule": "Automatic 50% off replacement license, strictly once in a lifetime per customer, burned upon redemption."
+    }
+  },
+  "volume_discounts": [
+    {
+      "min_pcs": 1,
+      "max_pcs": 1,
+      "discount_pct": 0,
+      "price_per_pc_usd": 25.0
+    },
+    {
+      "min_pcs": 2,
+      "max_pcs": 5,
+      "discount_pct": 30,
+      "price_per_pc_usd": 17.5
+    },
+    {
+      "min_pcs": 6,
+      "max_pcs": 20,
+      "discount_pct": 50,
+      "price_per_pc_usd": 12.5
+    }
+  ],
+  "refund_policy": "Strict No-Refund Policy. A 30-Day Zero-PII Offline Free Trial is available. Users must test before purchase.",
+  "countries": {
+    "IN": {
+      "name": "India",
+      "currency": "INR",
+      "symbol": "₹",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "UPI (Google Pay, PhonePe, Paytm, BHIM)",
+        "RuPay Debit/Credit Cards",
+        "Netbanking",
+        "International Cards"
+      ],
+      "tax_note": "Handled via Dodo Payments Merchant of Record with GST compliant invoice."
+    },
+    "US": {
+      "name": "United States",
+      "currency": "USD",
+      "symbol": "$",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "Credit/Debit Cards (Visa, MasterCard, Amex)",
+        "Apple Pay",
+        "Google Pay",
+        "PayPal"
+      ],
+      "tax_note": "US state sales tax automatically calculated at checkout via Dodo Payments."
+    },
+    "GB": {
+      "name": "United Kingdom",
+      "currency": "GBP",
+      "symbol": "£",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "Credit/Debit Cards",
+        "Apple Pay",
+        "Google Pay"
+      ],
+      "tax_note": "UK VAT handled automatically via Dodo Payments."
+    },
+    "EU": {
+      "name": "European Union",
+      "currency": "EUR",
+      "symbol": "€",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "Credit/Debit Cards",
+        "SEPA Direct Debit",
+        "Apple Pay",
+        "Google Pay"
+      ],
+      "tax_note": "EU Country VAT handled automatically via Dodo Payments."
+    },
+    "CA": {
+      "name": "Canada",
+      "currency": "CAD",
+      "symbol": "C$",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "Credit/Debit Cards",
+        "Apple Pay",
+        "Google Pay"
+      ],
+      "tax_note": "GST/HST handled via Dodo Payments."
+    },
+    "AU": {
+      "name": "Australia",
+      "currency": "AUD",
+      "symbol": "A$",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "Credit/Debit Cards",
+        "Apple Pay",
+        "Google Pay"
+      ],
+      "tax_note": "Australian GST handled via Dodo Payments."
+    },
+    "BR": {
+      "name": "Brazil",
+      "currency": "BRL",
+      "symbol": "R$",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "Credit/Debit Cards",
+        "PIX"
+      ],
+      "tax_note": "Local Brazilian payment methods supported via Dodo Payments."
+    },
+    "GLOBAL": {
+      "name": "Worldwide / Rest of World",
+      "currency": "USD",
+      "symbol": "$",
+      "base_usd": 25.0,
+      "payment_methods": [
+        "International Credit/Debit Cards",
+        "Apple Pay",
+        "Google Pay",
+        "PayPal"
+      ],
+      "tax_note": "Localized currency conversion and regional compliance handled via Dodo Payments."
+    }
+  }
+}

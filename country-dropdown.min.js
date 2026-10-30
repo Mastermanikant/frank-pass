@@ -408,181 +408,81 @@
 
         let initCode = null;
 
+        // Hardware Timezone & Offset Check (High Precision for India UTC+05:30)
+        const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat ? Intl.DateTimeFormat().resolvedOptions().timeZone || '' : '');
+        const tzOffset = (new Date()).getTimezoneOffset(); // -330 for IST
+        const isIndiaDevice = (tz.includes('Kolkata') || tz.includes('Calcutta') || tzOffset === -330);
 
-
-        // Tier 1 (Highest Priority): Explicit URL Path (/in, /us, /ug, etc.)
-
+        // Tier 1: Explicit URL Path (/in, /us, /ug, etc.)
         let urlPath = window.location.pathname.split('/').filter(Boolean)[0] || '';
-
         urlPath = urlPath.toLowerCase();
-
-        if (urlPath === 'hn') urlPath = 'in'; // Alias for Hindi
-
+        if (urlPath === 'hn') urlPath = 'in';
         if (urlPath.length === 2 && allCountries.find(c => c.code === urlPath)) {
-
             initCode = urlPath;
-
-            try { localStorage.setItem('fp_preferred_country', urlPath); } catch (e) {}
-
         }
 
-
-
-        // Tier 2: Saved Preference in localStorage or Cookie (Persistent across Hard Refresh & Edge)
-
+        // Tier 2: Explicit User Click in Previous Session
         if (!initCode) {
-
             try {
-
-                let saved = localStorage.getItem('fp_preferred_country');
-
-                if (!saved) {
-
-                    const m = document.cookie.match(/(?:^|;\s*)fp_preferred_country=([^;]+)/);
-
-                    if (m && m[1]) saved = decodeURIComponent(m[1]);
-
+                const explicitChoice = localStorage.getItem('fp_user_explicit_choice');
+                if (explicitChoice && allCountries.find(c => c.code === explicitChoice.toLowerCase())) {
+                    initCode = explicitChoice.toLowerCase();
                 }
-
-                if (saved && allCountries.find(c => c.code === saved.toLowerCase())) {
-
-                    initCode = saved.toLowerCase();
-
-                }
-
             } catch (e) {}
-
         }
 
-
-
-        // Tier 3: Global Timezone Mapping (Physical Device Hardware Clock: Asia/Kolkata -> in, America/... -> us)
-
+        // Tier 3: Device Physical Location via Hardware Clock
         if (!initCode) {
-
-            try {
-
-                const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '');
-
-                const tzMap = {
-
-                    'Asia/Kolkata': 'in', 'Asia/Calcutta': 'in',
-
-                    'America/New_York': 'us', 'America/Los_Angeles': 'us',
-
-                    'America/Chicago': 'us', 'America/Denver': 'us',
-
-                    'America/Phoenix': 'us', 'America/Detroit': 'us',
-
-                    'America/Indiana/Indianapolis': 'us', 'America/Anchorage': 'us',
-
-                    'Pacific/Honolulu': 'us', 'America/Boise': 'us',
-
-                    'Europe/London': 'gb', 'Europe/Paris': 'fr', 'Europe/Berlin': 'de',
-
-                    'America/Toronto': 'ca', 'America/Vancouver': 'ca', 'America/Montreal': 'ca',
-
-                    'America/Edmonton': 'ca', 'America/Winnipeg': 'ca', 'America/Halifax': 'ca',
-
-                    'Australia/Sydney': 'au', 'Australia/Melbourne': 'au', 'Australia/Brisbane': 'au',
-
-                    'Australia/Perth': 'au', 'Australia/Adelaide': 'au',
-
-                    'Asia/Dhaka': 'bd', 'Asia/Karachi': 'pk', 'Africa/Lagos': 'ng',
-
-                    'Asia/Manila': 'ph', 'Asia/Jakarta': 'id', 'Africa/Nairobi': 'ke',
-
-                    'Asia/Dubai': 'ae', 'Asia/Riyadh': 'sa', 'Asia/Singapore': 'sg',
-
-                    'Asia/Kuala_Lumpur': 'my', 'Asia/Bangkok': 'th', 'Asia/Kathmandu': 'np',
-
-                    'Asia/Colombo': 'lk', 'Asia/Seoul': 'kr', 'Asia/Tokyo': 'jp',
-
-                    'America/Sao_Paulo': 'br', 'Africa/Johannesburg': 'za', 'America/Mexico_City': 'mx',
-
-                    'Europe/Madrid': 'es', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl',
-
-                    'Europe/Zurich': 'ch', 'Europe/Vienna': 'at', 'Europe/Stockholm': 'se',
-
-                    'Europe/Oslo': 'no', 'Europe/Copenhagen': 'dk', 'Europe/Helsinki': 'fi',
-
-                    'Europe/Warsaw': 'pl', 'Europe/Dublin': 'ie', 'Europe/Brussels': 'be',
-
-                    'Europe/Lisbon': 'pt', 'Europe/Athens': 'gr', 'Europe/Prague': 'cz',
-
-                    'Europe/Budapest': 'hu', 'Europe/Bucharest': 'ro', 'Pacific/Auckland': 'nz'
-
-                };
-
-                if (tzMap[tz]) {
-
-                    initCode = tzMap[tz];
-
-                } else if (tz.startsWith('America/')) {
-
-                    initCode = 'us';
-
-                } else if (tz.startsWith('Europe/')) {
-
-                    initCode = 'gb';
-
-                } else if (tz.startsWith('Australia/')) {
-
-                    initCode = 'au';
-
-                }
-
-            } catch (e) {}
-
+            if (isIndiaDevice) {
+                initCode = 'in';
+            } else {
+                try {
+                    const tzMap = {
+                        'Asia/Kolkata': 'in', 'Asia/Calcutta': 'in',
+                        'America/New_York': 'us', 'America/Los_Angeles': 'us',
+                        'America/Chicago': 'us', 'America/Denver': 'us',
+                        'America/Phoenix': 'us', 'America/Detroit': 'us',
+                        'America/Indiana/Indianapolis': 'us', 'America/Anchorage': 'us',
+                        'Pacific/Honolulu': 'us', 'America/Boise': 'us',
+                        'Europe/London': 'gb', 'Europe/Paris': 'fr', 'Europe/Berlin': 'de',
+                        'America/Toronto': 'ca', 'America/Vancouver': 'ca', 'America/Montreal': 'ca',
+                        'America/Edmonton': 'ca', 'America/Winnipeg': 'ca', 'America/Halifax': 'ca',
+                        'Australia/Sydney': 'au', 'Australia/Melbourne': 'au', 'Australia/Brisbane': 'au',
+                        'Australia/Perth': 'au', 'Australia/Adelaide': 'au',
+                        'Asia/Dhaka': 'bd', 'Asia/Karachi': 'pk', 'Africa/Lagos': 'ng',
+                        'Asia/Manila': 'ph', 'Asia/Jakarta': 'id', 'Africa/Nairobi': 'ke',
+                        'Asia/Dubai': 'ae', 'Asia/Riyadh': 'sa', 'Asia/Singapore': 'sg',
+                        'Asia/Kuala_Lumpur': 'my', 'Asia/Bangkok': 'th', 'Asia/Kathmandu': 'np',
+                        'Asia/Colombo': 'lk', 'Asia/Seoul': 'kr', 'Asia/Tokyo': 'jp',
+                        'America/Sao_Paulo': 'br', 'Africa/Johannesburg': 'za', 'America/Mexico_City': 'mx',
+                        'Europe/Madrid': 'es', 'Europe/Rome': 'it', 'Europe/Amsterdam': 'nl'
+                    };
+                    if (tzMap[tz]) {
+                        initCode = tzMap[tz];
+                    } else if (tz.startsWith('America/')) {
+                        initCode = 'us';
+                    } else if (tz.startsWith('Europe/')) {
+                        initCode = 'gb';
+                    } else if (tz.startsWith('Australia/')) {
+                        initCode = 'au';
+                    }
+                } catch (e) {}
+            }
         }
 
-
-
-        // Tier 4: Client Device Locale Fallback (Only if Timezone is unknown or neutral)
-
-        if (!initCode) {
-
+        // Tier 4: Locale check ONLY if not in India (prevents en-US Windows bug in India)
+        if (!initCode && !isIndiaDevice) {
             try {
-
                 const navLang = navigator.language || (navigator.languages && navigator.languages[0]);
-
-                if (navLang) {
-
-                    let reg = null;
-
-                    if (typeof Intl !== 'undefined' && Intl.Locale) {
-
-                        try {
-
-                            const loc = new Intl.Locale(navLang);
-
-                            if (loc && loc.region) reg = loc.region.toLowerCase();
-
-                        } catch (e) {}
-
+                if (navLang && navLang.includes('-')) {
+                    const parts = navLang.split('-');
+                    if (parts[1] && parts[1].length === 2) {
+                        const reg = parts[1].toLowerCase();
+                        if (allCountries.find(c => c.code === reg)) initCode = reg;
                     }
-
-                    if (!reg && navLang.includes('-')) {
-
-                        const parts = navLang.split('-');
-
-                        if (parts[1] && parts[1].length === 2) reg = parts[1].toLowerCase();
-
-                    }
-
-                    if (reg && allCountries.find(c => c.code === reg)) {
-
-                        initCode = reg;
-
-                    }
-
                 }
-
             } catch (e) {}
-
         }
-
-
 
         // Final safe fallback
 
