@@ -14,8 +14,11 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="robots" content="index, follow">
  <title>FrankPass FAQ - Frequently Asked Questions</title>
- <meta name="description" content="Answers to every FrankPass question - security architecture, offline use, secret key recovery, domain normalization, variant counter, and more. 12 questions answered.">
+ <meta name="description" content="Answers to every FrankPass question - security architecture, offline use, secret key recovery, domain normalization, variant counter, and more. 25 questions answered.">
  <link rel="canonical" href="https://frankpass.com/faq.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/faq.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/faq-hindi.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/faq.html">
  <meta property="og:title" content="FrankPass FAQ - Frequently Asked Questions">
  <meta property="og:description" content="Everything you need to know about how FrankPass keeps you secure - stateless passwords, offline use, key recovery, and more.">
  <meta property="og:url" content="https://frankpass.com/faq.html">
@@ -414,7 +417,7 @@
  ============================================================ -->
 <section class="section" style="padding-bottom:2rem;text-align:center" aria-labelledby="faq-heading">
  <div class="container" style="max-width:780px">
- <div class="section-label" aria-hidden="true">12 questions answered</div>
+ <div class="section-label" aria-hidden="true">25 questions answered</div>
  <h1 id="faq-heading">Frequently Asked Questions</h1>
  <p class="section-desc mt-2">Everything you need to know about how FrankPass keeps your passwords secure - without storing any of them.</p>
 
@@ -687,6 +690,82 @@
   </div>
   </details>
 
+
+  
+  <!-- Q20 - RAM and System Performance -->
+  <details class="faq-item" id="faq-ram-performance">
+  <summary>
+  <span>Why does FrankPass consume under 50MB of RAM while traditional password managers eat up to 6GB?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  Traditional desktop password managers wrap web code inside Chromium and Electron runtimes, essentially running a second heavy web browser in the background that continuously consumes 1.5 GB to 6.0 GB of RAM. <strong>FrankPass runs directly inside your existing browser engine using native Web Cryptography APIs</strong>. It consumes up to 50 MB of RAM maximum ONLY when you click the extension or press the generation shortcut, and drops to <strong>0 MB idle RAM</strong> when closed. Zero background daemons, zero CPU drain, zero battery loss.
+  </div>
+  </details>
+
+  <!-- Q21 - Smart Normalization & Typo Protection -->
+  <details class="faq-item" id="faq-smart-normalization">
+  <summary>
+  <span>How does FrankPass prevent typo lockouts between mobile keyboards, spaces, and complex URLs?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  The fatal flaw of raw mathematical generators is that a single typo alters the entire cryptographic hash. FrankPass solves this through our proprietary <strong>Smart Input Normalization Engine</strong>:<br><br>
+  <ul>
+    <li><strong>Email &amp; Identifier Normalization:</strong> Accidental leading or trailing spaces are automatically stripped, and all characters are converted to lowercase, preventing mobile keyboard auto-capitalization errors.</li>
+    <li><strong>Platform Dataset &amp; Live Canonical Seed:</strong> FrankPass maintains a large dataset of global platforms. Whether you paste <code>https://retail.onlinesbi.sbi/</code>, <code>sbi.co.in</code>, or <code>State Bank of India</code>, FrankPass automatically resolves it to the canonical seed. This seed is dynamically displayed directly below the platform input field so you always verify the exact mathematical seed being hashed.</li>
+  </ul>
+  </div>
+  </details>
+
+  <!-- Q22 - Periodic Password Rotation & Month Names -->
+  <details class="faq-item" id="faq-rotation-month-names">
+  <summary>
+  <span>What if my employer or bank requires password updates every 90 days? Can I use month names?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>Yes, absolutely.</strong> You are not limited to simple numbers (1, 2, 3). FrankPass allows you to use intuitive rotation tags such as <strong>Jan2026</strong> or <strong>Feb2026</strong>. When an account requires a rotation, simply update the tag. Your core Master Secret Key remains completely unchanged, while the derivation function produces an entirely fresh, mathematically uncorrelated high-entropy password for that specific account.
+  </div>
+  </details>
+
+  <!-- Q23 - Infostealers and Invisible RAM Vault -->
+  <details class="faq-item" id="faq-infostealers-invisible-vault">
+  <summary>
+  <span>How does FrankPass protect against Infostealer malware (RedLine, Vidar, Lumma)?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  Infostealers do not crack AES encryption; they dump unencrypted browser SQLite databases, persistent cookies, and local extension storage files from your physical hard drive. FrankPass utilizes an <strong>Invisible RAM Vault architecture</strong>: credentials exist solely in volatile, temporary JavaScript runtime variables during generation. Because FrankPass never writes credentials to disk files or unencrypted local storage, infostealers scanning your drives find zero credential files to exfiltrate.
+  </div>
+  </details>
+
+  <!-- Q24 - Permanent Offline Redundancy -->
+  <details class="faq-item" id="faq-edge-mirror-workers">
+  <summary>
+  <span>What if the internet drops or the frankpass.com domain has an issue? How do I access my passwords?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  FrankPass is built with multi-tier cryptographic permanence:
+  <ul style="margin:0.5rem 0 0 1.25rem;padding:0;line-height:1.6">
+    <li><strong>100% Offline PWA:</strong> If you have installed FrankPass on your desktop or phone, it executes entirely from local Service Worker cache with zero network connection required.</li>
+    <li><strong>Cloudflare Workers Edge Mirror:</strong> You can access our global edge mirror at <a href="https://frankpass.workers.dev" target="_blank" rel="noopener" style="color:var(--accent-light);text-decoration:underline">frankpass.workers.dev</a>, served from 300+ secure data centers worldwide.</li>
+    <li><strong>Immutable Algorithm:</strong> Because the PBKDF2 formula is open and standardized, your passwords are timeless mathematical truths that can never be shut down by any company or server outage.</li>
+  </ul>
+  </div>
+  </details>
+
+  <!-- Q25 - No Paper Sheets / Master Secret Guide -->
+  <details class="faq-item" id="faq-master-secret-creation">
+  <summary>
+  <span>What is the safest way to create and preserve my Master Secret Key without paper backdoors?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  True mathematical sovereignty means having zero recovery backdoors and zero paper leaks. Instead of leaving unencrypted paper sheets lying around, we teach you how to formulate an <strong>associative mnemonic Master Secret</strong>. By linking 4 to 6 natural words and numbers from your personal life, you create a passphrase with over 80 bits of mathematical entropy that your biological memory retains effortlessly, yet no GPU dictionary cluster can ever guess. Read our comprehensive <a href="/secret-key-guide.html" style="color:var(--accent-light);font-weight:700;text-decoration:underline">Master Secret Key Guide &rarr;</a> to craft your memorable formula today.
+  </div>
+  </details>
 
   </div>
  </div>

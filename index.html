@@ -186,7 +186,23 @@
             "name": "What should I do if a website forces a password change?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "FrankPass includes a Variant Counter. If a website requires a new password, simply increment the Variant from 1 to 2. This creates an entirely new mathematical password for that specific site without changing your Master Secret Key."
+              "text": "FrankPass includes a Rotation Counter. If a website requires a new password, simply increment the counter from 1 to 2, or use natural months and years like Jan2026. This creates an entirely new mathematical password for that specific site without changing your Master Secret Key."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much RAM and system resources does FrankPass consume?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FrankPass consumes up to 50MB of RAM maximum only when you explicitly open the extension or click generate, and 0MB idle in the background. Unlike traditional desktop password managers that bundle heavy Chromium/Electron runtimes consuming 1.5GB to 6.0GB of RAM continuously, FrankPass runs inside your existing browser with zero background bloat."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does FrankPass handle typos in email addresses or platform names?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FrankPass features a built-in Smart Input Normalization Engine. For emails, it automatically strips accidental whitespace and converts all characters to lowercase. For platforms, our curated dataset automatically resolves URLs and domain variants into a canonical seed shown dynamically below the input, ensuring consistent password generation across all devices."
             }
           }
         ]
@@ -1272,10 +1288,10 @@
       <div class="card-glass" style="padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border); background: var(--card-glass-bg);">
         <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem;">
           <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; flex-shrink: 0;" aria-hidden="true"></span>
-          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Zero Centralized Storage</h3>
+          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Zero Storage &amp; 0MB Idle RAM</h3>
         </div>
         <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Operates without servers, cloud databases, user accounts, or synced vault files. Derived credentials exist only in volatile RAM for 14 milliseconds during generation.
+          Operates without servers, cloud databases, or background bloat. Consumes up to 50MB RAM maximum only while generating, and 0MB idle in the background (unlike 1.5GB to 6GB Electron desktop apps).
         </p>
       </div>
 
@@ -1319,6 +1335,12 @@
           </tr>
         </thead>
         <tbody>
+          <tr style="border-bottom: 1px solid var(--border);">
+            <td style="padding: 0.85rem 0.75rem; font-weight: 700; color: var(--text-primary);">Peak Active RAM Usage</td>
+            <td style="padding: 0.85rem 0.75rem; font-weight: 800; color: #10b981; background: rgba(139, 92, 246, 0.04);">&lt; 50 MB (On-Click Only | 0 MB Idle)</td>
+            <td style="padding: 0.85rem 0.75rem; color: #ef4444;">1,500 MB - 6,000 MB (Electron Desktop Bloat)</td>
+            <td style="padding: 0.85rem 0.75rem; color: #f59e0b;">Tied to Full Browser Process</td>
+          </tr>
           <tr style="border-bottom: 1px solid var(--border);">
             <td style="padding: 0.85rem 0.75rem; font-weight: 700; color: var(--text-primary);">Server Vault Storage</td>
             <td style="padding: 0.85rem 0.75rem; font-weight: 800; color: #10b981; background: rgba(139, 92, 246, 0.04);">0 Bytes (No Server Vault)</td>
@@ -1432,6 +1454,35 @@
           No. FrankPass utilizes PBKDF2 with 1,000,000 iterations and SHA-512 cryptographic hashing. Reversing a 1-million-round one-way cryptographic derivation would require centuries of supercomputing power, making brute-force attacks mathematically infeasible.
         </div>
       </details>
+
+      <!-- FAQ 7 -->
+      <details class="faq-item" style="background: var(--card-glass-bg); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 0.85rem; padding: 0.2rem;">
+        <summary style="padding: 1.15rem 1.35rem; font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+          <span>What if a website forces me to change my password periodically?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body" style="padding: 0 1.35rem 1.25rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.65;">
+          Simply update the rotation tag. You can increment the number from 1 to 2, or use natural months and years like Jan2026. Your master secret key remains completely unchanged, while the generator calculates an entirely fresh, mathematically unique high-entropy password for that specific site.
+        </div>
+      </details>
+
+      <!-- FAQ 8 -->
+      <details class="faq-item" style="background: var(--card-glass-bg); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 0.85rem; padding: 0.2rem;">
+        <summary style="padding: 1.15rem 1.35rem; font-weight: 700; color: var(--text-primary); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none;">
+          <span>Will typos in my platform name or email result in a different password?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body" style="padding: 0 1.35rem 1.25rem; font-size: 0.92rem; color: var(--text-muted); line-height: 1.65;">
+          No. FrankPass features a built-in Smart Input Normalization Engine. For emails, it automatically strips accidental whitespace and converts all characters to lowercase. For websites, our extensive platform dataset automatically resolves domains and URLs (e.g. sbi.co.in or https://retail.onlinesbi.sbi/) into a single canonical seed shown transparently below the input field, guaranteeing consistent password generation across all your devices.
+        </div>
+      </details>
+
+      <!-- Link to Complete 100+ FAQ Hub -->
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="/faq.html" style="display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 800; color: var(--accent-light); font-size: 1rem; text-decoration: none; padding: 0.75rem 1.5rem; background: rgba(139, 92, 246, 0.12); border: 1.5px solid var(--border); border-radius: 12px; transition: var(--transition);">
+          <span>Read All 100+ Technical Questions &amp; Cryptographic Answers in the Complete FAQ Hub &rarr;</span>
+        </a>
+      </div>
 
     </div>
 

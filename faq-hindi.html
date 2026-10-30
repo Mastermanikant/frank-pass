@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>FrankPass अक्सर पूछे जाने वाले प्रश्न (FAQ) - सुरक्षा व आर्किटेक्चर उत्तर</title>
+  <meta name="description" content="FrankPass के सभी तकनीकी सवालों के जवाब: स्टेटलेस आर्किटेक्चर, 100% ऑफलाइन उपयोग, सीक्रेट की सुरक्षा, रोटेशन काउंटर, और नॉर्मलाइज़ेशन। कुल 25 प्रश्नों के विस्तृत उत्तर।">
+  <link rel="canonical" href="https://frankpass.com/faq-hindi.html">
+  <link rel="alternate" hreflang="en" href="https://frankpass.com/faq.html">
+  <link rel="alternate" hreflang="hi" href="https://frankpass.com/faq-hindi.html">
+  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/faq.html">
+  <meta property="og:title" content="FrankPass FAQ - अक्सर पूछे जाने वाले प्रश्न व सुरक्षा सत्य">
+  <meta property="og:description" content="FrankPass आपको सुरक्षित कैसे रखता है: शून्य डेटाबेस, 100% ऑफलाइन गणित, और शून्य सब्सक्रिप्शन ट्रैप।">
+  <meta property="og:url" content="https://frankpass.com/faq-hindi.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="icon" href="/icons/favicon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.min.css?v=4.6.2">
+
+  <!-- FAQ Schema - Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "FrankPass क्या है और यह कैसे काम करता है?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FrankPass एक 100% ऑफलाइन, स्टेटलेस पासवर्ड मैनेजर और डिटरमिनिस्टिक जनरेटर है, जिसे मास्टर मणिकान्त यादव ने बनाया है। यह आपके पासवर्ड्स को किसी क्लाउड सर्वर या डिस्क पर सेव करने के बजाय PBKDF2 HMAC-SHA512 (10 लाख राउंड्स) के जरिए मौके पर रैम (RAM) में गणितीय फॉर्मूले से तुरंत जनरेट करता है। शून्य सर्वर, शून्य डेटाबेस, शून्य लीक।"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "क्या FrankPass को चलाने के लिए इंटरनेट की आवश्यकता होती है?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "बिल्कुल नहीं। पेज लोड होने या PWA इंस्टॉल होने के बाद FrankPass 100% एयर-गैप्ड ऑफलाइन काम करता है। आप वाई-फाई बंद करके या एयरप्लेन मोड में भी बिना किसी नेटवर्क के अपने सभी पासवर्ड्स सुरक्षित जनरेट कर सकते हैं।"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "अगर कोई वेबसाइट हर 90 दिन में पासवर्ड बदलने को कहे तो क्या करें?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "आप केवल रोटेशन काउंटर को बदल दें। आप संख्या को 1 से 2 कर सकते हैं, या स्वाभाविक महीने/साल का नाम जैसे Jan2026 लिख सकते हैं। आपका मास्टर सीक्रेट वही रहेगा, लेकिन उस साइट के लिए बिल्कुल नया, उच्च-एन्ट्रॉपी पासवर्ड बन जाएगा।"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "FrankPass कितनी रैम (RAM) और सिस्टम रिसोर्स लेता है?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FrankPass अधिकतम 50 MB रैम केवल तभी लेता है जब आप एक्सटेंशन खोलते हैं या पासवर्ड बनाते हैं। बंद होने पर यह 0 MB रैम लेता है। यह इलेक्ट्रॉन आधारित भारी ऐप्स (जो 1.5 GB से 6 GB रैम खाते हैं) के विपरीत शून्य ब्लोट पर चलता है।"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">मुख्य सामग्री पर जाएं</a>
+
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <!-- Country Dropdown -->
+    <div class="header-country custom-country-dropdown" aria-label="Select your country">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+        <span id="country-name-text">India</span>
+        <span class="country-caret">&#9662;</span>
+      </button>
+      <div id="country-menu" class="country-dropdown-menu" role="listbox" tabindex="-1">
+        <div class="country-search-wrap">
+          <input type="text" id="country-search" placeholder="Search country..." autocomplete="off">
+        </div>
+        <div id="country-list" class="country-list-scroll"></div>
+      </div>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="/" class="nav-link">होम</a>
+      <a href="/pricing-hindi.html" class="nav-link">प्राइसिंग ($25)</a>
+      <a href="/faq-hindi.html" class="nav-link active" aria-current="page">FAQ</a>
+      <a href="/docs-hindi.html" class="nav-link">डॉक्स</a>
+      <a href="/faq.html" class="nav-link" style="color:var(--accent-light);font-weight:700;">English</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="https://store.frankbase.com/software/frankpass/" class="btn-primary btn-sm" target="_blank" rel="noopener">
+        <span>Get Pro ($25)</span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="/" class="mobile-nav-link"><span>🏠</span> होम</a>
+  <a href="/pricing-hindi.html" class="mobile-nav-link"><span>💎</span> प्राइसिंग ($25 लाइफटाइम)</a>
+  <a href="/faq-hindi.html" class="mobile-nav-link active"><span>❓</span> अक्सर पूछे जाने वाले प्रश्न (FAQ)</a>
+  <a href="/docs-hindi.html" class="mobile-nav-link"><span>📚</span> तकनीकी डॉक्स</a>
+  <a href="/faq.html" class="mobile-nav-link"><span>🌐</span> Switch to English</a>
+</div>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section class="section" style="padding-bottom:2rem;text-align:center" aria-labelledby="faq-heading">
+  <div class="container" style="max-width:780px">
+    <div class="section-label" aria-hidden="true">25 तकनीकी प्रश्नों के उत्तर</div>
+    <h1 id="faq-heading">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h1>
+    <p class="section-desc mt-2">FrankPass आपके पासवर्ड्स को बिना कहीं सेव किए कैसे सुरक्षित रखता है, इसके बारे में सभी सवालों के प्रामाणिक उत्तर।</p>
+
+    <!-- AI Prompt Bar -->
+    <div id="ai-prompt-bar" data-topic="FrankPass Frequently Asked Questions &amp; Security Truths" data-summary="Answers to top questions about stateless password generation, PBKDF2 cryptography, cloudless security, and Secret Key rules."></div>
+  </div>
+</section>
+
+<!-- FAQ ACCORDION -->
+<section class="section-sm" aria-label="FAQ accordion">
+  <div class="container" style="max-width:780px">
+    <div style="display:flex;flex-direction:column;gap:0.75rem" id="faq-list">
+
+      <!-- Q1 -->
+      <details class="faq-item" id="faq-1" open>
+        <summary>
+          <span>FrankPass क्या है और इसका क्या मतलब है?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          FrankPass एक <strong>100% ऑफलाइन, स्टेटलेस पासवर्ड मैनेजर और डिटरमिनिस्टिक जनरेटर</strong> है जिसे मास्टर मणिकान्त यादव ने बनाया है। इसका नाम <strong>"Frank"</strong> (100% सत्यता, शून्य ट्रैकिंग और पूर्ण पारदर्शिता) और <strong>"Pass"</strong> (पासवर्ड और पिन) से मिलकर बना है। पासवर्ड्स को क्लाउड वॉल्ट में सेव करने के बजाय, यह आपके तीन इनपुट्स (प्लेटफॉर्म का नाम, मास्टर सीक्रेट की, और रोटेशन संख्या) से PBKDF2 HMAC-SHA512 (10 लाख राउंड्स) के जरिए ब्राउज़र की रैम में मौके पर पासवर्ड कैलकुलेट करता है। शून्य क्लाउड, शून्य डेटाबेस, शून्य अकाउंट।
+        </div>
+      </details>
+
+      <!-- Q2 -->
+      <details class="faq-item" id="faq-2">
+        <summary>
+          <span>FrankPass पारंपरिक क्लाउड पासवर्ड वॉल्ट्स (जैसे 1Password, Bitwarden) से कैसे अलग है?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          पारंपरिक पासवर्ड मैनेजर्स आपके पासवर्ड्स को एन्क्रिप्ट करके किसी रिमोट सर्वर पर स्टोर करते हैं, जिससे एक सेंट्रलाइज्ड हनीपॉट बन जाता है। <strong>FrankPass शून्य (0 बाइट्स) डेटा स्टोर करता है</strong>। चोरी होने के लिए कोई क्लाउड वॉल्ट नहीं है, क्रैक करने के लिए कोई फ़ाइल नहीं है, और लीक होने के लिए कोई डेटाबेस नहीं है। पासवर्ड्स केवल आपकी ज़रूरत के समय रैम में गणित से बनते हैं और ब्राउज़र बंद होते ही समाप्त हो जाते हैं।
+        </div>
+      </details>
+
+      <!-- Q3 -->
+      <details class="faq-item" id="faq-ram-performance">
+        <summary>
+          <span>FrankPass केवल 50 MB से कम रैम क्यों लेता है, जबकि अन्य टूल्स 6 GB तक खा जाते हैं?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          पारंपरिक डेस्कटॉप पासवर्ड मैनेजर्स क्रोमियम और इलेक्ट्रॉन (Electron) के भारी फ्रेमवर्क पर चलते हैं, जो बैकग्राउंड में एक पूरा दूसरा ब्राउज़र चलाकर 1.5 GB से 6.0 GB रैम खाते हैं। <strong>FrankPass आपके मौजूदा ब्राउज़र के नेटिव Web Cryptography API पर शुद्ध वैनिला जावास्क्रिप्ट में चलता है</strong>। यह केवल पासवर्ड बनाते समय अधिकतम 50 MB रैम लेता है, और आइडल रहने पर <strong>0 MB रैम</strong> लेता है। बैकग्राउंड में शून्य बैटरी खपत।
+        </div>
+      </details>
+
+      <!-- Q4 -->
+      <details class="faq-item" id="faq-smart-normalization">
+        <summary>
+          <span>टाइपो (Typo) होने पर क्या अलग पासवर्ड बन जाएगा? नॉर्मलाइज़ेशन इंजन कैसे मदद करता है?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          कच्चे गणितीय जनरेटर में एक मामूली सी टाइपिंग गलती पूरे पासवर्ड को बदल देती है। FrankPass इसे अपने <strong>स्मार्ट इनपुट नॉर्मलाइज़ेशन इंजन</strong> से हल करता है:<br><br>
+          <ul>
+            <li><strong>ईमेल नॉर्मलाइज़ेशन:</strong> ईमेल से आगे-पीछे का स्पेस स्वतः हट जाता है और सभी अक्षर छोटे (lowercase) हो जाते हैं, जिससे मोबाइल ऑटो-कैपिटलाइज़ेशन की गलती नहीं होती।</li>
+            <li><strong>प्लेटफॉर्म डेटासेट व लाइव कैनोनिकल सीड:</strong> FrankPass में ग्लोबल प्लेटफॉर्म्स का बड़ा डेटासेट है। आप <code>https://retail.onlinesbi.sbi/</code>, <code>sbi.co.in</code>, या <code>State Bank of India</code> लिखें, यह स्वतः इसका कैनोनिकल सीड निकालता है जो इनपुट बॉक्स के नीचे साफ़ दिखाई देता है।</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Q5 -->
+      <details class="faq-item" id="faq-rotation-month-names">
+        <summary>
+          <span>अगर बैंक या कंपनी हर 90 दिन में पासवर्ड बदलने को कहे तो क्या करें? क्या महीने का नाम लिख सकते हैं?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <strong>हाँ, बिल्कुल।</strong> आप केवल संख्या (1, 2, 3) तक सीमित नहीं हैं। FrankPass आपको स्वाभाविक रोटेशन टैग्स जैसे <strong>Jan2026</strong> या <strong>Feb2026</strong> उपयोग करने की अनुमति देता है। जब भी पासवर्ड बदलना हो, रोटेशन टैग बदल दें। आपका मुख्य मास्टर सीक्रेट वही रहेगा, लेकिन उस खाते के लिए एक बिल्कुल नया, मजबूत पासवर्ड बन जाएगा।
+        </div>
+      </details>
+
+      <!-- Q6 -->
+      <details class="faq-item" id="faq-infostealers-invisible-vault">
+        <summary>
+          <span>FrankPass इन्फोस्टीलर मालवेयर (RedLine, Vidar, Lumma) से कैसे सुरक्षा करता है?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          इन्फोस्टीलर मालवेयर एन्क्रिप्शन नहीं तोड़ते; वे आपकी हार्ड ड्राइव से ब्राउज़र की SQLite फ़ाइलें और एक्सटेंशन स्टोरेज चुराते हैं। FrankPass का <strong>Invisible RAM Vault आर्किटेक्चर</strong> पासवर्ड बनाते समय क्रेडेंशियल्स को केवल वोलेटाइल रैम मेमोरी में रखता है। क्योंकि FrankPass डिस्क पर कभी कोई फ़ाइल या डेटाबेस नहीं लिखता, इसलिए डिस्क स्कैन करने वाले मालवेयर को चुराने के लिए 0 बाइट्स मिलते हैं।
+        </div>
+      </details>
+
+      <!-- Q7 -->
+      <details class="faq-item" id="faq-edge-mirror-workers">
+        <summary>
+          <span>अगर इंटरनेट बंद हो जाए या मुख्य वेबसाइट डाउन हो जाए, तो पासवर्ड कैसे मिलेगा?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          FrankPass कभी बंद नहीं हो सकता:
+          <ul style="margin:0.5rem 0 0 1.25rem;padding:0;line-height:1.6">
+            <li><strong>100% ऑफलाइन PWA:</strong> इंस्टॉल होने के बाद FrankPass बिना किसी इंटरनेट कनेक्शन के पूरी तरह स्थानीय रूप से चलता है।</li>
+            <li><strong>Cloudflare Workers एज मिरर:</strong> आप दुनिया के 300+ डेटा सेंटरों से संचालित हमारे बैकअप मिरर <a href="https://frankpass.workers.dev" target="_blank" rel="noopener" style="color:var(--accent-light);text-decoration:underline">frankpass.workers.dev</a> पर कभी भी जा सकते हैं।</li>
+            <li><strong>शाश्वत गणित:</strong> गणितीय फॉर्मूला खुला और मानक है, जिसे दुनिया की कोई भी कंपनी बंद नहीं कर सकती।</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Q8 -->
+      <details class="faq-item" id="faq-master-secret-creation">
+        <summary>
+          <span>कागजी शीट के बिना ऐसा मास्टर सीक्रेट कैसे बनाएं जो कभी न भूलें?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          सच्ची संप्रभुता का मतलब है कोई कागजी लीक न होना। इसके लिए हम आपको व्यक्तिगत एसोसिएटिव मेमरी तकनीक सिखाते हैं। अपने जीवन की 4 से 6 स्वाभाविक बातों और संख्याओं को जोड़कर ऐसा मुहावरा बनाएं जो आपका दिमाग हमेशा याद रखेगा, लेकिन कोई सुपरकंप्यूटर कभी गेस नहीं कर पाएगा। हमारी <a href="/secret-key-guide-hindi.html" style="color:var(--accent-light);font-weight:700;text-decoration:underline">मास्टर सीक्रेट की गाइड &rarr;</a> पढ़कर अपना मजबूत सीक्रेट आज ही बनाएं।
+        </div>
+      </details>
+
+      <!-- Q9 -->
+      <details class="faq-item" id="faq-pricing-fairness">
+        <summary>
+          <span>FrankPass Pro की कीमत $25 लाइफटाइम क्यों है? क्या कोई छिपा हुआ सब्सक्रिप्शन है?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          कोई छिपा हुआ शुल्क या .99 वाली नौटंकी नहीं है। सीधा **$25 एकमुश्त आजीवन (Lifetime)**। चूंकि FrankPass आपके डेटा को सर्वर पर नहीं रखता, इसलिए हमारे पास सर्वर मेंटेनेंस का भारी खर्च नहीं होता। 30 दिन का बिना क्रेडिट कार्ड के फ्री ऑफलाइन ट्रायल उपलब्ध है, और X (Twitter) पर सच्चा अनुभव साझा करने पर **75% कम्युनिटी छूट ($6.25)** स्वतः मिलती है।
+        </div>
+      </details>
+
+      <!-- Q10 -->
+      <details class="faq-item" id="faq-pin-generator">
+        <summary>
+          <span>FrankPass का उपयोग करके भूलने वाले ATM और UPI पिन की समस्या कैसे हल होती है?</span>
+          <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+        <div class="faq-body">
+          <a href="/pin.html" style="color:var(--accent-light);text-decoration:underline">FrankPass पिन जनरेटर</a> में आप अपनी उसी मास्टर सीक्रेट की और बैंक के नाम (जैसे SBI ATM या PhonePe) का उपयोग करके 4-अंकीय या 6-अंकीय पिन कैलकुलेट करते हैं। जब भी आप कार्ड या UPI बनाते हैं, वही पिन सेट करें। बाद में पिन कहीं लिखने या याद रखने की ज़रूरत नहीं है; जब भी ज़रूरत हो, FrankPass पर आकर 1 सेकंड में पुनः कैलकुलेट कर लें।
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div style="margin-top:3rem;text-align:center;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="/docs-hindi.html" class="btn-primary" aria-label="तकनीकी दस्तावेज़ पढ़ें">
+      तकनीकी डॉक्स पढ़ें &rarr;
+    </a>
+    <a href="https://youtube.com/@frankpasshq" class="btn-ghost" target="_blank" rel="nofollow noopener noreferrer" aria-label="यूट्यूब पर वीडियो देखें">
+      यूट्यूब वीडियो देखें &rarr;
+    </a>
+  </div>
+</section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<!-- Mobile bottom nav -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>होम</span></a>
+  <a href="/get-started-hindi.html" class="mob-nav-item" aria-label="शुरू करें"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg><span>स्टार्ट</span></a>
+  <a href="/pro.html" class="mob-nav-item" aria-label="प्रो लें"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>प्रो</span></a>
+  <a href="/faq-hindi.html" class="mob-nav-item active" aria-label="FAQ" aria-current="page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
+  <a href="/profile-hindi.html" class="mob-nav-item" aria-label="प्रोफाइल"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>प्रोफाइल</span></a>
+</nav>
+
+<script src="/frankpass-config.js?v=4.3.3"></script>
+<script src="/country-data.min.js?v=4.6.2"></script>
+<script src="/country-dropdown.min.js?v=4.6.9"></script>
+<script src="/footer.min.js?v=4.6.2"></script>
+<script src="/ai-prompt-bar.js?v=4.3.3"></script>
+<script>
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+});
+
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+  item.addEventListener('toggle', () => {
+    if (item.open) {
+      faqItems.forEach(other => {
+        if (other !== item && other.open) other.open = false;
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

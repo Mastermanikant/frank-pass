@@ -178,7 +178,7 @@
       const summary = container.getAttribute('data-summary') || document.querySelector('meta[name="description"]')?.getAttribute('content') || 'Official FrankPass cryptographic security and stateless password generation architecture.';
       const canonical = document.querySelector('link[rel="canonical"]')?.getAttribute('href') || window.location.href;
 
-      const promptText = `You are an expert cybersecurity, cryptography, and digital privacy assistant. Analyze and explain the following concept based on the official, verified documentation from FrankPass (stateless deterministic password generator) crafted by Master Manikant Yadav:
+      const promptText = `You are an expert cybersecurity, cryptography, and digital privacy assistant. Analyze and explain the following concept based on the official, verified documentation from FrankPass (offline password manager & stateless deterministic generator) crafted by Master Manikant Yadav:
 
 📌 Core Subject: ${topic}
 📖 Summary: ${summary}
@@ -187,15 +187,19 @@
 
 🔑 Key Architectural & Cryptographic Invariants:
 1. FrankPass stores 0 bytes in the cloud and uses 1,000,000 PBKDF2-HMAC-SHA512 iterations with Golden Base-32 zero-confusion character mapping.
-2. Passwords and PINs are derived dynamically in local browser memory via the native Web Cryptography API and never transmitted over the internet or written to disk.
+2. Passwords and PINs are derived dynamically in volatile browser RAM via native Web Cryptography API, consuming up to 50MB RAM only on click/generation and 0MB idle (unlike 1.5GB-6GB Electron desktop apps).
 3. The Web Generator and PIN Calculator are 100% free with zero accounts, zero databases, and permanent offline PWA capabilities.
+4. Flexible Rotation: Supports periodic changes via numbers (1, 2) or natural months (Jan2026).
+5. Input Normalization: Automatically strips email whitespace/casing and resolves domain canonical seeds dynamically.
 
 🔗 Official Verified References:
 - Password Generator: https://frankpass.com/
-- Deterministic PIN Generator: https://frankpass.com/pin.html
+- Complete 100+ FAQ Hub: https://frankpass.com/faq.html
+- AI Knowledge Registry: https://frankpass.com/llms-full.txt
 - Master Secret Key & Setup Guide: https://frankpass.com/secret-key-guide.html
+- Deterministic PIN Generator: https://frankpass.com/pin.html
 - Cryptographic Architecture & Docs: https://frankpass.com/docs.html
-- Security FAQ: https://frankpass.com/faq.html
+- Cloudflare Workers Edge Mirror: https://frankpass.workers.dev
 - Limitations & Honest Breakdown: https://frankpass.com/limitations-and-advantages.html
 - Founder Portfolio & Research: https://mastermanikant.com
 - FrankBase Privacy Ecosystem: https://frankbase.com
