@@ -332,19 +332,7 @@
 
 
 
-        // 5. Explicit country slug on home/root paths (/in, /us, /ug)
-
-        try {
-
-            const targetPath = '/' + country.code.toLowerCase();
-
-            if (window.location.pathname.length <= 4 && window.location.pathname !== targetPath) {
-
-                window.history.replaceState({ code: country.code }, '', targetPath);
-
-            }
-
-        } catch (e) { /* local file:// - ignore */ }
+        // 5. Keep canonical URL clean - zero automatic replaceState URL mutation
 
 
 
@@ -404,27 +392,39 @@
 
 
 
-        // ── Pure Live Location & Timezone Detection (Zero-Stale Storage) ────
+        // ── Clean Robust Location Detection ────
         let initCode = null;
 
-        // Priority 1: Explicit Country in URL Path (/in, /us, /pk, /gb, /de, etc.)
-        const urlParts = window.location.pathname.split('/').filter(Boolean);
-        let pathCountry = urlParts[0] ? urlParts[0].toLowerCase() : '';
-        if (pathCountry === 'hn') pathCountry = 'in';
-        if (pathCountry.length === 2 && allCountries.find(c => c.code === pathCountry)) {
-            initCode = pathCountry;
-        }
-
-        // Priority 2: Direct Hardware Timezone & Offset (Physical Device Clock)
-        if (!initCode) {
+        // Anti-Pollution Guard: Purge accidental or buggy 'us' preference if user is physically in India
+        try {
             const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat ? Intl.DateTimeFormat().resolvedOptions().timeZone || '' : '');
             const tzOffset = (new Date()).getTimezoneOffset(); // -330 for India (UTC+05:30)
-
-            // High Precision India Detection
             if (tz.includes('Kolkata') || tz.includes('Calcutta') || tzOffset === -330) {
-                initCode = 'in';
-            } else {
-                try {
+                if (localStorage.getItem('fp_preferred_country') === 'us') {
+                    localStorage.removeItem('fp_preferred_country');
+                    document.cookie = 'fp_preferred_country=; path=/; max-age=0';
+                }
+            }
+        } catch (e) {}
+
+        // Priority 1: Explicit 2-Letter Country in URL Path (/in, /us, /pk, /gb, etc. - ignore html filenames)
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
+        const firstSegment = pathSegments[0] ? pathSegments[0].toLowerCase() : '';
+        const explicitCountry = (firstSegment.length === 2 && !firstSegment.endsWith('.html') && firstSegment !== 'hn') ? firstSegment : (firstSegment === 'hn' ? 'in' : '');
+        if (explicitCountry && allCountries.find(c => c.code === explicitCountry)) {
+            initCode = explicitCountry;
+        }
+
+        // Priority 2: Direct Hardware Timezone & Offset (Physical Device Clock - 100% Reliable for India)
+        if (!initCode) {
+            try {
+                const tz = (typeof Intl !== 'undefined' && Intl.DateTimeFormat ? Intl.DateTimeFormat().resolvedOptions().timeZone || '' : '');
+                const tzOffset = (new Date()).getTimezoneOffset(); // -330 for India (UTC+05:30)
+
+                // High Precision India Detection (Kolkata, Calcutta, or UTC+5:30)
+                if (tz.includes('Kolkata') || tz.includes('Calcutta') || tzOffset === -330) {
+                    initCode = 'in';
+                } else {
                     const tzMap = {
                         'America/New_York': 'us', 'America/Los_Angeles': 'us',
                         'America/Chicago': 'us', 'America/Denver': 'us',
@@ -449,8 +449,18 @@
                     } else if (tz.startsWith('Australia/')) {
                         initCode = 'au';
                     }
-                } catch (e) {}
-            }
+                }
+            } catch (e) {}
+        }
+
+        // Priority 3: Explicit User Saved Preference (ONLY if user manually saved it and not overridden)
+        if (!initCode) {
+            try {
+                const saved = localStorage.getItem('fp_preferred_country');
+                if (saved && allCountries.find(c => c.code === saved.toLowerCase())) {
+                    initCode = saved.toLowerCase();
+                }
+            } catch (e) {}
         }
 
         // Final Default: India ('in')
@@ -465,9 +475,9 @@
             selectCountry(initCountry, false);
         }
 
-        // Priority 3: Real-Time Non-blocking Cloudflare Edge Geolocation (/cdn-cgi/trace)
-        // Always verifies actual physical IP location on live edge without relying on any cache
-        if (typeof fetch === 'function') {
+        // Priority 4: Background Cloudflare Edge Geolocation (/cdn-cgi/trace)
+        // If live Cloudflare Edge confirms physical country, update smoothly
+        if (typeof fetch === 'function' && !explicitCountry) {
             try {
                 fetch('/cdn-cgi/trace')
                     .then(r => r.text())
@@ -476,8 +486,7 @@
                         if (m && m[1]) {
                             const edgeCode = m[1].toLowerCase();
                             const edgeCountry = allCountries.find(c => c.code === edgeCode);
-                            // If user is not on an explicit country URL, sync to actual Cloudflare Edge location
-                            if (edgeCountry && !pathCountry && edgeCountry.code !== currentCode) {
+                            if (edgeCountry && edgeCountry.code !== currentCode) {
                                 selectCountry(edgeCountry, false);
                             }
                         }
