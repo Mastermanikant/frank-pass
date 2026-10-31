@@ -57,13 +57,25 @@
   Access-Control-Allow-Origin: *
 
 # De-Indexed Topical Dilution Pages (Safe Removal Without Soft-404s)
+/products
+  X-Robots-Tag: noindex, nofollow, noarchive
+
 /products.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/products-hindi
   X-Robots-Tag: noindex, nofollow, noarchive
 
 /products-hindi.html
   X-Robots-Tag: noindex, nofollow, noarchive
 
+/sponsors
+  X-Robots-Tag: noindex, follow
+
 /sponsors.html
+  X-Robots-Tag: noindex, follow
+
+/sponsors-hindi
   X-Robots-Tag: noindex, follow
 
 /sponsors-hindi.html
