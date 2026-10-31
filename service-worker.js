@@ -1,5 +1,5 @@
 // FrankPass Service Worker v4.6.4 (Safe Offline Cache & Zero Rogue Reloads)
-const CACHE_NAME = 'frankpass-v4.6.9';
+const CACHE_NAME = 'frankpass-v4.7.0';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -9,8 +9,6 @@ const CACHED_URLS = [
     '/pin.html',
     '/comparison-between-frankpass-all-generators-deterministic-random-pin.html',
     '/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html',
-    '/why-stateless-password-generation-is-the-future.html',
-    '/why-stateless-password-generation-is-the-future-hindi.html',
     '/where-password-managers-fail-and-invisible-vault.html',
     '/where-password-managers-fail-and-invisible-vault-hindi.html',
     '/what-makes-a-password-strong-and-passphrase-guide.html',
@@ -26,8 +24,6 @@ const CACHED_URLS = [
     '/install.html',
     '/pricing.html',
     '/pricing-hindi.html',
-    '/pro.html',
-    '/products.html',
     '/how-frankpass-is-free-without-selling-data.html',
     '/how-frankpass-is-free-without-selling-data-hindi.html',
     '/library.html',
@@ -45,7 +41,6 @@ const CACHED_URLS = [
     '/about-us-hindi.html',
     '/founder-mastermanikant.html',
     '/founder-mastermanikant-hindi.html',
-    '/sponsors.html',
     '/legal.html',
     '/404.html',
     '/.well-known/security.txt',

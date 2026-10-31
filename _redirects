@@ -2,6 +2,18 @@
 # Note: Cloudflare Pages enforces a hard 100-rule limit. Keep total active rules under 95.
 
 # 1. Core Feature Aliases
+# Pillar 3 Consolidation: Stateless Future -> Cloud Vaults (EN + HI)
+/why-stateless-password-generation-is-the-future.html /frankpass-vs-cloud-password-vaults.html 301
+/why-stateless-password-generation-is-the-future-hindi.html /frankpass-vs-cloud-password-vaults-hindi.html 301
+/why-stateless-password-generation-is-the-future /frankpass-vs-cloud-password-vaults 301
+/why-stateless-password-generation-is-the-future-hindi /frankpass-vs-cloud-password-vaults-hindi 301
+/stateless /frankpass-vs-cloud-password-vaults 301
+/stateless-hindi /frankpass-vs-cloud-password-vaults-hindi 301
+
+# Pillar 2 Consolidation: Pro -> Pricing (EN + HI)
+/pro.html /pricing.html 301
+/pro-hindi.html /pricing-hindi.html 301
+
 /compare /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /difference /comparison-between-frankpass-all-generators-deterministic-random-pin 301
 /tools-comparison /comparison-between-frankpass-all-generators-deterministic-random-pin 301
@@ -68,8 +80,6 @@
 /hn / 200
 
 # 3. Pillars & Canonical Guide Aliases
-/stateless /why-stateless-password-generation-is-the-future 301
-/stateless-hindi /why-stateless-password-generation-is-the-future-hindi 301
 /invisible-vault /where-password-managers-fail-and-invisible-vault 301
 /invisible-vault-hindi /where-password-managers-fail-and-invisible-vault-hindi 301
 /entropy /what-makes-a-password-strong-and-passphrase-guide 301

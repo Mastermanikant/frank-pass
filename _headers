@@ -55,3 +55,16 @@
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
   Access-Control-Allow-Origin: *
+
+# De-Indexed Topical Dilution Pages (Safe Removal Without Soft-404s)
+/products.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/products-hindi.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/sponsors.html
+  X-Robots-Tag: noindex, follow
+
+/sponsors-hindi.html
+  X-Robots-Tag: noindex, follow
