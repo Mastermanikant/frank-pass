@@ -1889,6 +1889,184 @@
 <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
 
 <!-- ============================================================
+     FRANKPASS PWA LOCAL VAULT MODALS & UI CONTROLLER (v4.3.3)
+     ============================================================ -->
+
+<!-- 1. Vault Setup Modal -->
+<div id="vault-setup-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-setup-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">🔒</div>
+    <h3 id="vault-setup-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Save Key to Device Vault
+    </h3>
+    <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+      Choose a 4-digit PIN to securely encrypt and lock your Master Secret Key locally on this device with AES-GCM (100k PBKDF2 rounds).
+    </p>
+
+    <div class="form-group" style="margin-bottom:1rem">
+      <label class="form-label" style="text-align:center;display:block">Set 4-Digit Numeric PIN</label>
+      <div class="vault-pin-display" id="setup-pin-display">
+        <div class="pin-digit-box" data-idx="0">•</div>
+        <div class="pin-digit-box" data-idx="1">•</div>
+        <div class="pin-digit-box" data-idx="2">•</div>
+        <div class="pin-digit-box" data-idx="3">•</div>
+        <input type="tel" id="setup-pin-input" class="pin-real-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" autocomplete="off" aria-label="Enter 4-digit PIN to set up">
+      </div>
+      <div id="setup-pin-error" style="display:none;color:#ef4444;font-size:0.76rem;text-align:center;margin-top:0.3rem"></div>
+    </div>
+
+    <!-- Biometric Toggle Option -->
+    <div id="setup-bio-option" style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:12px;padding:0.75rem 0.85rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;gap:8px">
+      <div style="display:flex;flex-direction:column">
+        <span style="font-size:0.84rem;font-weight:700;color:var(--text-primary)">👆 Enable Biometrics</span>
+        <span style="font-size:0.72rem;color:var(--text-muted)">Fingerprint / Face ID for 1-tap unlock &amp; PIN recovery</span>
+      </div>
+      <label class="toggle-switch-right" for="setup-bio-checkbox" style="margin:0;cursor:pointer">
+        <input type="checkbox" id="setup-bio-checkbox" role="switch" checked style="display:none">
+        <span class="toggle-track" aria-hidden="true"></span>
+      </label>
+    </div>
+
+    <div style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:10px;padding:0.6rem 0.75rem;margin-bottom:1.2rem;font-size:0.75rem;color:var(--text-muted);line-height:1.45">
+      🛡️ <strong>Zero-Knowledge Promise:</strong> Your key never leaves this browser. If you forget your PIN, Biometrics allows setting a new PIN instantly.
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:0.6rem">
+      <button type="button" id="btn-save-vault" class="btn-primary" style="width:100%;padding:0.75rem;font-weight:700;justify-content:center">
+        🔒 Save &amp; Lock Vault
+      </button>
+      <button type="button" id="btn-cancel-setup" class="btn-ghost" style="width:100%;padding:0.65rem;font-weight:600;justify-content:center">
+        Cancel (Stay Stateless)
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Vault Unlock Modal -->
+<div id="vault-unlock-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-unlock-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">🔐</div>
+    <h3 id="vault-unlock-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Unlock Device Vault
+    </h3>
+    <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+      Enter your 4-digit PIN or scan your biometric to decrypt your Master Secret Key.
+    </p>
+
+    <!-- 1-Tap Biometric Button -->
+    <div id="unlock-bio-wrap" style="margin-bottom:1.2rem">
+      <button type="button" id="btn-bio-prompt" class="btn-bio-unlock" aria-label="Unlock with Fingerprint or Face">
+        <span>👆</span> Unlock with Fingerprint / Face ID
+      </button>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:1rem;color:var(--text-muted);font-size:0.78rem">
+        <span style="flex:1;height:1px;background:var(--border)"></span>
+        <span>OR ENTER 4-DIGIT PIN</span>
+        <span style="flex:1;height:1px;background:var(--border)"></span>
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-bottom:0.75rem">
+      <div class="vault-pin-display" id="unlock-pin-display">
+        <div class="pin-digit-box" data-idx="0">•</div>
+        <div class="pin-digit-box" data-idx="1">•</div>
+        <div class="pin-digit-box" data-idx="2">•</div>
+        <div class="pin-digit-box" data-idx="3">•</div>
+        <input type="tel" id="unlock-pin-input" class="pin-real-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" autocomplete="off" aria-label="Enter 4-digit PIN to unlock">
+      </div>
+      <div id="unlock-pin-error" style="display:none;color:#ef4444;font-size:0.76rem;text-align:center;margin-top:0.3rem"></div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;font-size:0.8rem">
+      <button type="button" id="btn-forgot-pin" style="background:none;border:none;color:var(--accent-light);cursor:pointer;text-decoration:underline;padding:0;font-size:0.8rem;font-weight:600">
+        Forgot PIN?
+      </button>
+      <button type="button" id="btn-cancel-unlock" class="btn-ghost btn-sm" style="padding:4px 10px;font-size:0.75rem">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 3. Vault Reset / Recovery Modal -->
+<div id="vault-reset-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-reset-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">🔄</div>
+    <h3 id="vault-reset-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Vault Recovery &amp; PIN Reset
+    </h3>
+    
+    <div id="reset-with-bio-section" style="margin-bottom:1.25rem">
+      <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1rem">
+        Scan your device biometric (Fingerprint / Face ID) to verify ownership and set a new 4-digit PIN without losing your key.
+      </p>
+      <button type="button" id="btn-bio-verify-reset" class="btn-bio-unlock" style="margin-bottom:1rem">
+        <span>👆</span> Verify Biometric &amp; Set New PIN
+      </button>
+    </div>
+
+    <!-- Set New PIN Box (hidden until bio verified) -->
+    <div id="new-pin-box" style="display:none;margin-bottom:1.25rem">
+      <label class="form-label" style="text-align:center;display:block">Enter New 4-Digit PIN</label>
+      <div class="vault-pin-display" id="new-pin-display">
+        <div class="pin-digit-box" data-idx="0">•</div>
+        <div class="pin-digit-box" data-idx="1">•</div>
+        <div class="pin-digit-box" data-idx="2">•</div>
+        <div class="pin-digit-box" data-idx="3">•</div>
+        <input type="tel" id="new-pin-input" class="pin-real-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" autocomplete="off" aria-label="Enter new 4-digit PIN">
+      </div>
+      <button type="button" id="btn-confirm-new-pin" class="btn-primary" style="width:100%;padding:0.75rem;font-weight:700;justify-content:center">
+        Confirm New PIN
+      </button>
+    </div>
+
+    <!-- Fallback Clear Vault Warning -->
+    <div style="border-top:1px solid var(--border);padding-top:1rem;margin-top:0.75rem">
+      <p style="font-size:0.75rem;color:var(--text-muted);line-height:1.45;margin-bottom:0.65rem">
+        If you cannot verify your biometric or PIN, you can reset and clear the local vault from this device.
+      </p>
+      <button type="button" id="btn-clear-vault-confirm" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171;font-size:0.8rem;font-weight:700;padding:6px 12px;border-radius:8px;cursor:pointer;width:100%">
+        🗑️ Clear Vault &amp; Remove Key from Device
+      </button>
+    </div>
+
+    <div style="margin-top:1rem;text-align:center">
+      <button type="button" id="btn-close-reset-modal" class="btn-ghost btn-sm" style="padding:4px 12px">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 4. Vault Management Modal -->
+<div id="vault-manage-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="vault-manage-title">
+  <div class="custom-modal-card">
+    <div style="font-size:2.2rem;margin-bottom:0.4rem;text-align:center">⚙️</div>
+    <h3 id="vault-manage-title" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);text-align:center;margin-bottom:0.4rem">
+      Device Vault Options
+    </h3>
+    <p style="font-size:0.84rem;color:var(--text-muted);text-align:center;line-height:1.5;margin-bottom:1.25rem">
+      Your Master Secret Key is encrypted and stored locally in this browser.
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:0.75rem">
+      <button type="button" id="btn-manage-lock" class="btn-primary" style="width:100%;padding:0.75rem;justify-content:center;font-weight:700">
+        🔒 Lock Vault Now
+      </button>
+      <button type="button" id="btn-manage-change-pin" class="btn-ghost" style="width:100%;padding:0.75rem;justify-content:center;font-weight:600">
+        🔑 Change 4-Digit PIN
+      </button>
+      <button type="button" id="btn-manage-remove" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#f87171;font-size:0.85rem;font-weight:700;padding:0.75rem;border-radius:10px;cursor:pointer;width:100%">
+        🗑️ Remove Key from Device
+      </button>
+      <button type="button" id="btn-close-manage" class="btn-ghost" style="width:100%;padding:0.6rem;justify-content:center;font-size:0.85rem">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
  SCRIPTS - load order is critical
  ============================================================ -->
 <script defer src="/frankpass-config.js?v=4.5.9"></script>
