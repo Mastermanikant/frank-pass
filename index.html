@@ -1973,59 +1973,7 @@
 
 
 <!-- First-Time Onboarding Guidance Floating Card (Zero CLS, Sovereign Local Storage) -->
-<div id="platform-guidance-card" class="platform-guidance-card" style="display: none;" role="status" aria-live="polite">
-  <div class="guidance-card-content">
-    <div class="guidance-card-header">
-      <div class="guidance-card-title">
-        <span class="guidance-icon">💡</span>
-        <span>Quick Tip for Bank &amp; Custom Sites</span>
-      </div>
-      <button type="button" id="guidance-close-btn" class="guidance-close-btn" aria-label="Close for now" title="Close for now">&times;</button>
-    </div>
-    <p class="guidance-card-text">
-      If your bank or platform is not in the dropdown, simply <strong>copy your platform full URL</strong> (e.g. <code>https://...</code>) and paste it into the Platform section. FrankPass normalizes it automatically!
-    </p>
-    <div class="guidance-card-actions">
-      <button type="button" id="guidance-dismiss-btn" class="guidance-understand-btn">Understood, don't show again</button>
-    </div>
-  </div>
-</div>
-<script>
-(function initPlatformGuidance() {
-  var DISMISS_KEY = 'fp_url_tip_dismissed';
-  var isDismissed = false;
-  try {
-    isDismissed = localStorage.getItem(DISMISS_KEY) === '1' || document.cookie.indexOf(DISMISS_KEY + '=1') !== -1;
-  } catch (e) {}
 
-  if (isDismissed) return;
-
-  var card = document.getElementById('platform-guidance-card');
-  if (!card) return;
-
-  setTimeout(function() {
-    card.style.display = 'block';
-  }, 1200);
-
-  var closeBtn = document.getElementById('guidance-close-btn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-      card.style.display = 'none';
-    });
-  }
-
-  var dismissBtn = document.getElementById('guidance-dismiss-btn');
-  if (dismissBtn) {
-    dismissBtn.addEventListener('click', function() {
-      card.style.display = 'none';
-      try {
-        localStorage.setItem(DISMISS_KEY, '1');
-        document.cookie = DISMISS_KEY + '=1; path=/; max-age=31536000; SameSite=Lax';
-      } catch (e) {}
-    });
-  }
-})();
-</script>
 
 <script>
 // Mandatory Checkboxes Enforcement on Landing Page
