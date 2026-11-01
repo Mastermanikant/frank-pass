@@ -14,7 +14,7 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="robots" content="index, follow">
  <title>FrankPass: Cloudless Password Manager and Deterministic Password Generator</title>
- <meta name="description" content="Say goodbye to cloud breaches. FrankPass is a cloudless, zero-database deterministic password generator and manager. Local WebCrypto math recreates your identical passwords on any device.">
+ <meta name="description" content="Get your password on any device with the help of your Master Secret Key. FrankPass is a cloudless, deterministic password generator with zero database storage. 100% offline.">
  <meta name="keywords" content="stateless password generator, zero knowledge password manager, deterministic password, offline password generator, FrankPass, no cloud password, PBKDF2 password generator">
  <link rel="canonical" href="https://frankpass.com/">
  <meta property="og:title" content="FrankPass: Cloudless Password Manager and Deterministic Password Generator">
@@ -449,6 +449,17 @@
     <p class="hero-subtitle">
       Get your password on any device with the help of your Master Secret Key. 100% offline math, zero cloud vault, zero sync needed.
     </p>
+    <div class="hero-trust-badges" style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.6rem;margin-top:1.15rem;margin-bottom:0.25rem;" data-nosnippet>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:#10b981;">
+        <span>&#128737;&#65039;</span> <span>Zero Cloud Database: No server, no database leaks.</span>
+      </div>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:var(--accent-light);">
+        <span>&#9889;</span> <span>No Sync Needed: Your Master Key recreates the exact same password on any device.</span>
+      </div>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:#60a5fa;">
+        <span>&#128274;</span> <span>100% Offline: Operates purely in local device RAM.</span>
+      </div>
+    </div>
   </div>
   <!-- Hero Content: Centered Layout (Founder Card on Top + Generator Card Below) -->
   <div class="hero-single-col" style="max-width: 540px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 0.5rem;">
@@ -1056,44 +1067,45 @@
  <div class="text-center mb-4">
  <div class="section-label" aria-hidden="true">Deterministic Math &middot; Zero Cloud Storage</div>
  <h2 id="how-heading" class="section-title">How FrankPass Works: The Deterministic Workflow</h2>
- <p class="section-desc">Four simple steps. One deterministic mathematical function. One unique password. No cloud storage. <a href="/whitepaper.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600;margin-left:4px;">Read Cryptographic Whitepaper &rarr;</a></p>
+ <p class="section-desc">Just like 2 + 2 = 4 everywhere, your Master Seed recreates the exact same password on any device without internet, cloud vaults, or sync files. <a href="/whitepaper.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600;margin-left:4px;">Read Technical Whitepaper &amp; Test Vectors &rarr;</a></p>
  </div>
  <div class="stateless-steps-grid" role="list" aria-label="Deterministic Workflow Steps">
- <!-- Step 1 -->
+  <!-- Step 1 -->
  <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">1</div>
-    <div class="step-icon" aria-hidden="true">🔑</div>
+    <div class="step-icon" aria-hidden="true">&#128273;</div>
   </div>
  <h3>Enter Master Secret Key (Master Seed)</h3>
- <p>Your personal cryptographic seed. To eliminate cognitive load, normalize it to lowercase (a-z, 0-9, no spaces). Use a memorable 6 to 8 word passphrase for life. <a href="/secret-key-guide.html" style="color:var(--accent-light);text-decoration:underline;">Read Secret Key Guide &rarr;</a></p>
+ <p>For your ease of memory, this field accepts only lowercase English letters (a-z) and numbers (0-9) with no spaces. This normalization removes cognitive load so you never wonder if you capitalized a letter or typed a symbol. Instead of complex symbols, use a long, memorable master seed of at least 6 to 8 words. It is processed with 1,000,000 PBKDF2-HMAC-SHA512 iterations purely in local device RAM and never leaves your machine. <a href="/secret-key-guide.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600;display:inline-block;margin-top:4px;">How to Craft a Strong &amp; Unforgettable Master Secret Key &rarr;</a></p>
  </div>
  <!-- Step 2 -->
  <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">2</div>
-    <div class="step-icon" aria-hidden="true">🌐</div>
+    <div class="step-icon" aria-hidden="true">&#127760;</div>
   </div>
- <h3>Enter Site Name or Paste URL</h3>
- <p>Type any website or service name (e.g. Amazon, Google, SBI) or paste the URL. FrankPass normalizes it automatically so amazon.com, www.amazon.com, and amazon all produce the exact same password.</p>
+ <h3>Enter Platform Name or Paste URL</h3>
+ <p>Don't worry about exact formatting or subdomains. Just type your app or website name (e.g. Amazon, Google, SBI) or paste the full URL. FrankPass automatically normalizes it into a unique platform seed every time so your passwords are 100% identical on all devices. You can see your live normalized platform seed displayed right below the platform box as you type!</p>
  </div>
  <!-- Step 3 -->
  <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">3</div>
-    <div class="step-icon" aria-hidden="true">🔄</div>
+    <div class="step-icon" aria-hidden="true">&#128260;</div>
   </div>
- <h3>Password Counter (Easy Rotation)</h3>
- <p>Need to periodically update a password? Never change your Master Seed! Simply open Advanced Options and change the Password Counter (1 to 999999 or Month/Year like Jun2024) to get a fresh unique password.</p>
+ <h3>Password Number / Rotation</h3>
+ <p>When you need to change your password, open Advanced Options and choose your password number between 1 and 999999 (it can be 2, 5, 10, or whatever you easily remember). Or choose a Month/Year variant (e.g. Jun 2024, June 2025, Jan 2026). Without changing your Master Seed, you get a fresh unique password for that site!</p>
  </div>
  <!-- Step 4 -->
  <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">4</div>
-    <div class="step-icon" aria-hidden="true">⚡</div>
+    <div class="step-icon" aria-hidden="true">&#9889;</div>
   </div>
-  <h3>Mathematical Re-creation</h3>
-  <p>1,000,000 PBKDF2-HMAC-SHA512 hashing rounds calculate your isolated password locally in browser RAM. No servers or database sync required: typing the same inputs on any device re-creates the exact same password!</p>
+  <h3>Recreate on All Devices (No Sync Needed)</h3>
+  <p>Because it runs on pure local mathematics, typing the same Master Seed and Platform Name on your phone, laptop, or offline computer creates the exact same password every single time. Zero cloud sync. Zero file transfers.</p>
+ </div>
  </div>
  </div>
  </div>
@@ -1216,6 +1228,9 @@
         <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
           Traditional password managers store encrypted vault blobs on company servers, creating honeypots for hackers. FrankPass stores 0 bytes: what does not exist on a server can never be leaked in a database breach.
         </p>
+        <div style="margin-top:0.75rem;padding:0.65rem 0.75rem;background:rgba(245,158,11,0.08);border-left:3px solid #f59e0b;border-radius:6px;font-size:0.8rem;color:var(--text-muted);line-height:1.5;">
+          <strong style="color:#f59e0b;">Honest Security Reality (Human Factor):</strong> Koi bhi takneek kamzor nahi hoti, adhiktam galtiyan manviye bhool se hoti hain. Yadi aapka Master Seed kamzor hai (jaise 4 akshar ka), toh ganit bhi offline brute-force se poori raksha nahi kar sakta. Isliye 6 se 8 shabdon ka lamba pass-phrase chunein aur Master Seed kisi ko na batayein. Wi-Fi ya OTT ke liye sirf generated password dein, Master Seed kabhi nahi!
+        </div>
       </div>
 
       <!-- Callout 2 -->
@@ -1249,6 +1264,9 @@
         <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
           FrankPass Extension injects credentials straight into DOM login fields without touching OS clipboard buffers. On Web, an auto-clear timer (15s/30s/60s) minimizes exposure, backed by copy-blocks on master keys.
         </p>
+        <div style="margin-top:0.75rem;padding:0.65rem 0.75rem;background:rgba(56,189,248,0.08);border-left:3px solid #38bdf8;border-radius:6px;font-size:0.8rem;color:var(--text-muted);line-height:1.5;">
+          <strong style="color:#38bdf8;">Pro OpSec Recommendation:</strong> Apne mahatvapoorna financial aur primary accounts ke liye ek dedicated clean Chrome Profile banayein, jismein kewal FrankPass extension ho aur koi anjaan third-party extension na ho taaki DOM scraping ka koi khatra na rahe.
+        </div>
       </div>
 
     </div>

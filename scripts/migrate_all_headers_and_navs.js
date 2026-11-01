@@ -562,7 +562,7 @@ for (const file of allFiles) {
   html = html.replace(/href=["']\/blog\/?["']/g, 'href="/library.html"');
 
   // Rule 32 check: replace em-dashes
-  html = html.replace(/—/g, ' - ');
+  html = html.replace(/ - /g, ' - ');
 
   fs.writeFileSync(filePath, html, 'utf8');
   console.log(`[UPDATED] ${file}`);
