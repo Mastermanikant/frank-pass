@@ -678,7 +678,7 @@
   <!-- Quick Clickable Recent Chips -->
   <div id="recent-usernames-chips" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.4rem;"></div>
   <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
-  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Multi-Account Isolation:</strong> Use only if you have multiple accounts on the same site. Establish a personal rule and follow it consistently.</span>
+  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">&#128161; 1 account? Leave blank. Multiple accounts on same site? Enter email to separate passwords.</span>
   </div>
 
  <!-- Platform input -->
@@ -711,7 +711,7 @@
   </div>
   </div>
   <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
-  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Confused?</strong> Paste the full website URL or type the app name  -  FrankPass handles the normalization automatically.</span>
+  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">&#128161; Type app name (e.g. Google) or paste full URL. Auto-normalized.</span>
   </div>
 
   <!-- Secret key input -->
@@ -815,7 +815,7 @@
   <input id="variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
   </div>
 
-  <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">💡 Default is 1. Change to 2, 3... only if you want a new password for this site.</span>
+  <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">&#128161; Default is 1. Change to 2 or 3 only when updating an old password.</span>
   </div>
 
  <!-- Password Type -->
@@ -1054,10 +1054,21 @@
     <div class="text-center mb-4">
       <div class="section-label" aria-hidden="true">Deterministic Math &middot; Zero Cloud Storage</div>
       <h2 id="how-heading" class="section-title" style="font-size:clamp(1.5rem,3.2vw,2.1rem)">How FrankPass Works: Step-by-Step Card Workflow</h2>
-      <p class="section-desc" style="max-width:620px;margin:0.5rem auto 0;font-size:0.92rem;line-height:1.6">
-        Every field in the generator card above explained in exact top-to-bottom order. Pure mathematics, zero server sync.
-        <a href="/whitepaper.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600;margin-left:4px;">Read Technical Whitepaper &amp; Test Vectors &rarr;</a>
-      </p>
+      <div class="section-desc" style="max-width:620px;margin:0.5rem auto 0;font-size:0.92rem;line-height:1.6;">
+        <div>Every field in the generator card above explained in exact top-to-bottom order. Pure mathematics, zero server sync.</div>
+        
+        <!-- Dual-Path Guidance Links (Stacked Vertically) -->
+        <div style="margin-top:0.75rem;display:flex;flex-direction:column;gap:0.4rem;align-items:center;font-size:0.85rem;">
+          <div>
+            <span style="color:var(--text-muted);">For general users wanting to understand how it works:</span>
+            <a href="/faq.html" style="color:var(--accent-light);text-decoration:underline;font-weight:700;margin-left:4px;">Read Beginner Guide &amp; FAQs &rarr;</a>
+          </div>
+          <div>
+            <span style="color:var(--text-muted);">For technical persons, security auditors, or advanced learners:</span>
+            <a href="/whitepaper.html" style="color:var(--accent-light);text-decoration:underline;font-weight:700;margin-left:4px;">Read Technical Whitepaper &amp; Math Proofs &rarr;</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- 5 Single-Column Workflow Cards (Matching Card Elements, 680px Width) -->
