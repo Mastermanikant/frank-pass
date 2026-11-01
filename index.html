@@ -643,7 +643,7 @@
   <div id="first-time-guide-toast" style="background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(99,102,241,0.08));border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.65rem 2rem 0.65rem 0.85rem;margin-bottom:1.15rem;font-size:0.8rem;color:var(--text-muted);line-height:1.45;position:relative;">
     <div style="display:flex;align-items:flex-start;gap:0.45rem;">
       <span style="color:var(--accent-light);font-size:0.95rem;line-height:1;flex-shrink:0;" aria-hidden="true">&#128161;</span>
-      <span><strong style="color:var(--text-primary);">Quick Tip:</strong> FrankPass has no server database. If you forget your Secret Key, passwords cannot be recovered. Choose a memorable 6 to 8 word Master Seed, or read the 4-step workflow below first! <a href="#how-heading" style="color:var(--accent-light);text-decoration:underline;font-weight:700;margin-left:4px;">Read 4-Step Guide &darr;</a></span>
+      <span><strong style="color:var(--text-primary);">Quick Tip:</strong> FrankPass has no server database. If you forget your Secret Key, passwords cannot be recovered. Choose a memorable 6 to 8 word Master Seed (plus an easy number for extra strength), or follow the step-by-step card workflow below first! <a href="#how-heading" style="color:var(--accent-light);text-decoration:underline;font-weight:700;margin-left:4px;">Read Card Workflow Guide &darr;</a></span>
     </div>
     <button type="button" id="dismiss-guide-toast-btn" aria-label="Close guide tip" style="position:absolute;top:0.5rem;right:0.6rem;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1.05rem;line-height:1;padding:0.2rem;border-radius:4px;" onclick="(function(){var t=document.getElementById('first-time-guide-toast');if(t)t.style.display='none';try{localStorage.setItem('fp_guide_dismissed','1')}catch(e){}})()">&times;</button>
   </div>
@@ -1053,31 +1053,70 @@
   <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
     <div class="text-center mb-4">
       <div class="section-label" aria-hidden="true">Deterministic Math &middot; Zero Cloud Storage</div>
-      <h2 id="how-heading" class="section-title" style="font-size:clamp(1.5rem,3.2vw,2.1rem)">How FrankPass Works: The Deterministic Workflow</h2>
+      <h2 id="how-heading" class="section-title" style="font-size:clamp(1.5rem,3.2vw,2.1rem)">How FrankPass Works: Step-by-Step Card Workflow</h2>
       <p class="section-desc" style="max-width:620px;margin:0.5rem auto 0;font-size:0.92rem;line-height:1.6">
-        Just like 2 + 2 = 4 everywhere, your Master Seed recreates the exact same password on any device without internet, cloud vaults, or sync files. 
+        Every field in the generator card above explained in exact top-to-bottom order. Pure mathematics, zero server sync.
         <a href="/whitepaper.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600;margin-left:4px;">Read Technical Whitepaper &amp; Test Vectors &rarr;</a>
       </p>
     </div>
 
-    <!-- 4 Single-Column Workflow Cards (Stacked Vertically, 680px Width) -->
+    <!-- 5 Single-Column Workflow Cards (Matching Card Elements, 680px Width) -->
     <div style="display:flex;flex-direction:column;gap:0.9rem;" role="list" aria-label="Deterministic Workflow Steps">
       
-      <!-- Step 1 -->
+      <!-- Step 1: Username / Email (Optional) -->
       <div class="card-glass" style="padding:1.25rem 1.4rem;border-radius:14px;border:1px solid var(--border);" role="listitem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
           <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">1</div>
-          <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Master Secret Key (Master Seed)</h3>
+          <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Username or Email (Optional)</h3>
         </div>
         <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0 0 0.5rem;">
-          Type a memorable 6 to 8 word secret passphrase. FrankPass accepts only lowercase letters (a-z) and numbers (0-9) with no spaces, removing all guesswork about capitalization or symbols.
+          Leave this blank if you only have one account on a service (e.g. Amazon or Netflix). Enter your email or handle if you maintain multiple accounts on the same site to isolate their passwords.
         </p>
         <details style="border-top:1px dashed rgba(139,92,246,0.25);padding-top:0.45rem;">
           <summary style="font-size:0.78rem;font-weight:700;color:var(--accent-light);cursor:pointer;user-select:none;">
-            [+] Read In-Depth Guide &amp; Formula
+            [+] Why is it Optional &amp; How to Use It?
           </summary>
           <div style="padding-top:0.45rem;font-size:0.82rem;color:var(--text-muted);line-height:1.55;">
-            Your Master Seed acts as the cryptographic root. It is processed locally inside your browser RAM using 1,000,000 PBKDF2-HMAC-SHA512 iterations and never leaves your device. If forgotten, nobody can recover it.
+            <div><strong>Why optional?</strong> For single-account platforms, leaving this field blank calculates a unified, domain-wide deterministic password without typing unnecessary email handles.</div>
+            <div style="margin-top:0.35rem;"><strong>When to provide it?</strong> If you maintain two accounts on the same website (e.g. <code>work@gmail.com</code> vs <code>personal@gmail.com</code>), entering the username/email feeds directly into the cryptographic salt, generating completely different, isolated passwords for each distinct account on that domain.</div>
+          </div>
+        </details>
+      </div>
+
+      <!-- Step 2: Site / Platform Name or Paste URL -->
+      <div class="card-glass" style="padding:1.25rem 1.4rem;border-radius:14px;border:1px solid var(--border);" role="listitem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">2</div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Platform Name or Paste Full URL</h3>
+        </div>
+        <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0 0 0.5rem;">
+          Type any app name (e.g. Google, Amazon, SBI) or paste the full website URL directly from your browser. FrankPass normalizes it automatically into an identical deterministic platform seed.
+        </p>
+        <details style="border-top:1px dashed rgba(139,92,246,0.25);padding-top:0.45rem;">
+          <summary style="font-size:0.78rem;font-weight:700;color:var(--accent-light);cursor:pointer;user-select:none;">
+            [+] Read Normalization Details
+          </summary>
+          <div style="padding-top:0.45rem;font-size:0.82rem;color:var(--text-muted);line-height:1.55;">
+            FrankPass strips <code>https://</code>, <code>www.</code>, subdomains, query parameters, and trailing paths in real time. Typing <code>https://mail.google.com/</code>, <code>google.com</code>, or <code>google</code> all resolve to the same normalized seed (<code>google</code>), ensuring 100% identical passwords across all your devices.
+          </div>
+        </details>
+      </div>
+
+      <!-- Step 3: Enter Master Secret Key (Master Seed) -->
+      <div class="card-glass" style="padding:1.25rem 1.4rem;border-radius:14px;border:1px solid var(--border);" role="listitem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">3</div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Master Secret Key (Master Seed)</h3>
+        </div>
+        <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0 0 0.5rem;">
+          Type a memorable 6 to 8 word passphrase (or even longer sentence). To make it even more cryptographically secure against brute-force attacks, you can add any number you can easily remember.
+        </p>
+        <details style="border-top:1px dashed rgba(139,92,246,0.25);padding-top:0.45rem;">
+          <summary style="font-size:0.78rem;font-weight:700;color:var(--accent-light);cursor:pointer;user-select:none;">
+            [+] Read Cryptographic Security &amp; Formatting Guide
+          </summary>
+          <div style="padding-top:0.45rem;font-size:0.82rem;color:var(--text-muted);line-height:1.55;">
+            Your Master Seed acts as the cryptographic root. It accepts only lowercase letters (a-z) and numbers (0-9) with no spaces, removing all cognitive strain about special symbols or uppercase letters. It is processed locally inside your browser RAM using 1,000,000 PBKDF2-HMAC-SHA512 iterations and never leaves your device. If forgotten, nobody can recover it.
             <div style="margin-top:0.35rem;">
               <a href="/secret-key-guide.html" style="color:var(--accent-light);text-decoration:underline;font-weight:700;">How to Craft a Strong &amp; Unforgettable Master Secret Key &rarr;</a>
             </div>
@@ -1085,59 +1124,41 @@
         </details>
       </div>
 
-      <!-- Step 2 -->
+      <!-- Step 4: Advanced Options (Password Number / Rotation & Profiles) -->
       <div class="card-glass" style="padding:1.25rem 1.4rem;border-radius:14px;border:1px solid var(--border);" role="listitem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
-          <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">2</div>
-          <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Platform Name or Paste URL</h3>
+          <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">4</div>
+          <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Advanced Options: Rotation &amp; Vault Profiles</h3>
         </div>
         <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0 0 0.5rem;">
-          Type any website or service name (e.g. Amazon, Google, SBI) or paste the URL. FrankPass normalizes it automatically so amazon.com, www.amazon.com, and amazon all produce the exact same password.
+          When an app requires periodic password updates, never change your Master Seed! Simply change the Password Number (e.g. 1 to 2, 5, or 10) or choose a Month/Year variant.
         </p>
         <details style="border-top:1px dashed rgba(139,92,246,0.25);padding-top:0.45rem;">
           <summary style="font-size:0.78rem;font-weight:700;color:var(--accent-light);cursor:pointer;user-select:none;">
-            [+] Read Normalization Details
+            [+] Read Rotation Math &amp; Pro Profiles Details
           </summary>
           <div style="padding-top:0.45rem;font-size:0.82rem;color:var(--text-muted);line-height:1.55;">
-            FrankPass strips https://, www., query strings, and paths in real time. You can see your live normalized platform seed displayed right below the platform input box as you type, ensuring 100% consistent cryptographic derivation across all devices.
+            <div><strong>Deterministic Rotation:</strong> Because each counter number acts as a mathematically distinct salt, you receive an entirely new, uncrackable password for that site without ever affecting your other accounts. Returning to variation 1 calculates the original password again.</div>
+            <div style="margin-top:0.35rem;"><strong>Vault Profiles in Pro:</strong> In FrankPass Pro, you can create separate profiles (Personal, Work, Client) with distinct master keys and switch between them instantly.</div>
           </div>
         </details>
       </div>
 
-      <!-- Step 3 -->
+      <!-- Step 5: Recreate on All Devices (No Sync Needed) -->
       <div class="card-glass" style="padding:1.25rem 1.4rem;border-radius:14px;border:1px solid var(--border);" role="listitem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
-          <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">3</div>
-          <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Password Number / Rotation</h3>
-        </div>
-        <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0 0 0.5rem;">
-          When an app requires periodic password changes, never change your Master Seed! Simply change the Password Counter (e.g. 1 to 2, 5, or 10) or pick a Month/Year variant (e.g. Jan 2026).
-        </p>
-        <details style="border-top:1px dashed rgba(139,92,246,0.25);padding-top:0.45rem;">
-          <summary style="font-size:0.78rem;font-weight:700;color:var(--accent-light);cursor:pointer;user-select:none;">
-            [+] Read Rotation Details
-          </summary>
-          <div style="padding-top:0.45rem;font-size:0.82rem;color:var(--text-muted);line-height:1.55;">
-            Because each variation number acts as a mathematically distinct salt, you receive an entirely new, uncrackable password for that site without ever affecting your other accounts. Returning to variation 1 calculates the original password again.
-          </div>
-        </details>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="card-glass" style="padding:1.25rem 1.4rem;border-radius:14px;border:1px solid var(--border);" role="listitem">
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
-          <div style="width:28px;height:28px;border-radius:8px;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">4</div>
+          <div style="width:28px;height:28px;border-radius:8px;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">5</div>
           <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Recreate on All Devices (No Sync Needed)</h3>
         </div>
         <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0 0 0.5rem;">
-          Typing the same Master Seed and Platform Name on any phone, laptop, or offline computer generates the exact same password every single time. Zero cloud sync. Zero file transfers.
+          Just like 2 + 2 = 4 everywhere, typing the same Master Seed and Platform Name on any phone, laptop, or offline computer generates the exact same password every single time. Zero cloud sync. Zero file transfers.
         </p>
         <details style="border-top:1px dashed rgba(139,92,246,0.25);padding-top:0.45rem;">
           <summary style="font-size:0.78rem;font-weight:700;color:var(--accent-light);cursor:pointer;user-select:none;">
             [+] Read Cryptographic Verification Proof
           </summary>
           <div style="padding-top:0.45rem;font-size:0.82rem;color:var(--text-muted);line-height:1.55;">
-            Both devices independently arrive at the exact same password through pure deterministic mathematics. Because 0 bytes are stored remotely, there are no sync conflicts, no cloud lockouts, and zero attack surface.
+            Both devices independently arrive at the exact same password through pure deterministic mathematics. Because 0 bytes are stored remotely, there are no sync conflicts, no cloud lockouts, and zero attack surface. It works reliably in airplane mode or during total internet blackouts.
           </div>
         </details>
       </div>
@@ -1182,6 +1203,10 @@
  <button type="button" onclick="openAI('copy')" class="btn-primary" style="width:100%;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:0.9rem 1.25rem;font-size:0.95rem;background:#7c3aed;color:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.15)">
  📋 Copy Smart Prompt
  </button>
+
+ <div style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin:0.85rem 0;line-height:1.5;">
+   <strong>Or click any AI below to launch:</strong> For some AIs you will get the answer directly, while in others you simply paste your copied prompt.
+ </div>
 
  <div style="max-height:240px;overflow-y:auto;padding:0.75rem;background:rgba(0,0,0,0.15);border:1px solid var(--border);border-radius:var(--radius-sm);scrollbar-width:thin;scrollbar-color:var(--accent) transparent">
  <div class="grid-2" style="gap:0.6rem">
@@ -1239,17 +1264,20 @@
     </div>
 
     <!-- Free vs Paid Clarity Pill Banner -->
-    <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:14px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:0.75rem;">
-      <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(139,92,246,0.18);padding-bottom:0.5rem;">
-        <span style="font-size:0.8rem;font-weight:800;color:#10b981;text-transform:uppercase;letter-spacing:0.05em">&#10003; 100% Free Forever ($0 / &#8377;0)</span>
-        <span style="font-size:0.78rem;color:var(--text-muted)">Web App &middot; Mobile PWA &middot; Windows Extension</span>
+    <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:14px;padding:1.15rem 1.35rem;margin-bottom:1.5rem;display:flex;flex-direction:column;gap:0.75rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(139,92,246,0.18);padding-bottom:0.5rem;flex-wrap:wrap;gap:6px;">
+        <span style="font-size:0.82rem;font-weight:800;color:#10b981;text-transform:uppercase;letter-spacing:0.05em">&#10003; 100% Free Forever ($0 / &#8377;0)</span>
+        <span style="font-size:0.78rem;color:var(--text-muted)">Web App (All Devices) &middot; Windows Free Extension</span>
       </div>
       <div style="font-size:0.83rem;color:var(--text-muted);line-height:1.5">
-        Unlimited passwords, stealth DOM autofill, and RAM cryptography on any device. Zero ads, zero tracking, zero data storage.
+        <strong>Free Web &amp; Extension:</strong> Unlimited passwords, local RAM math, and direct DOM autofill into login boxes without touching the OS clipboard.
       </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(139,92,246,0.18);padding-top:0.5rem;">
-        <span style="font-size:0.8rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.05em">&#9889; Solo Workstation Pass ($25 Lifetime)</span>
-        <span style="font-size:0.78rem;color:var(--text-muted)">1-PC Hardware Bound &middot; Air-Gapped</span>
+      <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(139,92,246,0.18);padding-top:0.5rem;flex-wrap:wrap;gap:6px;">
+        <span style="font-size:0.82rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.05em">&#9889; FrankPass Pro ($25 Solo Lifetime Pass)</span>
+        <span style="font-size:0.78rem;color:var(--text-muted)">1-PC Hardware Bound &middot; All Chromium Browsers</span>
+      </div>
+      <div style="font-size:0.83rem;color:var(--text-muted);line-height:1.5">
+        <strong>Pro Workstation Advantage:</strong> In the Free extension you enter your Secret Key when needed. In <strong>FrankPass Pro</strong>, you unlock in 0.1s using a <strong>4-Digit Quick PIN</strong> (never retype your long secret key!), plus get <strong>Unlimited Multi-Profile Vaults</strong> (Work, Personal, Client) and <strong>Mathematical Anti-Phishing Guard</strong> across all Chromium browsers on that PC.
       </div>
     </div>
 
@@ -1266,7 +1294,7 @@
           <div><strong style="color:#ef4444">&#10007; Traditional Cloud Managers:</strong> Store encrypted vault blobs on company cloud databases, creating centralized honeypots for hackers.</div>
           <div><strong style="color:#10b981">&#10003; FrankPass Web App &amp; PWA:</strong> 0 Bytes stored on servers. Cryptography runs strictly in temporary browser RAM.</div>
           <div><strong style="color:var(--accent-light)">&#10003; FrankPass Free Extension:</strong> 0 Bytes on servers. Direct DOM injection into login fields.</div>
-          <div><strong style="color:#eab308">&#10003; FrankPass Solo Workstation:</strong> 100% air-gapped, zero cloud calls, motherboard locked.</div>
+          <div><strong style="color:#eab308">&#10003; FrankPass Pro Workstation:</strong> 100% air-gapped, zero cloud calls, hardware-locked to 1 PC.</div>
         </div>
         <div style="margin-top:0.75rem;padding:0.65rem 0.85rem;background:rgba(245,158,11,0.08);border-left:3px solid #f59e0b;border-radius:6px;font-size:0.8rem;color:var(--text-muted);line-height:1.5;">
           <strong style="color:#f59e0b;">Honest Security Reality (Human Factor):</strong> Koi bhi takneek kamzor nahi hoti, adhiktam galtiyan manviye bhool se hoti hain. Yadi aapka Master Seed kamzor hai (jaise 4 akshar ka), toh ganit bhi offline brute-force se poori raksha nahi kar sakta. Isliye 6 se 8 shabdon ka lamba pass-phrase chunein aur Master Seed kisi ko na batayein. Wi-Fi ya OTT ke liye sirf generated password dein, Master Seed kabhi nahi!
@@ -1277,13 +1305,13 @@
       <div class="card-glass" style="padding:1.4rem 1.6rem;border-radius:16px;border:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.75rem;">
           <span style="width:10px;height:10px;border-radius:50%;background:#10b981;flex-shrink:0;" aria-hidden="true"></span>
-          <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">2. Server Downtime &amp; Offline Air-Gapped Reliability</h3>
+          <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">2. Server Downtime &amp; Offline Reliability</h3>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.45rem;font-size:0.85rem;line-height:1.55;color:var(--text-muted);">
-          <div><strong style="color:#ef4444">&#10007; Traditional Cloud Managers:</strong> Lock you out when AWS crashes, vendor servers go down for maintenance, or network sync lags.</div>
-          <div><strong style="color:#10b981">&#10003; FrankPass Web App &amp; PWA:</strong> 100% offline mathematical re-creation (2+2=4). Works with zero internet in Airplane Mode.</div>
-          <div><strong style="color:var(--accent-light)">&#10003; FrankPass Free Extension:</strong> Runs 100% locally in your browser with zero network requests.</div>
-          <div><strong style="color:#eab308">&#10003; FrankPass Solo Workstation:</strong> Operates completely offline on isolated workstations.</div>
+          <div><strong style="color:#ef4444">&#10007; Traditional Cloud Managers:</strong> Lock you out when AWS crashes, vendor servers go down, or network sync lags.</div>
+          <div><strong style="color:#10b981">&#10003; FrankPass Web App &amp; PWA:</strong> 100% offline mathematical recalculation. Works with zero internet in Airplane Mode.</div>
+          <div><strong style="color:var(--accent-light)">&#10003; FrankPass Free Extension:</strong> Works completely offline in your browser.</div>
+          <div><strong style="color:#eab308">&#10003; FrankPass Pro Workstation:</strong> Operates 100% offline on isolated workstations.</div>
         </div>
       </div>
 
@@ -1291,13 +1319,13 @@
       <div class="card-glass" style="padding:1.4rem 1.6rem;border-radius:16px;border:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.75rem;">
           <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;" aria-hidden="true"></span>
-          <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">3. Background System RAM &amp; Bloat</h3>
+          <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">3. System RAM &amp; Resource Bloat (Accurate Facts)</h3>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.45rem;font-size:0.85rem;line-height:1.55;color:var(--text-muted);">
-          <div><strong style="color:#ef4444">&#10007; Traditional Cloud Managers:</strong> Heavy desktop apps (built on Electron) consume 1,500 MB to 6,000 MB of system RAM continuously running in the background.</div>
-          <div><strong style="color:#10b981">&#10003; FrankPass Web App &amp; PWA:</strong> 0 MB Idle RAM. Only executes for milliseconds during password generation.</div>
-          <div><strong style="color:var(--accent-light)">&#10003; FrankPass Free Extension:</strong> 0 MB Idle RAM. Wakes up only when typing or clicking autofill.</div>
-          <div><strong style="color:#eab308">&#10003; FrankPass Solo Workstation:</strong> Native, ultra-low resource footprint with zero background bloat.</div>
+          <div><strong style="color:#ef4444">&#10007; Traditional Cloud Managers:</strong> Heavy desktop apps (built on Electron) consume 1,500 MB to 6,000 MB of system RAM continuously running in the background 24/7.</div>
+          <div><strong style="color:#10b981">&#10003; FrankPass Web App &amp; PWA:</strong> 0 MB Idle RAM. Only executes in browser memory for milliseconds during password generation.</div>
+          <div><strong style="color:var(--accent-light)">&#10003; FrankPass Free &amp; Pro Extension:</strong> <strong>0 MB Idle RAM</strong> when closed. It uses approximately ~150 to 200 MB temporary RAM <em>only</em> when you actively click the extension icon or press the activation shortcut (<code>Ctrl + Shift + F</code>), and instantly returns to 0 MB when closed!</div>
+          <div><strong style="color:#eab308">&#10003; FrankPass Pro Workstation:</strong> Native workstation performance with zero persistent background bloat.</div>
         </div>
       </div>
 
@@ -1305,16 +1333,26 @@
       <div class="card-glass" style="padding:1.4rem 1.6rem;border-radius:16px;border:1px solid var(--border);">
         <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.75rem;">
           <span style="width:10px;height:10px;border-radius:50%;background:#38bdf8;flex-shrink:0;" aria-hidden="true"></span>
-          <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">4. Clipboard Snooping Malware Defense</h3>
+          <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">4. Clipboard Snooping Malware Defense &amp; OpSec Mitigations</h3>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.45rem;font-size:0.85rem;line-height:1.55;color:var(--text-muted);">
-          <div><strong style="color:#ef4444">&#10007; Traditional Cloud Managers:</strong> Copy plaintext passwords to the OS clipboard, exposing credentials to background clipboard-reading malware.</div>
-          <div><strong style="color:#10b981">&#10003; FrankPass Web App:</strong> Built-in auto-clear timer (15s/30s/60s) wipes the clipboard buffer, backed by copy-blocks on master keys.</div>
-          <div><strong style="color:var(--accent-light)">&#10003; FrankPass Free Extension:</strong> Injects credentials straight into webpage DOM login fields without touching the OS clipboard at all!</div>
-          <div><strong style="color:#eab308">&#10003; FrankPass Solo Workstation:</strong> Direct secure input buffer with zero external clipboard exposure.</div>
+          <div><strong style="color:#ef4444">&#10007; Traditional Cloud Managers:</strong> Rely on copying plaintext credentials to the OS clipboard if autofill fails, leaving them exposed to background clipboard-reading malware.</div>
+          <div><strong style="color:#10b981">&#10003; FrankPass Free &amp; Pro Extension (Safest):</strong> Injects credentials directly into webpage DOM login fields without touching the OS clipboard at all! 0 milliseconds clipboard exposure.</div>
+          <div><strong style="color:var(--accent-light)">&#10003; FrankPass Web App Auto-Clear:</strong> Built-in auto-clear timer (15s/30s/60s) wipes the clipboard buffer to defend against physical shoulder-surfing and OS clipboard history logs.</div>
         </div>
-        <div style="margin-top:0.75rem;padding:0.65rem 0.85rem;background:rgba(56,189,248,0.08);border-left:3px solid #38bdf8;border-radius:6px;font-size:0.8rem;color:var(--text-muted);line-height:1.5;">
-          <strong style="color:#38bdf8;">Pro OpSec Recommendation:</strong> Apne mahatvapoorna financial aur primary accounts ke liye ek dedicated clean Chrome Profile banayein, jismein kewal FrankPass extension ho aur koi anjaan third-party extension na ho taaki DOM scraping ka koi khatra na rahe.
+        
+        <!-- High-Security User-Side OpSec Options for Web App -->
+        <div style="margin-top:0.75rem;padding:0.75rem 0.95rem;background:rgba(56,189,248,0.08);border-left:3px solid #38bdf8;border-radius:6px;font-size:0.8rem;color:var(--text-muted);line-height:1.55;">
+          <strong style="color:#38bdf8;font-size:0.84rem;">Power-User OpSec Solutions for Web App Users:</strong>
+          <div style="margin-top:0.35rem;">
+            <strong>Option A (User-Side Suffix / Buffer Poisoning):</strong> When generating a password on the Web App, mentally append a custom suffix (e.g. <code>xyz789</code>) to the generated field before copying. Paste the poisoned string into the login box, then open your computer's <strong>On-Screen Keyboard (OSK)</strong> and use virtual backspace to delete the extra suffix. Clipboard-scraping malware only captures an invalid password, while the virtual keyboard bypasses physical keyloggers!
+          </div>
+          <div style="margin-top:0.35rem;">
+            <strong>Option B (Direct OSK Manual Typing):</strong> On untrusted shared computers, keep the generated password visible on screen for a few seconds and manually type it character-by-character using the On-Screen Keyboard without clicking Copy at all.
+          </div>
+          <div style="margin-top:0.35rem;">
+            <strong>Option C (Dedicated Clean Chrome Profile):</strong> Apne mahatvapoorna financial aur primary accounts ke liye ek dedicated clean Chrome Profile banayein, jismein kewal FrankPass extension ho aur koi anjaan third-party extension na ho taaki DOM scraping ka koi khatra na rahe.
+          </div>
         </div>
       </div>
 
@@ -1358,7 +1396,14 @@
           <span>&#128172;</span> <span>Join Security WhatsApp Channel</span>
         </a>
       </div>
-      <div style="font-size:0.76rem;color:var(--text-muted);margin-top:1rem;">
+
+      <!-- Future Mobile & Mac App Roadmap Note -->
+      <div style="margin-top:1.25rem;padding:0.75rem 1rem;background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.22);border-radius:10px;font-size:0.8rem;color:var(--text-muted);line-height:1.5;text-align:left;">
+        <strong style="color:var(--accent-light);">&#128640; Want Direct Autofill on Mobile (Android / iOS) or Mac?</strong><br>
+        Currently, FrankPass provides direct DOM autofill via our Windows Chromium extension, and full offline generation on mobile via frankpass.com PWA. If you need dedicated system-level autofill apps for Android, iOS, or a Mac extension, let us know on X by tagging <a href="https://x.com/frankpasshq" target="_blank" rel="noopener" style="color:var(--accent-light);font-weight:700;text-decoration:underline;">@frankpasshq</a> or founder <a href="https://x.com/mastermanikant" target="_blank" rel="noopener" style="color:var(--accent-light);font-weight:700;text-decoration:underline;">@mastermanikant</a>. (Founder note: Master Manikant is currently building other sovereign ecosystem products; if there is strong community demand, dedicated mobile apps and Mac extensions will be prioritized!).
+      </div>
+
+      <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.85rem;">
         Works 100% offline &middot; No credit card &middot; Zero personal data collected
       </div>
     </div>
