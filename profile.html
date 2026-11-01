@@ -389,6 +389,20 @@
         </select>
       </div>
 
+      <!-- Tab-Switch Auto-Lock Grace Timeout -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Auto-Lock on Tab Switch</strong>
+          <span style="font-size:0.78rem;color:var(--text-muted)">Grace period before locking memory vault when switching tabs.</span>
+        </div>
+        <select id="pref-tablock-select" class="form-input" style="width:auto;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px">
+          <option value="30" selected>30 Seconds (Recommended)</option>
+          <option value="60">60 Seconds (1 Min)</option>
+          <option value="0">Immediately (0s)</option>
+          <option value="-1">Never (Only on Window Close)</option>
+        </select>
+      </div>
+
       <!-- Default Country / Region Selector -->
       <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
         <div>
@@ -1193,6 +1207,16 @@
     clipSelect.addEventListener('change', (e) => {
       localStorage.setItem(CLIPBOARD_AUTOCLEAR_KEY, e.target.value);
       showToast('Clipboard timeout updated to ' + (e.target.value === '0' ? 'Never' : e.target.value + 's'), 'info');
+    });
+  }
+
+  const tabLockSelect = document.getElementById('pref-tablock-select');
+  if (tabLockSelect) {
+    const savedTabLock = localStorage.getItem('fp_tab_lock_delay');
+    if (savedTabLock !== null) tabLockSelect.value = savedTabLock;
+    tabLockSelect.addEventListener('change', (e) => {
+      localStorage.setItem('fp_tab_lock_delay', e.target.value);
+      showToast('Tab-switch lock grace period updated', 'info');
     });
   }
 

@@ -389,6 +389,20 @@
         </select>
       </div>
 
+      <!-- Tab-Switch Auto-Lock Grace Timeout -->
+      <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
+        <div>
+          <strong style="font-size:0.88rem;color:var(--text-primary);display:block">टैब स्विच पर ऑटो-लॉक (ग्रेस विंडो)</strong>
+          <span style="font-size:0.78rem;color:var(--text-muted)">दूसरे टैब पर जाने के बाद मेमोरी वॉल्ट लॉक होने का प्रतीक्षा समय।</span>
+        </div>
+        <select id="pref-tablock-select" class="form-input" style="width:auto;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px">
+          <option value="30" selected>30 सेकंड (अनुशंसित)</option>
+          <option value="60">60 सेकंड (1 मिनट)</option>
+          <option value="0">तुरंत लॉक (0s)</option>
+          <option value="-1">कभी नहीं (केवल विंडो बंद होने पर)</option>
+        </select>
+      </div>
+
       <!-- Default Country / Region Selector -->
       <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:1rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px">
         <div>
@@ -1193,6 +1207,16 @@
     clipSelect.addEventListener('change', (e) => {
       localStorage.setItem(CLIPBOARD_AUTOCLEAR_KEY, e.target.value);
       showToast('क्लिपबोर्ड समय ' + (e.target.value === '0' ? 'कभी नहीं' : e.target.value + 's') + ' पर सेट किया गया', 'info');
+    });
+  }
+
+  const tabLockSelect = document.getElementById('pref-tablock-select');
+  if (tabLockSelect) {
+    const savedTabLock = localStorage.getItem('fp_tab_lock_delay');
+    if (savedTabLock !== null) tabLockSelect.value = savedTabLock;
+    tabLockSelect.addEventListener('change', (e) => {
+      localStorage.setItem('fp_tab_lock_delay', e.target.value);
+      showToast('टैब-स्विच ऑटो-लॉक समय अपडेट हुआ', 'info');
     });
   }
 

@@ -13,19 +13,19 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="robots" content="index, follow">
- <title>FrankPass - Stateless &amp; Deterministic Password Generator</title>
- <meta name="description" content="Generate strong, unique passwords without storing them. Pure cryptographic math - no cloud, no database, no accounts. Works fully offline after first load.">
+ <title>FrankPass: Cloudless Password Manager and Deterministic Password Generator</title>
+ <meta name="description" content="Say goodbye to cloud breaches. FrankPass is a cloudless, zero-database deterministic password generator and manager. Local WebCrypto math recreates your identical passwords on any device.">
  <meta name="keywords" content="stateless password generator, zero knowledge password manager, deterministic password, offline password generator, FrankPass, no cloud password, PBKDF2 password generator">
  <link rel="canonical" href="https://frankpass.com/">
- <meta property="og:title" content="FrankPass - Stateless &amp; Deterministic Password Generator">
- <meta property="og:description" content="Generate strong passwords without storing them. Pure math - no cloud, no database, no accounts. Works fully offline after first load.">
+ <meta property="og:title" content="FrankPass: Cloudless Password Manager and Deterministic Password Generator">
+ <meta property="og:description" content="Say goodbye to cloud breaches. Cloudless, zero-database deterministic password generator and manager.">
  <meta property="og:url" content="https://frankpass.com/">
  <meta property="og:type" content="website">
  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
  <meta name="twitter:card" content="summary_large_image">
  <meta name="twitter:site" content="@frankpasshq">
- <meta name="twitter:title" content="FrankPass - Stateless &amp; Deterministic Password Generator">
- <meta name="twitter:description" content="Generate strong passwords without storing them. Pure math - no cloud, no database.">
+ <meta name="twitter:title" content="FrankPass: Cloudless Password Manager and Deterministic Password Generator">
+ <meta name="twitter:description" content="Say goodbye to cloud breaches. Zero-database deterministic password generator.">
  <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
   <link rel="icon" href="/icons/favicon.png">
@@ -56,16 +56,16 @@
  <link rel="alternate" hreflang="en" href="https://frankpass.com/">
  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/">
 
-  <!-- Schema.org: Unified Graph (SoftwareApplication, WebSite Sitelinks, Navigation & FAQPage) -->
-  <script type="application/ld+json">
+  <!-- Schema.org: Unified Graph (SoftwareApplication, WebSite Sitelinks, Navigation & FAQPage) -->  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "SoftwareApplication",
         "@id": "https://frankpass.com/#software",
-        "name": "FrankPass",
+        "name": "FrankPass: Cloudless Password Manager and Deterministic Password Generator",
         "alternateName": [
+          "FrankPass",
           "Frank Pass",
           "FrankPass.com",
           "Frank Pass Password Generator",
@@ -73,11 +73,11 @@
           "Frank Pass Security"
         ],
         "applicationCategory": "SecurityApplication",
-        "operatingSystem": "Any - Web, PWA, Chrome, Firefox, Edge, Safari, iOS, Android, Windows, Mac, Linux",
+        "operatingSystem": "All (Web, PWA, Windows, Chrome, Firefox, Edge, Safari, iOS, Android, Mac, Linux)",
         "url": "https://frankpass.com",
         "image": "https://frankpass.com/icons/icon-512.png",
-        "description": "FrankPass (also known as Frank Pass) is a stateless, deterministic cryptographic password and PIN generator created by Master Manikant Yadav. Zero cloud, zero storage, zero accounts. It derives unique, high-entropy passwords and numeric PINs on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations in local browser memory.",
-        "softwareVersion": "4.2.7",
+        "description": "FrankPass is a cloudless, zero-database deterministic password generator and manager created by Master Manikant Yadav. Zero cloud servers, zero database honeypots, zero accounts. It re-creates unique passwords locally using 1,000,000 PBKDF2-HMAC-SHA512 iterations in device memory.",
+        "softwareVersion": "4.6.0",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "author": {
           "@type": "Person",
@@ -90,60 +90,11 @@
         "@id": "https://frankpass.com/#website",
         "url": "https://frankpass.com/",
         "name": "FrankPass",
-        "description": "Stateless and deterministic password generator with zero cloud storage.",
+        "description": "Cloudless and deterministic password generator with zero cloud storage.",
         "publisher": {
           "@type": "Person",
           "name": "Master Manikant Yadav"
         }
-      },
-      {
-        "@type": "ItemList",
-        "@id": "https://frankpass.com/#sitelinks",
-        "name": "FrankPass Key Security Tools and Hubs",
-        "itemListElement": [
-          {
-            "@type": "SiteNavigationElement",
-            "position": 1,
-            "name": "PIN Generator",
-            "description": "Generate deterministic 4-digit and 6-digit ATM, UPI, and banking PINs.",
-            "url": "https://frankpass.com/pin.html"
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 2,
-            "name": "Random Password Generator",
-            "description": "Generate strong, clean CSPRNG random passwords with zero cloud storage.",
-            "url": "https://frankpass.com/random-password-generator.html"
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 3,
-            "name": "Secret Key Guide",
-            "description": "Master Secret Key rules and 50+ memorable real-world examples.",
-            "url": "https://frankpass.com/secret-key-guide.html"
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 4,
-            "name": "About Us and Founder",
-            "description": "Learn about FrankPass zero-knowledge architecture and founder Master Manikant Yadav.",
-            "url": "https://frankpass.com/about-us.html"
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 5,
-            "name": "Security FAQ",
-            "description": "Frequently asked questions about offline math, privacy, and cryptography.",
-            "url": "https://frankpass.com/faq.html"
-          },
-          {
-            "@type": "SiteNavigationElement",
-            "position": 6,
-            "name": "Install Offline App",
-            "description": "Install FrankPass standalone PWA on Android, iPhone, Windows, Mac, or Linux.",
-            "url": "https://frankpass.com/install.html"
-          }
-        ]
       },
       {
         "@type": "FAQPage",
@@ -151,58 +102,50 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is FrankPass (Frank Pass)?",
+            "name": "Is FrankPass a password generator or a password manager?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "FrankPass (Frank Pass) is a free, 100% stateless and zero-knowledge cryptographic password and PIN generator created by Master Manikant Yadav. It derives unique passwords on-demand using 1,000,000 PBKDF2-HMAC-SHA512 iterations entirely in your local browser memory, with zero cloud databases, zero servers, and zero telemetry."
+              "text": "FrankPass is both: it is a Cloudless Password Manager and Deterministic Password Generator. Traditional password managers store an encrypted vault file on cloud servers, forcing you to sync databases and risking cloud breaches. FrankPass replaces server databases with pure deterministic mathematics: combining your Master Seed and Platform Name re-creates the exact same password on any device without internet or cloud sync."
             }
           },
           {
             "@type": "Question",
-            "name": "How does FrankPass solve the problem of forgotten ATM and UPI PINs?",
+            "name": "How do my passwords match across devices without internet or cloud sync?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Many people create 4-digit or 6-digit ATM and UPI PINs and later forget them, or write them down insecurely. With the FrankPass PIN Generator (/pin.html), you use your existing Master Secret Key and Bank Name (such as SBI ATM or PhonePe) to calculate your numeric PIN. You set that exact calculated PIN when creating your card or UPI PIN at the ATM machine or banking app. Later, you never need to remember or save the PIN anywhere - whenever you need it, simply re-calculate it on FrankPass instantly with pure offline math."
+              "text": "It is called Mathematical Re-creation. Just like 2 + 2 = 4 everywhere in the universe without needing an internet connection, typing the same Master Seed and Platform Name on different devices runs the exact same local cryptographic formula (PBKDF2-HMAC-SHA512). The devices never communicate; they independently calculate the exact same password through pure mathematics."
             }
           },
           {
             "@type": "Question",
-            "name": "How does FrankPass generate passwords without storing them in a cloud database?",
+            "name": "What happens if I forget my Master Secret Key? Can FrankPass recover it?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "FrankPass uses deterministic mathematics. By running your Master Secret Key and Website Name through 1,000,000 cryptographic PBKDF2 iterations, it produces the exact same strong password every time. Because passwords are mathematically calculated on-demand rather than stored in a database, there is no server database to breach."
+              "text": "No. Because FrankPass is 100% zero-knowledge and has no central servers, databases, or backdoors, nobody can recover a lost Master Seed. This is why you must choose a memorable passphrase of at least 6 to 8 words that you can easily remember for life."
             }
           },
           {
             "@type": "Question",
-            "name": "Does FrankPass work completely offline without internet?",
+            "name": "Can FrankPass import my existing passwords from Chrome, LastPass, or other cloud managers?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. Once the page is loaded or installed as a PWA, FrankPass works 100% offline in airplane mode. All cryptography runs client-side inside your browser via native WebCrypto API. Zero data leaves your device."
+              "text": "No, because FrankPass does not store arbitrary pre-existing passwords. When switching to FrankPass, simply take 15 to 20 minutes to update your primary accounts with fresh deterministic passwords generated by FrankPass, or update them gradually whenever websites request password rotations. Once your accounts run on FrankPass, you can leave vulnerable cloud vaults behind."
             }
           },
           {
             "@type": "Question",
-            "name": "What should I do if a website forces a password change?",
+            "name": "What should I do when a website requires changing my password periodically?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "FrankPass includes a Rotation Counter. If a website requires a new password, simply increment the counter from 1 to 2, or use natural months and years like Jan2026. This creates an entirely new mathematical password for that specific site without changing your Master Secret Key."
+              "text": "You never need to change your Master Seed. Simply open Advanced Options and change the Password Number (Counter) from 1 to any number you like (e.g. 2, 5, 10, or 9999), or pick a Month/Year variant (e.g. Jun2024, Jan2026). As long as you remember that simple variation number, you get a fresh unique password for that site."
             }
           },
           {
             "@type": "Question",
-            "name": "How much RAM and system resources does FrankPass consume?",
+            "name": "Is my password safe from clipboard snooping malware?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "FrankPass consumes up to 50MB of RAM maximum only when you explicitly open the extension or click generate, and 0MB idle in the background. Unlike traditional desktop password managers that bundle heavy Chromium/Electron runtimes consuming 1.5GB to 6.0GB of RAM continuously, FrankPass runs inside your existing browser with zero background bloat."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How does FrankPass handle typos in email addresses or platform names?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "FrankPass features a built-in Smart Input Normalization Engine. For emails, it automatically strips accidental whitespace and converts all characters to lowercase. For platforms, our curated dataset automatically resolves URLs and domain variants into a canonical seed shown dynamically below the input, ensuring consistent password generation across all devices."
+              "text": "FrankPass provides two robust solutions: On PC, use the FrankPass Browser Extension in a dedicated, clean browser profile to inject credentials directly into login fields without touching the OS clipboard. On the Web App, an auto-clear timer (15s, 30s, 60s) minimizes exposure, while the Master Seed input blocks copying to prevent master credentials from entering clipboard history tools. FrankPass is available on frankpass.com, PWA, and Windows extension; feature requests can be sent on X mentioning @frankpasshq or @mastermanikant."
             }
           }
         ]
@@ -217,969 +160,163 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ============================================================
- STICKY HEADER
- Logo + Country Dropdown | Nav links | Get Pro button
- ============================================================ -->
-<!-- STICKY HEADER -->
-<header class="site-header" id="site-header" role="banner">
-  <div class="header-inner">
-    
-    <!-- Official Brand Logo -->
-    <a href="/" class="header-logo" aria-label="FrankPass Home">
-      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
-      <span class="logo-text"><span>Frank</span>Pass</span>
-    </a>
-
-    <!-- Country Dropdown -->
-    <div class="header-country custom-country-dropdown" aria-label="Select your country">
-      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false">
-        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
-        <span id="country-display-name">India</span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </button>
-      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
-        <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
-        <div id="country-list-scroll"></div>
-      </div>
-    </div>
-    <input type="hidden" id="region" value="India (IN)">
-
-    <!-- Desktop Nav -->
-    <nav class="header-nav" role="navigation" aria-label="Main navigation">
-      
-      <!-- 1. Generators Dropdown -->
-      <div class="nav-dropdown" id="dropdown-generators">
-        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
-          Generators <span class="dropdown-chevron">▾</span>
-        </button>
-        <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger" style="min-width:230px;">
-          <a href="/" class="dropdown-item" role="menuitem">
-            <span class="dropdown-icon">⚡</span>
-            <span class="dropdown-title">Stateless Generator</span>
-          </a>
-          <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
-            <span class="dropdown-icon">🎲</span>
-            <span class="dropdown-title">Random Generator</span>
-          </a>
-          <a href="/pin.html" class="dropdown-item" role="menuitem">
-            <span class="dropdown-icon">🔢</span>
-            <span class="dropdown-title">PIN Generator</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="dropdown-item" role="menuitem">
-            <span class="dropdown-icon">⚖️</span>
-            <span class="dropdown-title">Compare All Tools</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 2. Resources Dropdown -->
-      <div class="nav-dropdown" id="dropdown-resources">
-        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
-          Resources <span class="dropdown-chevron">▾</span>
-        </button>
-        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
-          
-          <!-- Category 1: Core Guides & Specs -->
-          <div class="has-flyout" id="flyout-core-guides">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">📚</span>
-                <span class="flyout-cat-title">Core Guides &amp; Specs</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔑</span>
-                <span class="dropdown-title">Secret Key Guide</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚙️</span>
-                <span class="dropdown-title">How FrankPass Works</span>
-              </a>
-              <a href="/why-stateless-password-generation-is-the-future.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚡</span>
-                <span class="dropdown-title">Stateless Architecture</span>
-              </a>
-              <a href="/faq.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">❓</span>
-                <span class="dropdown-title">Security FAQ</span>
-              </a>
-              <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📄</span>
-                <span class="dropdown-title">Cryptographic Specs</span>
-              </a>
-              <a href="/limitations-and-advantages.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚖️</span>
-                <span class="dropdown-title">Limitations &amp; Advantages</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 2: Cyber Threat Defense -->
-          <div class="has-flyout" id="flyout-threat-defense">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">🛡️</span>
-                <span class="flyout-cat-title">Cyber Threat Defense</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/where-password-managers-fail-and-invisible-vault.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">👁️</span>
-                <span class="dropdown-title">Invisible Vault Defense</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">☁️</span>
-                <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
-              </a>
-              <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🧮</span>
-                <span class="dropdown-title">Password Science &amp; Math</span>
-              </a>
-              <a href="/atm-upi-pin-security-guide.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔢</span>
-                <span class="dropdown-title">ATM &amp; UPI PIN Security</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 3: Trust & Founder -->
-          <div class="has-flyout" id="flyout-trust-founder">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">💡</span>
-                <span class="flyout-cat-title">Trust &amp; Economics</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/about-us.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🏢</span>
-                <span class="dropdown-title">About FrankPass</span>
-              </a>
-              <a href="/founder-mastermanikant.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🎯</span>
-                <span class="dropdown-title">Founder Master Manikant</span>
-              </a>
-              <a href="/how-frankpass-is-free-without-selling-data.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚖️</span>
-                <span class="dropdown-title">Zero-Server Economics</span>
-              </a>
-              <a href="/sponsors.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🌱</span>
-                <span class="dropdown-title">Green Sponsors Hub</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="dropdown-divider"></div>
-          <a href="/library.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
-            <span class="dropdown-icon">🏛️</span>
-            <span class="dropdown-title" style="color:var(--accent-light);">Master Library &amp; Directory &rarr;</span>
-          </a>
-
-        </div>
-      </div>
-
-      <!-- 4. Master Library Link -->
-      <a href="/library.html" class="nav-link" style="color:var(--accent-light);font-weight:600;">Library</a>
-
-      <!-- 4. Pricing Link -->
-      <a href="#pricing" class="nav-link" style="font-weight:600;">Pricing</a>
-
-      <!-- 5. Founder Link -->
-      <a href="/founder-mastermanikant.html" class="nav-link">Founder</a>
-
-      <!-- 6. Sponsors Link -->
-      <a href="/sponsors.html" class="nav-link" style="color:#10b981;font-weight:600;">Sponsors</a>
-
-      <!-- Extension Primary CTA Button -->
-      <a href="/extension.html" class="btn-extension-cta" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1.05rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;transition:all 0.2s;">
-        <span>⚡ Get Extension</span> &rarr;
-      </a>
-      
-      <!-- 7. Theme Toggle -->
-      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
-        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-      </button>
-
-    </nav>
-
-    <!-- Mobile Hamburger Toggle Button -->
-    <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-  </div>
-</header>
-
-<!-- Mobile Navigation Drawer -->
-<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-  <div class="mobile-section-label">⚡ Generators</div>
-  <a href="/" class="mobile-nav-link"><span>⚡</span> Stateless Generator</a>
-  <a href="/random-password-generator.html" class="mobile-nav-link"><span>🎲</span> Random Generator</a>
-  <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> PIN Generator</a>
-  <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html" class="mobile-nav-link"><span>⚖️</span> Compare All Tools</a>
-  
-  <div class="mobile-section-label">📚 Resources &amp; Guides</div>
-  
-  <!-- Mobile Accordion 1 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>📚 Core Guides &amp; Specs</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/secret-key-guide.html" class="mobile-acc-item">🔑 Secret Key Guide</a>
-      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">⚙️ How FrankPass Works</a>
-      <a href="/why-stateless-password-generation-is-the-future.html" class="mobile-acc-item">⚡ Stateless Architecture</a>
-      <a href="/faq.html" class="mobile-acc-item">❓ Security FAQ</a>
-      <a href="/whitepaper.html" class="mobile-acc-item">📄 Cryptographic Specs</a>
-      <a href="/limitations-and-advantages.html" class="mobile-acc-item">⚖️ Limitations &amp; Advantages</a>
-    </div>
-  </div>
-
-  <!-- Mobile Accordion 2 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>🛡️ Cyber Threat Defense</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/where-password-managers-fail-and-invisible-vault.html" class="mobile-acc-item">👁️ Invisible Vault Defense</a>
-      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">☁️ Cloud Vault Vulnerabilities</a>
-      <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="mobile-acc-item">🧮 Password Science &amp; Math</a>
-      <a href="/atm-upi-pin-security-guide.html" class="mobile-acc-item">🔢 ATM &amp; UPI PIN Security</a>
-    </div>
-  </div>
-
-  <!-- Mobile Accordion 3 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>💡 Trust &amp; Economics</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/about-us.html" class="mobile-acc-item">🏢 About FrankPass</a>
-      <a href="/founder-mastermanikant.html" class="mobile-acc-item">🎯 Founder Master Manikant</a>
-      <a href="/how-frankpass-is-free-without-selling-data.html" class="mobile-acc-item">⚖️ Zero-Server Economics</a>
-      <a href="/sponsors.html" class="mobile-acc-item">🌱 Green Sponsors Hub</a>
-    </div>
-  </div>
-
-  <div class="mobile-section-label">🏢 Ecosystem &amp; Directory</div>
-  <a href="/pricing.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>💎</span> Pricing &amp; Plans</a>
-  <a href="/library.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> Master Library &amp; Directory</a>
-  <a href="/products.html" class="mobile-nav-link"><span>🌐</span> Products Hub</a>
-  <a href="/founder-mastermanikant.html" class="mobile-nav-link"><span>👨‍💻</span> Founder (Master Manikant Yadav)</a>
-  
-  <button type="button" class="pwa-install-btn btn-primary" style="margin-top:0.85rem;width:100%;text-align:center;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.35);display:flex;align-items:center;justify-content:center;gap:6px;padding:0.75rem 1rem;border-radius:10px;color:var(--text-primary);font-weight:700;cursor:pointer;">
-    <span>📲</span> <span>Install Offline App</span>
-  </button>
-  
-  <a href="/extension.html" class="btn-primary" style="margin-top:0.85rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">⚡ Get Extension &rarr;</a>
-</nav>
-
-<!-- ============================================================
-     HERO SECTION
-     Top: Centered Headline & Subtitle (Full-Width PC Layout)
-     Bottom: Side-by-Side Founder Profile & Generator Cards
+     WANT TO CONNECT WITH US (2-COLUMN OFFICIAL DESKS)
+     Left: FrankPass Security Desk | Right: Master Manikant Ecosystem
      ============================================================ -->
-<main id="main-content">
-<section class="hero-section" aria-labelledby="hero-heading">
-  <div class="hero-bg-glow" aria-hidden="true"></div>
-
-  <!-- Top: Centered Hero Title & Subtitle across screen -->
-  <div class="hero-header-center">
-    <div class="hero-eyebrow" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Zero-Vault Architecture &middot; 100% Offline Cryptography
+<section class="section-sm" aria-labelledby="connect-heading">
+  <div class="container" style="max-width:860px">
+    <div class="text-center mb-4">
+      <div class="section-label" aria-hidden="true">Official Desks &amp; Communities</div>
+      <h2 id="connect-heading" style="font-size:1.45rem;font-weight:800;color:var(--text-primary);margin:0 0 0.35rem">Want to connect with us?</h2>
+      <p style="font-size:0.88rem;color:var(--text-muted);margin:0">Choose the dedicated channel for your updates and discussions.</p>
     </div>
-    <h1 id="hero-heading" class="hero-title">
-      Say Goodbye to Cloud Breaches. <br><span class="highlight">Zero Database</span> Password Generator.
-    </h1>
-    <p class="hero-subtitle">
-      Input your Master Key and Platform Name. Receive the exact same unique, cryptographically derived password and PIN every time, generated entirely offline in your browser RAM with zero cloud databases.
-    </p>
-  </div>
-  <!-- Hero Content: Centered Layout (Founder Card on Top + Generator Card Below) -->
-  <div class="hero-single-col" style="max-width: 540px; margin: 0 auto; width: 100%; box-sizing: border-box; padding: 0 0.5rem;">
 
-    <!-- COMPACT EXPANDABLE FOUNDER TRUST CARD (TOP) -->
-    <div class="founder-compact-container" data-nosnippet>
-      <div class="founder-compact-card">
-        
-        <!-- Portrait (Grid Area: portrait) -->
-        <div class="founder-compact-portrait">
-          <img src="/icons/founder-master-manikant-yadav.webp?v=4.5.9" onerror="this.src='/icons/founder-master-manikant-yadav.png'" alt="Master Manikant Yadav" width="100" height="120" fetchpriority="high" decoding="async">
-        </div>
-
-        <!-- Info: Name, Role & Project Chips (Grid Area: info) -->
-        <div class="founder-compact-info">
-          <h2 class="founder-compact-name">Master Manikant Yadav</h2>
-          <div class="founder-compact-role">Founder &amp; Software Architect</div>
-          <div class="founder-project-badges">
-            <a href="/" class="founder-project-chip" title="FrankPass - Stateless Password Generator">
-              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>FrankPass</span>
-            </a>
-            <a href="https://frankbase.com" target="_blank" rel="noopener" class="founder-project-chip chip-frankbase" title="FrankBase - Core Ecosystem Hub">
-              <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span>FrankBase &nearr;</span>
-            </a>
+    <!-- 2-Column Responsive Grid (PC: 2 Cols | Mobile: 1 Col Stacked) -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(290px, 1fr));gap:1.25rem;margin-bottom:1.5rem">
+      
+      <!-- Left Column: FrankPass Security & Privacy Focus -->
+      <div class="card-glass" style="padding:1.4rem;border:1px solid rgba(139,92,246,0.3);border-radius:16px;background:var(--card-glass-bg);display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.12);color:var(--accent-light);border:1px solid rgba(139,92,246,0.25);padding:4px 10px;border-radius:8px;font-size:0.78rem;font-weight:700;margin-bottom:0.75rem">
+            <span>🛡️</span> <span>FrankPass Security Desk</span>
           </div>
-        </div>
-
-        <!-- Middle Row: 2 Rows x 3 Columns Social Media Grid across full card width -->
-        <div class="founder-socials-grid" data-nosnippet>
-          <div class="has-hover-card">
-            <a href="https://x.com/mastermanikant" target="_blank" rel="nofollow noopener noreferrer" class="founder-social-btn">
-              <svg viewBox="0 0 24 24" width="13" height="13"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              <span>X</span>
-            </a>
-            <div class="hover-card-preview" style="width:190px"><div class="hover-card-title">X / Twitter Desk</div><p class="hover-card-desc">Real-time engineering thoughts &amp; security updates.</p></div>
-          </div>
-
-          <div class="has-hover-card">
-            <a href="https://github.com/Mastermanikant" target="_blank" rel="nofollow noopener noreferrer" class="founder-social-btn" aria-label="Master Manikant on GitHub">
-              <svg viewBox="0 0 24 24" width="13" height="13"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-              <span>GitHub</span>
-            </a>
-            <div class="hover-card-preview" style="width:190px"><div class="hover-card-title">GitHub Profile</div><p class="hover-card-desc">Open-source cryptographic repos &amp; blueprints.</p></div>
-          </div>
-
-          <div class="has-hover-card">
-            <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="nofollow noopener noreferrer" class="founder-social-btn">
-              <svg viewBox="0 0 24 24" width="13" height="13"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 1 0 0-3.26z"/></svg>
-              <span>LinkedIn</span>
-            </a>
-            <div class="hover-card-preview" style="width:190px"><div class="hover-card-title">LinkedIn</div><p class="hover-card-desc">Professional journey &amp; partnerships.</p></div>
-          </div>
-
-          <div class="has-hover-card">
-            <a href="https://youtube.com/@mastermanikant" target="_blank" rel="nofollow noopener noreferrer" class="founder-social-btn" aria-label="Master Manikant on YouTube">
-              <svg viewBox="0 0 24 24" width="13" height="13"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              <span>YouTube</span>
-            </a>
-            <div class="hover-card-preview" style="width:190px"><div class="hover-card-title">YouTube</div><p class="hover-card-desc">Software launch videos &amp; guides.</p></div>
-          </div>
-
-          <div class="has-hover-card">
-            <a href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" target="_blank" rel="nofollow noopener noreferrer" class="founder-social-btn btn-wa" aria-label="Join FrankPass Official WhatsApp Channel">
-              <svg viewBox="0 0 24 24" width="13" height="13"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8 2.52 1.1 2.52.73 2.98.69.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
-              <span>WhatsApp</span>
-            </a>
-            <div class="hover-card-preview" style="width:190px"><div class="hover-card-title" style="color:#25d366">WhatsApp Channel</div><p class="hover-card-desc">Spam-free direct security alerts.</p></div>
-          </div>
-
-          <div class="has-hover-card">
-            <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="founder-social-btn btn-main">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span>Web &nearr;</span>
-            </a>
-            <div class="hover-card-preview" style="width:200px"><div class="hover-card-title" style="color:#fff">MasterManikant.com</div><p class="hover-card-desc" style="color:rgba(255,255,255,0.85)">Founder's personal website &amp; research memoirs.</p></div>
-          </div>
-        </div>
-
-        <!-- Toggle Button to Expand / Collapse -->
-        <button type="button" id="founder-toggle-btn" class="founder-toggle-btn" aria-expanded="false" aria-controls="founder-expanded-drawer">
-          <span id="founder-toggle-text">Read Founder Story &amp; Cryptographic Proofs &darr;</span>
-        </button>
-
-        <!-- Expandable Drawer (Quote + 4 Badges + 2 Action Links) -->
-        <div id="founder-expanded-drawer" class="founder-drawer">
-          
-          <!-- Quote with Mathematical Conviction -->
-          <p class="founder-trust-quote" style="font-size:0.88rem;font-style:italic;margin-bottom:1.25rem;line-height:1.55;padding:0.75rem 1rem;border-radius:0 10px 10px 0;background:rgba(255,255,255,0.02);border-left:3px solid var(--accent)">
-            &ldquo;A password never stored in a centralized database eliminates centralized server database breach exposure. Calculated on-demand locally with 1,000,000 PBKDF2 iterations.&rdquo;
+          <h3 style="font-size:1.05rem;font-weight:800;margin:0 0 0.4rem;color:var(--text-primary)">Only for security, privacy, and FrankPass updates</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;margin:0 0 1rem">
+            Direct security advisories, cryptographic blueprints, zero-knowledge release notes, and extension updates.
           </p>
-
-          <!-- 4 Trust Badges -->
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.25rem">
-            
-            <div class="has-hover-card" style="width:100%">
-              <span class="trust-pill" style="width:100%;box-sizing:border-box;font-size:0.78rem;border:1px solid var(--border);padding:7px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap;cursor:help;justify-content:center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--error)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Zero-Knowledge
-              </span>
-              <div class="hover-card-preview" style="width:220px"><div class="hover-card-title">Zero-Knowledge</div><p class="hover-card-desc">No password or secret key ever leaves your browser or touches a cloud server.</p></div>
-            </div>
-
-            <div class="has-hover-card" style="width:100%">
-              <span class="trust-pill" style="width:100%;box-sizing:border-box;font-size:0.78rem;border:1px solid var(--border);padding:7px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap;cursor:help;justify-content:center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> 100% Client-Side
-              </span>
-              <div class="hover-card-preview" style="width:220px"><div class="hover-card-title">100% Client-Side</div><p class="hover-card-desc">Computed locally in WebCrypto RAM in under 0.1s  -  works completely offline.</p></div>
-            </div>
-
-            <div class="has-hover-card" style="width:100%">
-              <span class="trust-pill" style="width:100%;box-sizing:border-box;font-size:0.78rem;border:1px solid var(--border);padding:7px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap;cursor:help;justify-content:center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg> Zero Tracking
-              </span>
-              <div class="hover-card-preview" style="width:220px"><div class="hover-card-title">Zero Tracking</div><p class="hover-card-desc">No telemetry, zero analytics scripts, and no third-party behavioral cookies.</p></div>
-            </div>
-
-            <div class="has-hover-card" style="width:100%">
-              <span class="trust-pill" style="width:100%;box-sizing:border-box;font-size:0.78rem;border:1px solid var(--border);padding:7px 10px;border-radius:8px;display:inline-flex;align-items:center;gap:6px;font-weight:600;white-space:nowrap;cursor:help;justify-content:center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1 4-10z"/></svg> Open Algorithm
-              </span>
-              <div class="hover-card-preview" style="width:220px"><div class="hover-card-title">Open Algorithm</div><p class="hover-card-desc">1,000,000 PBKDF2-HMAC-SHA512 hashing rounds. Auditable directly in browser DevTools.</p></div>
-            </div>
-
-          </div>
-
-          <!-- 2 Action Buttons -->
-          <div style="display:flex;gap:8px;">
-            <div class="has-hover-card" style="flex:1">
-              <a href="/founder-mastermanikant.html" class="btn-primary" style="width:100%;box-sizing:border-box;font-size:0.86rem;padding:9px 14px;border-radius:9px;text-decoration:none;display:flex;align-items:center;justify-content:center;font-weight:600">
-                <span>Founder Story &rarr;</span>
-              </a>
-              <div class="hover-card-preview" style="width:230px"><div class="hover-card-title">Founder Story</div><p class="hover-card-desc">Read how getting locked out on 25 Dec 2025 led to inventing serverless password math.</p></div>
-            </div>
-
-            <div class="has-hover-card" style="flex:1">
-              <a href="/limitations-and-advantages.html" class="btn-ghost" style="width:100%;box-sizing:border-box;font-size:0.84rem;border:1px solid var(--border);padding:9px 12px;border-radius:9px;text-decoration:none;display:flex;align-items:center;justify-content:center;font-weight:500">
-                <span>Limitations &amp; Strengths &nearr;</span>
-              </a>
-              <div class="hover-card-preview" style="width:230px"><div class="hover-card-title">Limitations &amp; Advantages</div><p class="hover-card-desc">Honest, in-depth technical analysis of stateless password limitations and advantages.</p></div>
-            </div>
-          </div>
-          <!-- Improvement & Feedback Action Button -->
-          <div style="margin-top:8px;">
-            <div class="has-hover-card" style="width:100%">
-              <a href="https://mastermanikant.com/contact.html?ref=frankpass_home" target="_blank" rel="noopener" class="btn-ghost" style="width:100%;box-sizing:border-box;font-size:0.84rem;border:1px dashed var(--accent);background:rgba(139,92,246,0.06);color:var(--accent-light);padding:8px 12px;border-radius:9px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:600">
-                <span>💡 Suggest Improvement / Report Bug &nearr;</span>
-              </a>
-              <div class="hover-card-preview" style="width:250px"><div class="hover-card-title">Suggest Improvement &amp; Feedback</div><p class="hover-card-desc">Direct line to Founder Master Manikant Yadav. Share feature suggestions, bug reports, or UX feedback.</p></div>
-            </div>
-          </div>
-
         </div>
-
-      </div>
-    </div>
-
-    <!-- Generator Card Container -->
-    <div class="generator-centered-container">
- <form class="card-glass generator-card" id="generator-card" role="form" aria-label="Stateless Password Generator Form" onsubmit="return false;">
-
- <!-- Card Header with Badges & Country Pill -->
- <div class="gen-header">
- <div class="gen-title">
- <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="22" height="22" style="display:inline-block;vertical-align:middle;border-radius:4px;" loading="lazy" decoding="async">
- <span>FrankPass Generator</span>
- </div>
- <div class="gen-header-badges">
- <div class="gen-live-badge">
- <span class="status-dot status-online" aria-hidden="true"></span>
- 100% Offline
- </div>
- <div class="card-country-pill" id="card-country-pill" title="Selected Region">
- <img id="header-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
- <span id="card-country-label">IN</span>
- </div>
- </div>
- </div>
-
-  <!-- First-Time Quick Tip Toast (Dismissible) -->
-  <div id="first-time-guide-toast" style="background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(99,102,241,0.08));border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.65rem 2rem 0.65rem 0.85rem;margin-bottom:1.15rem;font-size:0.8rem;color:var(--text-muted);line-height:1.45;position:relative;">
-    <div style="display:flex;align-items:flex-start;gap:0.45rem;">
-      <span style="color:var(--accent-light);font-size:0.95rem;line-height:1;flex-shrink:0;">💡</span>
-      <span><strong style="color:var(--text-primary);">Quick Guide:</strong> FrankPass calculates passwords locally via math. No cloud storage exists. Enter your platform, a memorable 5 to 8 word Secret Key, generate and use your password. Regenerate it anytime with the exact same inputs.</span>
-    </div>
-    <button type="button" id="dismiss-guide-toast-btn" aria-label="Close guide tip" style="position:absolute;top:0.45rem;right:0.55rem;background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;line-height:1;padding:0.2rem;border-radius:4px;transition:color 0.2s;" title="Dismiss tip" onmouseover="this.style.color='var(--text-primary)'" onmouseout="this.style.color='var(--text-muted)'">✖</button>
-  </div>
-  <script>(function(){try{if(localStorage.getItem('fp_guide_dismissed')){var g=document.getElementById('first-time-guide-toast');if(g)g.style.display='none';}}catch(e){}})();</script>
-
-  <!-- Username / Email (Optional) -->
-  <div class="form-group" id="username-group">
-  <div class="vault-header-row">
-    <div style="display:flex;align-items:center;gap:0.4rem">
-      <label class="form-label" for="username-input" style="margin:0">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
-    </div>
-    <!-- Torch-style Sliding Toggle Switch, Manage Pill & Clear All -->
-    <div class="vault-badge-group">
-      <label class="torch-switch-wrap" for="toggle-save-usernames-check" title="Toggle automatic local saving of usernames/emails">
-        <span class="torch-switch-label" id="save-usernames-label">Save Email</span>
-        <div class="torch-switch">
-          <input type="checkbox" id="toggle-save-usernames-check" checked aria-label="Toggle Auto-Save Usernames Locally">
-          <span class="torch-slider"></span>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <!-- WhatsApp Channel Button -->
+          <a href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:6px;background:#166534;color:#fff;text-decoration:none;padding:0.6rem 1rem;border-radius:10px;font-weight:700;font-size:0.85rem">
+            <span>💬 Join FrankPass WhatsApp Channel &rarr;</span>
+          </a>
+          <!-- Social Link Chips -->
+          <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:6px">
+            <a href="https://x.com/frankpasshq" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span>𝕏 @frankpasshq</span>
+            </a>
+            <a href="https://youtube.com/@frankpasshq" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span style="color:#ff0000">▶</span> <span>YouTube</span>
+            </a>
+            <a href="https://instagram.com/frankpasshq" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span style="color:#e1306c">📷</span> <span>Instagram</span>
+            </a>
+            <a href="https://facebook.com/frankpasshq" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span style="color:#1877f2">📘</span> <span>Facebook</span>
+            </a>
+          </div>
         </div>
-      </label>
-      <a href="/profile.html" id="manage-accounts-btn" class="vault-status-pill status-none" style="text-decoration:none;display:inline-flex;align-items:center;gap:4px;" title="Open Profile & Pre-Saved Accounts Manager">
-        <span>📁</span>
-        <span>Manage (<span id="saved-accounts-count">0</span>)</span>
-      </a>
-      <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Open Profile to manage or delete saved emails" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear All</button>
-    </div>
-  </div>
-  <div class="input-wrapper">
-  <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" list="username-recent-list" aria-describedby="username-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')">
-  <datalist id="username-recent-list"></datalist>
-  </div>
-  <!-- Quick Clickable Recent Chips -->
-  <div id="recent-usernames-chips" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.4rem;"></div>
-  <span id="username-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
-  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Multi-Account Isolation:</strong> Use only if you have multiple accounts on the same site. Establish a personal rule and follow it consistently.</span>
-  </div>
-
- <!-- Platform input -->
- <div class="form-group">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
-  <div style="display:flex;align-items:center;gap:0.4rem">
-  <label class="form-label" for="platform-input" style="margin:0">Site / Platform</label>
-  <!-- Info Guidance Popover Tooltip -->
-  <div class="secret-info-wrap" id="platform-info-wrap">
-  <button type="button" class="secret-info-btn" id="platform-info-btn" aria-label="Site or Platform Help" title="How to enter platform?">
-  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-  </button>
-  <div class="secret-info-popover" id="platform-info-popover" role="tooltip" style="min-width:300px">
-  <div class="info-popover-title">🌐 Site or Platform Guidance</div>
-  <p class="info-popover-desc">If in doubt, simply <strong>paste the full website URL</strong> from your browser or <strong>type the app name</strong>. FrankPass automatically normalizes it into the exact deterministic platform seed.</p>
-  <div class="info-popover-tip">
-  ✨ <strong>Full Website URLs:</strong> <code>https://mail.google.com/</code> &rarr; <code>google</code><br>
-  ✨ <strong>Multi-part Banking:</strong> <code>https://yonoretail.sbi.bank.in</code> &rarr; <code>statebankofindia</code><br>
-  ✨ <strong>Subdomain Isolation:</strong> <code>aws.amazon.com</code> &rarr; <code>aws</code>, <code>amazon.in</code> &rarr; <code>amazon</code>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  <div class="input-wrapper">
-  <input id="platform-input" name="platform" class="form-input" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
-  <datalist id="platform-list"></datalist>
-  <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
-  </div>
-  </div>
-  <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);min-height:1em;display:block;margin-top:0.25rem;" aria-live="polite"></span>
-  <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.15rem;display:block">💡 <strong>Confused?</strong> Paste the full website URL or type the app name  -  FrankPass handles the normalization automatically.</span>
-  </div>
-
-  <!-- Secret key input -->
-  <div class="form-group">
-  <div class="vault-header-row">
-    <div style="display:flex;align-items:center;gap:0.4rem">
-      <label class="form-label" for="secret-key" style="margin:0">Master Secret Key</label>
-      <!-- Info Guidance Trigger -->
-      <button type="button" class="secret-info-btn" id="secret-info-btn" aria-label="Secret Key Help" title="What is a Master Secret Key?" aria-haspopup="dialog">
-        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-      </button>
-    </div>
-    
-    <!-- Vault Status & Lock Controls -->
-    <div class="vault-badge-group">
-      <button type="button" id="vault-status-btn" class="vault-status-pill status-none" aria-label="Save to Device - Vault Status" title="Click to manage device vault">
-        <span id="vault-status-icon">🔒</span>
-        <span id="vault-status-text">Save to Device</span>
-      </button>
-    </div>
-  </div>
-
-  <div class="input-wrapper" style="position:relative">
-    <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" placeholder="e.g. the blue giraffe ordered hot espresso at dawn..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
-    <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
-      <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-    </button>
-    <button type="button" id="inline-unlock-btn" class="btn-primary" style="display:none;position:absolute;right:6px;top:50%;transform:translateY(-50%);padding:4px 10px;font-size:0.78rem;font-weight:700;border-radius:6px;z-index:2">
-      🔓 Unlock
-    </button>
-  </div>
-  <div id="secret-warning" style="display:none;font-size:0.75rem;color:#f59e0b;margin-top:0.35rem;line-height:1.4;" role="alert">⚠️ Please use English letters (a-z) and numbers (0-9). Symbols and non-Latin scripts are omitted automatically for universal consistency.</div>
-  <span id="secret-hint" class="sr-only">Auto-cleared after inactivity or tab switch</span>
-  </div>
-
- <!-- Advanced options accordion -->
- <button class="advanced-toggle" id="advanced-toggle" type="button" aria-expanded="false" aria-controls="advanced-panel" aria-label="Advanced Rules &amp; Rotation options">
- <span style="display:flex;align-items:center;gap:0.45rem">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
- Advanced Rules &amp; Rotation
- </span>
- <svg class="advanced-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
- </button>
-
- <!-- Advanced panel (collapsed by default) -->
- <div class="advanced-panel" id="advanced-panel" aria-hidden="true">
-  <div class="form-group">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.4rem">
-  <div style="display:flex;align-items:center;gap:0.4rem">
-  <label class="form-label" style="margin:0; text-transform: uppercase;" for="variant-input">Password Number / Rotation</label>
-  <!-- Info Guidance Popover Tooltip -->
-  <div class="secret-info-wrap" id="variant-info-wrap">
-  <button type="button" class="secret-info-btn" id="variant-info-btn" aria-label="Rotation Help" title="What is Password Rotation?">
-  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-  </button>
-  <div class="secret-info-popover" id="variant-info-popover" role="tooltip" style="min-width:280px">
-  <div class="info-popover-title">🔄 What is Password Rotation?</div>
-  <p class="info-popover-desc">Change this number if a website asks you to update your password, without ever having to change your Master Secret Key.</p>
-  <div class="info-popover-tip">
-  🔢 <strong>Counter (1, 2, 3...):</strong> Default is <code>1</code>. Increase to <code>2</code> or <code>3</code> to get a fresh unique password for that site.<br>
-  📅 <strong>Month/Year:</strong> For corporate/office policies requiring monthly password changes (e.g. <code>10/2026</code>).
-  </div>
-  <div style="margin-top:0.6rem;padding-top:0.5rem;border-top:1px solid rgba(255,255,255,0.08)">
-  <a href="/secret-key-guide.html#rotation-rules-heading" style="color:var(--accent-light);font-size:0.75rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:4px">
-    <span>📖</span> Simple Numbering &amp; Platform Guide &rarr;
-  </a>
-  </div>
-  </div>
-  </div>
-  </div>
-  <!-- Variant Mode Tabs -->
-  <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid var(--border)">
-  <button type="button" id="variant-tab-counter" class="variant-tab active" aria-label="Permanent Counter Mode" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
-  <button type="button" id="variant-tab-date" class="variant-tab" aria-label="Month and Year Rotation Mode" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
-  </div>
-  </div>
-
-  <!-- Mode 1: Numeric Counter (1-999) with stepper -->
-  <div id="variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
-  <button type="button" id="variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">&minus;</button>
-  <input id="variant-input" class="form-input" type="number" min="1" max="999999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="variant-desc">
-  <button type="button" id="variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
-  </div>
-
-  <!-- Mode 2: Month & Custom Year Rotation -->
-  <div id="variant-date-wrap" style="display:none;gap:0.5rem">
-  <select id="variant-month-select" class="form-input" style="flex:1.2;cursor:pointer" aria-label="Rotation Month">
-  <option value="01">January</option>
-  <option value="02">February</option>
-  <option value="03">March</option>
-  <option value="04">April</option>
-  <option value="05">May</option>
-  <option value="06">June</option>
-  <option value="07">July</option>
-  <option value="08">August</option>
-  <option value="09">September</option>
-  <option value="10">October</option>
-  <option value="11">November</option>
-  <option value="12">December</option>
-  </select>
-  <input id="variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
-  </div>
-
-  <span id="variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">💡 Default is 1. Change to 2, 3... only if you want a new password for this site.</span>
-  </div>
-
- <!-- Password Type -->
- <div class="form-group">
- <label class="form-label" for="type-select">Characters Type</label>
- <select id="type-select" class="form-input" style="width:100%;cursor:pointer">
- <option value="standard" selected>Numbers, Letters &amp; Symbols (Default)</option>
- <option value="alphanumeric">Numbers &amp; Letters (Alphanumeric)</option>
- <option value="letters">Only Letters (a-z, A-Z)</option>
- </select>
- </div>
-
- <!-- Length slider -->
- <div class="form-group">
- <label class="form-label" for="length-slider">Password Length: <span id="length-val" style="color:var(--accent);font-weight:700">16 (80-bit NIST Entropy)</span></label>
- <input id="length-slider" type="range" min="8" max="64" value="16" aria-label="Password length slider">
- </div>
-
- <!-- Presets -->
- <div class="form-group">
- <div class="form-label">Quick Preset</div>
- <div class="preset-btns" role="group" aria-label="Password preset selector">
- <button class="preset-btn" data-preset="simple" type="button" aria-label="Apply Simple Preset">12 Chars</button>
- <button class="preset-btn active" data-preset="strong" type="button" aria-label="Apply Strong Preset">16 Chars (NIST)</button>
- <button class="preset-btn" data-preset="max" type="button" aria-label="Apply Maximum Preset">32 Chars (Max)</button>
- </div>
- </div>
-
- <!-- Save locally toggle (Text Left, Toggle Right) -->
- <div style="display:flex;align-items:center;justify-content:space-between;margin-top:0.75rem;padding-top:0.6rem;border-top:1px solid rgba(255,255,255,0.06)">
- <div style="display:flex; flex-direction:column;"><span style="font-size:0.82rem;color:var(--text-muted)">Save settings locally (length &amp; rules only)</span><span style="font-size:0.65rem; color:var(--text-muted); opacity:0.8; margin-top:2px;">If you are in default mode, no need to save.</span></div>
- <label class="toggle-switch-right" for="save-locally" style="display:inline-flex;align-items:center;margin:0;cursor:pointer" title="Save settings locally">
- <input type="checkbox" id="save-locally" role="switch" aria-checked="false" style="display:none">
- <span class="toggle-track" aria-hidden="true"></span>
- </label>
- </div>
- </div>
-
- <!-- Action buttons row -->
- <div class="gen-actions-row">
- <button id="generate-btn" class="btn-primary btn-generate" type="button" aria-label="Generate secure password">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
- Generate Secure Password
- </button>
- <button id="clear-all-btn" class="btn-ghost btn-reset" type="button" aria-label="Reset form" title="Reset all inputs">
- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
- Reset
- </button>
- </div>
-
-  <!-- ============================================================
-       PASSWORD OUTPUT CONTAINER (DO NOT NEST BANNERS INSIDE)
-       ============================================================ -->
-  <div class="output-box" role="region" aria-label="Generated password output" aria-live="polite">
-  <div class="output-password placeholder" id="output-password" aria-label="Generated password will appear here">
-  ••••••••••••
-  </div>
-  <div class="output-actions">
-  <button class="mask-toggle-btn" id="mask-toggle-btn" type="button" aria-label="Toggle password visibility" title="Mask / Reveal Password">
-  <svg id="mask-eye-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-  <circle cx="12" cy="12" r="3"></circle>
-  </svg>
-  </button>
-  <button class="copy-btn" id="copy-btn" type="button" aria-label="Copy password to clipboard" disabled>
-  <svg class="copy-icon" id="copy-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true">
-  <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-  </svg>
-  <span>Copy</span>
-  </button>
-  </div>
-  </div>
-  <!-- ==================== END PASSWORD OUTPUT CONTAINER ==================== -->
-
-  <!-- ============================================================
-       CLIPBOARD SECURITY, COUNTDOWN TIMER & PERMISSION BANNER
-       ============================================================ -->
-  <div id="clipboard-clear-bar" style="display:none;margin-top:0.6rem;padding:0.6rem 0.9rem;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25);border-radius:10px;font-size:0.82rem;color:var(--text-muted);align-items:center;gap:0.5rem;flex-wrap:wrap" role="status" aria-live="polite">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    <span>Clipboard auto-wipes in <strong id="clipboard-countdown" style="color:var(--text-primary);font-size:0.95rem">30</strong>s</span>
-    <button id="clear-now-btn" type="button" style="padding:0.2rem 0.6rem;background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.3);border-radius:6px;font-size:0.75rem;font-weight:700;cursor:pointer" aria-label="Wipe clipboard immediately">Wipe Now</button>
-    <div style="margin-left:auto;display:flex;align-items:center;gap:0.4rem">
-      <select id="clipboard-duration-select" aria-label="Clipboard timer duration" style="padding:0.2rem 0.4rem;background:var(--bg-secondary);color:var(--text-primary);border:1px solid var(--border);border-radius:6px;font-size:0.75rem;cursor:pointer">
-        <option value="15">15s</option>
-        <option value="30" selected>30s</option>
-        <option value="60">60s</option>
-      </select>
-      <button id="cancel-clear-btn" type="button" style="font-size:0.75rem;color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0.2rem;text-decoration:underline" aria-label="Cancel clipboard timer">Cancel</button>
-    </div>
-  </div>
-
-  <!-- Clipboard Permission & Security Benefit Banner -->
-  <div id="clipboard-perm-banner" style="display:none;margin-top:0.75rem;padding:1rem 1.15rem;background:var(--card-glass-bg);border:1px solid rgba(139,92,246,0.3);border-radius:14px;font-size:0.84rem;color:var(--text-muted);line-height:1.55;box-shadow:0 8px 24px rgba(0,0,0,0.15)" role="dialog" aria-labelledby="perm-banner-title">
-    <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem">
-      <span style="font-size:1.1rem">🛡️</span>
-      <h3 id="perm-banner-title" style="font-weight:800;font-size:0.95rem;color:var(--text-primary);margin:0">Enable Automatic Clipboard Security?</h3>
-    </div>
-    
-    <!-- Security Benefit Explanation -->
-    <p style="margin:0 0 0.6rem;color:var(--text-muted)">
-      <strong>Why this matters:</strong> When you copy a password, it stays stored in your device's shared clipboard memory. Background apps, other browser tabs, or clipboard-logging malware could silently read it. Auto-Clear automatically erases your copied password after you paste it, leaving zero residual traces.
-    </p>
-    
-    <div style="background:rgba(16,185,129,0.08);border-left:3px solid #10b981;padding:0.5rem 0.75rem;border-radius:0 8px 8px 0;margin-bottom:0.85rem;font-size:0.8rem;color:var(--text-primary)">
-      🔒 <strong>Stateless Privacy Model:</strong> FrankPass is client-side and offline. The Auto-Clear function does not inspect clipboard contents; it overwrites the buffer upon timer expiration.
-    </div>
-
-    <!-- Duration Choice Buttons -->
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center">
-      <span style="font-size:0.78rem;font-weight:700;color:var(--text-primary);margin-right:0.25rem">Auto-wipe in:</span>
-      <button type="button" class="btn-perm-choice" data-seconds="15" style="padding:0.35rem 0.75rem;background:rgba(139,92,246,0.12);color:var(--accent-light);border:1px solid rgba(139,92,246,0.3);border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer">⚡ 15s</button>
-      <button type="button" class="btn-perm-choice" data-seconds="30" style="padding:0.35rem 0.75rem;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer">🛡️ 30s (Recommended)</button>
-      <button type="button" class="btn-perm-choice" data-seconds="60" style="padding:0.35rem 0.75rem;background:rgba(139,92,246,0.12);color:var(--accent-light);border:1px solid rgba(139,92,246,0.3);border-radius:8px;font-size:0.78rem;font-weight:700;cursor:pointer">⏱️ 60s</button>
-      <button id="perm-deny-btn" type="button" style="margin-left:auto;padding:0.35rem 0.75rem;background:transparent;color:var(--text-muted);border:1px solid var(--border);border-radius:8px;font-size:0.78rem;cursor:pointer">No Thanks</button>
-    </div>
-  </div>
-  <!-- ==================== END CLIPBOARD CONTROLS ==================== -->
- 
- <!-- Micro Trust Badge -->
- <div class="gen-micro-footer">
- <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
- <span>Zero Data Stored &middot; Client-Side WebCrypto &middot; 100% Offline</span>
- </div>
-
- </form>
- </div>
- </div>
-</section>
-
-<!-- ============================================================
-     SUPPORT MASTER MANIKANT & COMMUNITY CARD
-     ============================================================ -->
-<section class="section-sm" aria-label="Support Master Manikant">
-  <div class="container" style="max-width:680px">
-    <div class="card-glass" style="padding:clamp(1.2rem, 3.5vw, 2rem);border:1px solid rgba(139,92,246,0.35);background:linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(99,102,241,0.04) 100%)">
-      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
-        <span style="font-size:1.5rem">&#128156;</span>
-        <h2 style="font-size:1.25rem;font-weight:700;color:var(--text-primary);margin:0">
-          Love FrankPass? Support Master Manikant
-        </h2>
-      </div>
-      <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin-bottom:1.25rem">
-        FrankPass is 100% free, stateless, and ad-free for everyone. If you want us to create more sovereign, zero-knowledge privacy tools, follow Master Manikant on social media and join our official WhatsApp Channel to get direct development updates and early-bird access to upcoming products:
-      </p>
-
-      <!-- Featured WhatsApp Broadcast Channel Button -->
-      <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" aria-label="Join Master Manikant Yadav WhatsApp Broadcast Channel" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;background:#166534;color:#ffffff;text-decoration:none;padding:0.85rem 1.25rem;border-radius:12px;font-weight:700;font-size:0.95rem;margin-bottom:1rem;box-shadow:0 4px 14px rgba(22,101,52,0.3);transition:all 0.2s ease;">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8 2.52 1.1 2.52.73 2.98.69.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
-        <span>Join Official WhatsApp Channel &rarr;</span>
-      </a>
-
-      <!-- Social Follow Grid -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:0.65rem;margin-bottom:1rem">
-        <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:0.65rem 0.8rem;border-radius:10px;color:var(--text-primary);text-decoration:none;font-size:0.85rem;font-weight:600;transition:var(--transition)">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="#0a66c2"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 1 0 0-3.26z"/></svg>
-          <span>LinkedIn</span>
-        </a>
-        <a href="https://x.com/mastermanikant" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:0.65rem 0.8rem;border-radius:10px;color:var(--text-primary);text-decoration:none;font-size:0.85rem;font-weight:600;transition:var(--transition)">
-          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          <span>X / Twitter</span>
-        </a>
-        <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer" aria-label="Master Manikant YouTube Channel" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:0.65rem 0.8rem;border-radius:10px;color:var(--text-primary);text-decoration:none;font-size:0.85rem;font-weight:600;transition:var(--transition)">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          <span>YouTube</span>
-        </a>
-        <a href="https://instagram.com/mastermanikant" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:0.65rem 0.8rem;border-radius:10px;color:var(--text-primary);text-decoration:none;font-size:0.85rem;font-weight:600;transition:var(--transition)">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="#e1306c"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-          <span>Instagram</span>
-        </a>
       </div>
 
-      <!-- Direct Tool Utility Link -->
-      <a href="/install.html" style="display:flex;align-items:center;justify-content:center;gap:0.6rem;background:var(--bg-secondary);border:1px solid var(--border);padding:0.75rem 1rem;border-radius:var(--radius-sm);color:var(--text-primary);text-decoration:none;font-size:0.88rem;font-weight:600;transition:var(--transition)">
-        <span style="font-size:1.1rem">🧩</span>
-        <span>Get Free Browser Extension (Offline &amp; Stealth Autofill) &rarr;</span>
-      </a>
+      <!-- Right Column: Master Manikant Ecosystem Focus -->
+      <div class="card-glass" style="padding:1.4rem;border:1px solid var(--border);border-radius:16px;background:var(--card-glass-bg);display:flex;flex-direction:column;justify-content:space-between">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(99,102,241,0.12);color:var(--accent-light);border:1px solid rgba(99,102,241,0.25);padding:4px 10px;border-radius:8px;font-size:0.78rem;font-weight:700;margin-bottom:0.75rem">
+            <span>🚀</span> <span>Founder &amp; Sovereign Ecosystem</span>
+          </div>
+          <h3 style="font-size:1.05rem;font-weight:800;margin:0 0 0.4rem;color:var(--text-primary)">For all upcoming products &amp; general discussions</h3>
+          <p style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;margin:0 0 1rem">
+            Founder memoirs, multi-project architectures, academic insights, and direct engineering updates.
+          </p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <!-- MasterManikant.com Primary Hub -->
+          <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:6px;background:var(--accent);color:#fff;text-decoration:none;padding:0.6rem 1rem;border-radius:10px;font-weight:700;font-size:0.85rem">
+            <span>🌐 Visit MasterManikant.com &rarr;</span>
+          </a>
+          <!-- Social Link Chips -->
+          <div style="display:grid;grid-template-columns:repeat(2, 1fr);gap:6px">
+            <a href="https://x.com/mastermanikant" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span>𝕏 @mastermanikant</span>
+            </a>
+            <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span style="color:#0a66c2">💼</span> <span>LinkedIn</span>
+            </a>
+            <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span style="color:#ff0000">▶</span> <span>YouTube</span>
+            </a>
+            <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.8rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:5px;border:1px solid var(--border);border-radius:8px;color:var(--text-primary);text-decoration:none">
+              <span style="color:#25d366">💬</span> <span>WhatsApp</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- Simplified Share Card -->
+    <div class="card-glass" style="padding:1.4rem 1.6rem;text-align:center;border-radius:16px;border:1px solid var(--border);max-width:680px;margin:0 auto">
+      <h4 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0 0 0.35rem">Share FrankPass with your friends and family</h4>
+      <p style="font-size:0.84rem;color:var(--text-muted);margin:0 0 1rem;line-height:1.5">Help them switch to mathematical self-custody and live stress-free without cloud leaks.</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.6rem">
+        <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('whatsapp',event)" aria-label="Share FrankPass on WhatsApp" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;text-decoration:none">
+          WhatsApp
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('x',event)" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);text-decoration:none">
+          𝕏 (Twitter)
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('facebook',event)" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.35);color:#60a5fa;text-decoration:none">
+          Facebook
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('reddit',event)" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:rgba(255,69,0,0.1);border:1px solid rgba(255,69,0,0.3);color:#ff4500;text-decoration:none">
+          Reddit
+        </a>
+        <button onclick="shareLink('copy',event)" aria-label="Copy link" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-muted);cursor:pointer">
+          📋 Copy Link
+        </button>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- ============================================================
- SHARE CARD
- Encourage users to spread mental-load-free security
- ============================================================ -->
-<section class="section-sm" aria-label="Share FrankPass" data-nosnippet>
- <div class="container" style="max-width:680px">
- <div class="card-glass" style="padding:2rem">
- <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap">
- <div style="width:44px;height:44px;background:rgba(139,92,246,0.12);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" width="22" height="22" aria-hidden="true"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
- </div>
- <div style="flex:1;min-width:200px">
- <strong style="font-size:1.05rem;color:var(--text-primary);display:block;margin-bottom:0.35rem">Help someone live stress-free &#128156;</strong>
- <p style="margin:0;font-size:0.9rem;color:var(--text-muted);line-height:1.6">Share FrankPass with your family &amp; friends. Help them live mentally load-free and become security-aware - without paying anything.</p>
- </div>
- </div>
-
- <div style="display:flex;flex-wrap:wrap;gap:0.6rem;margin-top:1.5rem">
- <!-- WhatsApp -->
- <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('whatsapp',event)" aria-label="Share FrankPass on WhatsApp"
- style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;text-decoration:none;transition:var(--transition)">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
- WhatsApp
- </a>
- <!-- Facebook -->
- <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('facebook',event)"
- style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.35);color:#60a5fa;text-decoration:none;transition:var(--transition)">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
- Facebook
- </a>
- <!-- X / Twitter -->
- <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('x',event)"
- style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);text-decoration:none;transition:var(--transition)">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
- X (Twitter)
- </a>
- <!-- Reddit -->
- <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('reddit',event)"
- style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:rgba(255,69,0,0.1);border:1px solid rgba(255,69,0,0.3);color:#ff4500;text-decoration:none;transition:var(--transition)">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
- Reddit
- </a>
- <!-- Copy Link -->
- <button onclick="shareLink('copy',event)" aria-label="Copy link"
- style="display:inline-flex;align-items:center;gap:0.45rem;padding:0.55rem 1rem;border-radius:8px;font-size:0.85rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-muted);cursor:pointer;transition:var(--transition)">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
- Copy Link
- </button>
- </div>
- </div>
- </div>
-</section>
-
-<!-- ============================================================
- TRUST STRIP
- 4 glass badges highlighting core properties
- ============================================================ -->
-<section class="section-sm" aria-label="Trust indicators">
- <div class="container">
- <div class="trust-strip">
- <div class="trust-badge">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M1 6s4-2 11-2 11 2 11 2M1 18s4 2 11 2 11-2 11-2"/><path d="M3 12c0-3 4-5 9-5s9 2 9 5"/></svg>
- 100% Offline
- </div>
- <div class="trust-badge">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
- Zero Data Stored
- </div>
- <div class="trust-badge">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
- Same Input = Same Output
- </div>
- <div class="trust-badge">
- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
- Open Algorithm
- </div>
- </div>
- <p style="text-align:center;margin-top:1.25rem;font-size:0.85rem;color:var(--text-muted)">
- Don't trust us? Turn off your internet and try it.
- </p>
- </div>
-</section>
-
-<!-- ============================================================
-     HOW IT WORKS: THE STATELESS WORKFLOW
+     HOW IT WORKS: THE DETERMINISTIC WORKFLOW
      4 Glass Step Cards (PC: 2x2 Compact 820px Grid | Mobile: 1 Column)
      ============================================================ -->
 <section class="section" aria-labelledby="how-heading">
  <div class="container">
  <div class="text-center mb-4">
- <div class="section-label" aria-hidden="true">No cloud database. No sync honeypots. Client-side math.</div>
- <h2 id="how-heading" class="section-title">The Stateless Workflow</h2>
- <p class="section-desc">Four simple steps. One deterministic mathematical function. One unique password. No storage.</p>
+ <div class="section-label" aria-hidden="true">Deterministic Math &middot; Zero Cloud Storage</div>
+ <h2 id="how-heading" class="section-title">How FrankPass Works: The Deterministic Workflow</h2>
+ <p class="section-desc">Four simple steps. One deterministic mathematical function. One unique password. No cloud storage. <a href="/whitepaper.html" style="color:var(--accent-light);text-decoration:underline;font-weight:600;margin-left:4px;">Read Cryptographic Whitepaper &rarr;</a></p>
  </div>
- <div class="stateless-steps-grid" role="list" aria-label="Stateless Workflow Steps">
+ <div class="stateless-steps-grid" role="list" aria-label="Deterministic Workflow Steps">
  <!-- Step 1 -->
- <div class="card-glass step-card" role="listitem" aria-label="Step 1: Enter Username or Account (Optional)">
+ <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">1</div>
-    <div class="step-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    </div>
+    <div class="step-icon" aria-hidden="true">🔑</div>
   </div>
- <h3>Username / Account <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></h3>
- <p>Use only if you manage multiple accounts on the same site (e.g. personal vs work). If you have only one account, leave it blank. Establish a personal rule and follow it consistently.</p>
+ <h3>Enter Master Secret Key (Master Seed)</h3>
+ <p>Your personal cryptographic seed. To eliminate cognitive load, normalize it to lowercase (a-z, 0-9, no spaces). Use a memorable 6 to 8 word passphrase for life. <a href="/secret-key-guide.html" style="color:var(--accent-light);text-decoration:underline;">Read Secret Key Guide &rarr;</a></p>
  </div>
  <!-- Step 2 -->
- <div class="card-glass step-card" role="listitem" aria-label="Step 2: Enter your platform">
+ <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">2</div>
-    <div class="step-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-    </div>
+    <div class="step-icon" aria-hidden="true">🌐</div>
   </div>
- <h3>Enter Site / Platform</h3>
- <p>Type any platform name or paste a URL. FrankPass normalizes it automatically - <code>facebook.com</code>, <code>www.facebook.com</code>, or just <code>facebook</code> all produce the exact same result.</p>
+ <h3>Enter Site Name or Paste URL</h3>
+ <p>Type any website or service name (e.g. Amazon, Google, SBI) or paste the URL. FrankPass normalizes it automatically so amazon.com, www.amazon.com, and amazon all produce the exact same password.</p>
  </div>
  <!-- Step 3 -->
- <div class="card-glass step-card" role="listitem" aria-label="Step 3: Enter your secret key">
+ <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">3</div>
-    <div class="step-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>
-    </div>
+    <div class="step-icon" aria-hidden="true">🔄</div>
   </div>
- <h3>Enter Master Secret Key</h3>
- <p>Your secret key is the master seed. It never leaves your device memory. 1,000,000 PBKDF2-HMAC-SHA512 iterations compute a mathematically isolated cryptographic seed locally.</p>
+ <h3>Password Counter (Easy Rotation)</h3>
+ <p>Need to periodically update a password? Never change your Master Seed! Simply open Advanced Options and change the Password Counter (1 to 999999 or Month/Year like Jun2024) to get a fresh unique password.</p>
  </div>
  <!-- Step 4 -->
- <div class="card-glass step-card" role="listitem" aria-label="Step 4: Copy, Use and Regenerate">
+ <div class="card-glass step-card" role="listitem">
   <div class="step-card-header">
     <div class="step-num" aria-hidden="true">4</div>
-    <div class="step-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-    </div>
+    <div class="step-icon" aria-hidden="true">⚡</div>
   </div>
-  <h3>Copy, Use &amp; Regenerate</h3>
-  <p>Your password is calculated locally in browser RAM using 1,000,000 PBKDF2 iterations. Copy and use it. Whenever you need it again, simply re-enter the same inputs to regenerate the exact same password.</p>
+  <h3>Mathematical Re-creation</h3>
+  <p>1,000,000 PBKDF2-HMAC-SHA512 hashing rounds calculate your isolated password locally in browser RAM. No servers or database sync required: typing the same inputs on any device re-creates the exact same password!</p>
  </div>
  </div>
  </div>
@@ -1188,29 +325,32 @@
 <!-- ============================================================
  ASK AI (MULTILINGUAL ASSISTANT)
  ============================================================ -->
-<section id="ask-ai-section" class="section" style="background:var(--bg-primary); padding: 4rem 0;" aria-labelledby="ask-ai-heading">
+<section id="ask-ai-section" class="section" style="background:var(--bg-primary); padding: 3.5rem 0;" aria-labelledby="ask-ai-heading">
  <div class="container" style="max-width:680px">
  <div class="text-center mb-4">
- <div class="section-label" aria-hidden="true">Multilingual Guide</div>
+ <div class="section-label" aria-hidden="true">Multilingual AI Tutor</div>
  <h2 id="ask-ai-heading">Learn FrankPass in your language</h2>
- <p class="section-desc mt-2">No complicated translation tables. Just tell AI your language and script, and get a complete, structured tutorial instantly.</p>
+ <p class="section-desc mt-2">Zero heavy translation files. Choose your language, and AI will explain FrankPass determinism in your native script instantly.</p>
  </div>
  
- <div class="card-glass" style="padding:2.25rem">
+ <div class="card-glass" style="padding:2rem">
  <div class="form-group" style="margin-bottom:1.5rem">
  <label for="ai-lang" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Your Language</label>
- <input type="text" id="ai-lang" placeholder="e.g. Hindi, Spanish, Tamil" value="Hindi" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;transition:var(--transition)">
- </div>
- 
- <div class="form-group" style="margin-bottom:2rem">
- <label for="ai-script" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Preferred Script</label>
- <select id="ai-script" style="width:100%;padding:1.15rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;appearance:none;cursor:pointer">
-  <option value="Devanagari">Devanagari (देवनागरी)</option>
-  <option value="Latin">Latin (A, B, C...)</option>
-  <option value="Arabic">Arabic (العربية)</option>
-  <option value="Cyrillic">Cyrillic (Кириллица)</option>
-  <option value="Native">Native to Language</option>
- </select>
+ <input type="text" id="ai-lang" list="popular-languages" placeholder="e.g. Hindi, Tamil, Spanish, French, Arabic, Bengali..." value="Hindi" style="width:100%;padding:1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;box-sizing:border-box;">
+ <datalist id="popular-languages">
+   <option value="Hindi">Hindi (हिन्दी)</option>
+   <option value="Bengali">Bengali (বাংলা)</option>
+   <option value="Tamil">Tamil (தமிழ்)</option>
+   <option value="Telugu">Telugu (తెలుగు)</option>
+   <option value="Marathi">Marathi (मराठी)</option>
+   <option value="Gujarati">Gujarati (ગુજરાતી)</option>
+   <option value="Spanish">Spanish (Español)</option>
+   <option value="French">French (Français)</option>
+   <option value="German">German (Deutsch)</option>
+   <option value="Arabic">Arabic (العربية)</option>
+   <option value="Russian">Russian (Русский)</option>
+   <option value="Japanese">Japanese (日本語)</option>
+ </datalist>
  </div>
 
  <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Choose your preferred AI or search engine below to learn via deep-linking, or copy the complete smart prompt directly.</p>
@@ -1265,12 +405,26 @@
   <div class="container" style="max-width: 1040px; margin: 0 auto; padding: 0 1.25rem;">
     
     <!-- Section Header -->
-    <div class="text-center mb-5" style="text-align: center; margin-bottom: 3rem;">
-      <div class="section-label" aria-hidden="true" style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem;">The Stateless Advantage</div>
-      <h2 id="why-heading" style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900; margin: 0 0 0.85rem; color: var(--text-primary);">Why Not a Cloud Password Manager?</h2>
+    <div class="text-center mb-5" style="text-align: center; margin-bottom: 2.5rem;">
+      <div class="section-label" aria-hidden="true" style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem;">Architectural Invariants</div>
+      <h2 id="why-heading" style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 900; margin: 0 0 0.85rem; color: var(--text-primary);">How FrankPass is Different from Traditional Cloud Password Managers</h2>
       <p style="max-width: 680px; margin: 0 auto; font-size: 1rem; color: var(--text-muted); line-height: 1.65;">
-        Storing encrypted password vaults on cloud servers creates a single point of failure for cyberattacks. FrankPass replaces centralized honeypots with deterministic mathematical self-custody.
+        Storing encrypted vaults on cloud servers creates centralized honeypots for hackers. FrankPass replaces server databases with pure deterministic mathematics and local RAM self-custody.
       </p>
+    </div>
+
+    <!-- Free vs Paid Clarity Banner -->
+    <div style="background:rgba(139,92,246,0.08);border:1px solid rgba(139,92,246,0.25);border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:2rem;display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem;">
+      <div>
+        <div style="font-size:0.82rem;font-weight:800;color:#10b981;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px">100% Free Forever ($0 / ₹0)</div>
+        <div style="font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:4px">Web App, Mobile PWA &amp; Browser Extension</div>
+        <div style="font-size:0.84rem;color:var(--text-muted);line-height:1.5">Unlimited passwords, stealth autofill, and RAM cryptography on any device. Zero ads, zero tracking, zero data storage.</div>
+      </div>
+      <div>
+        <div style="font-size:0.82rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px">Pro Workstation Pass ($25 Solo Lifetime)</div>
+        <div style="font-size:0.95rem;font-weight:700;color:var(--text-primary);margin-bottom:4px">Hardware-Bound 1-PC Workstation License</div>
+        <div style="font-size:0.84rem;color:var(--text-muted);line-height:1.5">Air-gapped offline workstation command tools, motherboard-locked lifetime access, and zero recurring monthly or yearly subscriptions.</div>
+      </div>
     </div>
 
     <!-- 4 Feature Callout Cards (Grid-4) -->
@@ -1280,10 +434,10 @@
       <div class="card-glass" style="padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border); background: var(--card-glass-bg);">
         <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem;">
           <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; flex-shrink: 0;" aria-hidden="true"></span>
-          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">No Cloud Vaults (Zero Breach)</h3>
+          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Zero Server Honeypots</h3>
         </div>
         <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Every major cloud manager has suffered security incidents. Storing encrypted vaults creates honeypots. FrankPass stores 0 bytes: what does not exist cannot be hacked.
+          Traditional password managers store encrypted vault blobs on company servers, creating honeypots for hackers. FrankPass stores 0 bytes: what does not exist on a server can never be leaked in a database breach.
         </p>
       </div>
 
@@ -1291,10 +445,10 @@
       <div class="card-glass" style="padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border); background: var(--card-glass-bg);">
         <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem;">
           <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; flex-shrink: 0;" aria-hidden="true"></span>
-          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Zero Storage &amp; 0MB Idle RAM</h3>
+          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Zero Server Downtime</h3>
         </div>
         <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Operates without servers, cloud databases, or background bloat. Consumes up to 50MB RAM maximum only while generating, and 0MB idle in the background (unlike 1.5GB to 6GB Electron desktop apps).
+          Cloud vaults fail when AWS crashes or when cloud APIs go down. Because FrankPass has no central servers, there are zero server outages, zero sync lag, and zero downtime. It works reliably in basements and airplanes.
         </p>
       </div>
 
@@ -1302,10 +456,10 @@
       <div class="card-glass" style="padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border); background: var(--card-glass-bg);">
         <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem;">
           <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex-shrink: 0;" aria-hidden="true"></span>
-          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Works 30,000 Ft in the Air</h3>
+          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">0MB Idle RAM &amp; Clean Bloat-Free</h3>
         </div>
         <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Cloud managers fail when AWS crashes or without Wi-Fi. FrankPass is 100% offline via local WebCrypto. It works reliably in airplanes, basements, or global outages.
+          Traditional desktop password managers run heavy Electron runtimes consuming 1.5GB to 6GB RAM in the background. FrankPass Web App and Extension consume 0MB idle in the background, only activating when you generate.
         </p>
       </div>
 
@@ -1313,10 +467,10 @@
       <div class="card-glass" style="padding: 1.75rem; border-radius: 16px; border: 1px solid var(--border); background: var(--card-glass-bg);">
         <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.85rem;">
           <span style="width: 10px; height: 10px; border-radius: 50%; background: #38bdf8; flex-shrink: 0;" aria-hidden="true"></span>
-          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Zero-Clipboard Protection</h3>
+          <h3 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">Two-Tier Clipboard Defense</h3>
         </div>
         <p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;">
-          Legacy managers copy plaintext to the OS clipboard where background malware sniffs it. FrankPass Pro injects credentials straight into DOM nodes, bypassing clipboard buffers.
+          FrankPass Extension injects credentials straight into DOM login fields without touching OS clipboard buffers. On Web, an auto-clear timer (15s/30s/60s) minimizes exposure, backed by copy-blocks on master keys.
         </p>
       </div>
 
@@ -1388,6 +542,11 @@
           </tr>
         </tbody>
       </table>
+      <div style="text-align:center;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)">
+        <a href="/frankpass-vs-cloud-password-vaults.html" class="btn-ghost" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border:1px solid var(--border);border-radius:10px;font-weight:700;font-size:0.88rem;color:var(--text-primary);text-decoration:none">
+          <span>📖</span> <span>Read Full In-Depth Architecture Comparison &rarr;</span>
+        </a>
+      </div>
     </div>
 
     <!-- Comparison-Focused FAQ Accordion -->
@@ -1645,25 +804,25 @@
         </div>
 
         <div>
-          <!-- Mandatory Offline Agreement Checkboxes -->
-          <div class="fp-offline-terms-box" style="margin-bottom: 1rem; padding: 0.9rem 1rem; border-radius: 12px; background: rgba(20,20,38,0.9); border: 1px solid rgba(139,92,246,0.3); font-size: 0.78rem; color: var(--text-muted); text-align: left; line-height: 1.55; transition: border-color 0.2s;">
-            <div style="font-weight: 800; color: #10b981; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 6px; font-size: 0.8rem;">
-              <span>🛡️</span> Mandatory Offline Pre-Purchase Verification:
+          <!-- Key Offline Assurances -->
+          <div class="fp-offline-terms-box" style="margin-bottom:1rem;padding:0.9rem 1rem;border-radius:12px;background:rgba(20,20,38,0.9);border:1px solid rgba(139,92,246,0.3);font-size:0.78rem;color:var(--text-muted);text-align:left;line-height:1.55;">
+            <div style="font-weight:800;color:#10b981;margin-bottom:0.5rem;display:flex;align-items:center;gap:6px;font-size:0.8rem;">
+              <span>🛡️</span> Key Purchase Assurances:
             </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 0.5rem; cursor: pointer; color: var(--text-primary);">
-              <input type="checkbox" class="fp-verify-chk-1" style="margin-top: 2px; accent-color: #8b5cf6; width: 15px; height: 15px; flex-shrink: 0;">
-              <span><strong>1. Free Trial Tested:</strong> I have tested the <strong>30-Day Zero-PII Offline Free Trial</strong> (no card, no email required) on my computer and confirmed full satisfaction.</span>
-            </label>
-            <label style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 0.5rem; cursor: pointer; color: var(--text-primary);">
-              <input type="checkbox" class="fp-verify-chk-2" style="margin-top: 2px; accent-color: #8b5cf6; width: 15px; height: 15px; flex-shrink: 0;">
-              <span><strong>2. Offline Invariant (Strict No-Refund):</strong> I understand that FrankPass Pro operates 100% offline with zero cloud DRM. Because offline license keys cannot be revoked or deactivated once generated, <strong>strictly no refunds can be issued under any condition</strong>.</span>
-            </label>
-            <label style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; color: var(--text-primary);">
-              <input type="checkbox" class="fp-verify-chk-3" style="margin-top: 2px; accent-color: #8b5cf6; width: 15px; height: 15px; flex-shrink: 0;">
-              <span><strong>3. 1 Motherboard Lock:</strong> I understand this license is bound to 1 physical computer. (Motherboard replacement qualifies for a 50% discount token once in a lifetime; strictly no free device transfers).</span>
-            </label>
+            <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:0.45rem;">
+              <span style="color:#10b981;font-weight:800;">✓</span>
+              <span><strong>1. Free Trial Tested:</strong> Test the 30-Day Zero-PII Offline Free Trial on your PC before purchasing.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:0.45rem;">
+              <span style="color:#10b981;font-weight:800;">✓</span>
+              <span><strong>2. Offline Invariant:</strong> Operates 100% offline with zero cloud DRM. No cloud telemetry or revocations.</span>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:8px;">
+              <span style="color:#10b981;font-weight:800;">✓</span>
+              <span><strong>3. 1 Motherboard Lock:</strong> Hardware-bound lifetime license for 1 physical PC with zero recurring subscriptions.</span>
+            </div>
           </div>
-          <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary btn-buy-lock" style="display: block; text-align: center; padding: 0.95rem 1.4rem; border-radius: 12px; font-weight: 800; text-decoration: none; background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #fff; box-shadow: 0 6px 20px rgba(139,92,246,0.4); transition: all 0.2s;">
+          <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;padding:0.95rem 1.4rem;border-radius:12px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,0.4);transition:all 0.2s;">
             <span>⚡ Claim Lifetime Pass on Sovereign Store ↗</span>
           </a>
           <div style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">Instant License Key &amp; Tax Receipt via Dodo Payments</div>
@@ -2154,31 +1313,7 @@
 
 
 <script>
-// Mandatory Checkboxes Enforcement on Landing Page
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.btn-buy-lock').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      var container = btn.closest('.card-glass') || document;
-      var chk1 = container.querySelector('.fp-verify-chk-1');
-      var chk2 = container.querySelector('.fp-verify-chk-2');
-      var chk3 = container.querySelector('.fp-verify-chk-3');
-      var box = container.querySelector('.fp-offline-terms-box');
-      if ((chk1 && !chk1.checked) || (chk2 && !chk2.checked) || (chk3 && !chk3.checked)) {
-        e.preventDefault();
-        if (box) {
-          box.style.borderColor = '#ef4444';
-          box.style.boxShadow = '0 0 15px rgba(239, 68, 68, 0.4)';
-          box.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          setTimeout(function() {
-            box.style.borderColor = 'rgba(139,92,246,0.3)';
-            box.style.boxShadow = 'none';
-          }, 3000);
-        }
-        alert('Please check all 3 verification boxes above to confirm you have tested the offline trial before proceeding to checkout.');
-      }
-    });
-  });
-});
+// Checkboxes replaced with trust assurances
 </script>
 </body>
 </html>

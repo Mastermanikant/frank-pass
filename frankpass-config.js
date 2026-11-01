@@ -15,38 +15,18 @@ const FRANKPASS_CONFIG = {
 
   /* ── Pricing ──────────────────────────────────────────────────── */
   PRICES: {
-    INDIA:  { silver: 49,   gold: 99,   platinum: 499  },
-    GLOBAL: { silver: 0.99, gold: 1.99, platinum: 9.99 }
+    SOLO_LIFETIME: 25.00,
+    FREE_WEB_PWA:  0.00,
+    INDIA:  { solo_lifetime: 25, free_web_pwa: 0 },
+    GLOBAL: { solo_lifetime: 25, free_web_pwa: 0 }
   },
 
   /* ── Central Store & Payment Links (store.frankbase.com) ──────── */
-  STORE_URL: "https://store.frankbase.com",
+  STORE_URL: "https://store.frankbase.com/software/frankpass/",
   EBOOKS_URL: "https://store.frankbase.com/ebooks",
   PAYMENT_LINKS: {
-    STANDARD: {
-      INDIA:  {
-        silver:   "https://store.frankbase.com/products/frankpass-silver",
-        gold:     "https://store.frankbase.com/products/frankpass-gold",
-        platinum: "https://store.frankbase.com/products/frankpass-platinum"
-      },
-      GLOBAL: {
-        silver:   "https://store.frankbase.com/products/frankpass-silver-global",
-        gold:     "https://store.frankbase.com/products/frankpass-gold-global",
-        platinum: "https://store.frankbase.com/products/frankpass-platinum-global"
-      }
-    },
-    SALE: {
-      INDIA:  {
-        silver:   "https://store.frankbase.com/products/frankpass-silver?sale=1",
-        gold:     "https://store.frankbase.com/products/frankpass-gold?sale=1",
-        platinum: "https://store.frankbase.com/products/frankpass-platinum?sale=1"
-      },
-      GLOBAL: {
-        silver:   "https://store.frankbase.com/products/frankpass-silver-global?sale=1",
-        gold:     "https://store.frankbase.com/products/frankpass-gold-global?sale=1",
-        platinum: "https://store.frankbase.com/products/frankpass-platinum-global?sale=1"
-      }
-    }
+    SOLO_LIFETIME: "https://store.frankbase.com/software/frankpass/",
+    FREE_TRIAL:    "/install.html"
   },
 
   /* ── Social Links ─────────────────────────────────────────────── */

@@ -110,12 +110,52 @@ const FrankPassVault = (function () {
       });
     }
 
+    let backgroundLockTimer = null;
+    function getTabLockDelay() {
+      try {
+        const saved = localStorage.getItem('fp_tab_lock_delay');
+        if (saved !== null) {
+          const parsed = parseInt(saved, 10);
+          if (!isNaN(parsed)) return parsed;
+        }
+      } catch (e) {}
+      return 30; // 30 seconds default grace period
+    }
+
     if (typeof document !== 'undefined' && typeof document.addEventListener === 'function') {
       document.addEventListener('visibilitychange', () => {
+        const delaySec = getTabLockDelay();
         if (document.hidden && activeSecretKey) {
-          // Automatically lock when user leaves or switches tabs
-          lockVault();
+          if (delaySec === -1) {
+            return; // Never lock on tab switch (locks on page close)
+          }
+          if (delaySec === 0) {
+            lockVault(); // Immediate lock
+            return;
+          }
+          if (!backgroundLockTimer) {
+            backgroundLockTimer = setTimeout(() => {
+              if (document.hidden && activeSecretKey) {
+                lockVault();
+              }
+              backgroundLockTimer = null;
+            }, delaySec * 1000);
+          }
+        } else if (!document.hidden) {
+          if (backgroundLockTimer) {
+            clearTimeout(backgroundLockTimer);
+            backgroundLockTimer = null;
+          }
         }
+      });
+    }
+
+    if (typeof window !== 'undefined' && typeof window.addEventListener === 'function') {
+      window.addEventListener('beforeunload', () => {
+        if (activeSecretKey) lockVault();
+      });
+      window.addEventListener('pagehide', () => {
+        if (activeSecretKey) lockVault();
       });
     }
   }
