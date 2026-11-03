@@ -1934,6 +1934,14 @@
           <a href="https://github.com/Mastermanikant" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem;color:var(--text-muted);font-weight:600;text-decoration:none;">GitHub &nearr;</a>
         </div>
       </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:rgba(99,102,241,0.08);padding:8px 12px;border-radius:8px;border:1px solid rgba(99,102,241,0.25);flex-wrap:wrap;">
+        <span style="font-size:0.8rem;color:var(--text-primary);font-weight:600;">&#127760; Prefer reading in your language?</span>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a href="/get-started-hindi.html" style="font-size:0.8rem;color:var(--accent-light);font-weight:700;text-decoration:none;">हिंदी में समझें &rarr;</a>
+          <span style="color:var(--border);">|</span>
+          <a href="#ask-ai-section" id="modal-to-lang-tutor-link" style="font-size:0.8rem;color:var(--accent-light);font-weight:700;text-decoration:none;cursor:pointer;">Type Your Language &darr;</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -2211,6 +2219,22 @@ if (pwaBtn) {
     if (toastOpenBtn) toastOpenBtn.addEventListener('click', openModal);
     if (toastLink) toastLink.addEventListener('click', openModal);
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    var langLink = document.getElementById('modal-to-lang-tutor-link');
+    if (langLink) {
+      langLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeModal();
+        var targetSec = document.getElementById('ask-ai-section');
+        if (targetSec) {
+          targetSec.scrollIntoView({ behavior: 'smooth' });
+          var langInput = document.getElementById('ai-lang');
+          if (langInput) {
+            setTimeout(function() { langInput.focus(); }, 400);
+          }
+        }
+      });
+    }
 
     modal.addEventListener('click', function(e) {
       if (e.target === modal) closeModal();
