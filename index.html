@@ -685,7 +685,7 @@
   <!-- Quick Clickable Recent Chips -->
   <div id="recent-usernames-chips" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.4rem;"></div>
   <span id="username-hint" style="font-size:0.75rem;color:var(--accent);display:none;margin-top:0.2rem;" aria-live="polite"></span>
-  <span class="username-microhint" style="font-size:0.72rem;color:var(--text-muted);margin-top:0.22rem;display:block">&#8598; 1 account? Leave blank. Multiple accounts? Enter username or email.</span>
+  <span class="username-microhint" style="font-size:0.72rem;color:var(--text-muted);margin-top:0.22rem;display:block">1 account? Leave blank. Multiple accounts? Enter username or email &#8599;</span>
   </div>
 
  <!-- Platform input -->
@@ -718,7 +718,7 @@
   </div>
   </div>
   <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);display:none;margin-top:0.2rem;" aria-live="polite"></span>
-  <span class="platform-microhint" style="font-size:0.72rem;color:var(--text-muted);margin-top:0.22rem;display:block">&#8598; Type app name (e.g. Google) or paste full URL. Auto-normalized.</span>
+  <span class="platform-microhint" style="font-size:0.72rem;color:var(--text-muted);margin-top:0.22rem;display:block">Type app name (e.g. Google) or paste full URL. Auto-normalized &#8599;</span>
   </div>
 
   <!-- Secret key input -->
@@ -742,7 +742,7 @@
   </div>
 
   <div class="input-wrapper" style="position:relative">
-    <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" oncopy="return false;" oncut="return false;" placeholder="e.g. the blue giraffe ordered hot espresso at dawn..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
+    <input id="secret-key" name="fp_seed_secret" class="form-input" type="password" oncopy="return false;" oncut="return false;" placeholder="e.g. i will go to india gate with my friend master manikant on 15th august..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" data-1p-ignore="true" data-bwignore="true" data-form-type="other" aria-describedby="secret-hint">
     <button class="input-action-btn" id="toggle-secret" type="button" aria-label="Toggle secret key visibility">
       <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
     </button>
@@ -1721,14 +1721,34 @@
         This is <strong style="color:var(--accent-light);">NOT</strong> an ordinary password: it is your personal cryptographic master seed. A private, unpredictable phrase calculates unique, mathematically isolated credentials for each platform (Gmail, Amazon, GitHub).
       </p>
 
-      <div style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.85rem;font-size:0.82rem;line-height:1.55;color:var(--text-muted);">
-        <div style="margin-bottom:0.5rem;">
-          <strong style="color:var(--text-primary);">💡 Choose an Unpredictable Sentence:</strong><br>
-          Invent a private 5 to 8 word phrase (e.g. <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">the blue giraffe ordered hot espresso at dawn</code>). Avoid obvious names or dates.
+      <div style="background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);border-radius:12px;padding:0.95rem;font-size:0.82rem;line-height:1.55;color:var(--text-muted);">
+        <div style="margin-bottom:0.75rem;">
+          <strong style="color:var(--text-primary);font-size:0.86rem;display:flex;align-items:center;gap:5px;">
+            <span>💡</span> Choose a Long Memorable Narrative Sentence with Natural Digits:
+          </strong>
+          <p style="margin:0.35rem 0 0.6rem 0;color:var(--text-muted);font-size:0.8rem;line-height:1.5;">
+            Do not struggle with cryptic symbols. Instead, craft a <strong>long, vivid personal story</strong> and naturally weave numbers into it (like <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:1px 5px;border-radius:4px;">10 apple</code>, <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:1px 5px;border-radius:4px;">15th august</code>, <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:1px 5px;border-radius:4px;">200 mango</code>, <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:1px 5px;border-radius:4px;">2026</code>). Because the sentence is long, no supercomputer or AI can guess it; because it is personal, you will never forget it.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-top:0.5rem;">
+            <span style="font-size:0.75rem;font-weight:700;color:var(--text-primary);text-transform:uppercase;letter-spacing:0.04em;">7 Real &amp; Memorable Sentence Examples:</span>
+            <div style="display:flex;flex-direction:column;gap:4px;">
+              <code style="color:var(--accent-light);background:rgba(139,92,246,0.18);padding:4px 8px;border-radius:6px;font-size:0.76rem;border:1px solid rgba(139,92,246,0.25);word-break:break-word;">1. i will fly with my cycle when my friend master manikant will become an engineer</code>
+              <code style="color:var(--accent-light);background:rgba(139,92,246,0.18);padding:4px 8px;border-radius:6px;font-size:0.76rem;border:1px solid rgba(139,92,246,0.25);word-break:break-word;">2. i will eat 200 mango when my friend mastermanikant will earn 1 billion</code>
+              <code style="color:var(--accent-light);background:rgba(139,92,246,0.18);padding:4px 8px;border-radius:6px;font-size:0.76rem;border:1px solid rgba(139,92,246,0.25);word-break:break-word;">3. i will go to india gate with my friend master manikant on 15th august</code>
+              <code style="color:var(--accent-light);background:rgba(139,92,246,0.18);padding:4px 8px;border-radius:6px;font-size:0.76rem;border:1px solid rgba(139,92,246,0.25);word-break:break-word;">4. i like to read rich dad poor dad with my friends on mars</code>
+              <code style="color:var(--accent-light);background:rgba(139,92,246,0.18);padding:4px 8px;border-radius:6px;font-size:0.76rem;border:1px solid rgba(139,92,246,0.25);word-break:break-word;">5. i will eat 10 apple with my friend mastermanikant on moon</code>
+              <code style="color:var(--accent-light);background:rgba(139,92,246,0.18);padding:4px 8px;border-radius:6px;font-size:0.76rem;border:1px solid rgba(139,92,246,0.25);word-break:break-word;">6. we will ride to ladakh on bullet with 3 childhood friends</code>
+              <code style="color:var(--accent-light);background:rgba(139,92,246,0.18);padding:4px 8px;border-radius:6px;font-size:0.76rem;border:1px solid rgba(139,92,246,0.25);word-break:break-word;">7. i like indian madhubani painting even in 2026</code>
+            </div>
+          </div>
         </div>
-        <div>
+        <div style="margin-bottom:0.6rem;padding-top:0.55rem;border-top:1px solid rgba(139,92,246,0.2);">
           <strong style="color:var(--text-primary);">✨ Case &amp; Space Normalization:</strong><br>
           <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">MY PHRASE 2026</code> = <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">my phrase 2026</code> = <code style="color:var(--accent-light);background:rgba(139,92,246,0.2);padding:2px 6px;border-radius:4px;">myphrase2026</code>. Spaces and capital letters are automatically normalized across devices.
+        </div>
+        <div style="padding-top:0.55rem;border-top:1px solid rgba(139,92,246,0.2);">
+          <strong style="color:var(--text-primary);">🔒 Saved Key &amp; Manual Typing Freedom:</strong><br>
+          Even if you save your Master Key into your device vault, you can always type any new or temporary key manually in the box to generate one-off passwords. Your saved vault key remains completely intact and secure.
         </div>
       </div>
 
