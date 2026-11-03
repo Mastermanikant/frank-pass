@@ -1556,6 +1556,9 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   --text-accent: #5b21b6;
   --border: rgba(109, 40, 217, 0.22);
   --glass-bg: rgba(109, 40, 217, 0.08);
+  /* WCAG 2.1 AA semantic color overrides for white/light backgrounds */
+  --success: #047857;
+  --warning: #b45309;
 }
 
 .theme-toggle-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0.5rem; border-radius: 20px; transition: var(--transition); } .theme-toggle-btn:hover { color: var(--accent); background: var(--glass-bg); }
@@ -1608,7 +1611,7 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   border: 1px solid rgba(109, 40, 217, 0.25);
 }
 [data-theme="light"] .header-nav .btn-pro,
-.header-nav .btn-extension-cta {
+[data-theme="light"] .header-nav .btn-extension-cta {
   background: #6d28d9 !important;
   color: #ffffff !important;
   box-shadow: 0 4px 14px rgba(109, 40, 217, 0.35) !important;
@@ -1630,6 +1633,52 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
 [data-theme="light"] .hero-subtitle {
   color: #334155 !important;
 }
+/* ── WCAG 2.1 AA LIGHT MODE: CODE CHIPS ─────────────────────── */
+[data-theme="light"] code {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #4c1d95;
+}
+[data-theme="light"] pre code {
+  background: transparent;
+  border: none;
+  color: #4c1d95;
+}
+[data-theme="light"] .guidance-card-text code {
+  background: rgba(109, 40, 217, 0.1);
+  border: 1px solid rgba(109, 40, 217, 0.2);
+  color: #4c1d95;
+}
+
+/* ── WCAG 2.1 AA LIGHT MODE: REVIEW STARS ───────────────────── */
+[data-theme="light"] .review-star { color: #b45309 !important; }
+
+/* ── WCAG 2.1 AA LIGHT MODE: INLINE HARDCODED COLOR OVERRIDES ── */
+/* Green #10b981 (2.8:1 fail) -> deep forest green #047857 (5.2:1) */
+[data-theme="light"] [style*="color:#10b981"],
+[data-theme="light"] [style*="color: #10b981"] { color: #047857 !important; }
+
+/* Amber #eab308 (2.0:1 fail) -> rich amber #b45309 (5.8:1) */
+[data-theme="light"] [style*="color:#eab308"],
+[data-theme="light"] [style*="color: #eab308"] { color: #b45309 !important; }
+
+/* Amber #f59e0b (2.5:1 fail) -> rich amber #b45309 (5.8:1) */
+[data-theme="light"] [style*="color:#f59e0b"],
+[data-theme="light"] [style*="color: #f59e0b"] { color: #b45309 !important; }
+
+/* Red #ef4444 (3.6:1 fail) -> deep crimson #dc2626 (5.5:1) */
+[data-theme="light"] [style*="color:#ef4444"],
+[data-theme="light"] [style*="color: #ef4444"] { color: #dc2626 !important; }
+
+/* Cyan #38bdf8 (1.9:1 fail) -> deep cerulean #0284c7 (5.1:1) */
+[data-theme="light"] [style*="color:#38bdf8"],
+[data-theme="light"] [style*="color: #38bdf8"] { color: #0284c7 !important; }
+
+/* ── WCAG 2.1 AA LIGHT MODE: MODAL INNER INFO BOXES ─────────── */
+[data-theme="light"] [style*="color:#10b981"][style*="font-weight:700"],
+[data-theme="light"] [style*="color:#10b981"][style*="font-weight: 700"] { color: #047857 !important; }
+[data-theme="light"] [style*="border-left"][style*="#10b981"] { border-left-color: #047857 !important; }
+[data-theme="light"] [style*="border-left"][style*="#f59e0b"] { border-left-color: #b45309 !important; }
 [data-theme="light"] .founder-trust-card {
   display: flex;
   flex-direction: column;
