@@ -1822,6 +1822,26 @@
       }
     });
   }
+  /* Auto-detect user's browser language for AI Prompt */
+  try {
+    const aiLangInput = document.getElementById('ai-lang');
+    if (aiLangInput) {
+      const navLang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+      const prefix = navLang.split('-')[0].toLowerCase();
+      const langMap = {
+        'hi': 'Hindi', 'bn': 'Bengali', 'ta': 'Tamil', 'te': 'Telugu',
+        'mr': 'Marathi', 'gu': 'Gujarati', 'pa': 'Punjabi', 'kn': 'Kannada',
+        'ml': 'Malayalam', 'or': 'Odia', 'es': 'Spanish', 'fr': 'French',
+        'de': 'German', 'ar': 'Arabic', 'ru': 'Russian', 'ja': 'Japanese',
+        'pt': 'Portuguese', 'zh': 'Chinese', 'it': 'Italian', 'ko': 'Korean',
+        'tr': 'Turkish', 'id': 'Indonesian', 'en': 'English'
+      };
+      if (langMap[prefix]) {
+        aiLangInput.value = langMap[prefix];
+      }
+    }
+  } catch(e) {}
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initSecretModal);
   } else {

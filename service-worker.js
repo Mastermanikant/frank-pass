@@ -1,5 +1,5 @@
 // FrankPass Service Worker v4.6.4 (Safe Offline Cache & Zero Rogue Reloads)
-const CACHE_NAME = 'frankpass-v4.7.6';
+const CACHE_NAME = 'frankpass-v4.7.7';
 const CACHED_URLS = [
     '/',
     '/index.html',
