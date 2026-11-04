@@ -80,7 +80,7 @@
       <!-- Col 2: Products & Tools -->
       <div class="footer-col">
         <div class="footer-col-title">Products &amp; Tools</div>
-        <a href="/index.html">Stateless Generator</a>
+        <a href="/">Stateless Generator</a>
         <a href="/random-password-generator.html">Random Password Generator</a>
         <a href="/pin.html">PIN Generator</a>
         <a href="/extension.html">Browser Extension</a>
@@ -100,7 +100,7 @@
         <a href="/secret-key-guide.html">Secret Key Guide</a>
         <a href="/faq.html">Security FAQ</a>
         <a href="/limitations-and-advantages.html">Limitations &amp; Advantages</a>
-        <a href="/why-stateless-password-generation-is-the-future.html">Stateless Architecture</a>
+        <a href="/frankpass-vs-cloud-password-vaults.html">Stateless Architecture</a>
         <a href="/library-hindi.html" style="color:var(--accent-light);font-weight:600">🇮🇳 हिन्दी लाइब्रेरी (Hindi Security Guides)</a>
         <a href="/library.html" style="color:var(--accent-light);font-weight:600">🏛️ Master Library &amp; Directory</a>
       </div>
