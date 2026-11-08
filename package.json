@@ -4,7 +4,7 @@
   "description": "Stateless & Offline Zero-Knowledge Password Generator",
   "main": "frankpass-core.js",
   "scripts": {
-    "test": "python test_all_fixes.py"
+    "test": "node scripts/ci_gatekeeper.js"
   },
   "author": "Master Manikant",
   "license": "MIT",
