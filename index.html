@@ -10,6 +10,19 @@
     } catch(e) {}
   })();
 </script>
+<script>
+(function() {
+  if ('caches' in window) {
+    caches.keys().then(function(names) {
+      names.forEach(function(n) {
+        if (n.startsWith('frankpass-') && n !== 'frankpass-v4.8.5') {
+          caches.delete(n);
+        }
+      });
+    });
+  }
+})();
+</script>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <meta name="robots" content="index, follow">
@@ -2228,7 +2241,7 @@
 <script defer src="/frankpass-core.js?v=4.5.9"></script>
 <script defer src="/frankpass-vault.js?v=4.5.9"></script>
 <script defer src="/footer.min.js?v=4.6.2"></script>
-<script defer src="/frankpass-app.min.js?v=4.8.4"></script>
+<script defer src="/frankpass-app.min.js?v=4.8.5"></script>
 <script>
 (function() {
   var loaded = false;
