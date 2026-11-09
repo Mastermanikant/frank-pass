@@ -15,7 +15,7 @@
   if ('caches' in window) {
     caches.keys().then(function(names) {
       names.forEach(function(n) {
-        if (n.startsWith('frankpass-') && n !== 'frankpass-v4.8.6') {
+        if (n.startsWith('frankpass-') && n !== 'frankpass-v4.8.7') {
           caches.delete(n);
         }
       });
@@ -724,11 +724,14 @@
   </div>
   </div>
   <div class="input-wrapper">
-  <input id="platform-input" name="platform" class="form-input" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
+  <input id="platform-input" name="platform" class="form-input" style="padding-right:4.4rem" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
   <datalist id="platform-list"></datalist>
-  <div id="platform-valid-icon" class="input-indicator" title="Recognized platform" aria-hidden="true">
+  <div id="platform-valid-icon" class="input-indicator" style="right:2.5rem" title="Recognized platform" aria-hidden="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
+  <button class="input-action-btn" id="platform-clear-btn" type="button" aria-label="Clear platform input" title="Clear platform input" style="display:none;right:0.65rem;padding:4px;border-radius:50%;align-items:center;justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
   </div>
   <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);display:none;margin-top:0.2rem;" aria-live="polite"></span>
   <span class="platform-microhint" style="font-size:0.72rem;color:var(--text-muted);margin-top:0.22rem;display:block">Type app name (e.g. Google) or paste full URL. Auto-normalized &#8599;</span>
@@ -2241,7 +2244,7 @@
 <script defer src="/frankpass-core.js?v=4.5.9"></script>
 <script defer src="/frankpass-vault.js?v=4.5.9"></script>
 <script defer src="/footer.min.js?v=4.6.2"></script>
-<script defer src="/frankpass-app.min.js?v=4.8.6"></script>
+<script defer src="/frankpass-app.min.js?v=4.8.7"></script>
 <script>
 (function() {
   var loaded = false;
