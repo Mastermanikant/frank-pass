@@ -15,7 +15,7 @@
   if ('caches' in window) {
     caches.keys().then(function(names) {
       names.forEach(function(n) {
-        if (n.startsWith('frankpass-') && n !== 'frankpass-v4.8.7') {
+        if (n.startsWith('frankpass-') && n !== 'frankpass-v4.8.8') {
           caches.delete(n);
         }
       });
@@ -691,9 +691,17 @@
       <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Open Profile to manage or delete saved emails" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear All</button>
     </div>
   </div>
-  <div class="input-wrapper">
-  <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" list="username-recent-list" aria-describedby="username-hint" style="text-transform:lowercase" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')">
+  <div class="input-wrapper" style="position:relative">
+  <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" list="username-recent-list" aria-describedby="username-hint" style="text-transform:lowercase;padding-right:3rem;" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')">
   <datalist id="username-recent-list"></datalist>
+  <!-- Paste Button (shows when empty) -->
+  <button class="input-action-btn" id="username-paste-btn" type="button" aria-label="Paste username from clipboard" title="Paste username from clipboard" style="display:flex;right:0.65rem;padding:4px;border-radius:50%;align-items:center;justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+  </button>
+  <!-- Clear Cross Button (shows when has text) -->
+  <button class="input-action-btn" id="username-clear-btn" type="button" aria-label="Clear username input" title="Clear username input" style="display:none;right:0.65rem;padding:4px;border-radius:50%;align-items:center;justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
   </div>
   <!-- Quick Clickable Recent Chips -->
   <div id="recent-usernames-chips" style="display:none;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.4rem;"></div>
@@ -703,7 +711,7 @@
 
  <!-- Platform input -->
  <div class="form-group">
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
+  <div class="vault-header-row">
   <div style="display:flex;align-items:center;gap:0.4rem">
   <label class="form-label" for="platform-input" style="margin:0">Site / Platform</label>
   <!-- Info Guidance Popover Tooltip -->
@@ -722,17 +730,38 @@
   </div>
   </div>
   </div>
+  <!-- Torch-style Sliding Toggle Switch & Used Platforms Pill -->
+  <div class="vault-badge-group">
+    <label class="torch-switch-wrap" for="toggle-save-platforms-check" title="Toggle automatic local saving of used platforms">
+      <span class="torch-switch-label" id="save-platforms-label">Save Platform</span>
+      <div class="torch-switch">
+        <input type="checkbox" id="toggle-save-platforms-check" checked aria-label="Toggle Auto-Save Platforms Locally">
+        <span class="torch-slider"></span>
+      </div>
+    </label>
+    <button type="button" id="manage-platforms-btn" class="vault-status-pill status-none" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;background:none;border:none;font-family:inherit;font-size:inherit;" title="View all used platforms">
+      <span>🌐</span>
+      <span id="manage-platforms-text">Used (0)</span>
+    </button>
   </div>
-  <div class="input-wrapper">
+  </div>
+  <div class="input-wrapper"<div class="input-wrapper">
   <input id="platform-input" name="platform" class="form-input" style="padding-right:4.4rem" type="text" placeholder="Paste website URL (https://...) or type app name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" list="platform-list" aria-describedby="platform-hint">
   <datalist id="platform-list"></datalist>
   <div id="platform-valid-icon" class="input-indicator" style="right:2.5rem" title="Recognized platform" aria-hidden="true">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
+  <!-- Paste Button (shows when empty) -->
+  <button class="input-action-btn" id="platform-paste-btn" type="button" aria-label="Paste platform from clipboard" title="Paste platform from clipboard" style="display:flex;right:0.65rem;padding:4px;border-radius:50%;align-items:center;justify-content:center;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+  </button>
+  <!-- Clear Cross Button (shows when has text) -->
   <button class="input-action-btn" id="platform-clear-btn" type="button" aria-label="Clear platform input" title="Clear platform input" style="display:none;right:0.65rem;padding:4px;border-radius:50%;align-items:center;justify-content:center;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="16" height="16" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
   </button>
   </div>
+  <!-- 5 Quick Clickable Platform Chips -->
+  <div id="recent-platforms-chips" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.4rem;"></div>
   <span id="platform-hint" style="font-size:0.75rem;color:var(--accent);display:none;margin-top:0.2rem;" aria-live="polite"></span>
   <span class="platform-microhint" style="font-size:0.72rem;color:var(--text-muted);margin-top:0.22rem;display:block">Type app name (e.g. Google) or paste full URL. Auto-normalized &#8599;</span>
   </div>
@@ -2232,6 +2261,30 @@
     </div>
   </div>
 </div>
+<!-- Used Platforms History Modal -->
+<div id="used-platforms-modal" class="custom-modal-overlay" style="display:none" role="dialog" aria-modal="true" aria-labelledby="used-platforms-title">
+  <div class="custom-modal-card" style="max-width:440px;width:92%;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;border-bottom:1px solid var(--border);padding-bottom:0.5rem">
+      <h3 id="used-platforms-title" style="font-size:1.15rem;font-weight:700;color:var(--text-primary);margin:0;display:flex;align-items:center;gap:6px">
+        🌐 Used Platforms History
+      </h3>
+      <button type="button" id="btn-close-used-platforms" style="background:none;border:none;color:var(--text-muted);font-size:1.4rem;cursor:pointer;padding:0 4px;line-height:1" aria-label="Close modal">&times;</button>
+    </div>
+    <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.5;margin-bottom:0.85rem">
+      Locally saved in this sovereign browser. Click any platform to select it.
+    </p>
+    <div id="used-platforms-list" style="max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:1rem;padding-right:4px;"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+      <button type="button" id="btn-clear-platforms-history" class="btn-ghost" style="padding:0.45rem 0.85rem;font-size:0.8rem;color:#f87171;border-color:rgba(239,68,68,0.3)">
+        🗑️ Clear History
+      </button>
+      <button type="button" id="btn-done-used-platforms" class="btn-primary" style="padding:0.45rem 1rem;font-size:0.85rem">
+        Done
+      </button>
+    </div>
+  </div>
+</div>
+
 
 
 <!-- ============================================================
@@ -2244,7 +2297,7 @@
 <script defer src="/frankpass-core.js?v=4.5.9"></script>
 <script defer src="/frankpass-vault.js?v=4.5.9"></script>
 <script defer src="/footer.min.js?v=4.6.2"></script>
-<script defer src="/frankpass-app.min.js?v=4.8.7"></script>
+<script defer src="/frankpass-app.min.js?v=4.8.8"></script>
 <script>
 (function() {
   var loaded = false;
