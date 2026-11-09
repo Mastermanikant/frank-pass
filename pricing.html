@@ -441,11 +441,14 @@
           </p>
 
           <div style="margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(139,92,246,0.3);">
-            <div style="display:flex;align-items:baseline;gap:8px;">
-              <span style="font-size:2.8rem;font-weight:800;color:var(--text-primary);letter-spacing:-0.03em;">$25</span>
-              <span style="font-size:1rem;color:var(--accent-light);font-weight:700;">/ Lifetime 1-PC (Solo)</span>
+            <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
+              <span id="solo-price-display" style="font-size:2.8rem;font-weight:800;color:var(--text-primary);letter-spacing:-0.03em;">$25</span>
+              <span id="solo-price-currency" style="font-size:1rem;color:var(--accent-light);font-weight:700;">/ Lifetime 1-PC (Solo)</span>
             </div>
-            <div style="font-size:0.8rem;color:#eab308;font-weight:700;margin-top:4px;">★ Zero Subscriptions • Hardware Bound • 30-Day Free Trial</div>
+            <div id="solo-ppp-badge" style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-top:8px;text-transform:uppercase;letter-spacing:0.04em;">
+              ✓ PPP Applied: Fair Regional Pricing
+            </div>
+            <div style="font-size:0.8rem;color:#eab308;font-weight:700;margin-top:6px;">★ Zero Subscriptions • Hardware Bound • 30-Day Free Trial</div>
           </div>
 
           <!-- Tiered Volume Discounts Callout -->
@@ -632,49 +635,15 @@
     <script>
     (function initVolumeCalculator() {
       const pcCountInput = document.getElementById('vol-pc-count');
-      const pcLabel = document.getElementById('vol-pc-label');
-      const finalPriceSpan = document.getElementById('vol-final-price');
-      const discountBadge = document.getElementById('vol-discount-badge');
-      const breakdownText = document.getElementById('vol-breakdown-text');
-
       if (!pcCountInput) return;
 
-      function updateVolumeMath() {
-        const pcs = parseInt(pcCountInput.value, 10) || 1;
-        pcLabel.textContent = pcs === 1 ? '1 PC (Solo)' : pcs + ' PCs';
-
-        let unitPrice = 25.00;
-        let badgeText = 'Solo Lifetime Pass';
-        let badgeBg = 'rgba(139,92,246,0.18)';
-        let badgeColor = 'var(--accent-light)';
-
-        if (pcs >= 6) {
-          unitPrice = 12.50;
-          badgeText = '50% Team Volume Discount ($12.50 / PC)';
-          badgeBg = 'rgba(56,189,248,0.18)';
-          badgeColor = '#38bdf8';
-        } else if (pcs >= 2) {
-          unitPrice = 17.50;
-          badgeText = '30% Volume Discount ($17.50 / PC)';
-          badgeBg = 'rgba(234,179,8,0.18)';
-          badgeColor = '#eab308';
-        }
-
-        const total = (unitPrice * pcs).toFixed(2);
-        finalPriceSpan.textContent = '$' + total;
-        discountBadge.textContent = badgeText;
-        discountBadge.style.background = badgeBg;
-        discountBadge.style.color = badgeColor;
-
-        if (pcs === 1) {
-          breakdownText.textContent = '1 Hardware-Bound PC License (Motherboard locked). Includes Windows Desktop App.';
-        } else {
-          breakdownText.textContent = pcs + ' Separate Hardware-Bound PC Licenses ($' + unitPrice.toFixed(2) + ' per PC). Independent activation keys.';
+      function onVolumeChange() {
+        if (window.FrankPassPricing && typeof window.FrankPassPricing.syncPricingUI === 'function') {
+          window.FrankPassPricing.syncPricingUI();
         }
       }
 
-      pcCountInput.addEventListener('input', updateVolumeMath);
-      updateVolumeMath();
+      pcCountInput.addEventListener('input', onVolumeChange);
     })();
     </script>
 
@@ -1082,6 +1051,7 @@
 <script src="/frankpass-config.js?v=4.3.3"></script>
 <script src="/country-data.min.js?v=4.6.2"></script>
 <script src="/country-dropdown.min.js?v=4.8.0"></script>
+<script src="/pricing-fx.min.js?v=1.0.0"></script>
 <script src="/frankpass-utils.min.js?v=4.6.2"></script>
 <script src="/footer.min.js?v=4.6.2"></script>
 

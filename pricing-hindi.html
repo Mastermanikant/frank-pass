@@ -438,11 +438,14 @@
           </p>
 
           <div style="margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid rgba(139,92,246,0.3);">
-            <div style="display:flex;align-items:baseline;gap:8px;">
-              <span style="font-size:2.8rem;font-weight:800;color:var(--text-primary);letter-spacing:-0.03em;">$25</span>
-              <span style="font-size:1rem;color:var(--accent-light);font-weight:700;">/ लाइफटाइम 1-PC (सोलो)</span>
+            <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;">
+              <span id="solo-price-display" style="font-size:2.8rem;font-weight:800;color:var(--text-primary);letter-spacing:-0.03em;">$25</span>
+              <span id="solo-price-currency" style="font-size:1rem;color:var(--accent-light);font-weight:700;">/ लाइफटाइम 1-PC (सोलो)</span>
             </div>
-            <div style="font-size:0.8rem;color:#eab308;font-weight:700;margin-top:4px;">★ शून्य सब्सक्रिप्शन • हार्डवेयर बाउंड • 30-दिन मुफ़्त ट्रायल</div>
+            <div id="solo-ppp-badge" style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-top:8px;text-transform:uppercase;letter-spacing:0.04em;">
+              ✓ PPP लागू: क्रय शक्ति समता उचित क्षेत्रीय मूल्य
+            </div>
+            <div style="font-size:0.8rem;color:#eab308;font-weight:700;margin-top:6px;">★ शून्य सब्सक्रिप्शन • हार्डवेयर बाउंड • 30-दिन मुफ़्त ट्रायल</div>
           </div>
 
           <!-- Tiered Volume Discounts Callout -->
@@ -1072,6 +1075,7 @@
 <script src="/frankpass-config.js?v=4.3.3"></script>
 <script src="/country-data.min.js?v=4.6.2"></script>
 <script src="/country-dropdown.min.js?v=4.8.0"></script>
+<script src="/pricing-fx.min.js?v=1.0.0"></script>
 <script src="/frankpass-utils.min.js?v=4.6.2"></script>
 <script src="/footer.min.js?v=4.6.2"></script>
 
