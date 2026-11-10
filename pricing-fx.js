@@ -1,6 +1,6 @@
 /**
- * pricing-fx.js - Sovereign Purchasing Power Parity (PPP) & 228-Country Edge FX Engine v2.1.0
- * Powers localized fair pricing on frankpass.com using 24h cached Edge FX rates from store.frankbase.com
+ * pricing-fx.js - Sovereign Purchasing Power Parity (PPP) & 228-Country Edge FX Engine v3.1.0
+ * Powers localized fair pricing on frankpass.com using 6h cached Edge FX rates from store.frankbase.com
  * Adheres strictly to Zero Em-Dash (Rule SEO-05) and 100% Truth & Transparency (Rule SEO-04)
  */
 
@@ -1389,34 +1389,191 @@
 };
 
   const FIXED_COUNTRIES = {
-    IN: { name: 'India', currency: 'INR', symbol: '₹', base: 400, ppp: true },
-    US: { name: 'United States & Global', currency: 'USD', symbol: '$', base: 25.00, ppp: false },
-    GB: { name: 'United Kingdom', currency: 'GBP', symbol: '£', base: 20.00, ppp: true },
-    EU: { name: 'European Union', currency: 'EUR', symbol: '€', base: 20.00, ppp: true },
-    CA: { name: 'Canada', currency: 'CAD', symbol: 'CA$', base: 30.00, ppp: true },
-    AU: { name: 'Australia', currency: 'AUD', symbol: 'A$', base: 32.00, ppp: true },
-    JP: { name: 'Japan', currency: 'JPY', symbol: '¥', base: 3800, ppp: true },
-    SG: { name: 'Singapore', currency: 'SGD', symbol: 'S$', base: 30.00, ppp: true },
-    AE: { name: 'United Arab Emirates', currency: 'AED', symbol: 'AED ', base: 80.00, ppp: true },
-    ID: { name: 'Indonesia', currency: 'IDR', symbol: 'Rp ', base: 75000, ppp: true },
-    BR: { name: 'Brazil', currency: 'BRL', symbol: 'R$ ', base: 30.00, ppp: true },
-    MX: { name: 'Mexico', currency: 'MXN', symbol: 'MX$ ', base: 100.00, ppp: true },
-    ZA: { name: 'South Africa', currency: 'ZAR', symbol: 'R ', base: 100.00, ppp: true },
-    PH: { name: 'Philippines', currency: 'PHP', symbol: '₱', base: 280.00, ppp: true },
-    CN: { name: 'China', currency: 'CNY', symbol: '¥', base: 40.00, ppp: true },
-    VN: { name: 'Vietnam', currency: 'VND', symbol: '₫', base: 120000, ppp: true },
-    NG: { name: 'Nigeria', currency: 'NGN', symbol: '₦', base: 7500, ppp: true },
-    TR: { name: 'Turkey', currency: 'TRY', symbol: '₺', base: 160.00, ppp: true }
-  };
+  "IN": {
+    "name": "India",
+    "currency": "INR",
+    "symbol": "₹",
+    "base": 400,
+    "ppp": true,
+    "flag": "🇮🇳"
+  },
+  "NP": {
+    "name": "Nepal",
+    "currency": "NPR",
+    "symbol": "रू ",
+    "base": 550,
+    "ppp": true,
+    "flag": "🇳🇵"
+  },
+  "PK": {
+    "name": "Pakistan",
+    "currency": "PKR",
+    "symbol": "₨ ",
+    "base": 1200,
+    "ppp": true,
+    "flag": "🇵🇰"
+  },
+  "BD": {
+    "name": "Bangladesh",
+    "currency": "BDT",
+    "symbol": "৳ ",
+    "base": 500,
+    "ppp": true,
+    "flag": "🇧🇩"
+  },
+  "LK": {
+    "name": "Sri Lanka",
+    "currency": "LKR",
+    "symbol": "Rs ",
+    "base": 1500,
+    "ppp": true,
+    "flag": "🇱🇰"
+  },
+  "US": {
+    "name": "United States & Global",
+    "currency": "USD",
+    "symbol": "$",
+    "base": 25,
+    "ppp": false,
+    "flag": "🇺🇸"
+  },
+  "GB": {
+    "name": "United Kingdom",
+    "currency": "GBP",
+    "symbol": "£",
+    "base": 20,
+    "ppp": true,
+    "flag": "🇬🇧"
+  },
+  "EU": {
+    "name": "European Union",
+    "currency": "EUR",
+    "symbol": "€",
+    "base": 20,
+    "ppp": true,
+    "flag": "🇪🇺"
+  },
+  "CA": {
+    "name": "Canada",
+    "currency": "CAD",
+    "symbol": "CA$",
+    "base": 30,
+    "ppp": true,
+    "flag": "🇨🇦"
+  },
+  "AU": {
+    "name": "Australia",
+    "currency": "AUD",
+    "symbol": "A$",
+    "base": 32,
+    "ppp": true,
+    "flag": "🇦🇺"
+  },
+  "JP": {
+    "name": "Japan",
+    "currency": "JPY",
+    "symbol": "¥",
+    "base": 3800,
+    "ppp": true,
+    "flag": "🇯🇵"
+  },
+  "SG": {
+    "name": "Singapore",
+    "currency": "SGD",
+    "symbol": "S$",
+    "base": 30,
+    "ppp": true,
+    "flag": "🇸🇬"
+  },
+  "AE": {
+    "name": "United Arab Emirates",
+    "currency": "AED",
+    "symbol": "AED ",
+    "base": 80,
+    "ppp": true,
+    "flag": "🇦🇪"
+  },
+  "ID": {
+    "name": "Indonesia",
+    "currency": "IDR",
+    "symbol": "Rp ",
+    "base": 75000,
+    "ppp": true,
+    "flag": "🇮🇩"
+  },
+  "BR": {
+    "name": "Brazil",
+    "currency": "BRL",
+    "symbol": "R$ ",
+    "base": 30,
+    "ppp": true,
+    "flag": "🇧🇷"
+  },
+  "MX": {
+    "name": "Mexico",
+    "currency": "MXN",
+    "symbol": "MX$ ",
+    "base": 100,
+    "ppp": true,
+    "flag": "🇲🇽"
+  },
+  "ZA": {
+    "name": "South Africa",
+    "currency": "ZAR",
+    "symbol": "R ",
+    "base": 100,
+    "ppp": true,
+    "flag": "🇿🇦"
+  },
+  "PH": {
+    "name": "Philippines",
+    "currency": "PHP",
+    "symbol": "₱",
+    "base": 280,
+    "ppp": true,
+    "flag": "🇵🇭"
+  },
+  "CN": {
+    "name": "China",
+    "currency": "CNY",
+    "symbol": "¥",
+    "base": 40,
+    "ppp": true,
+    "flag": "🇨🇳"
+  },
+  "VN": {
+    "name": "Vietnam",
+    "currency": "VND",
+    "symbol": "₫",
+    "base": 120000,
+    "ppp": true,
+    "flag": "🇻🇳"
+  },
+  "NG": {
+    "name": "Nigeria",
+    "currency": "NGN",
+    "symbol": "₦",
+    "base": 7500,
+    "ppp": true,
+    "flag": "🇳🇬"
+  },
+  "TR": {
+    "name": "Turkey",
+    "currency": "TRY",
+    "symbol": "₺",
+    "base": 160,
+    "ppp": true,
+    "flag": "🇹🇷"
+  }
+};
 
-  const EU_CODES = [
-    'DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'IE', 'PT', 'FI',
-    'GR', 'LU', 'CY', 'MT', 'SK', 'SI', 'EE', 'LV', 'LT'
-  ];
+  const EU_CODES = ["DE","FR","IT","ES","NL","BE","AT","IE","PT","FI","GR","LU","CY","MT","SK","SI","EE","LV","LT"];
 
   let coupon20Active = false;
+  let currentActiveCountry = null;
 
   function getActiveCountryCode() {
+    if (currentActiveCountry) return currentActiveCountry.toUpperCase();
     try {
       if (typeof localStorage !== 'undefined') {
         const saved = localStorage.getItem('fp_preferred_country');
@@ -1439,30 +1596,37 @@
       const raw = localStorage.getItem(FX_CACHE_KEY);
       if (!raw) return null;
       const parsed = JSON.parse(raw);
-      if (Date.now() - parsed.timestamp < FX_CACHE_MS && parsed.rates) {
+      if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < FX_CACHE_MS)) {
         return parsed.rates;
       }
     } catch (e) {}
     return null;
   }
 
-  async function fetchFxRates() {
+  function saveCachedFxRates(rates) {
     try {
-      if (typeof fetch === 'undefined') return null;
-      const cached = getCachedFxRates();
-      if (cached) return cached;
+      if (typeof localStorage === 'undefined') return;
+      localStorage.setItem(FX_CACHE_KEY, JSON.stringify({
+        timestamp: Date.now(),
+        rates: rates
+      }));
+    } catch (e) {}
+  }
 
-      const res = await fetch(FX_API_URL, { mode: 'cors' });
-      if (!res.ok) return null;
-      const data = await res.json();
-      if (data && data.success && data.rates) {
-        if (typeof localStorage !== 'undefined') {
-          localStorage.setItem(FX_CACHE_KEY, JSON.stringify({
-            timestamp: Date.now(),
-            rates: data.rates
-          }));
+  async function fetchFxRates() {
+    const cached = getCachedFxRates();
+    if (cached) return cached;
+
+    try {
+      const res = await fetch(FX_API_URL, {
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.rates) {
+          saveCachedFxRates(data.rates);
+          return data.rates;
         }
-        return data.rates;
       }
     } catch (e) {}
     return null;
@@ -1471,7 +1635,7 @@
   function calculatePricing(countryCode, fxRates) {
     const code = (countryCode || getActiveCountryCode()).toUpperCase();
 
-    // 1. Fixed PPP country
+    // 1. Fixed PPP country (India, Nepal, Pakistan, Bangladesh, Sri Lanka, UK, EU, etc.)
     if (FIXED_COUNTRIES[code]) {
       const fc = FIXED_COUNTRIES[code];
       const base = fc.base;
@@ -1484,83 +1648,89 @@
         isFixed: true,
         isPPP: fc.ppp,
         usdRef: '',
-        formatted: fc.symbol + (Number.isInteger(base) ? base : base.toFixed(2))
+        formatted: fc.symbol + (Number.isInteger(base) ? base : base.toFixed(2)) + (fc.currency === 'USD' ? ' USD' : '')
       };
     }
 
-    // 2. Eurozone
+    // 2. Eurozone Member States (Mapped to EUR fixed PPP)
     if (EU_CODES.includes(code)) {
-      const eu = FIXED_COUNTRIES.EU;
-      const base = eu.base;
+      const fc = FIXED_COUNTRIES['EU'];
+      const cMeta = ALL_COUNTRIES[code] || { name: 'European Union' };
+      const base = fc.base;
       return {
         code: code,
-        name: 'Eurozone (' + code + ')',
-        currency: eu.currency,
-        symbol: eu.symbol,
+        name: cMeta.name,
+        currency: fc.currency,
+        symbol: fc.symbol,
         base: base,
         isFixed: true,
         isPPP: true,
         usdRef: '',
-        formatted: eu.symbol + base.toFixed(2)
+        formatted: fc.symbol + (Number.isInteger(base) ? base : base.toFixed(2))
       };
     }
 
-    // 3. Non-fixed 228-country dynamic conversion
-    const cInfo = (typeof ALL_COUNTRIES !== 'undefined' && ALL_COUNTRIES[code]) ? ALL_COUNTRIES[code] : { name: code, currency: 'USD', symbol: '$' };
+    // 3. Dynamic FX Conversion from $25.00 USD global base
+    const countryMeta = ALL_COUNTRIES[code] || { name: 'Global', currency: 'USD', symbol: '$' };
+    const currency = countryMeta.currency || 'USD';
+    const symbol = countryMeta.symbol || '$';
     const rates = fxRates || getCachedFxRates();
-    const curr = cInfo.currency || 'USD';
-    const sym = cInfo.symbol || '$';
-    const rate = (rates && rates[curr]) ? rates[curr] : 1;
 
-    let base = 25.00;
-    let usdRef = '';
-
-    if (curr !== 'USD' && rate !== 1) {
-      base = Math.round(25.00 * rate);
-      usdRef = '(~$25.00 USD)';
+    let rate = null;
+    if (rates && rates[currency]) {
+      rate = rates[currency];
     }
 
+    if (rate && rate > 0) {
+      const rawPrice = 25.00 * rate;
+      let convertedPrice = Math.round(rawPrice);
+      if (rawPrice < 10) {
+        convertedPrice = parseFloat(rawPrice.toFixed(2));
+      } else if (rawPrice > 1000) {
+        convertedPrice = Math.round(rawPrice / 50) * 50;
+      } else {
+        convertedPrice = Math.round(rawPrice);
+      }
+
+      return {
+        code: code,
+        name: countryMeta.name,
+        currency: currency,
+        symbol: symbol + ' ',
+        base: convertedPrice,
+        isFixed: false,
+        isPPP: false,
+        usdRef: '(~$25.00 USD)',
+        formatted: symbol + ' ' + (Number.isInteger(convertedPrice) ? convertedPrice : convertedPrice.toFixed(2))
+      };
+    }
+
+    // 4. Fallback to Global Standard $25.00 USD
     return {
       code: code,
-      name: cInfo.name,
-      currency: curr,
-      symbol: sym,
-      base: base,
+      name: countryMeta.name,
+      currency: 'USD',
+      symbol: '$',
+      base: 25.00,
       isFixed: false,
       isPPP: false,
-      usdRef: usdRef,
-      rate: rate,
-      formatted: sym + ' ' + (Number.isInteger(base) ? base : base.toFixed(2)) + ' ' + curr
+      usdRef: '',
+      formatted: '$25.00 USD'
     };
-  }
-
-  function toggleCoupon20() {
-    coupon20Active = !coupon20Active;
-    syncPricingUI();
-    if (typeof showToast === 'function') {
-      if (coupon20Active) {
-        showToast('🏷️ Coupon PRIVACY20 Applied: 20% Extra Discount!', 'success');
-      } else {
-        showToast('Coupon removed. Showing standard pricing.', '');
-      }
-    }
-  }
-
-  function toggleFxNoticeModal() {
-    const el = document.getElementById('fx-rate-notice-box');
-    if (el) {
-      el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
-    }
   }
 
   function syncPricingUI(customCode) {
     if (typeof document === 'undefined') return;
-
-    const pricing = calculatePricing(customCode);
+    if (customCode && typeof customCode === 'string') {
+      currentActiveCountry = customCode.trim().toUpperCase();
+    }
+    const pricing = calculatePricing(currentActiveCountry);
+    currentActiveCountry = pricing.code;
     const code = pricing.code;
     const base = pricing.base;
     const symbol = pricing.symbol;
     const currency = pricing.currency;
+    const isFixed = pricing.isFixed;
     const isHindi = document.documentElement.lang === 'hi' || window.location.pathname.includes('hindi');
 
     const formatNum = (num) => Number.isInteger(num) ? String(num) : num.toFixed(2);
@@ -1590,34 +1760,45 @@
         : '/ Lifetime 1-PC (' + currency + ')' + refText;
     }
 
-    // 2. Update Solo PPP / FX Badge & Info Button
+    // 2. Update Solo PPP / FX Badge & Strict Rule for 'i' Button:
+    // "fix wala me koi i button nahi and jo 6 hours me update hota hai usme de dena price update in every 6 hours"
     const pppBadge = document.getElementById('solo-ppp-badge');
+    const fxNoticeBox = document.getElementById('fx-rate-notice-box');
+
     if (pppBadge) {
       pppBadge.style.display = 'inline-flex';
-      if (pricing.isPPP) {
+      if (isFixed) {
+        // FIXED PPP: Strictly ZERO 'i' button!
         pppBadge.innerHTML = isHindi
-          ? '✓ PPP लागू: ' + pricing.name + ' के लिए गारंटीकृत उचित क्षेत्रीय मूल्य (' + currency + ')'
-          : '✓ PPP Applied: Guaranteed Fair Regional Price for ' + pricing.name + ' (' + currency + ')';
+          ? '✓ गारंटीकृत उचित क्षेत्रीय मूल्य (PPP): ' + pricing.name + ' (' + currency + ')'
+          : '✓ Guaranteed Fixed PPP Rate: ' + pricing.name + ' (' + currency + ')';
         pppBadge.style.background = 'rgba(16,185,129,0.12)';
         pppBadge.style.borderColor = 'rgba(16,185,129,0.3)';
         pppBadge.style.color = '#10b981';
+        if (fxNoticeBox) fxNoticeBox.style.display = 'none';
       } else {
+        // DYNAMIC 6-HOUR FX: Has 'i' button with explicit 6-hour update text!
         pppBadge.innerHTML = isHindi
-          ? '⚡ 24-घंटे एज FX दर: ' + pricing.name + ' (' + currency + ') ' + (pricing.usdRef || '') + ' <button type="button" onclick="FrankPassPricing.toggleFxNoticeModal()" style="background:none;border:none;cursor:pointer;color:inherit;font-weight:800;text-decoration:underline;margin-left:4px;">ℹ️ सूचना</button>'
-          : '⚡ 24h Edge FX Rate: ' + pricing.name + ' (' + currency + ') ' + (pricing.usdRef || '') + ' <button type="button" onclick="FrankPassPricing.toggleFxNoticeModal()" style="background:none;border:none;cursor:pointer;color:inherit;font-weight:800;text-decoration:underline;margin-left:4px;">ℹ️ Info</button>';
-        pppBadge.style.background = 'rgba(56,189,248,0.12)';
-        pppBadge.style.borderColor = 'rgba(56,189,248,0.3)';
-        pppBadge.style.color = '#38bdf8';
+          ? '⚡ लाइव विनिमय दर: ' + pricing.name + ' (' + currency + ') ' + (pricing.usdRef || '') + ' <button type="button" onclick="FrankPassPricing.toggleFxNoticeModal()" style="background:none;border:none;cursor:pointer;color:inherit;font-weight:800;text-decoration:underline;margin-left:4px;" title="प्रत्येक 6 घंटे में मूल्य अपडेट होता है">ℹ️</button>'
+          : '⚡ Live Exchange Rate: ' + pricing.name + ' (' + currency + ') ' + (pricing.usdRef || '') + ' <button type="button" onclick="FrankPassPricing.toggleFxNoticeModal()" style="background:none;border:none;cursor:pointer;color:inherit;font-weight:800;text-decoration:underline;margin-left:4px;" title="Price updates every 6 hours based on live exchange rates">ℹ️</button>';
+        pppBadge.style.background = 'rgba(234,179,8,0.12)';
+        pppBadge.style.borderColor = 'rgba(234,179,8,0.3)';
+        pppBadge.style.color = '#eab308';
+        if (fxNoticeBox) {
+          fxNoticeBox.innerHTML = isHindi
+            ? '<strong>ℹ️ 6-घंटे लाइव विनिमय दर अपडेट:</strong> यह मूल्य वैश्विक मानक $25.00 USD से स्वचालित रूप से कनवर्ट किया गया है और लाइव मुद्रा विनिमय दरों के अनुसार प्रत्येक 6 घंटे में अपडेट होता है।'
+            : '<strong>ℹ️ Price updates every 6 hours based on live exchange rates:</strong> This local price is automatically converted from the $25.00 USD global benchmark and updates every 6 hours based on live edge foreign exchange rates.';
+        }
       }
     }
 
     // 3. Update Volume Calculator Card Intro & Scale
-    const volIntro = document.getElementById('vol-calc-intro');
+    const volIntro = document.getElementById('vol-calc-intro') || document.getElementById('vol-calc-intro-hi');
     if (volIntro) {
       const refStr = pricing.usdRef ? ' ' + pricing.usdRef : '';
       volIntro.innerHTML = isHindi
-        ? 'मानक मूल्य 1-PC लाइफटाइम पास के लिए <strong>' + pricing.formatted + '</strong>' + refStr + ' है। वॉल्यूम छूट और 20% कूपन लागू करने के लिए नीचे वर्कस्टेशन चुनें।'
-        : 'Standard pricing is <strong>' + pricing.formatted + '</strong>' + refStr + ' for a lifetime 1-PC pass. Select your required number of workstations to calculate tiered volume discounts and apply coupon codes.';
+        ? pricing.name + ' के लिए मानक मूल्य 1-PC लाइफटाइम पास हेतु <strong>' + pricing.formatted + '</strong>' + refStr + ' है। वॉल्यूम छूट और 20% कूपन लागू करने के लिए नीचे वर्कस्टेशन चुनें।'
+        : 'Pricing for ' + pricing.name + ' is <strong>' + pricing.formatted + '</strong>' + refStr + ' for a lifetime 1-PC pass. Select your required number of workstations to calculate tiered volume discounts and apply coupon codes.';
     }
 
     const scale1 = document.getElementById('vol-mark-1pc');
@@ -1735,16 +1916,44 @@
           assuranceEl.innerHTML = isHindi
             ? '✓ Dodo Payments द्वारा INR (UPI GPay/PhonePe/Paytm, RuPay व भारतीय कार्ड) में 100% सुरक्षित भुगतान'
             : '✓ Dodo Payments securely processes payment in INR (UPI, RuPay, Indian Debit & Credit Cards)';
-        } else if (pricing.isPPP) {
+        } else if (isFixed) {
+          // STRICT RULE: FIXED PPP has ZERO 'i' button!
           assuranceEl.innerHTML = isHindi
-            ? '✓ Dodo Payments द्वारा स्थानीय मुद्रा (' + currency + ') में गारंटीकृत क्रय शक्ति समता (PPP) दर'
-            : '✓ Dodo Payments securely processes payment in local currency (' + currency + ') with guaranteed PPP fair rate';
+            ? '✓ Dodo Payments द्वारा ' + pricing.name + ' में गारंटीकृत क्रय शक्ति समता (PPP) दर (' + pricing.formatted + ')'
+            : '✓ Dodo Payments securely processes payment in ' + pricing.name + ' with guaranteed fixed PPP rate (' + pricing.formatted + ')';
         } else {
+          // Dynamic 6-hour FX has 6-hour update mention
           assuranceEl.innerHTML = isHindi
-            ? '✓ Dodo Payments द्वारा ' + currency + ' (24-घंटे एज FX दर, ~$25.00 USD बेस) में सुरक्षित कार्ड भुगतान'
-            : '✓ Dodo Payments securely converts payment to ' + currency + ' (24h Edge FX rate from $25.00 USD base)';
+            ? '✓ Dodo Payments द्वारा ' + currency + ' (प्रत्येक 6 घंटे में लाइव दर अपडेट, ~$25.00 USD बेस) में सुरक्षित कार्ड भुगतान'
+            : '✓ Dodo Payments securely converts payment to ' + currency + ' (Price updates every 6 hours based on live exchange rates, ~$25.00 USD base)';
         }
       }
+    }
+
+    // 6. Update 50% Replacement Policy Fee
+    const replaceFeeEl = document.getElementById('vol-replacement-rate') || document.getElementById('vol-replacement-rate-hi');
+    if (replaceFeeEl) {
+      const repAmount = Number.isInteger(base) ? Math.round(base * 0.5) : (base * 0.5);
+      replaceFeeEl.textContent = symbol + formatNum(repAmount) + ' ' + currency;
+    }
+  }
+
+  function toggleCoupon20() {
+    coupon20Active = !coupon20Active;
+    syncPricingUI();
+    if (typeof showToast === 'function') {
+      if (coupon20Active) {
+        showToast('🏷️ Coupon PRIVACY20 Applied: 20% Extra Discount!', 'success');
+      } else {
+        showToast('Coupon removed. Showing standard pricing.', '');
+      }
+    }
+  }
+
+  function toggleFxNoticeModal() {
+    const el = document.getElementById('fx-rate-notice-box');
+    if (el) {
+      el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
     }
   }
 

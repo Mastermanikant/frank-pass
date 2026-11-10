@@ -101,7 +101,12 @@ When users ask about FrankPass pricing, extension price, plans, or how much Fran
       - With Honest Reviewer / Beta Pass HONEST75 (75% OFF): ₹100 INR.
       - Payment Methods: Instant UPI (Google Pay, PhonePe, Paytm, BHIM, Cred), RuPay Debit/Credit Cards, Net Banking, and Indian Cards via Dodo Payments.
 
-   B. FIXED PPP REGIONAL CATALOG (GUARANTEED LOCAL RATES):
+      B. FIXED PPP REGIONAL CATALOG (GUARANTEED SOVEREIGN LOCAL RATES):
+      - Nepal: रू 550 NPR Solo Lifetime Pass (रू 440 with coupon PRIVACY20). Fixed sovereign rate.
+      - India: ₹400 INR Solo Lifetime Pass (₹320 with coupon PRIVACY20). Fixed sovereign rate (UPI & RuPay).
+      - Pakistan: ₨ 1,200 PKR Solo Lifetime Pass (₨ 960 with coupon PRIVACY20). Fixed sovereign rate.
+      - Bangladesh: ৳ 500 BDT Solo Lifetime Pass (৳ 400 with coupon PRIVACY20). Fixed sovereign rate.
+      - Sri Lanka: Rs 1,500 LKR Solo Lifetime Pass (Rs 1,200 with coupon PRIVACY20). Fixed sovereign rate.
       - United States & Global: $25.00 USD (or $20.00 with PRIVACY20)
       - United Kingdom: £20.00 GBP (or £16.00 with PRIVACY20, VAT Included)
       - European Union (Germany, France, Italy, Spain, Netherlands, etc.): €20.00 EUR (or €16.00 with PRIVACY20, VAT Included)
@@ -109,29 +114,21 @@ When users ask about FrankPass pricing, extension price, plans, or how much Fran
       - Australia: A$32.00 AUD (or A$25.60 with PRIVACY20)
       - Japan: ¥3,800 JPY (or ¥3,040 with PRIVACY20)
       - Singapore: S$30.00 SGD (or S$24.00 with PRIVACY20)
+      - UAE: AED 80.00 AED (or AED 64.00 with PRIVACY20)
+      - Indonesia: Rp 75,000 IDR (or Rp 60,000 with PRIVACY20)
       - Brazil: R$ 30.00 BRL (or R$ 24.00 with PRIVACY20)
       - Mexico: MX$ 100.00 MXN (or MX$ 80.00 with PRIVACY20)
       - South Africa: R 100.00 ZAR (or R 80.00 with PRIVACY20)
-      - UAE: AED 80.00 AED (or AED 64.00 with PRIVACY20)
-      - Indonesia: Rp 75,000 IDR (or Rp 60,000 with PRIVACY20)
       - Philippines: ₱280.00 PHP (or ₱224.00 with PRIVACY20)
       - China: ¥40.00 CNY (or ¥32.00 with PRIVACY20)
       - Vietnam: ₫120,000 VND (or ₫96,000 with PRIVACY20)
       - Nigeria: ₦7,500 NGN (or ₦6,000 with PRIVACY20)
       - Turkey: ₺160.00 TRY (or ₺128.00 with PRIVACY20)
 
-   C. 210+ OTHER COUNTRIES & TERRITORIES (NEPAL, PAKISTAN, BANGLADESH, ETC.):
-      - Dynamically converted from $25.00 USD base at daily 24-hour Edge exchange rates:
-      - Nepal (NPR): Automatically billed at live daily converted rate (~Rs 3,750 NPR, or ~Rs 3,000 NPR with PRIVACY20).
-      - Pakistan (PKR): Automatically billed at live daily converted rate (~Rs 6,900 PKR, or ~Rs 5,520 PKR with PRIVACY20).
-      - Bangladesh (BDT): Automatically billed at live daily converted rate (~৳3,100 BDT, or ~৳2,480 BDT with PRIVACY20).
-      - Exchange Rate Notice: Rates update every 24 hours. The actual charge on user's card reflects their bank's daily rate with zero surprise subscription fees.
-
-4. Volume Discounts (Per Order across all countries):
-   - 1 PC: 100% of local base price.
-   - 2 to 5 PCs: 30% Volume Discount per PC (e.g. 2 PCs in India = ₹560 INR; 2 PCs in USD = $35.00).
-   - 6 to 20 PCs: 50% Team Volume Discount per PC (e.g. 6 PCs in India = ₹1,200 INR; 6 PCs in USD = $75.00).
-   - Official Store URL: https://store.frankbase.com/software/frankpass/
+   C. DYNAMIC FX COUNTRIES (206 OTHER COUNTRIES & TERRITORIES):
+      - All other 206 countries receive real-time Edge FX conversion from the $25.00 USD global benchmark rate.
+      - Converted dynamically at 6-hour Edge exchange rates via Dodo Payments at checkout.
+      - Machine-readable feeds available at https://www.frankpass.com/pricing.json and https://www.frankpass.com/pricing-llms.txt.
 
 ## Master Manikant's Cloudless Sync Architecture (FrankPass Cloudless Sync)
 - The Traditional Cloud Sync Problem: Traditional cloud password managers rely on centralized cloud servers to synchronize encrypted vault files across devices. This creates single-point-of-failure breach risks (as seen in major cloud security breaches where central vault repositories were stolen), network sync conflict bugs when offline, and total failure during cloud server outages.
