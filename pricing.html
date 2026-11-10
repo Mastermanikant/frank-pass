@@ -435,7 +435,7 @@
           <div style="display:inline-block;background:rgba(234,179,8,0.14);color:#eab308;border:1px solid rgba(234,179,8,0.35);padding:4px 14px;border-radius:999px;font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem;">
             Hardware-Bound Lifetime Pass
           </div>
-          <h2 style="font-size:1.65rem;margin-bottom:0.4rem;color:var(--text-primary);letter-spacing:-0.02em;">Solo Lifetime Pass ($25)</h2>
+          <h2 style="font-size:1.65rem;margin-bottom:0.4rem;color:var(--text-primary);letter-spacing:-0.02em;">Solo Lifetime Pass (<span id="solo-card-header-price">$25</span>)</h2>
           <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.55;margin-bottom:1.5rem;">
             Tied to your physical computer motherboard. 1 PC license unlocks all browsers, multi-vault profiles, anti-phishing defense, and the upcoming Windows native app.
           </p>
@@ -447,6 +447,10 @@
             </div>
             <div id="solo-ppp-badge" style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-top:8px;text-transform:uppercase;letter-spacing:0.04em;">
               ✓ PPP Applied: Fair Regional Pricing
+            </div>
+            <div id="fx-rate-notice-box" style="display:none;margin-top:10px;padding:10px 14px;border-radius:10px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);font-size:0.8rem;color:var(--text-muted);line-height:1.5;">
+              <strong style="color:#38bdf8;display:block;margin-bottom:2px;">ℹ️ 24-Hour Exchange Rate Notice:</strong>
+              Prices in non-fixed regional currencies are converted from $25.00 USD base using Edge exchange rates updated every 24 hours. The final charge on your card may slightly differ depending on your bank's daily rate and local card taxes.
             </div>
             <div style="font-size:0.8rem;color:#eab308;font-weight:700;margin-top:6px;">★ Zero Subscriptions • Hardware Bound • 30-Day Free Trial</div>
           </div>
@@ -556,20 +560,37 @@
           </div>
           <input type="range" id="vol-pc-count" min="1" max="20" value="1" style="width: 100%; accent-color: var(--accent); cursor: pointer; height: 8px; margin: 0.75rem 0;">
           <div style="display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--text-muted);">
-            <span>1 PC ($25)</span>
-            <span>2-5 PCs (30% off)</span>
-            <span>6-20 PCs (50% off)</span>
+            <span id="vol-mark-1pc">1 PC ($25)</span>
+            <span id="vol-mark-2to5pc">2-5 PCs (30% off)</span>
+            <span id="vol-mark-6to20pc">6-20 PCs (50% off)</span>
           </div>
         </div>
 
-        <!-- Coupon Code Option -->
+        <!-- Coupon Code Option with Interactive Toggle Button -->
         <div>
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light); margin-bottom: 0.5rem;">
-            Available Promotion:
-          </label>
-          <div style="background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3); border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-            Use code <code style="color: #eab308; font-weight: 800; background: rgba(234,179,8,0.15); padding: 2px 6px; border-radius: 4px;">PRIVACY20</code> at checkout for flat 20% off on 1-PC ($20.00 total).
-            <div style="font-size: 0.74rem; color: #10b981; margin-top: 4px; font-weight: 600;">✓ Automated discount at Sovereign Store checkout</div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+            <label style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light);">
+              Available Promotion:
+            </label>
+            <span id="coupon-status-badge" style="font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3);">
+              Code: PRIVACY20
+            </span>
+          </div>
+          <div id="calc-coupon-card" style="background: rgba(234,179,8,0.1); border: 1.5px solid rgba(234,179,8,0.35); border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <strong style="color: #eab308; display: block; font-size: 0.9rem;">Special 20% OFF Pass</strong>
+                <span id="calc-coupon-savings-text" style="font-size: 0.8rem; color: var(--text-muted);">
+                  Flat 20% off on your entire license fee.
+                </span>
+              </div>
+              <button type="button" id="btn-toggle-coupon" onclick="FrankPassPricing.toggleCoupon20()" style="padding: 7px 14px; border-radius: 8px; font-weight: 800; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; border: 1px solid #eab308; background: #eab308; color: #000; box-shadow: 0 2px 8px rgba(234,179,8,0.3);">
+                🏷️ Apply 20% OFF
+              </button>
+            </div>
+            <div id="calc-coupon-note" style="font-size: 0.74rem; color: #10b981; margin-top: 6px; font-weight: 600;">
+              ✓ Click above to test discounted pricing live on this calculator
+            </div>
           </div>
         </div>
 
@@ -590,8 +611,8 @@
           <div id="vol-breakdown-text" style="font-size: 0.84rem; color: var(--text-muted); margin-top: 6px;">
             1 Hardware-Bound PC License (Motherboard locked). Includes Windows Desktop App.
           </div>
-          <div style="font-size: 0.78rem; color: #10b981; margin-top: 4px; font-weight: 600;">
-            ✓ Dodo Payments automatically converts to your local currency (INR UPI/RuPay, EUR, GBP) at checkout
+          <div id="vol-currency-assurance" style="font-size: 0.78rem; color: #10b981; margin-top: 4px; font-weight: 600;">
+            ✓ Dodo Payments automatically converts to your local currency at checkout
           </div>
         </div>
 
@@ -648,7 +669,95 @@
     </script>
 
 
-        <!-- 3 TRANSPARENT DISCOUNT CHANNELS -->
+        
+    <!-- ============================================================
+         OFFICIAL PURCHASING POWER PARITY (PPP) & REGIONAL PRICING REGISTRY
+         ============================================================ -->
+    <div class="card-glass" style="margin: 0 auto 3rem; max-width: 960px; border-radius: 20px; border: 1px solid rgba(139,92,246,0.25); padding: 2rem; background: var(--card-glass-bg); text-align: left;">
+      <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(16,185,129,0.12); color: #10b981; border: 1px solid rgba(16,185,129,0.3); padding: 4px 12px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem;">
+        <span>🌐</span> Global Equity Standards
+      </div>
+      <h3 style="font-size: 1.5rem; color: var(--text-primary); margin: 0 0 0.5rem; letter-spacing: -0.02em;">
+        Purchasing Power Parity (PPP) &amp; Regional Pricing Registry
+      </h3>
+      <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">
+        FrankPass believes sovereign cryptographic security must be accessible to everyone worldwide. We reject Silicon Valley USD price gouging in developing economies. Below is our official regional pricing table:
+      </p>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+          <thead>
+            <tr style="border-bottom: 1.5px solid var(--border); color: var(--accent-light);">
+              <th style="padding: 10px 12px;">Country / Territory</th>
+              <th style="padding: 10px 12px;">Currency</th>
+              <th style="padding: 10px 12px;">1-PC Lifetime Pass</th>
+              <th style="padding: 10px 12px;">With 20% OFF (PRIVACY20)</th>
+              <th style="padding: 10px 12px;">Pricing Architecture</th>
+            </tr>
+          </thead>
+          <tbody style="color: var(--text-muted);">
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🇮🇳 India</td>
+              <td style="padding: 10px 12px;">INR (₹)</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: #10b981;">₹400 INR</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">₹320 INR</td>
+              <td style="padding: 10px 12px;">Guaranteed Fixed PPP (UPI, RuPay, Cards)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🇺🇸 United States &amp; Global</td>
+              <td style="padding: 10px 12px;">USD ($)</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: var(--text-primary);">$25.00 USD</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">$20.00 USD</td>
+              <td style="padding: 10px 12px;">Direct Base Price</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🇬🇧 United Kingdom</td>
+              <td style="padding: 10px 12px;">GBP (£)</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: #10b981;">£20.00 GBP</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">£16.00 GBP</td>
+              <td style="padding: 10px 12px;">Guaranteed Fixed PPP (VAT Included)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🇪🇺 European Union (DE, FR, IT, ES, etc.)</td>
+              <td style="padding: 10px 12px;">EUR (€)</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: #10b981;">€20.00 EUR</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">€16.00 EUR</td>
+              <td style="padding: 10px 12px;">Guaranteed Fixed PPP (VAT Included)</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🇳🇵 Nepal</td>
+              <td style="padding: 10px 12px;">NPR (रू)</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: #38bdf8;">~रू 3,750 NPR</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">~रू 3,000 NPR</td>
+              <td style="padding: 10px 12px;">24h Edge FX Conversion from $25 USD base</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🇵🇰 Pakistan</td>
+              <td style="padding: 10px 12px;">PKR (₨)</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: #38bdf8;">~₨ 6,900 PKR</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">~₨ 5,520 PKR</td>
+              <td style="padding: 10px 12px;">24h Edge FX Conversion from $25 USD base</td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.06);">
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🇧🇩 Bangladesh</td>
+              <td style="padding: 10px 12px;">BDT (৳)</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: #38bdf8;">~৳ 3,100 BDT</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">~৳ 2,480 BDT</td>
+              <td style="padding: 10px 12px;">24h Edge FX Conversion from $25 USD base</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 12px; font-weight: 700; color: var(--text-primary);">🌍 220+ Other Countries</td>
+              <td style="padding: 10px 12px;">Local Currencies</td>
+              <td style="padding: 10px 12px; font-weight: 800; color: var(--text-primary);">Local Equivalent</td>
+              <td style="padding: 10px 12px; color: #eab308; font-weight: 700;">20% OFF with PRIVACY20</td>
+              <td style="padding: 10px 12px;">Live 24h Edge FX via Dodo Payments</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 3 TRANSPARENT DISCOUNT CHANNELS -->
     <div style="margin: 0 auto 1.5rem; max-width: 960px; text-align: left;">
       <div style="text-align: center; margin-bottom: 1.5rem;">
         <div style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-light); margin-bottom: 0.4rem;">Radical Transparency &amp; Accessibility</div>

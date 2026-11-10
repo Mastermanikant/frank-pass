@@ -445,6 +445,10 @@
             <div id="solo-ppp-badge" style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-top:8px;text-transform:uppercase;letter-spacing:0.04em;">
               ✓ PPP लागू: क्रय शक्ति समता उचित क्षेत्रीय मूल्य
             </div>
+            <div id="fx-rate-notice-box" style="display:none;margin-top:10px;padding:10px 14px;border-radius:10px;background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);font-size:0.8rem;color:var(--text-muted);line-height:1.5;">
+              <strong style="color:#38bdf8;display:block;margin-bottom:2px;">ℹ️ 24-घंटे विनिमय दर सूचना:</strong>
+              गैर-फिक्स्ड क्षेत्रीय मुद्राओं में कीमतें $25.00 USD बेस से हर 24 घंटे में अपडेट होने वाली एज विनिमय दरों के आधार पर परिवर्तित होती हैं। आपके बैंक की दैनिक दर और स्थानीय करों के कारण कार्ड पर अंतिम शुल्क में मामूली अंतर हो सकता है।
+            </div>
             <div style="font-size:0.8rem;color:#eab308;font-weight:700;margin-top:6px;">★ शून्य सब्सक्रिप्शन • हार्डवेयर बाउंड • 30-दिन मुफ़्त ट्रायल</div>
           </div>
 
@@ -535,7 +539,7 @@
           <h3 style="font-size: clamp(1.4rem, 3vw, 1.85rem); color: var(--text-primary); margin: 0 0 0.4rem; letter-spacing: -0.02em;">
             इंटरएक्टिव लाइफटाइम लाइसेंस व वॉल्यूम कैलकुलेटर
           </h3>
-          <p style="font-size: 0.92rem; color: var(--text-muted); margin: 0; line-height: 1.55; max-width: 700px;">
+          <p id="vol-calc-intro" style="font-size: 0.92rem; color: var(--text-muted); margin: 0; line-height: 1.55; max-width: 700px;">
             मानक मूल्य $25.00 USD प्रति लाइफटाइम 1-PC पास है। कंप्यूटरों की संख्या चुनें और वॉल्यूम छूट व कूपन कोड का हिसाब देखें।
           </p>
         </div>
@@ -553,20 +557,37 @@
           </div>
           <input type="range" id="vol-pc-count-hi" min="1" max="20" value="1" style="width: 100%; accent-color: var(--accent); cursor: pointer; height: 8px; margin: 0.75rem 0;">
           <div style="display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--text-muted);">
-            <span>1 PC ($25)</span>
-            <span>2-5 PCs (30% छूट)</span>
-            <span>6-20 PCs (50% छूट)</span>
+            <span id="vol-mark-1pc">1 PC ($25)</span>
+            <span id="vol-mark-2to5pc">2-5 PCs (30% छूट)</span>
+            <span id="vol-mark-6to20pc">6-20 PCs (50% छूट)</span>
           </div>
         </div>
 
-        <!-- Coupon Code Option -->
+        <!-- Coupon Code Option with Interactive Toggle Button -->
         <div>
-          <label style="display: block; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light); margin-bottom: 0.5rem;">
-            उपलब्ध छूट कूपन:
-          </label>
-          <div style="background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.3); border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-            चेकआउट पर कूपन कोड <code style="color: #eab308; font-weight: 800; background: rgba(234,179,8,0.15); padding: 2px 6px; border-radius: 4px;">PRIVACY20</code> लगाएं और 1-PC पर 20% छूट ($20.00 कुल) पाएं।
-            <div style="font-size: 0.74rem; color: #10b981; margin-top: 4px; font-weight: 600;">✓ सोवरेन स्टोर चेकआउट पर तत्काल लागू</div>
+          <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+            <label style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light);">
+              उपलब्ध प्रोमोशन:
+            </label>
+            <span id="coupon-status-badge" style="font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3);">
+              कोड: PRIVACY20
+            </span>
+          </div>
+          <div id="calc-coupon-card" style="background: rgba(234,179,8,0.1); border: 1.5px solid rgba(234,179,8,0.35); border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <strong style="color: #eab308; display: block; font-size: 0.9rem;">विशेष 20% छूट पास</strong>
+                <span id="calc-coupon-savings-text" style="font-size: 0.8rem; color: var(--text-muted);">
+                  आपके पूरे लाइसेंस शुल्क पर फ्लैट 20% छूट।
+                </span>
+              </div>
+              <button type="button" id="btn-toggle-coupon" onclick="FrankPassPricing.toggleCoupon20()" style="padding: 7px 14px; border-radius: 8px; font-weight: 800; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; border: 1px solid #eab308; background: #eab308; color: #000; box-shadow: 0 2px 8px rgba(234,179,8,0.3);">
+                🏷️ 20% छूट लागू करें
+              </button>
+            </div>
+            <div id="calc-coupon-note" style="font-size: 0.74rem; color: #10b981; margin-top: 6px; font-weight: 600;">
+              ✓ इस कैलकुलेटर पर छूट वाला मूल्य लाइव देखने के लिए ऊपर क्लिक करें
+            </div>
           </div>
         </div>
 
@@ -587,7 +608,7 @@
           <div id="vol-breakdown-text-hi" style="font-size: 0.84rem; color: var(--text-muted); margin-top: 6px;">
             1 कंप्यूटर के लिए हार्डवेयर-बाउंड लाइफटाइम पास (मदरबोर्ड लॉक्ड)।
           </div>
-          <div style="font-size: 0.78rem; color: #10b981; margin-top: 4px; font-weight: 600;">
+          <div id="vol-currency-assurance" style="font-size: 0.78rem; color: #10b981; margin-top: 4px; font-weight: 600;">
             ✓ Dodo Payments चेकआउट के समय आपकी स्थानीय मुद्रा (INR में UPI/RuPay, EUR, GBP) में स्वतः रूपांतरित करता है
           </div>
         </div>
