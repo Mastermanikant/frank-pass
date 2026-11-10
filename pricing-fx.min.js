@@ -3756,8 +3756,91 @@
     return null;
   }
 
+  const GATEWAY_USD_SETTLED_COUNTRIES = {
+    'PK': { usd: 7 },
+    'CO': { usd: 9 },
+    'AF': { usd: 10 },
+    'DZ': { usd: 10 },
+    'AO': { usd: 10 },
+    'AR': { usd: 15 },
+    'BY': { usd: 10 },
+    'BT': { usd: 10 },
+    'KH': { usd: 10 },
+    'CV': { usd: 10 },
+    'CD': { usd: 10 },
+    'CU': { usd: 10 },
+    'ER': { usd: 10 },
+    'GH': { usd: 10 },
+    'HT': { usd: 10 },
+    'IR': { usd: 10 },
+    'JM': { usd: 10 },
+    'KE': { usd: 10 },
+    'KG': { usd: 10 },
+    'LA': { usd: 10 },
+    'LB': { usd: 10 },
+    'MR': { usd: 10 },
+    'MD': { usd: 10 },
+    'MN': { usd: 10 },
+    'MZ': { usd: 10 },
+    'MM': { usd: 10 },
+    'NA': { usd: 10 },
+    'NI': { usd: 10 },
+    'KP': { usd: 10 },
+    'RU': { usd: 10 },
+    'ST': { usd: 10 },
+    'SL': { usd: 10 },
+    'SO': { usd: 10 },
+    'SS': { usd: 8 },
+    'SD': { usd: 8 },
+    'SR': { usd: 10 },
+    'SY': { usd: 8 },
+    'TJ': { usd: 10 },
+    'TT': { usd: 10 },
+    'TM': { usd: 10 },
+    'UG': { usd: 10 },
+    'UA': { usd: 10 },
+    'UZ': { usd: 10 },
+    'VE': { usd: 10 },
+    'YE': { usd: 10 },
+    'AI': { usd: 15 },
+    'AG': { usd: 15 },
+    'DM': { usd: 15 },
+    'GD': { usd: 15 },
+    'MS': { usd: 15 },
+    'KN': { usd: 15 },
+    'LC': { usd: 15 },
+    'VC': { usd: 15 },
+    'CW': { usd: 18 },
+    'SX': { usd: 18 },
+    'FK': { usd: 22 },
+    'GI': { usd: 22 },
+    'BB': { usd: 25 },
+    'KY': { usd: 25 },
+    'XK': { usd: 18 }
+  };
+
   function calculatePricing(countryCode, fxRates) {
     const code = (countryCode || getActiveCountryCode()).toUpperCase();
+
+    // 0. Gateway USD Settled Country (Has explicit 'i' button and USD settlement)
+    if (GATEWAY_USD_SETTLED_COUNTRIES[code] && FIXED_COUNTRIES[code]) {
+      const fc = FIXED_COUNTRIES[code];
+      const gw = GATEWAY_USD_SETTLED_COUNTRIES[code];
+      const base = fc.base;
+      return {
+        code: code,
+        name: fc.name,
+        currency: fc.currency,
+        symbol: fc.symbol,
+        base: base,
+        isFixed: false,
+        isGatewayUSD: true,
+        usdAmount: gw.usd,
+        usdRef: '(≈ $' + gw.usd + ' USD)',
+        isPPP: fc.ppp,
+        formatted: fc.symbol + (Number.isInteger(base) ? base : base.toFixed(2))
+      };
+    }
 
     // 1. Fixed PPP country (India, Nepal, Pakistan, Bangladesh, Sri Lanka, UK, EU, etc.)
     if (FIXED_COUNTRIES[code]) {
