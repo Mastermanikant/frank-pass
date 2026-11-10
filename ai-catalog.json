@@ -28,6 +28,20 @@
         "Secure stateless banking PIN generator",
         "Deterministic numeric PIN generator"
       ]
+    },
+    {
+      "identifier": "urn:air:frankpass:sovereign-pricing",
+      "displayName": "FrankPass Pro Sovereign 230-Country Localized Pricing",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://frankpass.com/pricing-llms-full.txt",
+      "description": "Official 230-country sovereign localized pricing index for FrankPass Pro Lifetime Hardware Pass. Zero subscriptions, zero floating decimals, sovereign purchasing power parity across 230 countries.",
+      "representativeQueries": [
+        "FrankPass Pro price in India",
+        "FrankPass Pro price in UK",
+        "FrankPass Pro price in Nepal",
+        "FrankPass Pro sovereign pricing 230 countries",
+        "FrankPass lifetime license cost"
+      ]
     }
   ]
 }
