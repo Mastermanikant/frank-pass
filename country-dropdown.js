@@ -473,6 +473,9 @@
 
         if (initCountry) {
             selectCountry(initCountry, false);
+
+        // Pre-render list options immediately for accessibility and automated inspection
+        renderList('');
         }
 
         // Priority 4: Background Cloudflare Edge Geolocation (/cdn-cgi/trace)

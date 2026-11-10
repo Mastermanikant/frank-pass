@@ -3690,4 +3690,433 @@
     "usdRef": ""
   }
 };
+
+  const EU_CODES = ["DE","FR","IT","ES","NL","BE","AT","IE","PT","FI","GR","LU","CY","MT","SK","SI","EE","LV","LT"];
+
+  let coupon20Active = false;
+  let currentActiveCountry = null;
+
+  function getActiveCountryCode() {
+    if (currentActiveCountry) return currentActiveCountry.toUpperCase();
+    try {
+      if (typeof localStorage !== 'undefined') {
+        const saved = localStorage.getItem('fp_preferred_country');
+        if (saved && saved.trim()) return saved.trim().toUpperCase();
+      }
+      if (typeof document !== 'undefined') {
+        const cardLabel = document.getElementById('card-country-label');
+        if (cardLabel && cardLabel.textContent) {
+          const txt = cardLabel.textContent.trim().toUpperCase();
+          if (txt && txt.length === 2) return txt;
+        }
+      }
+    } catch (e) {}
+    return 'IN';
+  }
+
+  function getCachedFxRates() {
+    try {
+      if (typeof localStorage === 'undefined') return null;
+      const raw = localStorage.getItem(FX_CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.timestamp && (Date.now() - parsed.timestamp < FX_CACHE_MS)) {
+        return parsed.rates;
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function saveCachedFxRates(rates) {
+    try {
+      if (typeof localStorage === 'undefined') return;
+      localStorage.setItem(FX_CACHE_KEY, JSON.stringify({
+        timestamp: Date.now(),
+        rates: rates
+      }));
+    } catch (e) {}
+  }
+
+  async function fetchFxRates() {
+    const cached = getCachedFxRates();
+    if (cached) return cached;
+
+    try {
+      const res = await fetch(FX_API_URL, {
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data && data.rates) {
+          saveCachedFxRates(data.rates);
+          return data.rates;
+        }
+      }
+    } catch (e) {}
+    return null;
+  }
+
+  function calculatePricing(countryCode, fxRates) {
+    const code = (countryCode || getActiveCountryCode()).toUpperCase();
+
+    // 1. Fixed PPP country (India, Nepal, Pakistan, Bangladesh, Sri Lanka, UK, EU, etc.)
+    if (FIXED_COUNTRIES[code]) {
+      const fc = FIXED_COUNTRIES[code];
+      const base = fc.base;
+      return {
+        code: code,
+        name: fc.name,
+        currency: fc.currency,
+        symbol: fc.symbol,
+        base: base,
+        isFixed: true,
+        isPPP: fc.ppp,
+        usdRef: '',
+        formatted: fc.symbol + (Number.isInteger(base) ? base : base.toFixed(2)) + (fc.currency === 'USD' ? ' USD' : '')
+      };
+    }
+
+    // 2. Eurozone Member States (Mapped to EUR fixed PPP)
+    if (EU_CODES.includes(code)) {
+      const fc = FIXED_COUNTRIES['EU'];
+      const cMeta = ALL_COUNTRIES[code] || { name: 'European Union' };
+      const base = fc.base;
+      return {
+        code: code,
+        name: cMeta.name,
+        currency: fc.currency,
+        symbol: fc.symbol,
+        base: base,
+        isFixed: true,
+        isPPP: true,
+        usdRef: '',
+        formatted: fc.symbol + (Number.isInteger(base) ? base : base.toFixed(2))
+      };
+    }
+
+    // 3. Dynamic FX Conversion from $25.00 USD global base
+    const countryMeta = ALL_COUNTRIES[code] || { name: 'Global', currency: 'USD', symbol: '$' };
+    const currency = countryMeta.currency || 'USD';
+    const symbol = countryMeta.symbol || '$';
+    const rates = fxRates || getCachedFxRates();
+
+    let rate = null;
+    if (rates && rates[currency]) {
+      rate = rates[currency];
+    }
+
+    if (rate && rate > 0) {
+      const rawPrice = 25.00 * rate;
+      let convertedPrice = Math.round(rawPrice);
+      if (rawPrice < 10) {
+        convertedPrice = parseFloat(rawPrice.toFixed(2));
+      } else if (rawPrice > 1000) {
+        convertedPrice = Math.round(rawPrice / 50) * 50;
+      } else {
+        convertedPrice = Math.round(rawPrice);
+      }
+
+      return {
+        code: code,
+        name: countryMeta.name,
+        currency: currency,
+        symbol: symbol + ' ',
+        base: convertedPrice,
+        isFixed: false,
+        isPPP: false,
+        usdRef: '(~$25.00 USD)',
+        formatted: symbol + ' ' + (Number.isInteger(convertedPrice) ? convertedPrice : convertedPrice.toFixed(2))
+      };
+    }
+
+    // 4. Fallback to Global Standard $25.00 USD
+    return {
+      code: code,
+      name: countryMeta.name,
+      currency: 'USD',
+      symbol: '$',
+      base: 25.00,
+      isFixed: false,
+      isPPP: false,
+      usdRef: '',
+      formatted: '$25.00 USD'
+    };
+  }
+
+  function syncPricingUI(customCode) {
+    if (typeof document === 'undefined') return;
+    if (customCode && typeof customCode === 'string') {
+      currentActiveCountry = customCode.trim().toUpperCase();
+    }
+    const pricing = calculatePricing(currentActiveCountry);
+    currentActiveCountry = pricing.code;
+    const code = pricing.code;
+    const base = pricing.base;
+    const symbol = pricing.symbol;
+    const currency = pricing.currency;
+    const isFixed = pricing.isFixed;
+    const isHindi = document.documentElement.lang === 'hi' || window.location.pathname.includes('hindi');
+
+    const formatNum = (num) => Number.isInteger(num) ? String(num) : num.toFixed(2);
+
+    // 1. Update Solo Lifetime Pass Price Tag
+    const soloPriceEl = document.getElementById('solo-price-display');
+    const soloHeaderPriceEl = document.getElementById('solo-card-header-price');
+    const soloCurrencyEl = document.getElementById('solo-price-currency');
+
+    if (soloPriceEl) {
+      if (coupon20Active) {
+        const discounted = Number.isInteger(base) ? Math.round(base * 0.8) : (base * 0.8);
+        soloPriceEl.innerHTML = '<s style="font-size:1.6rem;opacity:0.6;margin-right:8px;">' + pricing.formatted + '</s> ' + symbol + (Number.isInteger(discounted) ? discounted : discounted.toFixed(2));
+      } else {
+        soloPriceEl.textContent = pricing.formatted;
+      }
+    }
+
+    if (soloHeaderPriceEl) {
+      soloHeaderPriceEl.textContent = pricing.formatted;
+    }
+
+    if (soloCurrencyEl) {
+      const refText = pricing.usdRef ? ' ' + pricing.usdRef : '';
+      soloCurrencyEl.textContent = isHindi 
+        ? '/ लाइफटाइम 1-PC (' + currency + ')' + refText
+        : '/ Lifetime 1-PC (' + currency + ')' + refText;
+    }
+
+    // 2. Update Solo PPP / FX Badge & Strict Rule for 'i' Button:
+    // "fix wala me koi i button nahi and jo 6 hours me update hota hai usme de dena price update in every 6 hours"
+    const pppBadge = document.getElementById('solo-ppp-badge');
+    const fxNoticeBox = document.getElementById('fx-rate-notice-box');
+
+    if (pppBadge) {
+      pppBadge.style.display = 'inline-flex';
+      if (isFixed) {
+        // FIXED PPP: Strictly ZERO 'i' button!
+        pppBadge.innerHTML = isHindi
+          ? '✓ गारंटीकृत उचित क्षेत्रीय मूल्य (PPP): ' + pricing.name + ' (' + currency + ')'
+          : '✓ Guaranteed Fixed PPP Rate: ' + pricing.name + ' (' + currency + ')';
+        pppBadge.style.background = 'rgba(16,185,129,0.12)';
+        pppBadge.style.borderColor = 'rgba(16,185,129,0.3)';
+        pppBadge.style.color = '#10b981';
+        if (fxNoticeBox) fxNoticeBox.style.display = 'none';
+      } else {
+        // DYNAMIC 6-HOUR FX: Has 'i' button with explicit 6-hour update text!
+        pppBadge.innerHTML = isHindi
+          ? '⚡ लाइव विनिमय दर: ' + pricing.name + ' (' + currency + ') ' + (pricing.usdRef || '') + ' <button type="button" onclick="FrankPassPricing.toggleFxNoticeModal()" style="background:none;border:none;cursor:pointer;color:inherit;font-weight:800;text-decoration:underline;margin-left:4px;" title="प्रत्येक 6 घंटे में मूल्य अपडेट होता है">ℹ️</button>'
+          : '⚡ Live Exchange Rate: ' + pricing.name + ' (' + currency + ') ' + (pricing.usdRef || '') + ' <button type="button" onclick="FrankPassPricing.toggleFxNoticeModal()" style="background:none;border:none;cursor:pointer;color:inherit;font-weight:800;text-decoration:underline;margin-left:4px;" title="Price updates every 6 hours based on live exchange rates">ℹ️</button>';
+        pppBadge.style.background = 'rgba(234,179,8,0.12)';
+        pppBadge.style.borderColor = 'rgba(234,179,8,0.3)';
+        pppBadge.style.color = '#eab308';
+        if (fxNoticeBox) {
+          fxNoticeBox.innerHTML = isHindi
+            ? '<strong>ℹ️ 6-घंटे लाइव विनिमय दर अपडेट:</strong> यह मूल्य वैश्विक मानक $25.00 USD से स्वचालित रूप से कनवर्ट किया गया है और लाइव मुद्रा विनिमय दरों के अनुसार प्रत्येक 6 घंटे में अपडेट होता है।'
+            : '<strong>ℹ️ Price updates every 6 hours based on live exchange rates:</strong> This local price is automatically converted from the $25.00 USD global benchmark and updates every 6 hours based on live edge foreign exchange rates.';
+        }
+      }
+    }
+
+    // 3. Update Volume Calculator Card Intro & Scale
+    const volIntro = document.getElementById('vol-calc-intro') || document.getElementById('vol-calc-intro-hi');
+    if (volIntro) {
+      const refStr = pricing.usdRef ? ' ' + pricing.usdRef : '';
+      volIntro.innerHTML = isHindi
+        ? pricing.name + ' के लिए मानक मूल्य 1-PC लाइफटाइम पास हेतु <strong>' + pricing.formatted + '</strong>' + refStr + ' है। वॉल्यूम छूट और 20% कूपन लागू करने के लिए नीचे वर्कस्टेशन चुनें।'
+        : 'Pricing for ' + pricing.name + ' is <strong>' + pricing.formatted + '</strong>' + refStr + ' for a lifetime 1-PC pass. Select your required number of workstations to calculate tiered volume discounts and apply coupon codes.';
+    }
+
+    const scale1 = document.getElementById('vol-mark-1pc');
+    const scale2 = document.getElementById('vol-mark-2to5pc');
+    const scale3 = document.getElementById('vol-mark-6to20pc');
+
+    if (scale1) scale1.textContent = '1 PC (' + pricing.formatted + ')';
+    if (scale2) {
+      const p30 = Number.isInteger(base) ? Math.round(base * 0.7) : (base * 0.7);
+      scale2.textContent = isHindi ? '2-5 PCs (30% छूट: ' + symbol + formatNum(p30) + '/PC)' : '2-5 PCs (30% off: ' + symbol + formatNum(p30) + '/PC)';
+    }
+    if (scale3) {
+      const p50 = Number.isInteger(base) ? Math.round(base * 0.5) : (base * 0.5);
+      scale3.textContent = isHindi ? '6-20 PCs (50% छूट: ' + symbol + formatNum(p50) + '/PC)' : '6-20 PCs (50% off: ' + symbol + formatNum(p50) + '/PC)';
+    }
+
+    // 4. Update Coupon Button & Promotion Card
+    const btnCoupon = document.getElementById('btn-toggle-coupon');
+    const couponSavings = document.getElementById('calc-coupon-savings-text');
+    const couponCard = document.getElementById('calc-coupon-card');
+
+    if (btnCoupon) {
+      if (coupon20Active) {
+        btnCoupon.innerHTML = isHindi ? '✕ 20% छूट हटाएं (सक्रिय)' : '✕ Remove 20% (Active)';
+        btnCoupon.style.background = 'rgba(239, 68, 68, 0.15)';
+        btnCoupon.style.borderColor = '#ef4444';
+        btnCoupon.style.color = '#ef4444';
+        if (couponCard) couponCard.style.borderColor = '#10b981';
+      } else {
+        btnCoupon.innerHTML = isHindi ? '🏷️ 20% छूट लागू करें' : '🏷️ Apply 20% OFF';
+        btnCoupon.style.background = '#eab308';
+        btnCoupon.style.borderColor = '#eab308';
+        btnCoupon.style.color = '#000000';
+        if (couponCard) couponCard.style.borderColor = 'rgba(234,179,8,0.35)';
+      }
+    }
+
+    if (couponSavings) {
+      const save20 = Number.isInteger(base) ? Math.round(base * 0.2) : (base * 0.2);
+      couponSavings.textContent = isHindi
+        ? 'कूपन PRIVACY20 द्वारा फ्लैट 20% छूट (बचत: ' + symbol + formatNum(save20) + ' प्रति PC)।'
+        : 'Flat 20% off with code PRIVACY20 (Save ' + symbol + formatNum(save20) + ' per PC).';
+    }
+
+    // 5. Update Volume Math Output Box (Support both standard IDs and Hindi -hi IDs)
+    const pcCountInput = document.getElementById('vol-pc-count') || document.getElementById('vol-pc-count-hi');
+    const pcLabel = document.getElementById('vol-pc-label') || document.getElementById('vol-pc-label-hi');
+    const finalPriceSpan = document.getElementById('vol-final-price') || document.getElementById('vol-final-price-hi');
+    const discountBadge = document.getElementById('vol-discount-badge') || document.getElementById('vol-discount-badge-hi');
+    const breakdownText = document.getElementById('vol-breakdown-text') || document.getElementById('vol-breakdown-text-hi');
+    const assuranceEl = document.getElementById('vol-currency-assurance');
+
+    if (pcCountInput && finalPriceSpan) {
+      const pcs = parseInt(pcCountInput.value, 10) || 1;
+      if (pcLabel) {
+        pcLabel.textContent = pcs === 1 ? (isHindi ? '1 PC (एकल)' : '1 PC (Solo)') : pcs + ' PCs';
+      }
+
+      let volumeDiscountPct = 0;
+      let badgeText = isHindi ? 'सोलो लाइफटाइम पास' : 'Solo Lifetime Pass';
+      let badgeBg = 'rgba(139,92,246,0.18)';
+      let badgeColor = 'var(--accent-light)';
+
+      if (pcs >= 6) {
+        volumeDiscountPct = 0.50;
+        badgeText = isHindi ? '50% टीम वॉल्यूम छूट' : '50% Team Volume Discount';
+        badgeBg = 'rgba(56,189,248,0.18)';
+        badgeColor = '#38bdf8';
+      } else if (pcs >= 2) {
+        volumeDiscountPct = 0.30;
+        badgeText = isHindi ? '30% वॉल्यूम छूट' : '30% Volume Discount';
+        badgeBg = 'rgba(234,179,8,0.18)';
+        badgeColor = '#eab308';
+      }
+
+      const standardUnitPrice = Number.isInteger(base) ? Math.round(base * (1 - volumeDiscountPct)) : (base * (1 - volumeDiscountPct));
+      const standardTotal = standardUnitPrice * pcs;
+
+      let finalUnitPrice = standardUnitPrice;
+      if (coupon20Active) {
+        finalUnitPrice = Number.isInteger(standardUnitPrice) ? Math.round(standardUnitPrice * 0.80) : (standardUnitPrice * 0.80);
+      }
+      const finalTotal = finalUnitPrice * pcs;
+
+      if (coupon20Active) {
+        finalPriceSpan.innerHTML = '<s style="font-size:1.6rem;opacity:0.6;margin-right:10px;">' + symbol + formatNum(standardTotal) + '</s> ' + symbol + formatNum(finalTotal);
+        badgeText += isHindi ? ' + 20% कूपन' : ' + 20% Promo';
+        badgeBg = 'rgba(16,185,129,0.2)';
+        badgeColor = '#10b981';
+      } else {
+        finalPriceSpan.textContent = symbol + formatNum(finalTotal);
+      }
+
+      if (discountBadge) {
+        discountBadge.textContent = badgeText + (volumeDiscountPct > 0 || coupon20Active ? ' (' + symbol + formatNum(finalUnitPrice) + ' / PC)' : '');
+        discountBadge.style.background = badgeBg;
+        discountBadge.style.color = badgeColor;
+      }
+
+      if (breakdownText) {
+        const couponNote = coupon20Active ? (isHindi ? ' (कूपन PRIVACY20 द्वारा अतिरिक्त 20% छूट शामिल)' : ' (Includes extra 20% off with coupon PRIVACY20)') : '';
+        if (pcs === 1) {
+          breakdownText.textContent = isHindi
+            ? '1 हार्डवेयर-बाउंड PC लाइसेंस (' + symbol + formatNum(finalTotal) + ')' + couponNote + '। विंडोज क्रोमियम एक्सटेंशन व ऑफलाइन लाइफटाइम की शामिल।'
+            : '1 Hardware-Bound PC License (' + symbol + formatNum(finalTotal) + ')' + couponNote + '. Includes Windows Chromium Extension & Offline Lifetime Key.';
+        } else {
+          breakdownText.textContent = isHindi
+            ? pcs + ' अलग हार्डवेयर-बाउंड PC लाइसेंस (' + symbol + formatNum(finalUnitPrice) + ' प्रति PC)' + couponNote + '। स्वतंत्र ऑफलाइन सक्रियण कीज।'
+            : pcs + ' Separate Hardware-Bound PC Licenses (' + symbol + formatNum(finalUnitPrice) + ' per PC)' + couponNote + '. Independent offline activation keys.';
+        }
+      }
+
+      if (assuranceEl) {
+        if (code === 'IN') {
+          assuranceEl.innerHTML = isHindi
+            ? '✓ Dodo Payments द्वारा INR (UPI GPay/PhonePe/Paytm, RuPay व भारतीय कार्ड) में 100% सुरक्षित भुगतान'
+            : '✓ Dodo Payments securely processes payment in INR (UPI, RuPay, Indian Debit & Credit Cards)';
+        } else if (isFixed) {
+          // STRICT RULE: FIXED PPP has ZERO 'i' button!
+          assuranceEl.innerHTML = isHindi
+            ? '✓ Dodo Payments द्वारा ' + pricing.name + ' में गारंटीकृत क्रय शक्ति समता (PPP) दर (' + pricing.formatted + ')'
+            : '✓ Dodo Payments securely processes payment in ' + pricing.name + ' with guaranteed fixed PPP rate (' + pricing.formatted + ')';
+        } else {
+          // Dynamic 6-hour FX has 6-hour update mention
+          assuranceEl.innerHTML = isHindi
+            ? '✓ Dodo Payments द्वारा ' + currency + ' (प्रत्येक 6 घंटे में लाइव दर अपडेट, ~$25.00 USD बेस) में सुरक्षित कार्ड भुगतान'
+            : '✓ Dodo Payments securely converts payment to ' + currency + ' (Price updates every 6 hours based on live exchange rates, ~$25.00 USD base)';
+        }
+      }
+    }
+
+    // 6. Update 50% Replacement Policy Fee
+    const replaceFeeEl = document.getElementById('vol-replacement-rate') || document.getElementById('vol-replacement-rate-hi');
+    if (replaceFeeEl) {
+      const repAmount = Number.isInteger(base) ? Math.round(base * 0.5) : (base * 0.5);
+      replaceFeeEl.textContent = symbol + formatNum(repAmount) + ' ' + currency;
+    }
+  }
+
+  function toggleCoupon20() {
+    coupon20Active = !coupon20Active;
+    syncPricingUI();
+    if (typeof showToast === 'function') {
+      if (coupon20Active) {
+        showToast('🏷️ Coupon PRIVACY20 Applied: 20% Extra Discount!', 'success');
+      } else {
+        showToast('Coupon removed. Showing standard pricing.', '');
+      }
+    }
+  }
+
+  function toggleFxNoticeModal() {
+    const el = document.getElementById('fx-rate-notice-box');
+    if (el) {
+      el.style.display = (el.style.display === 'none' || !el.style.display) ? 'block' : 'none';
+    }
+  }
+
+  // Auto initialize on DOM load
+  if (typeof window !== 'undefined') {
+    window.addEventListener('fp-country-changed', function (e) {
+      const detail = e.detail;
+      const code = detail && detail.code ? detail.code : null;
+      syncPricingUI(code);
+    });
+
+    const bindInput = () => {
+      const el = document.getElementById('vol-pc-count') || document.getElementById('vol-pc-count-hi');
+      if (el) {
+        el.addEventListener('input', () => syncPricingUI());
+      }
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function () {
+        bindInput();
+        syncPricingUI();
+        fetchFxRates().then(() => syncPricingUI());
+      });
+    } else {
+      bindInput();
+      syncPricingUI();
+      fetchFxRates().then(() => syncPricingUI());
+    }
+  }
+
+  return {
+    ALL_COUNTRIES: ALL_COUNTRIES,
+    FIXED_COUNTRIES: FIXED_COUNTRIES,
+    calculatePricing: calculatePricing,
+    getActiveCountryCode: getActiveCountryCode,
+    syncPricingUI: syncPricingUI,
+    toggleCoupon20: toggleCoupon20,
+    toggleFxNoticeModal: toggleFxNoticeModal,
+    fetchFxRates: fetchFxRates
+  };
 });
