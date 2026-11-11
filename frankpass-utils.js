@@ -174,6 +174,8 @@ const FrankPassUtils = (function () {
         'boi': 'bankofindia',
         'bankofindiaboi': 'bankofindia',
         'bankofindia-boi': 'bankofindia',
+        'incometaxdepartmentefilingportal': 'incometaxdepartmente',
+        'incometaxdepartmente-filingportal': 'incometaxdepartmente',
         'bankofbarodabob': 'bankofbaroda',
         'bankofbaroda-bob': 'bankofbaroda',
         'bankofmaharashtrabom': 'bankofmaharashtra',
@@ -860,8 +862,8 @@ const FrankPassUtils = (function () {
         }
         platform = strippedPlatform;
         
-        // 6. Strip parenthetical and trailing hyphen acronym suffixes (with or without spaces)
-        platform = platform.replace(/\s*[-–-]\s*[a-z0-9\s]+$/, '');
+        // 6. Strip parenthetical and trailing hyphen acronym suffixes (requires preceding space to protect hyphenated brands)
+        platform = platform.replace(/\s+[-–-]\s*[a-z0-9\s]+$/, '');
         platform = platform.replace(/\s*\([^)]*\)/g, '');
 
         // 7. Check again if cleaned string matches an alias
@@ -921,7 +923,7 @@ const FrankPassUtils = (function () {
         // 9. Stopword Sanity Guard: If extracted platform is a generic stopword, search leftward in domainParts for the real brand
         if (GENERIC_STOPWORDS.has(platform) && domainParts.length > 2) {
             for (let i = domainParts.length - 3; i >= 0; i--) {
-                const candidate = domainParts[i].replace(/[^a-z0-9]/g, '');
+                const candidate = domainParts[i].replace(/[^a-z0-9-]/g, '').replace(/^-+|-+$/g, '');
                 if (candidate && !GENERIC_STOPWORDS.has(candidate)) {
                     platform = candidate;
                     break;
@@ -929,8 +931,8 @@ const FrankPassUtils = (function () {
             }
         }
         
-        // 10. Sanitize (only letters and numbers)
-        platform = platform.replace(/[^a-z0-9]/g, '');
+        // 10. Sanitize (preserve letters, numbers, and hyphens to protect against phishing/typosquatting)
+        platform = platform.replace(/[^a-z0-9-]/g, '').replace(/^-+|-+$/g, '');
 
         // 11. Apply Global Aliases (e.g., yt -> google, sbi -> statebankofindia, aws -> aws)
         return GLOBAL_ALIASES[platform] || platform;
