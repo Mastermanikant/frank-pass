@@ -4019,7 +4019,7 @@
     }
     if (scale3) {
       const p50 = Number.isInteger(base) ? Math.round(base * 0.5) : (base * 0.5);
-      scale3.textContent = isHindi ? '6-20 PCs (50% छूट: ' + symbol + formatNum(p50) + '/PC)' : '6-20 PCs (50% off: ' + symbol + formatNum(p50) + '/PC)';
+      scale3.textContent = isHindi ? '6-15 PCs (50% छूट: ' + symbol + formatNum(p50) + '/PC)' : '6-15 PCs (50% off: ' + symbol + formatNum(p50) + '/PC)';
     }
 
     // 4. Update Coupon Button & Promotion Card
