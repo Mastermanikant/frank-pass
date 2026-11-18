@@ -3889,7 +3889,7 @@
     }
 
     if (rate && rate > 0) {
-      const rawPrice = 25.00 * rate;
+      const rawPrice = 25 * rate;
       let convertedPrice = Math.round(rawPrice);
       if (rawPrice < 10) {
         convertedPrice = parseFloat(rawPrice.toFixed(2));
@@ -3907,7 +3907,7 @@
         base: convertedPrice,
         isFixed: false,
         isPPP: false,
-        usdRef: '(~$25.00 USD)',
+        usdRef: '(~$25 USD)',
         formatted: symbol + ' ' + (Number.isInteger(convertedPrice) ? convertedPrice : convertedPrice.toFixed(2))
       };
     }
@@ -3918,11 +3918,11 @@
       name: countryMeta.name,
       currency: 'USD',
       symbol: '$',
-      base: 25.00,
+      base: 25,
       isFixed: false,
       isPPP: false,
       usdRef: '',
-      formatted: '$25.00 USD'
+      formatted: '$25 USD'
     };
   }
 
@@ -3993,8 +3993,8 @@
         pppBadge.style.color = '#eab308';
         if (fxNoticeBox) {
           fxNoticeBox.innerHTML = isHindi
-            ? '<strong>ℹ️ 6-घंटे लाइव विनिमय दर अपडेट:</strong> यह मूल्य वैश्विक मानक $25.00 USD से स्वचालित रूप से कनवर्ट किया गया है और लाइव मुद्रा विनिमय दरों के अनुसार प्रत्येक 6 घंटे में अपडेट होता है।'
-            : '<strong>ℹ️ Price updates every 6 hours based on live exchange rates:</strong> This local price is automatically converted from the $25.00 USD global benchmark and updates every 6 hours based on live edge foreign exchange rates.';
+            ? '<strong>ℹ️ 6-घंटे लाइव विनिमय दर अपडेट:</strong> यह मूल्य वैश्विक मानक $25 USD से स्वचालित रूप से कनवर्ट किया गया है और लाइव मुद्रा विनिमय दरों के अनुसार प्रत्येक 6 घंटे में अपडेट होता है।'
+            : '<strong>ℹ️ Price updates every 6 hours based on live exchange rates:</strong> This local price is automatically converted from the $25 USD global benchmark and updates every 6 hours based on live edge foreign exchange rates.';
         }
       }
     }
@@ -4004,8 +4004,8 @@
     if (volIntro) {
       const refStr = pricing.usdRef ? ' ' + pricing.usdRef : '';
       volIntro.innerHTML = isHindi
-        ? pricing.name + ' के लिए मानक मूल्य 1-PC लाइफटाइम पास हेतु <strong>' + pricing.formatted + '</strong>' + refStr + ' है। वॉल्यूम छूट और 20% कूपन लागू करने के लिए नीचे वर्कस्टेशन चुनें।'
-        : 'Pricing for ' + pricing.name + ' is <strong>' + pricing.formatted + '</strong>' + refStr + ' for a lifetime 1-PC pass. Select your required number of workstations to calculate tiered volume discounts and apply coupon codes.';
+        ? pricing.name + ' के लिए मानक मूल्य 1-PC लाइफटाइम पास हेतु <strong>' + pricing.formatted + '</strong>' + refStr + ' है। वॉल्यूम छूट देखने के लिए नीचे वर्कस्टेशन चुनें (1 से 15 PCs तक)।'
+        : 'Pricing for ' + pricing.name + ' is <strong>' + pricing.formatted + '</strong>' + refStr + ' for a lifetime 1-PC pass. Select your required number of workstations to calculate tiered volume discounts (1 to 15 PCs).';
     }
 
     const scale1 = document.getElementById('vol-mark-1pc');
@@ -4085,18 +4085,14 @@
       const standardTotal = standardUnitPrice * pcs;
 
       let finalUnitPrice = standardUnitPrice;
-      if (coupon20Active) {
-        finalUnitPrice = Number.isInteger(standardUnitPrice) ? Math.round(standardUnitPrice * 0.80) : (standardUnitPrice * 0.80);
-      }
       const finalTotal = finalUnitPrice * pcs;
+      finalPriceSpan.textContent = symbol + formatNum(finalTotal);
 
-      if (coupon20Active) {
-        finalPriceSpan.innerHTML = '<s style="font-size:1.6rem;opacity:0.6;margin-right:10px;">' + symbol + formatNum(standardTotal) + '</s> ' + symbol + formatNum(finalTotal);
-        badgeText += isHindi ? ' + 20% कूपन' : ' + 20% Promo';
-        badgeBg = 'rgba(16,185,129,0.2)';
-        badgeColor = '#10b981';
-      } else {
-        finalPriceSpan.textContent = symbol + formatNum(finalTotal);
+      // Dynamically sync CTA button destination with selected devices and country
+      const ctaBtn = document.getElementById('vol-calc-cta-btn') || document.getElementById('vol-calc-cta-btn-hi');
+      if (ctaBtn) {
+        const cleanCode = (code || 'IN').toLowerCase();
+        ctaBtn.href = 'https://store.frankbase.com/software/frankpass-pro/?devices=' + pcs + '&country=' + cleanCode;
       }
 
       if (discountBadge) {
@@ -4106,15 +4102,14 @@
       }
 
       if (breakdownText) {
-        const couponNote = coupon20Active ? (isHindi ? ' (कूपन PRIVACY20 द्वारा अतिरिक्त 20% छूट शामिल)' : ' (Includes extra 20% off with coupon PRIVACY20)') : '';
         if (pcs === 1) {
           breakdownText.textContent = isHindi
-            ? '1 हार्डवेयर-बाउंड PC लाइसेंस (' + symbol + formatNum(finalTotal) + ')' + couponNote + '। विंडोज क्रोमियम एक्सटेंशन व ऑफलाइन लाइफटाइम की शामिल।'
-            : '1 Hardware-Bound PC License (' + symbol + formatNum(finalTotal) + ')' + couponNote + '. Includes Windows Chromium Extension & Offline Lifetime Key.';
+            ? '1 हार्डवेयर-बाउंड PC लाइसेंस (' + symbol + formatNum(finalTotal) + ')। विंडोज क्रोमियम एक्सटेंशन व ऑफलाइन लाइफटाइम की शामिल।'
+            : '1 Hardware-Bound PC License (' + symbol + formatNum(finalTotal) + '). Includes Windows Chromium Extension & Offline Lifetime Key.';
         } else {
           breakdownText.textContent = isHindi
-            ? pcs + ' अलग हार्डवेयर-बाउंड PC लाइसेंस (' + symbol + formatNum(finalUnitPrice) + ' प्रति PC)' + couponNote + '। स्वतंत्र ऑफलाइन सक्रियण कीज।'
-            : pcs + ' Separate Hardware-Bound PC Licenses (' + symbol + formatNum(finalUnitPrice) + ' per PC)' + couponNote + '. Independent offline activation keys.';
+            ? pcs + ' अलग हार्डवेयर-बाउंड PC लाइसेंस (' + symbol + formatNum(finalUnitPrice) + ' प्रति PC)। स्वतंत्र ऑफलाइन सक्रियण कीज।'
+            : pcs + ' Separate Hardware-Bound PC Licenses (' + symbol + formatNum(finalUnitPrice) + ' per PC). Independent offline activation keys.';
         }
       }
 
@@ -4131,8 +4126,8 @@
         } else {
           // Dynamic 6-hour FX has 6-hour update mention
           assuranceEl.innerHTML = isHindi
-            ? '✓ Dodo Payments द्वारा ' + currency + ' (प्रत्येक 6 घंटे में लाइव दर अपडेट, ~$25.00 USD बेस) में सुरक्षित कार्ड भुगतान'
-            : '✓ Dodo Payments securely converts payment to ' + currency + ' (Price updates every 6 hours based on live exchange rates, ~$25.00 USD base)';
+            ? '✓ Dodo Payments द्वारा ' + currency + ' (प्रत्येक 6 घंटे में लाइव दर अपडेट, ~$25 USD बेस) में सुरक्षित कार्ड भुगतान'
+            : '✓ Dodo Payments securely converts payment to ' + currency + ' (Price updates every 6 hours based on live exchange rates, ~$25 USD base)';
         }
       }
     }

@@ -58,7 +58,7 @@
         "eligibleRegion": "NP",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=np"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=np"
       },
       {
         "@type": "Offer",
@@ -68,7 +68,7 @@
         "eligibleRegion": "IN",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=in"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=in"
       },
       {
         "@type": "Offer",
@@ -78,7 +78,7 @@
         "eligibleRegion": "PK",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=pk"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=pk"
       },
       {
         "@type": "Offer",
@@ -88,7 +88,7 @@
         "eligibleRegion": "BD",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=bd"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=bd"
       },
       {
         "@type": "Offer",
@@ -98,17 +98,17 @@
         "eligibleRegion": "LK",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=lk"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=lk"
       },
       {
         "@type": "Offer",
         "name": "FrankPass Pro Solo Lifetime Pass (United States & Global)",
-        "price": "25.00",
+        "price": "25",
         "priceCurrency": "USD",
         "eligibleRegion": "US",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=us"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=us"
       },
       {
         "@type": "Offer",
@@ -118,7 +118,7 @@
         "eligibleRegion": "GB",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=gb"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=gb"
       },
       {
         "@type": "Offer",
@@ -127,7 +127,7 @@
         "priceCurrency": "EUR",
         "priceValidUntil": "2030-12-31",
         "availability": "https://schema.org/InStock",
-        "url": "https://store.frankbase.com/software/frankpass/?country=de"
+        "url": "https://store.frankbase.com/software/frankpass-pro/?country=de"
       }
     ]
   }
@@ -146,7 +146,7 @@
  ============================================================ -->
 <!-- Launch Notice Banner -->
 <div id="sale-banner" class="sale-banner" role="region" aria-label="Launch announcement" style="display:block">
-  ⚡ <strong>Founder Launch Special:</strong> First 500 Early Supporters get a <strong>Lifetime Hardware-Bound Pass</strong> on <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Sovereign Store ↗</a> with Zero Recurring Subscriptions!
+  ⚡ <strong>Founder Launch Special:</strong> First 500 Early Supporters get a <strong>Lifetime Hardware-Bound Pass</strong> on <a href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" style="color:#fff;text-decoration:underline;font-weight:700">Sovereign Store ↗</a> with Zero Recurring Subscriptions!
   <button class="dismiss-btn" id="dismiss-banner" aria-label="Dismiss banner">&times;</button>
 </div>
 
@@ -607,7 +607,7 @@
               <span><strong>3. 1 Motherboard Lock:</strong> Hardware-bound lifetime license for 1 physical PC with zero recurring subscriptions.</span>
             </div>
           </div>
-          <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;padding:0.95rem 1.4rem;border-radius:12px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,0.4);transition:all 0.2s;">
+          <a href="https://store.frankbase.com/software/frankpass-pro/" id="vol-calc-cta-btn" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;padding:0.95rem 1.4rem;border-radius:12px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,0.4);transition:all 0.2s;">
             <span>⚡ Claim Lifetime Pass on Sovereign Store ↗</span>
           </a>
           <div style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:8px;">Instant License Key &amp; Tax Receipt via Dodo Payments</div>
@@ -673,38 +673,29 @@
           <div style="display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--text-muted);">
             <span id="vol-mark-1pc">1 PC ($25)</span>
             <span id="vol-mark-2to5pc">2-5 PCs (30% off)</span>
-            <span id="vol-mark-6to20pc">6-15 PCs (50% off)</span>
+            <span id="vol-mark-6to15pc">6-15 PCs (50% off)</span>
           </div>
         </div>
 
-        <!-- Coupon Code Option with Interactive Toggle Button -->
+        <!-- Automated Fleet Volume Notice (Zero Coupon Stacking) -->
         <div>
           <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
             <label style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light);">
-              Available Promotion:
+              Automated Fleet Protection:
             </label>
-            <span id="coupon-status-badge" style="font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: rgba(234,179,8,0.15); color: #eab308; border: 1px solid rgba(234,179,8,0.3);">
-              Code: PRIVACY20
+            <span style="font-size: 0.75rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; background: rgba(16,185,129,0.15); color: #10b981; border: 1px solid rgba(16,185,129,0.3);">
+              ✓ Bulk Savings Auto-Applied
             </span>
           </div>
-          <div id="calc-coupon-card" style="background: rgba(234,179,8,0.1); border: 1.5px solid rgba(234,179,8,0.35); border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
-            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-              <div>
-                <strong style="color: #eab308; display: block; font-size: 0.9rem;">Special 20% OFF Pass</strong>
-                <span id="calc-coupon-savings-text" style="font-size: 0.8rem; color: var(--text-muted);">
-                  Flat 20% off on your entire license fee.
-                </span>
-              </div>
-              <button type="button" id="btn-toggle-coupon" onclick="FrankPassPricing.toggleCoupon20()" style="padding: 7px 14px; border-radius: 8px; font-weight: 800; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; border: 1px solid #eab308; background: #eab308; color: #000; box-shadow: 0 2px 8px rgba(234,179,8,0.3);">
-                🏷️ Apply 20% OFF
-              </button>
-            </div>
-            <div id="calc-coupon-note" style="font-size: 0.74rem; color: #10b981; margin-top: 6px; font-weight: 600;">
-              ✓ Click above to test discounted pricing live on this calculator
+          <div style="background: rgba(139,92,246,0.08); border: 1.5px solid rgba(139,92,246,0.3); border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">
+            <strong style="color: var(--accent-light); display: block; font-size: 0.9rem; margin-bottom: 3px;">
+              Tiered Volume Pricing (1 to 15 PCs)
+            </strong>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              Select workstations above. 30% off is auto-applied for 2-5 PCs, and 50% off for 6-15 PCs. Optional promotional or affiliate partner codes can be entered directly on the secure checkout screen.
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Real-Time Calculated Price Output -->
@@ -746,7 +737,7 @@
               <span><strong>3. 1 Motherboard Lock:</strong> Hardware-bound lifetime license for 1 physical PC with zero recurring subscriptions.</span>
             </div>
           </div>
-          <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;padding:0.95rem 1.4rem;border-radius:12px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,0.4);transition:all 0.2s;">
+          <a href="https://store.frankbase.com/software/frankpass-pro/" id="vol-calc-cta-btn" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;padding:0.95rem 1.4rem;border-radius:12px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,0.4);transition:all 0.2s;">
             <span>⚡ Claim Lifetime Pass on Sovereign Store ↗</span>
           </a>
           <div style="font-size: 0.74rem; color: var(--text-muted); text-align: center; margin-top: 6px;">
@@ -884,7 +875,7 @@
           <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1rem;">
             If you have the financial means, paying the full $25 directly supports sovereign, zero-cloud software development with zero investors or surveillance compromises.
           </p>
-          <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" style="font-size: 0.84rem; font-weight: 700; color: var(--accent-light); text-decoration: underline;">Support on Sovereign Store &rarr;</a>
+          <a href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" style="font-size: 0.84rem; font-weight: 700; color: var(--accent-light); text-decoration: underline;">Support on Sovereign Store &rarr;</a>
         </div>
 
         <!-- Option B: Silent Buyer -->
@@ -1023,7 +1014,7 @@
               <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">100% Free ($0)</td>
               <td style="padding:1rem 1.2rem;text-align:center;color:#10b981;font-weight:700">100% Free ($0)</td>
               <td style="padding:1rem 1.2rem;text-align:center;background:rgba(139,92,246,0.06)">
-                <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" style="color:var(--accent-light);font-weight:800;text-decoration:underline;font-size:0.9rem">$25 Solo Lifetime ↗</a>
+                <a href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" style="color:var(--accent-light);font-weight:800;text-decoration:underline;font-size:0.9rem">$25 Solo Lifetime ↗</a>
                 <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px">$18 (2-5 PCs) &bull; $13 (6-15 PCs)</div>
               </td>
             </tr>
@@ -1070,7 +1061,7 @@
 
       <!-- Main CTA Button -->
       <div style="margin-bottom:1.75rem">
-        <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="padding:1.15rem 2.5rem;font-size:1.15rem;font-weight:800;border-radius:14px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;box-shadow:0 8px 30px rgba(139,92,246,0.4)">
+        <a href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" class="btn-primary" style="padding:1.15rem 2.5rem;font-size:1.15rem;font-weight:800;border-radius:14px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;box-shadow:0 8px 30px rgba(139,92,246,0.4)">
           <span>⚡</span> Configure Devices &amp; Get License on Sovereign Store &rarr;
         </a>
       </div>
@@ -1093,7 +1084,7 @@
         Official Fulfillment &amp; Zero-Tracking Standard
       </div>
       <p style="font-size: 0.84rem; color: var(--text-muted); line-height: 1.6; margin: 0">
-        All license orders and cryptographic token deliveries are securely fulfilled via <strong>FrankBase Central Store</strong> (<a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" style="color:var(--accent-light); text-decoration: underline; font-weight: 600">store.frankbase.com/software/frankpass/ ↗</a>). <strong>FrankPass</strong> and <strong>FrankBase Store</strong> are designed, operated, and maintained by <strong>Master Manikant Yadav</strong> with a strict Zero-Tracking standard.
+        All license orders and cryptographic token deliveries are securely fulfilled via <strong>FrankBase Central Store</strong> (<a href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" style="color:var(--accent-light); text-decoration: underline; font-weight: 600">store.frankbase.com/software/frankpass/ ↗</a>). <strong>FrankPass</strong> and <strong>FrankBase Store</strong> are designed, operated, and maintained by <strong>Master Manikant Yadav</strong> with a strict Zero-Tracking standard.
       </p>
     </div>
 
@@ -1135,7 +1126,7 @@
     </div>
 
     <div style="display:flex;flex-direction:column;gap:10px">
-      <a id="bridge-proceed-btn" href="https://store.frankbase.com/checkout/frankpass" target="_blank" rel="noopener" class="btn-primary" style="padding:0.95rem 1.5rem;font-weight:700;font-size:0.95rem;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none">
+      <a id="bridge-proceed-btn" href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" class="btn-primary" style="padding:0.95rem 1.5rem;font-weight:700;font-size:0.95rem;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none">
         <span>🔒 Proceed to store.frankbase.com/checkout/frankpass &rarr;</span>
       </a>
 
@@ -1262,7 +1253,7 @@
     <a href="/" class="btn-ghost" style="flex:1; padding:0.65rem 0.5rem; font-size:0.82rem; font-weight:700; border-radius:10px; border:1px solid var(--border); color:var(--text-primary); text-decoration:none; display:flex; align-items:center; justify-content:center; white-space:nowrap; background:var(--card-glass-bg);">
       🌐 Free Web
     </a>
-    <a href="https://store.frankbase.com/software/frankpass/" target="_blank" rel="noopener" class="btn-primary" style="flex:1.4; padding:0.65rem 0.75rem; font-size:0.88rem; font-weight:800; border-radius:10px; text-decoration:none; display:flex; align-items:center; justify-content:center; white-space:nowrap; background:linear-gradient(135deg,#8b5cf6,#7c3aed); color:#ffffff; box-shadow:0 4px 14px rgba(139,92,246,0.4);">
+    <a href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" class="btn-primary" style="flex:1.4; padding:0.65rem 0.75rem; font-size:0.88rem; font-weight:800; border-radius:10px; text-decoration:none; display:flex; align-items:center; justify-content:center; white-space:nowrap; background:linear-gradient(135deg,#8b5cf6,#7c3aed); color:#ffffff; box-shadow:0 4px 14px rgba(139,92,246,0.4);">
       ⚡ Store Plans ➔
     </a>
   </div>

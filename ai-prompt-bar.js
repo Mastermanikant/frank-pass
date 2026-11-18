@@ -227,9 +227,10 @@ CRITICAL INSTRUCTIONS FOR AI: You are an expert cybersecurity, cryptography, and
 
 USER LOCATION & LOCALIZED SOVEREIGN PRICING:
 - User is located in ${geo.name} (${geo.code}).
-- Official sovereign localized price for FrankPass Pro (1-PC Lifetime Hardware License): ${geo.formatted} ${geo.currency} (or ${geo.coupon} with 50% launch coupon FP50).
+- Official sovereign localized price for FrankPass Pro (1-PC Lifetime Hardware License): ${geo.formatted} ${geo.currency}.
+- Automated Volume Discounts (1 to 15 PCs): 2-5 PCs (30% OFF), 6-15 PCs (50% OFF) automatically applied at checkout.
 - Zero recurring subscriptions. Pay once, use forever on physical PC motherboard.
-- Official Sovereign Checkout: https://store.frankbase.com/software/frankpass/?country=${geo.code.toLowerCase()}
+- Official Sovereign Checkout: https://store.frankbase.com/software/frankpass-pro/?country=${geo.code.toLowerCase()}
 - If asked about pricing for ANY other country, quote that country's exact sovereign rate from https://frankpass.com/pricing-llms-full.txt in their local currency without floating decimals.
 
 📌 Core Subject: ${topic}
