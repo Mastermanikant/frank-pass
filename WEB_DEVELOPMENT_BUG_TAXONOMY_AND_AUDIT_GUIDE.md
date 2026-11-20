@@ -165,7 +165,7 @@ graph TD
 3. **No Duplicate DOM IDs:** Ensure IDs like `#theme-toggle`, `#copy-btn`, and `#menu-btn` are globally unique on every page.
 4. **Header Navigation Uniformity:** All subpages must share identical canonical header links.
 5. **Zero Localhost Default (Rule 13):** Build artifacts and API endpoints must point directly to live edge domain targets.
-6. **PII Privacy Protection (Rule 9):** Ensure founder personal email (`mastermanikant.in@gmail.com`) is never present in any frontend template.
+6. **PII Privacy Protection (Rule 9):** Ensure founder personal email is never present in any frontend template (use `connect@mastermanikant.com`).
 
 ---
 *Documentation Frozen & Verified under FrankBase System Specifications.*

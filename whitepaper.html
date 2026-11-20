@@ -608,7 +608,7 @@
   
   <a href="/extension.html" class="btn-primary" style="margin-top:0.85rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">⚡ Get Extension &rarr;</a>
 </nav>
-  <main class="article-container">
+  <main class="article-container" id="main-content" tabindex="-1">
 
     <div style="display:flex;justify-content:flex-end;margin-bottom:1rem;">
       <a href="/whitepaper-hindi.html" class="btn-ghost" style="padding:0.4rem 0.95rem;font-size:0.82rem;border-radius:8px;font-weight:600;display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:1px solid var(--border);">
@@ -1441,7 +1441,17 @@ const normalizedSecret = (secretKey || '')
         <div><strong>Digital Object Origin:</strong> Frankbase Applied Cryptography Archive (<code>mastermanikant.com/research</code>)</div>
         <div><strong>Open Source Archive:</strong> <a href="https://github.com/Mastermanikant/frank-pass" target="_blank" rel="nofollow noopener noreferrer" style="color:var(--accent-light);">github.com/Mastermanikant/frank-pass</a></div>
       </div>
-    </article>
+          <hr>
+
+      <h2 id="s12">12. Formal Standards &amp; Cryptographic References</h2>
+      <ol style="color:var(--text-muted);font-size:0.88rem;line-height:1.8;padding-left:1.25rem;">
+        <li><strong>RFC 8018 / PKCS #5 v2.1:</strong> Moriarty, K., et al. <em>"PKCS #5: Password-Based Cryptography Specification Version 2.1"</em> (PBKDF2-HMAC-SHA512). IETF, 2017.</li>
+        <li><strong>NIST SP 800-132:</strong> Meltz, D. <em>"Recommendation for Password-Based Key Derivation"</em>. National Institute of Standards and Technology (NIST), 2010.</li>
+        <li><strong>RFC 2104:</strong> Krawczyk, H., Bellare, M., &amp; Canetti, R. <em>"HMAC: Keyed-Hashing for Message Authentication"</em>. IETF, 1997.</li>
+        <li><strong>Unicode Standard TR#15:</strong> Davis, M., &amp; Whistler, K. <em>"Unicode Normalization Forms"</em> (NFC Standard). Unicode Consortium.</li>
+        <li><strong>W3C Web Cryptography API:</strong> Sleevi, R., &amp; Watson, M. <em>"Web Cryptography API Recommendation"</em>. W3C, 2017.</li>
+      </ol>
+</article>
 
   </main>
 <div id="site-footer"></div>

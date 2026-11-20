@@ -217,8 +217,24 @@
       </button>
       <a href="/extension.html" class="btn-primary" style="margin-top:0.85rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">⚡ Get Extension &rarr;</a>
     </div>
+    <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
+
+<!-- Mobile Navigation Drawer -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="/">Home</a>
+  <a href="/get-started.html">Get Started</a>
+  <a href="/pricing.html">Pro</a>
+  <a href="/library.html">Library</a>
+  <a href="/faq.html">FAQ</a>
+  <a href="/profile.html" class="active">Profile</a>
+  <a href="/extension.html" class="btn-primary" style="margin-top:0.5rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">⚡ Get Extension</a>
+</nav>
 
 <!-- MAIN CONTENT -->
 <main id="main-content" class="profile-container" role="main">
@@ -259,7 +275,7 @@
 
     <!-- Add Account Input Form -->
     <div style="display:flex;gap:8px;margin-bottom:0.75rem;flex-wrap:wrap">
-      <input type="text" id="new-account-input" class="form-input" placeholder="e.g. work@company.com, personal, user_01" style="flex:1;min-width:220px;text-transform:lowercase" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <input type="text" id="new-account-input" aria-label="Add new account or service name" class="form-input" placeholder="e.g. work@company.com, personal, user_01" style="flex:1;min-width:220px;text-transform:lowercase" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
       <button type="button" id="btn-add-account" class="btn-primary" style="padding:8px 16px;border-radius:8px;font-weight:700;font-size:0.85rem">
         + Add Account
       </button>
@@ -280,7 +296,7 @@
 
     <!-- Search/Filter Input if > 5 accounts -->
     <div id="account-search-wrap" style="display:none;margin-bottom:0.75rem">
-      <input type="search" id="account-filter-input" class="form-input" placeholder="🔍 Search saved accounts..." style="font-size:0.82rem;padding:6px 10px">
+      <input type="search" id="account-filter-input" aria-label="Search saved accounts" class="form-input" placeholder="🔍 Search saved accounts..." style="font-size:0.82rem;padding:6px 10px">
     </div>
 
     <!-- List of Saved Accounts -->
@@ -297,7 +313,7 @@
         <button type="button" id="btn-import-trigger" class="btn-ghost" style="padding:6px 12px;font-size:0.78rem;font-weight:600;border:1px solid var(--border);border-radius:8px;display:inline-flex;align-items:center;gap:5px" title="Import accounts from JSON file">
           <span>📤</span> <span>Import JSON</span>
         </button>
-        <input type="file" id="import-accounts-file" accept=".json,.frankpass,application/json,text/plain" style="display:none">
+        <input type="file" id="import-accounts-file" aria-label="Import accounts JSON file" accept=".json,.frankpass,application/json,text/plain" style="display:none">
       </div>
 
       <button type="button" id="btn-profile-clear-all" style="background:transparent;border:none;color:var(--text-muted);font-size:0.78rem;font-weight:600;cursor:pointer;padding:4px 8px;border-radius:6px;transition:color 0.2s" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">
@@ -397,7 +413,7 @@
           <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Clipboard Auto-Clear Delay</strong>
           <span style="font-size:0.78rem;color:var(--text-muted)">Automatically wipe copied passwords from OS clipboard for privacy.</span>
         </div>
-        <select id="pref-clipboard-select" class="form-input" style="width:auto;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px">
+        <select id="pref-clipboard-select" aria-label="Clipboard timeout preference" class="form-input" style="width:auto;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px">
           <option value="15">15 Seconds</option>
           <option value="30" selected>30 Seconds (Default)</option>
           <option value="60">60 Seconds</option>
@@ -412,7 +428,7 @@
           <strong style="font-size:0.88rem;color:var(--text-primary);display:block">Auto-Lock on Tab Switch</strong>
           <span style="font-size:0.78rem;color:var(--text-muted)">Grace period before locking memory vault when switching tabs.</span>
         </div>
-        <select id="pref-tablock-select" class="form-input" style="width:auto;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px">
+        <select id="pref-tablock-select" aria-label="Tab lock timeout preference" class="form-input" style="width:auto;padding:5px 10px;font-size:0.82rem;font-weight:600;border-radius:8px">
           <option value="30" selected>30 Seconds (Recommended)</option>
           <option value="60">60 Seconds (1 Min)</option>
           <option value="0">Immediately (0s)</option>

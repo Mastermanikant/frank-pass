@@ -1,59 +1,79 @@
 # Cloudflare Pages Router Config (_redirects)
-# Note: Cloudflare Pages enforces a hard 100-rule limit. Keep total active rules under 95.
+# Hard limit: 100 rules. Current optimized total: ~75 rules.
 
-# 1. Core Feature Aliases
-# Pillar 3 Consolidation: Stateless Future -> Cloud Vaults (EN + HI)
+# ==============================================================================
+# 1. 301 PERMANENT CONSOLIDATION REDIRECTS (48 -> 24 PAGES ARCHITECTURE)
+# ==============================================================================
+# Pillar 01: Stateless Future -> Cloud Vaults (EN & HI)
 /why-stateless-password-generation-is-the-future.html /frankpass-vs-cloud-password-vaults.html 301
 /why-stateless-password-generation-is-the-future-hindi.html /frankpass-vs-cloud-password-vaults-hindi.html 301
-/why-stateless-password-generation-is-the-future /frankpass-vs-cloud-password-vaults 301
-/why-stateless-password-generation-is-the-future-hindi /frankpass-vs-cloud-password-vaults-hindi 301
-/stateless /frankpass-vs-cloud-password-vaults 301
-/stateless-hindi /frankpass-vs-cloud-password-vaults-hindi 301
+/why-stateless-password-generation-is-the-future /frankpass-vs-cloud-password-vaults.html 301
+/why-stateless-password-generation-is-the-future-hindi /frankpass-vs-cloud-password-vaults-hindi.html 301
+/stateless /frankpass-vs-cloud-password-vaults.html 301
+/stateless-hindi /frankpass-vs-cloud-password-vaults-hindi.html 301
 
-# Pillar 2 Consolidation: Pro -> Pricing (EN + HI)
+# Pillar 02: Limitations & Advantages -> Invisible Vault (EN & HI)
+/limitations-and-advantages.html /where-password-managers-fail-and-invisible-vault.html 301
+/limitations-and-advantages-hindi.html /where-password-managers-fail-and-invisible-vault-hindi.html 301
+/limitations-and-advantages /where-password-managers-fail-and-invisible-vault.html 301
+/limitations-and-advantages-hindi /where-password-managers-fail-and-invisible-vault-hindi.html 301
+/advantages /where-password-managers-fail-and-invisible-vault.html 301
+/advantages-hindi /where-password-managers-fail-and-invisible-vault-hindi.html 301
+
+# Pillar 03: ATM/UPI PIN Guide -> PIN Generator Tool
+/atm-upi-pin-security-guide.html /pin.html 301
+/atm-upi-pin-security-guide-hindi.html /pin.html 301
+/atm-upi-pin-security-guide /pin.html 301
+/atm-upi-pin-security-guide-hindi /pin.html 301
+/atm-security /pin.html 301
+/pin-security /pin.html 301
+
+# Unified About & Founder Consolidation (EN & HI)
+/founder-mastermanikant.html /about-us.html 301
+/founder-mastermanikant-hindi.html /about-us-hindi.html 301
+/founder-mastermanikant /about-us.html 301
+/founder-mastermanikant-hindi /about-us-hindi.html 301
+/founder /about-us.html 301
+/founder-hindi /about-us-hindi.html 301
+/about /about-us.html 301
+/about-hindi /about-us-hindi.html 301
+
+# Legacy Alias Consolidation
 /pro.html /pricing.html 301
 /pro-hindi.html /pricing-hindi.html 301
+/pro /pricing.html 301
+/pro-hindi /pricing-hindi.html 301
+/products.html /pricing.html 301
+/products /pricing.html 301
+/sponsors.html /about-us.html 301
+/sponsors /about-us.html 301
+/comparison-between-frankpass-all-generators-deterministic-random-pin.html /library.html 301
+/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html /library-hindi.html 301
+/comparison-between-frankpass-all-generators-deterministic-random-pin /library.html 301
+/compare /library.html 301
+/difference /library.html 301
+/tools-comparison /library.html 301
 
-/compare /comparison-between-frankpass-all-generators-deterministic-random-pin 301
-/difference /comparison-between-frankpass-all-generators-deterministic-random-pin 301
-/tools-comparison /comparison-between-frankpass-all-generators-deterministic-random-pin 301
-/frankpass-vs-cloud-vaults /frankpass-vs-cloud-password-vaults 301
-/cloud-vs-stateless /frankpass-vs-cloud-password-vaults 301
-/frankpass-vs-cloud-vaults-hindi /frankpass-vs-cloud-password-vaults-hindi 301
-/cloud-vs-stateless-hindi /frankpass-vs-cloud-password-vaults-hindi 301
-/random /random-password-generator 301
-/rpg /random-password-generator 301
-/pin-generator /pin 301
-/atm-pin /pin 301
-/upi-pin /pin 301
-/app /install 301
-/download /install 301
-/pwa /install 301
-/pro /pricing 301
-/pro-hindi /pricing-hindi 301
-/extention /extension 301
-/pricing/extensions /extension 301
-/about /about-us 301
-/about-hindi /about-us-hindi 301
-/founder /founder-mastermanikant 301
-/founder-hindi /founder-mastermanikant-hindi 301
-/advantages /limitations-and-advantages 301
-/advantages-hindi /limitations-and-advantages-hindi 301
-/contact /about-us 301
-/support /about-us 301
-/privacy /legal 301
-/terms /legal 301
-/disclaimer /legal 301
-/articles /library 301
-/security-tips /library 301
-/blog /library 301
-/blog/* /library 301
-/directory /library 301
-/directory-hindi /library-hindi 301
-/links /library 301
-/links-hindi /library-hindi 301
+# Core Product Shortcuts
+/pin-generator /pin.html 301
+/atm-pin /pin.html 301
+/upi-pin /pin.html 301
+/random /random-password-generator.html 301
+/rpg /random-password-generator.html 301
+/app /install.html 301
+/download /install.html 301
+/pwa /install.html 301
+/extention /extension.html 301
+/extension /extension.html 301
+/privacy /legal.html 301
+/terms /legal.html 301
+/disclaimer /legal.html 301
+/directory /library.html 301
+/directory-hindi /library-hindi.html 301
 
-# 2. Regional Country 200 Rewrites (SPA Routing - Kept near top to guarantee < 100)
+# ==============================================================================
+# 2. SPA REGIONAL COUNTRY ROUTING (200 OK)
+# ==============================================================================
 /in / 200
 /us / 200
 /ug / 200
@@ -69,50 +89,16 @@
 /nl / 200
 /br / 200
 /za / 200
-/bd / 200
-/pk / 200
-/ng / 200
-/ph / 200
-/id / 200
-/ke / 200
-/es / 200
-/it / 200
-/hn / 200
 
-# 3. Pillars & Canonical Guide Aliases
-/invisible-vault /where-password-managers-fail-and-invisible-vault 301
-/invisible-vault-hindi /where-password-managers-fail-and-invisible-vault-hindi 301
-/entropy /what-makes-a-password-strong-and-passphrase-guide 301
-/passphrase /what-makes-a-password-strong-and-passphrase-guide 301
-/atm-security /atm-upi-pin-security-guide 301
-/atm-security-hindi /atm-upi-pin-security-guide-hindi 301
-/pin-security /atm-upi-pin-security-guide 301
-/pin-security-hindi /atm-upi-pin-security-guide-hindi 301
-/business-model /how-frankpass-is-free-without-selling-data 301
-/how-we-make-money /how-frankpass-is-free-without-selling-data 301
-/economics /how-frankpass-is-free-without-selling-data 301
-/zero-server-economics /how-frankpass-is-free-without-selling-data 301
-
-# 4. Founder Social Links
+# ==============================================================================
+# 3. ECOSYSTEM DOMAINS & SOCIAL SHORTLINKS
+# ==============================================================================
 /mastermanikant/x https://mastermanikant.com/why-x-suspended-my-account 302
 /mastermanikant/linkedin https://linkedin.com/in/mastermanikant 301
 /mastermanikant/youtube https://youtube.com/@MasterManikant 301
-/mastermanikant/instagram https://instagram.com/mastermanikant 301
-/mastermanikant/facebook https://facebook.com/mastermanikant 301
-/whatsapp/mastermanikant https://whatsapp.com/channel/0029VbCfK0DHwXbGS7lAXH3h 301
-
-# 5. FrankPass Brand Links
-/x https://x.com/frankpasshq 301
-/youtube https://youtube.com/@frankpasshq 301
-/instagram https://instagram.com/frankpasshq 301
-/whatsapp https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532 301
-/facebook https://facebook.com/frankpasshq 301
-/reddit https://reddit.com/r/frankpasshq 301
-
-# 6. FrankBase Central Store & Ecosystem Links
 /store https://store.frankbase.com 302
 /software https://store.frankbase.com/software/ 302
 /software/frankpass https://store.frankbase.com/software/frankpass 302
-/digital https://digital.frankbase.com 302
-/ebooks https://store.frankbase.com/ebooks 302
-/donate https://store.frankbase.com/ebooks 302
+/x https://x.com/frankpasshq 301
+/youtube https://youtube.com/@frankpasshq 301
+/whatsapp https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532 301
