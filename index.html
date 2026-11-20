@@ -1340,7 +1340,7 @@
         <strong>Free Web &amp; Extension:</strong> Unlimited passwords, local RAM math, and direct DOM autofill into login boxes without touching the OS clipboard.
       </div>
       <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(139,92,246,0.18);padding-top:0.5rem;flex-wrap:wrap;gap:6px;">
-        <span style="font-size:0.82rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.05em">&#9889; FrankPass Pro ($25 Solo Lifetime Pass)</span>
+        <span style="font-size:0.82rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.05em">&#9889; FrankPass Pro &middot; Sovereign Lifetime Pass</span>
         <span style="font-size:0.78rem;color:var(--text-muted)">1-PC Hardware Bound &middot; All Chromium Browsers</span>
       </div>
       <div style="font-size:0.83rem;color:var(--text-muted);line-height:1.5">
@@ -1541,7 +1541,7 @@
     <!-- Founder Offer Badge -->
     <div style="margin-bottom: 1.25rem; display: inline-flex; align-items: center; gap: 8px; padding: 7px 20px; border-radius: 999px; background: rgba(234,179,8,0.12); border: 1px solid rgba(234,179,8,0.3); box-shadow: 0 0 20px rgba(234,179,8,0.15)">
       <img src="/icons/logo-gold-pro-64.webp" onerror="this.src='/icons/logo-gold-pro-64.png'" alt="FrankPass Gold Shield" width="22" height="22" style="display:inline-block; vertical-align:middle;" loading="lazy" decoding="async">
-      <span style="font-size: 0.84rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #eab308">👑 Sovereign Lifetime Pass ($25 Solo Lifetime)</span>
+      <span style="font-size: 0.84rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #eab308">👑 Sovereign Lifetime Pass</span>
     </div>
 
     <h2 id="pricing-heading" style="font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.15; margin-bottom: 1.1rem; letter-spacing: -0.03em;">
@@ -1634,17 +1634,20 @@
           <div style="display: inline-block; background: rgba(234,179,8,0.14); color: #eab308; border: 1px solid rgba(234,179,8,0.35); padding: 4px 14px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;">
             Hardware-Bound Lifetime Pass
           </div>
-          <h3 style="font-size: 1.65rem; margin-bottom: 0.4rem; color: var(--text-primary); letter-spacing: -0.02em;">Solo Lifetime Pass ($25)</h3>
+          <h3 style="font-size: 1.65rem; margin-bottom: 0.4rem; color: var(--text-primary); letter-spacing: -0.02em;">Solo Lifetime Pass (<span id="solo-card-header-price">$25</span>)</h3>
           <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.55; margin-bottom: 1.5rem;">
             Bound to 1 physical computer motherboard. 1 PC workstation license unlocks all browsers, air-gapped offline command execution, and future Windows native features. Zero recurring subscriptions.
           </p>
 
           <div style="margin-bottom: 1.75rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(139,92,246,0.3);">
             <div style="display: flex; align-items: baseline; gap: 8px;">
-              <span style="font-size: 2.8rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em;">$25</span>
-              <span style="font-size: 1rem; color: var(--accent-light); font-weight: 700;">/ Lifetime 1-PC (Solo)</span>
+              <span id="solo-price-display" style="font-size: 2.8rem; font-weight: 800; color: var(--text-primary); letter-spacing: -0.03em;">$25</span>
+              <span id="solo-price-currency" style="font-size: 1rem; color: var(--accent-light); font-weight: 700;">/ Lifetime 1-PC (Solo)</span>
             </div>
-            <div style="font-size: 0.8rem; color: #eab308; font-weight: 700; margin-top: 4px;">★ Zero Subscriptions • Hardware Bound • 30-Day Free Trial</div>
+            <div id="solo-ppp-badge" style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);font-size:0.75rem;font-weight:800;padding:3px 12px;border-radius:999px;margin-top:8px;text-transform:uppercase;letter-spacing:0.04em;">
+              ✓ PPP Applied: Fair Regional Pricing
+            </div>
+            <div style="font-size: 0.8rem; color: #eab308; font-weight: 700; margin-top: 6px;">★ Zero Subscriptions &bull; Hardware Bound &bull; 30-Day Free Trial</div>
           </div>
 
           <div style="font-size: 0.86rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent-light); margin-bottom: 1rem;">Everything in Free, plus:</div>
@@ -1704,7 +1707,7 @@
     <div style="max-width: 960px; margin: 0 auto; background: rgba(139,92,246,0.06); border: 1px solid rgba(139,92,246,0.25); border-radius: 14px; padding: 1.25rem 1.5rem; text-align: left; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
       <div>
         <div style="font-weight: 800; color: var(--accent-light); font-size: 0.95rem; margin-bottom: 4px;">Need licenses for multiple PCs or team workstations?</div>
-        <div style="font-size: 0.85rem; color: var(--text-muted);">Get 30% off on 2-5 PCs ($18/PC) and 50% off on 6+ PCs ($13/PC). Explore our full calculator on the dedicated pricing page.</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">Get 30% off on 2-5 PCs and 50% off on 6+ PCs with fair localized regional currency pricing. Explore our full calculator on the dedicated pricing page.</div>
       </div>
       <a href="/pricing.html" style="padding: 0.65rem 1.25rem; border-radius: 10px; background: rgba(139,92,246,0.2); border: 1px solid var(--accent); color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 0.86rem; white-space: nowrap;">
         View Volume Calculator &rarr;
@@ -2297,7 +2300,7 @@
 <script defer src="/frankpass-core.js?v=4.5.9"></script>
 <script defer src="/frankpass-vault.js?v=4.5.9"></script>
 <script defer src="/footer.min.js?v=4.6.2"></script>
-<script defer src="/pricing-fx.min.js?v=1.0.0"></script>
+<script defer src="/pricing-fx.min.js?v=5.0.0"></script>
 <script defer src="/frankpass-app.min.js?v=4.8.9"></script>
 <script>
 (function() {
