@@ -88,19 +88,17 @@
         <a href="/pricing.html">Pricing &amp; Plans</a>
         <a href="https://tools.frankpass.com" target="_blank" rel="noopener">Developer Tools ↗</a>
         <a href="/install.html">Install Offline App</a>
-        <a href="/products.html">All Products Hub</a>
       </div>
 
       <!-- Col 3: Resources & Security -->
       <div class="footer-col">
         <div class="footer-col-title">Resources</div>
         <a href="/frankpass-vs-cloud-password-vaults.html">FrankPass vs Cloud Vaults</a>
-        <a href="/comparison-between-frankpass-all-generators-deterministic-random-pin.html">Tools Comparison</a>
-        <a href="/get-started.html">Get Started Guide</a>
+        <a href="/library.html">Tools Comparison</a>
+        <a href="/whitepaper.html">Technical Whitepaper</a>
         <a href="/secret-key-guide.html">Secret Key Guide</a>
         <a href="/faq.html">Security FAQ</a>
-        <a href="/limitations-and-advantages.html">Limitations &amp; Advantages</a>
-        <a href="/frankpass-vs-cloud-password-vaults.html">Stateless Architecture</a>
+        <a href="/where-password-managers-fail-and-invisible-vault.html">Invisible Vault Defense</a>
         <a href="/library-hindi.html" style="color:var(--accent-light);font-weight:600">🇮🇳 हिन्दी लाइब्रेरी (Hindi Security Guides)</a>
         <a href="/library.html" style="color:var(--accent-light);font-weight:600">🏛️ Master Library &amp; Directory</a>
       </div>
@@ -108,9 +106,8 @@
       <!-- Col 4: Trust & Founder -->
       <div class="footer-col">
         <div class="footer-col-title">Trust &amp; Legal</div>
-        <a href="/about-us.html">About FrankPass</a>
-        <a href="/sponsors.html">🌱 Green Sponsors Hub</a>
-        <a href="/founder-mastermanikant.html">Master Manikant (Founder)</a>
+        <a href="/about-us.html">About &amp; Founder</a>
+        <a href="/how-frankpass-is-free-without-selling-data.html">Zero-Server Economics</a>
         <a href="/legal.html#privacy">Privacy Policy</a>
         <a href="/legal.html#terms">Terms of Service</a>
         <a href="/legal.html">Legal &amp; Safety Hub</a>

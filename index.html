@@ -180,7 +180,6 @@
 <!-- STICKY HEADER -->
 <header class="site-header" id="site-header" role="banner">
   <div class="header-inner">
-    
     <!-- Official Brand Logo -->
     <a href="/" class="header-logo" aria-label="FrankPass Home">
       <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
@@ -204,12 +203,12 @@
     <!-- Desktop Nav -->
     <nav class="header-nav" role="navigation" aria-label="Main navigation">
       
-      <!-- 1. Generators Dropdown -->
-      <div class="nav-dropdown" id="dropdown-generators">
-        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
-          Generators <span class="dropdown-chevron">▾</span>
+      <!-- 1. Tools Dropdown -->
+      <div class="nav-dropdown" id="dropdown-tools">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="tools-trigger">
+          Tools <span class="dropdown-chevron">▾</span>
         </button>
-        <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger" style="min-width:230px;">
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="tools-trigger" style="min-width:230px;">
           <a href="/" class="dropdown-item" role="menuitem">
             <span class="dropdown-icon">⚡</span>
             <span class="dropdown-title">Stateless Generator</span>
@@ -235,130 +234,39 @@
         <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
           Resources <span class="dropdown-chevron">▾</span>
         </button>
-        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
-          
-          <!-- Category 1: Core Guides & Specs -->
-          <div class="has-flyout" id="flyout-core-guides">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">📚</span>
-                <span class="flyout-cat-title">Core Guides &amp; Specs</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔑</span>
-                <span class="dropdown-title">Secret Key Guide</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚙️</span>
-                <span class="dropdown-title">How FrankPass Works</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚡</span>
-                <span class="dropdown-title">Stateless Architecture</span>
-              </a>
-              <a href="/faq.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">❓</span>
-                <span class="dropdown-title">Security FAQ</span>
-              </a>
-              <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📄</span>
-                <span class="dropdown-title">Cryptographic Specs</span>
-              </a>
-              <a href="/where-password-managers-fail-and-invisible-vault.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚖️</span>
-                <span class="dropdown-title">Limitations &amp; Advantages</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 2: Cyber Threat Defense -->
-          <div class="has-flyout" id="flyout-threat-defense">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">🛡️</span>
-                <span class="flyout-cat-title">Cyber Threat Defense</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/where-password-managers-fail-and-invisible-vault.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">👁️</span>
-                <span class="dropdown-title">Invisible Vault Defense</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">☁️</span>
-                <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
-              </a>
-              <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🧮</span>
-                <span class="dropdown-title">Password Science &amp; Math</span>
-              </a>
-              <a href="/pin.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔢</span>
-                <span class="dropdown-title">ATM &amp; UPI PIN Security</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 3: Trust & Founder -->
-          <div class="has-flyout" id="flyout-trust-founder">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">💡</span>
-                <span class="flyout-cat-title">Trust &amp; Economics</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/about-us.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🏢</span>
-                <span class="dropdown-title">About FrankPass</span>
-              </a>
-              <a href="/about-us.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🎯</span>
-                <span class="dropdown-title">Founder Master Manikant</span>
-              </a>
-              <a href="/how-frankpass-is-free-without-selling-data.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚖️</span>
-                <span class="dropdown-title">Zero-Server Economics</span>
-              </a>
-              <a href="/about-us.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🌱</span>
-                <span class="dropdown-title">Green Sponsors Hub</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="dropdown-divider"></div>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:240px;">
           <a href="/library.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
             <span class="dropdown-icon">🏛️</span>
-            <span class="dropdown-title" style="color:var(--accent-light);">Master Library &amp; Directory &rarr;</span>
+            <span class="dropdown-title">Master Library</span>
           </a>
-
+          <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">📄</span>
+            <span class="dropdown-title">Technical Whitepaper</span>
+          </a>
+          <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🔑</span>
+            <span class="dropdown-title">Secret Key Guide</span>
+          </a>
+          <a href="/faq.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">❓</span>
+            <span class="dropdown-title">Security FAQ</span>
+          </a>
+          <a href="/docs.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">📖</span>
+            <span class="dropdown-title">Documentation</span>
+          </a>
         </div>
       </div>
 
-      <!-- 4. Master Library Link -->
-      <a href="/library.html" class="nav-link" style="color:var(--accent-light);font-weight:600;">Library</a>
+      <!-- 3. Pricing Link -->
+      <a href="/pricing.html" class="nav-link" style="font-weight:600;">Pricing</a>
 
-      <!-- 4. Pricing Link -->
-      <a href="#pricing" class="nav-link" style="font-weight:600;">Pricing</a>
-
-      <!-- 5. Founder Link -->
-      <a href="/about-us.html" class="nav-link">Founder</a>
-
-      <!-- 6. Sponsors Link -->
-      <a href="/about-us.html" class="nav-link" style="color:#10b981;font-weight:600;">Sponsors</a>
-
-      <!-- Extension Primary CTA Button -->
+      <!-- 4. Extension Primary CTA Button -->
       <a href="/extension.html" class="btn-extension-cta" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1.05rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;transition:all 0.2s;">
         <span>⚡ Get Extension</span> &rarr;
       </a>
       
-      <!-- 7. Theme Toggle -->
+      <!-- 5. Theme Toggle -->
       <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
         <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       </button>
@@ -371,69 +279,26 @@
       <span></span>
       <span></span>
     </button>
-
   </div>
 </header>
 
 <!-- Mobile Navigation Drawer -->
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-  <div class="mobile-section-label">⚡ Generators</div>
+  <div class="mobile-section-label">⚡ Tools</div>
   <a href="/" class="mobile-nav-link"><span>⚡</span> Stateless Generator</a>
   <a href="/random-password-generator.html" class="mobile-nav-link"><span>🎲</span> Random Generator</a>
   <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> PIN Generator</a>
   <a href="/library.html" class="mobile-nav-link"><span>⚖️</span> Compare All Tools</a>
   
   <div class="mobile-section-label">📚 Resources &amp; Guides</div>
-  
-  <!-- Mobile Accordion 1 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>📚 Core Guides &amp; Specs</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/secret-key-guide.html" class="mobile-acc-item">🔑 Secret Key Guide</a>
-      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">⚙️ How FrankPass Works</a>
-      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">⚡ Stateless Architecture</a>
-      <a href="/faq.html" class="mobile-acc-item">❓ Security FAQ</a>
-      <a href="/whitepaper.html" class="mobile-acc-item">📄 Cryptographic Specs</a>
-      <a href="/where-password-managers-fail-and-invisible-vault.html" class="mobile-acc-item">⚖️ Limitations &amp; Advantages</a>
-    </div>
-  </div>
+  <a href="/library.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> Master Library</a>
+  <a href="/whitepaper.html" class="mobile-nav-link"><span>📄</span> Technical Whitepaper</a>
+  <a href="/secret-key-guide.html" class="mobile-nav-link"><span>🔑</span> Secret Key Guide</a>
+  <a href="/faq.html" class="mobile-nav-link"><span>❓</span> Security FAQ</a>
+  <a href="/docs.html" class="mobile-nav-link"><span>📖</span> Documentation</a>
 
-  <!-- Mobile Accordion 2 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>🛡️ Cyber Threat Defense</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/where-password-managers-fail-and-invisible-vault.html" class="mobile-acc-item">👁️ Invisible Vault Defense</a>
-      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">☁️ Cloud Vault Vulnerabilities</a>
-      <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="mobile-acc-item">🧮 Password Science &amp; Math</a>
-      <a href="/pin.html" class="mobile-acc-item">🔢 ATM &amp; UPI PIN Security</a>
-    </div>
-  </div>
-
-  <!-- Mobile Accordion 3 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>💡 Trust &amp; Economics</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/about-us.html" class="mobile-acc-item">🏢 About FrankPass</a>
-      <a href="/about-us.html" class="mobile-acc-item">🎯 Founder Master Manikant</a>
-      <a href="/how-frankpass-is-free-without-selling-data.html" class="mobile-acc-item">⚖️ Zero-Server Economics</a>
-      <a href="/about-us.html" class="mobile-acc-item">🌱 Green Sponsors Hub</a>
-    </div>
-  </div>
-
-  <div class="mobile-section-label">🏢 Ecosystem &amp; Directory</div>
+  <div class="mobile-section-label">💎 Plans &amp; Extension</div>
   <a href="/pricing.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>💎</span> Pricing &amp; Plans</a>
-  <a href="/library.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> Master Library &amp; Directory</a>
-  <a href="/pricing.html" class="mobile-nav-link"><span>🌐</span> Products Hub</a>
-  <a href="/about-us.html" class="mobile-nav-link"><span>👨‍💻</span> Founder (Master Manikant Yadav)</a>
   
   <button type="button" class="pwa-install-btn btn-primary" style="margin-top:0.85rem;width:100%;text-align:center;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.35);display:flex;align-items:center;justify-content:center;gap:6px;padding:0.75rem 1rem;border-radius:10px;color:var(--text-primary);font-weight:700;cursor:pointer;">
     <span>📲</span> <span>Install Offline App</span>
@@ -489,7 +354,7 @@
 
         <!-- Info: Name, Role & Project Chips (Grid Area: info) -->
         <div class="founder-compact-info">
-          <h2 class="founder-compact-name">Master Manikant Yadav</h2>
+          <div class="founder-compact-name" style="font-size:1.1rem;font-weight:800;color:var(--text-primary);">Master Manikant Yadav</div>
           <div class="founder-compact-role">Founder &amp; Software Architect</div>
           <div class="founder-project-badges">
             <a href="/" class="founder-project-chip" title="FrankPass - Stateless Password Generator">
@@ -1005,99 +870,7 @@
      WANT TO CONNECT WITH US (2-COLUMN OFFICIAL DESKS)
      Left: FrankPass Security Desk | Right: Master Manikant Ecosystem
      ============================================================ -->
-<section id="connect-section" class="section-sm" style="padding-top:2.5rem;padding-bottom:1.5rem" aria-label="Official Desks and Communication Channels">
-  <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
-    
-    <!-- Unified Connect Card (By-Default Shrinked with 1-Click Expand) -->
-    <div class="card-glass" style="padding:1.4rem 1.6rem;border-radius:16px;border:1px solid var(--border);margin-bottom:1.5rem;box-shadow:var(--card-shadow)">
-      <div style="text-align:center;margin-bottom:1.15rem">
-        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.12);color:var(--accent-light);border:1px solid rgba(139,92,246,0.25);padding:3px 10px;border-radius:20px;font-size:0.75rem;font-weight:700;margin-bottom:0.5rem">
-          <span>&#128737;&#65039;</span> <span>Official Verified Channels</span>
-        </div>
-        <h2 id="connect-heading" style="font-size:1.35rem;font-weight:800;color:var(--text-primary);margin:0 0 0.35rem">Want to connect with us?</h2>
-        <p style="font-size:0.84rem;color:var(--text-muted);margin:0;line-height:1.5">Choose your dedicated channel for security alerts or sovereign ecosystem updates.</p>
-      </div>
 
-      <!-- Primary Instant Action Rows (Always Visible) -->
-      <div style="display:flex;flex-direction:column;gap:0.75rem">
-        <!-- 1. FrankPass Security Desk (WhatsApp Broadcast Channel) -->
-        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border-radius:10px;background:rgba(37,211,102,0.1);border:1px solid rgba(37,211,102,0.25);text-decoration:none;">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span style="color:#25d366;font-size:1.2rem;line-height:1">&#128172;</span>
-            <div>
-              <div style="font-weight:700;font-size:0.88rem;color:var(--text-primary);line-height:1.3">FrankPass Security WhatsApp Channel</div>
-              <div style="font-size:0.74rem;color:var(--text-muted)">Security advisories, release notes &amp; zero-knowledge updates</div>
-            </div>
-          </div>
-          <span style="font-size:0.78rem;color:#25d366;font-weight:700;white-space:nowrap;margin-left:8px">Join Channel &rarr;</span>
-        </a>
-
-        <!-- 2. Master Manikant Ecosystem (Founder Hub) -->
-        <a href="https://mastermanikant.com" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1rem;border-radius:10px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);text-decoration:none;">
-          <div style="display:flex;align-items:center;gap:10px">
-            <span style="font-size:1.2rem;line-height:1">&#127760;</span>
-            <div>
-              <div style="font-weight:700;font-size:0.88rem;color:var(--text-primary);line-height:1.3">MasterManikant.com (Founder Hub)</div>
-              <div style="font-size:0.74rem;color:var(--text-muted)">Upcoming ecosystem products, research &amp; engineering memoirs</div>
-            </div>
-          </div>
-          <span style="font-size:0.78rem;color:var(--accent-light);font-weight:700;white-space:nowrap;margin-left:8px">Visit Hub &rarr;</span>
-        </a>
-      </div>
-
-      <!-- Expandable Social Drawer (By Default Shrinked) -->
-      <details style="margin-top:0.85rem;border-top:1px solid var(--border);padding-top:0.75rem">
-        <summary style="font-size:0.8rem;font-weight:700;color:var(--accent-light);cursor:pointer;text-align:center;user-select:none;list-style:none;padding:4px 0">
-          <span>[+] View All Social Desks (X / Twitter, YouTube, LinkedIn, Instagram, Facebook)</span>
-        </summary>
-        <div style="margin-top:0.85rem;display:grid;grid-template-columns:repeat(2, 1fr);gap:0.5rem">
-          <a href="https://x.com/frankpasshq" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px">
-            <span>&#120143; @frankpasshq</span>
-          </a>
-          <a href="https://x.com/mastermanikant" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px">
-            <span>&#120143; @mastermanikant</span>
-          </a>
-          <a href="https://youtube.com/@mastermanikant" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px">
-            <span style="color:#ff0000">&#9654;&#65039;</span> <span>YouTube Desk</span>
-          </a>
-          <a href="https://linkedin.com/in/mastermanikant" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px">
-            <span style="color:#0a66c2">&#128188;</span> <span>LinkedIn</span>
-          </a>
-          <a href="https://instagram.com/frankpasshq" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px">
-            <span style="color:#e1306c">&#128247;</span> <span>Instagram</span>
-          </a>
-          <a href="https://facebook.com/frankpasshq" target="_blank" rel="noopener noreferrer" class="btn-ghost" style="padding:0.5rem;font-size:0.78rem;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:8px">
-            <span style="color:#1877f2">&#128227;</span> <span>Facebook</span>
-          </a>
-        </div>
-      </details>
-    </div>
-
-    <!-- Simplified Share Card -->
-    <div class="card-glass" style="padding:1.4rem 1.6rem;text-align:center;border-radius:16px;border:1px solid var(--border);max-width:680px;margin:0 auto">
-      <h4 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0 0 0.35rem">Share FrankPass with your friends and family</h4>
-      <p style="font-size:0.84rem;color:var(--text-muted);margin:0 0 1rem;line-height:1.5">Help them switch to mathematical self-custody and live stress-free without cloud leaks.</p>
-      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.6rem">
-        <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('whatsapp',event)" aria-label="Share FrankPass on WhatsApp" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.3);color:#25D366;text-decoration:none">
-          WhatsApp
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('x',event)" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);text-decoration:none">
-          𝕏 (Twitter)
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('facebook',event)" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:rgba(96,165,250,0.15);border:1px solid rgba(96,165,250,0.35);color:#60a5fa;text-decoration:none">
-          Facebook
-        </a>
-        <a href="#" target="_blank" rel="noopener noreferrer" onclick="shareLink('reddit',event)" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:rgba(255,69,0,0.1);border:1px solid rgba(255,69,0,0.3);color:#ff4500;text-decoration:none">
-          Reddit
-        </a>
-        <button onclick="shareLink('copy',event)" aria-label="Copy link" style="display:inline-flex;align-items:center;gap:0.4rem;padding:0.5rem 0.9rem;border-radius:8px;font-size:0.82rem;font-weight:600;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-muted);cursor:pointer">
-          📋 Copy Link
-        </button>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- ============================================================
      HOW IT WORKS: THE DETERMINISTIC WORKFLOW
@@ -1234,84 +1007,7 @@
   </div>
 </section>
 
-<!-- ============================================================
- ASK AI (MULTILINGUAL ASSISTANT)
- ============================================================ -->
-<section id="ask-ai-section" class="section" style="background:var(--bg-primary); padding: 3.5rem 0;" aria-labelledby="ask-ai-heading">
- <div class="container" style="max-width:680px">
- <div class="text-center mb-4">
- <div class="section-label" aria-hidden="true">Multilingual AI Tutor</div>
- <h2 id="ask-ai-heading">Learn FrankPass in your language</h2>
- <p class="section-desc mt-2">Zero heavy translation files. Choose your language, and AI will explain FrankPass determinism in your native script instantly.</p>
- </div>
- 
- <div class="card-glass" style="padding:2rem">
- <div class="form-group" style="margin-bottom:1.5rem">
- <label for="ai-lang" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem">Your Language</label>
- <input type="text" id="ai-lang" list="popular-languages" placeholder="e.g. Hindi, Tamil, Spanish, French, Arabic, Bengali..." value="Hindi" style="width:100%;padding:1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-primary);font-size:1rem;box-sizing:border-box;">
- <datalist id="popular-languages">
-   <option value="Hindi">Hindi (हिन्दी)</option>
-   <option value="Bengali">Bengali (বাংলা)</option>
-   <option value="Tamil">Tamil (தமிழ்)</option>
-   <option value="Telugu">Telugu (తెలుగు)</option>
-   <option value="Marathi">Marathi (मराठी)</option>
-   <option value="Gujarati">Gujarati (ગુજરાતી)</option>
-   <option value="Spanish">Spanish (Español)</option>
-   <option value="French">French (Français)</option>
-   <option value="German">German (Deutsch)</option>
-   <option value="Arabic">Arabic (العربية)</option>
-   <option value="Russian">Russian (Русский)</option>
-   <option value="Japanese">Japanese (日本語)</option>
- </datalist>
- </div>
 
- <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Choose your preferred AI or search engine below to learn via deep-linking, or copy the complete smart prompt directly.</p>
-
- <button type="button" onclick="openAI('copy')" class="btn-primary" style="width:100%;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:600;padding:0.9rem 1.25rem;font-size:0.95rem;background:#7c3aed;color:#ffffff;box-shadow:0 2px 10px rgba(0,0,0,0.15)">
- 📋 Copy Smart Prompt
- </button>
-
- <div style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin:0.85rem 0;line-height:1.5;">
-   <strong>Or click any AI below to launch:</strong> For some AIs you will get the answer directly, while in others you simply paste your copied prompt.
- </div>
-
- <div style="max-height:240px;overflow-y:auto;padding:0.75rem;background:rgba(0,0,0,0.15);border:1px solid var(--border);border-radius:var(--radius-sm);scrollbar-width:thin;scrollbar-color:var(--accent) transparent">
- <div class="grid-2" style="gap:0.6rem">
- <button type="button" onclick="openAI('chatgpt')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 🤖 ChatGPT
- </button>
- <button type="button" onclick="openAI('googleai')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 🔍 Google AI Mode
- </button>
- <button type="button" onclick="openAI('gemini')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- ✨ Gemini
- </button>
- <button type="button" onclick="openAI('claude')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 🧠 Claude
- </button>
- <button type="button" onclick="openAI('perplexity')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 🌐 Perplexity
- </button>
- <button type="button" onclick="openAI('deepseek')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- ⚡ DeepSeek
- </button>
- <button type="button" onclick="openAI('duckduckgo')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 🦆 DuckDuckGo AI
- </button>
- <button type="button" onclick="openAI('phind')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 🔎 Phind AI
- </button>
- <button type="button" onclick="openAI('copilot')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 💻 MS Copilot
- </button>
- <button type="button" onclick="openAI('grok')" class="btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem">
- 🚀 Grok (xAI)
- </button>
- </div>
- </div>
- </div>
- </div>
-</section>
 
 <!-- ============================================================
  WHY NOT CLOUD
@@ -1694,7 +1390,7 @@
               <span><strong>3. 1 Motherboard Lock:</strong> Hardware-bound lifetime license for 1 physical PC with zero recurring subscriptions.</span>
             </div>
           </div>
-          <a href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;padding:0.95rem 1.4rem;border-radius:12px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,0.4);transition:all 0.2s;">
+          <a id="solo-cta-btn" href="https://store.frankbase.com/software/frankpass-pro/" target="_blank" rel="noopener" class="btn-primary" style="display:block;text-align:center;padding:0.95rem 1.4rem;border-radius:12px;font-weight:800;text-decoration:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;box-shadow:0 6px 20px rgba(139,92,246,0.4);transition:all 0.2s;">
             <span>⚡ Claim Lifetime Pass on Sovereign Store ↗</span>
           </a>
           <div style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">Instant License Key &amp; Tax Receipt via Dodo Payments</div>

@@ -82,6 +82,7 @@
 <!-- STICKY HEADER -->
 <header class="site-header" id="site-header" role="banner">
   <div class="header-inner">
+    <!-- Official Brand Logo -->
     <a href="/" class="header-logo" aria-label="FrankPass Home">
       <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
       <span class="logo-text"><span>Frank</span>Pass</span>
@@ -89,36 +90,97 @@
 
     <!-- Country Dropdown -->
     <div class="header-country custom-country-dropdown" aria-label="Select your country">
-      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false">
         <img id="country-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
-        <span id="country-name-text">India</span>
-        <span class="country-caret">&#9662;</span>
+        <span id="country-display-name">India</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
-      <div id="country-menu" class="country-dropdown-menu" role="listbox" tabindex="-1">
-        <div class="country-search-wrap">
-          <input type="text" id="country-search" aria-label="Search country" placeholder="Search country..." autocomplete="off">
-        </div>
-        <div id="country-list" class="country-list-scroll"></div>
+      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+        <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
       </div>
     </div>
+    <input type="hidden" id="region" value="India (IN)">
 
-    <!-- Desktop Navigation Links -->
-    <nav class="nav-links" aria-label="Main Navigation">
-      <a href="/" class="nav-link">होम</a>
-      <a href="/pricing-hindi.html" class="nav-link">प्राइसिंग ($25)</a>
-      <a href="/faq-hindi.html" class="nav-link active" aria-current="page">FAQ</a>
-      <a href="/docs-hindi.html" class="nav-link">डॉक्स</a>
-      <a href="/faq.html" class="nav-link" style="color:var(--accent-light);font-weight:700;">English</a>
+    <!-- Desktop Nav -->
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      
+      <!-- 1. टूल्स ड्रॉपडाउन -->
+      <div class="nav-dropdown" id="dropdown-tools">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="tools-trigger">
+          टूल्स <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="tools-trigger" style="min-width:230px;">
+          <a href="/" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚡</span>
+            <span class="dropdown-title">स्टेटलेस जनरेटर</span>
+          </a>
+          <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🎲</span>
+            <span class="dropdown-title">रैंडम जनरेटर</span>
+          </a>
+          <a href="/pin-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🔢</span>
+            <span class="dropdown-title">पिन जनरेटर</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="/library-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚖️</span>
+            <span class="dropdown-title">सभी टूल्स की तुलना</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. रिसोर्सेज ड्रॉपडाउन -->
+      <div class="nav-dropdown" id="dropdown-resources">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
+          रिसोर्सेज <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:240px;">
+          <a href="/library-hindi.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
+            <span class="dropdown-icon">🏛️</span>
+            <span class="dropdown-title">मास्टर लाइब्रेरी</span>
+          </a>
+          <a href="/whitepaper-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">📄</span>
+            <span class="dropdown-title">टेक्निकल व्हाइटपेपर</span>
+          </a>
+          <a href="/secret-key-guide-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🔑</span>
+            <span class="dropdown-title">सीक्रेट की गाइड</span>
+          </a>
+          <a href="/faq-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">❓</span>
+            <span class="dropdown-title">सुरक्षा FAQ</span>
+          </a>
+          <a href="/docs-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">📖</span>
+            <span class="dropdown-title">डॉक्यूमेंटेशन</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. प्राइसिंग लिंक -->
+      <a href="/pricing-hindi.html" class="nav-link" style="font-weight:600;">प्राइसिंग</a>
+
+      <!-- 4. एक्सटेंशन बटन -->
+      <a href="/extension-hindi.html" class="btn-extension-cta" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1.05rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;transition:all 0.2s;">
+        <span>⚡ एक्सटेंशन जोड़ें</span> &rarr;
+      </a>
+      
+      <!-- 5. थीम टॉगल -->
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
     </nav>
 
-    <div class="header-actions">
-      <a href="https://store.frankbase.com/software/frankpass-pro/" class="btn-primary btn-sm" target="_blank" rel="noopener">
-        <span>Get Pro ($25)</span>
-      </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+    <!-- Mobile Hamburger Toggle Button -->
+    <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </header>
 

@@ -265,7 +265,6 @@
 <!-- STICKY HEADER -->
 <header class="site-header" id="site-header" role="banner">
   <div class="header-inner">
-    
     <!-- Official Brand Logo -->
     <a href="/" class="header-logo" aria-label="FrankPass Home">
       <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
@@ -274,7 +273,7 @@
 
     <!-- Country Dropdown -->
     <div class="header-country custom-country-dropdown" aria-label="Select your country">
-      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false">
         <img id="country-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
         <span id="country-display-name">India</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
@@ -289,12 +288,12 @@
     <!-- Desktop Nav -->
     <nav class="header-nav" role="navigation" aria-label="Main navigation">
       
-      <!-- 1. Generators Dropdown -->
-      <div class="nav-dropdown" id="dropdown-generators">
-        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
-          जनरेटर्स <span class="dropdown-chevron">▾</span>
+      <!-- 1. टूल्स ड्रॉपडाउन -->
+      <div class="nav-dropdown" id="dropdown-tools">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="tools-trigger">
+          टूल्स <span class="dropdown-chevron">▾</span>
         </button>
-        <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger" style="min-width:230px;">
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="tools-trigger" style="min-width:230px;">
           <a href="/" class="dropdown-item" role="menuitem">
             <span class="dropdown-icon">⚡</span>
             <span class="dropdown-title">स्टेटलेस जनरेटर</span>
@@ -303,7 +302,7 @@
             <span class="dropdown-icon">🎲</span>
             <span class="dropdown-title">रैंडम जनरेटर</span>
           </a>
-          <a href="/pin.html" class="dropdown-item" role="menuitem">
+          <a href="/pin-hindi.html" class="dropdown-item" role="menuitem">
             <span class="dropdown-icon">🔢</span>
             <span class="dropdown-title">पिन जनरेटर</span>
           </a>
@@ -315,133 +314,44 @@
         </div>
       </div>
 
-      <!-- 2. Resources Dropdown -->
+      <!-- 2. रिसोर्सेज ड्रॉपडाउन -->
       <div class="nav-dropdown" id="dropdown-resources">
         <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
-          संसाधन <span class="dropdown-chevron">▾</span>
+          रिसोर्सेज <span class="dropdown-chevron">▾</span>
         </button>
-        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
-          
-          <!-- Category 1: Core Guides & Specs -->
-          <div class="has-flyout" id="flyout-core-guides">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">📚</span>
-                <span class="flyout-cat-title">मुख्य गाइड्स व विनिर्देश</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/secret-key-guide-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔑</span>
-                <span class="dropdown-title">सीक्रेट की गाइड</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚙️</span>
-                <span class="dropdown-title">फ्रैंकपास कैसे काम करता है</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚡</span>
-                <span class="dropdown-title">स्टेटलेस आर्किटेक्चर</span>
-              </a>
-              <a href="/faq.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">❓</span>
-                <span class="dropdown-title">सुरक्षा FAQ</span>
-              </a>
-              <a href="/whitepaper-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">📄</span>
-                <span class="dropdown-title">क्रिप्टोग्राफिक विनिर्देश</span>
-              </a>
-              <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚖️</span>
-                <span class="dropdown-title">सीमाएं व लाभ</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 2: Cyber Threat Defense -->
-          <div class="has-flyout" id="flyout-threat-defense">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">🛡️</span>
-                <span class="flyout-cat-title">साइबर सुरक्षा व थ्रेट डिफेंस</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">👁️</span>
-                <span class="dropdown-title">अदृश्य वॉल्ट डिफेंस</span>
-              </a>
-              <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">☁️</span>
-                <span class="dropdown-title">क्लाउड वॉल्ट्स की कमियां</span>
-              </a>
-              <a href="/what-makes-a-password-strong-and-passphrase-guide-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🧮</span>
-                <span class="dropdown-title">पासवर्ड विज्ञान व गणित</span>
-              </a>
-              <a href="/pin.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🔢</span>
-                <span class="dropdown-title">ATM व UPI पिन सुरक्षा</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Category 3: Trust & Founder -->
-          <div class="has-flyout" id="flyout-trust-founder">
-            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-              <div class="flyout-header-content">
-                <span class="flyout-cat-icon">💡</span>
-                <span class="flyout-cat-title">विश्वास व अर्थनीति</span>
-              </div>
-              <span class="flyout-chevron">›</span>
-            </div>
-            <div class="flyout-menu" role="menu">
-              <a href="/about-us-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🏢</span>
-                <span class="dropdown-title">फ्रैंकपास के बारे में</span>
-              </a>
-              <a href="/about-us-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🎯</span>
-                <span class="dropdown-title">संस्थापक मास्टर मणिकान्त</span>
-              </a>
-              <a href="/how-frankpass-is-free-without-selling-data-hindi.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">⚖️</span>
-                <span class="dropdown-title">शून्य सर्वर अर्थनीति</span>
-              </a>
-              <a href="/about-us.html" class="dropdown-item" role="menuitem">
-                <span class="dropdown-icon">🌱</span>
-                <span class="dropdown-title">ग्रीन स्पॉन्सर हब</span>
-              </a>
-            </div>
-          </div>
-
-          <div class="dropdown-divider"></div>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:240px;">
           <a href="/library-hindi.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
             <span class="dropdown-icon">🏛️</span>
-            <span class="dropdown-title" style="color:var(--accent-light);">मास्टर लाइब्रेरी डायरेक्टरी &rarr;</span>
+            <span class="dropdown-title">मास्टर लाइब्रेरी</span>
           </a>
-
-      <!-- 4. Pricing Link -->
-      <a href="/pricing-hindi.html" class="nav-link" style="font-weight:600;">मूल्य निर्धारण</a>
-
+          <a href="/whitepaper-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">📄</span>
+            <span class="dropdown-title">टेक्निकल व्हाइटपेपर</span>
+          </a>
+          <a href="/secret-key-guide-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🔑</span>
+            <span class="dropdown-title">सीक्रेट की गाइड</span>
+          </a>
+          <a href="/faq-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">❓</span>
+            <span class="dropdown-title">सुरक्षा FAQ</span>
+          </a>
+          <a href="/docs-hindi.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">📖</span>
+            <span class="dropdown-title">डॉक्यूमेंटेशन</span>
+          </a>
         </div>
       </div>
 
-      <!-- 3. All Products / Ecosystem Hub -->
-      <!-- 4. Master Library Link -->
-      <a href="/library-hindi.html" class="nav-link" style="color:var(--accent-light);font-weight:600;">लाइब्रेरी</a>
+      <!-- 3. प्राइसिंग लिंक -->
+      <a href="/pricing-hindi.html" class="nav-link" style="font-weight:600;">प्राइसिंग</a>
 
-      <!-- 5. Founder Link -->
-      <a href="/about-us-hindi.html" class="nav-link">संस्थापक</a>
-
-      <!-- Extension Primary CTA Button -->
+      <!-- 4. एक्सटेंशन बटन -->
       <a href="/extension-hindi.html" class="btn-extension-cta" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1.05rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;transition:all 0.2s;">
         <span>⚡ एक्सटेंशन जोड़ें</span> &rarr;
       </a>
       
-      <!-- 7. Theme Toggle -->
+      <!-- 5. थीम टॉगल -->
       <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
         <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       </button>
@@ -454,69 +364,30 @@
       <span></span>
       <span></span>
     </button>
-
   </div>
 </header>
 
 <!-- Mobile Navigation Drawer -->
-<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-  <div class="mobile-section-label">⚡ जनरेटर्स</div>
+<nav class="mobile-menu" id="mobile-menu" aria-label="मोबाइल नेविगेशन">
+  <div class="mobile-section-label">⚡ टूल्स</div>
   <a href="/" class="mobile-nav-link"><span>⚡</span> स्टेटलेस जनरेटर</a>
   <a href="/random-password-generator.html" class="mobile-nav-link"><span>🎲</span> रैंडम जनरेटर</a>
-  <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> पिन जनरेटर</a>
+  <a href="/pin-hindi.html" class="mobile-nav-link"><span>🔢</span> पिन जनरेटर</a>
   <a href="/library-hindi.html" class="mobile-nav-link"><span>⚖️</span> सभी टूल्स की तुलना</a>
   
-  <div class="mobile-section-label">📚 संसाधन व गाइड्स</div>
+  <div class="mobile-section-label">📚 रिसोर्सेज व गाइड्स</div>
+  <a href="/library-hindi.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> मास्टर लाइब्रेरी</a>
+  <a href="/whitepaper-hindi.html" class="mobile-nav-link"><span>📄</span> टेक्निकल व्हाइटपेपर</a>
+  <a href="/secret-key-guide-hindi.html" class="mobile-nav-link"><span>🔑</span> सीक्रेट की गाइड</a>
+  <a href="/faq-hindi.html" class="mobile-nav-link"><span>❓</span> सुरक्षा FAQ</a>
+  <a href="/docs-hindi.html" class="mobile-nav-link"><span>📖</span> डॉक्यूमेंटेशन</a>
+
+  <div class="mobile-section-label">💎 प्लान्स व एक्सटेंशन</div>
+  <a href="/pricing-hindi.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>💎</span> प्राइसिंग व प्लान्स</a>
   
-  <!-- Mobile Accordion 1 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>📚 मुख्य गाइड्स व विनिर्देश</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/secret-key-guide-hindi.html" class="mobile-acc-item">🔑 सीक्रेट की गाइड</a>
-      <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="mobile-acc-item">⚙️ फ्रैंकपास कैसे काम करता है</a>
-      <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="mobile-acc-item">⚡ स्टेटलेस आर्किटेक्चर</a>
-      <a href="/faq.html" class="mobile-acc-item">❓ सुरक्षा FAQ</a>
-      <a href="/whitepaper-hindi.html" class="mobile-acc-item">📄 क्रिप्टोग्राफिक विनिर्देश</a>
-      <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="mobile-acc-item">⚖️ सीमाएं व लाभ</a>
-    </div>
-  </div>
-
-  <!-- Mobile Accordion 2 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>🛡️ साइबर सुरक्षा व थ्रेट डिफेंस</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/where-password-managers-fail-and-invisible-vault-hindi.html" class="mobile-acc-item">👁️ अदृश्य वॉल्ट डिफेंस</a>
-      <a href="/frankpass-vs-cloud-password-vaults-hindi.html" class="mobile-acc-item">☁️ क्लाउड वॉल्ट्स की कमियां</a>
-      <a href="/what-makes-a-password-strong-and-passphrase-guide-hindi.html" class="mobile-acc-item">🧮 पासवर्ड विज्ञान व गणित</a>
-      <a href="/pin.html" class="mobile-acc-item">🔢 ATM व UPI पिन सुरक्षा</a>
-    </div>
-  </div>
-
-  <!-- Mobile Accordion 3 -->
-  <div class="mobile-accordion">
-    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
-      <span>💡 विश्वास व अर्थनीति</span>
-      <span class="acc-chevron">▾</span>
-    </button>
-    <div class="mobile-acc-panel">
-      <a href="/about-us-hindi.html" class="mobile-acc-item">🏢 फ्रैंकपास के बारे में</a>
-      <a href="/about-us-hindi.html" class="mobile-acc-item">🎯 संस्थापक मास्टर मणिकान्त</a>
-      <a href="/how-frankpass-is-free-without-selling-data-hindi.html" class="mobile-acc-item">⚖️ शून्य सर्वर अर्थनीति</a>
-      <a href="/about-us.html" class="mobile-acc-item">🌱 ग्रीन स्पॉन्सर हब</a>
-    </div>
-  </div>
-
-  <div class="mobile-section-label">🏢 इकोसिस्टम व डायरेक्टरी</div>
-  <a href="/pricing-hindi.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>💎</span> मूल्य निर्धारण व योजनाएं</a>
-  <a href="/library-hindi.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> मास्टर लाइब्रेरी डायरेक्टरी</a>
-  <a href="/pricing.html" class="mobile-nav-link"><span>🌐</span> प्रॉडक्ट्स हब</a>
-  <a href="/about-us-hindi.html" class="mobile-nav-link"><span>👨‍💻</span> संस्थापक (मास्टर मणिकान्त यादव)</a>
+  <button type="button" class="pwa-install-btn btn-primary" style="margin-top:0.85rem;width:100%;text-align:center;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.35);display:flex;align-items:center;justify-content:center;gap:6px;padding:0.75rem 1rem;border-radius:10px;color:var(--text-primary);font-weight:700;cursor:pointer;">
+    <span>📲</span> <span>ऑफलाइन ऐप इंस्टॉल करें</span>
+  </button>
   
   <a href="/extension-hindi.html" class="btn-primary" style="margin-top:0.85rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">⚡ एक्सटेंशन जोड़ें &rarr;</a>
 </nav>
