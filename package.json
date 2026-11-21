@@ -1,6 +1,6 @@
 {
   "name": "frankpass",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Stateless & Offline Zero-Knowledge Password Generator",
   "main": "frankpass-core.js",
   "scripts": {
