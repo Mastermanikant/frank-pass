@@ -312,7 +312,7 @@
     `;
 
     setupHeaderNav();
-    setupTheme();
+    initTheme();
   }
 
   window.toggleFooterCol = function(id) {

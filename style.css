@@ -365,22 +365,28 @@ pre code {
 
 /* Mobile menu */
 .mobile-menu {
+  position: fixed;
+  top: var(--header-h, 60px);
+  left: 0;
+  right: 0;
+  max-height: calc(100vh - var(--header-h, 60px) - var(--mobile-nav-h, 56px));
+  overflow-y: auto;
   z-index: 1999 !important;
-
+  background: var(--bg-primary, #0a0a12);
+  border-bottom: 1px solid var(--border);
   padding: 1rem 1.25rem 1.5rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 0.35rem;
-  transform: translateY(-110%);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.3s ease, opacity 0.3s ease;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
 }
 .mobile-menu.open {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
+  display: flex;
+}
+@media (min-width: 992px) {
+  .mobile-menu {
+    display: none !important;
+  }
 }
 .mobile-menu a {
   display: block;
@@ -1962,7 +1968,6 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   color: var(--text-muted) !important;
   cursor: pointer;
   transition: all 0.2s ease !important;
-} ease !important;
 }
 .btn-reset:hover {
   background: rgba(255, 255, 255, 0.08) !important;
