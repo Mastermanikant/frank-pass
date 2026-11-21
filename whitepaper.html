@@ -1303,8 +1303,8 @@ const normalizedSecret = (secretKey || '')
           </tr>
           <tr>
             <td><strong>Memory Scraping</strong></td>
-            <td>Ephemeral In-Memory State &amp; Best-effort Zeroization</td>
-            <td>Garbage-collected JavaScript engines do not guarantee instant physical zeroization of strings from RAM before garbage collector sweeps.</td>
+            <td>Ephemeral Memory &amp; Best-Effort Zeroization</td>
+            <td>Mutable buffers are decoupled, overwritten with random bytes, and active references cleared from lexical scope. However, garbage-collected JavaScript engines treat primitives like strings as immutable and do not provide hardware guarantees of immediate physical RAM erasure prior to engine GC sweeps.</td>
           </tr>
           <tr>
             <td><strong>Credential Phishing &amp; Homographs</strong></td>

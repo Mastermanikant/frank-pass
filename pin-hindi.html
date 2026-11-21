@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <script>
+  (function() {
+    try {
+      var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
+      var theme = saved || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deterministic PIN Generator - 4-Digit &amp; 6-Digit ATM, UPI &amp; mPINs - FrankPass</title>
+  <meta name="description" content="Generate secure, deterministic 4-digit and 6-digit PINs for ATM cards, UPI (GPay, PhonePe, Paytm), and banking mPINs. 100% client-side, zero cloud storage.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://frankpass.com/pin-hindi.html">
+  <meta property="og:title" content="Deterministic PIN Generator - 4-Digit &amp; 6-Digit ATM, UPI &amp; mPINs">
+  <meta property="og:description" content="Calculate high-entropy, zero-storage 4-digit and 6-digit PINs deterministically with WebCrypto. Zero cloud, 100% offline.">
+  <meta property="og:url" content="https://frankpass.com/pin.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://frankpass.com/icons/icon-512.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@frankpasshq">
+  
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.min.css?v=4.6.2">
+  <link rel="icon" href="/icons/favicon.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <!-- Schema.org SoftwareApplication & HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FrankPass PIN Generator",
+    "applicationCategory": "SecurityApplication",
+    "operatingSystem": "Web, iOS, Android, Windows, Mac, Linux",
+    "url": "https://frankpass.com/pin.html",
+    "description": "Deterministic, zero-storage 4-digit and 6-digit PIN generator for ATM debit cards, UPI applications, and mobile mPINs.",
+    "author": {
+      "@type": "Person",
+      "name": "Master Manikant Yadav",
+      "url": "https://mastermanikant.com"
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- ============================================================
+     SECTION 1: STICKY HEADER & DESKTOP NAVIGATION
+     ============================================================ -->
+<!-- STICKY HEADER -->
+<header class="site-header" id="site-header" role="banner">
+  <div class="header-inner">
+    
+    <!-- Official Brand Logo -->
+    <a href="/" class="header-logo" aria-label="FrankPass Home">
+      <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass 3D Key Logo" width="32" height="32" class="header-brand-icon" fetchpriority="high" decoding="async">
+      <span class="logo-text"><span>Frank</span>Pass</span>
+    </a>
+
+    <!-- Country Dropdown -->
+    <div class="header-country custom-country-dropdown" aria-label="Select your country">
+      <button id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Country selector">
+        <img id="country-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="20" height="15" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+        <span id="country-display-name">India</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <div id="country-dropdown-panel" role="listbox" aria-label="Country list">
+        <input id="country-search-input" type="search" placeholder="Search country..." autocomplete="off" aria-label="Search for a country">
+        <div id="country-list-scroll"></div>
+      </div>
+    </div>
+    <input type="hidden" id="region" value="India (IN)">
+
+    <!-- Desktop Nav -->
+    <nav class="header-nav" role="navigation" aria-label="Main navigation">
+      
+      <!-- 1. Generators Dropdown -->
+      <div class="nav-dropdown" id="dropdown-generators">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="gen-trigger">
+          Generators <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="gen-trigger" style="min-width:230px;">
+          <a href="/" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚡</span>
+            <span class="dropdown-title">Stateless Generator</span>
+          </a>
+          <a href="/random-password-generator.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🎲</span>
+            <span class="dropdown-title">Random Generator</span>
+          </a>
+          <a href="/pin.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">🔢</span>
+            <span class="dropdown-title">PIN Generator</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="/library.html" class="dropdown-item" role="menuitem">
+            <span class="dropdown-icon">⚖️</span>
+            <span class="dropdown-title">Compare All Tools</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. Resources Dropdown -->
+      <div class="nav-dropdown" id="dropdown-resources">
+        <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" type="button" id="res-trigger">
+          Resources <span class="dropdown-chevron">▾</span>
+        </button>
+        <div class="nav-dropdown-menu" role="menu" aria-labelledby="res-trigger" style="min-width:280px;">
+          
+          <!-- Category 1: Core Guides & Specs -->
+          <div class="has-flyout" id="flyout-core-guides">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">📚</span>
+                <span class="flyout-cat-title">Core Guides &amp; Specs</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/secret-key-guide.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔑</span>
+                <span class="dropdown-title">Secret Key Guide</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚙️</span>
+                <span class="dropdown-title">How FrankPass Works</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚡</span>
+                <span class="dropdown-title">Stateless Architecture</span>
+              </a>
+              <a href="/faq.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">❓</span>
+                <span class="dropdown-title">Security FAQ</span>
+              </a>
+              <a href="/whitepaper.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">📄</span>
+                <span class="dropdown-title">Cryptographic Specs</span>
+              </a>
+              <a href="/where-password-managers-fail-and-invisible-vault.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚖️</span>
+                <span class="dropdown-title">Limitations &amp; Advantages</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Category 2: Cyber Threat Defense -->
+          <div class="has-flyout" id="flyout-threat-defense">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">🛡️</span>
+                <span class="flyout-cat-title">Cyber Threat Defense</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/where-password-managers-fail-and-invisible-vault.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">👁️</span>
+                <span class="dropdown-title">Invisible Vault Defense</span>
+              </a>
+              <a href="/frankpass-vs-cloud-password-vaults.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">☁️</span>
+                <span class="dropdown-title">Cloud Vault Vulnerabilities</span>
+              </a>
+              <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🧮</span>
+                <span class="dropdown-title">Password Science &amp; Math</span>
+              </a>
+              <a href="/pin.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🔢</span>
+                <span class="dropdown-title">ATM &amp; UPI PIN Security</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Category 3: Trust & Founder -->
+          <div class="has-flyout" id="flyout-trust-founder">
+            <div class="flyout-header-item" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
+              <div class="flyout-header-content">
+                <span class="flyout-cat-icon">💡</span>
+                <span class="flyout-cat-title">Trust &amp; Economics</span>
+              </div>
+              <span class="flyout-chevron">›</span>
+            </div>
+            <div class="flyout-menu" role="menu">
+              <a href="/about-us.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🏢</span>
+                <span class="dropdown-title">About FrankPass</span>
+              </a>
+              <a href="/about-us.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🎯</span>
+                <span class="dropdown-title">Founder Master Manikant</span>
+              </a>
+              <a href="/how-frankpass-is-free-without-selling-data.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">⚖️</span>
+                <span class="dropdown-title">Zero-Server Economics</span>
+              </a>
+              <a href="/about-us.html" class="dropdown-item" role="menuitem">
+                <span class="dropdown-icon">🌱</span>
+                <span class="dropdown-title">Green Sponsors Hub</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="dropdown-divider"></div>
+          <a href="/library.html" class="dropdown-item" role="menuitem" style="color:var(--accent-light);font-weight:700;">
+            <span class="dropdown-icon">🏛️</span>
+            <span class="dropdown-title" style="color:var(--accent-light);">Master Library &amp; Directory &rarr;</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- 4. Master Library Link -->
+      <a href="/library.html" class="nav-link" style="color:var(--accent-light);font-weight:600;">Library</a>
+
+      <!-- 4. Pricing Link -->
+      <a href="/pricing.html" class="nav-link" style="font-weight:600;">Pricing</a>
+
+      <!-- 5. Founder Link -->
+      <a href="/about-us.html" class="nav-link">Founder</a>
+
+      <!-- Extension Primary CTA Button -->
+      <a href="/extension.html" class="btn-extension-cta" style="background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-weight:700;padding:0.45rem 1.05rem;border-radius:10px;box-shadow:0 4px 14px rgba(139,92,246,0.35);text-decoration:none;display:inline-flex;align-items:center;gap:6px;font-size:0.88rem;transition:all 0.2s;">
+        <span>⚡ Get Extension</span> &rarr;
+      </a>
+      
+      <!-- 7. Theme Toggle -->
+      <button class="theme-toggle-btn" id="theme-toggle" type="button" aria-label="Toggle light and dark mode" title="Toggle theme">
+        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+
+    </nav>
+
+    <!-- Mobile Hamburger Toggle Button -->
+    <button class="hamburger-btn" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer -->
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <div class="mobile-section-label">⚡ Generators</div>
+  <a href="/" class="mobile-nav-link"><span>⚡</span> Stateless Generator</a>
+  <a href="/random-password-generator.html" class="mobile-nav-link"><span>🎲</span> Random Generator</a>
+  <a href="/pin.html" class="mobile-nav-link"><span>🔢</span> PIN Generator</a>
+  <a href="/library.html" class="mobile-nav-link"><span>⚖️</span> Compare All Tools</a>
+  
+  <div class="mobile-section-label">📚 Resources &amp; Guides</div>
+  
+  <!-- Mobile Accordion 1 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>📚 Core Guides &amp; Specs</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/secret-key-guide.html" class="mobile-acc-item">🔑 Secret Key Guide</a>
+      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">⚙️ How FrankPass Works</a>
+      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">⚡ Stateless Architecture</a>
+      <a href="/faq.html" class="mobile-acc-item">❓ Security FAQ</a>
+      <a href="/whitepaper.html" class="mobile-acc-item">📄 Cryptographic Specs</a>
+      <a href="/where-password-managers-fail-and-invisible-vault.html" class="mobile-acc-item">⚖️ Limitations &amp; Advantages</a>
+    </div>
+  </div>
+
+  <!-- Mobile Accordion 2 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>🛡️ Cyber Threat Defense</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/where-password-managers-fail-and-invisible-vault.html" class="mobile-acc-item">👁️ Invisible Vault Defense</a>
+      <a href="/frankpass-vs-cloud-password-vaults.html" class="mobile-acc-item">☁️ Cloud Vault Vulnerabilities</a>
+      <a href="/what-makes-a-password-strong-and-passphrase-guide.html" class="mobile-acc-item">🧮 Password Science &amp; Math</a>
+      <a href="/pin.html" class="mobile-acc-item">🔢 ATM &amp; UPI PIN Security</a>
+    </div>
+  </div>
+
+  <!-- Mobile Accordion 3 -->
+  <div class="mobile-accordion">
+    <button class="mobile-acc-trigger" type="button" aria-expanded="false">
+      <span>💡 Trust &amp; Economics</span>
+      <span class="acc-chevron">▾</span>
+    </button>
+    <div class="mobile-acc-panel">
+      <a href="/about-us.html" class="mobile-acc-item">🏢 About FrankPass</a>
+      <a href="/about-us.html" class="mobile-acc-item">🎯 Founder Master Manikant</a>
+      <a href="/how-frankpass-is-free-without-selling-data.html" class="mobile-acc-item">⚖️ Zero-Server Economics</a>
+      <a href="/about-us.html" class="mobile-acc-item">🌱 Green Sponsors Hub</a>
+    </div>
+  </div>
+
+  <div class="mobile-section-label">🏢 Ecosystem &amp; Directory</div>
+  <a href="/pricing.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>💎</span> Pricing &amp; Plans</a>
+  <a href="/library.html" class="mobile-nav-link" style="color:var(--accent-light);font-weight:700;"><span>🏛️</span> Master Library &amp; Directory</a>
+  <a href="/pricing.html" class="mobile-nav-link"><span>🌐</span> Products Hub</a>
+  <a href="/about-us.html" class="mobile-nav-link"><span>👨‍💻</span> Founder (Master Manikant Yadav)</a>
+  
+  <a href="/extension.html" class="btn-primary" style="margin-top:0.85rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">⚡ Get Extension &rarr;</a>
+</nav>
+
+<!-- ============================================================
+     SECTION 3: PAGE MAIN CONTAINER & HERO HEADER
+     ============================================================ -->
+<main id="main-content" class="page-container" style="max-width:540px;margin:2rem auto 4rem;padding:0 1rem">
+  
+  <!-- Hero Heading -->
+  <div style="text-align:center;margin-bottom:1.75rem">
+    <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);padding:0.35rem 0.9rem;border-radius:20px;font-size:0.82rem;color:#10b981;font-weight:700;margin-bottom:1rem">
+      ● 100% Client-Side WebCrypto · 0 Bytes in Cloud
+    </div>
+    <h1 style="font-size:clamp(1.65rem, 3.8vw, 2.35rem);font-weight:800;color:var(--text-primary);letter-spacing:-0.03em;margin-bottom:0.5rem">
+      Deterministic PIN Generator
+    </h1>
+    <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.6;margin:0 auto;max-width:560px">
+      Calculate deterministic 4-digit and 6-digit numeric PINs for ATM debit cards, UPI (Google Pay, PhonePe, Paytm), and SIM locks on-demand.
+    </p>
+  </div>
+
+  <!-- ============================================================
+       SECTION 4: MAIN PIN GENERATOR CARD (INPUT CONTROLS)
+       ============================================================ -->
+  <div class="card-glass" style="padding:1.75rem;border-radius:24px;border:1px solid rgba(139,92,246,0.35);background:var(--card-glass-bg);box-shadow:var(--card-shadow)">
+    
+    <!-- Input 1: Bank / Card / App Name -->
+    <div class="form-group" style="margin-bottom:1.25rem">
+      <label class="form-label" for="pin-platform" style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">Bank / Card / App Name</label>
+      <div class="input-wrapper" style="position:relative">
+        <input id="pin-platform" class="form-input" type="text" list="pin-platform-list" placeholder="e.g. SBI ATM Card, Google Pay, HDFC..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 2.5rem 0.85rem 1rem">
+        <div id="pin-platform-valid-icon" class="input-indicator" style="right:1rem;top:50%;transform:translateY(-50%) scale(0.8);display:flex;align-items:center;" title="Recognized in preset directory" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <datalist id="pin-platform-list"></datalist>
+      <div id="pin-quick-chips" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:0.5rem">
+        <button type="button" class="pin-chip-btn" data-name="SBI ATM Card" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">💳 SBI ATM</button>
+        <button type="button" class="pin-chip-btn" data-name="HDFC Debit Card" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">💳 HDFC Card</button>
+        <button type="button" class="pin-chip-btn" data-name="Google Pay (GPay UPI)" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">⚡ Google Pay</button>
+        <button type="button" class="pin-chip-btn" data-name="PhonePe UPI" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">⚡ PhonePe</button>
+        <button type="button" class="pin-chip-btn" data-name="Paytm UPI" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">⚡ Paytm UPI</button>
+        <button type="button" class="pin-chip-btn" data-name="SIM Card PIN (Jio)" style="font-size:0.75rem;padding:3px 9px;border-radius:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.28);color:var(--text-primary);cursor:pointer;font-weight:600;transition:all 0.15s">📱 SIM PIN</button>
+      </div>
+      <span id="pin-platform-hint" style="font-size:0.75rem;color:var(--accent-light);display:block;margin-top:0.35rem"></span>
+    </div>
+
+    <!-- Input 2: Secret Key -->
+    <div class="form-group" style="margin-bottom:1.5rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.35rem">
+        <label class="form-label" for="pin-secret" style="margin:0;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">मास्टर सीक्रेट की 🔒</label>
+      </div>
+      <div class="input-wrapper" style="position:relative">
+        <input id="pin-secret" class="form-input" type="password" placeholder="e.g. the blue giraffe ordered hot espresso at dawn..." autocomplete="off" spellcheck="false" style="width:100%;font-size:1rem;padding:0.85rem 1rem">
+        <button id="pin-toggle-secret" type="button" aria-label="Toggle secret key visibility" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);cursor:pointer">
+          <svg id="pin-eye-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </button>
+      </div>
+      <div id="pin-secret-warning" style="display:none;font-size:0.75rem;color:#f59e0b;margin-top:0.35rem;line-height:1.4;" role="alert">⚠️ Please use English letters (a-z) and numbers (0-9). Symbols and non-Latin scripts are omitted automatically.</div>
+      <span style="font-size:0.72rem;color:var(--text-muted);margin-top:0.35rem;display:block">
+        💡 Use the same Secret Key as your passwords. <a href="/secret-key-guide.html" style="color:var(--accent-light);font-weight:600;text-decoration:none">Need ideas? View 50+ Secret Key Examples &rarr;</a>
+      </span>
+    </div>
+
+    <!-- Input 3: PIN Number / Rotation (Counter & Month/Year) -->
+    <div class="form-group" style="margin-bottom:1.5rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.45rem">
+        <label class="form-label" for="pin-variant-input" style="margin:0;font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">
+          PIN Number / Rotation
+        </label>
+        <!-- Variant Mode Tabs -->
+        <div class="variant-mode-tabs" role="tablist" style="display:flex;gap:3px;background:rgba(255,255,255,0.04);padding:2px;border-radius:8px;border:1px solid var(--border)">
+          <button type="button" id="pin-variant-tab-counter" class="variant-tab active" aria-label="Permanent Counter Mode" style="border:none;background:var(--accent);color:#fff;font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Counter</button>
+          <button type="button" id="pin-variant-tab-date" class="variant-tab" aria-label="Month and Year Rotation Mode" style="border:none;background:transparent;color:var(--text-muted);font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:6px;cursor:pointer">Month/Year</button>
+        </div>
+      </div>
+
+      <!-- Mode 1: Numeric Counter (1-999999) with stepper -->
+      <div id="pin-variant-counter-wrap" style="display:flex;align-items:center;gap:0.5rem">
+        <button type="button" id="pin-variant-minus" aria-label="Decrease variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">&minus;</button>
+        <input id="pin-variant-input" class="form-input" type="number" min="1" max="999999" value="1" style="text-align:center;font-weight:700;font-size:1rem" aria-describedby="pin-variant-desc">
+        <button type="button" id="pin-variant-plus" aria-label="Increase variant" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--glass-bg);border:1px solid var(--border);color:var(--text-primary);border-radius:var(--radius-sm);cursor:pointer;font-size:1.15rem;font-weight:bold;transition:var(--transition)">+</button>
+      </div>
+
+      <!-- Mode 2: Month & Custom Year Rotation -->
+      <div id="pin-variant-date-wrap" style="display:none;gap:0.5rem">
+        <select id="pin-variant-month-select" class="form-input" style="flex:1.2;cursor:pointer" aria-label="Rotation Month">
+          <option value="01">January</option>
+          <option value="02">February</option>
+          <option value="03">March</option>
+          <option value="04">April</option>
+          <option value="05">May</option>
+          <option value="06">June</option>
+          <option value="07">July</option>
+          <option value="08">August</option>
+          <option value="09">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+        </select>
+        <input id="pin-variant-year-input" class="form-input" type="number" min="1000" max="9999" placeholder="YYYY (e.g. 2026)" style="flex:1;text-align:center;font-weight:600" aria-label="Rotation Year">
+      </div>
+
+      <span id="pin-variant-desc" style="font-size:0.75rem;color:var(--text-muted);margin-top:0.35rem;display:block">
+        💡 Default is 1. Change to 2, 3... or Month/Year only if you rotate your PIN or need a fresh PIN for this card.
+      </span>
+    </div>
+
+    <!-- PIN Length Selector -->
+    <div class="form-group" style="margin-bottom:1.5rem">
+      <label class="form-label" style="font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em">PIN Length</label>
+      <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:0.6rem">
+        <button type="button" class="pin-len-btn active" data-len="4" style="padding:0.75rem;border-radius:12px;border:1px solid var(--accent);background:rgba(139,92,246,0.2);color:var(--text-primary);font-weight:700;cursor:pointer">4 Digits (ATM / UPI)</button>
+        <button type="button" class="pin-len-btn" data-len="6" style="padding:0.75rem;border-radius:12px;border:1px solid var(--border);background:var(--glass-bg);color:var(--text-muted);font-weight:700;cursor:pointer">6 Digits (UPI / mPIN)</button>
+        <button type="button" class="pin-len-btn" data-len="8" style="padding:0.75rem;border-radius:12px;border:1px solid var(--border);background:var(--glass-bg);color:var(--text-muted);font-weight:700;cursor:pointer">8 Digits (Ultra PIN)</button>
+      </div>
+    </div>
+
+    <!-- Generate Button -->
+    <button type="button" id="pin-generate-btn" class="btn-primary" style="width:100%;padding:0.9rem;font-size:1.05rem;font-weight:800;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:0.5rem;box-shadow:0 0 20px rgba(139,92,246,0.35);cursor:pointer">
+      ✨ Generate Secure PIN
+    </button>
+
+    <!-- ============================================================
+         SECTION 5: OUTPUT BOX (CALCULATED PIN & CLIPBOARD ACTION)
+         ============================================================ -->
+    <div id="pin-output-container" style="margin-top:1.5rem;padding:1.5rem;border-radius:16px;background:rgba(0,0,0,0.35);border:1px solid var(--border);text-align:center">
+      <div style="font-size:0.78rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem">Calculated Security PIN</div>
+      <div id="pin-display" style="font-family:'Consolas','SF Mono','Segoe UI Mono','Roboto Mono','Cascadia Code',ui-monospace,monospace;font-size:2.25rem;font-weight:700;letter-spacing:0.35em;color:var(--accent-light);margin-bottom:1rem">
+        ••••
+      </div>
+      <button type="button" id="pin-copy-btn" class="btn-ghost" style="padding:0.6rem 1.5rem;border-radius:10px;font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer">
+        📋 पिन कॉपी करें
+      </button>
+      <div id="pin-copy-notice" style="font-size:0.75rem;color:#10b981;font-weight:700;margin-top:0.6rem;display:none">
+        ✓ Copied to clipboard!
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       SECTION 6: EDUCATIONAL INFO CARDS & KNOWLEDGE BASE
+       ============================================================ -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem;margin-top:2.5rem">
+    <div class="card-glass" style="padding:1.25rem;border-radius:16px;border:1px solid var(--border)">
+      <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem">🛡️ How is my PIN calculated?</h3>
+      <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.5;margin:0">
+        FrankPass runs 1,000,000 PBKDF2-HMAC-SHA512 rounds in your device RAM and mathematically maps the bytes into a clean numeric sequence (0-9).
+      </p>
+    </div>
+    <div class="card-glass" style="padding:1.25rem;border-radius:16px;border:1px solid var(--border)">
+      <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin-bottom:0.4rem">🧠 Never write your ATM PIN on paper</h3>
+      <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.5;margin:0">
+        With FrankPass, entering your card name and master secret sentence instantly re-creates your exact PIN on any phone or laptop.
+      </p>
+    </div>
+  </div>
+
+  <!-- Transparent Mathematical Entropy & Physical Rate-Limiting Disclosure -->
+  <div class="card-glass" style="margin-top:1.5rem;padding:1.4rem 1.6rem;border-radius:16px;border:1px solid rgba(234,179,8,0.35);background:rgba(234,179,8,0.06);box-shadow:0 4px 20px rgba(0,0,0,0.12)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.6rem">
+      <span style="font-size:1.25rem;">⚖️</span>
+      <h3 style="font-size:1.05rem;font-weight:700;color:var(--text-primary);margin:0">Mathematical Entropy vs. Physical ATM Rate-Limiting &amp; Memory Offloading</h3>
+    </div>
+    <div style="font-size:0.87rem;color:var(--text-muted);line-height:1.65;display:flex;flex-direction:column;gap:0.65rem">
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">1. Low Mathematical Entropy by Nature &amp; Candidate Key Testing:</strong> A 4-digit PIN has only 10,000 combinations (<span style="font-family:monospace;color:var(--accent-light)">10⁴</span>, approx. 13.29 bits of entropy), and a 6-digit PIN has 1,000,000 combinations (approx. 19.93 bits). If an adversary observes your PIN at an ATM, domain separation does not prevent offline dictionary attacks against weak master keys. While 1,000,000 PBKDF2-HMAC-SHA512 rounds make offline testing computationally costly, a high-entropy मास्टर सीक्रेट की (6+ words or 20+ characters) is strictly mandatory. Short numeric PINs are designed for human memory offloading at rate-limited terminals, not as standalone cryptographic secrets.
+      </p>
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">2. Online Terminal Rate-Limiting vs. Offline Candidate Testing:</strong> Physical banking ATMs, Point-of-Sale (PoS) machines, and UPI payment apps enforce hardware-level and server-side rate limits (typically temporary freezes after consecutive failed attempts). This severely constrains online guessing. However, terminal rate limits offer zero protection against an adversary who observes your PIN and conducts an offline dictionary attack against a weak Master Secret. Protection against offline candidate-key testing relies entirely on a high-entropy मास्टर सीक्रेट की (6+ words or 20+ characters) combined with 1,000,000 PBKDF2-HMAC-SHA512 derivation rounds.
+      </p>
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">3. The Real-World Purpose (Human Memory Offloading):</strong> Most people own multiple bank debit cards (SBI, HDFC, ICICI, Axis) and rarely used payment apps. When an ATM card is not used for 6 months, remembering its PIN is difficult, leading people to dangerously write PINs on paper or notes apps. With FrankPass, you only remember your single मास्टर सीक्रेट की. By typing your card name (e.g. <span style="font-family:monospace;color:var(--accent-light)">sbi</span> or <span style="font-family:monospace;color:var(--accent-light)">hdfc</span>) plus an optional month/year rotation, your exact PIN is re-calculated in 2 seconds offline.
+      </p>
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">4. 100% Local &amp; Private:</strong> All PBKDF2-HMAC-SHA512 calculations happen strictly in volatile device RAM via the native Web Cryptography API. Zero bytes are ever transmitted over the network or saved in any database. How you choose to utilize this tool remains entirely your personal preference.
+      </p>
+      <p style="margin:0">
+        <strong style="color:var(--text-primary)">5. Unbiased Rejection Sampling Math:</strong> Raw byte modulo reduction (<code>byte % 10</code>) introduces statistical bias because 256 is not evenly divisible by 10 (256 mod 10 = 6). To guarantee mathematical uniformity across all digits 0-9, FrankPass implements strict rejection sampling (<span style="font-family:monospace;color:var(--accent-light)">validMax = 250</span>). Any byte &ge; 250 is rejected, ensuring exactly 10.00% probability for every digit without bias.
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ============================================================
+     SECTION 7: CLIENT LOGIC SCRIPTS & CRYPTOGRAPHIC DERIVATION
+     ============================================================ -->
+
+<script src="/frankpass-core.js?v=4.3.3"></script>
+<script src="/frankpass-utils.min.js?v=4.6.2"></script>
+<script>
+let currentPinLength = 4;
+let generatedPinRaw = '';
+let currentPinVariantMode = 'counter';
+
+const pinVariantInput = document.getElementById('pin-variant-input');
+const pinTabCounter = document.getElementById('pin-variant-tab-counter');
+const pinTabDate = document.getElementById('pin-variant-tab-date');
+const pinCounterWrap = document.getElementById('pin-variant-counter-wrap');
+const pinDateWrap = document.getElementById('pin-variant-date-wrap');
+const pinMonthSelect = document.getElementById('pin-variant-month-select');
+const pinYearInput = document.getElementById('pin-variant-year-input');
+
+const now = new Date();
+const curMonth = String(now.getMonth() + 1).padStart(2, '0');
+const curYear = String(now.getFullYear());
+if (pinMonthSelect) pinMonthSelect.value = curMonth;
+if (pinYearInput) pinYearInput.value = curYear;
+
+function resetPinOutput() {
+  generatedPinRaw = '';
+  const disp = document.getElementById('pin-display');
+  if (disp) disp.textContent = '•'.repeat(currentPinLength);
+}
+
+if (pinTabCounter) {
+  pinTabCounter.addEventListener('click', () => {
+    currentPinVariantMode = 'counter';
+    pinTabCounter.classList.add('active');
+    pinTabCounter.style.background = 'var(--accent)';
+    pinTabCounter.style.color = '#fff';
+    if (pinTabDate) {
+      pinTabDate.classList.remove('active');
+      pinTabDate.style.background = 'transparent';
+      pinTabDate.style.color = 'var(--text-muted)';
+    }
+    if (pinCounterWrap) pinCounterWrap.style.display = 'flex';
+    if (pinDateWrap) pinDateWrap.style.display = 'none';
+    resetPinOutput();
+  });
+}
+
+if (pinTabDate) {
+  pinTabDate.addEventListener('click', () => {
+    currentPinVariantMode = 'date';
+    pinTabDate.classList.add('active');
+    pinTabDate.style.background = 'var(--accent)';
+    pinTabDate.style.color = '#fff';
+    if (pinTabCounter) {
+      pinTabCounter.classList.remove('active');
+      pinTabCounter.style.background = 'transparent';
+      pinTabCounter.style.color = 'var(--text-muted)';
+    }
+    if (pinCounterWrap) pinCounterWrap.style.display = 'none';
+    if (pinDateWrap) pinDateWrap.style.display = 'flex';
+    resetPinOutput();
+  });
+}
+
+const pinMinusBtn = document.getElementById('pin-variant-minus');
+const pinPlusBtn = document.getElementById('pin-variant-plus');
+if (pinMinusBtn && pinVariantInput) {
+  pinMinusBtn.addEventListener('click', () => {
+    let val = parseInt(pinVariantInput.value, 10) || 1;
+    if (val > 1) {
+      pinVariantInput.value = val - 1;
+      resetPinOutput();
+    }
+  });
+}
+if (pinPlusBtn && pinVariantInput) {
+  pinPlusBtn.addEventListener('click', () => {
+    let val = parseInt(pinVariantInput.value, 10) || 1;
+    if (val < 999999) {
+      pinVariantInput.value = val + 1;
+      resetPinOutput();
+    }
+  });
+}
+
+if (pinVariantInput) {
+  pinVariantInput.addEventListener('input', resetPinOutput);
+}
+if (pinMonthSelect) {
+  pinMonthSelect.addEventListener('change', resetPinOutput);
+}
+if (pinYearInput) {
+  pinYearInput.addEventListener('input', resetPinOutput);
+}
+
+function getActivePinVariant() {
+  if (currentPinVariantMode === 'counter') {
+    const val = pinVariantInput ? parseInt(pinVariantInput.value, 10) : 1;
+    return String(Math.max(1, Math.min(999999, isNaN(val) ? 1 : val)));
+  } else {
+    const m = pinMonthSelect ? pinMonthSelect.value : curMonth;
+    const y = pinYearInput ? (pinYearInput.value || curYear).trim() : curYear;
+    return `${m}${y}`;
+  }
+}
+
+// Theme Toggle
+const themeBtn = document.getElementById('theme-toggle');
+if (themeBtn) {
+  themeBtn.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('fp_theme', next); } catch(e) {}
+  });
+}
+
+// Mobile Hamburger Toggle
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+    hamburger.setAttribute('aria-expanded', !expanded);
+    mobileMenu.classList.toggle('open');
+  });
+}
+
+// Length Buttons Selector
+document.querySelectorAll('.pin-len-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pin-len-btn').forEach(b => {
+      b.classList.remove('active');
+      b.style.borderColor = 'var(--border)';
+      b.style.background = 'var(--glass-bg)';
+      b.style.color = 'var(--text-muted)';
+    });
+    btn.classList.add('active');
+    btn.style.borderColor = 'var(--accent)';
+    btn.style.background = 'rgba(139,92,246,0.2)';
+    btn.style.color = 'var(--text-primary)';
+    currentPinLength = parseInt(btn.dataset.len, 10) || 4;
+    document.getElementById('pin-display').textContent = '•'.repeat(currentPinLength);
+  });
+});
+
+// Eye Toggle for Secret Key
+const secretInput = document.getElementById('pin-secret');
+const toggleSecretBtn = document.getElementById('pin-toggle-secret');
+toggleSecretBtn.addEventListener('click', () => {
+  if (secretInput.type === 'password') {
+    secretInput.type = 'text';
+  } else {
+    secretInput.type = 'password';
+  }
+});
+
+// Platform input hint, autocomplete & chips
+const platformInput = document.getElementById('pin-platform');
+const platformHint = document.getElementById('pin-platform-hint');
+const platformValidIcon = document.getElementById('pin-platform-valid-icon');
+const platformDatalist = document.getElementById('pin-platform-list');
+let savedPinPlatformVal = '';
+
+function renderPinPlatformDatalist(filterQuery = '') {
+  if (!platformDatalist || typeof FrankPassUtils === 'undefined' || !FrankPassUtils.BANKING_UPI_PLATFORMS) return;
+  platformDatalist.innerHTML = '';
+  const q = (filterQuery || '').toLowerCase().trim();
+  const list = FrankPassUtils.BANKING_UPI_PLATFORMS;
+  const matched = q ? list.filter(p => p.toLowerCase().includes(q)).slice(0, 30) : list.slice(0, 30);
+  const frag = document.createDocumentFragment();
+  matched.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p;
+    frag.appendChild(opt);
+  });
+  platformDatalist.appendChild(frag);
+}
+
+if (platformInput) {
+  renderPinPlatformDatalist('');
+
+  platformInput.addEventListener('focus', () => {
+    if (platformInput.value.trim()) {
+      savedPinPlatformVal = platformInput.value;
+      platformInput.value = '';
+      renderPinPlatformDatalist('');
+      if (platformHint) platformHint.textContent = '';
+      if (platformValidIcon) platformValidIcon.classList.remove('visible');
+    }
+  });
+
+  platformInput.addEventListener('blur', () => {
+    if (!platformInput.value.trim() && savedPinPlatformVal) {
+      platformInput.value = savedPinPlatformVal;
+      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+    savedPinPlatformVal = '';
+  });
+
+  platformInput.addEventListener('input', () => {
+    const raw = platformInput.value.trim();
+    renderPinPlatformDatalist(raw);
+
+    if (raw && typeof FrankPassUtils !== 'undefined') {
+      platformHint.textContent = FrankPassUtils.getSeedHint(raw);
+      const normalized = FrankPassUtils.getNormalizedPlatform(raw);
+      const isRecognized = FrankPassUtils.BANKING_UPI_PLATFORMS.some(p => 
+        p.toLowerCase() === raw.toLowerCase() || 
+        FrankPassUtils.getNormalizedPlatform(p) === normalized
+      );
+      if (platformValidIcon) platformValidIcon.classList.toggle('visible', isRecognized);
+    } else {
+      if (platformHint) platformHint.textContent = '';
+      if (platformValidIcon) platformValidIcon.classList.remove('visible');
+    }
+  });
+}
+
+// 1-Tap Quick Chips
+document.querySelectorAll('.pin-chip-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const name = btn.dataset.name;
+    if (platformInput && name) {
+      platformInput.value = name;
+      platformInput.dispatchEvent(new Event('input', { bubbles: true }));
+      if (secretInput && !secretInput.value) {
+        secretInput.focus();
+      }
+    }
+  });
+});
+
+// Toast Notification Helper
+function showToast(msg) {
+  let toast = document.getElementById('pin-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'pin-toast';
+    toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e1b4b;color:#f5f5f7;border:1px solid #8b5cf6;padding:10px 18px;border-radius:10px;box-shadow:0 10px 25px rgba(0,0,0,0.5);font-size:0.85rem;font-weight:600;z-index:9999;transition:all 0.3s;opacity:0;pointer-events:none;';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(8px)';
+  }, 2500);
+}
+
+// Live Secret Key WYSIWYG Auto-Clean ([a-z0-9] only)
+if (secretInput) {
+  secretInput.addEventListener('input', () => {
+    const raw = secretInput.value || '';
+    const clean = raw.toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (raw !== clean) {
+      secretInput.value = clean;
+    }
+  });
+}
+
+// Generate PIN Handler
+document.getElementById('pin-generate-btn').addEventListener('click', async () => {
+  const plat = platformInput.value.trim();
+  const secret = secretInput.value.trim();
+
+  if (!plat) {
+    showToast('Please enter a bank, card or app name.');
+    platformInput.focus();
+    return;
+  }
+  if (!secret) {
+    showToast('Please enter your Secret Key.');
+    secretInput.focus();
+    return;
+  }
+
+  const normalizedPlat = typeof FrankPassUtils !== 'undefined' ? FrankPassUtils.getNormalizedPlatform(plat) : plat.toLowerCase().trim();
+  
+  try {
+    const activeVariant = getActivePinVariant();
+    const pin = await FRANKPASS_CORE.generatePassword({
+      platform: normalizedPlat,
+      username: '',
+      secretKey: secret,
+      variant: activeVariant,
+      profile: 'numeric',
+      length: currentPinLength
+    });
+
+    generatedPinRaw = pin;
+    document.getElementById('pin-display').textContent = pin.split('').join(' ');
+    showToast('✨ PIN calculated successfully!');
+  } catch (err) {
+    console.error("PIN Generation Error:", err);
+    showToast('Failed to generate PIN: ' + err.message);
+  }
+});
+
+// Copy PIN Handler
+document.getElementById('pin-copy-btn').addEventListener('click', () => {
+  if (!generatedPinRaw) {
+    showToast('Please generate a PIN first.');
+    return;
+  }
+  navigator.clipboard.writeText(generatedPinRaw).then(() => {
+    showToast('📋 PIN copied to clipboard!');
+  });
+});
+</script>
+
+<!-- ============================================================
+     SECTION 8: UNIVERSAL SHARED FOOTER & CONTROLLERS
+     ============================================================ -->
+<div id="site-footer"></div>
+<script src="/footer.min.js?v=4.6.2"></script>
+
+<!-- Sticky Mobile Bottom Navigation -->
+<nav class="mobile-bottom-nav" aria-label="Mobile navigation">
+  <a href="/" class="mob-nav-item" aria-label="Home">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </a>
+  <a href="/get-started.html" class="mob-nav-item" aria-label="Get Started with FrankPass">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+    <span>Get Started</span>
+  </a>
+  <a href="/pricing.html" class="mob-nav-item" aria-label="Get Pro">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span>Pro</span>
+  </a>
+  <a href="/faq.html" class="mob-nav-item" aria-label="FAQ">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span>FAQ</span>
+  </a>
+  <a href="/profile.html" class="mob-nav-item" aria-label="Profile">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>Profile</span>
+  </a>
+</nav>
+</body>
+</html>
+
