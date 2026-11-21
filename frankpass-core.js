@@ -79,7 +79,16 @@ const FRANKPASS_CORE = (function () {
             if (b < validMax) passwordChars.push(charset[b % charsetLen]);
         }
 
-        while (passwordChars.length < targetLength) passwordChars.push(charset[0]);
+        let cycle = 1;
+        while (passwordChars.length < targetLength) {
+            for (let i = 0; i < byteStream.length && passwordChars.length < targetLength; i++) {
+                const fallbackByte = (byteStream[i] ^ (cycle * 0x5A)) & 0xFF;
+                if (fallbackByte < validMax) {
+                    passwordChars.push(charset[fallbackByte % charsetLen]);
+                }
+            }
+            cycle++;
+        }
 
         const requiredSets = [];
         if (requireUpper) requiredSets.push(UPPERCASE);

@@ -2,7 +2,7 @@
 # Hard limit: 100 rules. Current optimized total: ~75 rules.
 
 # ==============================================================================
-# 1. 301 PERMANENT CONSOLIDATION REDIRECTS (48 -> 24 PAGES ARCHITECTURE)
+# 1. 301 PERMANENT CONSOLIDATION REDIRECTS (48 -> 35 CANONICAL PAGES ARCHITECTURE)
 # ==============================================================================
 # Pillar 01: Stateless Future -> Cloud Vaults (EN & HI)
 /why-stateless-password-generation-is-the-future.html /frankpass-vs-cloud-password-vaults.html 301
