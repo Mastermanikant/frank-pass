@@ -95,8 +95,12 @@
       </div>
 
       <!-- Col 2: Use FrankPass (Pill Header from Image 1) -->
-      <div class="footer-col">
-        <span class="footer-col-pill pill-cyan">⚡ ${isHindi ? 'फ्रैंकपास टूल्स' : 'USE FRANKPASS'}</span>
+      <div class="footer-col" id="footer-col-tools">
+        <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-tools')" aria-expanded="false">
+          <span class="footer-col-pill pill-cyan">⚡ ${isHindi ? 'फ्रैंकपास टूल्स' : 'USE FRANKPASS'}</span>
+          <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
+        </button>
+        <div class="footer-col-links-wrap">
         
         <a href="/" class="footer-nav-link">
           <span style="display:flex;align-items:center;gap:8px;">🔑 <span>${isHindi ? 'पासवर्ड जनरेटर' : 'Password generator'}</span></span>
@@ -114,11 +118,16 @@
           <span style="display:flex;align-items:center;gap:8px;">⚖️ <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span></span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
+        </div>
       </div>
 
       <!-- Col 3: Learn & Verify (Pill Header from Image 1) -->
-      <div class="footer-col">
-        <span class="footer-col-pill pill-blue">📖 ${isHindi ? 'समझें व सत्यापित करें' : 'LEARN &amp; VERIFY'}</span>
+      <div class="footer-col" id="footer-col-learn">
+        <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-learn')" aria-expanded="false">
+          <span class="footer-col-pill pill-blue">📖 ${isHindi ? 'समझें व सत्यापित करें' : 'LEARN &amp; VERIFY'}</span>
+          <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
+        </button>
+        <div class="footer-col-links-wrap">
         
         <a href="${isHindi ? '/frankpass-vs-cloud-password-vaults-hindi.html' : '/frankpass-vs-cloud-password-vaults.html'}" class="footer-nav-link">
           <span style="display:flex;align-items:center;gap:8px;">⚙️ <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span></span>
@@ -140,11 +149,16 @@
           <span style="display:flex;align-items:center;gap:8px;">👁️ <span>${isHindi ? 'इनविजिबल वॉल्ट डिफेंस' : 'Invisible Vault Defense'}</span></span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
+        </div>
       </div>
 
       <!-- Col 4: Products & Apps (Pill Header from Image 1) -->
-      <div class="footer-col">
-        <span class="footer-col-pill pill-emerald">📦 ${isHindi ? 'प्रोडक्ट्स और ऐप्स' : 'PRODUCTS'}</span>
+      <div class="footer-col" id="footer-col-products">
+        <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-products')" aria-expanded="false">
+          <span class="footer-col-pill pill-emerald">📦 ${isHindi ? 'प्रोडक्ट्स और ऐप्स' : 'PRODUCTS'}</span>
+          <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
+        </button>
+        <div class="footer-col-links-wrap">
         
         <a href="${isHindi ? '/extension-hindi.html' : '/extension.html'}" class="footer-nav-link">
           <span style="display:flex;align-items:center;gap:8px;">☁️ <span>${isHindi ? 'ब्राउज़र एक्सटेंशन' : 'Browser extension'}</span></span>
@@ -166,6 +180,7 @@
           <span style="display:flex;align-items:center;gap:8px;">🏛️ <span>${isHindi ? 'मास्टर रिसोर्स लाइब्रेरी' : 'Master Resource Library'}</span></span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
+        </div>
       </div>
 
     </div>
@@ -280,7 +295,7 @@
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom">
       <div class="footer-copyright">
-        &copy; ${year} FrankPass. | ${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'}
+        &copy; ${year} FrankPass. | ${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'} | ${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;font-weight:600;">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a>
       </div>
 
       <div class="footer-legal-links">
@@ -299,6 +314,16 @@
     setupHeaderNav();
     setupTheme();
   }
+
+  window.toggleFooterCol = function(id) {
+    if (window.innerWidth > 768) return;
+    const col = document.getElementById(id);
+    if (col) {
+      const isOpen = col.classList.toggle('open');
+      const btn = col.querySelector('.footer-col-header-btn');
+      if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+  };
 
   function setupVersionPopover() {
     const vWrap = document.getElementById('fp-version-wrap');
@@ -327,6 +352,7 @@
       hamburger.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
+        e.stopImmediatePropagation();
         const isOpen = mobileMenu.classList.toggle('open');
         hamburger.classList.toggle('open');
         hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
