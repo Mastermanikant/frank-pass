@@ -1,5 +1,6 @@
 /**
- * footer.js - FrankPass Shared Footer Renderer v3.4.1 (Clean, Minimal, Modern)
+ * footer.js - FrankPass Shared Footer Renderer v3.5.0 (Modern, High-Tech, Responsive)
+ * Inspired by modern cryptographic UI & clean local-first engineering principles.
  * Call: place <div id="site-footer"></div> on every page.
  * Reads social links from FRANKPASS_CONFIG.SOCIAL.
  * Always load this script LAST.
@@ -16,6 +17,7 @@
     const soc   = cfg.SOCIAL || {};
     const year  = new Date().getFullYear();
     const ver   = cfg.SITE_VERSION || '4.3.4';
+    const isHindi = document.documentElement.lang === 'hi' || window.location.pathname.includes('hindi');
 
     /* ── SVG icons ── */
     const ico = {
@@ -24,8 +26,7 @@
       linkedin:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 1 0 0-3.26z"/></svg>`,
       youtube:   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
       whatsapp:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.15-.25-.02-.39.11-.51.11-.11.25-.29.37-.44.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.77 2.71 4.3 3.8 2.52 1.1 2.52.73 2.98.69.45-.04 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.17-.48-.29z"/></svg>`,
-      instagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>`,
-      snapchat:  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true"><path d="M12.004 2c-3.79 0-6.864 2.87-6.864 6.41 0 1.25.43 2.41 1.15 3.34-.14.49-.49 1.12-.98 1.57-.22.2-.18.55.08.69.7.38 1.63.53 2.39.46.42.54.95.99 1.57 1.3-.39.26-.95.54-1.74.83-.5.18-.84.66-.81 1.19.03.54.43.98.97 1.05 1.48.19 3.03.65 3.86 1.66.19.23.51.37.82.37s.63-.14.82-.37c.83-1.01 2.38-1.47 3.86-1.66.54-.07.94-.51.97-1.05.03-.53-.31-1.01-.81-1.19-.79-.29-1.35-.57-1.74-.83.62-.31 1.15-.76 1.57-1.3.76.07 1.69-.08 2.39-.46.26-.14.3-.49.08-.69-.49-.45-.84-1.08-.98-1.57.72-.93 1.15-2.09 1.15-3.34 0-3.54-3.074-6.41-6.864-6.41z"/></svg>`
+      instagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>`
     };
 
     /* ── Social row builder with hover micro-cards ── */
@@ -47,20 +48,36 @@
 <footer class="site-footer" role="contentinfo" data-nosnippet>
   <div class="footer-inner">
 
-    <!-- 4-Column Minimal Grid -->
+    <!-- 4-Column Modern Inspired Grid -->
     <div class="footer-grid">
 
-      <!-- Col 1: Brand & Socials -->
+      <!-- Col 1: Brand & Local-First Philosophy -->
       <div class="footer-brand">
         <a href="/" class="header-logo" aria-label="FrankPass Home">
-          <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="28" height="28" class="header-brand-icon" style="vertical-align:middle;margin-right:6px;display:inline-block;" loading="lazy" decoding="async">
+          <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="30" height="30" class="header-brand-icon" style="vertical-align:middle;margin-right:6px;display:inline-block;" loading="lazy" decoding="async">
           <span class="logo-text"><span>Frank</span>Pass</span>
         </a>
-        <p style="margin-top:0.75rem;font-size:0.86rem;color:var(--text-muted);line-height:1.65;max-width:300px">
-          Stateless, zero-knowledge password generator powered by 1,000,000 PBKDF2-HMAC-SHA512 iterations. Zero cloud databases, zero telemetry, and 100% client-side WebCrypto privacy.
-        </p>
         
-        <div class="footer-social" style="margin-top:1.15rem;display:flex;gap:8px;flex-wrap:wrap;max-width:300px">
+        <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin:0.85rem 0 0.35rem;letter-spacing:-0.01em;">
+          ${isHindi ? 'क्रेडेंशियल्स, सीधे आपके डिवाइस पर।' : 'Credentials, derived locally.'}
+        </h3>
+        
+        <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.6;margin:0 0 1rem;max-width:320px">
+          ${isHindi 
+            ? '10,00,000 PBKDF2 राउंड्स द्वारा संचालित स्टेटलेस पासवर्ड जनरेशन। शून्य क्लाउड वॉल्ट, शून्य ट्रैकिंग और 100% क्लाइंट-साइड सुरक्षा।'
+            : 'Deterministic passwords and PINs, computed on your device with 1,000,000 PBKDF2 iterations. Zero cloud databases, zero telemetry, and zero breach footprint.'}
+        </p>
+
+        <!-- Local-First Assurance Badge (Image 1 Inspiration) -->
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981;padding:5px 12px;border-radius:999px;font-size:0.75rem;font-weight:700;margin-bottom:1.15rem;">
+          <span>💻 ${isHindi ? 'लोकल-फर्स्ट' : 'Local-first'}</span>
+          <span>&bull;</span>
+          <span>${isHindi ? 'शून्य क्लाउड वॉल्ट' : 'No password vault'}</span>
+          <span>&bull;</span>
+          <span>${isHindi ? '100% ऑफलाइन' : 'Offline-ready'}</span>
+        </div>
+        
+        <div class="footer-social" style="display:flex;gap:8px;flex-wrap:wrap;max-width:300px">
           ${socialLink(soc.X || 'https://x.com/frankpasshq', 'X (Twitter)', ico.x, 'Official product updates & security announcements (@frankpasshq).')}
           ${socialLink(soc.GITHUB || 'https://github.com/Mastermanikant/frank-pass', 'FrankPass on GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
           ${socialLink(soc.LINKEDIN || 'https://linkedin.com/in/mastermanikant', 'LinkedIn', ico.linkedin, 'Professional milestones & tech collaborations.')}
@@ -72,55 +89,115 @@
         <div style="margin-top:1rem">
           <button type="button" id="footer-push-btn" class="footer-push-toggle-btn" onclick="togglePushNotifications()" aria-label="Toggle Push Notifications" style="display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.3);color:var(--text-primary);padding:6px 12px;border-radius:8px;font-size:0.78rem;font-weight:600;cursor:pointer;transition:all 0.2s">
             <span id="footer-push-icon">🔔</span>
-            <span id="footer-push-label">Enable Updates Notification</span>
+            <span id="footer-push-label">${isHindi ? 'अपडेट्स नोटिफिकेशन चालू करें' : 'Enable Updates Notification'}</span>
           </button>
         </div>
       </div>
 
-      <!-- Col 2: Products & Tools -->
+      <!-- Col 2: Use FrankPass (Pill Header from Image 1) -->
       <div class="footer-col">
-        <div class="footer-col-title">Products &amp; Tools</div>
-        <a href="/">Stateless Generator</a>
-        <a href="/random-password-generator.html">Random Password Generator</a>
-        <a href="/pin.html">PIN Generator</a>
-        <a href="/extension.html">Browser Extension</a>
-        <a href="https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj" target="_blank" rel="noopener" style="color:#10b981;font-weight:600">🌊 Edge Addon (Live ↗)</a>
-        <a href="/pricing.html">Pricing &amp; Plans</a>
-        <a href="https://tools.frankpass.com" target="_blank" rel="noopener">Developer Tools ↗</a>
-        <a href="/install.html">Install Offline App</a>
+        <span class="footer-col-pill pill-cyan">⚡ ${isHindi ? 'फ्रैंकपास टूल्स' : 'USE FRANKPASS'}</span>
+        
+        <a href="/" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">🔑 <span>${isHindi ? 'पासवर्ड जनरेटर' : 'Password generator'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/pin-hindi.html' : '/pin.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">🔢 <span>${isHindi ? 'पिन जनरेटर' : 'PIN generator'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="/random-password-generator.html" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">🎲 <span>${isHindi ? 'रैंडम पासवर्ड' : 'Random password'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">⚖️ <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
       </div>
 
-      <!-- Col 3: Resources & Security -->
+      <!-- Col 3: Learn & Verify (Pill Header from Image 1) -->
       <div class="footer-col">
-        <div class="footer-col-title">Resources</div>
-        <a href="/frankpass-vs-cloud-password-vaults.html">FrankPass vs Cloud Vaults</a>
-        <a href="/library.html">Tools Comparison</a>
-        <a href="/whitepaper.html">Technical Whitepaper</a>
-        <a href="/secret-key-guide.html">Secret Key Guide</a>
-        <a href="/faq.html">Security FAQ</a>
-        <a href="/where-password-managers-fail-and-invisible-vault.html">Invisible Vault Defense</a>
-        <a href="/library-hindi.html" style="color:var(--accent-light);font-weight:600">🇮🇳 हिन्दी लाइब्रेरी (Hindi Security Guides)</a>
-        <a href="/library.html" style="color:var(--accent-light);font-weight:600">🏛️ Master Library &amp; Directory</a>
+        <span class="footer-col-pill pill-blue">📖 ${isHindi ? 'समझें व सत्यापित करें' : 'LEARN &amp; VERIFY'}</span>
+        
+        <a href="${isHindi ? '/frankpass-vs-cloud-password-vaults-hindi.html' : '/frankpass-vs-cloud-password-vaults.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">⚙️ <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/secret-key-guide-hindi.html' : '/secret-key-guide.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">🔑 <span>${isHindi ? 'सीक्रेट की गाइड' : 'Secret Key Guide'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/whitepaper-hindi.html' : '/whitepaper.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">📄 <span>${isHindi ? 'टेक्निकल व्हाइटपेपर' : 'Technical whitepaper'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/faq-hindi.html' : '/faq.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">❓ <span>${isHindi ? 'सुरक्षा FAQ' : 'Security limits &amp; FAQ'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/where-password-managers-fail-and-invisible-vault-hindi.html' : '/where-password-managers-fail-and-invisible-vault.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">👁️ <span>${isHindi ? 'इनविजिबल वॉल्ट डिफेंस' : 'Invisible Vault Defense'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
       </div>
 
-      <!-- Col 4: Trust & Founder -->
+      <!-- Col 4: Products & Apps (Pill Header from Image 1) -->
       <div class="footer-col">
-        <div class="footer-col-title">Trust &amp; Legal</div>
-        <a href="/about-us.html">About &amp; Founder</a>
-        <a href="/how-frankpass-is-free-without-selling-data.html">Zero-Server Economics</a>
-        <a href="/legal.html#privacy">Privacy Policy</a>
-        <a href="/legal.html#terms">Terms of Service</a>
-        <a href="/legal.html">Legal &amp; Safety Hub</a>
-        <a href="https://mastermanikant.com/contact.html?ref=frankpass_footer" target="_blank" rel="noopener" style="color:var(--accent-light);font-weight:600">💬 Feedback &amp; Suggestions ↗</a>
+        <span class="footer-col-pill pill-emerald">📦 ${isHindi ? 'प्रोडक्ट्स और ऐप्स' : 'PRODUCTS'}</span>
+        
+        <a href="${isHindi ? '/extension-hindi.html' : '/extension.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">☁️ <span>${isHindi ? 'ब्राउज़र एक्सटेंशन' : 'Browser extension'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/install-hindi.html' : '/install.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">📲 <span>${isHindi ? 'ऑफलाइन PWA ऐप' : 'Install the PWA'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/pricing-hindi.html' : '/pricing.html'}" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">👑 <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="https://tools.frankpass.com" target="_blank" rel="noopener" class="footer-nav-link">
+          <span style="display:flex;align-items:center;gap:8px;">💻 <span>${isHindi ? 'डेवलपर टूल्स' : 'Developer CLI &amp; Tools'} ↗</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
+        <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
+          <span style="display:flex;align-items:center;gap:8px;">🏛️ <span>${isHindi ? 'मास्टर रिसोर्स लाइब्रेरी' : 'Master Resource Library'}</span></span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
       </div>
 
     </div>
 
-    <!-- Responsive Ecosystem Network Bar (Clean Brand Names + Hover Micro-Cards) -->
+    <!-- Middle Full-Width Assurance Ribbon (Directly Inspired by Image 1) -->
+    <div class="footer-assurance-ribbon" role="region" aria-label="Security Assurances">
+      <div class="ribbon-item">
+        <span class="ribbon-icon">💻</span>
+        <span><strong>${isHindi ? 'ब्राउज़र में रन' : 'Runs in your browser'}</strong> (${isHindi ? 'लोकल क्लाइंट' : 'Client-Side'})</span>
+      </div>
+      <span class="ribbon-sep" aria-hidden="true">|</span>
+      <div class="ribbon-item">
+        <span class="ribbon-icon">🗄️</span>
+        <span><strong>${isHindi ? 'शून्य सेंट्रल वॉल्ट' : 'No centralized password vault'}</strong> (${isHindi ? 'लीक-प्रूफ' : 'Zero databases'})</span>
+      </div>
+      <span class="ribbon-sep" aria-hidden="true">|</span>
+      <div class="ribbon-item">
+        <span class="ribbon-icon">♾️</span>
+        <span><strong>${isHindi ? 'समान इनपुट, समान पासवर्ड' : 'Same inputs, same output'}</strong> (${isHindi ? 'डिटरमिनिस्टिक' : 'Deterministic math'})</span>
+      </div>
+      <span class="ribbon-sep" aria-hidden="true">|</span>
+      <div class="ribbon-item">
+        <span class="ribbon-icon">⬇️</span>
+        <span><strong>${isHindi ? 'इंस्टॉल के बाद 100% ऑफलाइन' : 'Works offline after installation'}</strong> (PWA &amp; Service Worker)</span>
+      </div>
+    </div>
+
+    <!-- Responsive Ecosystem Network Bar (KEPT 100% INTACT from Image 2) -->
     <div class="footer-ecosystem-bar">
       <div class="footer-ecosystem-header">
         <span style="font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:3px 8px;border-radius:10px">Ecosystem</span>
-        <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600">Our Digital Platforms:</span>
+        <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600">${isHindi ? 'हमारे डिजिटल प्लेटफॉर्म्स:' : 'Our Digital Platforms:'}</span>
       </div>
       
       <div class="footer-ecosystem-grid">
@@ -202,31 +279,25 @@
 
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom">
-      <div class="footer-bottom-copy">
-        <span class="footer-copy-text">&copy; <span id="fp-copy-year">${year}</span> FrankPass</span>
-        <span class="footer-copy-sep">&middot;</span>
-        <span class="footer-author-wrap">Engineered by <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="footer-founder-link">Master Manikant Yadav</a></span>
-        <span class="footer-copy-sep">&middot;</span>
-        <span class="footer-version-badge-wrap" id="fp-version-wrap">
-          <button type="button" class="footer-version-btn" id="fp-version-btn" aria-label="Version and Immutable Algorithm Guarantee">
-            v${ver}<span class="version-dot"></span>
-          </button>
-          <span class="version-popover" id="fp-version-popover" role="tooltip">
-            <strong class="version-popover-title">🛡️ Immutable Algorithm Guarantee</strong>
-            <span class="version-popover-text">The core password derivation formula (PBKDF2-HMAC-SHA512 at 1M rounds) is <strong>permanently frozen and immutable</strong>. It will NEVER change in future updates. The same platform and secret key will always generate the exact same password deterministically. Version updates only reflect UI speed, PWA caching, and theme improvements.</span>
-          </span>
-        </span>
+      <div class="footer-copyright">
+        &copy; ${year} FrankPass. | ${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'}
       </div>
+
       <div class="footer-legal-links">
-        <a href="/legal.html#privacy">Privacy Policy</a>
-        <a href="/legal.html#terms">Terms of Service</a>
-        <a href="/legal.html">Legal Hub</a>
-        <a href="https://mastermanikant.com/contact.html?ref=frankpass_footer_bottom" target="_blank" rel="noopener">Feedback &amp; Suggestions</a>
+        <a href="/legal.html#privacy">${isHindi ? 'गोपनीयता नीति' : 'Privacy Policy'}</a>
+        <a href="/legal.html#terms">${isHindi ? 'सेवा की शर्तें' : 'Terms of Service'}</a>
+        <a href="/legal.html">${isHindi ? 'सुरक्षा व लीगल हब' : 'Legal &amp; Safety Hub'}</a>
+        <a href="https://mastermanikant.com/contact.html?ref=frankpass_footer" target="_blank" rel="noopener">${isHindi ? 'फीडबैक' : 'Feedback'}</a>
+        <a href="${isHindi ? '/library-hindi.html' : '/library.html'}">${isHindi ? 'रिसोर्स लाइब्रेरी' : 'Resource Library'}</a>
       </div>
     </div>
 
   </div>
-</footer>`;
+</footer>
+    `;
+
+    setupHeaderNav();
+    setupTheme();
   }
 
   function setupVersionPopover() {
