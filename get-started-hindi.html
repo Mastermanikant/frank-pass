@@ -1011,60 +1011,48 @@ function closeVideoModal() {
 
 /* FrankPass Onboarding & Secret Key Coach Prompt */
 function getFrankPassGetStartedPrompt(lang) {
-  let cCode = "IN", cName = "India", cCurr = "INR", cSym = "₹", cBase = 400, cFormatted = "₹400", isPpp = true;
-  try {
-    if (typeof window !== "undefined" && window.FrankPassPricing) {
-      const p = window.FrankPassPricing.calculatePricing();
-      cCode = p.code || "IN";
-      cName = p.name || "India";
-      cCurr = p.currency || "INR";
-      cSym = p.symbol || "₹";
-      cBase = p.base || 400;
-      cFormatted = p.formatted || (cSym + cBase);
-      isPpp = !!p.isPPP;
-    } else {
-      const sc = (localStorage.getItem("fp_preferred_country") || "IN").toUpperCase();
-      const fixedMap = {
-        IN: { n: "India", s: "₹", p: 400, c: "INR" },
-        US: { n: "United States", s: "$", p: 25, c: "USD" },
-        GB: { n: "United Kingdom", s: "£", p: 18, c: "GBP" },
-        DE: { n: "Germany", s: "€", p: 18, c: "EUR" },
-        CA: { n: "Canada", s: "C$", p: 30, c: "CAD" },
-        AU: { n: "Australia", s: "A$", p: 32, c: "AUD" }
-      };
-      const target = fixedMap[sc] || fixedMap["US"];
-      cCode = sc;
-      cName = target.n;
-      cCurr = target.c;
-      cSym = target.s;
-      cBase = target.p;
-      cFormatted = target.s + target.p;
-      isPpp = sc !== "US";
-    }
-  } catch(err) {}
+  const chosenLang = lang && lang.trim() ? lang.trim() : 'Hindi';
+  const isHindi = chosenLang.toLowerCase().includes('hindi') || chosenLang.toLowerCase().includes('हिन्दी');
 
-  return `CRITICAL INSTRUCTIONS FOR AI: You are the official FrankPass Onboarding & Secret Key Coach. You MUST only use verified facts from the official FrankPass and Master Manikant Yadav ecosystem. Do NOT hallucinate or make assumptions. Search and retrieve the required detailed documentation directly from https://frankpass.com/llms.txt and https://frankpass.com/llms-full.txt to answer the user's questions with exact citations.
+  if (isHindi) {
+    return `नमस्ते! मैं फ्रैंकपास (FrankPass) से शुरुआत कर रहा हूँ। फ्रैंकपास की आधिकारिक गाइड (https://frankpass.com/llms.txt) के अनुसार मुझे सरल भाषा में समझाइए:
 
-USER'S DETECTED REGION & LOCAL PRICING:
-- Country: ${cName} (${cCode})
-- FrankPass Pro 1-PC Lifetime Price: ${cFormatted} ${cCurr} (${isPpp ? "Purchasing Power Parity Applied, Fair Local Pricing" : "Direct Base Price"}, Zero Subscriptions).
-- Official Sovereign Checkout: https://store.frankbase.com/software/frankpass-pro/
+1. फ्रैंकपास का उपयोग करते समय मुझे क्या करना चाहिए और क्या बिल्कुल नहीं करना चाहिए (Do's & Don'ts), और क्यों नहीं करना चाहिए? (सुरक्षा कारणों सहित स्पष्ट समझाएं ताकि मेरा डेटा 100% सुरक्षित रहे)
+2. केवल आसान छोटे अक्षरों और संख्याओं (जैसे 'i like 30 legs cat' या 'i like flying ant 109') से एक कभी न भूलने वाली मजबूत 'मास्टर सीक्रेट की' कैसे बनाएं?
+3. मेरे डिवाइस (फोन या पीसी) पर बिना किसी झंझट के पहला सुरक्षित पासवर्ड जनरेट करने का सही तरीका क्या है?
 
-YOUR ROLE AS ONBOARDING COACH:
-1. Guide the beginner user step-by-step on how to get started with FrankPass on their specific device:
-   - Stateless Web App (frankpass.com): Instant, zero download, works on any modern browser.
-   - 1-Click Free Browser Extension: Automatic domain detection and direct login autofill without clipboard exposure.
-   - Offline Mobile PWA: 100% functional in Airplane Mode on iOS Safari and Android Chrome.
-2. SECRET KEY CREATION COACHING:
-   - Help the user create an unforgettable Master Secret Key using ONLY lowercase letters, numbers, and simple words (e.g. 'i like 30 legs cat', 'i like flying ant 109', or 'ilikemyfriendsmastermanikants100').
-   - Explain that NO complex symbols or capital letters are needed because FrankPass PBKDF2-HMAC-SHA512 math handles all mathematical complexity automatically!
-   - Remind the user to NEVER share their final secret key with anyone, not even with you (the AI).
-3. FOUNDER'S VERIFIED GUIDANCE (MASTER MANIKANT YADAV):
-   - "Understand this mathematical stateless system thoroughly BEFORE you use it. If you truly understand it, it is a permanent shield against cloud breaches, database leaks, and subscription traps."
+महत्वपूर्ण निर्देश: कृपया पूरा उत्तर शुद्ध हिन्दी (देवनागरी लिपि) में ही दें (हिंग्लिश या रोमन अक्षरों में नहीं), और केवल फ्रैंकपास के आधिकारिक नियमों के आधार पर सीधा, व्यावहारिक व दोस्ताना मार्गदर्शन दें।`;
+  }
 
-NOW ANSWER IN ${lang} LANGUAGE in a warm, structured, step-by-step, beginner-friendly format.
-Ask the user: "What device are you using right now (Phone or PC), and would you like me to help you craft your memorable Secret Key formula right now?"`;
+  return `Hi! I am getting started with FrankPass. Based on the official FrankPass documentation (https://frankpass.com/llms.txt), please guide me in a simple, beginner-friendly way:
+
+1. What should I DO and what must I NEVER DO (Do's & Don'ts) when using FrankPass, and WHY? (Explain the security reasons clearly so my credentials remain 100% safe)
+2. How to create an unforgettable Master Secret Key using ONLY simple lowercase words and numbers (e.g. 'i like 30 legs cat' or 'i like flying ant 109') with zero complex symbols?
+3. How to safely generate my first password on my device (Phone or PC)?
+
+IMPORTANT SCRIPT RULE: Please provide the entire answer in ${chosenLang} language using its official native script (e.g., Devanagari for Hindi, Bengali script for Bengali, Tamil script for Tamil, etc. - do NOT use romanized transliteration). Provide clear, direct, and practical guidance strictly based on official FrankPass facts.`;
 }
+
+/* Auto-Detect Browser Language with Manual Override */
+(function autoDetectBrowserLanguage() {
+  const aiLangInput = document.getElementById('ai-lang');
+  if (!aiLangInput) return;
+  try {
+    const navLang = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+    const prefix = navLang.split('-')[0].toLowerCase();
+    const langMap = {
+      'hi': 'Hindi', 'bn': 'Bengali', 'ta': 'Tamil', 'te': 'Telugu',
+      'mr': 'Marathi', 'gu': 'Gujarati', 'pa': 'Punjabi', 'kn': 'Kannada',
+      'ml': 'Malayalam', 'or': 'Odia', 'es': 'Spanish', 'fr': 'French',
+      'de': 'German', 'ar': 'Arabic', 'ru': 'Russian', 'ja': 'Japanese',
+      'pt': 'Portuguese', 'zh': 'Chinese', 'it': 'Italian', 'ko': 'Korean',
+      'tr': 'Turkish', 'id': 'Indonesian', 'en': 'English'
+    };
+    if (langMap[prefix]) {
+      aiLangInput.value = langMap[prefix];
+    }
+  } catch(e) {}
+})();
 
 /* Multilingual AI Launch Function */
 function openAI(e) {
