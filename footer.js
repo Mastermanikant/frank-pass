@@ -97,25 +97,25 @@
       <!-- Col 2: Use FrankPass (Pill Header from Image 1) -->
       <div class="footer-col" id="footer-col-tools">
         <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-tools')" aria-expanded="false">
-          <span class="footer-col-pill pill-cyan">⚡ ${isHindi ? 'फ्रैंकपास टूल्स' : 'USE FRANKPASS'}</span>
+          <span class="footer-col-pill pill-cyan">${isHindi ? 'टूल्स' : 'TOOLS'}</span>
           <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
         </button>
         <div class="footer-col-links-wrap">
         
         <a href="/" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">🔑 <span>${isHindi ? 'पासवर्ड जनरेटर' : 'Password generator'}</span></span>
+          <span>${isHindi ? 'पासवर्ड जनरेटर' : 'Password generator'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/pin-hindi.html' : '/pin.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">🔢 <span>${isHindi ? 'पिन जनरेटर' : 'PIN generator'}</span></span>
+          <span>${isHindi ? 'पिन जनरेटर' : 'PIN generator'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="/random-password-generator.html" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">🎲 <span>${isHindi ? 'रैंडम पासवर्ड' : 'Random password'}</span></span>
+          <span>${isHindi ? 'रैंडम पासवर्ड' : 'Random password'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">⚖️ <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span></span>
+          <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         </div>
@@ -124,29 +124,29 @@
       <!-- Col 3: Learn & Verify (Pill Header from Image 1) -->
       <div class="footer-col" id="footer-col-learn">
         <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-learn')" aria-expanded="false">
-          <span class="footer-col-pill pill-blue">📖 ${isHindi ? 'समझें व सत्यापित करें' : 'LEARN &amp; VERIFY'}</span>
+          <span class="footer-col-pill pill-blue">${isHindi ? 'रिसोर्सेज' : 'RESOURCES'}</span>
           <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
         </button>
         <div class="footer-col-links-wrap">
         
         <a href="${isHindi ? '/frankpass-vs-cloud-password-vaults-hindi.html' : '/frankpass-vs-cloud-password-vaults.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">⚙️ <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span></span>
+          <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/secret-key-guide-hindi.html' : '/secret-key-guide.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">🔑 <span>${isHindi ? 'सीक्रेट की गाइड' : 'Secret Key Guide'}</span></span>
+          <span>${isHindi ? 'सीक्रेट की गाइड' : 'Secret Key Guide'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/whitepaper-hindi.html' : '/whitepaper.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">📄 <span>${isHindi ? 'टेक्निकल व्हाइटपेपर' : 'Technical whitepaper'}</span></span>
+          <span>${isHindi ? 'टेक्निकल व्हाइटपेपर' : 'Technical whitepaper'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/faq-hindi.html' : '/faq.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">❓ <span>${isHindi ? 'सुरक्षा FAQ' : 'Security limits &amp; FAQ'}</span></span>
+          <span>${isHindi ? 'सुरक्षा FAQ' : 'Security limits &amp; FAQ'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/where-password-managers-fail-and-invisible-vault-hindi.html' : '/where-password-managers-fail-and-invisible-vault.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">👁️ <span>${isHindi ? 'इनविजिबल वॉल्ट डिफेंस' : 'Invisible Vault Defense'}</span></span>
+          <span>${isHindi ? 'इनविजिबल वॉल्ट डिफेंस' : 'Invisible Vault Defense'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         </div>
@@ -155,29 +155,29 @@
       <!-- Col 4: Products & Apps (Pill Header from Image 1) -->
       <div class="footer-col" id="footer-col-products">
         <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-products')" aria-expanded="false">
-          <span class="footer-col-pill pill-emerald">📦 ${isHindi ? 'प्रोडक्ट्स और ऐप्स' : 'PRODUCTS'}</span>
+          <span class="footer-col-pill pill-emerald">${isHindi ? 'प्रोडक्ट्स' : 'PRODUCTS'}</span>
           <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
         </button>
         <div class="footer-col-links-wrap">
         
         <a href="${isHindi ? '/extension-hindi.html' : '/extension.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">☁️ <span>${isHindi ? 'ब्राउज़र एक्सटेंशन' : 'Browser extension'}</span></span>
+          <span>${isHindi ? 'ब्राउज़र एक्सटेंशन' : 'Browser extension'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/install-hindi.html' : '/install.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">📲 <span>${isHindi ? 'ऑफलाइन PWA ऐप' : 'Install the PWA'}</span></span>
+          <span>${isHindi ? 'ऑफलाइन PWA ऐप' : 'Install the PWA'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/pricing-hindi.html' : '/pricing.html'}" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">👑 <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span></span>
+          <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="https://tools.frankpass.com" target="_blank" rel="noopener" class="footer-nav-link">
-          <span style="display:flex;align-items:center;gap:8px;">💻 <span>${isHindi ? 'डेवलपर टूल्स' : 'Developer CLI &amp; Tools'} ↗</span></span>
+          <span>${isHindi ? 'डेवलपर टूल्स' : 'Developer CLI &amp; Tools'} ↗</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
-          <span style="display:flex;align-items:center;gap:8px;">🏛️ <span>${isHindi ? 'मास्टर रिसोर्स लाइब्रेरी' : 'Master Resource Library'}</span></span>
+          <span>${isHindi ? 'मास्टर रिसोर्स लाइब्रेरी' : 'Master Resource Library'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         </div>
@@ -294,6 +294,9 @@
 
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom">
+      <div class="footer-trust-microcopy" style="text-align:center;width:100%;margin-bottom:0.75rem;font-size:0.8rem;color:var(--text-muted);letter-spacing:0.02em;">
+        🔒 100% Stateless &middot; 0 Bytes Stored &middot; Pure Mathematics
+      </div>
       <div class="footer-copyright">
         &copy; ${year} FrankPass. | ${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'} | ${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;font-weight:600;">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a>
       </div>
