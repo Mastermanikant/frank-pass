@@ -277,11 +277,19 @@
 
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom">
-      <div class="footer-trust-microcopy" style="text-align:center;width:100%;margin-bottom:0.75rem;font-size:0.8rem;color:var(--text-muted);letter-spacing:0.02em;">
-        🔒 100% Stateless &middot; 0 Bytes Stored &middot; Pure Mathematics
+      <div class="footer-trust-microcopy" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0.35rem 0.65rem;width:100%;margin-bottom:0.75rem;font-size:0.78rem;color:var(--text-muted);letter-spacing:0.02em;">
+        <span style="white-space:nowrap;">🔒 100% Stateless</span>
+        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <span style="white-space:nowrap;">0 Bytes Stored</span>
+        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <span style="white-space:nowrap;">Pure Mathematics</span>
       </div>
-      <div class="footer-copyright">
-        &copy; ${year} FrankPass. | ${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'} | ${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;font-weight:600;">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a>
+      <div class="footer-copyright" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0.35rem 0.55rem;font-size:0.82rem;color:var(--text-muted);">
+        <span style="white-space:nowrap;">&copy; ${year} FrankPass.</span>
+        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <span style="white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'}</span>
+        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;font-weight:600;">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
       </div>
 
       <div class="footer-legal-links">
