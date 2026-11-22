@@ -15,11 +15,9 @@
   <title>Get Started with FrankPass: Web App, Browser Extension, Pro &amp; Mobile PWA Onboarding</title>
   <meta name="description" content="Step-by-step onboarding walkthrough for FrankPass. Learn how to use the stateless web generator, free 1-click browser extension, Pro hardware-bound profiles, and offline mobile PWA.">
   <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://frankpass.com/get-started.html">
+  <link rel="canonical" href="https://frankpass.com/get-started.html">
   <link rel="alternate" hreflang="en" href="https://frankpass.com/get-started.html">
   <link rel="alternate" hreflang="hi" href="https://frankpass.com/get-started-hindi.html">
-  <link rel="alternate" hreflang="x-default" href="https://frankpass.com/get-started.html">
-  <link rel="alternate" hreflang="en" href="https://frankpass.com/get-started.html">
   <link rel="alternate" hreflang="x-default" href="https://frankpass.com/get-started.html">
   
   <meta property="og:title" content="Get Started with FrankPass: Web App, Browser Extension &amp; Mobile PWA">
@@ -33,7 +31,6 @@
   <meta name="twitter:title" content="Get Started with FrankPass">
   <meta name="twitter:description" content="Master stateless password generation across Web, Extension, and Mobile PWA.">
   <meta name="twitter:image" content="https://frankpass.com/icons/icon-512.png">
-
   
   <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -188,24 +185,6 @@
       font-size: 0.92rem;
       color: var(--text-primary);
     }
-    .compare-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1.5rem 0;
-      font-size: 0.9rem;
-    }
-    .compare-table th, .compare-table td {
-      padding: 0.75rem 0.85rem;
-      border: 1px solid var(--border);
-      text-align: left;
-    }
-    .compare-table th {
-      background: var(--card-glass-bg);
-      font-weight: 700;
-    }
-    .check-yes { color: #10b981; font-weight: 700; }
-    .check-no { color: var(--text-muted); }
-    .check-pro { color: #fbbf24; font-weight: 700; }
     .acc-cta-row {
       display: flex;
       gap: 10px;
@@ -223,6 +202,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .acc-btn-primary:hover {
+      background: var(--accent-glow, #7c3aed);
+      transform: translateY(-1px);
     }
     .acc-btn-ghost {
       background: var(--bg-secondary);
@@ -236,6 +222,11 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .acc-btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent-light);
     }
     @media(max-width:640px) {
       .accordion-icon { display: none; }
@@ -406,19 +397,74 @@
   </button>
   
   <a href="/extension.html" class="btn-primary" style="margin-top:0.85rem;text-align:center;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:block;padding:0.75rem 1rem;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;">⚡ Get Extension &rarr;</a>
-</nav><main class="container" id="main-content" style="max-width:900px;margin:2.5rem auto 4rem;padding:0 1.25rem;">
+</nav>
+
+<main class="container" id="main-content" style="max-width:900px;margin:2.5rem auto 4rem;padding:0 1.25rem;">
   
-  <header style="text-align:center;margin-bottom:2.5rem;">
+  <header style="text-align:center;margin-bottom:2.25rem;">
     <div style="font-size:0.82rem;font-weight:700;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:0.25rem 0.75rem;border-radius:20px;display:inline-block;margin-bottom:0.75rem;">
-      Complete Onboarding Guide
+      Complete Onboarding Gateway
     </div>
     <h1 style="font-size:clamp(2rem,5vw,2.75rem);font-weight:800;color:var(--text-primary);line-height:1.2;margin:0 0 0.75rem 0;">
-      How to Use FrankPass
+      How to Get Started with FrankPass
     </h1>
     <p style="color:var(--text-muted);font-size:1.05rem;max-width:640px;margin:0 auto;line-height:1.6;">
-      Master stateless security across all 4 platforms: the Instant Web App, 100% Free Browser Extension, Pro Hardware-Bound Profiles, and Offline Mobile PWA.
+      Master stateless mathematical security across all devices: the Universal Web App, Free 1-Click Extension, Offline Mobile PWA, and Pro Hardware Pass.
     </p>
   </header>
+
+  <!-- 60-Second Video Walkthrough & Visual Guides Banner -->
+  <div style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:18px;padding:1.35rem 1.6rem;margin-bottom:2.25rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.25rem;box-shadow:var(--card-shadow);">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,rgba(139,92,246,0.25),rgba(16,185,129,0.25));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">
+        🎬
+      </div>
+      <div>
+        <h2 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0 0 0.2rem 0;">New to FrankPass? Watch 60s Visual Walkthrough</h2>
+        <p style="font-size:0.84rem;color:var(--text-muted);margin:0;line-height:1.5;">Learn the math, choose your secret key, and generate passwords in under 1 minute.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:0.65rem;flex-wrap:wrap;align-items:center;">
+      <button type="button" onclick="openVideoModal()" class="acc-btn-primary" style="padding:0.6rem 1.15rem;font-size:0.86rem;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">
+        <span>▶</span> <span>Watch 60s Walkthrough</span>
+      </button>
+      <a href="/FrankPass-Master-Visual-Guide.pdf" target="_blank" rel="noopener" class="acc-btn-ghost" style="padding:0.6rem 1.05rem;font-size:0.86rem;text-decoration:none;">
+        <span>📖</span> Visual Guide (PDF)
+      </a>
+      <a href="/get-started-hindi.html" class="acc-btn-ghost" style="padding:0.6rem 1.05rem;font-size:0.86rem;text-decoration:none;color:var(--accent-light);">
+        🇮🇳 हिंदी में पढ़ें
+      </a>
+    </div>
+  </div>
+
+  <!-- Video Walkthrough Modal Popup -->
+  <div id="video-walkthrough-modal" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:99999;align-items:center;justify-content:center;padding:1.25rem;">
+    <div style="background:var(--bg-primary,#0a0a14);border:1px solid var(--border);border-radius:20px;max-width:720px;width:100%;padding:1.5rem;box-shadow:0 24px 60px rgba(0,0,0,0.8);position:relative;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin:0;display:flex;align-items:center;gap:8px;">
+          <span>🎬</span> FrankPass 60-Second Onboarding Walkthrough
+        </h3>
+        <button type="button" onclick="closeVideoModal()" aria-label="Close video" style="background:none;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;padding:0.25rem 0.5rem;line-height:1;">&times;</button>
+      </div>
+      
+      <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;background:#05050a;border:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;">
+        <div style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:1.5rem;">
+          <div style="font-size:3rem;margin-bottom:0.75rem;">🚀</div>
+          <div style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin-bottom:0.4rem;">Official 60-Second Walkthrough Video</div>
+          <p style="font-size:0.86rem;color:var(--text-muted);max-width:460px;line-height:1.5;margin-bottom:1.25rem;">Coming soon to our official YouTube channel! In the meantime, explore our 5-slide visual guide or chat with our AI Coach below.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+            <a href="/FrankPass-Master-Visual-Guide.pdf" target="_blank" rel="noopener" class="acc-btn-primary" style="padding:0.5rem 1rem;font-size:0.84rem;text-decoration:none;">
+              <span>📖</span> Read Master Visual PDF
+            </a>
+            <a href="https://x.com/frankpasshq" target="_blank" rel="noopener" class="acc-btn-ghost" style="padding:0.5rem 1rem;font-size:0.84rem;text-decoration:none;">
+              <span>𝕏</span> Follow @frankpasshq
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Extension Install Welcome Hero Banner (Triggered via ?ref=extension_install) -->
   <div id="ext-welcome-banner" class="ext-welcome-banner" style="display:none;background:linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(139,92,246,0.18) 100%);border:2px solid #10b981;border-radius:18px;padding:1.75rem;margin-bottom:2.25rem;box-shadow:0 12px 35px rgba(16,185,129,0.2);">
@@ -456,7 +502,6 @@
         </a>
       </div>
 
-      <!-- Multiple Upcoming Products Follow Loop -->
       <div style="background: rgba(0,0,0,0.15); border-radius: 10px; padding: 0.9rem 1.1rem; border: 1px solid var(--border); font-size: 0.82rem; color: var(--text-secondary); line-height: 1.5;">
         <div style="font-weight: 800; color: var(--text-primary); margin-bottom: 0.35rem; display: flex; align-items: center; gap: 6px;">
           <span>🚀</span> Connect with Master Manikant for Privacy &amp; AI Updates
@@ -489,10 +534,8 @@
       Your extension is ready! Follow these simple steps to start auto-filling ultra-secure mathematical passwords across all websites:
     </p>
 
-    <div class="ext-steps-grid" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:1rem;margin-bottom:1.25rem;">
-      
-      <!-- Step 1: Pin -->
-      <div class="ext-step-card" style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.15rem;">
+    <div class="ext-steps-grid">
+      <div class="ext-step-card">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
           <span style="background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;">1</span>
           <strong style="font-size:0.95rem;color:var(--text-primary);">Pin the Extension</strong>
@@ -500,17 +543,15 @@
         <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Click the <strong>Puzzle Icon 🧩</strong> in Chrome/Edge toolbar and click the <strong>Pin 📌</strong> next to FrankPass for instant 1-click access.</p>
       </div>
 
-      <!-- Step 2: Accept Security Architecture Notice -->
-      <div class="ext-step-card" style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.15rem;">
+      <div class="ext-step-card">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
           <span style="background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;">2</span>
           <strong style="font-size:0.95rem;color:var(--text-primary);">Accept Security Notice</strong>
         </div>
-        <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Click the FrankPass icon. Review the <strong>Mandatory Security Architecture Notice</strong> (100% offline, zero cloud backdoors, zero password recovery). Check the agreement box and click <strong>Launch FrankPass</strong>.</p>
+        <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Click the FrankPass icon. Review the <strong>Mandatory Security Architecture Notice</strong> (100% offline, zero cloud backdoors, zero password recovery). Check agreement and click <strong>Launch FrankPass</strong>.</p>
       </div>
 
-      <!-- Step 3: Open on Any Site -->
-      <div class="ext-step-card" style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.15rem;">
+      <div class="ext-step-card">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
           <span style="background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;">3</span>
           <strong style="font-size:0.95rem;color:var(--text-primary);">Press Ctrl + Shift + F</strong>
@@ -518,80 +559,29 @@
         <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Visit any login page (e.g. Gmail, GitHub). Press <kbd class="fp-kbd">Ctrl + Shift + F</kbd> or click the icon. The domain name is automatically detected and locked!</p>
       </div>
 
-      <!-- Step 4: Enter Key & Fill -->
-      <div class="ext-step-card" style="background:var(--card-glass-bg);border:1px solid var(--border);border-radius:14px;padding:1.15rem;">
+      <div class="ext-step-card">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:0.5rem;">
           <span style="background:var(--accent);color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.78rem;font-weight:800;">4</span>
           <strong style="font-size:0.95rem;color:var(--text-primary);">1-Click Direct Autofill</strong>
         </div>
         <p style="font-size:0.82rem;color:var(--text-muted);margin:0;line-height:1.5;">Type your Master Secret Key and click <strong>⚡ Direct Autofill</strong>. Password injects directly into the login field with zero clipboard exposure!</p>
       </div>
-
     </div>
 
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-      <a href="/FrankPass-Extension-Visual-Guide.pdf" target="_blank" rel="noopener" class="acc-btn-primary" style="padding:8px 16px;font-size:0.85rem;font-weight:700;border-radius:8px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
+      <a href="/FrankPass-Extension-Visual-Guide.pdf" target="_blank" rel="noopener" class="acc-btn-primary" style="padding:8px 16px;font-size:0.85rem;">
         <span>📖</span> Read Extension Visual Guide (PDF)
       </a>
-      <a href="/FrankPass-Extension-Visual-Guide-Hindi.pdf" target="_blank" rel="noopener" class="acc-btn-ghost" style="padding:8px 14px;font-size:0.85rem;font-weight:600;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--accent-light);display:inline-flex;align-items:center;gap:6px;">
+      <a href="/FrankPass-Extension-Visual-Guide-Hindi.pdf" target="_blank" rel="noopener" class="acc-btn-ghost" style="padding:8px 14px;font-size:0.85rem;color:var(--accent-light);">
         <span>📖</span> हिन्दी एक्सटेंशन PDF
       </a>
-      <button type="button" onclick="toggleAcc('acc-ext-free')" class="btn-ghost" style="padding:8px 14px;font-size:0.85rem;font-weight:600;border:1px solid var(--border);border-radius:8px;background:rgba(255,255,255,0.05);color:var(--text-primary);cursor:pointer;">
+      <button type="button" onclick="toggleAcc('acc-ext-free')" class="acc-btn-ghost" style="padding:8px 14px;font-size:0.85rem;cursor:pointer;">
         📖 Full Walkthrough ▾
       </button>
     </div>
   </div>
 
-  <!-- Master Visual Guides & Whitepaper Hub (Dual Guides, Dual Languages) -->
-  <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.25rem;margin-bottom:2.5rem;">
-    
-    <!-- Card 1: Extension Visual Guide -->
-    <div style="background:linear-gradient(135deg, rgba(16,185,129,0.12), rgba(56,189,248,0.08));border:1.5px solid rgba(16,185,129,0.35);border-radius:16px;padding:1.4rem;display:flex;flex-direction:column;justify-content:space-between;gap:1rem;">
-      <div style="display:flex;align-items:flex-start;gap:12px;">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">🧩</div>
-        <div>
-          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;flex-wrap:wrap;">
-            <h2 style="font-size:1.1rem;font-weight:800;color:var(--text-primary);margin:0;">Extension Visual Guide (PDF)</h2>
-            <span style="font-size:0.72rem;font-weight:800;background:rgba(16,185,129,0.2);color:#34d399;padding:0.15rem 0.5rem;border-radius:999px;border:1px solid rgba(16,185,129,0.3);">New • Dual Lang</span>
-          </div>
-          <p style="font-size:0.84rem;color:var(--text-muted);margin:0;line-height:1.5;">5-slide visual manual covering toolbar pinning, smart domain detection, zero-clipboard autofill, and Pro PIN unlock.</p>
-        </div>
-      </div>
-      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-        <a href="/FrankPass-Extension-Visual-Guide.pdf" target="_blank" rel="noopener" class="acc-btn-primary" style="padding:0.55rem 1rem;font-size:0.84rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
-          <span>📖</span> Read English PDF
-        </a>
-        <a href="/FrankPass-Extension-Visual-Guide-Hindi.pdf" target="_blank" rel="noopener" class="acc-btn-ghost" style="padding:0.55rem 1rem;font-size:0.84rem;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(16,185,129,0.4);text-decoration:none;color:#34d399;">
-          <span>📖</span> हिन्दी PDF पढ़ें
-        </a>
-      </div>
-    </div>
-
-    <!-- Card 2: Web App Master Visual Guide -->
-    <div style="background:linear-gradient(135deg, rgba(139,92,246,0.12), rgba(59,130,246,0.08));border:1.5px solid rgba(139,92,246,0.35);border-radius:16px;padding:1.4rem;display:flex;flex-direction:column;justify-content:space-between;gap:1rem;">
-      <div style="display:flex;align-items:flex-start;gap:12px;">
-        <div style="width:44px;height:44px;border-radius:12px;background:rgba(139,92,246,0.2);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;">📊</div>
-        <div>
-          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;flex-wrap:wrap;">
-            <h2 style="font-size:1.1rem;font-weight:800;color:var(--text-primary);margin:0;">Web App Master Visual Guide (PDF)</h2>
-            <span style="font-size:0.72rem;font-weight:800;background:rgba(139,92,246,0.2);color:#c084fc;padding:0.15rem 0.5rem;border-radius:999px;border:1px solid rgba(139,92,246,0.3);">Universal</span>
-          </div>
-          <p style="font-size:0.84rem;color:var(--text-muted);margin:0;line-height:1.5;">Master map for Platform names, blank username rules, Master Secret Key choice, variant rotation, and ATM PINs.</p>
-        </div>
-      </div>
-      <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-        <a href="/FrankPass-Master-Visual-Guide.pdf" target="_blank" rel="noopener" class="acc-btn-primary" style="padding:0.55rem 1rem;font-size:0.84rem;display:inline-flex;align-items:center;gap:6px;text-decoration:none;">
-          <span>📖</span> Read English PDF
-        </a>
-        <a href="/frankpass-whitepaper-hindi.pdf" target="_blank" rel="noopener" class="acc-btn-ghost" style="padding:0.55rem 1rem;font-size:0.84rem;display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(139,92,246,0.4);text-decoration:none;color:var(--accent-light);">
-          <span>📖</span> हिन्दी PDF पढ़ें
-        </a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ── 4 Sovereign Onboarding Platforms ── -->
+  <!-- ── 4 Sovereign Onboarding Platforms Accordions ── -->
   <div id="onboarding-accordions">
 
     <!-- 1. Web App Onboarding -->
@@ -618,64 +608,8 @@
           </li>
           <li>
             <span class="step-num">3</span>
-            <span>Enter your personal, memorable <strong>Master Secret Key</strong> (e.g. <code>blue umbrella flies over desert sunset 482</code> - do not use this example).</span>
+            <span>Enter your personal, memorable <strong>Master Secret Key</strong> using only simple lowercase words and numbers (e.g. <code>i like 30 legs cat</code> or <code>i like flying ant 109</code>). No complex symbols needed!</span>
           </li>
-
-        <!-- AI Master Secret Key Coach Component -->
-        <div class="ai-secret-key-coach-card" style="background: linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(16,185,129,0.08) 100%); border: 1.5px solid rgba(139,92,246,0.4); border-radius: 16px; padding: 1.35rem 1.5rem; margin: 1.25rem 0; box-shadow: 0 8px 30px rgba(0,0,0,0.2);">
-          
-          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 0.75rem;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span style="font-size: 1.35rem;">🤖 🔑</span>
-              <strong style="font-size: 1.05rem; color: var(--text-primary); font-family: 'Outfit', sans-serif;">
-                Chat with Any AI to Create Your Unforgettable Secret Key
-              </strong>
-            </div>
-            <span style="font-size: 0.75rem; font-weight: 800; background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid rgba(16,185,129,0.4); padding: 3px 10px; border-radius: 999px;">
-              1-Click AI Assistant
-            </span>
-          </div>
-
-          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin: 0 0 0.85rem;">
-            Don't know what Master Key to choose? Ask ChatGPT, Gemini, or Claude to be your private passphrase coach! 
-            <strong>The Rule:</strong> Use only simple lowercase words and numbers (like <code style="color: #38bdf8; font-weight:700;">i like 30 legs cat</code>, <code style="color: #38bdf8; font-weight:700;">i like flying ant 109</code>, or <code style="color: #38bdf8; font-weight:700;">ilikemyfriendsmastermanikants100</code>). You don't need any complex symbols or capital letters: FrankPass math handles all complexity automatically!
-          </p>
-
-          <!-- 1-Click Copy AI Prompt Box -->
-          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 0.8rem 1rem; margin-bottom: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
-            <span style="color: #10b981; font-weight: 700;">Prompt for AI:</span> "You are my FrankPass Secret Key Coach. Help me create an unforgettable Master Passphrase that only I know and no one can guess. Rules: 1. Use ONLY lowercase letters, numbers, and simple words (e.g. 'i like 30 legs cat', 'i like flying ant 109'). No complex symbols needed! 2. Ask me 2-3 fun, quirky questions about my childhood, weird habits, or imagination. 3. Give me 3 unguessable options. 4. Remind me to never share my final phrase with anyone!"
-          </div>
-
-          <!-- Launch & Action Buttons -->
-          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-            <button type="button" onclick="copyAIPassphrasePrompt(this)" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); color: #fff; border: none; font-weight: 800; font-size: 0.84rem; padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 15px rgba(139,92,246,0.35);">
-              <span>📋</span> <span>Copy AI Prompt</span>
-            </button>
-            <a href="https://chatgpt.com/?q=You%20are%20my%20FrankPass%20Secret%20Key%20Coach.%20Help%20me%20create%20an%20unforgettable%20Master%20Passphrase%20using%20only%20lowercase%20letters%20and%20numbers%20like%20'i%20like%2030%20legs%20cat'%20or%20'i%20like%20flying%20ant%20109'.%20Ask%20me%202-3%20quirky%20questions%20to%20give%20me%203%20unique%20options!" target="_blank" rel="noopener noreferrer" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 0.82rem; padding: 0.58rem 0.95rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px;">
-              <span>🟢</span> ChatGPT ↗
-            </a>
-            <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 0.82rem; padding: 0.58rem 0.95rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px;">
-              <span>✨</span> Gemini ↗
-            </a>
-            <a href="https://claude.ai/new" target="_blank" rel="noopener noreferrer" style="background: rgba(255,255,255,0.06); border: 1px solid var(--border-color); color: var(--text-primary); text-decoration: none; font-weight: 700; font-size: 0.82rem; padding: 0.58rem 0.95rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 5px;">
-              <span>🟠</span> Claude ↗
-            </a>
-          </div>
-
-          <!-- Try It Yourself & Share Feedback Callout -->
-          <div style="margin-top: 1rem; padding-top: 0.85rem; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; font-size: 0.82rem; color: var(--text-muted);">
-            <div>
-              <span>🧪</span> <strong>Try It Yourself:</strong> Test your key on <a href="/" style="color: #38bdf8; font-weight: 700;">Web Generator</a> or extension. Same inputs = 100% same password!
-            </div>
-            <div>
-              <a href="https://whatsapp.com/channel/0029VbBvVfqLNSa2At2Shf2z" target="_blank" rel="noopener" style="color: #10b981; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;">
-                <span>💬</span> Share Problem or Feedback ↗
-              </a>
-            </div>
-          </div>
-
-        </div>
-
           <li>
             <span class="step-num">4</span>
             <span>Click <strong>Generate Password</strong>. 1,000,000 PBKDF2-HMAC-SHA512 iterations calculate your high-entropy password in RAM locally in ~0.8s with massive offline cracking resistance.</span>
@@ -746,13 +680,73 @@
       </div>
     </div>
 
-    <!-- 3. Pro Extension Benefits Onboarding -->
+    <!-- 3. Mobile Offline PWA Onboarding -->
+    <div class="accordion-card" id="acc-pwa">
+      <div class="accordion-header" onclick="toggleAcc('acc-pwa')">
+        <div class="accordion-header-left">
+          <div class="accordion-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;">📱</div>
+          <div>
+            <h2 class="accordion-title">3. Mobile Offline PWA (iOS &amp; Android)</h2>
+            <p class="accordion-subtitle">Install to Home Screen · 100% Offline · Airplane Mode Functional</p>
+          </div>
+        </div>
+        <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+      </div>
+      <div class="accordion-body">
+        
+        <!-- 1-Click Universal Install Action Card -->
+        <div style="background:var(--card-glass-bg);border:1.5px solid var(--accent);border-radius:14px;padding:1.4rem;text-align:center;margin:0.5rem 0 1.25rem;">
+          <div style="font-size:2rem;margin-bottom:0.4rem;">📲</div>
+          <h3 style="font-size:1.15rem;font-weight:800;color:var(--text-primary);margin:0 0 0.35rem 0;">1-Click Universal App Install</h3>
+          <p style="font-size:0.86rem;color:var(--text-muted);max-width:480px;margin:0 auto 1.15rem;line-height:1.5;">Install FrankPass directly to your device home screen or PC desktop. Works 100% offline in Airplane Mode.</p>
+          
+          <button type="button" id="getstarted-universal-pwa-btn" class="pwa-install-btn acc-btn-primary" style="padding:0.75rem 1.6rem;font-size:0.95rem;box-shadow:0 6px 20px rgba(139,92,246,0.35);">
+            <span>⚡</span> <span>Install Offline App Now</span>
+          </button>
+          
+          <div id="ios-instruction-box" style="display:none;background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.35);border-radius:10px;padding:0.85rem 1rem;margin-top:1rem;font-size:0.85rem;color:var(--text-primary);text-align:left;">
+            <strong>🍏 iPhone / iPad (Safari):</strong> Tap the <strong>Share Icon (📤)</strong> at the bottom of Safari &rarr; Scroll down and select <strong>"Add to Home Screen" (⊞)</strong>.
+          </div>
+        </div>
+
+        <ul class="step-list">
+          <li>
+            <span class="step-num">1</span>
+            <span><strong>Android (Chrome/Brave/Edge):</strong> Open <code>frankpass.com</code> &rarr; Tap browser menu <strong>(⋮)</strong> &rarr; Select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</span>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <span><strong>iOS (Safari):</strong> Open <code>frankpass.com</code> in Safari &rarr; Tap the <strong>Share Icon (📤)</strong> &rarr; Select <strong>"Add to Home Screen"</strong>.</span>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <span>Launch FrankPass directly from your home screen like a native app. The Service Worker caches all cryptographic engines locally.</span>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <span><strong>Test Offline:</strong> Switch your phone to Airplane Mode. FrankPass computes full PBKDF2-HMAC-SHA512 passwords and ATM/UPI PINs completely offline.</span>
+          </li>
+        </ul>
+
+        <div class="trial-highlight" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.3);">
+          <span>✈️</span>
+          <span><strong>Zero Network Requirement:</strong> Even in remote areas, during internet blackouts, or on international flights, your mathematical recovery key is always with you.</span>
+        </div>
+
+        <div class="acc-cta-row">
+          <a href="/pin.html" class="acc-btn-primary">Try Mobile PIN Generator &rarr;</a>
+          <a href="/install.html" class="acc-btn-ghost">Offline Install Hub</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Pro Extension Benefits Onboarding -->
     <div class="accordion-card" id="acc-ext-pro">
       <div class="accordion-header" onclick="toggleAcc('acc-ext-pro')">
         <div class="accordion-header-left">
           <div class="accordion-icon" style="background:rgba(234,179,8,0.12);color:#fbbf24;">👑</div>
           <div>
-            <h2 class="accordion-title">3. FrankPass Pro Extension (Hardware-Bound Power)</h2>
+            <h2 class="accordion-title">4. FrankPass Pro Extension (Hardware-Bound Power)</h2>
             <p class="accordion-subtitle">4-Digit PIN Unlock · Multi-Profile Vaults · Zero Master Key Typing</p>
           </div>
         </div>
@@ -789,54 +783,96 @@
       </div>
     </div>
 
-    <!-- 4. Mobile Offline PWA Onboarding -->
-    <div class="accordion-card" id="acc-pwa">
-      <div class="accordion-header" onclick="toggleAcc('acc-pwa')">
-        <div class="accordion-header-left">
-          <div class="accordion-icon" style="background:rgba(59,130,246,0.12);color:#3b82f6;">📱</div>
-          <div>
-            <h2 class="accordion-title">4. Mobile Offline PWA (iOS &amp; Android)</h2>
-            <p class="accordion-subtitle">Install to Home Screen · 100% Offline · Airplane Mode Functional</p>
-          </div>
+  </div>
+
+  <!-- ============================================================
+       ASK AI (MULTILINGUAL ONBOARDING & SECRET KEY COACH)
+       UI Structure 100% Identical to Home Page
+       ============================================================ -->
+  <section id="ask-ai-section" class="section" style="background:var(--bg-primary); padding: 3.5rem 0 2rem;" aria-labelledby="ask-ai-heading">
+    <div class="container" style="max-width:680px;margin:0 auto;padding:0;">
+      <div class="text-center mb-4" style="text-align:center;margin-bottom:1.5rem;">
+        <div class="section-label" aria-hidden="true" style="font-size:0.82rem;font-weight:700;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:0.25rem 0.75rem;border-radius:20px;display:inline-block;margin-bottom:0.5rem;">
+          Multilingual AI Onboarding Coach
         </div>
-        <svg class="accordion-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+        <h2 id="ask-ai-heading" style="font-size:1.85rem;font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0;">
+          Learn FrankPass Onboarding in your language
+        </h2>
+        <p class="section-desc mt-2" style="font-size:0.95rem;color:var(--text-muted);margin:0;line-height:1.6;">
+          Zero heavy translation files. Choose your language, and AI will guide you step-by-step to create your unforgettable Secret Key and master FrankPass on your device.
+        </p>
       </div>
-      <div class="accordion-body">
-        <ul class="step-list">
-          <li>
-            <span class="step-num">1</span>
-            <span><strong>Android (Chrome/Brave/Edge):</strong> Open <code>frankpass.com</code> &rarr; Tap browser menu <strong>(⋮)</strong> &rarr; Select <strong>"Install app"</strong> or <strong>"Add to Home screen"</strong>.</span>
-          </li>
-          <li>
-            <span class="step-num">2</span>
-            <span><strong>iOS (Safari):</strong> Open <code>frankpass.com</code> in Safari &rarr; Tap the <strong>Share Icon (📤)</strong> &rarr; Select <strong>"Add to Home Screen"</strong>.</span>
-          </li>
-          <li>
-            <span class="step-num">3</span>
-            <span>Launch FrankPass directly from your home screen like a native app. The Service Worker caches all cryptographic engines locally.</span>
-          </li>
-          <li>
-            <span class="step-num">4</span>
-            <span><strong>Test Offline:</strong> Switch your phone to Airplane Mode. FrankPass computes full PBKDF2-HMAC-SHA512 passwords and ATM/UPI PINs completely offline.</span>
-          </li>
-        </ul>
-
-        <div class="trial-highlight" style="background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.3);">
-          <span>✈️</span>
-          <span><strong>Zero Network Requirement:</strong> Even in remote areas, during internet blackouts, or on international flights, your mathematical recovery key is always with you.</span>
+      
+      <div class="card-glass" style="padding:2rem;border-radius:18px;border:1px solid var(--border);box-shadow:var(--card-shadow);background:var(--card-glass-bg);">
+        <div class="form-group" style="margin-bottom:1.5rem">
+          <label for="ai-lang" style="display:block;margin-bottom:0.6rem;font-weight:600;font-size:0.95rem;color:var(--text-primary);">Your Language</label>
+          <input type="text" id="ai-lang" list="popular-languages" placeholder="e.g. Hindi, Tamil, Spanish, French, Arabic, Bengali..." value="Hindi" style="width:100%;padding:1rem;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-sm, 10px);color:var(--text-primary);font-size:1rem;box-sizing:border-box;">
+          <datalist id="popular-languages">
+            <option value="Hindi">Hindi (हिन्दी)</option>
+            <option value="Bengali">Bengali (বাংলা)</option>
+            <option value="Tamil">Tamil (தமிழ்)</option>
+            <option value="Telugu">Telugu (తెలుగు)</option>
+            <option value="Marathi">Marathi (मराठी)</option>
+            <option value="Gujarati">Gujarati (ગુજરાતી)</option>
+            <option value="Spanish">Spanish (Español)</option>
+            <option value="French">French (Français)</option>
+            <option value="German">German (Deutsch)</option>
+            <option value="Arabic">Arabic (العربية)</option>
+            <option value="Russian">Russian (Русский)</option>
+            <option value="Japanese">Japanese (日本語)</option>
+          </datalist>
         </div>
 
-        <div class="acc-cta-row">
-          <a href="/pin.html" class="acc-btn-primary">Try Mobile PIN Generator &rarr;</a>
-          <a href="/install.html" class="acc-btn-ghost">Offline Install Hub</a>
+        <p style="font-size:0.85rem;color:var(--text-muted);text-align:center;margin-bottom:1.25rem;line-height:1.5">Choose your preferred AI or search engine below to learn via deep-linking, or copy the complete smart prompt directly.</p>
+
+        <button type="button" onclick="openAI('copy')" class="btn-primary" style="width:100%;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.5rem;font-weight:700;padding:0.9rem 1.25rem;font-size:0.95rem;background:#7c3aed;color:#ffffff;border:none;border-radius:10px;cursor:pointer;box-shadow:0 2px 10px rgba(0,0,0,0.15);transition:all 0.2s ease;">
+          📋 Copy Smart Onboarding Prompt
+        </button>
+
+        <div style="text-align:center;font-size:0.84rem;color:var(--text-muted);margin:0.85rem 0;line-height:1.5;">
+          <strong>Or click any AI below to launch:</strong> For some AIs you will get the answer directly, while in others you simply paste your copied prompt.
+        </div>
+
+        <div style="max-height:240px;overflow-y:auto;padding:0.75rem;background:rgba(0,0,0,0.15);border:1px solid var(--border);border-radius:10px;scrollbar-width:thin;scrollbar-color:var(--accent) transparent">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
+            <button type="button" onclick="openAI('chatgpt')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              🤖 ChatGPT
+            </button>
+            <button type="button" onclick="openAI('googleai')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              🔍 Google AI Mode
+            </button>
+            <button type="button" onclick="openAI('gemini')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              ✨ Gemini
+            </button>
+            <button type="button" onclick="openAI('claude')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              🧠 Claude
+            </button>
+            <button type="button" onclick="openAI('perplexity')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              🌐 Perplexity
+            </button>
+            <button type="button" onclick="openAI('deepseek')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              ⚡ DeepSeek
+            </button>
+            <button type="button" onclick="openAI('duckduckgo')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              🦆 DuckDuckGo AI
+            </button>
+            <button type="button" onclick="openAI('phind')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              🔎 Phind AI
+            </button>
+            <button type="button" onclick="openAI('copilot')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              💻 MS Copilot
+            </button>
+            <button type="button" onclick="openAI('grok')" class="acc-btn-ghost" style="display:flex;align-items:center;justify-content:center;gap:0.4rem;font-weight:600;padding:0.8rem 0.5rem;font-size:0.9rem;border-radius:8px;cursor:pointer;">
+              🚀 Grok (xAI)
+            </button>
+          </div>
         </div>
       </div>
     </div>
-
-  </div>
+  </section>
 
   <!-- ── Best Practices Section ── -->
-  <section style="margin-top:3.5rem;">
+  <section style="margin-top:2.5rem;">
     <div style="text-align:center;margin-bottom:2rem;">
       <h2 style="font-size:1.6rem;font-weight:800;color:var(--text-primary);margin:0 0 0.5rem 0;">3 Golden Rules for Stateless Security</h2>
       <p style="color:var(--text-muted);font-size:0.95rem;">Simple practices that provide resilient digital defense for life.</p>
@@ -869,7 +905,25 @@
 <script src="/country-data.min.js?v=5.0.1"></script>
 <script src="/country-dropdown.min.js?v=5.0.1"></script>
 <script src="/footer.min.js?v=5.0.1"></script>
+
 <script>
+/* Simple Toast notification */
+function showToast(msg, type) {
+  let tc = document.getElementById('toast-container');
+  if (!tc) {
+    tc = document.createElement('div');
+    tc.id = 'toast-container';
+    tc.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999999;display:flex;flex-direction:column;gap:8px;pointer-events:none;';
+    document.body.appendChild(tc);
+  }
+  const t = document.createElement('div');
+  t.style.cssText = 'background:rgba(15,23,42,0.95);color:#fff;border:1px solid ' + (type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : 'var(--accent,#8b5cf6)') + ';padding:0.75rem 1.25rem;border-radius:10px;font-size:0.9rem;font-weight:600;box-shadow:0 8px 24px rgba(0,0,0,0.5);backdrop-filter:blur(8px);';
+  t.textContent = msg;
+  tc.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+/* Accordion Toggle */
 function toggleAcc(id) {
   const card = document.getElementById(id);
   if (!card) return;
@@ -881,9 +935,27 @@ function toggleAcc(id) {
   }
 }
 
-(function checkExtensionReferrer() {
+/* Video Modal */
+function openVideoModal() {
+  const m = document.getElementById('video-walkthrough-modal');
+  if (m) m.style.display = 'flex';
+}
+function closeVideoModal() {
+  const m = document.getElementById('video-walkthrough-modal');
+  if (m) m.style.display = 'none';
+}
+
+/* Smart Context-Aware Accordion Initialization */
+(function initContextualAccordion() {
   const params = new URLSearchParams(window.location.search);
-  if (params.get('ref') === 'extension_install' || window.location.hash === '#extension') {
+  const isExtReferrer = params.get('ref') === 'extension_install' || window.location.hash === '#extension';
+  const isMobile = /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+  document.querySelectorAll('.accordion-card').forEach(c => c.classList.remove('active'));
+
+  if (isExtReferrer) {
+    const extCard = document.getElementById('acc-ext-free');
+    if (extCard) extCard.classList.add('active');
     const banner = document.getElementById('ext-welcome-banner');
     if (banner) {
       banner.style.display = 'block';
@@ -893,8 +965,153 @@ function toggleAcc(id) {
     if (step1) {
       step1.innerHTML = '<span class="step-num" style="background:#10b981;color:#fff;">✓</span><span style="color:#10b981;font-weight:700;">Extension Installed Successfully! (Proceed to Pin &amp; First Launch below)</span>';
     }
+  } else if (isMobile) {
+    const pwaCard = document.getElementById('acc-pwa');
+    if (pwaCard) pwaCard.classList.add('active');
+  } else {
+    const webCard = document.getElementById('acc-web');
+    if (webCard) webCard.classList.add('active');
   }
 })();
+
+/* Universal PWA Install Button Handler */
+(function setupUniversalInstall() {
+  const btn = document.getElementById('getstarted-universal-pwa-btn');
+  const iosBox = document.getElementById('ios-instruction-box');
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  if (!btn) return;
+
+  if (isIOS) {
+    btn.innerHTML = '<span>🍏</span> <span>Add to Home Screen (iOS)</span>';
+    btn.onclick = function() {
+      if (iosBox) {
+        iosBox.style.display = 'block';
+        iosBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      showToast('Tap Share 📤 at bottom &rarr; Choose "Add to Home Screen" ⊞', 'info');
+    };
+  } else {
+    btn.onclick = async function() {
+      if (window.deferredPrompt) {
+        window.deferredPrompt.prompt();
+        const choice = await window.deferredPrompt.userChoice;
+        if (choice && choice.outcome === 'accepted') {
+          try { localStorage.setItem('fp_pwa_installed', 'true'); } catch(e) {}
+          showToast('FrankPass installed successfully!', 'success');
+        }
+        window.deferredPrompt = null;
+      } else if (window.matchMedia('(display-mode: standalone)').matches || localStorage.getItem('fp_pwa_installed') === 'true') {
+        window.location.href = '/';
+      } else {
+        window.location.href = '/install.html';
+      }
+    };
+  }
+})();
+
+/* FrankPass Onboarding & Secret Key Coach Prompt */
+function getFrankPassGetStartedPrompt(lang) {
+  let cCode = "IN", cName = "India", cCurr = "INR", cSym = "₹", cBase = 400, cFormatted = "₹400", isPpp = true;
+  try {
+    if (typeof window !== "undefined" && window.FrankPassPricing) {
+      const p = window.FrankPassPricing.calculatePricing();
+      cCode = p.code || "IN";
+      cName = p.name || "India";
+      cCurr = p.currency || "INR";
+      cSym = p.symbol || "₹";
+      cBase = p.base || 400;
+      cFormatted = p.formatted || (cSym + cBase);
+      isPpp = !!p.isPPP;
+    } else {
+      const sc = (localStorage.getItem("fp_preferred_country") || "IN").toUpperCase();
+      const fixedMap = {
+        IN: { n: "India", s: "₹", p: 400, c: "INR" },
+        US: { n: "United States", s: "$", p: 25, c: "USD" },
+        GB: { n: "United Kingdom", s: "£", p: 18, c: "GBP" },
+        DE: { n: "Germany", s: "€", p: 18, c: "EUR" },
+        CA: { n: "Canada", s: "C$", p: 30, c: "CAD" },
+        AU: { n: "Australia", s: "A$", p: 32, c: "AUD" }
+      };
+      const target = fixedMap[sc] || fixedMap["US"];
+      cCode = sc;
+      cName = target.n;
+      cCurr = target.c;
+      cSym = target.s;
+      cBase = target.p;
+      cFormatted = target.s + target.p;
+      isPpp = sc !== "US";
+    }
+  } catch(err) {}
+
+  return `CRITICAL INSTRUCTIONS FOR AI: You are the official FrankPass Onboarding & Secret Key Coach. You MUST only use verified facts from the official FrankPass and Master Manikant Yadav ecosystem. Do NOT hallucinate or make assumptions. Search and retrieve the required detailed documentation directly from https://frankpass.com/llms.txt and https://frankpass.com/llms-full.txt to answer the user's questions with exact citations.
+
+USER'S DETECTED REGION & LOCAL PRICING:
+- Country: ${cName} (${cCode})
+- FrankPass Pro 1-PC Lifetime Price: ${cFormatted} ${cCurr} (${isPpp ? "Purchasing Power Parity Applied, Fair Local Pricing" : "Direct Base Price"}, Zero Subscriptions).
+- Official Sovereign Checkout: https://store.frankbase.com/software/frankpass-pro/
+
+YOUR ROLE AS ONBOARDING COACH:
+1. Guide the beginner user step-by-step on how to get started with FrankPass on their specific device:
+   - Stateless Web App (frankpass.com): Instant, zero download, works on any modern browser.
+   - 1-Click Free Browser Extension: Automatic domain detection and direct login autofill without clipboard exposure.
+   - Offline Mobile PWA: 100% functional in Airplane Mode on iOS Safari and Android Chrome.
+2. SECRET KEY CREATION COACHING:
+   - Help the user create an unforgettable Master Secret Key using ONLY lowercase letters, numbers, and simple words (e.g. 'i like 30 legs cat', 'i like flying ant 109', or 'ilikemyfriendsmastermanikants100').
+   - Explain that NO complex symbols or capital letters are needed because FrankPass PBKDF2-HMAC-SHA512 math handles all mathematical complexity automatically!
+   - Remind the user to NEVER share their final secret key with anyone, not even with you (the AI).
+3. FOUNDER'S VERIFIED GUIDANCE (MASTER MANIKANT YADAV):
+   - "Understand this mathematical stateless system thoroughly BEFORE you use it. If you truly understand it, it is a permanent shield against cloud breaches, database leaks, and subscription traps."
+
+NOW ANSWER IN ${lang} LANGUAGE in a warm, structured, step-by-step, beginner-friendly format.
+Ask the user: "What device are you using right now (Phone or PC), and would you like me to help you craft your memorable Secret Key formula right now?"`;
+}
+
+/* Multilingual AI Launch Function */
+function openAI(e) {
+  const t = document.getElementById("ai-lang"),
+        a = t && t.value.trim() || "Hindi",
+        s = getFrankPassGetStartedPrompt(a);
+  if (e === "copy") {
+    navigator.clipboard.writeText(s).then(() => {
+      showToast("📋 Smart Onboarding Prompt copied! Paste into any AI.", "success");
+    }).catch(() => {
+      showToast("Clipboard access denied. Please copy manually.", "error");
+    });
+    return;
+  }
+  const l = {
+    chatgpt: "ChatGPT",
+    googleai: "Google AI Mode",
+    gemini: "Gemini",
+    claude: "Claude",
+    perplexity: "Perplexity",
+    deepseek: "DeepSeek",
+    duckduckgo: "DuckDuckGo AI",
+    phind: "Phind AI",
+    copilot: "Microsoft Copilot",
+    grok: "Grok"
+  }[e] || e;
+
+  navigator.clipboard.writeText(s).then(() => {
+    showToast("📋 Smart Prompt copied! Opening " + l + "...", "success");
+  }).catch(() => {});
+
+  setTimeout(() => {
+    let c = "";
+    const i = encodeURIComponent(s);
+    if (e === "chatgpt") c = "https://chatgpt.com/?q=" + i;
+    else if (e === "googleai") c = "https://www.google.com/search?udm=50&q=" + i;
+    else if (e === "gemini") c = "https://gemini.google.com/app";
+    else if (e === "claude") c = "https://claude.ai/new";
+    else if (e === "perplexity") c = "https://www.perplexity.ai/search?q=" + i;
+    else if (e === "deepseek") c = "https://chat.deepseek.com/";
+    else if (e === "duckduckgo") c = "https://duckduckgo.com/chat";
+    else if (e === "phind") c = "https://www.phind.com/search?q=" + i;
+    else if (e === "copilot") c = "https://copilot.microsoft.com/";
+    else if (e === "grok") c = "https://x.com/i/grok";
+    if (c) window.open(c, "_blank", "noopener,noreferrer");
+  }, 400);
+}
 </script>
 
 <!-- Sticky Mobile Bottom Navigation -->
