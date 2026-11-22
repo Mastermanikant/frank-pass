@@ -560,6 +560,22 @@
   </div>
   </details>
 
+  <!-- Q - Motherboard Replacement and PC Upgrade -->
+  <details class="faq-item" id="faq-hardware-replacement-migration">
+  <summary>
+  <span>What happens if my motherboard fails or I buy a new computer? Does my license transfer?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>No, licenses do not transfer across different motherboards.</strong> FrankPass Pro operates on a strict 1-PC physical motherboard lock:
+  <ul style="margin:0.5rem 0 0 1.25rem;padding:0;line-height:1.6">
+    <li><strong>Motherboard Locked for Life:</strong> Your license is valid for as long as that physical computer motherboard runs (10, 20, or 50+ years). Reinstalling Windows/macOS, formatting your SSD, or adding RAM does not affect your license. However, a new or replaced motherboard is treated as a new physical machine. Zero free device transfers are provided.</li>
+    <li><strong>50% Once-in-a-Lifetime Replacement Discount:</strong> If your motherboard burns or you upgrade your PC, you qualify for an automatic 50% discount on a single replacement license via your original purchase receipt.</li>
+    <li><strong>Passwords Remain 100% Safe:</strong> The hardware license is bound to the PC, but your passwords and JSON encrypted profiles are completely independent. You can regenerate any password on any device in the world for free using your Master Secret Key.</li>
+  </ul>
+  </div>
+  </details>
+
   <!-- Q13 - 1-2 words secret key -->
   <details class="faq-item" id="faq-13">
   <summary>
@@ -690,6 +706,21 @@
   </summary>
   <div class="faq-body">
   Infostealers do not crack AES encryption; they dump unencrypted browser SQLite databases, persistent cookies, and local extension storage files from your physical hard drive. FrankPass utilizes an <strong>Invisible RAM Vault architecture</strong>: credentials exist solely in volatile, temporary JavaScript runtime variables during generation. Because FrankPass never writes credentials to disk files or unencrypted local storage, infostealers scanning your drives find zero credential files to exfiltrate.
+  </div>
+  </details>
+
+  <!-- Q - Threat Model: Endpoint Keyloggers vs Cloud Honeypots -->
+  <details class="faq-item" id="faq-threat-model-keyloggers">
+  <summary>
+  <span>Does FrankPass protect against local hardware keyloggers or an infected operating system?</span>
+  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </summary>
+  <div class="faq-body">
+  <strong>No software or password manager can protect against an actively compromised operating system.</strong> Under an honest, scientific threat model:
+  <ul style="margin:0.5rem 0 0 1.25rem;padding:0;line-height:1.6">
+    <li><strong>What FrankPass Eliminates (100% Protection):</strong> Centralized cloud database breaches (such as LastPass vault leaks), server-side employee theft, master sync interception, and mass credential harvesting.</li>
+    <li><strong>What Remains User Responsibility (Endpoint Hygiene):</strong> If an adversary has installed a kernel-level keylogger, Trojan, or screen recorder on your local physical device, they can intercept keystrokes as you type your Master Key. Always keep your local OS updated, avoid untrusted downloads, and use dedicated clean devices or FrankPass Instant Guest Mode on shared machines.</li>
+  </ul>
   </div>
   </details>
 
