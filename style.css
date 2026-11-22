@@ -1493,6 +1493,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   .mobile-bottom-nav { display: flex; }
   .hamburger, .hamburger-btn, #hamburger { display: flex; }
   .header-nav { display: none; }
+  .site-header #theme-toggle { margin-left: auto; display: flex; }
   body:not(.no-mobile-nav) { padding-bottom: var(--mobile-nav-h); }
   #toast-container { bottom: calc(var(--mobile-nav-h) + 1rem); }
 }
@@ -1561,7 +1562,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 .theme-toggle-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0.5rem; border-radius: 20px; transition: var(--transition); } .theme-toggle-btn:hover { color: var(--accent); background: var(--glass-bg); }
 
 /* Theme toggle always visible fix */
-.theme-toggle-btn {
+.theme-toggle-btn:not(.mobile-theme-toggle-btn) {
   color: var(--accent) !important;
   opacity: 1 !important;
   visibility: visible !important;

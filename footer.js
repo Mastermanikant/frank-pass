@@ -312,7 +312,7 @@
     `;
 
     setupHeaderNav();
-    initTheme();
+    syncThemeUI(document.documentElement.getAttribute('data-theme') || 'dark');
   }
 
   window.toggleFooterCol = function(id) {
@@ -365,6 +365,18 @@
         }
       });
     }
+
+    // Ensure mobile menu drawer has a high-visibility theme toggle button
+    if (mobileMenu && !mobileMenu.querySelector('#theme-toggle-mobile')) {
+      const mobBtn = document.createElement('button');
+      mobBtn.type = 'button';
+      mobBtn.className = 'theme-toggle-btn mobile-theme-toggle-btn';
+      mobBtn.id = 'theme-toggle-mobile';
+      mobBtn.style.cssText = 'margin-top:0.85rem;width:100%;text-align:center;background:var(--card-glass-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px;padding:0.75rem 1rem;border-radius:10px;color:var(--text-primary);font-weight:700;cursor:pointer;';
+      mobileMenu.appendChild(mobBtn);
+      const curTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      syncThemeUI(curTheme);
+    }
   }
 
   // Universal Header Navigation & Cascade Flyout Controller
@@ -375,6 +387,13 @@
       window.addEventListener('scroll', function() {
         header.classList.toggle('scrolled', window.scrollY > 10);
       }, { passive: true });
+    }
+
+    // Keep header theme toggle accessible on both desktop and mobile
+    const hamburger = document.getElementById('hamburger');
+    const themeBtn = document.getElementById('theme-toggle');
+    if (hamburger && themeBtn && themeBtn.parentElement && themeBtn.parentElement.classList.contains('header-nav')) {
+      hamburger.parentElement.insertBefore(themeBtn, hamburger);
     }
 
     const dropdowns = document.querySelectorAll('.nav-dropdown');
@@ -466,10 +485,13 @@
       }
     });
 
-    document.addEventListener('click', function() {
-      dropdowns.forEach(function(d) { d.classList.remove('is-open'); });
-      flyoutContainers.forEach(function(c) { c.classList.remove('is-active'); });
-    });
+    if (!document._headerNavClickListenerAttached) {
+      document._headerNavClickListenerAttached = true;
+      document.addEventListener('click', function() {
+        dropdowns.forEach(function(d) { d.classList.remove('is-open'); });
+        flyoutContainers.forEach(function(c) { c.classList.remove('is-active'); });
+      });
+    }
   }
 
   
@@ -480,7 +502,12 @@
   function syncThemeUI(theme) {
     const isLight = theme === 'light';
     document.querySelectorAll('.theme-toggle-btn, #theme-toggle, #theme-toggle-mobile').forEach(function(btn) {
-      btn.innerHTML = isLight ? moonIco : sunIco;
+      if (btn.classList.contains('mobile-theme-toggle-btn') || btn.id === 'theme-toggle-mobile') {
+        const isHindi = document.documentElement.lang === 'hi' || window.location.pathname.includes('hindi');
+        btn.innerHTML = (isLight ? moonIco : sunIco) + ' <span>' + (isLight ? (isHindi ? 'डार्क मोड' : 'Switch to Dark Mode') : (isHindi ? 'डे (लाइट) मोड' : 'Switch to Light Mode')) + '</span>';
+      } else {
+        btn.innerHTML = isLight ? moonIco : sunIco;
+      }
       btn.setAttribute('aria-label', isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode');
       btn.setAttribute('title', isLight ? 'Switch to Dark Mode' : 'Switch to Light Mode');
     });
@@ -508,15 +535,18 @@
     document.documentElement.setAttribute('data-theme', saved);
     syncThemeUI(saved);
 
-    // Global click listener via Event Delegation for 100% reliability
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('.theme-toggle-btn, #theme-toggle, #theme-toggle-mobile');
-      if (btn) {
-        e.preventDefault();
-        e.stopPropagation();
-        handleThemeToggle();
-      }
-    });
+    // Global click listener via Event Delegation - Exactly Once Guarantee
+    if (!document._themeListenerAttached) {
+      document._themeListenerAttached = true;
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('.theme-toggle-btn, #theme-toggle, #theme-toggle-mobile');
+        if (btn) {
+          e.preventDefault();
+          e.stopPropagation();
+          handleThemeToggle();
+        }
+      });
+    }
   }
 
   /* ── Universal Web Push Notification Controller ── */
