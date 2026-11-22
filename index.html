@@ -929,7 +929,7 @@
           <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Recreated Everywhere by Pure Math (No Sync Needed)</h3>
         </div>
         <p style="font-size:0.86rem;color:var(--text-muted);line-height:1.55;margin:0;">
-          Just like 2 + 2 = 4 everywhere without internet, typing the same secret and platform on any phone or PC recalculates the exact same password through pure mathematics. When you need to rotate a password, simply change the rotation number without changing your master key. <a href="/whitepaper.html" style="color:var(--accent-light);font-weight:700;text-decoration:underline;">Read Technical Whitepaper &rarr;</a>
+          Just like 2 + 2 = 4 everywhere without internet, typing the same secret and platform on any phone or PC recalculates the exact same password through pure mathematics. When you need to rotate a password, simply change the rotation number without changing your master key. <a href="/get-started.html" style="color:var(--accent-light);font-weight:700;text-decoration:underline;">Read Get Started Guide &rarr;</a>
         </p>
       </div>
 
@@ -1045,7 +1045,7 @@
       </p>
       <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.75rem;">
         <span style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">
-          Solo Lifetime Pass: <span style="color:#10b981;">$25 / &#8377;400</span> (Single Motherboard Lock)
+          Solo Lifetime Pass: <span id="home-ppp-price" style="color:#10b981;font-weight:800;">₹400</span> (Single Motherboard Lock)
         </span>
         <a href="/pricing.html" style="font-size:0.84rem;font-weight:700;color:var(--accent-light);text-decoration:underline;">
           View Pricing &amp; Plans &rarr;
@@ -1079,10 +1079,7 @@
           <span>&#129513;</span> <span>Install Windows Extension (Chrome &amp; Edge)</span>
         </a>
 
-        <!-- Action 3: Join Security WhatsApp Channel -->
-        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" class="btn-whatsapp" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;text-decoration:none;">
-          <span>&#128172;</span> <span>Join Security WhatsApp Channel</span>
-        </a>
+        
       </div>
 
       <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.85rem;">
@@ -1645,7 +1642,7 @@
 <script defer src="/frankpass-utils.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-core.js?v=5.0.1"></script>
 <script defer src="/frankpass-vault.js?v=5.0.1"></script>
-<script defer src="/footer.min.js?v=5.0.2"></script>
+<script defer src="/footer.min.js?v=5.0.3"></script>
 <script defer src="/pricing-fx.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-app.min.js?v=5.0.1"></script>
 <script>
@@ -1820,6 +1817,39 @@ if (pwaBtn) {
   }
 })();
 </script>
+
+<script>
+// Dynamic PPP Localized Price Updater for Home Pro Card
+(function() {
+  function updateHomeProPrice() {
+    var el = document.getElementById("home-ppp-price");
+    if (!el) return;
+    try {
+      if (typeof window !== "undefined" && window.FrankPassPricing && typeof window.FrankPassPricing.calculatePricing === "function") {
+        var p = window.FrankPassPricing.calculatePricing();
+        if (p && (p.formatted || p.base)) {
+          var sym = p.symbol || "$";
+          el.textContent = p.formatted || (sym + p.base);
+          return;
+        }
+      }
+    } catch(e) {}
+    var sc = (localStorage.getItem("fp_preferred_country") || "IN").toUpperCase();
+    var fixedMap = {
+      IN: "₹400", US: "$25", GB: "£18", DE: "€18", FR: "€18",
+      NP: "रू 1,100", PK: "₨ 2,000", BD: "৳950", CA: "C$30", AU: "A$32", JP: "¥2,500"
+    };
+    el.textContent = fixedMap[sc] || "$25";
+  }
+  window.addEventListener("fp-country-changed", updateHomeProPrice);
+  document.addEventListener("DOMContentLoaded", updateHomeProPrice);
+  window.addEventListener("load", function() {
+    setTimeout(updateHomeProPrice, 200);
+    setTimeout(updateHomeProPrice, 1000);
+  });
+})();
+</script>
+
 </body>
 </html>
 

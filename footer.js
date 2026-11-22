@@ -172,6 +172,10 @@
           <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
+        <a href="https://store.frankbase.com" target="_blank" rel="noopener" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
+          <span>${isHindi ? 'अपकमिंग प्रोडक्ट्स व स्टोर' : 'Upcoming Products &amp; Store'} ↗</span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
         <a href="https://tools.frankpass.com" target="_blank" rel="noopener" class="footer-nav-link">
           <span>${isHindi ? 'डेवलपर टूल्स' : 'Developer CLI &amp; Tools'} ↗</span>
           <span class="nav-chevron">&rsaquo;</span>
@@ -185,28 +189,7 @@
 
     </div>
 
-    <!-- Middle Full-Width Assurance Ribbon (Directly Inspired by Image 1) -->
-    <div class="footer-assurance-ribbon" role="region" aria-label="Security Assurances">
-      <div class="ribbon-item">
-        <span class="ribbon-icon">💻</span>
-        <span><strong>${isHindi ? 'ब्राउज़र में रन' : 'Runs in your browser'}</strong> (${isHindi ? 'लोकल क्लाइंट' : 'Client-Side'})</span>
-      </div>
-      <span class="ribbon-sep" aria-hidden="true">|</span>
-      <div class="ribbon-item">
-        <span class="ribbon-icon">🗄️</span>
-        <span><strong>${isHindi ? 'शून्य सेंट्रल वॉल्ट' : 'No centralized password vault'}</strong> (${isHindi ? 'लीक-प्रूफ' : 'Zero databases'})</span>
-      </div>
-      <span class="ribbon-sep" aria-hidden="true">|</span>
-      <div class="ribbon-item">
-        <span class="ribbon-icon">♾️</span>
-        <span><strong>${isHindi ? 'समान इनपुट, समान पासवर्ड' : 'Same inputs, same output'}</strong> (${isHindi ? 'डिटरमिनिस्टिक' : 'Deterministic math'})</span>
-      </div>
-      <span class="ribbon-sep" aria-hidden="true">|</span>
-      <div class="ribbon-item">
-        <span class="ribbon-icon">⬇️</span>
-        <span><strong>${isHindi ? 'इंस्टॉल के बाद 100% ऑफलाइन' : 'Works offline after installation'}</strong> (PWA &amp; Service Worker)</span>
-      </div>
-    </div>
+    
 
     <!-- Responsive Ecosystem Network Bar (KEPT 100% INTACT from Image 2) -->
     <div class="footer-ecosystem-bar">
