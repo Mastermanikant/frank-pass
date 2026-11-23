@@ -267,20 +267,24 @@
 
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom">
-      <div class="footer-copyright" style="display:flex;align-items:center;flex-wrap:wrap;gap:0.35rem 0.55rem;font-size:0.82rem;color:var(--text-muted);">
+      <div class="footer-bottom-copy">
         <span style="white-space:nowrap;">&copy; ${year} FrankPass.</span>
-        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
-        <span style="white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'}</span>
-        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
+      </div>
+
+      <div class="footer-author-wrap">
         <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="footer-founder-link">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
       </div>
 
-      <div class="footer-legal-links">
+      <div class="footer-legal-links" style="display:flex;align-items:center;gap:0.55rem;flex-wrap:wrap;">
+        <a href="https://frankbase.com" target="_blank" rel="noopener" style="white-space:nowrap;">${isHindi ? 'फ्रैंकबेस प्रोजेक्ट' : 'A FrankBase project'}</a>
+        <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
         <a href="/legal.html#privacy">${isHindi ? 'गोपनीयता नीति' : 'Privacy Policy'}</a>
+        <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
         <a href="/legal.html#terms">${isHindi ? 'सेवा की शर्तें' : 'Terms of Service'}</a>
-        <a href="/legal.html">${isHindi ? 'सुरक्षा व लीगल हब' : 'Legal &amp; Safety Hub'}</a>
+        <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <a href="${isHindi ? '/library-hindi.html' : '/library.html'}">${isHindi ? 'लाइब्रेरी' : 'Library'}</a>
+        <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
         <a href="https://mastermanikant.com/contact.html?ref=frankpass_footer" target="_blank" rel="noopener">${isHindi ? 'फीडबैक' : 'Feedback'}</a>
-        <a href="${isHindi ? '/library-hindi.html' : '/library.html'}">${isHindi ? 'रिसोर्स लाइब्रेरी' : 'Resource Library'}</a>
       </div>
     </div>
 
