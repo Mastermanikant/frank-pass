@@ -1231,9 +1231,9 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
     padding-top: 1rem;
   }
   .footer-bottom-copy {
-    flex-direction: column;
-    gap: 0.35rem;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
   }
   .footer-copy-sep {

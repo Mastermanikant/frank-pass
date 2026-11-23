@@ -267,22 +267,18 @@
 
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom" style="display:flex;flex-direction:column;gap:0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);width:100%;">
-      <!-- Row 1: Left Copyright, Center Engineered By, Right FrankBase Project -->
-      <div class="footer-bottom-main-row" style="display:flex;justify-content:space-between;align-items:center;width:100%;flex-wrap:wrap;gap:0.6rem;font-size:0.82rem;color:var(--text-muted);">
-        <div class="footer-bottom-copy" style="white-space:nowrap;">
-          <span>&copy; ${year} FrankPass.</span>
-        </div>
-
-        <div class="footer-author-wrap" style="white-space:nowrap;text-align:center;">
-          <span>${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="footer-founder-link">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
-        </div>
-
-        <div class="footer-bottom-ecosystem" style="white-space:nowrap;text-align:right;">
-          <a href="https://frankbase.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;">${isHindi ? 'फ्रैंकबेस का एक प्रोजेक्ट।' : 'A FrankBase project.'}</a>
-        </div>
+      <!-- Line 1: Copyright on the Left, A FrankBase project on the Right (Directly Opposite Each Other) -->
+      <div class="footer-bottom-copy" style="display:flex;justify-content:space-between;align-items:center;width:100%;font-size:0.82rem;color:var(--text-muted);">
+        <span style="white-space:nowrap;">&copy; ${year} FrankPass.</span>
+        <a href="https://frankbase.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक प्रोजेक्ट।' : 'A FrankBase project.'}</a>
       </div>
 
-      <!-- Row 2: Clean 4 Legal & Resource Links in 1 Single Line -->
+      <!-- Line 2: Engineered by Master Manikant Yadav (Strictly Centered) -->
+      <div class="footer-author-wrap" style="display:flex;justify-content:center;align-items:center;width:100%;text-align:center;font-size:0.84rem;">
+        <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="footer-founder-link">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
+      </div>
+
+      <!-- Line 3: 4 Clean Legal & Resource Links in 1 Single Line -->
       <div class="footer-legal-links" style="display:flex;justify-content:center;align-items:center;gap:0.75rem 1.25rem;flex-wrap:wrap;width:100%;font-size:0.82rem;">
         <a href="/legal.html#privacy">${isHindi ? 'गोपनीयता नीति' : 'Privacy Policy'}</a>
         <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
