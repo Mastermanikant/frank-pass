@@ -1232,9 +1232,11 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   }
   .footer-bottom-copy {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 0.45rem;
     width: 100%;
+    white-space: nowrap;
   }
   .footer-copy-sep {
     display: none;

@@ -267,9 +267,10 @@
 
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom" style="display:flex;flex-direction:column;gap:0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);width:100%;">
-      <!-- Line 1: Copyright on the Left, A FrankBase project on the Right (Directly Opposite Each Other) -->
-      <div class="footer-bottom-copy" style="display:flex;justify-content:space-between;align-items:center;width:100%;font-size:0.82rem;color:var(--text-muted);">
+      <!-- Line 1: Copyright & A FrankBase project in 1 single line -->
+      <div class="footer-bottom-copy" style="display:flex;justify-content:center;align-items:center;gap:0.45rem;width:100%;font-size:0.82rem;color:var(--text-muted);white-space:nowrap;">
         <span style="white-space:nowrap;">&copy; ${year} FrankPass.</span>
+        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
         <a href="https://frankbase.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक प्रोजेक्ट।' : 'A FrankBase project.'}</a>
       </div>
 
