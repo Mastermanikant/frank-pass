@@ -168,7 +168,7 @@
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="https://store.frankbase.com" target="_blank" rel="noopener" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
-          <span>${isHindi ? 'अपकमिंग प्रोडक्ट्स व स्टोर' : 'Upcoming Products &amp; Store'} ↗</span>
+          <span>${isHindi ? 'स्टोर' : 'Store'} ↗</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
