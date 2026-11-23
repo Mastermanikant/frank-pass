@@ -191,7 +191,8 @@
 
     
 
-    <!-- Responsive Ecosystem Network Bar (KEPT 100% INTACT from Image 2) -->
+    <!-- Commented out ecosystem network bar per user request
+<!-- Responsive Ecosystem Network Bar (KEPT 100% INTACT from Image 2) -->
     <div class="footer-ecosystem-bar">
       <div class="footer-ecosystem-header">
         <span style="font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:3px 8px;border-radius:10px">Ecosystem</span>
@@ -275,16 +276,12 @@
       </div>
     </div>
 
+    
+    -->
+
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom">
-      <div class="footer-trust-microcopy" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0.35rem 0.65rem;width:100%;margin-bottom:0.75rem;font-size:0.78rem;color:var(--text-muted);letter-spacing:0.02em;">
-        <span style="white-space:nowrap;">🔒 100% Stateless</span>
-        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
-        <span style="white-space:nowrap;">0 Bytes Stored</span>
-        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
-        <span style="white-space:nowrap;">Pure Mathematics</span>
-      </div>
-      <div class="footer-copyright" style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0.35rem 0.55rem;font-size:0.82rem;color:var(--text-muted);">
+      <div class="footer-copyright" style="display:flex;align-items:center;flex-wrap:wrap;gap:0.35rem 0.55rem;font-size:0.82rem;color:var(--text-muted);">
         <span style="white-space:nowrap;">&copy; ${year} FrankPass.</span>
         <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
         <span style="white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'}</span>

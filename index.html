@@ -305,8 +305,7 @@
   <!-- Top: Centered Hero Title & Subtitle across screen -->
   <div class="hero-header-center">
     <div class="hero-eyebrow" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      Cloudless Password Manager &middot; 100% Offline Cryptography
+      Cloudless (No-Cloud) Password Manager &middot; 100% Offline
     </div>
     <h1 id="hero-heading" class="hero-title">
       Say Goodbye to Cloud Breaches. <br><span class="highlight">Use Deterministic</span> Password Generator.
@@ -316,13 +315,10 @@
     </p>
     <div class="hero-trust-badges" style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.6rem;margin-top:1.15rem;margin-bottom:0.25rem;" data-nosnippet>
       <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:#10b981;">
-        <span>&#128737;&#65039;</span> <span>Zero Cloud Database: No server, no database leaks.</span>
+        <span>&#128274;</span> <span>Zero Cloud Storage: Passwords are computed purely in local memory, never stored or transmitted.</span>
       </div>
       <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:var(--accent-light);">
-        <span>&#9889;</span> <span>No Sync Needed: Your Master Key recreates the exact same password on any device.</span>
-      </div>
-      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:#60a5fa;">
-        <span>&#128274;</span> <span>100% Offline: Operates purely in local device RAM.</span>
+        <span>&#9889;</span> <span>Recreates the exact same password on any device without internet.</span>
       </div>
     </div>
   </div>
@@ -467,7 +463,12 @@
               <div class="hover-card-preview" style="width:230px"><div class="hover-card-title">Limitations &amp; Advantages</div><p class="hover-card-desc">Honest, in-depth technical analysis of stateless password limitations and advantages.</p></div>
             </div>
           </div>
-          <!-- Improvement & Feedback Action Button -->
+          <!-- Proceed to Generator Button for smooth auto-scroll onboarding -->
+            <button type="button" id="btn-founder-continue" class="btn-primary" style="margin-top:10px;width:100%;font-size:0.84rem;padding:8px 12px;border-radius:9px;cursor:pointer;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-weight:700;">
+              <span>Proceed to Generator &darr;</span>
+            </button>
+
+            <!-- Improvement & Feedback Action Button -->
           <div style="margin-top:8px;">
             <div class="has-hover-card" style="width:100%">
               <a href="https://mastermanikant.com/contact.html?ref=frankpass_home" target="_blank" rel="noopener" class="btn-ghost" style="width:100%;box-sizing:border-box;font-size:0.84rem;border:1px dashed var(--accent);background:rgba(139,92,246,0.06);color:var(--accent-light);padding:8px 12px;border-radius:9px;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:600">
@@ -1067,22 +1068,22 @@
         Start generating zero-database deterministic passwords right now across all your devices. 100% Free, zero subscriptions, zero tracking.
       </p>
 
-      <!-- 3 Direct Action Buttons -->
-      <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:440px;margin:0 auto;">
-        <!-- Action 1: Install PWA App -->
-        <button id="btn-cta-pwa-install" type="button" class="btn-primary" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;">
-          <span>&#128241;</span> <span>Install PWA App (Free for All Devices)</span>
-        </button>
+      <!-- Direct Action Buttons -->
+        <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:440px;margin:0 auto;">
+          <!-- Action 1: Universal Install Application -->
+          <button id="btn-cta-pwa-install" type="button" class="btn-primary" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;">
+            <span>&#128241;</span> <span>Install Application</span>
+          </button>
 
-        <!-- Action 2: Install Browser Extension -->
-        <a href="/extension.html" class="btn-ghost" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;text-decoration:none;border-color:var(--accent);">
-          <span>&#129513;</span> <span>Install Windows Extension (Chrome &amp; Edge)</span>
-        </a>
+          <!-- Action 2: Smart Browser Extension Installer -->
+          <button id="btn-install-extension-smart" type="button" class="btn-ghost" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;border-color:var(--accent);color:var(--text-primary);background:rgba(139,92,246,0.08);">
+            <span>&#129513;</span> <span>Install Extension</span>
+          </button>
+          
+          <a href="/extension.html" style="font-size:0.84rem;color:var(--accent-light);text-decoration:underline;text-align:center;font-weight:600;margin-top:-0.15rem;">Visit Extension Page &rarr;</a>
+        </div>
 
-        
-      </div>
-
-      <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.85rem;">
+        <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.85rem;">
         Works 100% offline &middot; No credit card &middot; Zero personal data collected
       </div>
     </div>
@@ -1725,36 +1726,76 @@
 // Checkboxes replaced with trust assurances
 </script>
 <script>
-// PWA Installation Trigger for CTA Button
-var deferredPrompt = null;
-window.addEventListener('beforeinstallprompt', function(e) {
-  e.preventDefault();
-  deferredPrompt = e;
-  var btn = document.getElementById('btn-cta-pwa-install');
-  if (btn) btn.style.display = 'inline-flex';
-});
-
-var pwaBtn = document.getElementById('btn-cta-pwa-install');
-if (pwaBtn) {
-  pwaBtn.addEventListener('click', function() {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then(function(choice) {
-        if (choice.outcome === 'accepted') {
-          if (typeof showToast === 'function') showToast('Thank you for installing FrankPass PWA!', 'success');
-        }
-        deferredPrompt = null;
-      });
-    } else {
-      if (typeof showToast === 'function') {
-        showToast('To install FrankPass: Tap your browser menu and select "Install app" or "Add to Home Screen".', 'info');
-      } else {
-        alert('To install FrankPass: Tap your browser menu and select "Install app" or "Add to Home Screen".');
-      }
-    }
+// Universal PWA & Smart Extension Installation Triggers
+  var deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', function(e) {
+    e.preventDefault();
+    deferredPrompt = e;
   });
-}
-</script>
+
+  var pwaBtn = document.getElementById('btn-cta-pwa-install');
+  if (pwaBtn) {
+    pwaBtn.addEventListener('click', function() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(function(choice) {
+          if (choice.outcome === 'accepted') {
+            if (typeof showToast === 'function') showToast('Thank you for installing FrankPass!', 'success');
+          }
+          deferredPrompt = null;
+        });
+      } else {
+        var ua = navigator.userAgent || '';
+        var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+        if (isIOS) {
+          alert('To install FrankPass on iOS: Tap the Share button at the bottom of Safari, then select "Add to Home Screen".');
+        } else {
+          alert('To install FrankPass: Open your browser menu (⋮) and select "Install app" or "Add to Home Screen".');
+        }
+      }
+    });
+  }
+
+  // Smart Browser Extension Installer Button
+  (function() {
+    var extBtn = document.getElementById('btn-install-extension-smart');
+    if (!extBtn) return;
+    var ua = navigator.userAgent || '';
+    var isEdge = /Edg\//i.test(ua);
+    var isFirefox = /Firefox\//i.test(ua);
+    var storeUrl = 'https://chromewebstore.google.com/detail/frankpass-pro-zero-vault/egkncojopinfjokdpgedkeiodghbifef';
+
+    if (isEdge) {
+      storeUrl = 'https://microsoftedge.microsoft.com/addons/detail/frankpass-pro-zerovaul/cjemmmpglgnchmihjcpdbbocglbphicj';
+    } else if (isFirefox) {
+      storeUrl = 'https://addons.mozilla.org/en-US/firefox/addon/frankpass/';
+    }
+
+    extBtn.addEventListener('click', function() {
+      window.open(storeUrl, '_blank', 'noopener,noreferrer');
+    });
+  })();
+
+  // Returning user smooth auto-scroll to Generator
+  (function() {
+    try {
+      var contBtn = document.getElementById('btn-founder-continue');
+      if (contBtn) {
+        contBtn.addEventListener('click', function() {
+          localStorage.setItem('fp_has_proceeded', '1');
+          var gen = document.getElementById('generator-card');
+          if (gen) gen.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+      if (localStorage.getItem('fp_has_proceeded') === '1') {
+        setTimeout(function() {
+          var gen = document.getElementById('generator-card');
+          if (gen) gen.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 400);
+      }
+    } catch(e) {}
+  })();
+  </script>
 
 <script>
 // FrankPass 100% Offline Math Modal Handler
