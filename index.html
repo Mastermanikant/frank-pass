@@ -7,9 +7,17 @@
       var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
       var theme = saved || 'dark';
       document.documentElement.setAttribute('data-theme', theme);
+      if (localStorage.getItem('fp_has_proceeded') === '1') {
+        document.documentElement.classList.add('fp-returning-user');
+      }
     } catch(e) {}
   })();
 </script>
+<style>
+html.fp-returning-user .founder-compact-container {
+  display: none !important;
+}
+</style>
 <script>
 (function() {
   if ('caches' in window) {
@@ -465,7 +473,7 @@
           </div>
           <!-- Proceed to Generator Button for smooth auto-scroll onboarding -->
             <button type="button" id="btn-founder-continue" class="btn-primary" style="margin-top:10px;width:100%;font-size:0.84rem;padding:8px 12px;border-radius:9px;cursor:pointer;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-weight:700;">
-              <span>Proceed to Generator &darr;</span>
+              <span>Proceed to Generator &darr; (Don't show again)</span>
             </button>
 
             <!-- Improvement & Feedback Action Button -->
@@ -1629,7 +1637,7 @@
 <script defer src="/frankpass-utils.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-core.js?v=5.0.1"></script>
 <script defer src="/frankpass-vault.js?v=5.0.1"></script>
-<script defer src="/footer.min.js?v=5.0.8"></script>
+<script defer src="/footer.min.js?v=5.0.9"></script>
 <script defer src="/pricing-fx.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-app.min.js?v=5.0.1"></script>
 <script>
@@ -1816,6 +1824,9 @@
           e.preventDefault();
           localStorage.setItem('fp_has_proceeded', '1');
           scrollToGen();
+          setTimeout(function() {
+            document.documentElement.classList.add('fp-returning-user');
+          }, 650);
         });
       }
 

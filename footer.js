@@ -109,6 +109,10 @@
           <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
+        <a href="${isHindi ? '/pricing-hindi.html' : '/pricing.html'}" class="footer-nav-link">
+          <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span>
+          <span class="nav-chevron">&rsaquo;</span>
+        </a>
         </div>
       </div>
 
@@ -143,10 +147,10 @@
         </div>
       </div>
 
-      <!-- Col 4: Products & Apps (Pill Header from Image 1) -->
+            <!-- Col 4: Products & Apps (Pill Header from Image 1) -->
       <div class="footer-col" id="footer-col-products">
         <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-products')" aria-expanded="false">
-          <span class="footer-col-pill pill-emerald">${isHindi ? 'प्रोडक्ट्स' : 'PRODUCTS'}</span>
+          <span class="footer-col-pill pill-emerald">${isHindi ? 'उत्पाद' : 'PRODUCTS'}</span>
           <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
         </button>
         <div class="footer-col-links-wrap">
@@ -159,16 +163,12 @@
           <span>${isHindi ? 'ऑफलाइन PWA ऐप' : 'Install the PWA'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
-        <a href="${isHindi ? '/pricing-hindi.html' : '/pricing.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span>
+        <a href="${isHindi ? '/install-hindi.html#android' : '/install.html#android'}" class="footer-nav-link">
+          <span>${isHindi ? 'एंड्रॉइड ऐप' : 'Android App'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="https://store.frankbase.com" target="_blank" rel="noopener" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
           <span>${isHindi ? 'अपकमिंग प्रोडक्ट्स व स्टोर' : 'Upcoming Products &amp; Store'} ↗</span>
-          <span class="nav-chevron">&rsaquo;</span>
-        </a>
-        <a href="https://tools.frankpass.com" target="_blank" rel="noopener" class="footer-nav-link">
-          <span>${isHindi ? 'डेवलपर टूल्स' : 'Developer CLI &amp; Tools'} ↗</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
@@ -179,8 +179,6 @@
       </div>
 
     </div>
-
-    
 
     <!-- Responsive Ecosystem Network Bar (Hidden per user request, remove display:none to restore) -->
     <div class="footer-ecosystem-bar" style="display:none !important;" aria-hidden="true">
@@ -274,7 +272,7 @@
         <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
         <span style="white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'}</span>
         <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
-        <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--accent-light, #a78bfa);text-decoration:underline;text-underline-offset:3px;font-weight:700;">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
+        <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="footer-founder-link">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
       </div>
 
       <div class="footer-legal-links">
