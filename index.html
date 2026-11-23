@@ -1828,21 +1828,37 @@
         });
       }
 
-      // Returning user auto-scroll: lands on Generator (Image 2), Founder Card remains accessible on scroll up
+      // Returning user: Smooth-glide to Generator with Touch/Wheel Cancellation Guard
       if (localStorage.getItem('fp_has_proceeded') === '1' && !window.location.hash) {
         if ('scrollRestoration' in history) {
           history.scrollRestoration = 'manual';
         }
-        var performAutoScroll = function() {
-          window.scrollToGen('instant');
+        var userInteracted = false;
+        var scrollTimer = null;
+        var cancelAutoScroll = function() {
+          userInteracted = true;
+          if (scrollTimer) clearTimeout(scrollTimer);
         };
-        requestAnimationFrame(performAutoScroll);
-        setTimeout(performAutoScroll, 50);
-        setTimeout(performAutoScroll, 200);
-        if (document.readyState !== 'complete') {
-          window.addEventListener('load', function() {
-            setTimeout(performAutoScroll, 50);
-          });
+
+        window.addEventListener('wheel', cancelAutoScroll, { passive: true, once: true });
+        window.addEventListener('touchstart', cancelAutoScroll, { passive: true, once: true });
+        window.addEventListener('keydown', cancelAutoScroll, { passive: true, once: true });
+        window.addEventListener('mousedown', cancelAutoScroll, { passive: true, once: true });
+
+        var startSmoothGlide = function() {
+          if (scrollTimer) clearTimeout(scrollTimer);
+          scrollTimer = setTimeout(function() {
+            var currentY = window.pageYOffset || document.documentElement.scrollTop || 0;
+            if (!userInteracted && currentY < 60) {
+              window.scrollToGen('smooth');
+            }
+          }, 450);
+        };
+
+        if (document.readyState === 'complete') {
+          startSmoothGlide();
+        } else {
+          window.addEventListener('load', startSmoothGlide);
         }
       }
     } catch(e) {}
