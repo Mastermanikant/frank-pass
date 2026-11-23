@@ -7,17 +7,9 @@
       var saved = localStorage.getItem('fp_theme') || localStorage.getItem('theme');
       var theme = saved || 'dark';
       document.documentElement.setAttribute('data-theme', theme);
-      if (localStorage.getItem('fp_has_proceeded') === '1') {
-        document.documentElement.classList.add('fp-returning-user');
-      }
     } catch(e) {}
   })();
 </script>
-<style>
-html.fp-returning-user .founder-compact-container {
-  display: none !important;
-}
-</style>
 <script>
 (function() {
   if ('caches' in window) {
@@ -473,7 +465,7 @@ html.fp-returning-user .founder-compact-container {
           </div>
           <!-- Proceed to Generator Button for smooth auto-scroll onboarding -->
             <button type="button" id="btn-founder-continue" class="btn-primary" style="margin-top:10px;width:100%;font-size:0.84rem;padding:8px 12px;border-radius:9px;cursor:pointer;background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.3);color:#10b981;font-weight:700;">
-              <span>Proceed to Generator &darr; (Don't show again)</span>
+              <span>Proceed to Generator &darr;</span>
             </button>
 
             <!-- Improvement & Feedback Action Button -->
@@ -1806,7 +1798,7 @@ html.fp-returning-user .founder-compact-container {
   // Robust Auto-scroll for returning users with sticky header offset
   (function() {
     try {
-      function scrollToGen() {
+      function scrollToGen(behavior) {
         var gen = document.getElementById('generator-card');
         if (!gen) return;
         var header = document.getElementById('site-header');
@@ -1814,7 +1806,7 @@ html.fp-returning-user .founder-compact-container {
         var target = gen.getBoundingClientRect().top + window.pageYOffset - offset;
         window.scrollTo({
           top: target,
-          behavior: 'smooth'
+          behavior: behavior || 'smooth'
         });
       }
 
@@ -1823,10 +1815,7 @@ html.fp-returning-user .founder-compact-container {
         contBtn.addEventListener('click', function(e) {
           e.preventDefault();
           localStorage.setItem('fp_has_proceeded', '1');
-          scrollToGen();
-          setTimeout(function() {
-            document.documentElement.classList.add('fp-returning-user');
-          }, 650);
+          scrollToGen('smooth');
         });
       }
 
@@ -1838,14 +1827,15 @@ html.fp-returning-user .founder-compact-container {
         });
       }
 
-      // Returning user auto-scroll
-      if (localStorage.getItem('fp_has_proceeded') === '1') {
+      // Returning user auto-scroll: lands on Generator (Image 2), Founder Card remains accessible on scroll up
+      if (localStorage.getItem('fp_has_proceeded') === '1' && !window.location.hash) {
+        var performAutoScroll = function() {
+          scrollToGen('instant');
+        };
         if (document.readyState === 'complete') {
-          setTimeout(scrollToGen, 350);
+          performAutoScroll();
         } else {
-          window.addEventListener('load', function() {
-            setTimeout(scrollToGen, 350);
-          });
+          window.addEventListener('load', performAutoScroll);
         }
       }
     } catch(e) {}
