@@ -191,9 +191,9 @@
 
     
 
-    <!-- Commented out ecosystem network bar per user request
-<!-- Responsive Ecosystem Network Bar (KEPT 100% INTACT from Image 2) -->
-    <div class="footer-ecosystem-bar">
+    <!-- Responsive Ecosystem Network Bar (Hidden per user request, remove display:none to restore) -->
+    <div class="footer-ecosystem-bar" style="display:none !important;" aria-hidden="true">
+    
       <div class="footer-ecosystem-header">
         <span style="font-size:0.72rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-light);background:rgba(139,92,246,0.15);padding:3px 8px;border-radius:10px">Ecosystem</span>
         <span style="font-size:0.85rem;color:var(--text-muted);font-weight:600">${isHindi ? 'हमारे डिजिटल प्लेटफॉर्म्स:' : 'Our Digital Platforms:'}</span>
@@ -275,9 +275,6 @@
 
       </div>
     </div>
-
-    
-    -->
 
     <!-- Footer Bottom Copyright Bar -->
     <div class="footer-bottom">
