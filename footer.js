@@ -68,15 +68,6 @@
             : 'Deterministic passwords and PINs, computed on your device with 1,000,000 PBKDF2 iterations. Zero cloud databases, zero telemetry, and zero breach footprint.'}
         </p>
 
-        <!-- Local-First Assurance Badge (Image 1 Inspiration) -->
-        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:#10b981;padding:5px 12px;border-radius:999px;font-size:0.75rem;font-weight:700;margin-bottom:1.15rem;">
-          <span>💻 ${isHindi ? 'लोकल-फर्स्ट' : 'Local-first'}</span>
-          <span>&bull;</span>
-          <span>${isHindi ? 'शून्य क्लाउड वॉल्ट' : 'No password vault'}</span>
-          <span>&bull;</span>
-          <span>${isHindi ? '100% ऑफलाइन' : 'Offline-ready'}</span>
-        </div>
-        
         <div class="footer-social" style="display:flex;gap:8px;flex-wrap:wrap;max-width:300px">
           ${socialLink(soc.X || 'https://x.com/frankpasshq', 'X (Twitter)', ico.x, 'Official product updates & security announcements (@frankpasshq).')}
           ${socialLink(soc.GITHUB || 'https://github.com/Mastermanikant/frank-pass', 'FrankPass on GitHub', ico.github, 'Open-source codebases, repos, and cryptographic engines.')}
@@ -114,7 +105,7 @@
           <span>${isHindi ? 'रैंडम पासवर्ड' : 'Random password'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
-        <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link">
+        <a href="${isHindi ? '/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html' : '/comparison-between-frankpass-all-generators-deterministic-random-pin.html'}" class="footer-nav-link">
           <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span>
           <span class="nav-chevron">&rsaquo;</span>
         </a>
@@ -283,7 +274,7 @@
         <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
         <span style="white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक सॉवरेन प्रोजेक्ट।' : 'A FrankBase project.'}</span>
         <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
-        <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;font-weight:600;">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
+        <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" style="color:var(--accent-light, #a78bfa);text-decoration:underline;text-underline-offset:3px;font-weight:700;">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
       </div>
 
       <div class="footer-legal-links">

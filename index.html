@@ -485,7 +485,7 @@
 
     <!-- Generator Card Container -->
     <div class="generator-centered-container">
- <form class="card-glass generator-card" id="generator-card" role="form" aria-label="Stateless Password Generator Form" onsubmit="return false;">
+ <form class="card-glass generator-card" id="generator-card" style="scroll-margin-top:85px;" role="form" aria-label="Stateless Password Generator Form" onsubmit="return false;">
 
  <!-- Card Header with Badges & Country Pill -->
  <div class="gen-header">
@@ -1643,7 +1643,7 @@
 <script defer src="/frankpass-utils.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-core.js?v=5.0.1"></script>
 <script defer src="/frankpass-vault.js?v=5.0.1"></script>
-<script defer src="/footer.min.js?v=5.0.6"></script>
+<script defer src="/footer.min.js?v=5.0.7"></script>
 <script defer src="/pricing-fx.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-app.min.js?v=5.0.1"></script>
 <script>
@@ -1733,13 +1733,46 @@
     deferredPrompt = e;
   });
 
+  window.addEventListener('appinstalled', function() {
+    localStorage.setItem('fp_app_installed', '1');
+    updatePwaButtonState();
+  });
+
+  function updatePwaButtonState() {
+    var pwaBtn = document.getElementById('btn-cta-pwa-install');
+    if (!pwaBtn) return;
+    var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+    if (isStandalone) {
+      pwaBtn.innerHTML = '<span>⚡</span> <span>App Installed (Offline Mode)</span>';
+      pwaBtn.style.opacity = '0.85';
+      pwaBtn.style.pointerEvents = 'none';
+      return;
+    }
+    if (localStorage.getItem('fp_app_installed') === '1') {
+      pwaBtn.innerHTML = '<span>🚀</span> <span>Open Web App</span>';
+      pwaBtn.title = 'FrankPass is installed on this device. Click to scroll to generator.';
+    }
+  }
+
   var pwaBtn = document.getElementById('btn-cta-pwa-install');
   if (pwaBtn) {
+    updatePwaButtonState();
     pwaBtn.addEventListener('click', function() {
+      var isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+      if (isStandalone) return;
+
+      if (localStorage.getItem('fp_app_installed') === '1') {
+        var gen = document.getElementById('generator-card');
+        if (gen) gen.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
       if (deferredPrompt) {
         deferredPrompt.prompt();
         deferredPrompt.userChoice.then(function(choice) {
           if (choice.outcome === 'accepted') {
+            localStorage.setItem('fp_app_installed', '1');
+            updatePwaButtonState();
             if (typeof showToast === 'function') showToast('Thank you for installing FrankPass!', 'success');
           }
           deferredPrompt = null;
@@ -1776,22 +1809,47 @@
     });
   })();
 
-  // Returning user smooth auto-scroll to Generator
+  // Robust Auto-scroll for returning users with sticky header offset
   (function() {
     try {
-      var contBtn = document.getElementById('btn-founder-continue');
-      if (contBtn) {
-        contBtn.addEventListener('click', function() {
-          localStorage.setItem('fp_has_proceeded', '1');
-          var gen = document.getElementById('generator-card');
-          if (gen) gen.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      function scrollToGen() {
+        var gen = document.getElementById('generator-card');
+        if (!gen) return;
+        var header = document.getElementById('site-header');
+        var offset = header ? header.offsetHeight + 16 : 85;
+        var target = gen.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({
+          top: target,
+          behavior: 'smooth'
         });
       }
+
+      var contBtn = document.getElementById('btn-founder-continue');
+      if (contBtn) {
+        contBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          localStorage.setItem('fp_has_proceeded', '1');
+          scrollToGen();
+        });
+      }
+
+      // If user toggles founder card drawer closed, also remember
+      var toggleBtn = document.getElementById('founder-toggle-btn');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function() {
+          localStorage.setItem('fp_has_proceeded', '1');
+        });
+      }
+
+      // Returning user auto-scroll
       if (localStorage.getItem('fp_has_proceeded') === '1') {
-        setTimeout(function() {
-          var gen = document.getElementById('generator-card');
-          if (gen) gen.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 400);
+        if (document.readyState === 'complete') {
+          setTimeout(scrollToGen, 350);
+        } else {
+          window.addEventListener('load', function() {
+            setTimeout(scrollToGen, 350);
+          });
+        }
       }
     } catch(e) {}
   })();
