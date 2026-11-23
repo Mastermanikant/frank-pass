@@ -515,7 +515,7 @@
       </div>
       <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto;">
         <button type="button" id="open-guide-from-toast-btn" style="background:rgba(16,185,129,0.15);border:1px solid rgba(16,185,129,0.4);color:#10b981;font-size:0.74rem;font-weight:700;padding:3px 9px;border-radius:6px;cursor:pointer;">Open Guide &rarr;</button>
-        <button type="button" id="dismiss-guide-toast-btn" aria-label="Don't show again" title="Don't show this tip again" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text-muted);font-size:0.74rem;font-weight:600;padding:3px 9px;border-radius:6px;cursor:pointer;" onclick="(function(){var t=document.getElementById('first-time-guide-toast');if(t)t.style.display='none';try{localStorage.setItem('fp_guide_dismissed','1')}catch(e){}})()">&times; Don't show again</button>
+        <button type="button" id="dismiss-guide-toast-btn" aria-label="Don't show again" title="Don't show this tip again" style="background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--text-muted);font-size:0.74rem;font-weight:600;padding:3px 9px;border-radius:6px;cursor:pointer;" onclick="(function(){var t=document.getElementById('first-time-guide-toast');if(t)t.style.display='none';try{localStorage.setItem('fp_guide_dismissed','1');localStorage.setItem('fp_has_proceeded','1');if(window.scrollToGen){window.scrollToGen('smooth');}}catch(e){}})()">&times; Don't show again</button>
       </div>
     </div>
   </div>
@@ -1798,24 +1798,25 @@
   // Robust Auto-scroll for returning users with sticky header offset
   (function() {
     try {
-      function scrollToGen(behavior) {
+      window.scrollToGen = function(behavior) {
         var gen = document.getElementById('generator-card');
         if (!gen) return;
         var header = document.getElementById('site-header');
-        var offset = header ? header.offsetHeight + 16 : 85;
-        var target = gen.getBoundingClientRect().top + window.pageYOffset - offset;
+        var offset = (header && header.offsetHeight) ? (header.offsetHeight + 16) : 85;
+        var currentScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
+        var target = gen.getBoundingClientRect().top + currentScroll - offset;
         window.scrollTo({
-          top: target,
+          top: Math.max(0, target),
           behavior: behavior || 'smooth'
         });
-      }
+      };
 
       var contBtn = document.getElementById('btn-founder-continue');
       if (contBtn) {
         contBtn.addEventListener('click', function(e) {
           e.preventDefault();
           localStorage.setItem('fp_has_proceeded', '1');
-          scrollToGen('smooth');
+          window.scrollToGen('smooth');
         });
       }
 
@@ -1829,13 +1830,19 @@
 
       // Returning user auto-scroll: lands on Generator (Image 2), Founder Card remains accessible on scroll up
       if (localStorage.getItem('fp_has_proceeded') === '1' && !window.location.hash) {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
         var performAutoScroll = function() {
-          scrollToGen('instant');
+          window.scrollToGen('instant');
         };
-        if (document.readyState === 'complete') {
-          performAutoScroll();
-        } else {
-          window.addEventListener('load', performAutoScroll);
+        requestAnimationFrame(performAutoScroll);
+        setTimeout(performAutoScroll, 50);
+        setTimeout(performAutoScroll, 200);
+        if (document.readyState !== 'complete') {
+          window.addEventListener('load', function() {
+            setTimeout(performAutoScroll, 50);
+          });
         }
       }
     } catch(e) {}
