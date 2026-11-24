@@ -45,7 +45,7 @@
  <link rel="manifest" href="/manifest.json">
 <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="stylesheet" href="/style.min.css?v=5.0.6">
+  <link rel="stylesheet" href="/style.min.css?v=5.0.7">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -1058,10 +1058,14 @@ window.toggleWhyCloudDrawer = function() {
 };
 </script>
 
-    <!-- ============================================================
-         FREE VS PRO: SINGLE CLEAN CLARITY CARD (0 OVERWHELM)
-         ============================================================ -->
-    <div class="card-glass" style="max-width:680px;margin:0 auto 2.5rem;padding:1.5rem 1.6rem;border-radius:16px;border:1px solid rgba(139,92,246,0.3);background:linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(15,15,26,0.85) 100%);">
+<!-- ============================================================
+     FREE VS PRO & ACTION CTA SECTION (EQUAL BREADTH AS COMMUNITY)
+     ============================================================ -->
+<section class="section-sm" style="padding-top:1.5rem;padding-bottom:1.5rem;background:var(--bg-secondary);">
+  <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
+
+    <!-- FREE VS PRO: SINGLE CLEAN CLARITY CARD (0 OVERWHELM) -->
+    <div class="card-glass" style="margin:0 auto 2rem;padding:1.5rem 1.6rem;border-radius:18px;border:1px solid rgba(139,92,246,0.3);background:linear-gradient(135deg, rgba(139,92,246,0.06) 0%, rgba(15,15,26,0.85) 100%);">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px;">
         <span style="font-size:0.75rem;font-weight:800;color:#10b981;text-transform:uppercase;letter-spacing:0.06em;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);padding:3px 10px;border-radius:20px;">
           ✓ Security is 100% Free Forever
@@ -1087,10 +1091,8 @@ window.toggleWhyCloudDrawer = function() {
       </div>
     </div>
 
-    <!-- ============================================================
-         ACTION CTA BANNER (680PX SINGLE COLUMN)
-         ============================================================ -->
-    <div class="card-glass" style="max-width:680px;margin:0 auto 2.5rem;padding:2rem 1.6rem;text-align:center;border-radius:18px;border:1px solid rgba(139,92,246,0.35);background:linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(15,15,26,0.95) 100%);box-shadow:0 8px 32px rgba(0,0,0,0.45);">
+    <!-- ACTION CTA BANNER (EQUAL 680PX BREADTH) -->
+    <div class="card-glass" style="margin:0 auto;padding:2rem 1.6rem;text-align:center;border-radius:18px;border:1px solid rgba(139,92,246,0.35);background:linear-gradient(135deg, rgba(139,92,246,0.12) 0%, rgba(15,15,26,0.95) 100%);box-shadow:0 8px 32px rgba(0,0,0,0.45);">
       <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);padding:3px 12px;border-radius:20px;font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;">
         <span>&#128737;&#65039; Take Complete Self-Custody</span>
       </div>
@@ -1102,21 +1104,21 @@ window.toggleWhyCloudDrawer = function() {
       </p>
 
       <!-- Direct Action Buttons -->
-        <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:440px;margin:0 auto;">
-          <!-- Action 1: Universal Install Application -->
-          <button id="btn-cta-pwa-install" type="button" class="btn-primary" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;">
-            <span>&#128241;</span> <span>Install Application</span>
-          </button>
+      <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:440px;margin:0 auto;">
+        <!-- Action 1: Universal Install Application -->
+        <button id="btn-cta-pwa-install" type="button" class="btn-primary" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;">
+          <span>&#128241;</span> <span>Install Application</span>
+        </button>
 
-          <!-- Action 2: Smart Browser Extension Installer -->
-          <button id="btn-install-extension-smart" type="button" class="btn-ghost" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;border-color:var(--accent);color:var(--text-primary);background:rgba(139,92,246,0.08);">
-            <span>&#129513;</span> <span>Install Extension</span>
-          </button>
-          
-          <a href="/extension.html" style="font-size:0.84rem;color:var(--accent-light);text-decoration:underline;text-align:center;font-weight:600;margin-top:-0.15rem;">Visit Extension Page &rarr;</a>
-        </div>
+        <!-- Action 2: Smart Browser Extension Installer -->
+        <button id="btn-install-extension-smart" type="button" class="btn-ghost" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;border-color:var(--accent);color:var(--text-primary);background:rgba(139,92,246,0.08);">
+          <span>&#129513;</span> <span>Install Extension</span>
+        </button>
+        
+        <a href="/extension.html" style="font-size:0.84rem;color:var(--accent-light);text-decoration:underline;text-align:center;font-weight:600;margin-top:-0.15rem;">Visit Extension Page &rarr;</a>
+      </div>
 
-        <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.85rem;">
+      <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.85rem;">
         Works 100% offline &middot; No credit card &middot; Zero personal data collected
       </div>
     </div>
@@ -1676,7 +1678,7 @@ window.toggleWhyCloudDrawer = function() {
 <script defer src="/frankpass-utils.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-core.js?v=5.0.1"></script>
 <script defer src="/frankpass-vault.js?v=5.0.1"></script>
-<script defer src="/footer.min.js?v=5.1.4"></script>
+<script defer src="/footer.min.js?v=5.1.5"></script>
 <script defer src="/pricing-fx.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-app.min.js?v=5.0.1"></script>
 <script>

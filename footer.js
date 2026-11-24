@@ -85,82 +85,87 @@
         </div>
       </div>
 
-      <!-- Col 2: Use FrankPass (Pill Header from Image 1) -->
-      <div class="footer-col" id="footer-col-tools">
-        <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-tools')" aria-expanded="false">
-          <span class="footer-col-pill pill-cyan">${isHindi ? 'टूल्स' : 'TOOLS'}</span>
-          <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
-        </button>
-        <div class="footer-col-links-wrap">
-        
-        <a href="/" class="footer-nav-link">
-          <span>${isHindi ? 'पासवर्ड जनरेटर' : 'Password generator'}</span>
-        </a>
-        <a href="${isHindi ? '/pin-hindi.html' : '/pin.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'पिन जनरेटर' : 'PIN generator'}</span>
-        </a>
-        <a href="/random-password-generator.html" class="footer-nav-link">
-          <span>${isHindi ? 'रैंडम पासवर्ड' : 'Random password'}</span>
-        </a>
-        <a href="${isHindi ? '/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html' : '/comparison-between-frankpass-all-generators-deterministic-random-pin.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span>
-        </a>
-        <a href="${isHindi ? '/pricing-hindi.html' : '/pricing.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span>
-        </a>
-        </div>
-      </div>
+      <!-- 3 Navigation Columns (One-Line Segmented Tabs on Mobile) -->
+      <div class="footer-nav-columns">
 
-      <!-- Col 3: Learn & Verify (Pill Header from Image 1) -->
-      <div class="footer-col" id="footer-col-learn">
-        <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-learn')" aria-expanded="false">
-          <span class="footer-col-pill pill-blue">${isHindi ? 'रिसोर्सेज' : 'RESOURCES'}</span>
-          <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
-        </button>
-        <div class="footer-col-links-wrap">
-        
-        <a href="${isHindi ? '/frankpass-vs-cloud-password-vaults-hindi.html' : '/frankpass-vs-cloud-password-vaults.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span>
-        </a>
-        <a href="${isHindi ? '/secret-key-guide-hindi.html' : '/secret-key-guide.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'सीक्रेट की गाइड' : 'Secret Key Guide'}</span>
-        </a>
-        <a href="${isHindi ? '/whitepaper-hindi.html' : '/whitepaper.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'टेक्निकल व्हाइटपेपर' : 'Technical whitepaper'}</span>
-        </a>
-        <a href="${isHindi ? '/faq-hindi.html' : '/faq.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'सुरक्षा FAQ' : 'Security limits &amp; FAQ'}</span>
-        </a>
-        <a href="${isHindi ? '/where-password-managers-fail-and-invisible-vault-hindi.html' : '/where-password-managers-fail-and-invisible-vault.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'इनविजिबल वॉल्ट डिफेंस' : 'Invisible Vault Defense'}</span>
-        </a>
+        <!-- Col 2: Use FrankPass (Tools Tab) -->
+        <div class="footer-col" id="footer-col-tools">
+          <button type="button" class="footer-col-header-btn tab-cyan" onclick="toggleFooterTab('footer-col-tools')" aria-expanded="false">
+            <span class="footer-col-pill pill-cyan">${isHindi ? 'टूल्स' : 'TOOLS'}</span>
+            <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
+          </button>
+          <div class="footer-col-links-wrap">
+          
+          <a href="/" class="footer-nav-link">
+            <span>${isHindi ? 'पासवर्ड जनरेटर' : 'Password generator'}</span>
+          </a>
+          <a href="${isHindi ? '/pin-hindi.html' : '/pin.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'पिन जनरेटर' : 'PIN generator'}</span>
+          </a>
+          <a href="/random-password-generator.html" class="footer-nav-link">
+            <span>${isHindi ? 'रैंडम पासवर्ड' : 'Random password'}</span>
+          </a>
+          <a href="${isHindi ? '/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html' : '/comparison-between-frankpass-all-generators-deterministic-random-pin.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span>
+          </a>
+          <a href="${isHindi ? '/pricing-hindi.html' : '/pricing.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span>
+          </a>
+          </div>
         </div>
-      </div>
 
-            <!-- Col 4: Products & Apps (Pill Header from Image 1) -->
-      <div class="footer-col" id="footer-col-products">
-        <button type="button" class="footer-col-header-btn" onclick="toggleFooterCol('footer-col-products')" aria-expanded="false">
-          <span class="footer-col-pill pill-emerald">${isHindi ? 'उत्पाद' : 'PRODUCTS'}</span>
-          <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
-        </button>
-        <div class="footer-col-links-wrap">
-        
-        <a href="${isHindi ? '/extension-hindi.html' : '/extension.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'ब्राउज़र एक्सटेंशन' : 'Browser extension'}</span>
-        </a>
-        <a href="${isHindi ? '/install-hindi.html' : '/install.html'}" class="footer-nav-link">
-          <span>${isHindi ? 'ऑफलाइन PWA ऐप' : 'Install the PWA'}</span>
-        </a>
-        <a href="${isHindi ? '/install-hindi.html#android' : '/install.html#android'}" class="footer-nav-link">
-          <span>${isHindi ? 'एंड्रॉइड ऐप' : 'Android App'}</span>
-        </a>
-        <a href="https://store.frankbase.com" target="_blank" rel="noopener" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
-          <span>${isHindi ? 'स्टोर' : 'Store'} ↗</span>
-        </a>
-        <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
-          <span>${isHindi ? 'मास्टर रिसोर्स लाइब्रेरी' : 'Master Resource Library'}</span>
-        </a>
+        <!-- Col 3: Learn & Verify (Resources Tab) -->
+        <div class="footer-col" id="footer-col-learn">
+          <button type="button" class="footer-col-header-btn tab-blue" onclick="toggleFooterTab('footer-col-learn')" aria-expanded="false">
+            <span class="footer-col-pill pill-blue">${isHindi ? 'रिसोर्सेज' : 'RESOURCES'}</span>
+            <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
+          </button>
+          <div class="footer-col-links-wrap">
+          
+          <a href="${isHindi ? '/frankpass-vs-cloud-password-vaults-hindi.html' : '/frankpass-vs-cloud-password-vaults.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span>
+          </a>
+          <a href="${isHindi ? '/secret-key-guide-hindi.html' : '/secret-key-guide.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'सीक्रेट की गाइड' : 'Secret Key Guide'}</span>
+          </a>
+          <a href="${isHindi ? '/whitepaper-hindi.html' : '/whitepaper.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'टेक्निकल व्हाइटपेपर' : 'Technical whitepaper'}</span>
+          </a>
+          <a href="${isHindi ? '/faq-hindi.html' : '/faq.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'सुरक्षा FAQ' : 'Security limits &amp; FAQ'}</span>
+          </a>
+          <a href="${isHindi ? '/where-password-managers-fail-and-invisible-vault-hindi.html' : '/where-password-managers-fail-and-invisible-vault.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'इनविजिबल वॉल्ट डिफेंस' : 'Invisible Vault Defense'}</span>
+          </a>
+          </div>
         </div>
+
+        <!-- Col 4: Products & Apps (Products Tab) -->
+        <div class="footer-col" id="footer-col-products">
+          <button type="button" class="footer-col-header-btn tab-emerald" onclick="toggleFooterTab('footer-col-products')" aria-expanded="false">
+            <span class="footer-col-pill pill-emerald">${isHindi ? 'उत्पाद' : 'PRODUCTS'}</span>
+            <span class="footer-col-accordion-toggle" aria-hidden="true">▾</span>
+          </button>
+          <div class="footer-col-links-wrap">
+          
+          <a href="${isHindi ? '/extension-hindi.html' : '/extension.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'ब्राउज़र एक्सटेंशन' : 'Browser extension'}</span>
+          </a>
+          <a href="${isHindi ? '/install-hindi.html' : '/install.html'}" class="footer-nav-link">
+            <span>${isHindi ? 'ऑफलाइन PWA ऐप' : 'Install the PWA'}</span>
+          </a>
+          <a href="${isHindi ? '/install-hindi.html#android' : '/install.html#android'}" class="footer-nav-link">
+            <span>${isHindi ? 'एंड्रॉइड ऐप' : 'Android App'}</span>
+          </a>
+          <a href="https://store.frankbase.com" target="_blank" rel="noopener" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
+            <span>${isHindi ? 'स्टोर' : 'Store'} ↗</span>
+          </a>
+          <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
+            <span>${isHindi ? 'मास्टर रिसोर्स लाइब्रेरी' : 'Master Resource Library'}</span>
+          </a>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -284,15 +289,30 @@
     syncThemeUI(document.documentElement.getAttribute('data-theme') || 'dark');
   }
 
-  window.toggleFooterCol = function(id) {
+  window.toggleFooterTab = function(id) {
     if (window.innerWidth > 768) return;
-    const col = document.getElementById(id);
-    if (col) {
-      const isOpen = col.classList.toggle('open');
-      const btn = col.querySelector('.footer-col-header-btn');
-      if (btn) btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    const target = document.getElementById(id);
+    if (!target) return;
+    const isCurrentlyOpen = target.classList.contains('open');
+    
+    // Close all 3 tabs first (single-open accordion tab behavior)
+    ['footer-col-tools', 'footer-col-learn', 'footer-col-products'].forEach(colId => {
+      const col = document.getElementById(colId);
+      if (col) {
+        col.classList.remove('open');
+        const btn = col.querySelector('.footer-col-header-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // If it was not open, open it now! (If it was open, it stays closed)
+    if (!isCurrentlyOpen) {
+      target.classList.add('open');
+      const btn = target.querySelector('.footer-col-header-btn');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
     }
   };
+  window.toggleFooterCol = window.toggleFooterTab;
 
   function setupVersionPopover() {
     const vWrap = document.getElementById('fp-version-wrap');
