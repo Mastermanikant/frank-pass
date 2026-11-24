@@ -32,9 +32,9 @@ html {
   --bg-tertiary:   #141428;
   --header-bg:     rgba(10, 10, 18, 0.88);
   --header-scrolled-bg: rgba(10, 10, 18, 0.96);
-  --card-glass-bg: rgba(15, 15, 26, 0.85);
-  --card-glass-border: rgba(139, 92, 246, 0.22);
-  --gen-card-bg:   rgba(10, 10, 18, 0.95);
+  --card-glass-bg: var(--bg-primary);
+  --card-glass-border: rgba(139, 92, 246, 0.2);
+  --gen-card-bg:   var(--bg-primary);
   --input-bg:      rgba(20, 20, 40, 0.6);
   --input-border:  rgba(139, 92, 246, 0.3);
   --input-text:    #f8fafc;
