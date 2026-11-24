@@ -1059,7 +1059,8 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   white-space: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   font-family: 'Consolas', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Cascadia Code', ui-monospace, monospace;
   font-size: 1.05rem;
   font-weight: 600;
@@ -1070,14 +1071,26 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   line-height: 1.5;
   transition: filter 0.15s ease, letter-spacing 0.15s ease;
 }
+.output-password::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
 .output-password.masked {
   -webkit-text-security: disc;
   text-security: disc;
   letter-spacing: 0.12em;
   white-space: nowrap;
   overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   filter: none;
   user-select: none;
+}
+.output-password.masked::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 .output-password.placeholder { color: var(--text-muted); font-size: 1.25rem; letter-spacing: 0.15em; }
 .copy-btn {
@@ -1440,7 +1453,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 1.25rem 0 2.5rem;
+  padding: 1.25rem 0 0.6rem;
   position: relative;
   overflow: hidden;
 }
@@ -1653,7 +1666,7 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   color: #0f172a !important;
   border: 1px solid #cbd5e1 !important;
 }
-[data-theme="light"] #country-trigger span {
+[data-theme="light"] #country-trigger span:not(.flag-icon) {
   color: #0f172a !important;
   font-weight: 600;
 }
@@ -2661,7 +2674,7 @@ html, body {
 
 @media (max-width: 900px) {
   .hero-section {
-    padding: 1.6rem 0 1.5rem 0 !important;
+    padding: 1.6rem 0 0.6rem 0 !important;
     min-height: auto;
   }
   .hero-header-center {
@@ -2762,9 +2775,14 @@ html, body {
     font-size: 1.15rem;
   }
   #country-trigger {
-    padding: 0.35rem 0.5rem;
-    font-size: 0.78rem;
-    max-width: 110px;
+    padding: 0.35rem 0.45rem !important;
+    font-size: 0.78rem !important;
+    max-width: 48px !important;
+    gap: 2px !important;
+  }
+  #country-trigger span:not(.flag-icon),
+  #country-trigger .country-name {
+    display: none !important;
   }
   .founder-trust-card .founder-trust-links {
     display: flex;
@@ -3102,31 +3120,47 @@ html, body {
   transform: translateX(-50%) translateY(0);
 }
 /* Edge-safe alignment for footer social link preview cards (Prevents left-side clipping) */
-.footer-social-links .has-hover-card:first-child .hover-card-preview {
-  left: 0;
-  transform: translateY(8px);
+.footer-social .has-hover-card:first-child .hover-card-preview,
+.footer-social-links .has-hover-card:first-child .hover-card-preview,
+.founder-socials-grid .has-hover-card:first-child .hover-card-preview {
+  left: 0 !important;
+  transform: translateY(8px) !important;
 }
-.footer-social-links .has-hover-card:first-child .hover-card-preview::after {
-  left: 18px;
-  transform: none;
+.footer-social .has-hover-card:first-child .hover-card-preview::after,
+.footer-social-links .has-hover-card:first-child .hover-card-preview::after,
+.founder-socials-grid .has-hover-card:first-child .hover-card-preview::after {
+  left: 18px !important;
+  transform: none !important;
 }
+.footer-social .has-hover-card:first-child:hover .hover-card-preview,
+.footer-social .has-hover-card:first-child:focus-visible .hover-card-preview,
 .footer-social-links .has-hover-card:first-child:hover .hover-card-preview,
-.footer-social-links .has-hover-card:first-child:focus-visible .hover-card-preview {
-  transform: translateY(0);
+.footer-social-links .has-hover-card:first-child:focus-visible .hover-card-preview,
+.founder-socials-grid .has-hover-card:first-child:hover .hover-card-preview,
+.founder-socials-grid .has-hover-card:first-child:focus-visible .hover-card-preview {
+  transform: translateY(0) !important;
 }
-.footer-social-links .has-hover-card:last-child .hover-card-preview {
-  left: auto;
-  right: 0;
-  transform: translateY(8px);
+.footer-social .has-hover-card:last-child .hover-card-preview,
+.footer-social-links .has-hover-card:last-child .hover-card-preview,
+.founder-socials-grid .has-hover-card:last-child .hover-card-preview {
+  left: auto !important;
+  right: 0 !important;
+  transform: translateY(8px) !important;
 }
-.footer-social-links .has-hover-card:last-child .hover-card-preview::after {
-  left: auto;
-  right: 18px;
-  transform: none;
+.footer-social .has-hover-card:last-child .hover-card-preview::after,
+.footer-social-links .has-hover-card:last-child .hover-card-preview::after,
+.founder-socials-grid .has-hover-card:last-child .hover-card-preview::after {
+  left: auto !important;
+  right: 18px !important;
+  transform: none !important;
 }
+.footer-social .has-hover-card:last-child:hover .hover-card-preview,
+.footer-social .has-hover-card:last-child:focus-visible .hover-card-preview,
 .footer-social-links .has-hover-card:last-child:hover .hover-card-preview,
-.footer-social-links .has-hover-card:last-child:focus-visible .hover-card-preview {
-  transform: translateY(0);
+.footer-social-links .has-hover-card:last-child:focus-visible .hover-card-preview,
+.founder-socials-grid .has-hover-card:last-child:hover .hover-card-preview,
+.founder-socials-grid .has-hover-card:last-child:focus-visible .hover-card-preview {
+  transform: translateY(0) !important;
 }
 .hover-card-title {
   font-size: 0.82rem;
@@ -4600,8 +4634,8 @@ pre, code {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 4px !important;
-    padding: 0.5rem 0.35rem !important;
+    gap: 2px !important;
+    padding: 0.42rem clamp(0.15rem, 1.2vw, 0.35rem) !important;
     border-radius: 999px !important;
     cursor: pointer !important;
     transition: all 0.2s ease !important;
