@@ -29,12 +29,10 @@
 /pin-security /pin.html 301
 
 # Unified About & Founder Consolidation (EN & HI)
-/founder-mastermanikant.html /about-us.html 301
-/founder-mastermanikant-hindi.html /about-us-hindi.html 301
-/founder-mastermanikant /about-us.html 301
-/founder-mastermanikant-hindi /about-us-hindi.html 301
-/founder /about-us.html 301
-/founder-hindi /about-us-hindi.html 301
+/founder /founder-mastermanikant.html 301
+/founder-hindi /founder-mastermanikant-hindi.html 301
+/founder-mastermanikant /founder-mastermanikant.html 301
+/founder-mastermanikant-hindi /founder-mastermanikant-hindi.html 301
 /about /about-us.html 301
 /about-hindi /about-us-hindi.html 301
 

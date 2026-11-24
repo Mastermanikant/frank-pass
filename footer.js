@@ -610,7 +610,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         setTimeout(function () {
-          navigator.serviceWorker.register('/service-worker.js?v=5.2.0').then(function(reg){reg.update();return reg;})
+          navigator.serviceWorker.register('/service-worker.js?v=5.2.1').then(function(reg){reg.update();return reg;})
             .then(function (reg) {
               reg.addEventListener('updatefound', function () {
                 const newWorker = reg.installing;
