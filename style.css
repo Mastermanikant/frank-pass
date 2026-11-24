@@ -2084,7 +2084,7 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
 
 /* ── GENERATOR CARD DARK-MODE INPUT REFINEMENTS ─────────── */
 .hero-section {
-  padding-top: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+  padding-top: clamp(2.5rem, 5vw, 3.5rem) !important;
   margin-top: 0 !important;
 }
 
@@ -2661,7 +2661,7 @@ html, body {
 
 @media (max-width: 900px) {
   .hero-section {
-    padding: 0.4rem 0 1.5rem 0 !important;
+    padding: 1.6rem 0 1.5rem 0 !important;
     min-height: auto;
   }
   .hero-header-center {
