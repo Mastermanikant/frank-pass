@@ -4784,6 +4784,7 @@ pre, code {
 
 /* ── DRAWER & BOTTOM CARDS (SEAMLESS BORDERLESS CANVASSING BELOW GENERATOR) ──── */
 /* ── ZERO-COGNITIVE-LOAD SEAMLESS CANVAS (BORDERLESS / TRANSPARENT BELOW GENERATOR) ── */
+/* ── CARD CONTAINERS (Consistent Card Surface & Borders) ── */
 .seamless-canvas-card,
 .gen-style-card,
 #how-works-drawer .card-glass,
@@ -4792,16 +4793,12 @@ pre, code {
 #pricing-preview-card,
 #action-cta-banner-card,
 #community-preview-card {
-  background: transparent !important;
-  border: 1px solid transparent !important;
-  border-color: transparent !important;
-  border-radius: 20px !important;
-  box-shadow: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  padding: 1.5rem 1.75rem !important;
-  box-sizing: border-box !important;
-  transition: none !important;
+  background: var(--card-glass-bg);
+  border: 1px solid var(--card-glass-border);
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  padding: 1.5rem 1.75rem;
+  box-sizing: border-box;
 }
 
 [data-theme="light"] .seamless-canvas-card,
@@ -4812,32 +4809,9 @@ pre, code {
 [data-theme="light"] #pricing-preview-card,
 [data-theme="light"] #action-cta-banner-card,
 [data-theme="light"] #community-preview-card {
-  background: transparent !important;
-  border: 1px solid transparent !important;
-  border-color: transparent !important;
-  box-shadow: none !important;
-}
-
-.seamless-canvas-card:hover,
-.gen-style-card:hover,
-#how-works-drawer .card-glass:hover,
-#why-cloud-drawer .card-glass:hover,
-#community-section .card-glass:hover,
-#pricing-preview-card:hover,
-#action-cta-banner-card:hover,
-#community-preview-card:hover,
-[data-theme="light"] .seamless-canvas-card:hover,
-[data-theme="light"] .gen-style-card:hover,
-[data-theme="light"] #how-works-drawer .card-glass:hover,
-[data-theme="light"] #why-cloud-drawer .card-glass:hover,
-[data-theme="light"] #community-section .card-glass:hover,
-[data-theme="light"] #pricing-preview-card:hover,
-[data-theme="light"] #action-cta-banner-card:hover,
-[data-theme="light"] #community-preview-card:hover {
-  border-color: transparent !important;
-  background: transparent !important;
-  box-shadow: none !important;
-  transform: none !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(109, 40, 217, 0.16) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
 }
 
 @media (max-width: 768px) {
@@ -4856,18 +4830,10 @@ pre, code {
 }
 
 /* ── MOBILE BOTTOM DOCK CLEARANCE SPACER ── */
-.mobile-bottom-dock-spacer { display: none !important; }
-@media (max-width: 768px) {
-  .mobile-bottom-dock-spacer { display: none !important; }
-  
-}
-
-
-@media (max-width: 768px) {
-  .mobile-bottom-dock-spacer {
-    display: block !important;
-    height: calc(var(--mobile-nav-h, 64px) + env(safe-area-inset-bottom, 0px) + 5.5rem) !important;
-    width: 100% !important;
-    pointer-events: none !important;
-  }
+.mobile-bottom-dock-spacer {
+  height: 120px !important;
+  width: 100% !important;
+  display: block !important;
+  clear: both !important;
+  pointer-events: none !important;
 }
