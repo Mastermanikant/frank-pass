@@ -474,8 +474,7 @@
         if (initCountry) {
             selectCountry(initCountry, false);
 
-        // Pre-render list options immediately for accessibility and automated inspection
-        renderList('');
+        // Lazy-render options on click/focus inside openDropdown() to keep initial DOM lightweight
         }
 
         // Priority 4: Background Cloudflare Edge Geolocation (/cdn-cgi/trace)

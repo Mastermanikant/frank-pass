@@ -45,7 +45,7 @@
  <link rel="manifest" href="/manifest.json">
 <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="stylesheet" href="/style.min.css?v=5.1.4">
+  <link rel="stylesheet" href="/style.min.css?v=5.1.5">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -552,7 +552,7 @@
   <input id="username-input" name="username" class="form-input" autocomplete="username" autocorrect="off" autocapitalize="off" spellcheck="false" data-form-type="other" type="text" placeholder="e.g. work@gmail.com, personal, user_01" list="username-recent-list" aria-describedby="username-hint" style="text-transform:lowercase;padding-right:3rem;" oninput="this.value=this.value.toLowerCase().replace(/\s+/g,'')">
   <datalist id="username-recent-list"></datalist>
   <!-- Paste Button (shows when empty) -->
-  <button class="input-action-btn" id="username-paste-btn" type="button" aria-label="Paste username from clipboard" title="Paste username from clipboard" style="display:flex;right:0.65rem;padding:4px;border-radius:50%;align-items:center;justify-content:center;">
+  <button class="input-action-btn" id="username-paste-btn" type="button" aria-label="Paste username from clipboard" title="Paste username from clipboard" style="display:flex;right:0.35rem;min-width:44px;min-height:44px;padding:0;border-radius:50%;align-items:center;justify-content:center;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
   </button>
   <!-- Clear Cross Button (shows when has text) -->
@@ -606,7 +606,7 @@
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" width="16" height="16"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
   <!-- Paste Button (shows when empty) -->
-  <button class="input-action-btn" id="platform-paste-btn" type="button" aria-label="Paste platform from clipboard" title="Paste platform from clipboard" style="display:flex;right:0.65rem;padding:4px;border-radius:50%;align-items:center;justify-content:center;">
+  <button class="input-action-btn" id="platform-paste-btn" type="button" aria-label="Paste platform from clipboard" title="Paste platform from clipboard" style="display:flex;right:0.35rem;min-width:44px;min-height:44px;padding:0;border-radius:50%;align-items:center;justify-content:center;">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
   </button>
   <!-- Clear Cross Button (shows when has text) -->
@@ -1031,11 +1031,32 @@
 </section>
 
 <script>
+window.setDrawersState = function(expand) {
+  var d1 = document.getElementById('how-works-drawer');
+  var b1 = document.getElementById('how-works-toggle-btn');
+  if (d1 && b1) {
+    d1.style.display = expand ? 'flex' : 'none';
+    b1.setAttribute('aria-expanded', expand ? 'true' : 'false');
+    b1.innerHTML = expand 
+      ? '<span>Hide Step-by-Step Workflow</span> <span class="drawer-chevron" aria-hidden="true">&#9652;</span>' 
+      : '<span>Show Step-by-Step Workflow</span> <span class="drawer-chevron" aria-hidden="true">&#9662;</span>';
+  }
+  var d2 = document.getElementById('why-cloud-drawer');
+  var b2 = document.getElementById('why-cloud-toggle-btn');
+  if (d2 && b2) {
+    d2.style.display = expand ? 'flex' : 'none';
+    b2.setAttribute('aria-expanded', expand ? 'true' : 'false');
+    b2.innerHTML = expand 
+      ? '<span>Hide Detailed Comparison</span> <span class="drawer-chevron" aria-hidden="true">&#9652;</span>' 
+      : '<span>See Detailed Comparison</span> <span class="drawer-chevron" aria-hidden="true">&#9662;</span>';
+  }
+};
+
 window.toggleHowItWorksDrawer = function() {
   var d = document.getElementById('how-works-drawer');
+  var isHidden = !d || d.style.display === 'none' || !d.style.display;
   var b = document.getElementById('how-works-toggle-btn');
   if (!d || !b) return;
-  var isHidden = d.style.display === 'none' || !d.style.display;
   d.style.display = isHidden ? 'flex' : 'none';
   b.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
   b.innerHTML = isHidden 
@@ -1045,15 +1066,27 @@ window.toggleHowItWorksDrawer = function() {
 
 window.toggleWhyCloudDrawer = function() {
   var d = document.getElementById('why-cloud-drawer');
+  var isHidden = !d || d.style.display === 'none' || !d.style.display;
   var b = document.getElementById('why-cloud-toggle-btn');
   if (!d || !b) return;
-  var isHidden = d.style.display === 'none' || !d.style.display;
   d.style.display = isHidden ? 'flex' : 'none';
   b.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
   b.innerHTML = isHidden 
     ? '<span>Hide Detailed Comparison</span> <span class="drawer-chevron" aria-hidden="true">&#9652;</span>' 
     : '<span>See Detailed Comparison</span> <span class="drawer-chevron" aria-hidden="true">&#9662;</span>';
 };
+
+// Auto-expand for first-time visitors, auto-shrink for returning users
+(function() {
+  try {
+    var isOnboarded = localStorage.getItem('fp_has_proceeded') === '1' || localStorage.getItem('fp_onboarded') === '1';
+    if (!isOnboarded) {
+      window.setDrawersState(true);
+    } else {
+      window.setDrawersState(false);
+    }
+  } catch(e) {}
+})();
 </script>
 
 <!-- ============================================================
@@ -1072,7 +1105,7 @@ window.toggleWhyCloudDrawer = function() {
           <strong style="color:var(--text-primary);">FrankPass Web, Web App &amp; Extension is 100% Free Forever:</strong> Zero ads, zero accounts needed, zero personal information collected. Instant deterministic password calculation locally on any device with zero server storage.
         </p>
         <p style="margin:0 0 0.75rem;">
-          <strong style="color:var(--text-primary);">What You Get in Pro Mode:</strong> Instant 0.1s 4-Digit Quick PIN unlock, Multi-Profile Vaults (Work, Personal, Client), and anti-phishing protection across all browsers on that PC. Single motherboard lifetime lock with zero recurring subscription fees.
+          <strong style="color:var(--text-primary);">What You Get in Pro Mode:</strong> Instant 4-Digit Quick PIN unlock, Multi-Profile Vaults (Work, Personal, Client), and anti-phishing protection across all browsers on that PC. Single motherboard lifetime lock with zero recurring subscription fees.
         </p>
       </div>
       <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
@@ -1097,7 +1130,7 @@ window.toggleWhyCloudDrawer = function() {
       <!-- Direct Action Buttons -->
       <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:440px;margin:0 auto;">
         <!-- Action 1: Universal Install Application -->
-        <button id="btn-cta-pwa-install" type="button" class="btn-primary" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;">
+        <button id="btn-cta-pwa-install" type="button" class="btn-primary" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;background:#6d28d9;color:#ffffff;box-shadow:0 4px 14px rgba(109,40,217,0.35);">
           <span>&#128241;</span> <span>Install Application</span>
         </button>
 
@@ -1133,7 +1166,7 @@ window.toggleWhyCloudDrawer = function() {
         Get early beta launch access, security advisories, and early-bird Pro offers directly from founder Master Manikant Yadav. Zero spam, 100% signal.
       </p>
       <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:0.85rem 1.6rem;background:#10b981;color:#ffffff;font-size:0.92rem;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(16,185,129,0.35);transition:transform 0.15s ease;">
+        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:0.85rem 1.6rem;background:#059669;color:#ffffff;font-size:0.92rem;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(5,150,105,0.35);transition:transform 0.15s ease;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span>Join Free WhatsApp Channel &rarr;</span>
         </a>

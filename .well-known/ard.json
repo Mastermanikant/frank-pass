@@ -1,0 +1,33 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "FrankPass",
+    "documentationUrl": "https://frankpass.com/llms.txt"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:frankpass:password-generator",
+      "displayName": "FrankPass Stateless Generator",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://frankpass.com/llms.txt",
+      "description": "Pure client-side cryptographic deterministic password generator using 1,000,000 PBKDF2 iterations.",
+      "representativeQueries": [
+        "Generate deterministic stateless password",
+        "How to use FrankPass password generator",
+        "Deterministic password without cloud storage"
+      ]
+    },
+    {
+      "identifier": "urn:air:frankpass:atm-upi-pin-generator",
+      "displayName": "FrankPass ATM & UPI PIN Generator",
+      "type": "text/markdown; profile=\"urn:air:agent-skills\"",
+      "url": "https://frankpass.com/atm-upi-pin-security-guide.html",
+      "description": "Deterministic 4-digit and 6-digit banking and UPI PIN generator.",
+      "representativeQueries": [
+        "Generate ATM UPI PIN deterministically",
+        "Secure stateless banking PIN generator",
+        "Deterministic numeric PIN generator"
+      ]
+    }
+  ]
+}
