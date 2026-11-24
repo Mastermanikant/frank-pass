@@ -1247,7 +1247,7 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 @media (max-width: 768px) {
   .site-footer {
     padding-top: 1.25rem !important;
-    padding-bottom: calc(var(--mobile-nav-h, 64px) + 0.25rem) !important;
+    padding-bottom: calc(var(--mobile-nav-h, 64px) + env(safe-area-inset-bottom, 0px) + 3.5rem) !important;
     margin-top: 1rem !important;
   }
   .footer-grid {
@@ -2804,7 +2804,7 @@ html, body {
     padding: 9px 12px;
   }
   body:not(.no-mobile-nav) {
-    padding-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 1.25rem);
+    padding-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 2.5rem);
   }
   #toast-container {
     bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 0.75rem);
