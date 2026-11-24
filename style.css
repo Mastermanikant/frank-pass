@@ -1055,19 +1055,27 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 .output-password {
   flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
   font-family: 'Consolas', 'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Cascadia Code', ui-monospace, monospace;
   font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
-  letter-spacing: 0.08em;
-  word-break: break-all;
+  letter-spacing: 0.06em;
+  word-break: normal;
   min-height: 1.5em;
+  line-height: 1.5;
   transition: filter 0.15s ease, letter-spacing 0.15s ease;
 }
 .output-password.masked {
   -webkit-text-security: disc;
   text-security: disc;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+  overflow-x: auto;
   filter: none;
   user-select: none;
 }
@@ -1178,23 +1186,28 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   border-top: 1px solid var(--border);
   padding-top: 1.25rem;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   font-size: 0.82rem;
   color: var(--text-muted);
+  width: 100%;
 }
 .footer-bottom-copy {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
   gap: 0.45rem;
+  white-space: nowrap;
+}
+.footer-desktop-sep {
+  opacity: 0.35;
 }
 .footer-author-wrap {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   white-space: nowrap;
+  font-size: 0.84rem;
 }
 .footer-founder-link {
   color: var(--text-primary) !important;
@@ -1208,9 +1221,10 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 }
 .footer-bottom a { color: var(--text-muted); transition: color var(--transition); }
 .footer-bottom a:hover { color: var(--text-primary); }
-.footer-legal-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.footer-legal-links { display: flex; align-items: center; gap: 0.75rem 1.25rem; white-space: nowrap; font-size: 0.82rem; }
+.footer-copy-sep { opacity: 0.35; }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .site-footer {
     padding-bottom: calc(var(--mobile-nav-h, 64px) + 2rem);
   }
@@ -1226,28 +1240,39 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
   }
   .footer-bottom {
     flex-direction: column;
-    text-align: center;
+    align-items: center;
     gap: 0.75rem;
     padding-top: 1rem;
+    width: 100%;
   }
   .footer-bottom-copy {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.45rem;
     width: 100%;
+    padding: 0 0.15rem;
+    box-sizing: border-box;
     white-space: nowrap;
   }
-  .footer-copy-sep {
+  .footer-desktop-sep {
     display: none;
   }
+  .footer-copy-text {
+    text-align: left;
+  }
+  .footer-project-link {
+    text-align: right;
+  }
   .footer-author-wrap {
+    width: 100%;
     justify-content: center;
+    text-align: center;
   }
   .footer-legal-links {
-    justify-content: center;
     width: 100%;
-    gap: 1rem;
+    justify-content: center;
+    gap: 0.6rem 0.95rem;
+    flex-wrap: wrap;
     font-size: 0.8rem;
   }
 }
@@ -4417,14 +4442,7 @@ pre, code {
   background: rgba(109, 40, 217, 0.06);
 }
 .footer-nav-link .nav-chevron {
-  font-size: 0.88rem;
-  opacity: 0.4;
-  transition: opacity 0.2s, transform 0.2s;
-}
-.footer-nav-link:hover .nav-chevron {
-  opacity: 1;
-  transform: translateX(3px);
-  color: var(--accent);
+  display: none !important;
 }
 
 /* Middle Full-Width Assurance Ribbon */
@@ -4481,8 +4499,8 @@ pre, code {
 @media (max-width: 768px) {
   .footer-col {
     border-bottom: 1px solid var(--border);
-    padding-bottom: 0.75rem;
-    margin-bottom: 0.75rem;
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.35rem;
   }
   .footer-col-header-btn {
     display: flex;
@@ -4491,7 +4509,7 @@ pre, code {
     width: 100%;
     background: none;
     border: none;
-    padding: 0.4rem 0;
+    padding: 0.25rem 0;
     cursor: pointer;
     text-align: left;
     font-family: inherit;

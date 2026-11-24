@@ -45,7 +45,7 @@
  <link rel="manifest" href="/manifest.json">
 <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="stylesheet" href="/style.min.css?v=5.0.2">
+  <link rel="stylesheet" href="/style.min.css?v=5.0.3">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -489,20 +489,26 @@
 
  <!-- Card Header with Badges & Country Pill -->
  <div class="gen-header">
- <div class="gen-title">
+ <div class="gen-header-top-row" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+ <div class="gen-title" style="display:flex;align-items:center;gap:0.45rem;">
  <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="22" height="22" style="display:inline-block;vertical-align:middle;border-radius:4px;" loading="lazy" decoding="async">
  <span>FrankPass Generator</span>
  </div>
- <div class="gen-header-badges">
+ <div class="card-country-pill" id="card-country-pill" title="Selected Region">
+ <img id="header-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+ <span id="card-country-label">IN</span>
+ </div>
+ </div>
+ <div class="gen-header-sub-row" style="display:flex;align-items:center;gap:0.5rem;width:100%;margin-top:0.35rem;">
   <button type="button" class="gen-live-badge interactive-badge badge-pulse-attention" id="offline-math-trigger-btn" aria-label="Learn how FrankPass 100% Offline Math Works" title="Click to see how 100% offline deterministic password math works" style="cursor:pointer;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.08);padding:4px 9px;display:inline-flex;align-items:center;gap:5px;border-radius:20px;color:#10b981;font-family:inherit;font-size:0.76rem;font-weight:600;transition:all .2s ease;">
   <span class="status-dot status-online" aria-hidden="true"></span>
   <span>100% Offline</span>
   <span style="font-size:0.72rem;opacity:0.85;margin-left:1px;font-weight:700;" aria-hidden="true">&#9432;</span>
   </button>
- <div class="card-country-pill" id="card-country-pill" title="Selected Region">
- <img id="header-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
- <span id="card-country-label">IN</span>
- </div>
+  <a href="/profile.html" id="gen-settings-btn" class="gen-settings-pill" aria-label="Local Settings" title="Local Settings & Vault Manager" style="text-decoration:none;display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:var(--text-muted);font-size:0.76rem;font-weight:600;transition:all 0.2s;">
+    <span aria-hidden="true">⚙️</span>
+    <span>Settings</span>
+  </a>
  </div>
  </div>
 
@@ -523,24 +529,24 @@
 
   <!-- Username / Email (Optional) -->
   <div class="form-group" id="username-group">
-  <div class="vault-header-row">
-    <div style="display:flex;align-items:center;gap:0.4rem">
-      <label class="form-label" for="username-input" style="margin:0">Username / Email <span style="font-size:0.75rem;font-weight:400;color:var(--text-muted);">(Optional)</span></label>
+  <div class="vault-header-row" style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:0.4rem;">
+    <div style="display:flex;align-items:center;gap:0.35rem">
+      <label class="form-label" for="username-input" style="margin:0;font-size:0.88rem;">Username / Email <span style="font-size:0.7rem;font-weight:400;color:var(--text-muted);opacity:0.75;">(Optional)</span></label>
     </div>
-    <!-- Torch-style Sliding Toggle Switch, Manage Pill & Clear All -->
-    <div class="vault-badge-group">
+    <!-- Sliding Toggle Switch (Compact 1-Line) -->
+    <div class="vault-badge-group" style="display:flex;align-items:center;gap:0.4rem;">
       <label class="torch-switch-wrap" for="toggle-save-usernames-check" title="Toggle automatic local saving of usernames/emails">
-        <span class="torch-switch-label" id="save-usernames-label">Save Email</span>
+        <span class="torch-switch-label" id="save-usernames-label" style="font-size:0.75rem;">Save Email</span>
         <div class="torch-switch">
           <input type="checkbox" id="toggle-save-usernames-check" checked aria-label="Toggle Auto-Save Usernames Locally">
           <span class="torch-slider"></span>
         </div>
       </label>
-      <a href="/profile.html" id="manage-accounts-btn" class="vault-status-pill status-none" style="text-decoration:none;display:inline-flex;align-items:center;gap:4px;" title="Open Profile & Pre-Saved Accounts Manager">
+      <a href="/profile.html" id="manage-accounts-btn" class="vault-status-pill status-none" style="display:none;" title="Open Profile & Pre-Saved Accounts Manager">
         <span>📁</span>
         <span>Manage (<span id="saved-accounts-count">0</span>)</span>
       </a>
-      <button type="button" id="clear-username-history-btn" style="display:none;background:transparent;border:none;color:var(--text-muted);font-size:0.75rem;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:4px;transition:color 0.2s;" title="Open Profile to manage or delete saved emails" onmouseover="this.style.color='#ef4444'" onmouseout="this.style.color='var(--text-muted)'">✕ Clear All</button>
+      <button type="button" id="clear-username-history-btn" style="display:none;"></button>
     </div>
   </div>
   <div class="input-wrapper" style="position:relative">
@@ -563,9 +569,9 @@
 
  <!-- Platform input -->
  <div class="form-group">
-  <div class="vault-header-row">
-  <div style="display:flex;align-items:center;gap:0.4rem">
-  <label class="form-label" for="platform-input" style="margin:0">Site / Platform</label>
+  <div class="vault-header-row" style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:0.4rem;">
+  <div style="display:flex;align-items:center;gap:0.35rem">
+  <label class="form-label" for="platform-input" style="margin:0;font-size:0.88rem;">Site / Platform</label>
   <!-- Info Guidance Popover Tooltip -->
   <div class="secret-info-wrap" id="platform-info-wrap">
   <button type="button" class="secret-info-btn" id="platform-info-btn" aria-label="Site or Platform Help" title="How to enter platform?">
@@ -582,16 +588,16 @@
   </div>
   </div>
   </div>
-  <!-- Torch-style Sliding Toggle Switch & Used Platforms Pill -->
-  <div class="vault-badge-group">
+  <!-- Sliding Toggle Switch (Compact 1-Line) -->
+  <div class="vault-badge-group" style="display:flex;align-items:center;gap:0.4rem;">
     <label class="torch-switch-wrap" for="toggle-save-platforms-check" title="Toggle automatic local saving of used platforms">
-      <span class="torch-switch-label" id="save-platforms-label">Save Platform</span>
+      <span class="torch-switch-label" id="save-platforms-label" style="font-size:0.75rem;">Save Platform</span>
       <div class="torch-switch">
         <input type="checkbox" id="toggle-save-platforms-check" checked aria-label="Toggle Auto-Save Platforms Locally">
         <span class="torch-slider"></span>
       </div>
     </label>
-    <button type="button" id="manage-platforms-btn" class="vault-status-pill status-none" style="display:inline-flex;align-items:center;gap:4px;cursor:pointer;background:none;border:none;font-family:inherit;font-size:inherit;" title="View all used platforms">
+    <button type="button" id="manage-platforms-btn" class="vault-status-pill status-none" style="display:none;" title="View all used platforms">
       <span>🌐</span>
       <span id="manage-platforms-text">Used (0)</span>
     </button>
@@ -758,17 +764,21 @@
  <span class="toggle-track" aria-hidden="true"></span>
  </label>
  </div>
+
+ <!-- Reset Form Button (Relocated Inside Advanced Rules) -->
+ <div style="display:flex;justify-content:flex-end;margin-top:0.85rem;padding-top:0.65rem;border-top:1px solid rgba(255,255,255,0.06)">
+   <button id="clear-all-btn" class="btn-ghost btn-reset" type="button" aria-label="Reset form" title="Reset all inputs" style="padding:4px 10px;font-size:0.76rem;border-radius:6px;display:inline-flex;align-items:center;gap:5px;">
+     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+     <span>Reset Form</span>
+   </button>
+ </div>
  </div>
 
  <!-- Action buttons row -->
- <div class="gen-actions-row">
- <button id="generate-btn" class="btn-primary btn-generate" type="button" aria-label="Generate secure password">
+ <div class="gen-actions-row" style="margin-top:1.15rem;">
+ <button id="generate-btn" class="btn-primary btn-generate" type="button" aria-label="Generate secure password" style="width:100%;justify-content:center;">
  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
- Generate Secure Password
- </button>
- <button id="clear-all-btn" class="btn-ghost btn-reset" type="button" aria-label="Reset form" title="Reset all inputs">
- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
- Reset
+ <span>Generate Secure Password</span>
  </button>
  </div>
 
@@ -860,21 +870,28 @@
 
 
 <!-- ============================================================
-     HOW IT WORKS: THE DETERMINISTIC WORKFLOW
-     4 Glass Step Cards (PC: 2x2 Compact 820px Grid | Mobile: 1 Column)
+     HOW IT WORKS: THE DETERMINISTIC WORKFLOW (SHRINK / EXPAND DRAWER)
      ============================================================ -->
-<section id="how-it-works" class="section-sm" style="padding-top:2.5rem;padding-bottom:2.5rem" aria-labelledby="how-heading">
+<section id="how-it-works" class="section-sm" style="padding-top:2.25rem;padding-bottom:2.25rem" aria-labelledby="how-heading">
   <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
-    <div class="text-center mb-4">
+    <div class="text-center mb-3">
       <div class="section-label" aria-hidden="true">Deterministic Math &middot; Zero Cloud Storage</div>
-      <h2 id="how-heading" class="section-title" style="font-size:clamp(1.5rem,3.2vw,2.1rem)">How FrankPass Works: Step-by-Step Card Workflow</h2>
-      <p class="section-subtitle text-center" style="max-width:540px;margin:0.5rem auto 0;font-size:0.95rem;color:var(--text-muted);">
+      <h2 id="how-heading" class="section-title" style="font-size:clamp(1.5rem,3.2vw,2.1rem);margin-bottom:0.4rem;">How FrankPass Works</h2>
+      <p class="section-subtitle text-center" style="max-width:540px;margin:0 auto 1.15rem;font-size:0.95rem;color:var(--text-muted);">
         Pure client-side mathematics. Recreated on any device with zero server sync.
       </p>
+      
+      <!-- 1-Click Expand / Shrink Toggle Button -->
+      <div>
+        <button type="button" id="how-works-toggle-btn" class="drawer-toggle-btn" aria-expanded="false" onclick="toggleHowItWorksDrawer()" style="padding:0.6rem 1.25rem;border-radius:12px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.35);color:var(--accent-light);font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s ease;">
+          <span>Show Step-by-Step Workflow</span>
+          <span class="drawer-chevron" aria-hidden="true">▾</span>
+        </button>
+      </div>
     </div>
 
-    <!-- 5 Single-Column Workflow Cards (Matching Card Elements, 680px Width) -->
-    <div style="display:flex;flex-direction:column;gap:0.9rem;" role="list" aria-label="Deterministic Workflow Steps">
+    <!-- 4 Single-Column Workflow Cards (Shrinked / Collapsed by Default) -->
+    <div id="how-works-drawer" style="display:none;flex-direction:column;gap:0.9rem;margin-top:1.25rem;" role="list" aria-label="Deterministic Workflow Steps">
       
       <!-- Step 1: Username / Email (Optional) -->
       <div class="card-glass" style="padding:1.25rem 1.4rem;border-radius:14px;border:1px solid var(--border);" role="listitem">
@@ -924,27 +941,32 @@
   </div>
 </section>
 
-
-
 <!-- ============================================================
- WHY NOT CLOUD
- 3 key arguments against cloud password storage
+ WHY NOT CLOUD: COMPARISON (SHRINK / EXPAND DRAWER)
  ============================================================ -->
-<section id="why-frankpass" class="section-sm" style="padding-top:3rem;padding-bottom:2.5rem;background:var(--bg-secondary);" aria-labelledby="why-heading">
+<section id="why-frankpass" class="section-sm" style="padding-top:2.5rem;padding-bottom:2.5rem;background:var(--bg-secondary);" aria-labelledby="why-heading">
   <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
     
-    <div class="text-center mb-4">
+    <div class="text-center mb-3">
       <div class="section-label" aria-hidden="true">Architectural Invariants &amp; Zero-Cloud Guarantee</div>
-      <h2 id="why-heading" style="font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:900;margin:0 0 0.65rem;color:var(--text-primary)">
-        How FrankPass is Different from Traditional Cloud Password Managers
+      <h2 id="why-heading" style="font-size:clamp(1.5rem,3.2vw,2.1rem);font-weight:900;margin:0 0 0.5rem;color:var(--text-primary)">
+        How FrankPass is Different from Cloud Password Managers
       </h2>
-      <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0 auto 1.25rem;">
+      <p style="font-size:0.92rem;color:var(--text-muted);line-height:1.6;margin:0 auto 1.15rem;max-width:580px;">
         Centralized cloud servers create a single point of failure for breaches and downtime. FrankPass eliminates server vulnerability with 100% local mathematical self-custody.
       </p>
+
+      <!-- 1-Click Expand / Shrink Toggle Button -->
+      <div>
+        <button type="button" id="why-cloud-toggle-btn" class="drawer-toggle-btn" aria-expanded="false" onclick="toggleWhyCloudDrawer()" style="padding:0.6rem 1.25rem;border-radius:12px;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);color:#10b981;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all 0.2s ease;">
+          <span>See Detailed Comparison</span>
+          <span class="drawer-chevron" aria-hidden="true">▾</span>
+        </button>
+      </div>
     </div>
 
-    <!-- 4 Single-Column Comparison Cards (Stacked Vertically, 680px Width) -->
-    <div style="display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2rem;">
+    <!-- 4 Single-Column Comparison Cards (Shrinked / Collapsed by Default) -->
+    <div id="why-cloud-drawer" style="display:none;flex-direction:column;gap:1.1rem;margin-top:1.25rem;margin-bottom:1.5rem;">
       
       <!-- Card 1: Server Storage & Breach Vulnerability -->
       <div class="card-glass" style="padding:1.4rem 1.6rem;border-radius:16px;border:1px solid var(--border);">
@@ -1002,14 +1024,43 @@
         </p>
       </div>
 
+      <!-- Link to Full In-Depth Comparison Table Article -->
+      <div style="text-align:center;margin-top:1rem;">
+        <a href="/frankpass-vs-cloud-password-vaults.html" style="display:inline-flex;align-items:center;gap:6px;padding:0.65rem 1.25rem;border-radius:10px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);font-size:0.88rem;font-weight:700;text-decoration:none;">
+          <span>&#128214; Read Full 10-Point Technical Architecture Comparison &rarr;</span>
+        </a>
+      </div>
+
     </div>
 
-    <!-- Link to Full In-Depth Comparison Table Article -->
-    <div style="text-align:center;margin-bottom:2rem;">
-      <a href="/frankpass-vs-cloud-password-vaults.html" style="display:inline-flex;align-items:center;gap:6px;padding:0.65rem 1.25rem;border-radius:10px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.3);color:var(--accent-light);font-size:0.88rem;font-weight:700;text-decoration:none;">
-        <span>&#128214; Read Full 10-Point Technical Architecture Comparison &rarr;</span>
-      </a>
-    </div>
+  </div>
+</section>
+
+<script>
+window.toggleHowItWorksDrawer = function() {
+  var d = document.getElementById('how-works-drawer');
+  var b = document.getElementById('how-works-toggle-btn');
+  if (!d || !b) return;
+  var isHidden = d.style.display === 'none' || !d.style.display;
+  d.style.display = isHidden ? 'flex' : 'none';
+  b.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  b.innerHTML = isHidden 
+    ? '<span>Hide Step-by-Step Workflow</span> <span class="drawer-chevron" aria-hidden="true">&#9652;</span>' 
+    : '<span>Show Step-by-Step Workflow</span> <span class="drawer-chevron" aria-hidden="true">&#9662;</span>';
+};
+
+window.toggleWhyCloudDrawer = function() {
+  var d = document.getElementById('why-cloud-drawer');
+  var b = document.getElementById('why-cloud-toggle-btn');
+  if (!d || !b) return;
+  var isHidden = d.style.display === 'none' || !d.style.display;
+  d.style.display = isHidden ? 'flex' : 'none';
+  b.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+  b.innerHTML = isHidden 
+    ? '<span>Hide Detailed Comparison</span> <span class="drawer-chevron" aria-hidden="true">&#9652;</span>' 
+    : '<span>See Detailed Comparison</span> <span class="drawer-chevron" aria-hidden="true">&#9662;</span>';
+};
+</script>
 
     <!-- ============================================================
          FREE VS PRO: SINGLE CLEAN CLARITY CARD (0 OVERWHELM)
@@ -1629,7 +1680,7 @@
 <script defer src="/frankpass-utils.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-core.js?v=5.0.1"></script>
 <script defer src="/frankpass-vault.js?v=5.0.1"></script>
-<script defer src="/footer.min.js?v=5.1.3"></script>
+<script defer src="/footer.min.js?v=5.1.4"></script>
 <script defer src="/pricing-fx.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-app.min.js?v=5.0.1"></script>
 <script>

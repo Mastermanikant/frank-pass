@@ -95,23 +95,18 @@
         
         <a href="/" class="footer-nav-link">
           <span>${isHindi ? 'पासवर्ड जनरेटर' : 'Password generator'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/pin-hindi.html' : '/pin.html'}" class="footer-nav-link">
           <span>${isHindi ? 'पिन जनरेटर' : 'PIN generator'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="/random-password-generator.html" class="footer-nav-link">
           <span>${isHindi ? 'रैंडम पासवर्ड' : 'Random password'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html' : '/comparison-between-frankpass-all-generators-deterministic-random-pin.html'}" class="footer-nav-link">
           <span>${isHindi ? 'सभी टूल्स की तुलना' : 'Compare all tools'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/pricing-hindi.html' : '/pricing.html'}" class="footer-nav-link">
           <span>${isHindi ? 'प्रो और प्राइसिंग' : 'Pro &amp; pricing'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         </div>
       </div>
@@ -126,23 +121,18 @@
         
         <a href="${isHindi ? '/frankpass-vs-cloud-password-vaults-hindi.html' : '/frankpass-vs-cloud-password-vaults.html'}" class="footer-nav-link">
           <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/secret-key-guide-hindi.html' : '/secret-key-guide.html'}" class="footer-nav-link">
           <span>${isHindi ? 'सीक्रेट की गाइड' : 'Secret Key Guide'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/whitepaper-hindi.html' : '/whitepaper.html'}" class="footer-nav-link">
           <span>${isHindi ? 'टेक्निकल व्हाइटपेपर' : 'Technical whitepaper'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/faq-hindi.html' : '/faq.html'}" class="footer-nav-link">
           <span>${isHindi ? 'सुरक्षा FAQ' : 'Security limits &amp; FAQ'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/where-password-managers-fail-and-invisible-vault-hindi.html' : '/where-password-managers-fail-and-invisible-vault.html'}" class="footer-nav-link">
           <span>${isHindi ? 'इनविजिबल वॉल्ट डिफेंस' : 'Invisible Vault Defense'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         </div>
       </div>
@@ -157,23 +147,18 @@
         
         <a href="${isHindi ? '/extension-hindi.html' : '/extension.html'}" class="footer-nav-link">
           <span>${isHindi ? 'ब्राउज़र एक्सटेंशन' : 'Browser extension'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/install-hindi.html' : '/install.html'}" class="footer-nav-link">
           <span>${isHindi ? 'ऑफलाइन PWA ऐप' : 'Install the PWA'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/install-hindi.html#android' : '/install.html#android'}" class="footer-nav-link">
           <span>${isHindi ? 'एंड्रॉइड ऐप' : 'Android App'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="https://store.frankbase.com" target="_blank" rel="noopener" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
           <span>${isHindi ? 'स्टोर' : 'Store'} ↗</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         <a href="${isHindi ? '/library-hindi.html' : '/library.html'}" class="footer-nav-link" style="color:var(--accent-light)!important;font-weight:700;">
           <span>${isHindi ? 'मास्टर रिसोर्स लाइब्रेरी' : 'Master Resource Library'}</span>
-          <span class="nav-chevron">&rsaquo;</span>
         </a>
         </div>
       </div>
@@ -266,27 +251,27 @@
     </div>
 
     <!-- Footer Bottom Copyright Bar -->
-    <div class="footer-bottom" style="display:flex;flex-direction:column;gap:0.75rem;padding-top:1.25rem;border-top:1px solid var(--border);width:100%;">
-      <!-- Line 1: Copyright & A FrankBase project in 1 single line -->
-      <div class="footer-bottom-copy" style="display:flex;justify-content:center;align-items:center;gap:0.45rem;width:100%;font-size:0.82rem;color:var(--text-muted);white-space:nowrap;">
-        <span style="white-space:nowrap;">&copy; ${year} FrankPass.</span>
-        <span style="opacity:0.35;" aria-hidden="true">&middot;</span>
-        <a href="https://frankbase.com" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;white-space:nowrap;">${isHindi ? 'फ्रैंकबेस का एक प्रोजेक्ट।' : 'A FrankBase project.'}</a>
+    <div class="footer-bottom">
+      <!-- Line 1: Copyright left & A FrankBase project right on mobile, inline on desktop -->
+      <div class="footer-bottom-copy">
+        <span class="footer-copy-text">&copy; ${year} FrankPass.</span>
+        <span class="footer-desktop-sep" aria-hidden="true">&middot;</span>
+        <a href="https://frankbase.com" target="_blank" rel="noopener" class="footer-project-link">${isHindi ? 'फ्रैंकबेस का एक प्रोजेक्ट।' : 'A FrankBase project.'}</a>
       </div>
 
       <!-- Line 2: Engineered by Master Manikant Yadav (Strictly Centered) -->
-      <div class="footer-author-wrap" style="display:flex;justify-content:center;align-items:center;width:100%;text-align:center;font-size:0.84rem;">
-        <span style="white-space:nowrap;">${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="footer-founder-link">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
+      <div class="footer-author-wrap">
+        <span>${isHindi ? 'आर्किटेक्ट:' : 'Engineered by'} <a href="https://mastermanikant.com" target="_blank" rel="noopener" class="footer-founder-link">${isHindi ? 'मास्टर मणिकान्त यादव' : 'Master Manikant Yadav'}</a></span>
       </div>
 
       <!-- Line 3: 4 Clean Legal & Resource Links in 1 Single Line -->
-      <div class="footer-legal-links" style="display:flex;justify-content:center;align-items:center;gap:0.75rem 1.25rem;flex-wrap:wrap;width:100%;font-size:0.82rem;">
+      <div class="footer-legal-links">
         <a href="/legal.html#privacy">${isHindi ? 'गोपनीयता नीति' : 'Privacy Policy'}</a>
-        <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <span class="footer-copy-sep" aria-hidden="true">&middot;</span>
         <a href="/legal.html#terms">${isHindi ? 'सेवा की शर्तें' : 'Terms of Service'}</a>
-        <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <span class="footer-copy-sep" aria-hidden="true">&middot;</span>
         <a href="${isHindi ? '/library-hindi.html' : '/library.html'}">${isHindi ? 'लाइब्रेरी' : 'Library'}</a>
-        <span class="footer-copy-sep" style="opacity:0.35;" aria-hidden="true">&middot;</span>
+        <span class="footer-copy-sep" aria-hidden="true">&middot;</span>
         <a href="https://mastermanikant.com/contact.html?ref=frankpass_footer" target="_blank" rel="noopener">${isHindi ? 'फीडबैक' : 'Feedback'}</a>
       </div>
     </div>
