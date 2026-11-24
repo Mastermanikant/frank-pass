@@ -4775,33 +4775,36 @@ pre, code {
   }
 }
 
-/* ── DRAWER & BOTTOM CARDS (MATCHING GENERATOR-CARD AESTHETIC) ──── */
+/* ── DRAWER & BOTTOM CARDS (SEAMLESS BORDERLESS CANVASSING BELOW GENERATOR) ──── */
 .gen-style-card,
 #how-works-drawer .card-glass,
-#why-cloud-drawer .card-glass {
-  background: rgba(13, 14, 26, 0.88) !important;
-  border: 1px solid rgba(139, 92, 246, 0.28) !important;
+#why-cloud-drawer .card-glass,
+#community-section .card-glass {
+  background: transparent !important;
+  border: 1px solid transparent !important;
   border-radius: 20px !important;
-  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.4), 0 0 28px rgba(139, 92, 246, 0.12) !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  padding: 1.5rem 1.75rem !important;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 1.25rem 0.5rem !important;
+  transition: none !important;
 }
 
 .gen-style-card:hover,
 #how-works-drawer .card-glass:hover,
-#why-cloud-drawer .card-glass:hover {
-  border-color: rgba(139, 92, 246, 0.55) !important;
-  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.48), 0 0 36px rgba(139, 92, 246, 0.22) !important;
-  transform: translateY(-2px);
+#why-cloud-drawer .card-glass:hover,
+#community-section .card-glass:hover {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  transform: none !important;
 }
 
 @media (max-width: 768px) {
   .gen-style-card,
   #how-works-drawer .card-glass,
-  #why-cloud-drawer .card-glass {
-    padding: 1.25rem 1.15rem !important;
+  #why-cloud-drawer .card-glass,
+  #community-section .card-glass {
+    padding: 1rem 0 !important;
     border-radius: 18px !important;
   }
 }
