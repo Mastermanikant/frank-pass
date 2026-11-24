@@ -4856,17 +4856,18 @@ pre, code {
 }
 
 /* ── MOBILE BOTTOM DOCK CLEARANCE SPACER ── */
-.mobile-bottom-dock-spacer {
-  display: none !important;
+.mobile-bottom-dock-spacer { display: none !important; }
+@media (max-width: 768px) {
+  .mobile-bottom-dock-spacer { display: none !important; }
+  
 }
+
+
 @media (max-width: 768px) {
   .mobile-bottom-dock-spacer {
     display: block !important;
     height: calc(var(--mobile-nav-h, 64px) + env(safe-area-inset-bottom, 0px) + 5.5rem) !important;
     width: 100% !important;
     pointer-events: none !important;
-  }
-  .site-footer {
-    padding-bottom: 1.5rem !important;
   }
 }

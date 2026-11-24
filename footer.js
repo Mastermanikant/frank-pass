@@ -310,6 +310,21 @@
       target.classList.add('open');
       const btn = target.querySelector('.footer-col-header-btn');
       if (btn) btn.setAttribute('aria-expanded', 'true');
+
+      // Auto-scroll so the newly opened menu card is 100% visible
+      setTimeout(function() {
+        const wrap = target.querySelector('.footer-col-links-wrap');
+        if (wrap) {
+          const rect = wrap.getBoundingClientRect();
+          const dockBar = document.querySelector('.mobile-bottom-nav');
+          const dockHeight = dockBar ? dockBar.offsetHeight : 64;
+          const availableHeight = window.innerHeight - dockHeight;
+          if (rect.bottom > availableHeight) {
+            const scrollDistance = rect.bottom - availableHeight + 32;
+            window.scrollBy({ top: scrollDistance, behavior: 'smooth' });
+          }
+        }
+      }, 80);
     }
   };
   window.toggleFooterCol = window.toggleFooterTab;
@@ -610,7 +625,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         setTimeout(function () {
-          navigator.serviceWorker.register('/service-worker.js?v=5.2.1').then(function(reg){reg.update();return reg;})
+          navigator.serviceWorker.register('/service-worker.js?v=5.2.2').then(function(reg){reg.update();return reg;})
             .then(function (reg) {
               reg.addEventListener('updatefound', function () {
                 const newWorker = reg.installing;

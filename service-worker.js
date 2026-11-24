@@ -1,5 +1,5 @@
 // FrankPass Service Worker v5.0.1 (Hyphen Phishing Protection & Offline Cache)
-const CACHE_NAME = 'frankpass-v5.2.1';
+const CACHE_NAME = 'frankpass-v5.2.2';
 const CACHED_URLS = [
     '/',
     '/index.html',
