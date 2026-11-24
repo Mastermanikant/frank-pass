@@ -1875,6 +1875,7 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
+  white-space: nowrap;
 }
 .gen-header-badges {
   display: flex;
@@ -2171,10 +2172,10 @@ select option {
   user-select: none;
 }
 .torch-switch-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-muted);
-  transition: opacity 0.2s ease;
+  display: none !important;
+}
+#manage-platforms-btn, #manage-accounts-btn {
+  display: none !important;
 }
 .torch-switch {
   position: relative;
