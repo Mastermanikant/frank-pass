@@ -4783,12 +4783,18 @@ pre, code {
 }
 
 /* ── DRAWER & BOTTOM CARDS (SEAMLESS BORDERLESS CANVASSING BELOW GENERATOR) ──── */
+/* ── ZERO-COGNITIVE-LOAD SEAMLESS CANVAS (BORDERLESS / TRANSPARENT BELOW GENERATOR) ── */
+.seamless-canvas-card,
 .gen-style-card,
 #how-works-drawer .card-glass,
 #why-cloud-drawer .card-glass,
-#community-section .card-glass {
+#community-section .card-glass,
+#pricing-preview-card,
+#action-cta-banner-card,
+#community-preview-card {
   background: transparent !important;
   border: 1px solid transparent !important;
+  border-color: transparent !important;
   border-radius: 20px !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
@@ -4797,20 +4803,51 @@ pre, code {
   transition: none !important;
 }
 
+[data-theme="light"] .seamless-canvas-card,
+[data-theme="light"] .gen-style-card,
+[data-theme="light"] #how-works-drawer .card-glass,
+[data-theme="light"] #why-cloud-drawer .card-glass,
+[data-theme="light"] #community-section .card-glass,
+[data-theme="light"] #pricing-preview-card,
+[data-theme="light"] #action-cta-banner-card,
+[data-theme="light"] #community-preview-card {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.seamless-canvas-card:hover,
 .gen-style-card:hover,
 #how-works-drawer .card-glass:hover,
 #why-cloud-drawer .card-glass:hover,
-#community-section .card-glass:hover {
+#community-section .card-glass:hover,
+#pricing-preview-card:hover,
+#action-cta-banner-card:hover,
+#community-preview-card:hover,
+[data-theme="light"] .seamless-canvas-card:hover,
+[data-theme="light"] .gen-style-card:hover,
+[data-theme="light"] #how-works-drawer .card-glass:hover,
+[data-theme="light"] #why-cloud-drawer .card-glass:hover,
+[data-theme="light"] #community-section .card-glass:hover,
+[data-theme="light"] #pricing-preview-card:hover,
+[data-theme="light"] #action-cta-banner-card:hover,
+[data-theme="light"] #community-preview-card:hover {
   border-color: transparent !important;
+  background: transparent !important;
   box-shadow: none !important;
   transform: none !important;
 }
 
 @media (max-width: 768px) {
+  .seamless-canvas-card,
   .gen-style-card,
   #how-works-drawer .card-glass,
   #why-cloud-drawer .card-glass,
-  #community-section .card-glass {
+  #community-section .card-glass,
+  #pricing-preview-card,
+  #action-cta-banner-card,
+  #community-preview-card {
     padding: 1rem 0 !important;
     border-radius: 18px !important;
   }

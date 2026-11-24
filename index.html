@@ -45,7 +45,8 @@
  <link rel="manifest" href="/manifest.json">
 <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="stylesheet" href="/style.min.css?v=5.1.5">
+<link rel="preload" href="/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.min.css?v=5.1.6">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -889,7 +890,7 @@
     <div id="how-works-drawer" style="display:none;flex-direction:column;gap:1.15rem;margin-top:1.25rem;" role="list" aria-label="Deterministic Workflow Steps">
       
       <!-- Step 1: Username / Email (Optional) -->
-      <div class="card-glass" role="listitem">
+      <div class="card-glass seamless-canvas-card" role="listitem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
           <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">1</div>
           <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Username or Email (Optional)</h3>
@@ -900,7 +901,7 @@
       </div>
 
       <!-- Step 2: Site / Platform Name or Paste URL -->
-      <div class="card-glass" role="listitem">
+      <div class="card-glass seamless-canvas-card" role="listitem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
           <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">2</div>
           <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Platform Name or Paste Full URL (Prefer Full URL)</h3>
@@ -911,7 +912,7 @@
       </div>
 
       <!-- Step 3: Enter Master Secret Key (Master Seed) -->
-      <div class="card-glass" role="listitem">
+      <div class="card-glass seamless-canvas-card" role="listitem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
           <div style="width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">3</div>
           <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Enter Master Secret Key (Master Seed)</h3>
@@ -922,7 +923,7 @@
       </div>
 
       <!-- Step 4: Recreate on All Devices (No Sync Needed) -->
-      <div class="card-glass" role="listitem">
+      <div class="card-glass seamless-canvas-card" role="listitem">
         <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.45rem;">
           <div style="width:28px;height:28px;border-radius:8px;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.85rem;flex-shrink:0;">4</div>
           <h3 style="font-size:1.05rem;font-weight:800;color:var(--text-primary);margin:0;">Recreated Everywhere by Pure Math (No Sync Needed)</h3>
@@ -963,7 +964,7 @@
     <div id="why-cloud-drawer" style="display:none;flex-direction:column;gap:1.15rem;margin-top:1.25rem;margin-bottom:1.5rem;">
       
       <!-- Card 1: Server Storage & Breach Vulnerability -->
-      <div class="card-glass">
+      <div class="card-glass seamless-canvas-card">
         <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.65rem;">
           <span style="width:10px;height:10px;border-radius:50%;background:#ef4444;flex-shrink:0;" aria-hidden="true"></span>
           <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">1. Server Storage &amp; Mass Breach Vulnerability</h3>
@@ -977,7 +978,7 @@
       </div>
 
       <!-- Card 2: Server Downtime & Offline Reliability (Auto-Synced by Math) -->
-      <div class="card-glass">
+      <div class="card-glass seamless-canvas-card">
         <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.65rem;">
           <span style="width:10px;height:10px;border-radius:50%;background:#10b981;flex-shrink:0;" aria-hidden="true"></span>
           <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">2. Server Downtime &amp; Offline Reliability (Auto-Synced by Math)</h3>
@@ -991,7 +992,7 @@
       </div>
 
       <!-- Card 3: Background System RAM & Resource Bloat -->
-      <div class="card-glass">
+      <div class="card-glass seamless-canvas-card">
         <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.65rem;">
           <span style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;" aria-hidden="true"></span>
           <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">3. System RAM &amp; Resource Bloat</h3>
@@ -1005,7 +1006,7 @@
       </div>
 
       <!-- Card 4: Clipboard Snooping Malware Defense -->
-      <div class="card-glass">
+      <div class="card-glass seamless-canvas-card">
         <div style="display:flex;align-items:center;gap:0.65rem;margin-bottom:0.65rem;">
           <span style="width:10px;height:10px;border-radius:50%;background:#38bdf8;flex-shrink:0;" aria-hidden="true"></span>
           <h3 style="margin:0;font-size:1.05rem;font-weight:800;color:var(--text-primary);">4. Clipboard Snooping Malware Defense</h3>
@@ -1096,7 +1097,7 @@ window.toggleWhyCloudDrawer = function() {
   <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
 
     <!-- FRANKPASS PRICING: CLEAN MINIMAL CLARITY CARD -->
-    <div class="card-glass" style="margin:0 auto 2rem;padding:1.6rem 1.75rem;border-radius:20px;border:1px solid transparent;background:transparent;box-shadow:none;">
+    <div class="card-glass seamless-canvas-card" style="margin:0 auto 2rem;padding:1.6rem 1.75rem;border-radius:20px;border:1px solid transparent;background:transparent;box-shadow:none;">
       <h3 style="font-size:1.25rem;font-weight:900;color:var(--text-primary);margin:0 0 0.85rem;letter-spacing:-0.01em;">
         FrankPass Pricing
       </h3>
@@ -1119,7 +1120,7 @@ window.toggleWhyCloudDrawer = function() {
     </div>
 
     <!-- ACTION CTA BANNER (EQUAL 680PX BREADTH) -->
-    <div class="card-glass" style="margin:0 auto;padding:2rem 1.6rem;text-align:center;border-radius:20px;border:1px solid transparent;background:transparent;box-shadow:none;">
+    <div class="card-glass seamless-canvas-card" style="margin:0 auto;padding:2rem 1.6rem;text-align:center;border-radius:20px;border:1px solid transparent;background:transparent;box-shadow:none;">
       <h3 style="font-size:clamp(1.25rem,2.8vw,1.65rem);font-weight:900;color:var(--text-primary);margin:0 0 0.5rem;letter-spacing:-0.01em;">
         Ready to improve your security and privacy journey?
       </h3>
@@ -1155,7 +1156,7 @@ window.toggleWhyCloudDrawer = function() {
      ============================================================ -->
 <section id="community-section" class="section-sm" style="padding-top:0.9rem;padding-bottom:1.2rem;background:var(--bg-primary);" aria-labelledby="community-heading">
   <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
-    <div class="card-glass" style="padding:2rem 1.75rem;border-radius:20px;border:1px solid transparent;background:transparent;text-align:center;box-shadow:none;">
+    <div class="card-glass seamless-canvas-card" style="padding:2rem 1.75rem;border-radius:20px;border:1px solid transparent;background:transparent;text-align:center;box-shadow:none;">
       <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.28);padding:4px 12px;border-radius:20px;font-size:0.76rem;font-weight:700;margin-bottom:0.85rem;text-transform:uppercase;letter-spacing:0.04em;">
         <span>🔒</span> <span>Official Community</span>
       </div>
@@ -1166,7 +1167,7 @@ window.toggleWhyCloudDrawer = function() {
         Get early beta launch access, security advisories, and early-bird Pro offers directly from founder Master Manikant Yadav. Zero spam, 100% signal.
       </p>
       <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
-        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:0.85rem 1.6rem;background:#059669;color:#ffffff;font-size:0.92rem;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(5,150,105,0.35);transition:transform 0.15s ease;">
+        <a href="https://whatsapp.com/channel/0029VbAmRaDDeON1M7sWY532" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:0.85rem 1.6rem;background:#047857;color:#ffffff;font-size:0.92rem;font-weight:700;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(4,120,87,0.35);transition:transform 0.15s ease;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span>Join Free WhatsApp Channel &rarr;</span>
         </a>
@@ -1702,7 +1703,7 @@ window.toggleWhyCloudDrawer = function() {
 <script defer src="/frankpass-utils.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-core.js?v=5.0.1"></script>
 <script defer src="/frankpass-vault.js?v=5.0.1"></script>
-<script defer src="/footer.min.js?v=5.1.5"></script>
+<script defer src="/footer.min.js?v=5.1.6"></script>
 <script defer src="/pricing-fx.min.js?v=5.0.1"></script>
 <script defer src="/frankpass-app.min.js?v=5.0.1"></script>
 <script>
