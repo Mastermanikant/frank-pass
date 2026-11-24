@@ -1097,10 +1097,10 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 
 /* ── 21. FOOTER ──────────────────────────────────────────── */
 .site-footer {
-  background: var(--bg-secondary);
+  background: var(--bg-primary);
   border-top: 1px solid var(--border);
-  padding: 2.5rem 0 2rem;
-  margin-top: 1.75rem;
+  padding: 2rem 0 1rem;
+  margin-top: 1.5rem;
 }
 .footer-inner {
   max-width: 1280px;
@@ -1226,9 +1226,9 @@ details.doc-accordion summary::-webkit-details-marker { display: none; }
 
 @media (max-width: 768px) {
   .site-footer {
-    padding-top: 1.5rem !important;
-    padding-bottom: calc(var(--mobile-nav-h, 64px) + 0.65rem) !important;
-    margin-top: 1.25rem !important;
+    padding-top: 1.25rem !important;
+    padding-bottom: calc(var(--mobile-nav-h, 64px) + 0.25rem) !important;
+    margin-top: 1rem !important;
   }
   .footer-grid {
     margin-bottom: 0.65rem !important;
@@ -1661,6 +1661,32 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
   background: rgba(109, 40, 217, 0.08) !important;
   color: #5b21b6 !important;
   border: 1px solid rgba(109, 40, 217, 0.3) !important;
+  font-weight: 800 !important;
+}
+[data-theme="light"] .section-label {
+  background: rgba(109, 40, 217, 0.08) !important;
+  color: #5b21b6 !important;
+  border: 1px solid rgba(109, 40, 217, 0.3) !important;
+  font-weight: 800 !important;
+}
+[data-theme="light"] .hero-badge-pill.hero-badge-green,
+[data-theme="light"] .hero-badge-green {
+  background: rgba(4, 120, 87, 0.08) !important;
+  color: #047857 !important;
+  border: 1px solid rgba(4, 120, 87, 0.35) !important;
+  font-weight: 700 !important;
+}
+[data-theme="light"] .hero-badge-pill.hero-badge-purple,
+[data-theme="light"] .hero-badge-purple {
+  background: rgba(109, 40, 217, 0.08) !important;
+  color: #5b21b6 !important;
+  border: 1px solid rgba(109, 40, 217, 0.3) !important;
+  font-weight: 700 !important;
+}
+[data-theme="light"] .drawer-toggle-btn {
+  background: rgba(4, 120, 87, 0.08) !important;
+  color: #047857 !important;
+  border: 1px solid rgba(4, 120, 87, 0.35) !important;
 }
 [data-theme="light"] .hero-subtitle {
   color: #334155 !important;
@@ -2058,7 +2084,7 @@ body, .site-header, .card-glass, .generator-card, .form-input, .preset-btn, .out
 
 /* ── GENERATOR CARD DARK-MODE INPUT REFINEMENTS ─────────── */
 .hero-section {
-  padding-top: clamp(4rem, 8vw, 6rem) !important;
+  padding-top: clamp(1.75rem, 3.5vw, 2.5rem) !important;
   margin-top: 0 !important;
 }
 
@@ -2635,7 +2661,7 @@ html, body {
 
 @media (max-width: 900px) {
   .hero-section {
-    padding: 0.85rem 0 2rem 0;
+    padding: 0.4rem 0 1.5rem 0 !important;
     min-height: auto;
   }
   .hero-header-center {

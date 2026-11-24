@@ -45,7 +45,7 @@
  <link rel="manifest" href="/manifest.json">
 <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="stylesheet" href="/style.min.css?v=5.0.8">
+  <link rel="stylesheet" href="/style.min.css?v=5.0.9">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -313,11 +313,11 @@
     <p class="hero-subtitle">
       Traditional password managers store and retrieve passwords. FrankPass calculates and recreates the exact same password locally using pure mathematics.
     </p>
-    <div class="hero-trust-badges" style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.6rem;margin-top:1.15rem;margin-bottom:0.25rem;" data-nosnippet>
-      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:#10b981;">
+    <div class="hero-trust-badges" style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;max-width:540px;margin:1rem auto 0.25rem;padding:0 0.5rem;text-align:center;" data-nosnippet>
+      <div class="hero-badge-pill hero-badge-green" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:20px;padding:5px 14px;font-size:0.8rem;font-weight:600;color:#10b981;">
         <span>&#128274;</span> <span>Zero database, zero hacking risk.</span>
       </div>
-      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);border-radius:20px;padding:4px 12px;font-size:0.8rem;font-weight:600;color:var(--accent-light);">
+      <div class="hero-badge-pill hero-badge-purple" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);border-radius:20px;padding:5px 14px;font-size:0.8rem;font-weight:600;color:var(--accent-light);line-height:1.4;">
         <span>&#9889;</span> <span>No sync needed: Your Master secret key recreates the exact same password on any device without internet.</span>
       </div>
     </div>
@@ -1064,35 +1064,60 @@ window.toggleWhyCloudDrawer = function() {
 <section class="section-sm" style="padding-top:1.5rem;padding-bottom:1.5rem;background:var(--bg-primary);">
   <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
 
-    <!-- FREE VS PRO: SINGLE CLEAN CLARITY CARD (0 OVERWHELM) -->
-    <div class="card-glass" style="margin:0 auto 2rem;padding:1.5rem 1.6rem;border-radius:20px;border:1px solid rgba(139,92,246,0.28);background:rgba(13,14,26,0.88);box-shadow:0 16px 44px rgba(0,0,0,0.4), 0 0 28px rgba(139,92,246,0.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem;flex-wrap:wrap;gap:8px;">
-        <span style="font-size:0.75rem;font-weight:800;color:#10b981;text-transform:uppercase;letter-spacing:0.06em;background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.25);padding:3px 10px;border-radius:20px;">
-          ✓ Security is 100% Free Forever
-        </span>
-        <span style="font-size:0.75rem;font-weight:800;color:var(--accent-light);text-transform:uppercase;letter-spacing:0.06em;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.25);padding:3px 10px;border-radius:20px;">
-          ⚡ Convenience is Paid (Pro)
-        </span>
-      </div>
-      <h3 style="font-size:1.1rem;font-weight:800;color:var(--text-primary);margin:0 0 0.45rem;">
-        FrankPass Free vs Pro Lifetime Pass
+    <!-- FRANKPASS PRICING: CLEAN MINIMAL CLARITY CARD -->
+    <div class="card-glass" style="margin:0 auto 2rem;padding:1.6rem 1.75rem;border-radius:20px;border:1px solid rgba(255,255,255,0.06);background:rgba(13,14,26,0.88);box-shadow:0 16px 44px rgba(0,0,0,0.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+      <h3 style="font-size:1.25rem;font-weight:900;color:var(--text-primary);margin:0 0 0.85rem;letter-spacing:-0.01em;">
+        FrankPass Pricing
       </h3>
-      <p style="font-size:0.85rem;color:var(--text-muted);line-height:1.6;margin:0 0 0.85rem;">
-        <strong>100% Free Forever ($0 / &#8377;0):</strong> Unlimited password regeneration on Web &amp; Browser Extension with zero database storage. 0 accounts, 0 ads.<br><br>
-        <strong>FrankPass Pro (1-PC Lifetime Pass):</strong> For power-users who want instant <strong>0.1s 4-Digit Quick PIN unlock</strong> (never retype your long secret key!), <strong>Multi-Profile Vaults</strong> (Work, Personal, Client), and anti-phishing protection across all browsers on that PC. Locked to your physical motherboard with zero recurring fees.
-      </p>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,0.08);padding-top:0.75rem;">
-        <span style="font-size:0.82rem;font-weight:700;color:var(--text-primary);">
-          Solo Lifetime Pass: <span id="home-ppp-price" style="color:#10b981;font-weight:800;">₹400</span> (Single Motherboard Lock)
+      <div style="font-size:0.88rem;color:var(--text-muted);line-height:1.65;margin-bottom:1rem;">
+        <p style="margin:0 0 0.75rem;">
+          <strong style="color:var(--text-primary);">FrankPass Web, Web App &amp; Extension is 100% Free Forever:</strong> Zero ads, zero accounts needed, zero personal information collected. Instant deterministic password calculation locally on any device with zero server storage.
+        </p>
+        <p style="margin:0 0 0.75rem;">
+          <strong style="color:var(--text-primary);">What You Get in Pro Mode:</strong> Instant 0.1s 4-Digit Quick PIN unlock, Multi-Profile Vaults (Work, Personal, Client), and anti-phishing protection across all browsers on that PC. Single motherboard lifetime lock with zero recurring subscription fees.
+        </p>
+      </div>
+      <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:0.85rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <span style="font-size:0.84rem;color:var(--text-muted);">
+          Want to know more about pricing and plans?
         </span>
-        <a href="/pricing.html" style="font-size:0.84rem;font-weight:700;color:var(--accent-light);text-decoration:underline;">
-          View Pricing &amp; Plans &rarr;
+        <a href="/pricing.html" style="font-size:0.86rem;font-weight:700;color:var(--accent-light);text-decoration:underline;">
+          Visit Pricing Page &rarr;
         </a>
       </div>
     </div>
 
     <!-- ACTION CTA BANNER (EQUAL 680PX BREADTH) -->
-    <div class="card-glass" style="margin:0 auto;padding:2rem 1.6rem;text-align:center;border-radius:20px;border:1px solid rgba(139,92,246,0.28);background:rgba(13,14,26,0.88);box-shadow:0 16px 44px rgba(0,0,0,0.4), 0 0 28px rgba(139,92,246,0.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+    <div class="card-glass" style="margin:0 auto;padding:2rem 1.6rem;text-align:center;border-radius:20px;border:1px solid rgba(255,255,255,0.06);background:rgba(13,14,26,0.88);box-shadow:0 16px 44px rgba(0,0,0,0.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);padding:3px 12px;border-radius:20px;font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;">
+        <span>&#128737;&#65039; Take Complete Self-Custody</span>
+      </div>
+      <h3 style="font-size:clamp(1.25rem,2.8vw,1.65rem);font-weight:900;color:var(--text-primary);margin:0 0 0.5rem;letter-spacing:-0.01em;">
+        Ready to improve your security and privacy journey?
+      </h3>
+      <p style="font-size:0.88rem;color:var(--text-muted);max-width:540px;margin:0 auto 1.5rem;line-height:1.6;">
+        Start generating zero-database deterministic passwords right now across all your devices. 100% Free, zero subscriptions, zero tracking.
+      </p>
+
+      <!-- Direct Action Buttons -->
+      <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:440px;margin:0 auto;">
+        <!-- Action 1: Universal Install Application -->
+        <button id="btn-cta-pwa-install" type="button" class="btn-primary" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;">
+          <span>&#128241;</span> <span>Install Application</span>
+        </button>
+
+        <!-- Action 2: Smart Browser Extension Installer -->
+        <button id="btn-install-extension-smart" type="button" class="btn-ghost" style="padding:0.85rem 1.25rem;font-size:0.92rem;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;cursor:pointer;border-color:var(--accent);color:var(--text-primary);background:rgba(139,92,246,0.08);">
+          <span>&#129513;</span> <span>Install Extension</span>
+        </button>
+        
+        <a href="/extension.html" style="font-size:0.84rem;color:var(--accent-light);text-decoration:underline;text-align:center;font-weight:600;margin-top:-0.15rem;">Visit Extension Page &rarr;</a>
+      </div>
+
+      <div style="font-size:0.76rem;color:var(--text-muted);margin-top:0.85rem;">
+        Works 100% offline &middot; No credit card &middot; Zero personal data collected
+      </div>
+    </div>
       <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.3);padding:3px 12px;border-radius:20px;font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.75rem;">
         <span>&#128737;&#65039; Take Complete Self-Custody</span>
       </div>
@@ -1131,7 +1156,7 @@ window.toggleWhyCloudDrawer = function() {
      ============================================================ -->
 <section id="community-section" class="section-sm" style="padding-top:2.5rem;padding-bottom:3rem;background:var(--bg-primary);" aria-labelledby="community-heading">
   <div class="container" style="max-width:680px;margin:0 auto;width:100%;">
-    <div class="card-glass" style="padding:2rem 1.75rem;border-radius:20px;border:1px solid rgba(16,185,129,0.3);background:rgba(13,14,26,0.88);text-align:center;box-shadow:0 16px 44px rgba(0,0,0,0.4), 0 0 28px rgba(16,185,129,0.12);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
+    <div class="card-glass" style="padding:2rem 1.75rem;border-radius:20px;border:1px solid rgba(255,255,255,0.06);background:rgba(13,14,26,0.88);text-align:center;box-shadow:0 16px 44px rgba(0,0,0,0.4);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);">
       <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,0.12);color:#10b981;border:1px solid rgba(16,185,129,0.28);padding:4px 12px;border-radius:20px;font-size:0.76rem;font-weight:700;margin-bottom:0.85rem;text-transform:uppercase;letter-spacing:0.04em;">
         <span>🔒</span> <span>Official Community</span>
       </div>
