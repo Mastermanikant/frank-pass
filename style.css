@@ -3101,6 +3101,33 @@ html, body {
   visibility: visible;
   transform: translateX(-50%) translateY(0);
 }
+/* Edge-safe alignment for footer social link preview cards (Prevents left-side clipping) */
+.footer-social-links .has-hover-card:first-child .hover-card-preview {
+  left: 0;
+  transform: translateY(8px);
+}
+.footer-social-links .has-hover-card:first-child .hover-card-preview::after {
+  left: 18px;
+  transform: none;
+}
+.footer-social-links .has-hover-card:first-child:hover .hover-card-preview,
+.footer-social-links .has-hover-card:first-child:focus-visible .hover-card-preview {
+  transform: translateY(0);
+}
+.footer-social-links .has-hover-card:last-child .hover-card-preview {
+  left: auto;
+  right: 0;
+  transform: translateY(8px);
+}
+.footer-social-links .has-hover-card:last-child .hover-card-preview::after {
+  left: auto;
+  right: 18px;
+  transform: none;
+}
+.footer-social-links .has-hover-card:last-child:hover .hover-card-preview,
+.footer-social-links .has-hover-card:last-child:focus-visible .hover-card-preview {
+  transform: translateY(0);
+}
 .hover-card-title {
   font-size: 0.82rem;
   font-weight: 700;
@@ -3636,6 +3663,9 @@ html, body {
   background: #ffffff !important;
   border-color: #6d28d9 !important;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15), 0 0 20px rgba(109, 40, 217, 0.1) !important;
+}
+[data-theme="light"] .hover-card-preview::after {
+  border-color: #6d28d9 transparent transparent transparent !important;
 }
 [data-theme="light"] .hover-card-desc {
   color: #475569 !important;
