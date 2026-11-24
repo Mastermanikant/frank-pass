@@ -45,7 +45,7 @@
  <link rel="manifest" href="/manifest.json">
 <link rel="preload" href="/fonts/outfit-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin fetchpriority="high">
-  <link rel="stylesheet" href="/style.min.css?v=5.0.4">
+  <link rel="stylesheet" href="/style.min.css?v=5.0.5">
 
  <!-- AI Agentic Browsing & Discovery Standards -->
  <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agentic Catalog">
@@ -489,21 +489,29 @@
 
  <!-- Card Header with Badges & Country Pill -->
  <div class="gen-header">
- <div class="gen-title">
- <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="22" height="22" style="display:inline-block;vertical-align:middle;border-radius:4px;" loading="lazy" decoding="async">
- <span>FrankPass Generator</span>
- </div>
- <div class="gen-header-badges">
-  <button type="button" class="gen-live-badge interactive-badge badge-pulse-attention" id="offline-math-trigger-btn" aria-label="Learn how FrankPass 100% Offline Math Works" title="Click to see how 100% offline deterministic password math works" style="cursor:pointer;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.08);padding:4px 9px;display:inline-flex;align-items:center;gap:5px;border-radius:20px;color:#10b981;font-family:inherit;font-size:0.76rem;font-weight:600;transition:all .2s ease;">
-  <span class="status-dot status-online" aria-hidden="true"></span>
-  <span>100% Offline</span>
-  <span style="font-size:0.72rem;opacity:0.85;margin-left:1px;font-weight:700;" aria-hidden="true">&#9432;</span>
-  </button>
- <div class="card-country-pill" id="card-country-pill" title="Selected Region">
- <img id="header-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
- <span id="card-country-label">IN</span>
- </div>
- </div>
+   <!-- Row 1: Title Left, Flag Pill Right -->
+   <div class="gen-header-top-row">
+     <div class="gen-title">
+       <img src="/icons/logo-key-64.webp" onerror="this.src='/icons/logo-key-64.png'" alt="FrankPass Logo" width="22" height="22" style="display:inline-block;vertical-align:middle;border-radius:4px;" loading="lazy" decoding="async">
+       <span>FrankPass Generator</span>
+     </div>
+     <div class="card-country-pill" id="card-country-pill" title="Selected Region">
+       <img id="header-flag-img" src="/flags/in.png" onerror="this.src='/flags/global.png'" alt="India" width="18" height="13" style="display:inline-block;vertical-align:middle;border-radius:2px;" loading="lazy" decoding="async">
+       <span id="card-country-label">IN</span>
+     </div>
+   </div>
+   <!-- Row 2: 100% Offline Badge and Settings Button Directly Next to it -->
+   <div class="gen-header-sub-row">
+     <button type="button" class="gen-live-badge interactive-badge badge-pulse-attention" id="offline-math-trigger-btn" aria-label="Learn how FrankPass 100% Offline Math Works" title="Click to see how 100% offline deterministic password math works" style="cursor:pointer;border:1px solid rgba(16,185,129,0.35);background:rgba(16,185,129,0.08);padding:4px 9px;display:inline-flex;align-items:center;gap:5px;border-radius:20px;color:#10b981;font-family:inherit;font-size:0.76rem;font-weight:600;transition:all .2s ease;">
+       <span class="status-dot status-online" aria-hidden="true"></span>
+       <span>100% Offline</span>
+       <span style="font-size:0.72rem;opacity:0.85;margin-left:1px;font-weight:700;" aria-hidden="true">&#9432;</span>
+     </button>
+     <a href="/profile.html" id="gen-settings-btn" class="gen-settings-pill" aria-label="Local Settings" title="Local Settings & Vault Manager">
+       <span aria-hidden="true">⚙️</span>
+       <span>Settings</span>
+     </a>
+   </div>
  </div>
 
     <!-- First-Time Quick Tip Toast (Dismissible) -->
