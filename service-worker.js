@@ -1,5 +1,5 @@
-// FrankPass Service Worker v5.0.1 (Hyphen Phishing Protection & Offline Cache)
-const CACHE_NAME = 'frankpass-v5.3.4';
+// FrankPass Service Worker v5.3.5 (Hyphen Phishing Protection & Auto-Update Cache)
+const CACHE_NAME = 'frankpass-v5.3.5';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -111,8 +111,12 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
+    const networkReq = event.request.mode === 'navigate'
+        ? new Request(event.request, { cache: 'no-cache' })
+        : event.request;
+
     event.respondWith(
-        fetch(event.request)
+        fetch(networkReq)
             .then((networkResponse) => {
                 if (networkResponse && networkResponse.status === 200) {
                     const responseClone = networkResponse.clone();

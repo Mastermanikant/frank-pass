@@ -624,26 +624,44 @@
 
   function registerGlobalServiceWorker() {
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function () {
-        setTimeout(function () {
-          navigator.serviceWorker.register('/service-worker.js?v=5.3.3').then(function(reg){reg.update();return reg;})
-            .then(function (reg) {
-              reg.addEventListener('updatefound', function () {
-                const newWorker = reg.installing;
-                if (newWorker) {
-                  newWorker.addEventListener('statechange', function () {
-                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                      // Silently active for next visit
+      if (!navigator.serviceWorker._fpControllerBound) {
+        navigator.serviceWorker._fpControllerBound = true;
+        let swRefreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', function () {
+          if (swRefreshing) return;
+          const secretEl = document.getElementById('secret-key');
+          const testEl = document.getElementById('test-phrase-input');
+          const hasActiveInput = (secretEl && secretEl.value.trim().length > 0) || (testEl && testEl.value.trim().length > 0);
+          if (!hasActiveInput) {
+            swRefreshing = true;
+            window.location.reload();
+          }
+        });
+      }
+
+      if (!window._fpSwLoadBound) {
+        window._fpSwLoadBound = true;
+        window.addEventListener('load', function () {
+          setTimeout(function () {
+            navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' })
+              .then(function (reg) {
+                reg.update();
+                if (!document._fpSwVisBound) {
+                  document._fpSwVisBound = true;
+                  document.addEventListener('visibilitychange', function () {
+                    if (document.visibilityState === 'visible') {
+                      reg.update();
                     }
                   });
                 }
+                return reg;
+              })
+              .catch(function () {
+                // Graceful silent fallback
               });
-            })
-            .catch(function () {
-              // Graceful silent fallback
-            });
-        }, 2500);
-      });
+          }, 1200);
+        });
+      }
     }
   }
 
