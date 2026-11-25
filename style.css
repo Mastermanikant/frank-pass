@@ -2757,7 +2757,7 @@ html, body {
 @media (max-width: 640px) {
   :root {
     --header-h: 60px;
-    --mobile-nav-h: 56px;
+    --mobile-nav-h: 58px;
   }
   /* iOS Safari Auto-Zoom Prevention (16px minimum font size for form inputs on mobile) */
   input[type="text"],
@@ -2805,7 +2805,7 @@ html, body {
     padding: 9px 12px;
   }
   body:not(.no-mobile-nav) {
-    padding-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 2.5rem);
+    padding-bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 1.35rem);
   }
   #toast-container {
     bottom: calc(var(--mobile-nav-h) + env(safe-area-inset-bottom, 0px) + 0.75rem);
