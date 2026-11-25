@@ -4831,7 +4831,7 @@ pre, code {
 
 /* ── MOBILE BOTTOM DOCK CLEARANCE SPACER ── */
 .mobile-bottom-dock-spacer {
-  height: 120px !important;
+  height: 220px !important;
   width: 100% !important;
   display: block !important;
   clear: both !important;

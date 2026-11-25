@@ -284,7 +284,7 @@
   </div>
 
     <!-- Mobile Bottom Navigation Dock Clearance Spacer -->
-    <div class="mobile-bottom-dock-spacer" style="height:120px;width:100%;display:block;clear:both;" aria-hidden="true"></div>
+    <div class="mobile-bottom-dock-spacer" style="height:220px;width:100%;display:block;clear:both;" aria-hidden="true"></div>
   </footer>
     `;
 
@@ -628,7 +628,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
         setTimeout(function () {
-          navigator.serviceWorker.register('/service-worker.js?v=5.3.0').then(function(reg){reg.update();return reg;})
+          navigator.serviceWorker.register('/service-worker.js?v=5.3.1').then(function(reg){reg.update();return reg;})
             .then(function (reg) {
               reg.addEventListener('updatefound', function () {
                 const newWorker = reg.installing;
