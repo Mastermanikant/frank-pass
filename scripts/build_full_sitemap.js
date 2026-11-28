@@ -27,7 +27,7 @@ let xml = `<?xml version="1.0" encoding="UTF-8"?>
 `;
 
 for (const file of files) {
-  const url = file === 'index.html' ? 'https://frankpass.com/' : `https://frankpass.com/${file}`;
+  const url = file === 'index.html' ? 'https://frankpass.com/' : `https://frankpass.com/${file.replace(/\.html$/, '')}`;
   const priority = getPriority(file);
   const freq = getChangeFreq(file);
 
