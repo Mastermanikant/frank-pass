@@ -125,7 +125,7 @@
           <a href="${isHindi ? '/frankpass-vs-cloud-password-vaults-hindi.html' : '/frankpass-vs-cloud-password-vaults.html'}" class="footer-nav-link">
             <span>${isHindi ? 'यह कैसे काम करता है' : 'How it works'}</span>
           </a>
-          <a href="${isHindi ? '/secret-key-guide-hindi.html' : '/secret-key-guide.html'}" class="footer-nav-link">
+          <a href="${isHindi ? '/secret-key-guide-hindi' : '/secret-key-guide'}" class="footer-nav-link">
             <span>${isHindi ? 'सीक्रेट की गाइड' : 'Secret Key Guide'}</span>
           </a>
           <a href="${isHindi ? '/whitepaper-hindi.html' : '/whitepaper.html'}" class="footer-nav-link">

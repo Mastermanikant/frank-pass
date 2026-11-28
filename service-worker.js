@@ -1,5 +1,5 @@
-// FrankPass Service Worker v5.3.6 (Hyphen Phishing Protection & Auto-Update Cache)
-const CACHE_NAME = 'frankpass-v5.3.6';
+// FrankPass Service Worker v5.3.7 (Hyphen Phishing Protection, Redirect-Safe Navigate & Auto-Update Cache)
+const CACHE_NAME = 'frankpass-v5.3.7';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -17,8 +17,8 @@ const CACHED_URLS = [
     '/atm-upi-pin-security-guide-hindi.html',
     '/frankpass-vs-cloud-password-vaults.html',
     '/frankpass-vs-cloud-password-vaults-hindi.html',
-    '/secret-key-guide.html',
-    '/secret-key-guide-hindi.html',
+    '/secret-key-guide',
+    '/secret-key-guide-hindi',
     '/get-started.html',
     '/get-started-hindi.html',
     '/install.html',
@@ -116,6 +116,9 @@ self.addEventListener('fetch', (event) => {
             ? fetch(event.request.url, { cache: 'no-cache', credentials: 'same-origin' })
             : fetch(event.request))
             .then((networkResponse) => {
+                if (event.request.mode === 'navigate' && networkResponse && networkResponse.redirected) {
+                    return Response.redirect(networkResponse.url, 302);
+                }
                 if (networkResponse && networkResponse.status === 200) {
                     const responseClone = networkResponse.clone();
                     caches.open(CACHE_NAME).then((cache) => {
@@ -126,7 +129,12 @@ self.addEventListener('fetch', (event) => {
             })
             .catch(() => {
                 return caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
-                    if (cachedResponse) return cachedResponse;
+                    if (cachedResponse) {
+                        if (event.request.mode === 'navigate' && cachedResponse.redirected) {
+                            return Response.redirect(cachedResponse.url, 302);
+                        }
+                        return cachedResponse;
+                    }
                     if (event.request.mode === 'navigate') {
                         return caches.match('/', { ignoreSearch: true }).then(res => res || caches.match('/index.html', { ignoreSearch: true }) || new Response('Offline', { status: 503 }));
                     }
