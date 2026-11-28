@@ -1,5 +1,5 @@
 # Cloudflare Pages Router Config (_redirects)
-# Hard limit: 100 rules. Current optimized total: ~75 rules.
+# Hard limit: 100 rules. Current clean SEO-safe total: 51 rules.
 
 # ==============================================================================
 # 1. 301 PERMANENT CONSOLIDATION REDIRECTS (48 -> 35 CANONICAL PAGES ARCHITECTURE)
@@ -10,7 +10,6 @@
 /why-stateless-password-generation-is-the-future /frankpass-vs-cloud-password-vaults 301
 /why-stateless-password-generation-is-the-future-hindi /frankpass-vs-cloud-password-vaults-hindi 301
 /stateless /frankpass-vs-cloud-password-vaults 301
-/stateless-hindi /frankpass-vs-cloud-password-vaults-hindi 301
 
 # Pillar 02: Limitations & Advantages -> Invisible Vault (EN & HI)
 /limitations-and-advantages.html /where-password-managers-fail-and-invisible-vault 301
@@ -18,7 +17,6 @@
 /limitations-and-advantages /where-password-managers-fail-and-invisible-vault 301
 /limitations-and-advantages-hindi /where-password-managers-fail-and-invisible-vault-hindi 301
 /advantages /where-password-managers-fail-and-invisible-vault 301
-/advantages-hindi /where-password-managers-fail-and-invisible-vault-hindi 301
 
 # Pillar 03: ATM/UPI PIN Guide -> PIN Generator Tool
 /atm-upi-pin-security-guide.html /pin 301
@@ -47,48 +45,21 @@
 /comparison-between-frankpass-all-generators-deterministic-random-pin-hindi.html /library-hindi 301
 /comparison-between-frankpass-all-generators-deterministic-random-pin /library 301
 /compare /library 301
-/difference /library 301
-/tools-comparison /library 301
 
-# Core Product Shortcuts
-/master-secret-key-guide /secret-key-guide 301
-/master-secret-key-guide-hindi /secret-key-guide-hindi 301
+# Core Product & Legal Shortcuts
 /pin-generator /pin 301
 /atm-pin /pin 301
 /upi-pin /pin 301
 /random /random-password-generator 301
-/rpg /random-password-generator 301
 /app /install 301
 /download /install 301
-/pwa /install 301
 /extention /extension 301
 /privacy /legal 301
 /terms /legal 301
 /disclaimer /legal 301
-/directory /library 301
-/directory-hindi /library-hindi 301
 
 # ==============================================================================
-# 2. SPA REGIONAL COUNTRY ROUTING (200 OK)
-# ==============================================================================
-/in / 200
-/us / 200
-/ug / 200
-/gb / 200
-/ca / 200
-/au / 200
-/de / 200
-/fr / 200
-/ae / 200
-/sa / 200
-/jp / 200
-/sg / 200
-/nl / 200
-/br / 200
-/za / 200
-
-# ==============================================================================
-# 3. ECOSYSTEM DOMAINS & SOCIAL SHORTLINKS
+# 2. ECOSYSTEM DOMAINS & SOCIAL SHORTLINKS
 # ==============================================================================
 /mastermanikant/x https://mastermanikant.com/why-x-suspended-my-account 302
 /mastermanikant/linkedin https://linkedin.com/in/mastermanikant 301
