@@ -624,21 +624,6 @@
 
   function registerGlobalServiceWorker() {
     if ('serviceWorker' in navigator) {
-      if (!navigator.serviceWorker._fpControllerBound) {
-        navigator.serviceWorker._fpControllerBound = true;
-        let swRefreshing = false;
-        navigator.serviceWorker.addEventListener('controllerchange', function () {
-          if (swRefreshing) return;
-          const secretEl = document.getElementById('secret-key');
-          const testEl = document.getElementById('test-phrase-input');
-          const hasActiveInput = (secretEl && secretEl.value.trim().length > 0) || (testEl && testEl.value.trim().length > 0);
-          if (!hasActiveInput) {
-            swRefreshing = true;
-            window.location.reload();
-          }
-        });
-      }
-
       if (!window._fpSwLoadBound) {
         window._fpSwLoadBound = true;
         window.addEventListener('load', function () {

@@ -1,5 +1,5 @@
-// FrankPass Service Worker v5.3.5 (Hyphen Phishing Protection & Auto-Update Cache)
-const CACHE_NAME = 'frankpass-v5.3.5';
+// FrankPass Service Worker v5.3.6 (Hyphen Phishing Protection & Auto-Update Cache)
+const CACHE_NAME = 'frankpass-v5.3.6';
 const CACHED_URLS = [
     '/',
     '/index.html',
@@ -111,12 +111,10 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    const networkReq = event.request.mode === 'navigate'
-        ? new Request(event.request, { cache: 'no-cache' })
-        : event.request;
-
     event.respondWith(
-        fetch(networkReq)
+        (event.request.mode === 'navigate'
+            ? fetch(event.request.url, { cache: 'no-cache', credentials: 'same-origin' })
+            : fetch(event.request))
             .then((networkResponse) => {
                 if (networkResponse && networkResponse.status === 200) {
                     const responseClone = networkResponse.clone();
@@ -130,9 +128,9 @@ self.addEventListener('fetch', (event) => {
                 return caches.match(event.request, { ignoreSearch: true }).then((cachedResponse) => {
                     if (cachedResponse) return cachedResponse;
                     if (event.request.mode === 'navigate') {
-                        return caches.match('/', { ignoreSearch: true }).then(res => res || caches.match('/index.html', { ignoreSearch: true }));
+                        return caches.match('/', { ignoreSearch: true }).then(res => res || caches.match('/index.html', { ignoreSearch: true }) || new Response('Offline', { status: 503 }));
                     }
-                    return null;
+                    return new Response('', { status: 503 });
                 });
             })
     );
